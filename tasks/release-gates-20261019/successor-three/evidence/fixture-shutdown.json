@@ -1,0 +1,34 @@
+{
+  "observed_utc": "2026-10-19T10:29:44.792204+00:00",
+  "stopped": [
+    {
+      "kind": "owned_loopback_php_fixture",
+      "pid": 90080
+    },
+    {
+      "kind": "owned_loopback_php_fixture",
+      "pid": 90069
+    },
+    {
+      "kind": "owned_loopback_php_fixture",
+      "pid": 90077
+    },
+    {
+      "kind": "owned_loopback_php_fixture",
+      "pid": 90078
+    },
+    {
+      "kind": "owned_loopback_php_fixture",
+      "pid": 90079
+    },
+    {
+      "kind": "owned_private_mariadb_fixture",
+      "pid": 90057
+    }
+  ],
+  "identity_checked_before_stop": true,
+  "data_preserved": true,
+  "production_processes_touched": false,
+  "http_log": ".artifacts/release-gates-20261019/successor-http-server.txt",
+  "http_log_sha256": "49e21a0486e001885cc129dbbef0d70892f67443cb77c906d278622195dab101"
+}

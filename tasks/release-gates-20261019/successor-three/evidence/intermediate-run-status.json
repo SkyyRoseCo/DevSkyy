@@ -1,0 +1,53 @@
+{
+  "classification": "RECORDED_LOCAL_DEVELOPMENT_HISTORY",
+  "runs": [
+    {
+      "paths": [
+        "native-three-initial",
+        "native-three-pre-sizing"
+      ],
+      "status": "HISTORICAL_PRE_SIZING_SOURCE",
+      "note": "Frames/state alone did not exclude1x1buffer; superseded by actual initial drawing buffer checks"
+    },
+    {
+      "paths": [
+        "native-three-pre-aspect",
+        "browser-ten-routes-pre-aspect"
+      ],
+      "status": "INTERRUPTED_FOR_REVIEW_CORRECTIONS",
+      "note": "Sizing repair valid but camera aspect and poster failure flag corrections required; not final qualification"
+    },
+    {
+      "paths": [
+        "native-three-pre-timing-driver-fix"
+      ],
+      "status": "FAILED_SYNTHETIC_DRIVER_TIMING",
+      "note": "Test withheld RAF while default Playwright wait polled RAF; timeout then owned pending route teardown error. Fixed explicit50ms polling and release/unrouteAll wait; actual failure retained"
+    },
+    {
+      "paths": [
+        "native-three-pre-resume-watchdog",
+        "browser-ten-routes-pre-resume-watchdog",
+        "browser-faults-pre-resume-watchdog"
+      ],
+      "status": "SUPERSEDED_FOR_WATCHDOG_CORRECTION",
+      "note": "Prior partial/native and complete route/fault runs do not establish final-source closure"
+    },
+    {
+      "paths": [
+        "certification-tests-final.txt",
+        "certification-tests-isolated-final.txt"
+      ],
+      "status": "TEST_RUNNER_SETUP_ERRORS",
+      "note": "Repository pytest config/import collected unrelated application dependencies. Documented unittest discovery command passes23tests; no application dependency installation or code change used to mask failure"
+    },
+    {
+      "paths": [
+        "owning-package-initial.txt",
+        "owning-package-sized.txt"
+      ],
+      "status": "HISTORICAL_OR_INTERRUPTED_PRE_FINAL_SOURCE",
+      "note": "Only final two complete owning build logs and byte comparison qualify successor package"
+    }
+  ]
+}

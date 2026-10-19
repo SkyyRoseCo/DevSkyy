@@ -1,0 +1,29 @@
+test_escaped_quotes_and_backslashes_remain_literal_messages (test_i18n.TranslationTests.test_escaped_quotes_and_backslashes_remain_literal_messages) ... ok
+test_excludes_fixtures_and_parses_double_quotes (test_i18n.TranslationTests.test_excludes_fixtures_and_parses_double_quotes) ... ok
+test_runtime_plural_is_retained (test_i18n.TranslationTests.test_runtime_plural_is_retained) ... ok
+test_unterminated_escape_runs_do_not_backtrack_exponentially (test_i18n.TranslationTests.test_unterminated_escape_runs_do_not_backtrack_exponentially) ... ok
+test_changed_current_commerce_requires_receipt_reconciliation (test_inputs.RegistryAuthorityTests.test_changed_current_commerce_requires_receipt_reconciliation) ... ok
+test_correction_must_match_current_registry_value (test_inputs.RegistryAuthorityTests.test_correction_must_match_current_registry_value) ... ok
+test_correction_without_founder_verbatim_source_fails_closed (test_inputs.RegistryAuthorityTests.test_correction_without_founder_verbatim_source_fails_closed) ... ok
+test_current_registry_supplies_every_garment_type (test_inputs.RegistryAuthorityTests.test_current_registry_supplies_every_garment_type) ... ok
+test_founder_color_correction_reconciles_receipt (test_inputs.RegistryAuthorityTests.test_founder_color_correction_reconciles_receipt) ... ok
+test_founder_garment_correction_overrides_historical_receipt (test_inputs.RegistryAuthorityTests.test_founder_garment_correction_overrides_historical_receipt) ... ok
+test_missing_correction_still_requires_reconciliation (test_inputs.RegistryAuthorityTests.test_missing_correction_still_requires_reconciliation) ... ok
+test_missing_receipt_product_fails_closed (test_inputs.RegistryAuthorityTests.test_missing_receipt_product_fails_closed) ... ok
+test_presentation_builds_do_not_require_a_recert (test_inputs.RegistryAuthorityTests.test_presentation_builds_do_not_require_a_recert) ... ok
+test_stale_correction_fails_closed (test_inputs.RegistryAuthorityTests.test_stale_correction_fails_closed) ... ok
+test_exact_hash_and_dimensions (test_integrity.AssetBoundaryTests.test_exact_hash_and_dimensions) ... ok
+test_rejects_changed_pixels (test_integrity.AssetBoundaryTests.test_rejects_changed_pixels) ... ok
+test_rejects_symlink (test_integrity.AssetBoundaryTests.test_rejects_symlink) ... ok
+test_rejects_traversal (test_integrity.AssetBoundaryTests.test_rejects_traversal) ... ok
+test_rejects_wrong_dimensions (test_integrity.AssetBoundaryTests.test_rejects_wrong_dimensions) ... ok
+test_changed_bytes_do_not_create_partial_fixture (test_native_fixture.NativeFixtureTests.test_changed_bytes_do_not_create_partial_fixture) ... ok
+test_does_not_overwrite_existing_destination (test_native_fixture.NativeFixtureTests.test_does_not_overwrite_existing_destination) ... ok
+test_fetches_and_writes_only_exact_pinned_files (test_native_fixture.NativeFixtureTests.test_fetches_and_writes_only_exact_pinned_files) ... ok
+test_rejects_extra_manifest_path_before_network (test_native_fixture.NativeFixtureTests.test_rejects_extra_manifest_path_before_network) ... ok
+
+----------------------------------------------------------------------
+Ran 23 tests in 9.249s
+
+OK
+PASS 7 native fixture hashes; WordPress 7.1 / WooCommerce 11.1.0

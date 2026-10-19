@@ -1,0 +1,18 @@
+{
+  "classification": "RECORDED_LOCAL_EYES_ON_INSPECTION",
+  "reviewer": "Integration",
+  "authentication": "NOT_APPLICABLE",
+  "files": {
+    "native-three/desktop-signature-initial.png": "22689ab4487708977d0d79d8cfdcd18ff780a4f315fd5f3a793bb0eeb93541d4",
+    "native-three/mobile-signature-initial.png": "f3cf00b89de0a3894422a1b0a437a6f029755a5c86e1ef3de9af7857eb87a7ce"
+  },
+  "observations": [
+    "Initial desktop and mobile screenshots show native atmospheric geometry over the existing approved product-led entry poster, with legible navigation and story actions",
+    "Initial canvas is visible; native dimensions/aspect are independently recorded by the execution driver before history navigation"
+  ],
+  "limits": [
+    "This records only these two initial screenshots, not every collection or visual state",
+    "Viewport simulation and software WebGL; no physical-device GPU/performance claim",
+    "No full immersive creative, artwork/media, GLB, publication or release acceptance granted"
+  ]
+}

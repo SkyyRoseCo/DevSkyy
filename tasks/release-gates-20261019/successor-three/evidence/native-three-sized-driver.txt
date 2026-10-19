@@ -1,0 +1,29 @@
+(node:2655) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+PASS desktop /experience-signature/ 
+PASS desktop /experience-black-rose/ 
+PASS desktop /experience-love-hurts/ 
+PASS desktop /experience-kids-capsule/ 
+PASS mobile /experience-signature/ 
+PASS mobile /experience-black-rose/ 
+PASS mobile /experience-love-hurts/ 
+PASS mobile /experience-kids-capsule/ 
+PASS reduced-motion 
+PASS save-data 
+PASS core-missing 
+PASS timeout-then-late-core 
+PASS pagehide-then-late-core 
+PASS motion-change-then-late-core 
+PASS save-data-change-then-late-core 
+PASS persisted-page-pause-resume 
+node:internal/process/promises:394
+    triggerUncaughtException(err, true /* fromPromise */);
+    ^
+
+TargetClosedError: "route.fetch: Target page, context or browser has been closed" while running route callback.
+Consider awaiting `await page.unrouteAll({ behavior: 'ignoreErrors' })`
+before the end of the test to ignore remaining routes in flight.
+    at [90m/Users/theceo/.codex/worktrees/release-gates-20261019/DevSkyy/[39mtools/v2-runtime/phase3b-browser/test-release-three-native.cjs:97:67
+    at async [90m/Users/theceo/.codex/worktrees/release-gates-20261019/DevSkyy/[39mtools/v2-runtime/phase3b-browser/test-release-three-native.cjs:41:199
+
+Node.js v22.23.2

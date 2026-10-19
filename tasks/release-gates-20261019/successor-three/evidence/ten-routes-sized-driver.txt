@@ -1,0 +1,31 @@
+(node:2788) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+PASS desktop-full-signature 
+PASS desktop-full-immersive-signature 
+PASS desktop-full-black-rose 
+PASS desktop-full-immersive-black-rose 
+PASS desktop-full-love-hurts 
+PASS desktop-full-immersive-love-hurts 
+PASS desktop-full-kids-capsule 
+PASS desktop-full-immersive-kids-capsule 
+PASS desktop-full-worlds 
+PASS desktop-full-size-guide 
+PASS desktop-reduced-signature 
+PASS desktop-reduced-immersive-signature 
+PASS desktop-reduced-black-rose 
+PASS desktop-reduced-immersive-black-rose 
+/Users/theceo/.codex/worktrees/release-gates-20261019/DevSkyy/tools/v2-runtime/phase3b-browser/node_modules/playwright/node_modules/playwright-core/lib/client/connection.js:191
+        throw new Error(`Object with guid ${arg.guid} was not bound in the connection`);
+        ^
+
+Error: Object with guid response@d71bcb1af6c3116d117ea6e6f3d50b5f was not bound in the connection
+    at Connection._tChannelImplFromWire [90m(/Users/theceo/.codex/worktrees/release-gates-20261019/DevSkyy/[39mtools/v2-runtime/phase3b-browser/node_modules/[4mplaywright[24m/node_modules/[4mplaywright-core[24m/lib/client/connection.js:191:15[90m)[39m
+    at [90m/Users/theceo/.codex/worktrees/release-gates-20261019/DevSkyy/[39mtools/v2-runtime/phase3b-browser/node_modules/[4mplaywright[24m/node_modules/[4mplaywright-core[24m/lib/protocol/validatorPrimitives.js:162:20
+    at [90m/Users/theceo/.codex/worktrees/release-gates-20261019/DevSkyy/[39mtools/v2-runtime/phase3b-browser/node_modules/[4mplaywright[24m/node_modules/[4mplaywright-core[24m/lib/protocol/validatorPrimitives.js:122:12
+    at [90m/Users/theceo/.codex/worktrees/release-gates-20261019/DevSkyy/[39mtools/v2-runtime/phase3b-browser/node_modules/[4mplaywright[24m/node_modules/[4mplaywright-core[24m/lib/protocol/validatorPrimitives.js:140:21
+    at Connection.dispatch [90m(/Users/theceo/.codex/worktrees/release-gates-20261019/DevSkyy/[39mtools/v2-runtime/phase3b-browser/node_modules/[4mplaywright[24m/node_modules/[4mplaywright-core[24m/lib/client/connection.js:151:26[90m)[39m
+    at Immediate.<anonymous> [90m(/Users/theceo/.codex/worktrees/release-gates-20261019/DevSkyy/[39mtools/v2-runtime/phase3b-browser/node_modules/[4mplaywright[24m/node_modules/[4mplaywright-core[24m/lib/inProcessFactory.js:46:85[90m)[39m
+[90m    at process.processImmediate (node:internal/timers:484:21)[39m
+[90m    at process.callbackTrampoline (node:internal/async_hooks:130:17)[39m
+
+Node.js v22.23.2

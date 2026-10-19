@@ -1,0 +1,15 @@
+(node:95794) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+node:internal/process/promises:394
+    triggerUncaughtException(err, true /* fromPromise */);
+    ^
+
+page.goto: net::ERR_PROXY_CONNECTION_FAILED at http://127.0.0.1:18362/experience-signature/
+Call log:
+[2m  - navigating to "http://127.0.0.1:18362/experience-signature/", waiting until "load"[22m
+
+    at [stdin]:1:330 {
+  name: [32m'Error'[39m
+}
+
+Node.js v22.23.2

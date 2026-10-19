@@ -1,0 +1,21 @@
+(node:96538) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+PASS desktop /experience-signature/ 
+PASS desktop /experience-black-rose/ 
+PASS desktop /experience-love-hurts/ 
+PASS desktop /experience-kids-capsule/ 
+PASS mobile /experience-signature/ 
+PASS mobile /experience-black-rose/ 
+PASS mobile /experience-love-hurts/ 
+PASS mobile /experience-kids-capsule/ 
+PASS reduced-motion 
+PASS save-data 
+PASS core-missing 
+PASS timeout-then-late-core 
+PASS pagehide-then-late-core 
+PASS motion-change-then-late-core 
+PASS save-data-change-then-late-core 
+PASS persisted-page-pause-resume 
+PASS late-poster-error 
+PASS context-loss 
+PASS checkout 

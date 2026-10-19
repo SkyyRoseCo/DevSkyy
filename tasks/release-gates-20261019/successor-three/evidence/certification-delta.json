@@ -1,0 +1,36 @@
+{
+  "runtime": [
+    {
+      "path": "wordpress-theme/skyyrose-flagship-2/functions.php",
+      "old": "4e3c336754fe3f07b03bfa45ce519c57fcdd972959308c2d59f6b89e06106415",
+      "new": "a2574be1d1897e66e4d7173f3cfae82e3fb0f217e87dda3b721e6f458ccc0480"
+    },
+    {
+      "path": "wordpress-theme/skyyrose-flagship-2/template-parts/immersive/world.php",
+      "old": "e75e77d34129b1429376629b43260b00adbc8e8f779d84aef6d136114f1006e5",
+      "new": "a98c5198ac81c1e34599b7a2019a9bd9cc10bfd760be052ab0c0a1e914f35a0d"
+    }
+  ],
+  "coupled_pins": [
+    {
+      "path": "tools/v2-source-certification/generated-outputs.json",
+      "old": "78ac1967390fc76c3c58adb571eaa8adf59826009f3238843f33429d591d1bed",
+      "new": "5552c7ca222eb415d5bf052004ffdde6a9debb98a0836c92a4d7d74e41aee93f"
+    },
+    {
+      "path": "tools/v2-source-certification/package-boundary.json",
+      "old": "c6d300e805a417d5d6f43bd45854fc9f961c4d5b45b8ce8adef3e03e095a855e",
+      "new": "26cc768a4864ad19ad7344a0cd7b7d71f86ad994ab57098217633a0ba88a658a"
+    },
+    {
+      "path": "tools/v2-source-certification/runtime-php-baseline.json",
+      "old": "83546634ba9412d7f6dbc5ccada4b8eddd6c8f7babeeaa07feaa47ebbd3374e9",
+      "new": "57143f828382bbd8266c15609d704eb5159a61cff899f9dde5ff9ad0e8da4bde"
+    }
+  ],
+  "new_runtime_paths": [
+    "assets/js/three-core-loader.js",
+    "assets/js/three-core-loader.min.js"
+  ],
+  "new_asset_or_grant_acceptance": false
+}

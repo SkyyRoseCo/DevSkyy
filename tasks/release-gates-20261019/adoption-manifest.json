@@ -1,20 +1,29 @@
 {
   "schema": "skyyrose.release-adoption.v1",
-  "observed_utc": "2026-10-19T09:56:42.598648+00:00",
+  "observed_utc": "2026-10-19T10:30:33.090991+00:00",
   "disposition": "HOLD_NOT_RELEASE_AUTHORIZATION",
   "candidate": {
-    "source_commit": "887b6bfe0405d9601dd1b743542ba75e1cc5d6e2",
-    "source_tree": "8b07bced15408fdb9ef960c9df00d81247ff3cc6",
-    "theme_tree": "3b5f5b7cb563a07360d2e1ffdbc14d873da28c15",
+    "source_commit": "d953e51ee9e01448fe6b04960d5958d8ac424954",
+    "source_tree": "af48d0bdce702c077e1d51ee3c032bb641723a09",
+    "theme_tree": "de9e7c379ec675dcf6e7ffdb47f33bacdd3a3ca8",
     "comparison_base": "cebe98935a5fd22169b58d3504783eef00016e66",
     "branch": "codex/release-gates-20261019",
     "version": "2.5.5",
     "local_commits_only": true,
     "migration_commit": "a3ca682041e5d3b469ed4d814547089a4b9e5b69",
-    "immersive_commit": "42ec774c9a528c3d7f42bd70c05b80a8b9290374"
+    "fallback_baseline_commit": "887b6bfe0405d9601dd1b743542ba75e1cc5d6e2",
+    "successor_commit": "d953e51ee9e01448fe6b04960d5958d8ac424954"
+  },
+  "baseline": {
+    "source_commit": "887b6bfe0405d9601dd1b743542ba75e1cc5d6e2",
+    "source_tree": "8b07bced15408fdb9ef960c9df00d81247ff3cc6",
+    "artifact_sha256": "954b25b952733b51c592acb2819bdcdb9140d8d607a38507543f5329819a637a",
+    "artifact_path": ".artifacts/release-gates-20261019/baseline-887/skyyrose-flagship-2.zip",
+    "historical_manifest": "successor-three/baseline-adoption-manifest.json",
+    "scope": "Preserved fallback-only baseline; successful native rendering belongs to successor"
   },
   "source_file_hashes": {
-    "tasks/release-gates-20261019/.gitignore": "1949cdb6a5109d1662a6144beb981085075a7ba6da433ae32d13a1e82c2ca3cc",
+    "tasks/release-gates-20261019/.gitignore": "d3095ebc02335fe5e2f4f3348051fd24d1c61c58dacd8ec7ee72b99d1f26205f",
     "tasks/release-gates-20261019/OWNER-CONTRACT.md": "8a1f29d5fd69ef47bff7a52a905fccdb4e9051858ae596a62b73ee3aaf6062ab",
     "tasks/release-gates-20261019/offline-v1/capture-replay.json": "4b7e09304bd1274709a7a0de9e75b65f45001c6a3bd6bc1fe86d3bb064c829de",
     "tasks/release-gates-20261019/offline-v1/inert-snapshot.cjs": "10e916d7bb8ae8adb436915656d68fd8375088d0cb9982b22771bda57997cfef",
@@ -25,28 +34,36 @@
     "tasks/release-gates-20261019/offline-v1/test-inert-snapshot.cjs": "12d86a22940321363268272cc0ea6f51d154282091908c553ec6de6a13998fbe",
     "tasks/release-gates-20261019/source-selection.json": "5a462c8ca85a77d4a5bc7c3a64e5de60821d8deb76edcd9da878093140159e53",
     "tools/v2-runtime/phase3b-browser/network-evidence.cjs": "4e69bf18acd6f382fb07bd4bf0d393e47941cc90c6f396d166308fc7aede61d2",
-    "tools/v2-runtime/phase3b-browser/test-release-destinations.cjs": "eb06169831541635b2e8bf9d840aec61c46e0c23afbee6795297d8fbc9871085",
-    "tools/v2-runtime/phase3b-browser/test-release-faults.cjs": "28783bce1c3b1e48a94e361383d7d7e26a2355b08b16aeaf6223fa89bfcdc7da",
+    "tools/v2-runtime/phase3b-browser/test-release-destinations.cjs": "9accbd1a6c8f8fee1e664116501eb4f73e119431913e790e7b508adabe47759c",
+    "tools/v2-runtime/phase3b-browser/test-release-faults.cjs": "e6120b9b99cefe1d362d827f90b19db5c79b1489a22ca1d61c600e49df8117b3",
     "tools/v2-runtime/phase3b-browser/test-release-migration-process.cjs": "f4d197142f2f8d82b1030662a2c96b23b09e91c7ccd4a79a32b668555d5ec284",
-    "tools/v2-runtime/phase3b-browser/test-release-ten-routes.cjs": "668f1674034c7550b9cace3ca426bb9be1c81cca45fc61c39ace3d22a971d962",
+    "tools/v2-runtime/phase3b-browser/test-release-ten-routes.cjs": "e9d2698ffcca30374298df75ccb68583ab57942d54f9e27f182ea3db60ff5150",
+    "tools/v2-runtime/phase3b-browser/test-release-three-native.cjs": "b0654a9d68657840b506101c12e05c86ee8f6e12f7c32ebfade5441a7bf15976",
     "tools/v2-runtime/phase3b-browser/test-release-v1-offline.cjs": "451236fdab3af77942740412c800213a97404b73ba7904c139e92f5a2cc82f70",
     "tools/v2-runtime/read-installed-baseline.php": "e48710c0d057f3c96eaaa5e23bff580741ee835202d662b321643616ae79b833",
     "tools/v2-runtime/refresh-release-fixture.php": "7e2f2b30e2b0926727d52983f49d67eeebe2614d35201aab05f7e6d4eda89d03",
     "tools/v2-runtime/seed-release-fixture.php": "bc0874b33da591b19572d397a84de44b093b5a2c4b51e57fa7ad4375d4cad746",
     "tools/v2-runtime/test-astra-entry.cjs": "7f8fec3361023b173bef9ec16c532064e0dc8623a07c1bba898e1be4bbfe02e1",
     "tools/v2-runtime/test-immersive-recovery.cjs": "a855df5d0898783e3b6cf1d1162026e80ac3028b70dfa1cc8a0f3e09fafed305",
+    "tools/v2-runtime/test-three-core-contract.cjs": "d31c53912a00c530c7f0bbc67a5699988386cf7b6b8a37e82b15099bb2b8a0f8",
     "tools/v2-runtime/variation-migration-core.php": "c6ab47e6de26ea972aa19a6f3246dea715534963796a1c78186ff29418dd47b7",
     "tools/v2-runtime/variation-migration.php": "72e19a7b076ce6d53f915672d7e81eac6b956e7de0783bf020e73ff5e971397b",
-    "tools/v2-source-certification/build-inputs.json": "3b4fc9485810c53ab592dad059e482719606b39a16612532ffa4df49e7032d4f",
-    "tools/v2-source-certification/package-boundary.json": "c6d300e805a417d5d6f43bd45854fc9f961c4d5b45b8ce8adef3e03e095a855e",
-    "tools/v2-source-certification/runtime-php-baseline.json": "83546634ba9412d7f6dbc5ccada4b8eddd6c8f7babeeaa07feaa47ebbd3374e9",
+    "tools/v2-source-certification/build-inputs.json": "576dc458ab074cf6a37387ddbfeb24e5e2f389a796e056c043b43cdcb5dddeb0",
+    "tools/v2-source-certification/generated-outputs.json": "5552c7ca222eb415d5bf052004ffdde6a9debb98a0836c92a4d7d74e41aee93f",
+    "tools/v2-source-certification/package-boundary.json": "26cc768a4864ad19ad7344a0cd7b7d71f86ad994ab57098217633a0ba88a658a",
+    "tools/v2-source-certification/runtime-php-baseline.json": "57143f828382bbd8266c15609d704eb5159a61cff899f9dde5ff9ad0e8da4bde",
     "wordpress-theme/skyyrose-flagship-2/assets/css/immersive.css": "c5f2dfdea2da0aae6d34554f691b27f517bae4bbee2c56221698e1bbf3064042",
     "wordpress-theme/skyyrose-flagship-2/assets/css/immersive.min.css": "b0442b6b72fe7caf522e095407a421f2c6f7a06b8422b6a192358e488993e73c",
-    "wordpress-theme/skyyrose-flagship-2/assets/js/immersive.js": "7c83c7b08d24d7202297eefe920a9e5db77dfbdde4b91941fd6f59d210302952",
-    "wordpress-theme/skyyrose-flagship-2/assets/js/immersive.min.js": "f8c44722c2fe9fa02fdd42a6d0b4209c7a7800f05d0c253c2a080fff99656bbe",
+    "wordpress-theme/skyyrose-flagship-2/assets/js/immersive.js": "41a447becab89301c9cfd73dfa80ead9d6fd391d02ffb08ce5bb665f6947ef00",
+    "wordpress-theme/skyyrose-flagship-2/assets/js/immersive.min.js": "0128da13e86b3ee36971992d12a1dbf47333884048eb53825b5d01b92a32e8e2",
+    "wordpress-theme/skyyrose-flagship-2/assets/js/skyy-3d.js": "483749bec8125af1968622779178b41629780a2ea99d41e61572dcbac7706fa1",
+    "wordpress-theme/skyyrose-flagship-2/assets/js/skyy-3d.min.js": "ccd3939ac83965fe7e4fd6c65d5f13137031946eb4b6f7a6bf3d949834a837ae",
+    "wordpress-theme/skyyrose-flagship-2/assets/js/three-core-loader.js": "7d52f4ef65007c7bce54d79f912238492e5dd7b912d3fe76d82f8ad3bf3d0e0b",
+    "wordpress-theme/skyyrose-flagship-2/assets/js/three-core-loader.min.js": "21d703260d003ed00990237f0737f9dc9e7555c873450ed7be6259f683a55764",
+    "wordpress-theme/skyyrose-flagship-2/functions.php": "a2574be1d1897e66e4d7173f3cfae82e3fb0f217e87dda3b721e6f458ccc0480",
     "wordpress-theme/skyyrose-flagship-2/inc/woocommerce-compat.php": "3262d65f35d4e08b017a9b6be9105701813e37dc8b31212cfd8e725bcacd226e",
-    "wordpress-theme/skyyrose-flagship-2/languages/skyyrose-flagship-2.pot": "c7ac75d6c14e0e8e3d5a57c71ed55bb852d42477c9be9d034bc431ec0269ab7d",
-    "wordpress-theme/skyyrose-flagship-2/template-parts/immersive/world.php": "e75e77d34129b1429376629b43260b00adbc8e8f779d84aef6d136114f1006e5",
+    "wordpress-theme/skyyrose-flagship-2/languages/skyyrose-flagship-2.pot": "8b328947e15a7d695ca2b0150ee5dd400b15bfd8e99bdc295b258370d944cc5c",
+    "wordpress-theme/skyyrose-flagship-2/template-parts/immersive/world.php": "a98c5198ac81c1e34599b7a2019a9bd9cc10bfd760be052ab0c0a1e914f35a0d",
     "wordpress-theme/skyyrose-flagship-2/tests/commerce/bootstrap.php": "a0545d4fab3d2b1715e9688be35e7147e30608c778232ed7d44a06637f13baca",
     "wordpress-theme/skyyrose-flagship-2/tests/commerce/migration-process.php": "b65c79972f55c467ad4c8c732b9f30dca6393067b35b74ef28a356664888c23b",
     "wordpress-theme/skyyrose-flagship-2/tests/commerce/migration.php": "f1d61fdd8a5e5e6e7d73b75bee6196ea5e7701fc7aee63552565b8225ac9bb91",
@@ -66,29 +83,32 @@
   "artifact": {
     "schema": "skyyrose.package-reproducibility.v1",
     "classification": "REPRODUCED_CLEAN_GIT_TREE_EXPORT",
-    "source_commit": "887b6bfe0405d9601dd1b743542ba75e1cc5d6e2",
-    "source_tree": "8b07bced15408fdb9ef960c9df00d81247ff3cc6",
-    "exported_source_blobs_checked_after_build": 12320,
+    "source_commit": "d953e51ee9e01448fe6b04960d5958d8ac424954",
+    "source_tree": "af48d0bdce702c077e1d51ee3c032bb641723a09",
+    "exported_source_blobs_checked_after_build": 12579,
     "source_blob_drift": [],
     "install": "npm ci from committed shrinkwrap; declared Python requirements",
     "owning_command": "npm run package:theme",
     "independent_full_builds": 2,
-    "first_log": "evidence/owning-package-r5.txt",
-    "clean_log": "evidence/clean-owning-package.txt",
-    "member_count": 773,
+    "first_log": "successor-three/evidence/owning-package-final.txt",
+    "clean_log": "successor-three/evidence/clean-owning-package.txt",
+    "member_count": 775,
     "all_member_names_and_bytes_identical": true,
-    "artifact_bytes": 293644246,
-    "artifact_sha256": "954b25b952733b51c592acb2819bdcdb9140d8d607a38507543f5329819a637a",
+    "artifact_bytes": 293655342,
+    "artifact_sha256": "d9f24f5e35728ab693675727c7da009406979f468aa7dd54a09122e6ccd84dd6",
     "artifact_path": "wordpress-theme/skyyrose-flagship-2/dist/skyyrose-flagship-2.zip",
-    "clean_artifact_path": ".artifacts/release-gates-20261019/clean-export/wordpress-theme/skyyrose-flagship-2/dist/skyyrose-flagship-2.zip",
+    "clean_artifact_path": ".artifacts/release-gates-20261019/clean-export-successor/wordpress-theme/skyyrose-flagship-2/dist/skyyrose-flagship-2.zip",
+    "first_sidecar_source_clean": false,
+    "clean_sidecar_git_commit": null,
+    "clean_sidecar_source_clean": null,
     "deployment_authorized": false
   },
   "dependency_manifest": {
     "npm_shrinkwrap_sha256": "a077e2d00251b8f07f0ebf5b1a03ee42327febf98c629e7e0c787ff46755a31c",
     "python_requirements_sha256": "1d724225485ed5853d1318402dd00500f59564a6596e720692d633b63848e857",
-    "build_inputs_sha256": "3b4fc9485810c53ab592dad059e482719606b39a16612532ffa4df49e7032d4f",
-    "runtime_php_baseline_sha256": "83546634ba9412d7f6dbc5ccada4b8eddd6c8f7babeeaa07feaa47ebbd3374e9",
-    "package_boundary_sha256": "c6d300e805a417d5d6f43bd45854fc9f961c4d5b45b8ce8adef3e03e095a855e",
+    "build_inputs_sha256": "576dc458ab074cf6a37387ddbfeb24e5e2f389a796e056c043b43cdcb5dddeb0",
+    "runtime_php_baseline_sha256": "57143f828382bbd8266c15609d704eb5159a61cff899f9dde5ff9ad0e8da4bde",
+    "package_boundary_sha256": "26cc768a4864ad19ad7344a0cd7b7d71f86ad994ab57098217633a0ba88a658a",
     "toolchain": {
       "node": "v22.23.2",
       "npm": "10.9.8",
@@ -123,83 +143,95 @@
         }
       ],
       "scope": "Fresh code-only WordPress and WooCommerce; no historical DB, config, uploads or customer records copied."
-    }
+    },
+    "generated_outputs_sha256": "5552c7ca222eb415d5bf052004ffdde6a9debb98a0836c92a4d7d74e41aee93f",
+    "input_pins": 106,
+    "runtime_php_pins": 85,
+    "theme_files": 913,
+    "release_entries": 775
   },
   "enablement": {
     "included": [
-      "Durable size-migration utility and native purchase/payment guard",
-      "Exact persisted v1/v2 historical identity compatibility",
-      "Role-bound immersive entry/story fallback with accurate related-product semantics",
-      "Rebuilt immersive JS/CSS and translation catalog",
-      "Local synthetic fixture/browser/privacy qualification tooling"
+      "Durable size-migration fence and native purchase/payment guard with unchanged v1/v2 native identity compatibility",
+      "Role-bound immersive fallback and separate related-product semantics",
+      "Passive shared self-hosted Three core registration and lazy immersive startup independent of disabled mascot",
+      "Actual rendered-frame readiness with initial resolution/camera aspect and bounded lifecycle recovery",
+      "Offline privacy successor and synthetic native/browser fixture tooling"
     ],
     "held": [
-      "All production conversion and real order/payment operations",
-      "Live synchronization or order authority changes",
+      "Production conversion and real order/payment operations",
+      "Live synchronization or order authority change",
       "Push/merge/deployment/activation/publication/cutover",
-      "New live V1/global-privacy checkpoint",
-      "Paid provider or image/video generation",
-      "New imagery/GLB creative acceptance and production usage grant expansion",
-      "Mascot activation and new world-rendering dependency enablement"
+      "New live V1/global privacy checkpoint",
+      "Paid provider/image/video generation",
+      "New imagery/GLB creative acceptance or production usage grant expansion",
+      "Mascot activation"
     ],
-    "historical_backend_accounting_fix": "EXCLUDED_NOT_ADOPTED_IN_THIS_CANDIDATE",
-    "active_live_theme_before_work": "skyyrose-flagship-2; no activation performed"
+    "active_live_theme_before_work": "skyyrose-flagship-2; no activation performed",
+    "historical_backend_accounting_fix": "EXCLUDED_NOT_ADOPTED_IN_THIS_CANDIDATE"
   },
   "gates": {
-    "combined_source_package": "PASS_LOCAL_CLEAN_REPRODUCIBLE",
-    "ten_destinations": "PASS_BOUNDED_LOCAL_FALLBACK_READINESS_40_PRIMARY_12_FAULT_22_DESTINATIONS; FULL_EXPERIENCE_GATE_HELD",
-    "v1_global_privacy": "BLOCKED_LIVE; OFFLINE_SUCCESSOR_CONTROLS_PASS; ORIGINAL_COLLECTOR_UNAVAILABLE; EIGHT_UNKNOWN_ROWS_RETAINED",
-    "size_migration": "PASS_LOCAL_4x148_PLUS_SYNC_AND_PROCESS_CONTROLS; LIVE_CONVERSION_HELD",
-    "installed_baseline_recovery": "PARTIAL_AUTHENTICATED_BASELINE; COMPLETE_BACKUP_AND_DISPOSABLE_RESTORE_UNPROVED"
+    "combined_source_package": "PASS_LOCAL_CLEAN_EXPORT_REPRODUCIBLE",
+    "native_atmosphere": "PASS_BOUNDED_LOCAL_8_POSITIVE_16_CONTROLS",
+    "ten_destinations": "PASS_BOUNDED_LOCAL_40_PRIMARY_12_FAULT_22_UNIQUE_DESTINATIONS",
+    "size_migration": "PASS_UNCHANGED_CLOSED_LOCAL_SUBSET; LIVE_CONVERSION_HELD",
+    "v1_global_privacy": "OFFLINE_CONTROLS_ONLY; ORIGINAL_LIVE_CHECKPOINT_FAIL_CONSUMED",
+    "installed_runtime_recovery": "READ_ONLY_PARTIAL_INVENTORY; RESTORE_ROLLBACK_PARITY_UNPROVEN",
+    "full_immersive_creative_acceptance": "HOLD",
+    "release_publication": "HOLD"
   },
-  "runtime_scope": {
-    "local": {
-      "wp": "7.1.3",
-      "woo": "11.2.1",
-      "php": "8.5.6",
-      "mariadb": "13.0.2",
-      "active_plugins": "WooCommerce only; isolation MU guard"
+  "reports": {
+    "native_atmosphere": {
+      "path": "successor-three/evidence/native-three/results.json",
+      "sha256": "9a34ad75baf6c9460798bbf2ea51cdab1635e8bc927d4699e4732847a2f28fbb",
+      "status": "PASS",
+      "cases": 8,
+      "controls": 16
     },
-    "installed": {
-      "wp": "7.1.3",
-      "woo": "11.2.1",
-      "php": "8.4.26",
-      "database": "11.8.9",
-      "active_plugin_count": 33,
-      "file_hash_count": 14792,
-      "authority": "HPOS actual OrdersTableDataStore",
-      "orders_pending_sync": true
+    "ten_routes": {
+      "path": "successor-three/evidence/browser-ten-routes/results.json",
+      "sha256": "3c4e9f5cb909616f594717cfc13a6f3e02c34f64b5354e9aa058733783b39ba6",
+      "status": "PASS_PRIMARY_TECHNICAL_CASES",
+      "cases": 40
     },
-    "pending_sync_limit": "Blocks claims of safe authority switching or synchronized-store equivalence; does not alone establish broken current checkout",
-    "full_installed_runtime_equivalence_proven": false
+    "faults": {
+      "path": "successor-three/evidence/browser-faults/results.json",
+      "sha256": "2824cf53de21d7c322b8d4148be75d939a48abdc2b3cf0e00d18f37bc2294689",
+      "status": "PASS",
+      "cases": 12
+    },
+    "destinations": {
+      "path": "successor-three/evidence/browser-destinations/results.json",
+      "sha256": "c01362cd1894dd05babe4864aab739d2bf4e7cb2aac28282573d08d404136099",
+      "status": "PASS",
+      "cases": 22
+    }
   },
-  "evidence": {
-    "migration-subset.json": "7767a1ef521f71311bd9633447603153fe68b5b2477df1ce5abb44b94a4c54ee",
-    "browser-ten-routes/results.json": "70ca10c5ddc5b5540ad9500ad8e43366648d9b623fe2210a4502bd2f4d3d8e06",
-    "browser-faults/results.json": "b1d76d4b6ff708ad9329b1346b8911488b7efefa71a6b948af0d3093a5a013d3",
-    "browser-destinations/results.json": "0fc3398fe16381993d8a928e955c7fd3efb07bfabbde03a7f3770f5d579e3f5a",
-    "immersive-fidelity-readback.json": "07a4385e6451d06e391b5835894ca8e56154e7bcf1b5461801b09fe661e18c46",
-    "v1-offline-successor/results.json": "8e16fd02744dcc9668ce04ed9a283906e6dd19c49759c208ce67416b25672685",
-    "independent-reviews.json": "1b481186e1ba7091b6268bc949e7775e8bf119a0cc2c8f80777503a1ae6ab200",
-    "authenticated-installed-baseline.json": "1b5955eb0df0929a612ac65df61d2bdecf4b1b9e28d7c6a78a7c41710b007b02",
-    "authenticated-native-storage.json": "53623c2dce3c6af90faa2c76fd832ed8eac5750551f2e4bb4161fb87521c130e",
-    "authenticated-backup-metadata.json": "9ed2668a9fec8029729abce88f577e2748a878f2ad73ea22003d0077a50a7b70",
-    "package-reproducibility.json": "b0cf42805116f617996087a5c71c2e53e430955660cec9bd975cceb9d2b20c93",
-    "clean-release-manifest.json": "e07b72b49d6d61593c2b32e3daaf19609a81ed4e2e7c68f62095713d3ce5be33",
-    "zip-member-map.json": "b5771cfe42274722f948f86f10cdd513164a74158d007234e49c3d6dff87ee98",
-    "three-positive-control.json": "6ac20b629c3a5c5311c70c270cf46223b08b0213c2bce6c07a46584982b8c85a"
+  "migration_evidence": {
+    "receipt": "evidence/migration-subset.json",
+    "reuse_proof": "successor-three/evidence/unchanged-closed-subsets.json",
+    "source_unchanged": true,
+    "native_matrix": "4modes \u00d7148assertions plus2sync controls; real process recovery controls completed before unchanged Three-only successor"
   },
-  "remaining_gate_packet": "remaining-gates.json",
-  "production_mutations": 0,
-  "provider_calls": 0,
-  "browser_limits": [
-    "All16 immersive primary cases reduced-motion or webgl-unavailable; successful Three not established by primary matrix",
-    "All52 chapter instances original_available=false; positive original-scene hotspot placement source-reviewed only",
-    "Hero decoding explicit, every lazy chapter not decoded",
-    "Destination coverage one link per unique SKU on mobile/reduced plus one native child selection, not every link/cart/checkout",
-    "History checks paths, not complete scene reinitialization",
-    "Separate native software-WebGL probe:4/4 three-timeout, successful Three NOT_ESTABLISHED; current loader coupled to disabled mascot"
+  "completed_build_logs": [
+    "successor-three/evidence/owning-package-final.txt",
+    "successor-three/evidence/clean-owning-package.txt"
   ],
-  "remaining_gate_packet_sha256": "7202b758e79b8ac8905120caf68100444c7538672d25c5c147163e529496fa1f",
-  "readme_sha256": "48cf838a98315c5f23919c219a36a00761d63e99c95733f4076d58407053734e"
+  "completed_native_log": "successor-three/evidence/native-three-watchdog-final-driver.txt",
+  "independent_reviews": "successor-three/evidence/reviewed-source.json",
+  "remaining_gates": "remaining-gates.json",
+  "limits": [
+    "SwiftShader and DPR1 viewport simulation; no physical-device GPU/performance qualification",
+    "Real back/forward/reload renders again; actual BFCache use not observed; persisted lifecycle/heldRAF controls explicitly synthetic",
+    "Optional atmosphere rendering does not grant full creative immersion, original chapter admission or product GLB acceptance",
+    "Primary/fault matrix does not prove every lazy chapter decode or link instance; unique destination checks select one child and submit no order/payment",
+    "Local PHP8.5.6/MariaDB13.0.2/Woo-only differ from installed PHP8.4.26/DB11.8.9/33active plugins",
+    "Live pending order sync blocks synchronized-store/safe-authority-switch claims; does not alone prove checkout broken",
+    "Original consumed collector/full failure packet unavailable; eight unsupported rows UNKNOWN; no live retry",
+    "Backup metadata/inventory are not complete recoverable backup, isolated restore or newer-order-preserving rollback",
+    "Historical partial/failed/interrupted runs retained and excluded from finalPASS; first build sidecar dirty, clean export sidecar nullcommit/nullclean as expected"
+  ],
+  "browser_launch_provenance": "Browser runs began before source commit; exact recorded source/driver pins independently match frozen d953e51ee and served bytes. Do not describe as browser execution launched from a clean d953 checkout. Destination report binds primary report hash. Destination results have no execution-time driver hash or source pins of their own; their primary-report hash is recorded. The current committed destination driver is retrospectively corroborated, not fabricated as an execution-time pin.",
+  "evidence_index_sha256": "03ff570c3686f06615b776f37f32c5fafe144723ee6d355be943c942066e9fb4",
+  "final_handoff_review": "successor-three/evidence/final-handoff-review.json"
 }

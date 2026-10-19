@@ -1,0 +1,12 @@
+(node:8908) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+PASS desktop /experience-signature/ 
+PASS desktop /experience-black-rose/ 
+PASS desktop /experience-love-hurts/ 
+PASS desktop /experience-kids-capsule/ 
+PASS mobile /experience-signature/ 
+PASS mobile /experience-black-rose/ 
+browserContext.close: Protocol error (Target.disposeBrowserContext): Failed to find context with id BB8A6A3690EAB58884699EAE73DB76B2
+    at async [90m/Users/theceo/.codex/worktrees/release-gates-20261019/DevSkyy/[39mtools/v2-runtime/phase3b-browser/test-release-three-native.cjs:71:19 {
+  name: [32m'Error'[39m
+}

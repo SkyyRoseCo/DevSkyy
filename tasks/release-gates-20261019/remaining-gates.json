@@ -4,44 +4,29 @@
   "execution_authority_granted_by_this_packet": false,
   "gates": [
     {
-      "gate": "full_immersive_experience",
+      "gate": "full_immersive_creative_acceptance",
       "owner": "Corey with V2/3D and independent immersive reviewer",
-      "requested_action": "Resolve and review the full world-rendering dependency, then review the frozen ten-destination experience and explicitly accept or return creative changes.",
+      "requested_action": "Review the exact frozen successor ten-destination experience and explicitly accept the full immersive experience or return bounded creative changes.",
       "preconditions": [
-        "Review exact frozen source/package and complete 40/12/22 local packet",
-        "Keep technical recovery separate from full immersive creative acceptance",
-        "Preserve existing media usage target limits and zero accepted product GLBs",
-        "Four native software-WebGL probes reached three-timeout; current Three loader is coupled to the hard-disabled mascot. Resolve that dependency deliberately without inferring mascot activation or full creative approval."
+        "Technical loader/rendering gap repaired locally: native approved Three core independent of disabled mascot;8desktop/mobile native positives and16controls pass",
+        "Review final40primary/12fault/22destination packet and clean reproducible775-member package",
+        "Keep successful optional atmosphere separate from full immersive creative acceptance",
+        "Preserve existing media usage target limits and zero accepted product GLBs"
       ],
       "evidence": [
-        "evidence/browser-ten-routes/results.json",
-        "evidence/browser-faults/results.json",
-        "evidence/browser-destinations/results.json",
-        "evidence/immersive-fidelity-readback.json",
-        "evidence/three-positive-control.json"
+        "successor-three/evidence/native-three/results.json",
+        "successor-three/evidence/browser-ten-routes/results.json",
+        "successor-three/evidence/browser-faults/results.json",
+        "successor-three/evidence/browser-destinations/results.json",
+        "successor-three/evidence/reviewed-source.json",
+        "successor-three/evidence/package-reproducibility.json"
       ],
-      "current_limit": "Bounded fallback/readiness passes; successful Three rendering, positive original-scene hotspots, full reinitialization and full creative acceptance remain open.",
-      "root_cause_source": [
-        {
-          "path": "wordpress-theme/skyyrose-flagship-2/functions.php",
-          "lines": "15-16, 548-570",
-          "observation": "Mascot always disabled; shared Three loader enqueue/configuration lives inside that gate"
-        },
-        {
-          "path": "wordpress-theme/skyyrose-flagship-2/assets/js/skyy-3d.js",
-          "lines": "4-7, 275-310",
-          "observation": "Missing mascot canvas/stage returns before loadThree is exported"
-        }
-      ],
-      "proposed_bounded_fix": "Separate the self-hosted Three dependency loader for world routes from mascot DOM/model lifecycle. Keep mascot disabled, preserve reduced-motion/Save Data/WebGL fallback, current media authority and all live holds. This is a proposed successor change, not implemented or enabled by candidate887b6bfe.",
+      "current_limit": "Local native software-WebGL rendering/readiness is qualified; full creative acceptance, positive original-scene chapter admission and physical-device/installed-runtime qualification remain open.",
       "closure_proof": [
-        "Four native world routes reach three-ready with visible canvas and observed rendered frames using exact successor source/min/vendor/package hashes",
-        "Verify no optional Three load under reduced motion/Save Data and recovery after loader/renderer failure",
-        "Recheck reload/back-forward reinitialization, single listeners/animation loop and exact canonical product destinations",
-        "Repeat affected desktop/mobile route/recovery checks, clean package reproducibility and independent review",
-        "Obtain full immersive creative acceptance separately; do not infer it from atmospheric rendering"
+        "Exact final source/package identities and independent packet review",
+        "Explicit human acceptance of full immersive creative experience; successful atmospheric rendering alone cannot provide it"
       ],
-      "probe_driver_sha256": "c8893fcf4710a2e8f76188e76c792c22c30597958ddb349dc54da19f9b206bc1"
+      "technical_repair": "Shared lazy self-hosted Three core loader; mascot stays disabled, model loaders remain private; first-frame resolution/aspect and lifecycle watchdog verified."
     },
     {
       "gate": "v1_and_global_privacy",
@@ -109,7 +94,7 @@
       ],
       "evidence": [
         "adoption-manifest.json",
-        "evidence/package-reproducibility.json"
+        "successor-three/evidence/package-reproducibility.json"
       ],
       "current_limit": "No push, merge, deployment, activation, publication, provider generation or paid calls authorized by this packet."
     }

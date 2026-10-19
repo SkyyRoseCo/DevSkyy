@@ -1,0 +1,15 @@
+(node:90126) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+{
+  collection: [32m'signature'[39m,
+  world: [32m'city-tour'[39m,
+  sceneState: [32m'three-ready'[39m,
+  posterState: [32m'ready'[39m,
+  correlationId: [32m'0a3c048e-e1b7-4dcb-8dd3-348fc35f79ad'[39m,
+  immersiveRuntime: [32m'mounted'[39m,
+  canvas: { engine: [32m'three.js r170'[39m, renderedFrames: [32m'2'[39m }
+}
+[
+  [32m'http://127.0.0.1:18362/wp-content/themes/skyyrose-flagship-2/assets/js/three-core-loader.min.js?ver=2.5.5-21d703260d00'[39m,
+  [32m'http://127.0.0.1:18362/wp-content/themes/skyyrose-flagship-2/assets/js/lib/three-r170/three.module.min.js'[39m
+]

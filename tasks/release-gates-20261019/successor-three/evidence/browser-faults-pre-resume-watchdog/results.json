@@ -1,0 +1,160 @@
+{
+  "classification": "REPRODUCED_LOCAL_NATIVE_WITH_SYNTHETIC_FAULTS",
+  "authentication": "NOT_APPLICABLE",
+  "driver_sha256": "e6120b9b99cefe1d362d827f90b19db5c79b1489a22ca1d61c600e49df8117b3",
+  "fixture_sha256": "21a71613f207399455f8b3f46f16d02545f6aa07d13658a598d46a9c9f3b29f7",
+  "runtime": {
+    "wp": "7.1.3",
+    "woo": "11.2.1"
+  },
+  "source_pins": {
+    "functions.php": "a2574be1d1897e66e4d7173f3cfae82e3fb0f217e87dda3b721e6f458ccc0480",
+    "assets/js/three-core-loader.js": "7d52f4ef65007c7bce54d79f912238492e5dd7b912d3fe76d82f8ad3bf3d0e0b",
+    "assets/js/three-core-loader.min.js": "21d703260d003ed00990237f0737f9dc9e7555c873450ed7be6259f683a55764",
+    "assets/js/lib/three-r170/three.module.min.js": "08fd7545d13d2c7fb65ab691530a802dafefd638596501854f267d0fb13c39e7",
+    "assets/css/immersive.css": "c5f2dfdea2da0aae6d34554f691b27f517bae4bbee2c56221698e1bbf3064042",
+    "assets/css/immersive.min.css": "b0442b6b72fe7caf522e095407a421f2c6f7a06b8422b6a192358e488993e73c",
+    "assets/js/immersive.js": "739c81ade37c47c0a7b05977e080fd02a47d4d6e7f9cf961d0b4b558b4ba958b",
+    "assets/js/immersive.min.js": "8d418be2b8e11cbd4ab18ed569c61543ab9dcc4a7ca35e11aa20e1cdae930405",
+    "template-parts/immersive/world.php": "a98c5198ac81c1e34599b7a2019a9bd9cc10bfd760be052ab0c0a1e914f35a0d"
+  },
+  "cases": [
+    {
+      "control": "poster-error-before-script",
+      "status": "PASS",
+      "errors": [],
+      "blocked_external_origins": [],
+      "failure_completed_before_script": true,
+      "runtime_script_hashes": [
+        "8d418be2b8e11cbd4ab18ed569c61543ab9dcc4a7ca35e11aa20e1cdae930405"
+      ],
+      "scene_state": "reduced-motion",
+      "poster_state": "unavailable"
+    },
+    {
+      "control": "poster-error-after-script",
+      "status": "PASS",
+      "errors": [],
+      "blocked_external_origins": [],
+      "runtime_script_hashes": [
+        "8d418be2b8e11cbd4ab18ed569c61543ab9dcc4a7ca35e11aa20e1cdae930405"
+      ],
+      "scene_state": "poster-unavailable",
+      "poster_state": "unavailable"
+    },
+    {
+      "control": "chapter-error-before-script",
+      "status": "PASS",
+      "errors": [],
+      "blocked_external_origins": [],
+      "failure_completed_before_script": true,
+      "runtime_script_hashes": [
+        "8d418be2b8e11cbd4ab18ed569c61543ab9dcc4a7ca35e11aa20e1cdae930405"
+      ],
+      "scene_state": "reduced-motion",
+      "poster_state": "ready"
+    },
+    {
+      "control": "chapter-error-after-script",
+      "status": "PASS",
+      "errors": [],
+      "blocked_external_origins": [],
+      "runtime_script_hashes": [
+        "8d418be2b8e11cbd4ab18ed569c61543ab9dcc4a7ca35e11aa20e1cdae930405"
+      ],
+      "scene_state": "reduced-motion",
+      "poster_state": "ready"
+    },
+    {
+      "control": "chapter-error-while-poster-loading",
+      "status": "PASS",
+      "errors": [],
+      "blocked_external_origins": [],
+      "chapter_failed_before_poster_ready": true,
+      "runtime_script_hashes": [
+        "8d418be2b8e11cbd4ab18ed569c61543ab9dcc4a7ca35e11aa20e1cdae930405"
+      ],
+      "scene_state": "poster",
+      "poster_state": "ready"
+    },
+    {
+      "control": "chapter-absent",
+      "status": "PASS",
+      "errors": [],
+      "blocked_external_origins": [],
+      "runtime_script_hashes": [
+        "8d418be2b8e11cbd4ab18ed569c61543ab9dcc4a7ca35e11aa20e1cdae930405"
+      ],
+      "scene_state": "reduced-motion",
+      "poster_state": "ready"
+    },
+    {
+      "control": "delayed-poster-success",
+      "status": "PASS",
+      "errors": [],
+      "blocked_external_origins": [],
+      "no_false_ready_before_image": true,
+      "runtime_script_hashes": [
+        "8d418be2b8e11cbd4ab18ed569c61543ab9dcc4a7ca35e11aa20e1cdae930405"
+      ],
+      "scene_state": "poster",
+      "poster_state": "ready"
+    },
+    {
+      "control": "storage-denied",
+      "status": "PASS",
+      "errors": [],
+      "blocked_external_origins": [],
+      "runtime_script_hashes": [
+        "8d418be2b8e11cbd4ab18ed569c61543ab9dcc4a7ca35e11aa20e1cdae930405"
+      ],
+      "scene_state": "reduced-motion",
+      "poster_state": "ready"
+    },
+    {
+      "control": "save-data",
+      "status": "PASS",
+      "errors": [],
+      "blocked_external_origins": [],
+      "runtime_script_hashes": [
+        "8d418be2b8e11cbd4ab18ed569c61543ab9dcc4a7ca35e11aa20e1cdae930405"
+      ],
+      "scene_state": "save-data",
+      "poster_state": "ready"
+    },
+    {
+      "control": "webgl-unavailable",
+      "status": "PASS",
+      "errors": [],
+      "blocked_external_origins": [],
+      "runtime_script_hashes": [
+        "8d418be2b8e11cbd4ab18ed569c61543ab9dcc4a7ca35e11aa20e1cdae930405"
+      ],
+      "scene_state": "webgl-unavailable",
+      "poster_state": "ready"
+    },
+    {
+      "control": "renderer-error",
+      "status": "PASS",
+      "errors": [],
+      "blocked_external_origins": [],
+      "runtime_script_hashes": [
+        "8d418be2b8e11cbd4ab18ed569c61543ab9dcc4a7ca35e11aa20e1cdae930405"
+      ],
+      "scene_state": "scene-error",
+      "poster_state": "ready"
+    },
+    {
+      "control": "javascript-disabled",
+      "status": "PASS",
+      "errors": [],
+      "blocked_external_origins": [],
+      "runtime_script_hashes": [],
+      "scene_state": "poster-loading",
+      "poster_state": "loading"
+    }
+  ],
+  "creative_acceptance": "NOT_GRANTED",
+  "browser": "145.0.7632.6",
+  "status": "PASS"
+}

@@ -1,0 +1,26 @@
+{
+  "scope": "Authorized local Three-only loader successor; baseline preserved in commit762f05d56 and ZIP954",
+  "baseline_source": "887b6bfe0405d9601dd1b743542ba75e1cc5d6e2",
+  "baseline_evidence_commit": "762f05d561f9736dd032c2593d079e8bab79df0d",
+  "status": "LOCAL_TECHNICAL_SUCCESSOR_COMPLETE_RELEASE_HOLD",
+  "sole_writer": "Integration01a0f768",
+  "holds": [
+    "No live mutations, orders/payments, sync, push/deploy/publication/providers",
+    "Mascot stays hard-disabled",
+    "Existing dependencies/assets only; no asset/grant changes"
+  ],
+  "initial_positive": "Signature real Three r170 framecounter2, no mascot/GLTF/DRACO/GLB requests",
+  "services": {
+    "stopped": true,
+    "receipt": "evidence/fixture-shutdown.json"
+  },
+  "next": [
+    "Independent exact packet certification and evidence-only commit",
+    "Full immersive creative acceptance",
+    "Original/live privacy qualification under fresh authority",
+    "Installed stack/recoverable backup/isolated restore and newer-order-preserving rollback proof",
+    "Separate explicit conversion/release/publication authority"
+  ],
+  "source_commit": "d953e51ee9e01448fe6b04960d5958d8ac424954",
+  "artifact_sha256": "d9f24f5e35728ab693675727c7da009406979f468aa7dd54a09122e6ccd84dd6"
+}

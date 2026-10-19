@@ -1,1326 +1,1314 @@
 {
-  "source_candidate": "887b6bfe0405d9601dd1b743542ba75e1cc5d6e2",
-  "disposition": "BOUNDED_FALLBACK_BASELINE_HOLD",
-  "files": [
-    {
-      "path": "tasks/release-gates-20261019/.gitignore",
-      "sha256": "1949cdb6a5109d1662a6144beb981085075a7ba6da433ae32d13a1e82c2ca3cc",
-      "bytes": 192
+  "schema": "skyyrose.release-evidence-index.v2",
+  "source_commit": "d953e51ee9e01448fe6b04960d5958d8ac424954",
+  "excludes": [
+    "This index and current adoption-manifest to avoid circular hashes",
+    "Ignored local raw pixels/traces and HTTP/raw HTML; separately indexed or privately retained"
+  ],
+  "files": {
+    ".gitattributes": {
+      "sha256": "25675082c8a99ad00bec417fbb490857cc7349a10e3f9f1419baf01a60b1c6f6",
+      "bytes": 129
     },
-    {
-      "path": "tasks/release-gates-20261019/OWNER-CONTRACT.md",
+    ".gitignore": {
+      "sha256": "d3095ebc02335fe5e2f4f3348051fd24d1c61c58dacd8ec7ee72b99d1f26205f",
+      "bytes": 260
+    },
+    "OWNER-CONTRACT.md": {
       "sha256": "8a1f29d5fd69ef47bff7a52a905fccdb4e9051858ae596a62b73ee3aaf6062ab",
       "bytes": 2296
     },
-    {
-      "path": "tasks/release-gates-20261019/README.md",
-      "sha256": "48cf838a98315c5f23919c219a36a00761d63e99c95733f4076d58407053734e",
-      "bytes": 6185
+    "README.md": {
+      "sha256": "72119abef95dce745ebbd8074e18879e7bac1f4792bd5c89d538d91086bae23c",
+      "bytes": 5463
     },
-    {
-      "path": "tasks/release-gates-20261019/adoption-manifest.json",
-      "sha256": "6fbcbbe911fd66a64e25aea200ad1c81e2f4c01a4ac3eacd858934037499ad52",
-      "bytes": 14067
-    },
-    {
-      "path": "tasks/release-gates-20261019/evidence/authenticated-backup-metadata.json",
+    "evidence/authenticated-backup-metadata.json": {
       "sha256": "9ed2668a9fec8029729abce88f577e2748a878f2ad73ea22003d0077a50a7b70",
       "bytes": 854
     },
-    {
-      "path": "tasks/release-gates-20261019/evidence/authenticated-installed-baseline.json",
+    "evidence/authenticated-installed-baseline.json": {
       "sha256": "1b5955eb0df0929a612ac65df61d2bdecf4b1b9e28d7c6a78a7c41710b007b02",
       "bytes": 11060
     },
-    {
-      "path": "tasks/release-gates-20261019/evidence/authenticated-native-storage.json",
+    "evidence/authenticated-native-storage.json": {
       "sha256": "53623c2dce3c6af90faa2c76fd832ed8eac5750551f2e4bb4161fb87521c130e",
       "bytes": 513
     },
-    {
-      "path": "tasks/release-gates-20261019/evidence/authenticated-plugin-baseline.json",
+    "evidence/authenticated-plugin-baseline.json": {
       "sha256": "9c2e35a445659f0b2f96ac63f838cf68f74fcd9bde45869c19127280f9882af6",
       "bytes": 6702
     },
-    {
-      "path": "tasks/release-gates-20261019/evidence/authenticated-theme-active.json",
+    "evidence/authenticated-theme-active.json": {
       "sha256": "0b6b2fd004b2c1fd6766cee4c39be0fdc782fc9f5b4382818f62e40fb026d7db",
       "bytes": 637
     },
-    {
-      "path": "tasks/release-gates-20261019/evidence/browser-destinations/results.json",
+    "evidence/browser-destinations/results.json": {
       "sha256": "0fc3398fe16381993d8a928e955c7fd3efb07bfabbde03a7f3770f5d579e3f5a",
       "bytes": 15546
     },
-    {
-      "path": "tasks/release-gates-20261019/evidence/browser-destinations-driver-r2.txt",
+    "evidence/browser-destinations-driver-r2.txt": {
       "sha256": "70f5dd59cdb43f1308ab72ba3eb468dc11eb5e134761ab9efe245306fb389239",
       "bytes": 454
     },
-    {
-      "path": "tasks/release-gates-20261019/evidence/browser-destinations-driver.txt",
+    "evidence/browser-destinations-driver.txt": {
       "sha256": "ed9a9e460c084f2e20d888abc3aa7732a9f3c5f341121d1b14e5e417747193b1",
       "bytes": 1532
     },
-    {
-      "path": "tasks/release-gates-20261019/evidence/browser-destinations-final-driver.txt",
+    "evidence/browser-destinations-final-driver.txt": {
       "sha256": "4d7e1094bae7d2c4b8f81370defab45627a06d9dcad41556ec58d1aaad0b8e9a",
       "bytes": 454
     },
-    {
-      "path": "tasks/release-gates-20261019/evidence/browser-destinations-initial/results.json",
+    "evidence/browser-destinations-initial/results.json": {
       "sha256": "94675bf10642d248cddc091d8ce3839b159074efd56fe1c8d1042bc26eca884e",
       "bytes": 11684
     },
-    {
-      "path": "tasks/release-gates-20261019/evidence/browser-faults/results.json",
+    "evidence/browser-faults/results.json": {
       "sha256": "b1d76d4b6ff708ad9329b1346b8911488b7efefa71a6b948af0d3093a5a013d3",
       "bytes": 4960
     },
-    {
-      "path": "tasks/release-gates-20261019/evidence/browser-faults-before-provenance/results.json",
+    "evidence/browser-faults-before-provenance/results.json": {
       "sha256": "e98a63d0c62dd783c22bd2a0f19ab58994971001edaf82a7d8a4fa31a4728516",
       "bytes": 3200
     },
-    {
-      "path": "tasks/release-gates-20261019/evidence/browser-faults-driver.txt",
+    "evidence/browser-faults-driver.txt": {
       "sha256": "beb85a3441d3ab89927a6957f39bf2ad6ebd58e0c8a69696dad69b9e9c243539",
       "bytes": 407
     },
-    {
-      "path": "tasks/release-gates-20261019/evidence/browser-faults-final-driver.txt",
+    "evidence/browser-faults-final-driver.txt": {
       "sha256": "2d17883dd1f035e555c48a47f32b7e1e437eb7ff1c0ec4c35d6aa28e4a92673b",
       "bytes": 495
     },
-    {
-      "path": "tasks/release-gates-20261019/evidence/browser-faults-provenance-driver.txt",
+    "evidence/browser-faults-provenance-driver.txt": {
       "sha256": "72a76b79f84a67bfb40885e0b24497343074176407147bc694952c8e4af09bbe",
       "bytes": 495
     },
-    {
-      "path": "tasks/release-gates-20261019/evidence/browser-smoke/results.json",
+    "evidence/browser-smoke/results.json": {
       "sha256": "a80d28aadcce46098b2111d7a129384b8c4c6811afa8355e6b312a9ff0f0b12e",
       "bytes": 5955
     },
-    {
-      "path": "tasks/release-gates-20261019/evidence/browser-smoke-driver-r2.txt",
+    "evidence/browser-smoke-driver-r2.txt": {
       "sha256": "ac217a46dcf109e4686c5c02e84ba027f096a150dcf703055861d4c99bd34429",
       "bytes": 366
     },
-    {
-      "path": "tasks/release-gates-20261019/evidence/browser-smoke-driver-r3.txt",
+    "evidence/browser-smoke-driver-r3.txt": {
       "sha256": "7962b6efe837713454922188ee6e60d4d8c2fec6a98cd18d3f33cea507068c82",
       "bytes": 238
     },
-    {
-      "path": "tasks/release-gates-20261019/evidence/browser-smoke-driver.txt",
+    "evidence/browser-smoke-driver.txt": {
       "sha256": "0b3aa5b4cbcc3fd14a10cbeca96634d2cfed5e0aaabc08ba102ad38fe620c7ee",
       "bytes": 1270
     },
-    {
-      "path": "tasks/release-gates-20261019/evidence/browser-smoke-stale-bindings/native-browser-fixture.json",
+    "evidence/browser-smoke-stale-bindings/native-browser-fixture.json": {
       "sha256": "01a7bd58f557d9ced38c523d0fadc0fd281ec4cd39b81b033ee1b0a78fb6b22f",
       "bytes": 14439
     },
-    {
-      "path": "tasks/release-gates-20261019/evidence/browser-smoke-stale-bindings/results.json",
+    "evidence/browser-smoke-stale-bindings/results.json": {
       "sha256": "75781ad3077338e95cd00891002c3dee4f7637a0292ac9b4b79408e870491753",
       "bytes": 2811
     },
-    {
-      "path": "tasks/release-gates-20261019/evidence/browser-ten-routes/results.json",
+    "evidence/browser-ten-routes/results.json": {
       "sha256": "70ca10c5ddc5b5540ad9500ad8e43366648d9b623fe2210a4502bd2f4d3d8e06",
       "bytes": 86416
     },
-    {
-      "path": "tasks/release-gates-20261019/evidence/browser-ten-routes-driver.txt",
+    "evidence/browser-ten-routes-driver.txt": {
       "sha256": "89604652907cc4a4b8ab7fb8cd5a8194abee0c662670b0ec4d93cc953619a833",
       "bytes": 1556
     },
-    {
-      "path": "tasks/release-gates-20261019/evidence/browser-ten-routes-final-browser-location-blocked.json",
+    "evidence/browser-ten-routes-final-browser-location-blocked.json": {
       "sha256": "f109b2e72afba04e633fa7e7cf687e5991e9e248e4edd4a803c48ee1e3fce5a4",
       "bytes": 2516
     },
-    {
-      "path": "tasks/release-gates-20261019/evidence/browser-ten-routes-final-driver-r2.txt",
+    "evidence/browser-ten-routes-final-driver-r2.txt": {
       "sha256": "b44aba2ad55be6b4c90d94b1b568f197ee6735d89b48a7593bcc61fd259e7cbc",
       "bytes": 1556
     },
-    {
-      "path": "tasks/release-gates-20261019/evidence/browser-ten-routes-final-driver.txt",
+    "evidence/browser-ten-routes-final-driver.txt": {
       "sha256": "0d12fcc40467a5f35408ab272badca951a22891d52d4f8f7ffb95e7e7f9c2ba8",
       "bytes": 1270
     },
-    {
-      "path": "tasks/release-gates-20261019/evidence/build-assets-fidelity.txt",
+    "evidence/build-assets-fidelity.txt": {
       "sha256": "bd63e7d4f6c49bdc45c2a23c9c3084b86b821cdc8e1748a6285c12039bfe2375",
       "bytes": 219
     },
-    {
-      "path": "tasks/release-gates-20261019/evidence/build-assets-progress.txt",
+    "evidence/build-assets-progress.txt": {
       "sha256": "bd63e7d4f6c49bdc45c2a23c9c3084b86b821cdc8e1748a6285c12039bfe2375",
       "bytes": 219
     },
-    {
-      "path": "tasks/release-gates-20261019/evidence/build-environment-freeze.txt",
+    "evidence/build-environment-freeze.txt": {
       "sha256": "7cf71afb7cddb9f24b896a188635b8b61b2e7be7f55a17b31c84ffc99646d71f",
       "bytes": 410
     },
-    {
-      "path": "tasks/release-gates-20261019/evidence/build-environment-pydantic.txt",
+    "evidence/build-environment-pydantic.txt": {
       "sha256": "e45a283ed74adedf54e6c2ca2e6853dcd9a6ea86c2f6260bfc79125e27276e7c",
       "bytes": 1348
     },
-    {
-      "path": "tasks/release-gates-20261019/evidence/build-environment-required.txt",
+    "evidence/build-environment-required.txt": {
       "sha256": "f4750e00a45cdfcd6908de1aa8eeffd7a27d7426474d59fbcc38bbbab7392ae9",
       "bytes": 2282
     },
-    {
-      "path": "tasks/release-gates-20261019/evidence/build-i18n-fidelity.txt",
+    "evidence/build-i18n-fidelity.txt": {
       "sha256": "2ba71593cdd3310c1208bd9663c1fede99f858aae62256f5719dd187b8def3fa",
       "bytes": 259
     },
-    {
-      "path": "tasks/release-gates-20261019/evidence/certification-pin-delta.json",
+    "evidence/certification-pin-delta.json": {
       "sha256": "a07c6ae7013f2b82a204ffd58a08ccab6235ab70e6bf921071f5380fbb0f375e",
       "bytes": 1222
     },
-    {
-      "path": "tasks/release-gates-20261019/evidence/certification-pin-fidelity-delta.json",
+    "evidence/certification-pin-fidelity-delta.json": {
       "sha256": "7ae27d90b8baf8c6b0f964a27788ca7166de4376e63fb1fbd01ad1da84cf262c",
       "bytes": 240
     },
-    {
-      "path": "tasks/release-gates-20261019/evidence/clean-npm-ci.txt",
+    "evidence/clean-npm-ci.txt": {
       "sha256": "93ee1a662e80f119d24b2f3ca3d9ec966d32cc923439b7d07931cb12ef6ba7e3",
       "bytes": 192
     },
-    {
-      "path": "tasks/release-gates-20261019/evidence/clean-owning-package.txt",
+    "evidence/clean-owning-package.txt": {
       "sha256": "4fdc5cc3424fc3bc93cdf59a1207eb31a094f7ceba8b43c63a1708e43de60957",
       "bytes": 61078
     },
-    {
-      "path": "tasks/release-gates-20261019/evidence/clean-release-manifest.json",
+    "evidence/clean-release-manifest.json": {
       "sha256": "e07b72b49d6d61593c2b32e3daaf19609a81ed4e2e7c68f62095713d3ce5be33",
       "bytes": 104491
     },
-    {
-      "path": "tasks/release-gates-20261019/evidence/fixture-provisioning.json",
+    "evidence/fixture-provisioning.json": {
       "sha256": "b39546b8947e253621f35419f7389e56a7b3a4fc545e70fc03fa429a1a2c4fd9",
       "bytes": 359
     },
-    {
-      "path": "tasks/release-gates-20261019/evidence/fixture-published-aliases.txt",
+    "evidence/fixture-published-aliases.txt": {
       "sha256": "3dea34aa9653104b214dbe9dff6b3b497271dabcac670b9a3348fdb7660f8dac",
       "bytes": 58
     },
-    {
-      "path": "tasks/release-gates-20261019/evidence/fixture-shutdown.json",
+    "evidence/fixture-shutdown.json": {
       "sha256": "5504dcd7cbe2875bd71860d7be6a11779fa720745bf72db0182e5b8935db4eb6",
       "bytes": 602
     },
-    {
-      "path": "tasks/release-gates-20261019/evidence/immersive-fidelity-readback.json",
+    "evidence/immersive-fidelity-readback.json": {
       "sha256": "07a4385e6451d06e391b5835894ca8e56154e7bcf1b5461801b09fe661e18c46",
       "bytes": 3452
     },
-    {
-      "path": "tasks/release-gates-20261019/evidence/immersive-fidelity-unit.txt",
+    "evidence/immersive-fidelity-unit.txt": {
       "sha256": "5e1509daad680a3cdbc2ee44318e182fba33a6f52bbb4f86964567f4d00e9ed9",
       "bytes": 3373
     },
-    {
-      "path": "tasks/release-gates-20261019/evidence/immersive-native-focused-final.txt",
+    "evidence/immersive-native-focused-final.txt": {
       "sha256": "fcdcb50fe3eb9fbdb1e81b135e222b3394578c08e9ff523df60432b864aa0670",
       "bytes": 4861
     },
-    {
-      "path": "tasks/release-gates-20261019/evidence/immersive-timing-after-rebuild.txt",
+    "evidence/immersive-timing-after-rebuild.txt": {
       "sha256": "b026ed47176828072f913af78b5d0d661e8764e86d5289de4b02439d41140101",
       "bytes": 2933
     },
-    {
-      "path": "tasks/release-gates-20261019/evidence/immersive-timing-before-rebuild.txt",
+    "evidence/immersive-timing-before-rebuild.txt": {
       "sha256": "e1cbfcc1945bbb5ddb09e5ff9a7100d5c785414385473c8ed09e6ca2c0275995",
       "bytes": 7770
     },
-    {
-      "path": "tasks/release-gates-20261019/evidence/independent-reviews.json",
+    "evidence/independent-reviews.json": {
       "sha256": "1b481186e1ba7091b6268bc949e7775e8bf119a0cc2c8f80777503a1ae6ab200",
       "bytes": 2546
     },
-    {
-      "path": "tasks/release-gates-20261019/evidence/installed-native-storage-stderr.txt",
+    "evidence/installed-native-storage-stderr.txt": {
       "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
       "bytes": 0
     },
-    {
-      "path": "tasks/release-gates-20261019/evidence/installed-readonly-baseline-stderr-r2.txt",
+    "evidence/installed-readonly-baseline-stderr-r2.txt": {
       "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
       "bytes": 0
     },
-    {
-      "path": "tasks/release-gates-20261019/evidence/installed-readonly-baseline-stderr.txt",
+    "evidence/installed-readonly-baseline-stderr.txt": {
       "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
       "bytes": 0
     },
-    {
-      "path": "tasks/release-gates-20261019/evidence/installed-readonly-ssh-identity.txt",
+    "evidence/installed-readonly-ssh-identity.txt": {
       "sha256": "c7d2c2c0c02247f362c829dd4c092686d4c1b744c9eaec460efc17d5d0fccf6f",
       "bytes": 20
     },
-    {
-      "path": "tasks/release-gates-20261019/evidence/local-browser-artifact-index.json",
+    "evidence/local-browser-artifact-index.json": {
       "sha256": "a268c04b9b0b34efa2db93789c9a9676c6f172274d831b6e472e994ac56f4140",
       "bytes": 85419
     },
-    {
-      "path": "tasks/release-gates-20261019/evidence/migration-cpt-progress.txt",
+    "evidence/migration-cpt-progress.txt": {
       "sha256": "399f5bc9b1202b9ac2016fd6883d186168abf7b787a12288eece5eba034c3e18",
       "bytes": 8032
     },
-    {
-      "path": "tasks/release-gates-20261019/evidence/migration-initial-cpt.txt",
+    "evidence/migration-initial-cpt.txt": {
       "sha256": "80ce885d9600b880f44dc90df7596f2f931a7c591eef068e36c4e9ae33d491ef",
       "bytes": 9699
     },
-    {
-      "path": "tasks/release-gates-20261019/evidence/migration-native-payment-progress.txt",
+    "evidence/migration-native-payment-progress.txt": {
       "sha256": "020a399df45cf8eeaf7ea58bef52d37cc9347e3142e8416560ce327c56c233ed",
       "bytes": 8480
     },
-    {
-      "path": "tasks/release-gates-20261019/evidence/migration-subset-before-result-race.json",
+    "evidence/migration-subset-before-result-race.json": {
       "sha256": "441ad3dfa0f40b88aa6aff6b024d8bc218dbcdd31216b18ef71f29323305a66d",
       "bytes": 9523
     },
-    {
-      "path": "tasks/release-gates-20261019/evidence/migration-subset.json",
+    "evidence/migration-subset.json": {
       "sha256": "7767a1ef521f71311bd9633447603153fe68b5b2477df1ce5abb44b94a4c54ee",
       "bytes": 10250
     },
-    {
-      "path": "tasks/release-gates-20261019/evidence/native-bootstrap-current.txt",
+    "evidence/native-bootstrap-current.txt": {
       "sha256": "3e0c98099a7ce91774992f5a3eda9be4a9250fe9495fc83c051754b234e34f4d",
       "bytes": 99
     },
-    {
-      "path": "tasks/release-gates-20261019/evidence/native-browser-fixture-before-published-aliases.json",
+    "evidence/native-browser-fixture-before-published-aliases.json": {
       "sha256": "94d4a6fdde2be9a518203a882b28ebdd378d6d60d410f56a3e0df7734bb9247b",
       "bytes": 14493
     },
-    {
-      "path": "tasks/release-gates-20261019/evidence/native-browser-fixture.json",
+    "evidence/native-browser-fixture.json": {
       "sha256": "21a71613f207399455f8b3f46f16d02545f6aa07d13658a598d46a9c9f3b29f7",
       "bytes": 14514
     },
-    {
-      "path": "tasks/release-gates-20261019/evidence/native-browser-seed.txt",
+    "evidence/native-browser-seed.txt": {
       "sha256": "457b862e159ec7e5ddc135eea749f485a5356ea49d87ae6a52647a7657a738b1",
       "bytes": 60
     },
-    {
-      "path": "tasks/release-gates-20261019/evidence/native-matrix/cpt-off-storage.json",
+    "evidence/native-matrix/cpt-off-storage.json": {
       "sha256": "f86b990bb9f69a9872642b8bffc943b70524ed24176bc03ed323425625504433",
       "bytes": 92
     },
-    {
-      "path": "tasks/release-gates-20261019/evidence/native-matrix/cpt-off.txt",
+    "evidence/native-matrix/cpt-off.txt": {
       "sha256": "020a399df45cf8eeaf7ea58bef52d37cc9347e3142e8416560ce327c56c233ed",
       "bytes": 8480
     },
-    {
-      "path": "tasks/release-gates-20261019/evidence/native-matrix/cpt-on-storage.json",
+    "evidence/native-matrix/cpt-on-storage.json": {
       "sha256": "e953e81680bc43139f9f249372ce0cfdf0a13adc5f246fae55dd7d13a1a2a844",
       "bytes": 93
     },
-    {
-      "path": "tasks/release-gates-20261019/evidence/native-matrix/cpt-on.txt",
+    "evidence/native-matrix/cpt-on.txt": {
       "sha256": "020a399df45cf8eeaf7ea58bef52d37cc9347e3142e8416560ce327c56c233ed",
       "bytes": 8480
     },
-    {
-      "path": "tasks/release-gates-20261019/evidence/native-matrix/hpos-off-storage.json",
+    "evidence/native-matrix/hpos-off-storage.json": {
       "sha256": "9c8708f4742a6bf4e67382680485e6d938c364b50bb5f66c504658be41e34a95",
       "bytes": 143
     },
-    {
-      "path": "tasks/release-gates-20261019/evidence/native-matrix/hpos-off.txt",
+    "evidence/native-matrix/hpos-off.txt": {
       "sha256": "2bb22fb838dc0b1b369b084ebea6391a2c0f2777dcb6fdc01b6ea2d1b39527ac",
       "bytes": 8532
     },
-    {
-      "path": "tasks/release-gates-20261019/evidence/native-matrix/hpos-on-storage.json",
+    "evidence/native-matrix/hpos-on-storage.json": {
       "sha256": "fbfa761de1d9df81028773ad5ab57c5ae19218e544fc91b956bde24915076f4e",
       "bytes": 144
     },
-    {
-      "path": "tasks/release-gates-20261019/evidence/native-matrix/hpos-on.txt",
+    "evidence/native-matrix/hpos-on.txt": {
       "sha256": "2bb22fb838dc0b1b369b084ebea6391a2c0f2777dcb6fdc01b6ea2d1b39527ac",
       "bytes": 8532
     },
-    {
-      "path": "tasks/release-gates-20261019/evidence/native-matrix/incomplete-sync-recovery.txt",
+    "evidence/native-matrix/incomplete-sync-recovery.txt": {
       "sha256": "4d6766a0d20534f39f1a4dd2ec797b15fca53b92998176af19f2b36a28947bfb",
       "bytes": 89
     },
-    {
-      "path": "tasks/release-gates-20261019/evidence/native-matrix/incomplete-sync.txt",
+    "evidence/native-matrix/incomplete-sync.txt": {
       "sha256": "1a99ff58613da3d15368db8b9a1115575abe6cf190f20191166d507c6520dd5d",
       "bytes": 146
     },
-    {
-      "path": "tasks/release-gates-20261019/evidence/native-matrix/local-environment.json",
+    "evidence/native-matrix/local-environment.json": {
       "sha256": "0e514212ae858277f85391de7cd52789f76c4c8b055d1272c69602bd352f754a",
       "bytes": 82
     },
-    {
-      "path": "tasks/release-gates-20261019/evidence/native-matrix/sync-cpt-off.txt",
+    "evidence/native-matrix/sync-cpt-off.txt": {
       "sha256": "f2cf22ea21fecad45248d240553e4fb13c0faededf3e1c3d95c557adc6b16b99",
       "bytes": 95
     },
-    {
-      "path": "tasks/release-gates-20261019/evidence/native-matrix/sync-cpt-on.txt",
+    "evidence/native-matrix/sync-cpt-on.txt": {
       "sha256": "8617575434d239ddb2e1a48dce88e01d4fe3d6fbb477394dd96ee77db99421e7",
       "bytes": 95
     },
-    {
-      "path": "tasks/release-gates-20261019/evidence/native-matrix/sync-hpos-off.txt",
+    "evidence/native-matrix/sync-hpos-off.txt": {
       "sha256": "8617575434d239ddb2e1a48dce88e01d4fe3d6fbb477394dd96ee77db99421e7",
       "bytes": 95
     },
-    {
-      "path": "tasks/release-gates-20261019/evidence/native-matrix/sync-hpos-on.txt",
+    "evidence/native-matrix/sync-hpos-on.txt": {
       "sha256": "aa7c491fdabf0e8c5dc82e4a41aa91f7464ba693ee4ea0034db3c3ba8c9eaf50",
       "bytes": 81
     },
-    {
-      "path": "tasks/release-gates-20261019/evidence/native-matrix-driver.txt",
+    "evidence/native-matrix-driver.txt": {
       "sha256": "12b86415d3e3478b18b75d9df9930f79627c7262ac708e8a2eb9fa1c5bf1cd3a",
       "bytes": 34024
     },
-    {
-      "path": "tasks/release-gates-20261019/evidence/native-matrix-woo-11.2.1/cpt-off-storage.json",
+    "evidence/native-matrix-woo-11.2.1/cpt-off-storage.json": {
       "sha256": "f86b990bb9f69a9872642b8bffc943b70524ed24176bc03ed323425625504433",
       "bytes": 92
     },
-    {
-      "path": "tasks/release-gates-20261019/evidence/native-matrix-woo-11.2.1/cpt-off.txt",
+    "evidence/native-matrix-woo-11.2.1/cpt-off.txt": {
       "sha256": "4e4fb819fffeb7b5aafa74e2f0c436c746068dfe8dd30e08a18482c0a1bb0c6d",
       "bytes": 12053
     },
-    {
-      "path": "tasks/release-gates-20261019/evidence/native-matrix-woo-11.2.1/local-environment.json",
+    "evidence/native-matrix-woo-11.2.1/local-environment.json": {
       "sha256": "abb0a87b5bd3a30505642c0f8f91d5a3237e9a599016e30e9dd9c92b65c78630",
       "bytes": 82
     },
-    {
-      "path": "tasks/release-gates-20261019/evidence/native-matrix-woo-11.2.1/sync-cpt-off.txt",
+    "evidence/native-matrix-woo-11.2.1/sync-cpt-off.txt": {
       "sha256": "5cc38719377c02c06a686ff5704ced9febcbdde401efd63f6d8c4c903b8a32de",
       "bytes": 93
     },
-    {
-      "path": "tasks/release-gates-20261019/evidence/native-matrix-woo-11.2.1-driver.txt",
+    "evidence/native-matrix-woo-11.2.1-driver.txt": {
       "sha256": "4e4fb819fffeb7b5aafa74e2f0c436c746068dfe8dd30e08a18482c0a1bb0c6d",
       "bytes": 12053
     },
-    {
-      "path": "tasks/release-gates-20261019/evidence/native-matrix-woo-11.2.1-final/cpt-off-storage.json",
+    "evidence/native-matrix-woo-11.2.1-final/cpt-off-storage.json": {
       "sha256": "f86b990bb9f69a9872642b8bffc943b70524ed24176bc03ed323425625504433",
       "bytes": 92
     },
-    {
-      "path": "tasks/release-gates-20261019/evidence/native-matrix-woo-11.2.1-final/cpt-off.txt",
+    "evidence/native-matrix-woo-11.2.1-final/cpt-off.txt": {
       "sha256": "ed96254acaa7b6c15d6ed2753fe032812a22e2f042bb088b3e9b72bb65316a40",
       "bytes": 9480
     },
-    {
-      "path": "tasks/release-gates-20261019/evidence/native-matrix-woo-11.2.1-final/cpt-on-storage.json",
+    "evidence/native-matrix-woo-11.2.1-final/cpt-on-storage.json": {
       "sha256": "e953e81680bc43139f9f249372ce0cfdf0a13adc5f246fae55dd7d13a1a2a844",
       "bytes": 93
     },
-    {
-      "path": "tasks/release-gates-20261019/evidence/native-matrix-woo-11.2.1-final/cpt-on.txt",
+    "evidence/native-matrix-woo-11.2.1-final/cpt-on.txt": {
       "sha256": "ed96254acaa7b6c15d6ed2753fe032812a22e2f042bb088b3e9b72bb65316a40",
       "bytes": 9480
     },
-    {
-      "path": "tasks/release-gates-20261019/evidence/native-matrix-woo-11.2.1-final/hpos-off-storage.json",
+    "evidence/native-matrix-woo-11.2.1-final/hpos-off-storage.json": {
       "sha256": "9c8708f4742a6bf4e67382680485e6d938c364b50bb5f66c504658be41e34a95",
       "bytes": 143
     },
-    {
-      "path": "tasks/release-gates-20261019/evidence/native-matrix-woo-11.2.1-final/hpos-off.txt",
+    "evidence/native-matrix-woo-11.2.1-final/hpos-off.txt": {
       "sha256": "5fe2a8493a16875f4d38e1b3ecd8968af8da37a7170b1e5a514ecd3acbe3cdfb",
       "bytes": 9532
     },
-    {
-      "path": "tasks/release-gates-20261019/evidence/native-matrix-woo-11.2.1-final/hpos-on-storage.json",
+    "evidence/native-matrix-woo-11.2.1-final/hpos-on-storage.json": {
       "sha256": "fbfa761de1d9df81028773ad5ab57c5ae19218e544fc91b956bde24915076f4e",
       "bytes": 144
     },
-    {
-      "path": "tasks/release-gates-20261019/evidence/native-matrix-woo-11.2.1-final/hpos-on.txt",
+    "evidence/native-matrix-woo-11.2.1-final/hpos-on.txt": {
       "sha256": "5fe2a8493a16875f4d38e1b3ecd8968af8da37a7170b1e5a514ecd3acbe3cdfb",
       "bytes": 9532
     },
-    {
-      "path": "tasks/release-gates-20261019/evidence/native-matrix-woo-11.2.1-final/incomplete-sync-recovery.txt",
+    "evidence/native-matrix-woo-11.2.1-final/incomplete-sync-recovery.txt": {
       "sha256": "4d6766a0d20534f39f1a4dd2ec797b15fca53b92998176af19f2b36a28947bfb",
       "bytes": 89
     },
-    {
-      "path": "tasks/release-gates-20261019/evidence/native-matrix-woo-11.2.1-final/incomplete-sync.txt",
+    "evidence/native-matrix-woo-11.2.1-final/incomplete-sync.txt": {
       "sha256": "1a99ff58613da3d15368db8b9a1115575abe6cf190f20191166d507c6520dd5d",
       "bytes": 146
     },
-    {
-      "path": "tasks/release-gates-20261019/evidence/native-matrix-woo-11.2.1-final/local-environment.json",
+    "evidence/native-matrix-woo-11.2.1-final/local-environment.json": {
       "sha256": "abb0a87b5bd3a30505642c0f8f91d5a3237e9a599016e30e9dd9c92b65c78630",
       "bytes": 82
     },
-    {
-      "path": "tasks/release-gates-20261019/evidence/native-matrix-woo-11.2.1-final/sync-cpt-off.txt",
+    "evidence/native-matrix-woo-11.2.1-final/sync-cpt-off.txt": {
       "sha256": "800aeb908d85426c9241a78238a4de3d64c8fd8106f919d2af55bfe85c217089",
       "bytes": 93
     },
-    {
-      "path": "tasks/release-gates-20261019/evidence/native-matrix-woo-11.2.1-final/sync-cpt-on.txt",
+    "evidence/native-matrix-woo-11.2.1-final/sync-cpt-on.txt": {
       "sha256": "b517dc124ad193243c3e3db421c1345df2f146da11dc6c55c12aa6a93c54ec77",
       "bytes": 95
     },
-    {
-      "path": "tasks/release-gates-20261019/evidence/native-matrix-woo-11.2.1-final/sync-hpos-off.txt",
+    "evidence/native-matrix-woo-11.2.1-final/sync-hpos-off.txt": {
       "sha256": "b517dc124ad193243c3e3db421c1345df2f146da11dc6c55c12aa6a93c54ec77",
       "bytes": 95
     },
-    {
-      "path": "tasks/release-gates-20261019/evidence/native-matrix-woo-11.2.1-final/sync-hpos-on.txt",
+    "evidence/native-matrix-woo-11.2.1-final/sync-hpos-on.txt": {
       "sha256": "aa7c491fdabf0e8c5dc82e4a41aa91f7464ba693ee4ea0034db3c3ba8c9eaf50",
       "bytes": 81
     },
-    {
-      "path": "tasks/release-gates-20261019/evidence/native-matrix-woo-11.2.1-final-driver.txt",
+    "evidence/native-matrix-woo-11.2.1-final-driver.txt": {
       "sha256": "721eb542f1305169fa06c0b9d0e5eeb787d5dfe62cc4a295a0d398a14733f94a",
       "bytes": 38024
     },
-    {
-      "path": "tasks/release-gates-20261019/evidence/native-matrix-woo-11.2.1-r2/cpt-off-storage.json",
+    "evidence/native-matrix-woo-11.2.1-r2/cpt-off-storage.json": {
       "sha256": "f86b990bb9f69a9872642b8bffc943b70524ed24176bc03ed323425625504433",
       "bytes": 92
     },
-    {
-      "path": "tasks/release-gates-20261019/evidence/native-matrix-woo-11.2.1-r2/cpt-off.txt",
+    "evidence/native-matrix-woo-11.2.1-r2/cpt-off.txt": {
       "sha256": "d6a2881d018a2598321f35de8d1eb4329494415c85b2b3af16cd005eac2e07ce",
       "bytes": 12065
     },
-    {
-      "path": "tasks/release-gates-20261019/evidence/native-matrix-woo-11.2.1-r2/local-environment.json",
+    "evidence/native-matrix-woo-11.2.1-r2/local-environment.json": {
       "sha256": "abb0a87b5bd3a30505642c0f8f91d5a3237e9a599016e30e9dd9c92b65c78630",
       "bytes": 82
     },
-    {
-      "path": "tasks/release-gates-20261019/evidence/native-matrix-woo-11.2.1-r2/sync-cpt-off.txt",
+    "evidence/native-matrix-woo-11.2.1-r2/sync-cpt-off.txt": {
       "sha256": "b517dc124ad193243c3e3db421c1345df2f146da11dc6c55c12aa6a93c54ec77",
       "bytes": 95
     },
-    {
-      "path": "tasks/release-gates-20261019/evidence/native-matrix-woo-11.2.1-r2-driver.txt",
+    "evidence/native-matrix-woo-11.2.1-r2-driver.txt": {
       "sha256": "d6a2881d018a2598321f35de8d1eb4329494415c85b2b3af16cd005eac2e07ce",
       "bytes": 12065
     },
-    {
-      "path": "tasks/release-gates-20261019/evidence/native-matrix-woo-11.2.1-r3/cpt-off-storage.json",
+    "evidence/native-matrix-woo-11.2.1-r3/cpt-off-storage.json": {
       "sha256": "f86b990bb9f69a9872642b8bffc943b70524ed24176bc03ed323425625504433",
       "bytes": 92
     },
-    {
-      "path": "tasks/release-gates-20261019/evidence/native-matrix-woo-11.2.1-r3/cpt-off.txt",
+    "evidence/native-matrix-woo-11.2.1-r3/cpt-off.txt": {
       "sha256": "ed96254acaa7b6c15d6ed2753fe032812a22e2f042bb088b3e9b72bb65316a40",
       "bytes": 9480
     },
-    {
-      "path": "tasks/release-gates-20261019/evidence/native-matrix-woo-11.2.1-r3/cpt-on-storage.json",
+    "evidence/native-matrix-woo-11.2.1-r3/cpt-on-storage.json": {
       "sha256": "e953e81680bc43139f9f249372ce0cfdf0a13adc5f246fae55dd7d13a1a2a844",
       "bytes": 93
     },
-    {
-      "path": "tasks/release-gates-20261019/evidence/native-matrix-woo-11.2.1-r3/cpt-on.txt",
+    "evidence/native-matrix-woo-11.2.1-r3/cpt-on.txt": {
       "sha256": "ed96254acaa7b6c15d6ed2753fe032812a22e2f042bb088b3e9b72bb65316a40",
       "bytes": 9480
     },
-    {
-      "path": "tasks/release-gates-20261019/evidence/native-matrix-woo-11.2.1-r3/hpos-off-storage.json",
+    "evidence/native-matrix-woo-11.2.1-r3/hpos-off-storage.json": {
       "sha256": "9c8708f4742a6bf4e67382680485e6d938c364b50bb5f66c504658be41e34a95",
       "bytes": 143
     },
-    {
-      "path": "tasks/release-gates-20261019/evidence/native-matrix-woo-11.2.1-r3/hpos-off.txt",
+    "evidence/native-matrix-woo-11.2.1-r3/hpos-off.txt": {
       "sha256": "5fe2a8493a16875f4d38e1b3ecd8968af8da37a7170b1e5a514ecd3acbe3cdfb",
       "bytes": 9532
     },
-    {
-      "path": "tasks/release-gates-20261019/evidence/native-matrix-woo-11.2.1-r3/hpos-on-storage.json",
+    "evidence/native-matrix-woo-11.2.1-r3/hpos-on-storage.json": {
       "sha256": "fbfa761de1d9df81028773ad5ab57c5ae19218e544fc91b956bde24915076f4e",
       "bytes": 144
     },
-    {
-      "path": "tasks/release-gates-20261019/evidence/native-matrix-woo-11.2.1-r3/hpos-on.txt",
+    "evidence/native-matrix-woo-11.2.1-r3/hpos-on.txt": {
       "sha256": "5fe2a8493a16875f4d38e1b3ecd8968af8da37a7170b1e5a514ecd3acbe3cdfb",
       "bytes": 9532
     },
-    {
-      "path": "tasks/release-gates-20261019/evidence/native-matrix-woo-11.2.1-r3/incomplete-sync-recovery.txt",
+    "evidence/native-matrix-woo-11.2.1-r3/incomplete-sync-recovery.txt": {
       "sha256": "4d6766a0d20534f39f1a4dd2ec797b15fca53b92998176af19f2b36a28947bfb",
       "bytes": 89
     },
-    {
-      "path": "tasks/release-gates-20261019/evidence/native-matrix-woo-11.2.1-r3/incomplete-sync.txt",
+    "evidence/native-matrix-woo-11.2.1-r3/incomplete-sync.txt": {
       "sha256": "1a99ff58613da3d15368db8b9a1115575abe6cf190f20191166d507c6520dd5d",
       "bytes": 146
     },
-    {
-      "path": "tasks/release-gates-20261019/evidence/native-matrix-woo-11.2.1-r3/local-environment.json",
+    "evidence/native-matrix-woo-11.2.1-r3/local-environment.json": {
       "sha256": "abb0a87b5bd3a30505642c0f8f91d5a3237e9a599016e30e9dd9c92b65c78630",
       "bytes": 82
     },
-    {
-      "path": "tasks/release-gates-20261019/evidence/native-matrix-woo-11.2.1-r3/sync-cpt-off.txt",
+    "evidence/native-matrix-woo-11.2.1-r3/sync-cpt-off.txt": {
       "sha256": "b517dc124ad193243c3e3db421c1345df2f146da11dc6c55c12aa6a93c54ec77",
       "bytes": 95
     },
-    {
-      "path": "tasks/release-gates-20261019/evidence/native-matrix-woo-11.2.1-r3/sync-cpt-on.txt",
+    "evidence/native-matrix-woo-11.2.1-r3/sync-cpt-on.txt": {
       "sha256": "b517dc124ad193243c3e3db421c1345df2f146da11dc6c55c12aa6a93c54ec77",
       "bytes": 95
     },
-    {
-      "path": "tasks/release-gates-20261019/evidence/native-matrix-woo-11.2.1-r3/sync-hpos-off.txt",
+    "evidence/native-matrix-woo-11.2.1-r3/sync-hpos-off.txt": {
       "sha256": "b517dc124ad193243c3e3db421c1345df2f146da11dc6c55c12aa6a93c54ec77",
       "bytes": 95
     },
-    {
-      "path": "tasks/release-gates-20261019/evidence/native-matrix-woo-11.2.1-r3/sync-hpos-on.txt",
+    "evidence/native-matrix-woo-11.2.1-r3/sync-hpos-on.txt": {
       "sha256": "aa7c491fdabf0e8c5dc82e4a41aa91f7464ba693ee4ea0034db3c3ba8c9eaf50",
       "bytes": 81
     },
-    {
-      "path": "tasks/release-gates-20261019/evidence/native-matrix-woo-11.2.1-r3-driver.txt",
+    "evidence/native-matrix-woo-11.2.1-r3-driver.txt": {
       "sha256": "721eb542f1305169fa06c0b9d0e5eeb787d5dfe62cc4a295a0d398a14733f94a",
       "bytes": 38024
     },
-    {
-      "path": "tasks/release-gates-20261019/evidence/native-matrix-wp-7.1.3-final-driver.txt",
+    "evidence/native-matrix-wp-7.1.3-final-driver.txt": {
       "sha256": "40c2112562660272e71b276dc2b4f859a7421eb76241f7b5b4b0afad6f14131b",
       "bytes": 12875
     },
-    {
-      "path": "tasks/release-gates-20261019/evidence/native-matrix-wp-7.1.3-serial-driver.txt",
+    "evidence/native-matrix-wp-7.1.3-serial-driver.txt": {
       "sha256": "01bb25d8d03457a7d43635d9c378a479a28473616bb458695d35e39b39c60780",
       "bytes": 38704
     },
-    {
-      "path": "tasks/release-gates-20261019/evidence/native-matrix-wp-7.1.3-woo-11.2.1-final/cpt-off-storage.json",
+    "evidence/native-matrix-wp-7.1.3-woo-11.2.1-final/cpt-off-storage.json": {
       "sha256": "f86b990bb9f69a9872642b8bffc943b70524ed24176bc03ed323425625504433",
       "bytes": 92
     },
-    {
-      "path": "tasks/release-gates-20261019/evidence/native-matrix-wp-7.1.3-woo-11.2.1-final/cpt-off.txt",
+    "evidence/native-matrix-wp-7.1.3-woo-11.2.1-final/cpt-off.txt": {
       "sha256": "a955cc9a2b59a695d187517b4e202cc815d60300e049d0cca83c36a1d658d42d",
       "bytes": 9650
     },
-    {
-      "path": "tasks/release-gates-20261019/evidence/native-matrix-wp-7.1.3-woo-11.2.1-final/local-environment.json",
+    "evidence/native-matrix-wp-7.1.3-woo-11.2.1-final/local-environment.json": {
       "sha256": "68589dcc9059f7b60fcf6acf020b20d79538cd402c7afdad71abb4df81bc6a68",
       "bytes": 82
     },
-    {
-      "path": "tasks/release-gates-20261019/evidence/native-matrix-wp-7.1.3-woo-11.2.1-final/sync-cpt-off.txt",
+    "evidence/native-matrix-wp-7.1.3-woo-11.2.1-final/sync-cpt-off.txt": {
       "sha256": "4d6766a0d20534f39f1a4dd2ec797b15fca53b92998176af19f2b36a28947bfb",
       "bytes": 89
     },
-    {
-      "path": "tasks/release-gates-20261019/evidence/native-matrix-wp-7.1.3-woo-11.2.1-final/sync-hpos-off.txt",
+    "evidence/native-matrix-wp-7.1.3-woo-11.2.1-final/sync-hpos-off.txt": {
       "sha256": "921adc100eebb7b7013e3569aee3a191bbaebe73794e4a98e063b1756d71ea57",
       "bytes": 95
     },
-    {
-      "path": "tasks/release-gates-20261019/evidence/native-matrix-wp-7.1.3-woo-11.2.1-serial/cpt-off-storage.json",
+    "evidence/native-matrix-wp-7.1.3-woo-11.2.1-serial/cpt-off-storage.json": {
       "sha256": "f86b990bb9f69a9872642b8bffc943b70524ed24176bc03ed323425625504433",
       "bytes": 92
     },
-    {
-      "path": "tasks/release-gates-20261019/evidence/native-matrix-wp-7.1.3-woo-11.2.1-serial/cpt-off.txt",
+    "evidence/native-matrix-wp-7.1.3-woo-11.2.1-serial/cpt-off.txt": {
       "sha256": "a955cc9a2b59a695d187517b4e202cc815d60300e049d0cca83c36a1d658d42d",
       "bytes": 9650
     },
-    {
-      "path": "tasks/release-gates-20261019/evidence/native-matrix-wp-7.1.3-woo-11.2.1-serial/cpt-on-storage.json",
+    "evidence/native-matrix-wp-7.1.3-woo-11.2.1-serial/cpt-on-storage.json": {
       "sha256": "e953e81680bc43139f9f249372ce0cfdf0a13adc5f246fae55dd7d13a1a2a844",
       "bytes": 93
     },
-    {
-      "path": "tasks/release-gates-20261019/evidence/native-matrix-wp-7.1.3-woo-11.2.1-serial/cpt-on.txt",
+    "evidence/native-matrix-wp-7.1.3-woo-11.2.1-serial/cpt-on.txt": {
       "sha256": "a955cc9a2b59a695d187517b4e202cc815d60300e049d0cca83c36a1d658d42d",
       "bytes": 9650
     },
-    {
-      "path": "tasks/release-gates-20261019/evidence/native-matrix-wp-7.1.3-woo-11.2.1-serial/hpos-off-storage.json",
+    "evidence/native-matrix-wp-7.1.3-woo-11.2.1-serial/hpos-off-storage.json": {
       "sha256": "9c8708f4742a6bf4e67382680485e6d938c364b50bb5f66c504658be41e34a95",
       "bytes": 143
     },
-    {
-      "path": "tasks/release-gates-20261019/evidence/native-matrix-wp-7.1.3-woo-11.2.1-serial/hpos-off.txt",
+    "evidence/native-matrix-wp-7.1.3-woo-11.2.1-serial/hpos-off.txt": {
       "sha256": "4370c15ebcafa615e18f383ae9ced6ddaf82cc618b0ac120a6b7e9f7be56ba3b",
       "bytes": 9702
     },
-    {
-      "path": "tasks/release-gates-20261019/evidence/native-matrix-wp-7.1.3-woo-11.2.1-serial/hpos-on-storage.json",
+    "evidence/native-matrix-wp-7.1.3-woo-11.2.1-serial/hpos-on-storage.json": {
       "sha256": "fbfa761de1d9df81028773ad5ab57c5ae19218e544fc91b956bde24915076f4e",
       "bytes": 144
     },
-    {
-      "path": "tasks/release-gates-20261019/evidence/native-matrix-wp-7.1.3-woo-11.2.1-serial/hpos-on.txt",
+    "evidence/native-matrix-wp-7.1.3-woo-11.2.1-serial/hpos-on.txt": {
       "sha256": "4370c15ebcafa615e18f383ae9ced6ddaf82cc618b0ac120a6b7e9f7be56ba3b",
       "bytes": 9702
     },
-    {
-      "path": "tasks/release-gates-20261019/evidence/native-matrix-wp-7.1.3-woo-11.2.1-serial/incomplete-sync-recovery.txt",
+    "evidence/native-matrix-wp-7.1.3-woo-11.2.1-serial/incomplete-sync-recovery.txt": {
       "sha256": "4d6766a0d20534f39f1a4dd2ec797b15fca53b92998176af19f2b36a28947bfb",
       "bytes": 89
     },
-    {
-      "path": "tasks/release-gates-20261019/evidence/native-matrix-wp-7.1.3-woo-11.2.1-serial/incomplete-sync.txt",
+    "evidence/native-matrix-wp-7.1.3-woo-11.2.1-serial/incomplete-sync.txt": {
       "sha256": "1a99ff58613da3d15368db8b9a1115575abe6cf190f20191166d507c6520dd5d",
       "bytes": 146
     },
-    {
-      "path": "tasks/release-gates-20261019/evidence/native-matrix-wp-7.1.3-woo-11.2.1-serial/local-environment.json",
+    "evidence/native-matrix-wp-7.1.3-woo-11.2.1-serial/local-environment.json": {
       "sha256": "68589dcc9059f7b60fcf6acf020b20d79538cd402c7afdad71abb4df81bc6a68",
       "bytes": 82
     },
-    {
-      "path": "tasks/release-gates-20261019/evidence/native-matrix-wp-7.1.3-woo-11.2.1-serial/sync-cpt-off.txt",
+    "evidence/native-matrix-wp-7.1.3-woo-11.2.1-serial/sync-cpt-off.txt": {
       "sha256": "4d6766a0d20534f39f1a4dd2ec797b15fca53b92998176af19f2b36a28947bfb",
       "bytes": 89
     },
-    {
-      "path": "tasks/release-gates-20261019/evidence/native-matrix-wp-7.1.3-woo-11.2.1-serial/sync-cpt-on.txt",
+    "evidence/native-matrix-wp-7.1.3-woo-11.2.1-serial/sync-cpt-on.txt": {
       "sha256": "b517dc124ad193243c3e3db421c1345df2f146da11dc6c55c12aa6a93c54ec77",
       "bytes": 95
     },
-    {
-      "path": "tasks/release-gates-20261019/evidence/native-matrix-wp-7.1.3-woo-11.2.1-serial/sync-hpos-off.txt",
+    "evidence/native-matrix-wp-7.1.3-woo-11.2.1-serial/sync-hpos-off.txt": {
       "sha256": "b517dc124ad193243c3e3db421c1345df2f146da11dc6c55c12aa6a93c54ec77",
       "bytes": 95
     },
-    {
-      "path": "tasks/release-gates-20261019/evidence/native-matrix-wp-7.1.3-woo-11.2.1-serial/sync-hpos-on.txt",
+    "evidence/native-matrix-wp-7.1.3-woo-11.2.1-serial/sync-hpos-on.txt": {
       "sha256": "aa7c491fdabf0e8c5dc82e4a41aa91f7464ba693ee4ea0034db3c3ba8c9eaf50",
       "bytes": 81
     },
-    {
-      "path": "tasks/release-gates-20261019/evidence/native-template-fixture.txt",
+    "evidence/native-template-fixture.txt": {
       "sha256": "42538e4138a123416c8c9696b1221412c980ff086f3faec5ace893b3cd551416",
       "bytes": 65
     },
-    {
-      "path": "tasks/release-gates-20261019/evidence/owning-package-first.txt",
+    "evidence/owning-package-first.txt": {
       "sha256": "5bba43fc983b1a0a54571d3895726e5a2c9c76443d3e6e7bbc9b689c494d6f2e",
       "bytes": 1166
     },
-    {
-      "path": "tasks/release-gates-20261019/evidence/owning-package-r2.txt",
+    "evidence/owning-package-r2.txt": {
       "sha256": "3d61f9042a35a5fa01a3854aef04ecc582b66d7ac2de5db6e55e8bc9e9640634",
       "bytes": 4533
     },
-    {
-      "path": "tasks/release-gates-20261019/evidence/owning-package-r3.txt",
+    "evidence/owning-package-r3.txt": {
       "sha256": "bccfc05d60ba46583e496bcb1b8aafab18a8ecada20d9e14fa328ed4b15a3d86",
       "bytes": 49256
     },
-    {
-      "path": "tasks/release-gates-20261019/evidence/owning-package-r4.txt",
+    "evidence/owning-package-r4.txt": {
       "sha256": "49f1a1b632be9377295445419a4b68c58a2be19095003928c91cadf3ee87117c",
       "bytes": 55557
     },
-    {
-      "path": "tasks/release-gates-20261019/evidence/owning-package-r5.txt",
+    "evidence/owning-package-r5.txt": {
       "sha256": "c2e2f5fd5552d40e12b49137efe953957ae8454e39aa5c83dfa2d595f4e6aa0d",
       "bytes": 60836
     },
-    {
-      "path": "tasks/release-gates-20261019/evidence/package-reproducibility.json",
+    "evidence/package-reproducibility.json": {
       "sha256": "b0cf42805116f617996087a5c71c2e53e430955660cec9bd975cceb9d2b20c93",
       "bytes": 1024
     },
-    {
-      "path": "tasks/release-gates-20261019/evidence/pre-fidelity/browser-destinations/results.json",
+    "evidence/pre-fidelity/browser-destinations/results.json": {
       "sha256": "5e16ee491716e3aaf598ebbecad14b8a94f4f83aae9a6252d99c6b4289892f2e",
       "bytes": 15530
     },
-    {
-      "path": "tasks/release-gates-20261019/evidence/pre-fidelity/browser-faults/results.json",
+    "evidence/pre-fidelity/browser-faults/results.json": {
       "sha256": "15d4aa54153e58400c0be013ff632135c7330eb6bbc7e6e9a2987edc7ec3c8e5",
       "bytes": 2531
     },
-    {
-      "path": "tasks/release-gates-20261019/evidence/pre-fidelity/browser-ten-routes/results.json",
+    "evidence/pre-fidelity/browser-ten-routes/results.json": {
       "sha256": "be527d9648eaf16c66cff44630a77de439c03ed9a57ba9ed83884c85f76c90b0",
       "bytes": 67016
     },
-    {
-      "path": "tasks/release-gates-20261019/evidence/preorder-initial-current.txt",
+    "evidence/preorder-initial-current.txt": {
       "sha256": "943d6889ded8c93e2c388ee24fe1f2fcbb9a13a7d41b7eb849dd04a2aaf61e3d",
       "bytes": 5472
     },
-    {
-      "path": "tasks/release-gates-20261019/evidence/process-recovery/process-kill-apply.stderr.txt",
+    "evidence/process-recovery/process-kill-apply.stderr.txt": {
       "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
       "bytes": 0
     },
-    {
-      "path": "tasks/release-gates-20261019/evidence/process-recovery/process-kill-apply.stdout.txt",
+    "evidence/process-recovery/process-kill-apply.stdout.txt": {
       "sha256": "cac3541e9028cec0f9bdfb75ba9513e358b0fe7768bd6e83cbe25b15793368a6",
       "bytes": 63
     },
-    {
-      "path": "tasks/release-gates-20261019/evidence/process-recovery/process-kill-prepare.stderr.txt",
+    "evidence/process-recovery/process-kill-prepare.stderr.txt": {
       "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
       "bytes": 0
     },
-    {
-      "path": "tasks/release-gates-20261019/evidence/process-recovery/process-kill-prepare.stdout.txt",
+    "evidence/process-recovery/process-kill-prepare.stdout.txt": {
       "sha256": "832c59d3d4e2158502902f79378be4ec5cc7ac0a8a0456c896ef97b5ad3aca0f",
       "bytes": 20
     },
-    {
-      "path": "tasks/release-gates-20261019/evidence/process-recovery/process-kill-probe.stderr.txt",
+    "evidence/process-recovery/process-kill-probe.stderr.txt": {
       "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
       "bytes": 0
     },
-    {
-      "path": "tasks/release-gates-20261019/evidence/process-recovery/process-kill-probe.stdout.txt",
+    "evidence/process-recovery/process-kill-probe.stdout.txt": {
       "sha256": "39bbd342d9b4ee9614c8dd2fdfa3092b7ad52e4b8d6244452c2a5d38f26c7cf0",
       "bytes": 230
     },
-    {
-      "path": "tasks/release-gates-20261019/evidence/process-recovery/process-kill-resume.stderr.txt",
+    "evidence/process-recovery/process-kill-resume.stderr.txt": {
       "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
       "bytes": 0
     },
-    {
-      "path": "tasks/release-gates-20261019/evidence/process-recovery/process-kill-resume.stdout.txt",
+    "evidence/process-recovery/process-kill-resume.stdout.txt": {
       "sha256": "76edb69c9e01eb4d0d8e891db0cb33d41bf896ae3f41c811f020ac31544ab0ec",
       "bytes": 67
     },
-    {
-      "path": "tasks/release-gates-20261019/evidence/process-recovery-r2/connection-loss-old-writer.stderr.txt",
+    "evidence/process-recovery-r2/connection-loss-old-writer.stderr.txt": {
       "sha256": "0eb098b85e334ac402359c817f0adc643f8e5396c92594f9454ab3fa23098d3e",
       "bytes": 98
     },
-    {
-      "path": "tasks/release-gates-20261019/evidence/process-recovery-r2/connection-loss-old-writer.stdout.txt",
+    "evidence/process-recovery-r2/connection-loss-old-writer.stdout.txt": {
       "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
       "bytes": 0
     },
-    {
-      "path": "tasks/release-gates-20261019/evidence/process-recovery-r2/connection-loss-r2-apply.stderr.txt",
+    "evidence/process-recovery-r2/connection-loss-r2-apply.stderr.txt": {
       "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
       "bytes": 0
     },
-    {
-      "path": "tasks/release-gates-20261019/evidence/process-recovery-r2/connection-loss-r2-apply.stdout.txt",
+    "evidence/process-recovery-r2/connection-loss-r2-apply.stdout.txt": {
       "sha256": "cac3541e9028cec0f9bdfb75ba9513e358b0fe7768bd6e83cbe25b15793368a6",
       "bytes": 63
     },
-    {
-      "path": "tasks/release-gates-20261019/evidence/process-recovery-r2/connection-loss-r2-prepare.stderr.txt",
+    "evidence/process-recovery-r2/connection-loss-r2-prepare.stderr.txt": {
       "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
       "bytes": 0
     },
-    {
-      "path": "tasks/release-gates-20261019/evidence/process-recovery-r2/connection-loss-r2-prepare.stdout.txt",
+    "evidence/process-recovery-r2/connection-loss-r2-prepare.stdout.txt": {
       "sha256": "8fad315558fea40c49c9279a1a4ff3192b4cdbf87ba11c0150e9dc3d04fa74a0",
       "bytes": 20
     },
-    {
-      "path": "tasks/release-gates-20261019/evidence/process-recovery-r2/connection-loss-r2-probe.stderr.txt",
+    "evidence/process-recovery-r2/connection-loss-r2-probe.stderr.txt": {
       "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
       "bytes": 0
     },
-    {
-      "path": "tasks/release-gates-20261019/evidence/process-recovery-r2/connection-loss-r2-probe.stdout.txt",
+    "evidence/process-recovery-r2/connection-loss-r2-probe.stdout.txt": {
       "sha256": "18d47d19839f5eeb28574e35c16243d5a67b0fc568492a44c30388917fdc739a",
       "bytes": 251
     },
-    {
-      "path": "tasks/release-gates-20261019/evidence/process-recovery-r2/connection-loss-r2-resume.stderr.txt",
+    "evidence/process-recovery-r2/connection-loss-r2-resume.stderr.txt": {
       "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
       "bytes": 0
     },
-    {
-      "path": "tasks/release-gates-20261019/evidence/process-recovery-r2/connection-loss-r2-resume.stdout.txt",
+    "evidence/process-recovery-r2/connection-loss-r2-resume.stdout.txt": {
       "sha256": "73cc2c69d4b971f3195023467b290c4400bd4c70a02367f679b50426fd4f3c38",
       "bytes": 82
     },
-    {
-      "path": "tasks/release-gates-20261019/evidence/process-recovery-r2/partial-child-r2-orphan.stderr.txt",
+    "evidence/process-recovery-r2/partial-child-r2-orphan.stderr.txt": {
       "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
       "bytes": 0
     },
-    {
-      "path": "tasks/release-gates-20261019/evidence/process-recovery-r2/partial-child-r2-orphan.stdout.txt",
+    "evidence/process-recovery-r2/partial-child-r2-orphan.stdout.txt": {
       "sha256": "b6c7a95ca035398118a430998e7bad151e56161e65e57246ca155491a0ff1965",
       "bytes": 70
     },
-    {
-      "path": "tasks/release-gates-20261019/evidence/process-recovery-r2/partial-child-r2-prepare.stderr.txt",
+    "evidence/process-recovery-r2/partial-child-r2-prepare.stderr.txt": {
       "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
       "bytes": 0
     },
-    {
-      "path": "tasks/release-gates-20261019/evidence/process-recovery-r2/partial-child-r2-prepare.stdout.txt",
+    "evidence/process-recovery-r2/partial-child-r2-prepare.stdout.txt": {
       "sha256": "0998778fe5481189d42490cf30aef11af165cc2c7f9f3fb40801b0f40b8ce371",
       "bytes": 20
     },
-    {
-      "path": "tasks/release-gates-20261019/evidence/process-recovery-r2/partial-child-r2-probe.stderr.txt",
+    "evidence/process-recovery-r2/partial-child-r2-probe.stderr.txt": {
       "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
       "bytes": 0
     },
-    {
-      "path": "tasks/release-gates-20261019/evidence/process-recovery-r2/partial-child-r2-probe.stdout.txt",
+    "evidence/process-recovery-r2/partial-child-r2-probe.stdout.txt": {
       "sha256": "ab9a53b6cc1705f66ecdfb312baa17f32c9760aca842bbc28ef195870323ea8f",
       "bytes": 228
     },
-    {
-      "path": "tasks/release-gates-20261019/evidence/process-recovery-r2/partial-child-r2-resume.stderr.txt",
+    "evidence/process-recovery-r2/partial-child-r2-resume.stderr.txt": {
       "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
       "bytes": 0
     },
-    {
-      "path": "tasks/release-gates-20261019/evidence/process-recovery-r2/partial-child-r2-resume.stdout.txt",
+    "evidence/process-recovery-r2/partial-child-r2-resume.stdout.txt": {
       "sha256": "f539a30d6082d7982b5658f27060cf1031e25c72f5f72fc3ddcbb0f54be70e82",
       "bytes": 104
     },
-    {
-      "path": "tasks/release-gates-20261019/evidence/process-recovery-r2/process-kill-old-writer.stderr.txt",
+    "evidence/process-recovery-r2/process-kill-old-writer.stderr.txt": {
       "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
       "bytes": 0
     },
-    {
-      "path": "tasks/release-gates-20261019/evidence/process-recovery-r2/process-kill-old-writer.stdout.txt",
+    "evidence/process-recovery-r2/process-kill-old-writer.stdout.txt": {
       "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
       "bytes": 0
     },
-    {
-      "path": "tasks/release-gates-20261019/evidence/process-recovery-r2/process-kill-r2-apply.stderr.txt",
+    "evidence/process-recovery-r2/process-kill-r2-apply.stderr.txt": {
       "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
       "bytes": 0
     },
-    {
-      "path": "tasks/release-gates-20261019/evidence/process-recovery-r2/process-kill-r2-apply.stdout.txt",
+    "evidence/process-recovery-r2/process-kill-r2-apply.stdout.txt": {
       "sha256": "cac3541e9028cec0f9bdfb75ba9513e358b0fe7768bd6e83cbe25b15793368a6",
       "bytes": 63
     },
-    {
-      "path": "tasks/release-gates-20261019/evidence/process-recovery-r2/process-kill-r2-prepare.stderr.txt",
+    "evidence/process-recovery-r2/process-kill-r2-prepare.stderr.txt": {
       "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
       "bytes": 0
     },
-    {
-      "path": "tasks/release-gates-20261019/evidence/process-recovery-r2/process-kill-r2-prepare.stdout.txt",
+    "evidence/process-recovery-r2/process-kill-r2-prepare.stdout.txt": {
       "sha256": "ad4e16b22404e7360b513a9d01b86ae8fe9edc2d200d3d657695f5a019e91542",
       "bytes": 20
     },
-    {
-      "path": "tasks/release-gates-20261019/evidence/process-recovery-r2/process-kill-r2-probe.stderr.txt",
+    "evidence/process-recovery-r2/process-kill-r2-probe.stderr.txt": {
       "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
       "bytes": 0
     },
-    {
-      "path": "tasks/release-gates-20261019/evidence/process-recovery-r2/process-kill-r2-probe.stdout.txt",
+    "evidence/process-recovery-r2/process-kill-r2-probe.stdout.txt": {
       "sha256": "2ace68f96796f20506ad58504a08a2f48f535a26440aea17613e3c2cfad04f8d",
       "bytes": 251
     },
-    {
-      "path": "tasks/release-gates-20261019/evidence/process-recovery-r2/process-kill-r2-resume.stderr.txt",
+    "evidence/process-recovery-r2/process-kill-r2-resume.stderr.txt": {
       "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
       "bytes": 0
     },
-    {
-      "path": "tasks/release-gates-20261019/evidence/process-recovery-r2/process-kill-r2-resume.stdout.txt",
+    "evidence/process-recovery-r2/process-kill-r2-resume.stdout.txt": {
       "sha256": "3307eb3fce3afa615b6af56c651d736ca6a4e6d5f4e5bd41e982f13a1377c886",
       "bytes": 82
     },
-    {
-      "path": "tasks/release-gates-20261019/evidence/process-recovery-r2/results.json",
+    "evidence/process-recovery-r2/results.json": {
       "sha256": "b9e0938a63a34245fd6648bdcb9e0e18a4b1cdb79ea03709221921a31dc768e2",
       "bytes": 708
     },
-    {
-      "path": "tasks/release-gates-20261019/evidence/process-recovery-woo-11.2.1/1792403350946-process-kill.json-apply.txt",
+    "evidence/process-recovery-woo-11.2.1/1792403350946-process-kill.json-apply.txt": {
       "sha256": "cac3541e9028cec0f9bdfb75ba9513e358b0fe7768bd6e83cbe25b15793368a6",
       "bytes": 63
     },
-    {
-      "path": "tasks/release-gates-20261019/evidence/process-recovery-woo-11.2.1/1792403350946-process-kill.json-old-writer.txt",
+    "evidence/process-recovery-woo-11.2.1/1792403350946-process-kill.json-old-writer.txt": {
       "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
       "bytes": 0
     },
-    {
-      "path": "tasks/release-gates-20261019/evidence/process-recovery-woo-11.2.1/1792403350946-process-kill.json-prepare.txt",
+    "evidence/process-recovery-woo-11.2.1/1792403350946-process-kill.json-prepare.txt": {
       "sha256": "eb25ce23fede5ac85f2066485c41a0846f162ff3944b18e089ff67a6e95f4246",
       "bytes": 21
     },
-    {
-      "path": "tasks/release-gates-20261019/evidence/process-recovery-woo-11.2.1/1792403350946-process-kill.json-probe.txt",
+    "evidence/process-recovery-woo-11.2.1/1792403350946-process-kill.json-probe.txt": {
       "sha256": "ecc85c26d9a6851262a3d117c417bfcb04dac72ee099e000d2a4cc43e558ae55",
       "bytes": 257
     },
-    {
-      "path": "tasks/release-gates-20261019/evidence/process-recovery-woo-11.2.1/1792403350946-process-kill.json-resume.txt",
+    "evidence/process-recovery-woo-11.2.1/1792403350946-process-kill.json-resume.txt": {
       "sha256": "8132605f0b20efb2e6040591e2f9247ecd4fc8b3eab614ac046689b512adb8da",
       "bytes": 88
     },
-    {
-      "path": "tasks/release-gates-20261019/evidence/process-recovery-woo-11.2.1/1792403357028-connection-loss.json-apply.txt",
+    "evidence/process-recovery-woo-11.2.1/1792403357028-connection-loss.json-apply.txt": {
       "sha256": "cac3541e9028cec0f9bdfb75ba9513e358b0fe7768bd6e83cbe25b15793368a6",
       "bytes": 63
     },
-    {
-      "path": "tasks/release-gates-20261019/evidence/process-recovery-woo-11.2.1/1792403357028-connection-loss.json-old-writer.txt",
+    "evidence/process-recovery-woo-11.2.1/1792403357028-connection-loss.json-old-writer.txt": {
       "sha256": "0eb098b85e334ac402359c817f0adc643f8e5396c92594f9454ab3fa23098d3e",
       "bytes": 98
     },
-    {
-      "path": "tasks/release-gates-20261019/evidence/process-recovery-woo-11.2.1/1792403357028-connection-loss.json-prepare.txt",
+    "evidence/process-recovery-woo-11.2.1/1792403357028-connection-loss.json-prepare.txt": {
       "sha256": "8f902ea920bf98c7e533f157da91908ade87e886bdcbed03c6d78c15c2457d8e",
       "bytes": 21
     },
-    {
-      "path": "tasks/release-gates-20261019/evidence/process-recovery-woo-11.2.1/1792403357028-connection-loss.json-probe.txt",
+    "evidence/process-recovery-woo-11.2.1/1792403357028-connection-loss.json-probe.txt": {
       "sha256": "4195a6ee0cc08db39ec994388fc9b1d20287a09d767f43f56f0527dd81c8bbd8",
       "bytes": 257
     },
-    {
-      "path": "tasks/release-gates-20261019/evidence/process-recovery-woo-11.2.1/1792403357028-connection-loss.json-resume.txt",
+    "evidence/process-recovery-woo-11.2.1/1792403357028-connection-loss.json-resume.txt": {
       "sha256": "0d1637e22c1cb0b9746b6428c70a2baa1e2d82ee56515654881e73101b1f9f54",
       "bytes": 88
     },
-    {
-      "path": "tasks/release-gates-20261019/evidence/process-recovery-woo-11.2.1/1792403363423-inside-child-save.json-orphan.txt",
+    "evidence/process-recovery-woo-11.2.1/1792403363423-inside-child-save.json-orphan.txt": {
       "sha256": "b6c7a95ca035398118a430998e7bad151e56161e65e57246ca155491a0ff1965",
       "bytes": 70
     },
-    {
-      "path": "tasks/release-gates-20261019/evidence/process-recovery-woo-11.2.1/1792403363423-inside-child-save.json-prepare.txt",
+    "evidence/process-recovery-woo-11.2.1/1792403363423-inside-child-save.json-prepare.txt": {
       "sha256": "d3f7056e2f2e4ab2a665db96cc0a3f0d30319aed593a6d800dd84b70c802fb15",
       "bytes": 21
     },
-    {
-      "path": "tasks/release-gates-20261019/evidence/process-recovery-woo-11.2.1/1792403363423-inside-child-save.json-probe.txt",
+    "evidence/process-recovery-woo-11.2.1/1792403363423-inside-child-save.json-probe.txt": {
       "sha256": "4eecd740e1dd3e66f12c70dbfe8f14df88508936b9a09c01b8df6b88ed392a31",
       "bytes": 229
     },
-    {
-      "path": "tasks/release-gates-20261019/evidence/process-recovery-woo-11.2.1/1792403363423-inside-child-save.json-resume.txt",
+    "evidence/process-recovery-woo-11.2.1/1792403363423-inside-child-save.json-resume.txt": {
       "sha256": "f539a30d6082d7982b5658f27060cf1031e25c72f5f72fc3ddcbb0f54be70e82",
       "bytes": 104
     },
-    {
-      "path": "tasks/release-gates-20261019/evidence/process-recovery-woo-11.2.1/results.json",
+    "evidence/process-recovery-woo-11.2.1/results.json": {
       "sha256": "fb40611a2c16e9135e38b1930a4ecf353e008465d3c4cdeb2f441b55cd6f95cd",
       "bytes": 991
     },
-    {
-      "path": "tasks/release-gates-20261019/evidence/process-recovery-woo-11.2.1-before-result-race/1792402494115-process-kill.json-apply.txt",
+    "evidence/process-recovery-woo-11.2.1-before-result-race/1792402494115-process-kill.json-apply.txt": {
       "sha256": "cac3541e9028cec0f9bdfb75ba9513e358b0fe7768bd6e83cbe25b15793368a6",
       "bytes": 63
     },
-    {
-      "path": "tasks/release-gates-20261019/evidence/process-recovery-woo-11.2.1-before-result-race/1792402494115-process-kill.json-old-writer.txt",
+    "evidence/process-recovery-woo-11.2.1-before-result-race/1792402494115-process-kill.json-old-writer.txt": {
       "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
       "bytes": 0
     },
-    {
-      "path": "tasks/release-gates-20261019/evidence/process-recovery-woo-11.2.1-before-result-race/1792402494115-process-kill.json-prepare.txt",
+    "evidence/process-recovery-woo-11.2.1-before-result-race/1792402494115-process-kill.json-prepare.txt": {
       "sha256": "30d6d29ccc7080f44f98167d2e6b07209029cdd5383c7f747e94fe04de21ed93",
       "bytes": 20
     },
-    {
-      "path": "tasks/release-gates-20261019/evidence/process-recovery-woo-11.2.1-before-result-race/1792402494115-process-kill.json-probe.txt",
+    "evidence/process-recovery-woo-11.2.1-before-result-race/1792402494115-process-kill.json-probe.txt": {
       "sha256": "15586da5f7538836a0fe2f1b4a5786fd9e02034f9fe20447ac8f886875730637",
       "bytes": 251
     },
-    {
-      "path": "tasks/release-gates-20261019/evidence/process-recovery-woo-11.2.1-before-result-race/1792402494115-process-kill.json-resume.txt",
+    "evidence/process-recovery-woo-11.2.1-before-result-race/1792402494115-process-kill.json-resume.txt": {
       "sha256": "148daa12919ff9d57181f377e7e34eb9c174247fd381f1edb961de1ea4de1aea",
       "bytes": 82
     },
-    {
-      "path": "tasks/release-gates-20261019/evidence/process-recovery-woo-11.2.1-before-result-race/1792402500553-connection-loss.json-apply.txt",
+    "evidence/process-recovery-woo-11.2.1-before-result-race/1792402500553-connection-loss.json-apply.txt": {
       "sha256": "cac3541e9028cec0f9bdfb75ba9513e358b0fe7768bd6e83cbe25b15793368a6",
       "bytes": 63
     },
-    {
-      "path": "tasks/release-gates-20261019/evidence/process-recovery-woo-11.2.1-before-result-race/1792402500553-connection-loss.json-old-writer.txt",
+    "evidence/process-recovery-woo-11.2.1-before-result-race/1792402500553-connection-loss.json-old-writer.txt": {
       "sha256": "0eb098b85e334ac402359c817f0adc643f8e5396c92594f9454ab3fa23098d3e",
       "bytes": 98
     },
-    {
-      "path": "tasks/release-gates-20261019/evidence/process-recovery-woo-11.2.1-before-result-race/1792402500553-connection-loss.json-prepare.txt",
+    "evidence/process-recovery-woo-11.2.1-before-result-race/1792402500553-connection-loss.json-prepare.txt": {
       "sha256": "810410dcce9aff290df86d9a1b7aecc0ffa0bf55323563ab351515e8249bc263",
       "bytes": 20
     },
-    {
-      "path": "tasks/release-gates-20261019/evidence/process-recovery-woo-11.2.1-before-result-race/1792402500553-connection-loss.json-probe.txt",
+    "evidence/process-recovery-woo-11.2.1-before-result-race/1792402500553-connection-loss.json-probe.txt": {
       "sha256": "99fb20c6873097ba25db2bde797a148ba8beb1d984be6429f6d79cd57ca1b72c",
       "bytes": 251
     },
-    {
-      "path": "tasks/release-gates-20261019/evidence/process-recovery-woo-11.2.1-before-result-race/1792402500553-connection-loss.json-resume.txt",
+    "evidence/process-recovery-woo-11.2.1-before-result-race/1792402500553-connection-loss.json-resume.txt": {
       "sha256": "9ee7ee2045c3e38de2038fd114d814d5a5508b823c052f411d17790b0d6b5718",
       "bytes": 82
     },
-    {
-      "path": "tasks/release-gates-20261019/evidence/process-recovery-woo-11.2.1-before-result-race/1792402506081-inside-child-save.json-orphan.txt",
+    "evidence/process-recovery-woo-11.2.1-before-result-race/1792402506081-inside-child-save.json-orphan.txt": {
       "sha256": "b6c7a95ca035398118a430998e7bad151e56161e65e57246ca155491a0ff1965",
       "bytes": 70
     },
-    {
-      "path": "tasks/release-gates-20261019/evidence/process-recovery-woo-11.2.1-before-result-race/1792402506081-inside-child-save.json-prepare.txt",
+    "evidence/process-recovery-woo-11.2.1-before-result-race/1792402506081-inside-child-save.json-prepare.txt": {
       "sha256": "f37ba8f038e0668d105ff31b37b7fbd617e4b67c31abbdd8102477524652ae24",
       "bytes": 20
     },
-    {
-      "path": "tasks/release-gates-20261019/evidence/process-recovery-woo-11.2.1-before-result-race/1792402506081-inside-child-save.json-probe.txt",
+    "evidence/process-recovery-woo-11.2.1-before-result-race/1792402506081-inside-child-save.json-probe.txt": {
       "sha256": "4672b8d8e5f886ba3a574bfc2e494311f863cc092de32c29910a4ee3ea2434a5",
       "bytes": 228
     },
-    {
-      "path": "tasks/release-gates-20261019/evidence/process-recovery-woo-11.2.1-before-result-race/1792402506081-inside-child-save.json-resume.txt",
+    "evidence/process-recovery-woo-11.2.1-before-result-race/1792402506081-inside-child-save.json-resume.txt": {
       "sha256": "f539a30d6082d7982b5658f27060cf1031e25c72f5f72fc3ddcbb0f54be70e82",
       "bytes": 104
     },
-    {
-      "path": "tasks/release-gates-20261019/evidence/process-recovery-woo-11.2.1-before-result-race/results.json",
+    "evidence/process-recovery-woo-11.2.1-before-result-race/results.json": {
       "sha256": "fb40611a2c16e9135e38b1930a4ecf353e008465d3c4cdeb2f441b55cd6f95cd",
       "bytes": 991
     },
-    {
-      "path": "tasks/release-gates-20261019/evidence/process-recovery-woo-11.2.1-driver.txt",
+    "evidence/process-recovery-woo-11.2.1-driver.txt": {
       "sha256": "750d0717f3457cbf3524c16322745447e2229b339fad42e37f1a7447f4eca52a",
       "bytes": 786
     },
-    {
-      "path": "tasks/release-gates-20261019/evidence/process-recovery-wp-7.1.3-before-suite-lock/1792403175891-process-kill.json-apply.txt",
+    "evidence/process-recovery-wp-7.1.3-before-suite-lock/1792403175891-process-kill.json-apply.txt": {
       "sha256": "cac3541e9028cec0f9bdfb75ba9513e358b0fe7768bd6e83cbe25b15793368a6",
       "bytes": 63
     },
-    {
-      "path": "tasks/release-gates-20261019/evidence/process-recovery-wp-7.1.3-before-suite-lock/1792403175891-process-kill.json-old-writer.txt",
+    "evidence/process-recovery-wp-7.1.3-before-suite-lock/1792403175891-process-kill.json-old-writer.txt": {
       "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
       "bytes": 0
     },
-    {
-      "path": "tasks/release-gates-20261019/evidence/process-recovery-wp-7.1.3-before-suite-lock/1792403175891-process-kill.json-prepare.txt",
+    "evidence/process-recovery-wp-7.1.3-before-suite-lock/1792403175891-process-kill.json-prepare.txt": {
       "sha256": "c002f1d5579e149097c3749194a4f8eaac1463cff13a314ffa86772f88c446ec",
       "bytes": 20
     },
-    {
-      "path": "tasks/release-gates-20261019/evidence/process-recovery-wp-7.1.3-before-suite-lock/1792403175891-process-kill.json-probe.txt",
+    "evidence/process-recovery-wp-7.1.3-before-suite-lock/1792403175891-process-kill.json-probe.txt": {
       "sha256": "796b770bc4cfdb71738f499d185149eafc683cb575c51d8e853fba73f605789e",
       "bytes": 257
     },
-    {
-      "path": "tasks/release-gates-20261019/evidence/process-recovery-wp-7.1.3-before-suite-lock/1792403175891-process-kill.json-resume.txt",
+    "evidence/process-recovery-wp-7.1.3-before-suite-lock/1792403175891-process-kill.json-resume.txt": {
       "sha256": "4e2af625500653901d56aecb5dfb0671292581d3c67dacaadfb68d77712e44fb",
       "bytes": 88
     },
-    {
-      "path": "tasks/release-gates-20261019/evidence/process-recovery-wp-7.1.3-before-suite-lock/1792403183617-connection-loss.json-apply.txt",
+    "evidence/process-recovery-wp-7.1.3-before-suite-lock/1792403183617-connection-loss.json-apply.txt": {
       "sha256": "cac3541e9028cec0f9bdfb75ba9513e358b0fe7768bd6e83cbe25b15793368a6",
       "bytes": 63
     },
-    {
-      "path": "tasks/release-gates-20261019/evidence/process-recovery-wp-7.1.3-before-suite-lock/1792403183617-connection-loss.json-old-writer.txt",
+    "evidence/process-recovery-wp-7.1.3-before-suite-lock/1792403183617-connection-loss.json-old-writer.txt": {
       "sha256": "0eb098b85e334ac402359c817f0adc643f8e5396c92594f9454ab3fa23098d3e",
       "bytes": 98
     },
-    {
-      "path": "tasks/release-gates-20261019/evidence/process-recovery-wp-7.1.3-before-suite-lock/1792403183617-connection-loss.json-prepare.txt",
+    "evidence/process-recovery-wp-7.1.3-before-suite-lock/1792403183617-connection-loss.json-prepare.txt": {
       "sha256": "b0100e077490aed882651795aab7a1efccd5ac71bb9f039ba0b86ba8b8c37f2b",
       "bytes": 21
     },
-    {
-      "path": "tasks/release-gates-20261019/evidence/process-recovery-wp-7.1.3-before-suite-lock/1792403183617-connection-loss.json-probe.txt",
+    "evidence/process-recovery-wp-7.1.3-before-suite-lock/1792403183617-connection-loss.json-probe.txt": {
       "sha256": "9585f034abd75f71d4ec5a90c1be2450c1c5b14ca4d76afdbaf8290301c05aa5",
       "bytes": 257
     },
-    {
-      "path": "tasks/release-gates-20261019/evidence/process-recovery-wp-7.1.3-before-suite-lock/1792403183617-connection-loss.json-resume.txt",
+    "evidence/process-recovery-wp-7.1.3-before-suite-lock/1792403183617-connection-loss.json-resume.txt": {
       "sha256": "efbba489470b8c5bbc5cfb8a3965c41e87b323284c33efb8df6f62d03ed88d9d",
       "bytes": 88
     },
-    {
-      "path": "tasks/release-gates-20261019/evidence/process-recovery-wp-7.1.3-before-suite-lock/1792403193339-inside-child-save.json-orphan.txt",
+    "evidence/process-recovery-wp-7.1.3-before-suite-lock/1792403193339-inside-child-save.json-orphan.txt": {
       "sha256": "b6c7a95ca035398118a430998e7bad151e56161e65e57246ca155491a0ff1965",
       "bytes": 70
     },
-    {
-      "path": "tasks/release-gates-20261019/evidence/process-recovery-wp-7.1.3-before-suite-lock/1792403193339-inside-child-save.json-prepare.txt",
+    "evidence/process-recovery-wp-7.1.3-before-suite-lock/1792403193339-inside-child-save.json-prepare.txt": {
       "sha256": "8be6749e296428e79f10e71cd321402acf478827ebe7619c241cde4a1e87c2ff",
       "bytes": 21
     },
-    {
-      "path": "tasks/release-gates-20261019/evidence/process-recovery-wp-7.1.3-before-suite-lock/1792403193339-inside-child-save.json-probe.txt",
+    "evidence/process-recovery-wp-7.1.3-before-suite-lock/1792403193339-inside-child-save.json-probe.txt": {
       "sha256": "a58d2298b595ecfdd9ce0cc638ead60b24a51c047b754daa38a591bc2859ed36",
       "bytes": 229
     },
-    {
-      "path": "tasks/release-gates-20261019/evidence/process-recovery-wp-7.1.3-before-suite-lock/1792403193339-inside-child-save.json-resume.txt",
+    "evidence/process-recovery-wp-7.1.3-before-suite-lock/1792403193339-inside-child-save.json-resume.txt": {
       "sha256": "f539a30d6082d7982b5658f27060cf1031e25c72f5f72fc3ddcbb0f54be70e82",
       "bytes": 104
     },
-    {
-      "path": "tasks/release-gates-20261019/evidence/process-recovery-wp-7.1.3-before-suite-lock/results.json",
+    "evidence/process-recovery-wp-7.1.3-before-suite-lock/results.json": {
       "sha256": "fb40611a2c16e9135e38b1930a4ecf353e008465d3c4cdeb2f441b55cd6f95cd",
       "bytes": 991
     },
-    {
-      "path": "tasks/release-gates-20261019/evidence/process-recovery-wp-7.1.3-final-driver.txt",
+    "evidence/process-recovery-wp-7.1.3-final-driver.txt": {
       "sha256": "b6da33639500951a8060af509a6b6216cd697381ac813c2027de8516c543a7f0",
       "bytes": 786
     },
-    {
-      "path": "tasks/release-gates-20261019/evidence/process-recovery-wp-7.1.3-serial-driver.txt",
+    "evidence/process-recovery-wp-7.1.3-serial-driver.txt": {
       "sha256": "888e6f9e81ce98b08900284f71634258dbbdfbf7ffc238a82d868c833d47a3d3",
       "bytes": 786
     },
-    {
-      "path": "tasks/release-gates-20261019/evidence/registry-check-final.txt",
+    "evidence/registry-check-final.txt": {
       "sha256": "1999c67227e8fa66c6e262198ab6d509438ff398780c9bbf2515d5a86e84ba3a",
       "bytes": 74
     },
-    {
-      "path": "tasks/release-gates-20261019/evidence/required-media-roles-preintegration.json",
+    "evidence/required-media-roles-preintegration.json": {
       "sha256": "04dc7f884a6c81a7243b656cefa7c01caf4342af465233e946d06c80b980d453",
       "bytes": 282
     },
-    {
-      "path": "tasks/release-gates-20261019/evidence/source-certification-tests-final.txt",
+    "evidence/source-certification-tests-final.txt": {
       "sha256": "0a4ec61d7d88e9aa5a31c33a87bd6dbb770cebf291c9b32cb8db7449d8354c75",
       "bytes": 187
     },
-    {
-      "path": "tasks/release-gates-20261019/evidence/three-positive-control-driver.txt",
+    "evidence/three-positive-control-driver.txt": {
       "sha256": "752bdab1631f680094c7ee980da56e7c587a7850dbfb13ab3cf9584c056dcbc4",
       "bytes": 1811
     },
-    {
-      "path": "tasks/release-gates-20261019/evidence/three-positive-control.cjs",
+    "evidence/three-positive-control.cjs": {
       "sha256": "c8893fcf4710a2e8f76188e76c792c22c30597958ddb349dc54da19f9b206bc1",
       "bytes": 3661
     },
-    {
-      "path": "tasks/release-gates-20261019/evidence/three-positive-control.json",
+    "evidence/three-positive-control.json": {
       "sha256": "6ac20b629c3a5c5311c70c270cf46223b08b0213c2bce6c07a46584982b8c85a",
       "bytes": 2086
     },
-    {
-      "path": "tasks/release-gates-20261019/evidence/v1-inert-local.txt",
+    "evidence/v1-inert-local.txt": {
       "sha256": "0be9ae0713e732c13972bb455c7a9b97fb9a8b521bf2af2bb77852b637cf1ee1",
       "bytes": 970
     },
-    {
-      "path": "tasks/release-gates-20261019/evidence/v1-offline-successor/persisted-log.json",
+    "evidence/v1-offline-successor/persisted-log.json": {
       "sha256": "b11804380163c037923882de24e52edee9c709b3f01ff1e6149aac8d666c831d",
       "bytes": 48
     },
-    {
-      "path": "tasks/release-gates-20261019/evidence/v1-offline-successor/persisted-trace.json",
+    "evidence/v1-offline-successor/persisted-trace.json": {
       "sha256": "426e686f42b357c14fc325c028323e458417d7535e1e04bb869f96206c5f2799",
       "bytes": 323
     },
-    {
-      "path": "tasks/release-gates-20261019/evidence/v1-offline-successor/results.json",
+    "evidence/v1-offline-successor/results.json": {
       "sha256": "8e16fd02744dcc9668ce04ed9a283906e6dd19c49759c208ce67416b25672685",
       "bytes": 1486
     },
-    {
-      "path": "tasks/release-gates-20261019/evidence/v1-offline-successor/snapshot.html",
+    "evidence/v1-offline-successor/snapshot.html": {
       "sha256": "72f80e1b55025e882ee31946b979681bdb6008fc87085386c593a802a1235e86",
       "bytes": 232
     },
-    {
-      "path": "tasks/release-gates-20261019/evidence/v1-offline-successor-driver.txt",
+    "evidence/v1-offline-successor-driver.txt": {
       "sha256": "6f6e195bf6484fdb56636f1bd3dd3a0954f8a342cffdac82a16e884649fabb0c",
       "bytes": 1342
     },
-    {
-      "path": "tasks/release-gates-20261019/evidence/woo-11.2.1-local-upgrade.txt",
+    "evidence/woo-11.2.1-local-upgrade.txt": {
       "sha256": "61aa569ee0d4a9509adb11a8d36eb22f75309632c69936e1f7b4c7a1c2ed80ce",
       "bytes": 6
     },
-    {
-      "path": "tasks/release-gates-20261019/evidence/wp-7.1.3-local-upgrade.txt",
+    "evidence/wp-7.1.3-local-upgrade.txt": {
       "sha256": "5816ca90af5a45f335ecd5ec3fadbcb1edbfb79160be290cd329f12cdf35b7a3",
       "bytes": 64
     },
-    {
-      "path": "tasks/release-gates-20261019/evidence/zip-member-map.json",
+    "evidence/zip-member-map.json": {
       "sha256": "b5771cfe42274722f948f86f10cdd513164a74158d007234e49c3d6dff87ee98",
       "bytes": 111738
     },
-    {
-      "path": "tasks/release-gates-20261019/offline-v1/capture-replay.json",
+    "offline-v1/capture-replay.json": {
       "sha256": "4b7e09304bd1274709a7a0de9e75b65f45001c6a3bd6bc1fe86d3bb064c829de",
       "bytes": 15300
     },
-    {
-      "path": "tasks/release-gates-20261019/offline-v1/inert-snapshot.cjs",
+    "offline-v1/inert-snapshot.cjs": {
       "sha256": "10e916d7bb8ae8adb436915656d68fd8375088d0cb9982b22771bda57997cfef",
       "bytes": 1541
     },
-    {
-      "path": "tasks/release-gates-20261019/offline-v1/legacy-sanitizer.json",
+    "offline-v1/legacy-sanitizer.json": {
       "sha256": "ea058fab2633bf85678ee62259d59564d4d63f4f281e0a4de6ff02a7b1f020cc",
       "bytes": 1272
     },
-    {
-      "path": "tasks/release-gates-20261019/offline-v1/provenance.json",
+    "offline-v1/provenance.json": {
       "sha256": "8df5bbea599852fbf665d4d171450680caf789159fcf81e1f50d9c008213b8be",
       "bytes": 1997
     },
-    {
-      "path": "tasks/release-gates-20261019/offline-v1/replay_capture.py",
+    "offline-v1/replay_capture.py": {
       "sha256": "125265f66c7f13b5031b1ac682164827fa1430b3b68c4424467878801eed9e6b",
       "bytes": 4683
     },
-    {
-      "path": "tasks/release-gates-20261019/offline-v1/test-inert-snapshot-local.cjs",
+    "offline-v1/test-inert-snapshot-local.cjs": {
       "sha256": "16e977e1a117aee9bee91ab4fedbfcabca13387928dfec45c55e72cb33a658d7",
       "bytes": 4566
     },
-    {
-      "path": "tasks/release-gates-20261019/offline-v1/test-inert-snapshot.cjs",
+    "offline-v1/test-inert-snapshot.cjs": {
       "sha256": "12d86a22940321363268272cc0ea6f51d154282091908c553ec6de6a13998fbe",
       "bytes": 4628
     },
-    {
-      "path": "tasks/release-gates-20261019/remaining-gates.json",
-      "sha256": "7202b758e79b8ac8905120caf68100444c7538672d25c5c147163e529496fa1f",
-      "bytes": 7198
+    "remaining-gates.json": {
+      "sha256": "5a6d3b3c690ede8b9322d56c3c414eebd4814b28f2e32275fe14f66544321e13",
+      "bytes": 6188
     },
-    {
-      "path": "tasks/release-gates-20261019/source-selection.json",
+    "source-selection.json": {
       "sha256": "5a462c8ca85a77d4a5bc7c3a64e5de60821d8deb76edcd9da878093140159e53",
       "bytes": 2744
+    },
+    "successor-three/STATE.json": {
+      "sha256": "5a22b1e309897398153d5b2f63725ea5a41901aacadcc4f48b64d8f4c5f2ab4d",
+      "bytes": 1256
+    },
+    "successor-three/baseline-adoption-manifest.json": {
+      "sha256": "6fbcbbe911fd66a64e25aea200ad1c81e2f4c01a4ac3eacd858934037499ad52",
+      "bytes": 14067
+    },
+    "successor-three/evidence/assets-final.txt": {
+      "sha256": "172f2aad760fd1fbab968eea4dfd2bb125433a22b855718870d19fb81919ed8b",
+      "bytes": 219
+    },
+    "successor-three/evidence/assets-sizing.txt": {
+      "sha256": "172f2aad760fd1fbab968eea4dfd2bb125433a22b855718870d19fb81919ed8b",
+      "bytes": 219
+    },
+    "successor-three/evidence/assets-watchdog-final.txt": {
+      "sha256": "172f2aad760fd1fbab968eea4dfd2bb125433a22b855718870d19fb81919ed8b",
+      "bytes": 219
+    },
+    "successor-three/evidence/bfcache-proxy-probe.txt": {
+      "sha256": "f7035afbb2524af68379935d492af1932583852d692115ce1e5a5eb9e287b3ab",
+      "bytes": 533
+    },
+    "successor-three/evidence/browser-destinations/results.json": {
+      "sha256": "c01362cd1894dd05babe4864aab739d2bf4e7cb2aac28282573d08d404136099",
+      "bytes": 15546
+    },
+    "successor-three/evidence/browser-faults/results.json": {
+      "sha256": "2824cf53de21d7c322b8d4148be75d939a48abdc2b3cf0e00d18f37bc2294689",
+      "bytes": 5385
+    },
+    "successor-three/evidence/browser-faults-pre-aspect/results.json": {
+      "sha256": "e9b4f8346cbaf3a20323707572e0441f935a2e5c47855b91345c64e94ad673c0",
+      "bytes": 5385
+    },
+    "successor-three/evidence/browser-faults-pre-resume-watchdog/results.json": {
+      "sha256": "9a3e50ea3d11d07317cffd04dd6c0468828d7ef3dafd6198b06b19c0957f8a53",
+      "bytes": 5385
+    },
+    "successor-three/evidence/browser-faults-pre-sizing/results.json": {
+      "sha256": "97b8e271fbdeff6c94b6de3e9664c1e5020825064116bd4542eff10f75c23053",
+      "bytes": 4960
+    },
+    "successor-three/evidence/browser-ten-routes/results.json": {
+      "sha256": "3c4e9f5cb909616f594717cfc13a6f3e02c34f64b5354e9aa058733783b39ba6",
+      "bytes": 86841
+    },
+    "successor-three/evidence/browser-ten-routes-pre-aspect/results.json": {
+      "sha256": "867e34160fa824f10a5d8ee626269f66656cbaa9dbedccfff8753188f31624bd",
+      "bytes": 34341
+    },
+    "successor-three/evidence/browser-ten-routes-pre-resume-watchdog/results.json": {
+      "sha256": "9cbe837855a88edf8ae732b0c321cce8a5910f76e019fe8de2708ed804e74174",
+      "bytes": 86841
+    },
+    "successor-three/evidence/build-assets-lifecycle.txt": {
+      "sha256": "172f2aad760fd1fbab968eea4dfd2bb125433a22b855718870d19fb81919ed8b",
+      "bytes": 219
+    },
+    "successor-three/evidence/build-assets.txt": {
+      "sha256": "172f2aad760fd1fbab968eea4dfd2bb125433a22b855718870d19fb81919ed8b",
+      "bytes": 219
+    },
+    "successor-three/evidence/certification-delta.json": {
+      "sha256": "4bcac420ed240aef0cfee6e2991c02edc28d1a8c21cb84050860c8216e8f7f46",
+      "bytes": 1434
+    },
+    "successor-three/evidence/certification-tests-final.txt": {
+      "sha256": "c2b2a3a24b0bc927d2a7235a04afa23a9e9d0a1e43e7c6af022ae5591ff27de9",
+      "bytes": 68
+    },
+    "successor-three/evidence/certification-tests-isolated-final.txt": {
+      "sha256": "a3df254f9df3ce8b74805f670c7a3a5ee210f99787520d3c2fc8acf8f1a365f6",
+      "bytes": 174983
+    },
+    "successor-three/evidence/certification-unittest-final.txt": {
+      "sha256": "e0c9018451a614c0d76a1e62445a11f548f5e0dd2c88a6982243da35ee9476e7",
+      "bytes": 3229
+    },
+    "successor-three/evidence/clean-npm-ci.txt": {
+      "sha256": "f659a51da91cc0c749f6b0746edf11f2834fc62dd5a9bd8659e7940d7a712a54",
+      "bytes": 189
+    },
+    "successor-three/evidence/clean-owning-package.txt": {
+      "sha256": "7cbd0216ab097c48fb6420f3b2671847a614627be7dd0b80d1f63f148b9d8af9",
+      "bytes": 61506
+    },
+    "successor-three/evidence/clean-release-manifest.json": {
+      "sha256": "8f839e920efa8351a2afa3e45e558fc531834df60204bbb4d1c97e412fcfed6d",
+      "bytes": 104707
+    },
+    "successor-three/evidence/destinations-final-driver.txt": {
+      "sha256": "42c7eb67a48b7af9b3c88837baad5bf98b29f0779943ebf5290686e1d5431504",
+      "bytes": 454
+    },
+    "successor-three/evidence/fallback-faults-driver.txt": {
+      "sha256": "5859660f1afd629741c38bbe7bb56dd272dcc4b0dcbd1e38a45e93c638b9d6d8",
+      "bytes": 495
+    },
+    "successor-three/evidence/fallback-faults-final-driver.txt": {
+      "sha256": "e01d53a2c359fd58a6de42f633c35885bb032b1adbc1733320206c9bea32fb05",
+      "bytes": 494
+    },
+    "successor-three/evidence/fallback-faults-sized-driver.txt": {
+      "sha256": "25db2e995731f485e118d34f2482faeff8e44279183a8cd30bb1f425c9ffc583",
+      "bytes": 494
+    },
+    "successor-three/evidence/fallback-faults-watchdog-final-driver.txt": {
+      "sha256": "95d0a3937ca5f27d22f075ddf86e93e01c3200c0b5f2e3da9def11394c675d4a",
+      "bytes": 495
+    },
+    "successor-three/evidence/final-handoff-review.json": {
+      "sha256": "cfb609eb559318d28ec223e4ca43efb3ed450e729ffd01241e2f52edcbf03766",
+      "bytes": 1325
+    },
+    "successor-three/evidence/final-source-pins.json": {
+      "sha256": "35884e44ff0e6f3370ae59ee66dae2b76fb10dedf61f1f2597ed4ad8ca2f1c07",
+      "bytes": 1222
+    },
+    "successor-three/evidence/first-release-manifest.json": {
+      "sha256": "ef3aa1398e255c4ae56ce33bb19888d619fddb2fbd2b70e096f83d1f227c2214",
+      "bytes": 104708
+    },
+    "successor-three/evidence/fixture-shutdown.json": {
+      "sha256": "ca6eeea93d945abcc003db36770b1f9253dffb3001773e8fa6d209cfc4cc46bf",
+      "bytes": 808
+    },
+    "successor-three/evidence/focused-contracts.txt": {
+      "sha256": "48098f79f10be8daa6d7d318c1e2a460fff2aafe462d19b861732437c55f1015",
+      "bytes": 4811
+    },
+    "successor-three/evidence/initial-render-visual-inspection.json": {
+      "sha256": "dd5544614a922fd7602ba9bc10d2ac60db1ae557fc06e875313555bcea3dd6e1",
+      "bytes": 1009
+    },
+    "successor-three/evidence/intermediate-run-status.json": {
+      "sha256": "9fa2f3c2ac7720aaf63b1545410a7a9c784fd4625524c550adff92c2a83ef596",
+      "bytes": 1983
+    },
+    "successor-three/evidence/local-browser-artifact-index.json": {
+      "sha256": "5ffb27e2030160b59fba7b0b1104fec73c6f8b2ec9252f1e211179948a3311bf",
+      "bytes": 88678
+    },
+    "successor-three/evidence/native-three/results.json": {
+      "sha256": "9a34ad75baf6c9460798bbf2ea51cdab1635e8bc927d4699e4732847a2f28fbb",
+      "bytes": 375577
+    },
+    "successor-three/evidence/native-three-driver.txt": {
+      "sha256": "7a06206a5c8beed003f14b113da3087348a6ef185b3c59894518848ad4d5df5a",
+      "bytes": 650
+    },
+    "successor-three/evidence/native-three-final-driver.txt": {
+      "sha256": "9710fe211e22eeb3aca96185cd2a7a757c4bc4d98875a7dd43eaf32b3c8fb35f",
+      "bytes": 1359
+    },
+    "successor-three/evidence/native-three-final-r2-driver.txt": {
+      "sha256": "cd9dbcdd17f9bc94b1636b9b814b1605717c256e2a039a1b041d6e4d6e98fcd6",
+      "bytes": 706
+    },
+    "successor-three/evidence/native-three-initial/results.json": {
+      "sha256": "7a5fc083c26f453d0b5a6e1dc3151529a4550d50dbb86995576db9c0e1b7fdf8",
+      "bytes": 316464
+    },
+    "successor-three/evidence/native-three-lifecycle-driver.txt": {
+      "sha256": "e597e7e953733c7a156aba6a7c7e037e7921c95be4ead0fe145eadeace9cd532",
+      "bytes": 746
+    },
+    "successor-three/evidence/native-three-pre-aspect/results.json": {
+      "sha256": "e3b856a504358733489ab9333638930184ad67d4864866e1739bd229b4609c20",
+      "bytes": 317834
+    },
+    "successor-three/evidence/native-three-pre-resume-watchdog/results.json": {
+      "sha256": "83638f6eee6c230fe155f8a154f9ce6647f594c6a08851dfe727f72c78b665e3",
+      "bytes": 201752
+    },
+    "successor-three/evidence/native-three-pre-sizing/results.json": {
+      "sha256": "6b107469c844ba11aff854ce7837644b19edb58be4749b9847daa52279246b48",
+      "bytes": 336009
+    },
+    "successor-three/evidence/native-three-pre-timing-driver-fix/results.json": {
+      "sha256": "f9f5ffc86a8f96898a9e614bf93ed2ec1e7ad8d60f1aac6e9799d45c6323beaa",
+      "bytes": 318819
+    },
+    "successor-three/evidence/native-three-sized-driver.txt": {
+      "sha256": "4a5dffa5002aef5f51b085478e111e7b709ad3d1274a21eee20d623ae26ca2b7",
+      "bytes": 1358
+    },
+    "successor-three/evidence/native-three-watchdog-final-driver.txt": {
+      "sha256": "a8cdeb1281ecf462f1fa065a0fe959cfe4a39ba30d67082ecefa80727c1a91f0",
+      "bytes": 943
+    },
+    "successor-three/evidence/owning-package-final.txt": {
+      "sha256": "2d96ede91583f2c7bc154a47297de6324f08e09476fb202e3b09f543b31f3c72",
+      "bytes": 61202
+    },
+    "successor-three/evidence/owning-package-initial.txt": {
+      "sha256": "af9eab2668dec088f5cbb0965afa173d1745298b2244cdfd5bace46c8d0df008",
+      "bytes": 61218
+    },
+    "successor-three/evidence/owning-package-sized.txt": {
+      "sha256": "8bbd5007340d57a8061e731dfd1de9743a5a2236b5ce204e92926f9a8e8659b2",
+      "bytes": 4204
+    },
+    "successor-three/evidence/package-reproducibility.json": {
+      "sha256": "259530e135999cda0f68e675fff1244b6e5f0973b073eb9a74ff97914d2e6b13",
+      "bytes": 1182
+    },
+    "successor-three/evidence/positive-initial.txt": {
+      "sha256": "66d08297601ee7874c064b6f94b6a7a27e15c226a23f43f361f868247a7641c3",
+      "bytes": 755
+    },
+    "successor-three/evidence/private-tuple-final.txt": {
+      "sha256": "19aae00935f78f9e2a73689e9173e0d0ae306ec2a74db20811ce1de9a28c41c9",
+      "bytes": 680
+    },
+    "successor-three/evidence/registry-final.txt": {
+      "sha256": "1999c67227e8fa66c6e262198ab6d509438ff398780c9bbf2515d5a86e84ba3a",
+      "bytes": 74
+    },
+    "successor-three/evidence/reviewed-source.json": {
+      "sha256": "5ba5d54f9a5019ad48499d45b3503ba54dbdcebdb507f1c3628239c4d34309a3",
+      "bytes": 4001
+    },
+    "successor-three/evidence/source-freeze.json": {
+      "sha256": "3777e1384806f4372d926a2886f0e741de27327987bf0c8fce1288e8ae20bead",
+      "bytes": 317
+    },
+    "successor-three/evidence/ten-routes-driver.txt": {
+      "sha256": "6ca250e37963e24e5fc6086181717aaa613e9b70c9a13a039ec7191b771973ac",
+      "bytes": 1556
+    },
+    "successor-three/evidence/ten-routes-final-driver.txt": {
+      "sha256": "ed09cc82a7f3dd60a422ccfb18dd6cbf396e314e4f1dcf1a2b5b903964f755e5",
+      "bytes": 1555
+    },
+    "successor-three/evidence/ten-routes-sized-driver.txt": {
+      "sha256": "318e610a4c886657139d8d550b6fe8d98044e8622f303ff7bb6c55703c5a0c18",
+      "bytes": 2627
+    },
+    "successor-three/evidence/ten-routes-watchdog-final-driver.txt": {
+      "sha256": "444af7e7c324cc47f0c2aa575480e6fd16d7ca79ec8aa9f2b89ecec4e732e7bc",
+      "bytes": 1556
+    },
+    "successor-three/evidence/unchanged-closed-subsets.json": {
+      "sha256": "6da2c861a12edb777b9d66e4ab5309bfe73ea1acf08505ae289f933412757c2d",
+      "bytes": 1129
     }
-  ]
+  }
 }

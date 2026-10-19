@@ -1,0 +1,21 @@
+{
+  "classification": "SOURCE_VERIFIED_REUSE_OF_REPRODUCED_LOCAL_EVIDENCE",
+  "migration_receipt": "../../evidence/migration-subset.json",
+  "baseline_source": "887b6bfe0405d9601dd1b743542ba75e1cc5d6e2",
+  "current_source": "d953e51ee9e01448fe6b04960d5958d8ac424954",
+  "unchanged_sources": {
+    "tools/v2-runtime/variation-migration-core.php": "c6ab47e6de26ea972aa19a6f3246dea715534963796a1c78186ff29418dd47b7",
+    "wordpress-theme/skyyrose-flagship-2/inc/woocommerce-compat.php": "3262d65f35d4e08b017a9b6be9105701813e37dc8b31212cfd8e725bcacd226e"
+  },
+  "native_migration_tests": "Four storage modes148assertions each +2sync controls; separate-process recovery/connection-loss/stale-writer/orphan controls already completed; not rerun for isolated Three bootstrap successor",
+  "unchanged_authority": [
+    "Product registry and get_product reader",
+    "Accepted media/grants",
+    "Variation migration and order/payment compatibility",
+    "Offline privacy successor"
+  ],
+  "limits": [
+    "No live size conversion/order/payment/sync",
+    "Existing installed-runtime/backup/privacy/full creative gates remain open"
+  ]
+}

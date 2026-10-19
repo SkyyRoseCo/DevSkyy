@@ -1,0 +1,64 @@
+{
+  "classification": "RECORDED_INDEPENDENT_READ_ONLY_REVIEW",
+  "source_commit": "d953e51ee9e01448fe6b04960d5958d8ac424954",
+  "pins_file": "final-source-pins.json",
+  "reviews": [
+    {
+      "reviewer": "release_reconciliation_architect",
+      "verdict": "PASS_BOUNDED_FINAL_WATCHDOG_SOURCE_DELTA",
+      "scope": "Visible containing-block sizing, independent camera aspect update, poster startup/failure state, native shared core/private model tuple, terminal/lifecycle guards, persisted-before-first-frame watchdog",
+      "execution": "Source inspection only; no reviewer tests or mutations"
+    },
+    {
+      "reviewer": "01a0f769-1e1a-76e1-aa99-1c4bd2dc6149",
+      "verdict": "PASS_BOUNDED_FINAL_WATCHDOG_SOURCE_DELTA",
+      "scope": "Source/min/driver hashes, in-memory owning-option Terser equality, persisted startup watchdog and explicitly synthetic combined timing controls",
+      "execution": "Read-only source/hash/reports inspection; execution/package closure still pending"
+    },
+    {
+      "reviewer": "01a0f644-1a78-7a03-8d31-1e0864390f6a",
+      "verdict": "PASS_BOUNDED_METADATA_PREFLIGHT",
+      "scope": "Exactly two new runtime release paths, one minified generator, two PHP baseline updates, only three coupled metadata pin updates;106 pins/85 PHP baselines match;913 census/775 release expected",
+      "execution": "Read-only source/hash inspection; no tests or wider recertification"
+    }
+  ],
+  "not_granted": [
+    "Full immersive creative acceptance",
+    "Positive original chapter imagery admission",
+    "Product GLB acceptance",
+    "Physical-device GPU/performance qualification",
+    "Installed runtime equivalence",
+    "Deployment/publication authority"
+  ],
+  "native_execution": {
+    "reviewer": "01a0f769-1e1a-76e1-aa99-1c4bd2dc6149",
+    "verdict": "PASS_BOUNDED_LOCAL_NATIVE_ATMOSPHERE_EXECUTION",
+    "report_sha256": "9a34ad75baf6c9460798bbf2ea51cdab1635e8bc927d4699e4732847a2f28fbb",
+    "completed_log": "native-three-watchdog-final-driver.txt",
+    "scope": "Independently inspected source/driver/fixture pins at frozen commit,24PASS log entries,8case dimensions/aspect/singleboots/servedbytes and16controls; no forbidden model/mascot request paths",
+    "execution": "Reviewer read source/hashes/reports and inspected initial screenshots; no reruns or writes",
+    "limits": [
+      "SwiftShader/DPR1 emulated mobile; no physical GPU/performance qualification",
+      "Actual BFCache use not observed; persisted events and heldRAF controls explicitly synthetic",
+      "No full immersive creative/original chapter/GLB/installed parity/publication acceptance"
+    ]
+  },
+  "execution_packet": {
+    "reviewers": [
+      "01a0f769-1e1a-76e1-aa99-1c4bd2dc6149",
+      "01a0f644-1a4e-78b3-b964-9156e1b4c57b",
+      "01a15346-b11c-744f-acdd-0c745ccfb03e"
+    ],
+    "verdict": "PASS_BOUNDED_SAVED_EVIDENCE_AND_ARCHIVE_BINDINGS",
+    "source_commit": "d953e51ee9e01448fe6b04960d5958d8ac424954",
+    "report_sha256": {
+      "native-three": "9a34ad75baf6c9460798bbf2ea51cdab1635e8bc927d4699e4732847a2f28fbb",
+      "browser-ten-routes": "3c4e9f5cb909616f594717cfc13a6f3e02c34f64b5354e9aa058733783b39ba6",
+      "browser-faults": "2824cf53de21d7c322b8d4148be75d939a48abdc2b3cf0e00d18f37bc2294689",
+      "browser-destinations": "c01362cd1894dd05babe4864aab739d2bf4e7cb2aac28282573d08d404136099"
+    },
+    "scope": "Independent read-only source-pin/report hash checks and actual archive comparison. V2 independently compared all775 names/member bytes across both ZIPs; bounded immersive reviewer checked exact destination coverage and all8 final theme file pins in both ZIPs. Bridge independently matched two actual archive hashes/member bytes and source tree.",
+    "execution": "No independent browser/build reruns or writes",
+    "provenance_limit": "Browser runs launched before final source commit; recorded source/driver pins correspond exactly to frozen source, not a clean-commit browser launch. Destinations bind primary report hash."
+  }
+}
