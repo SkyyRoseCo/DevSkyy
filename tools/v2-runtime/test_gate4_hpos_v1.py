@@ -199,7 +199,8 @@ def setup():
     switched = native("switch", "yes")
     assert switched["authority"] == "yes" and not switched["refused"] and switched["pending"] == 0
     empty = inspect()
-    assert empty["hpos"] and empty["authority"] == "yes" and empty["orders"] == {}
+    # The unchanged PHP helper encodes its empty array as JSON [], before any role exists.
+    assert empty["hpos"] and empty["authority"] == "yes" and empty["orders"] == []
     assert empty["runtime"]["datastore"] == HPOS
     record("FRESH_EMPTY_HPOS_AUTHORITY_VERIFIED", switch=switched, snapshot=empty)
     native("writers", "open")
