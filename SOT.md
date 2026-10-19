@@ -6,6 +6,18 @@
 
 Do not author separate product facts in CSVs, dossier files, prompts, local maps, or generated manifests. Those are compatibility projections or consumers. Start every product read with `from skyyrose.core.product import get_product` or `python -m skyyrose.core.product <sku>`. This returns the complete product, including `asset_library`, care instructions, render sources and explicit gaps. Narrow readers remain compatibility consumers; use the registry update API for catalog writes. Run `python scripts/sync_product_registry.py` after direct JSON edits and `python scripts/sync_product_registry.py --check` before handoff. CI must fail if CSV/dossier projections drift. Actual image binaries retain their existing asset paths; the registry owns the references.
 
+**Direction of data flow (one-way).** `logo-registry.json` is the source;
+`get_product` is a reader of it, not a second store — the registry never takes
+product facts from `get_product`, and `get_product` never reads a CSV or dossier
+file by default (its dossier section is projected from the registry's own
+`dossier` entry). The CSV, dossier markdown, and `sot-images.json` are generated
+from the registry by `scripts/sync_product_registry.py`. Narrow readers
+(`catalog_loader`, `dossier_loader`, `product_registry`, `sot_images`,
+`LogoRegistry`) read the same registry, so they do not fork truth, but they
+return a partial view with no `gaps` list; new consumers call `get_product`.
+Generators and validators (for example `scripts/sync_catalog_downstream.py`,
+`scripts/validate_catalog_consistency.py`) may open the files directly.
+
 When operating in another checkout, verify it has the unified `products` schema and current founder corrections before execution. Never substitute an old checkout's CSV/dossiers when its registry is stale. Pass the registry location and this authority rule to every delegated agent and workflow.
 
 

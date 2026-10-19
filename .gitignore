@@ -93,10 +93,11 @@ credentials/
 *.secrets
 *.secrets.*
 **/*.secret
-# .serena/ (below) already blanket-ignores this, so no per-file rule needed —
+# .serena/ is tracked (memories + project.yml); the per-file credential rules
+# next to the .serena/ entry below are the guard that replaced the blanket ignore —
 # REDACTED 2026-0x: .serena/memories/woocommerce_api_credentials.md once held
-# a live WooCommerce secret. The file is deleted and the directory is
-# ignored either way, but ROTATION STATUS OF THAT KEY IS UNCONFIRMED — this
+# a live WooCommerce secret. The file is deleted and credential-named memories
+# are now ignored by rule, but ROTATION STATUS OF THAT KEY IS UNCONFIRMED — this
 # comment does not prove the key was rotated. Verify before trusting it's dead.
 
 # --- Claude Code ---
@@ -255,7 +256,13 @@ skyyrose/character_pipeline/vendor/*
 
 # --- Local tool configs ---
 .playwright-mcp/
-.serena/
+# .serena/ is tracked; only machine-local cache and secret-shaped memories stay out
+.serena/cache/
+.serena/memories/*credential*
+.serena/memories/*secret*
+.serena/memories/*token*
+.serena/memories/*api_key*
+.serena/**/*.key
 .ci-local-gate
 
 # --- Product & enhanced images (backed up locally, uploaded elsewhere) ---

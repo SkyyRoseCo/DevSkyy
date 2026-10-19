@@ -3,10 +3,11 @@
 Read [SOT.md — Brand canon](SOT.md#brand-canon) before any collection story,
 commercial brief, image/video prompt, or creative review. It indexes the current
 owner-ratified Constitution, collection identity seeds, and newer campaign
-references. Pass that source requirement to delegated agents. Old armor/bloodline/
-foundation-wardrobe narratives and retired collection-story/blog documents must
-not override those sources or Corey's latest explicit corrections. Use
-`get_product(sku)` for product facts; campaign references do not replace the registry.
+references. Pass that source requirement to delegated agents. Old
+armor/bloodline/ foundation-wardrobe narratives and retired
+collection-story/blog documents must not override those sources or Corey's
+latest explicit corrections. Use `get_product(sku)` for product facts; campaign
+references do not replace the registry.
 
 ## Single product registry — required for SkyyRose work
 
@@ -28,12 +29,6 @@ placements, copy, founder-verbatim corrections, authority, and a `gaps` list
 naming anything absent. It fails closed: an unknown SKU raises, and a fact is
 never a silent blank. Non-Python callers use
 `python -m skyyrose.core.product <sku>` for the identical JSON. The narrow
-**How to record a founder statement — dossier first, never the field directly.** `tests/test_dossier_founder_prose.py` pins every `garment.{fit,materials,features}.source` to `derived_from_dossier`, which is a test-enforced assertion that nothing in those fields is founder-authored. So when he states a garment fact: add a `**FOUNDER_CONFIRMED:** <his words>` paragraph to that SKU's dossier (its `## Founder-confirmed correction` section, placed before `## Branding`), keep a parenthetical quoting him verbatim with the date, then derive the field from it. That makes the existing label honest instead of widening the assertion, and never relabels a field to claim founder authorship. Gate every write on the written text being a verbatim substring of that SKU's own dossier, and fail closed on a half-applied set. If a check or reviewer disputes the product fact itself rather than the code, stop and report — do not "fix" it.
-
-**Prefer `null` over wrong in product fields.** A field holding the wrong kind of sentence passes every completeness check and is invisible to the gap queries built to find it. A null is discoverable; a plausible-but-wrong value is not.
-
-**Redacting env data is a whitelist, never "names only."** On a malformed env file the KEY side can be the secret — a credentials notebook contains lines shaped `<label> = <secret>` and `Name: <secret>`, so `dotenv_values()` returns the secret as the dict key. Print a name only if it matches `^[A-Z][A-Z0-9_]*$`, otherwise a `sha256[:8]`; compare values by hash and never print them. Containment after a leak is rotation, not deletion.
-
 readers (`product_registry`, `catalog_loader`, `dossier_loader`, `sot_images`,
 `LogoRegistry`) remain for single-field needs but are no longer the default. Use
 the registry update API for catalog writes. Run
@@ -41,6 +36,31 @@ the registry update API for catalog writes. Run
 `python scripts/sync_product_registry.py --check` before handoff. CI must fail
 if CSV/dossier projections drift. Actual image binaries retain their existing
 asset paths; the registry owns the references.
+
+**How to record a founder statement — dossier first, never the field directly.**
+`tests/test_dossier_founder_prose.py` pins every
+`garment.{fit,materials,features}.source` to `derived_from_dossier`, which is a
+test-enforced assertion that nothing in those fields is founder-authored. So
+when he states a garment fact: add a `**FOUNDER_CONFIRMED:** <his words>`
+paragraph to that SKU's dossier (its `## Founder-confirmed correction` section,
+placed before `## Branding`), keep a parenthetical quoting him verbatim with the
+date, then derive the field from it. That makes the existing label honest
+instead of widening the assertion, and never relabels a field to claim founder
+authorship. Gate every write on the written text being a verbatim substring of
+that SKU's own dossier, and fail closed on a half-applied set. If a check or
+reviewer disputes the product fact itself rather than the code, stop and report
+— do not "fix" it.
+
+**Prefer `null` over wrong in product fields.** A field holding the wrong kind
+of sentence passes every completeness check and is invisible to the gap queries
+built to find it. A null is discoverable; a plausible-but-wrong value is not.
+
+**Redacting env data is a whitelist, never "names only."** On a malformed env
+file the KEY side can be the secret — a credentials notebook contains lines
+shaped `<label> = <secret>` and `Name: <secret>`, so `dotenv_values()` returns
+the secret as the dict key. Print a name only if it matches `^[A-Z][A-Z0-9_]*$`,
+otherwise a `sha256[:8]`; compare values by hash and never print them.
+Containment after a leak is rotation, not deletion.
 
 When operating in another checkout, verify it has the unified `products` schema
 and current founder corrections before execution. Never substitute an old
@@ -118,6 +138,31 @@ system and developer constraints; historical notes do not grant authorization.
 - Distinguish observed facts, inferences, assumptions, and unverified outcomes.
   Report what changed, the checks actually run, and remaining limitations.
 
+## Code intelligence: Serena and Context7
+
+Use both when the client exposes them; tool names carry the client's MCP prefix.
+
+- **Context7** for any non-stdlib library or API: resolve the library ID, then
+  query docs, before writing code that touches it. Max 3 calls per question; a
+  `/org/project` ID can go straight to the query. Queries leave the machine —
+  never include secrets, env values, or proprietary code.
+- **Serena** for code structure: `get_symbols_overview` → `find_symbol` →
+  `find_referencing_symbols` before reading whole files or grepping. Use
+  `rename_symbol` / `safe_delete_symbol` for renames and removals instead of
+  text substitution. Call `initial_instructions` once per session and
+  `activate_project` on the checkout you are editing (a worktree is its own
+  path). Line numbers are 0-based.
+- Serena answers what this repository does; Context7 answers what a library
+  does. Do not use one for the other's question.
+- Live Serena memories (`.serena/memories/*.md`) are pointers to the
+  authoritative docs; `.serena/memories/_archive/` is a retired-architecture
+  snapshot, hidden from `list_memories`. `CLAUDE.md`, `get_product()`, and the
+  code outrank all of them.
+- Product, registry, and imagery facts are read through `get_product`, not
+  Serena. `activate_project` rewrites `.serena/project.yml` — do not commit it.
+- Both tools are read/navigation aids. Authorization, spending, deployment, and
+  shared-worktree rules in this file still govern every edit they make.
+
 ## GOD MODE X² — operating standard
 
 Apply the following principles as a work ethic and execution contract. The name
@@ -142,20 +187,19 @@ directly; use deeper analysis when complexity or consequences justify it.
   the memory authorization rule above for persistent memory changes.
 - Choose the relevant working emphasis: STRIKE for direct execution, ARCHITECT
   for systems, FORGE for implementation, ORACLE for research, QUANTUM for
-- A training cutoff is not evidence of nonexistence. When the user states that
-  a library, API, model, or tool exists and it is unfamiliar or contradicts an
+- A training cutoff is not evidence of nonexistence. When the user states that a
+  library, API, model, or tool exists and it is unfamiliar or contradicts an
   internal knowledge cutoff, do not conclude it does not exist from a single
-  check — a live probe can fail for reasons other than "doesn't exist"
-  (missing account/org access, wrong endpoint, wrong ID format), and an
-  indexed documentation source can simply be stale relative to a recent
-  release. Two empty or failing checks from tools that both depend on an
-  index or a cutoff are correlated, not independent, evidence. Before
-  reporting something does not exist or asking the user to resolve the
-  uncertainty, escalate to a live web search — this is mandatory whenever the
-  claim concerns anything plausibly released after the assistant's own
-  knowledge cutoff. Report exactly what was checked, what each check returned,
-  and which check (if any) is still unresolved; do not hand back an
-  unresolved absence as a claim of nonexistence.
+  check — a live probe can fail for reasons other than "doesn't exist" (missing
+  account/org access, wrong endpoint, wrong ID format), and an indexed
+  documentation source can simply be stale relative to a recent release. Two
+  empty or failing checks from tools that both depend on an index or a cutoff
+  are correlated, not independent, evidence. Before reporting something does not
+  exist or asking the user to resolve the uncertainty, escalate to a live web
+  search — this is mandatory whenever the claim concerns anything plausibly
+  released after the assistant's own knowledge cutoff. Report exactly what was
+  checked, what each check returned, and which check (if any) is still
+  unresolved; do not hand back an unresolved absence as a claim of nonexistence.
   quantitative work, EMPIRE for business, ATELIER for design, CINEMA for visual
   storytelling, RED TEAM for critique, GENESIS for invention, and OMNIVERSE for
   combined work. These labels select methods, not new permissions or tools;
