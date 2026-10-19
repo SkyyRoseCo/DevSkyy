@@ -11,7 +11,9 @@ import audit_gate4_installed as audit
 def main():
     controls = []
     with tempfile.TemporaryDirectory(prefix="gate4-offline-controls-") as temporary:
-        root = Path(temporary)
+        # macOS exposes its temporary directory through /var -> /private/var.
+        # Canonicalize this test-owned root before testing candidate symlinks.
+        root = Path(temporary).resolve()
         valid = root / "valid.zip"
         with zipfile.ZipFile(valid, "w") as archive:
             archive.writestr("fixture/", b"")
