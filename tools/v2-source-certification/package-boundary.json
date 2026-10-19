@@ -4481,6 +4481,16 @@
       "reason": "Native WooCommerce loopback/version-guarded fixture or registration check; not shipped as runtime.",
       "release": false
     },
+    "tests/commerce/migration-process.php": {
+      "category": "AUTHORING ONLY",
+      "reason": "Destructive synthetic loopback fixture qualification; never storefront runtime",
+      "release": false
+    },
+    "tests/commerce/migration.php": {
+      "category": "AUTHORING ONLY",
+      "reason": "Destructive synthetic loopback fixture qualification; never storefront runtime",
+      "release": false
+    },
     "tests/commerce/preorder.php": {
       "category": "AUTHORING / TEST",
       "reason": "Native WooCommerce loopback/version-guarded fixture or registration check; not shipped as runtime.",
