@@ -1,0 +1,964 @@
+{
+  "status": "PASS_COMPONENT_ASSERTIONS_VISUAL_REVIEW_PENDING",
+  "scope": "OFFLINE_RENDERED_COMPONENT_ONLY_WP_WOO_REQUEST_LAYER_STUBBED_NO_NATIVE_SESSION_OR_INSTALLED_STACK_PROOF",
+  "sourceCommit": "85a1bda20f82c9d70f4ccfc7b0b0be94d84a8786",
+  "sourceTree": "b7f64bcb5aee46bc56ac46df4967bf570bff82a6",
+  "harness": {
+    "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/tools/v2-runtime/test-kids-arrival-browser.cjs",
+    "sha256": "bb020cfad040786258576db679ac56d8cf80e7ce2989c2abe20731de2c565d61",
+    "bytes": 14545
+  },
+  "renderer": {
+    "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/tools/v2-runtime/render-collection-imagery.php",
+    "sha256": "06bb71f708912a5c378c8c65f8b2ab750b78941c01a742288b6254be9aa6b75e",
+    "bytes": 8075
+  },
+  "playwright": {
+    "path": "/Users/theceo/.codex/worktrees/release-gates-20261019/DevSkyy/tools/v2-runtime/phase3b-browser/node_modules/playwright-core/package.json",
+    "sha256": "f061c58427e47e843e26d201f0a57076c734e57c734ecbbd87d4a23b7a20db9b",
+    "bytes": 876
+  },
+  "binaries": [
+    {
+      "path": "/Users/theceo/Library/Caches/ms-playwright/chromium_headless_shell-1243/chrome-headless-shell-mac-arm64/chrome-headless-shell",
+      "sha256": "a0bfe7b4da4787b66058477d696cd1d09065d25f06a548947722b9af77ee8282",
+      "bytes": 169253248
+    },
+    {
+      "path": "/opt/homebrew/Cellar/php/8.5.6/bin/php",
+      "sha256": "f43e04e1d2b994542c30cc5d2dad0b3de03a2865e19e260d82ac47aea2b9c92f",
+      "bytes": 23817136
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/release-gates-20261019/DevSkyy/.artifacts/release-gates-20261019/toolchain/node-v22.23.2-darwin-arm64/bin/node",
+      "sha256": "18e387c90ab8a8400183e8bdd396376e1e875b91b4c874b894dcade7b35bf572",
+      "bytes": 112937728
+    }
+  ],
+  "sources": [
+    {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/wordpress-theme/skyyrose-flagship-2/assets/css/theme.min.css",
+      "sha256": "cdadadb58aee9a9fa7bbbd38d36f0c38020f254c918c1975123e2f6b02192ab5",
+      "bytes": 57015
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/wordpress-theme/skyyrose-flagship-2/assets/js/visual-recovery.min.js",
+      "sha256": "b6d3cc0a98056e489600d0ebc9f4edb8b29c546d80c30cc3481cf3e38509fce6",
+      "bytes": 5029
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/wordpress-theme/skyyrose-flagship-2/template-parts/collections/arrival.php",
+      "sha256": "449378de92dae1478e5665fc73f4eaa43427cfcce98e9ab5a46a62af082ab5b3",
+      "bytes": 5571
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/wordpress-theme/skyyrose-flagship-2/template-parts/collections/arrival-product.php",
+      "sha256": "ceed0e819dfcd4e3e33256eaf5a6fcda8f1ac24eda2acf6726dba6f20e6fe5b7",
+      "bytes": 1490
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/wordpress-theme/skyyrose-flagship-2/inc/performance.php",
+      "sha256": "01f56c893833c3ed426697550d57ca1219a5333aa02dd74a884bfe69fc7763c8",
+      "bytes": 25633
+    }
+  ],
+  "fixtures": {
+    "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261019/kids-arrival/fixture/preparation.json",
+    "sha256": "e794cdada08b77244adddc27ee18288dd42785009b14e4857c2ea78b43171018",
+    "bytes": 231201
+  },
+  "cases": [
+    {
+      "scenario": "admitted",
+      "width": 1440,
+      "reducedMotion": "no-preference",
+      "status": "PASS_COMPONENT_ASSERTIONS_VISUAL_REVIEW_PENDING",
+      "requests": [
+        "http://127.0.0.1:60960/fixture/admitted",
+        "http://127.0.0.1:60960/wp-content/themes/skyyrose-flagship-2/assets/derived/card-fronts/kids-002-768w.webp?v=d01a75645e901914ef8a27fa9c5cf79a8f2a2197213cb4f5af29e9f3c1d40769",
+        "http://127.0.0.1:60960/wp-content/themes/skyyrose-flagship-2/assets/css/design-tokens.min.css",
+        "http://127.0.0.1:60960/wp-content/themes/skyyrose-flagship-2/assets/css/theme.min.css",
+        "http://127.0.0.1:60960/wp-content/themes/skyyrose-flagship-2/assets/css/controls.min.css",
+        "http://127.0.0.1:60960/wp-content/themes/skyyrose-flagship-2/assets/css/visual-recovery.min.css",
+        "http://127.0.0.1:60960/wp-content/themes/skyyrose-flagship-2/assets/css/collection-world.min.css",
+        "http://127.0.0.1:60960/wp-content/themes/skyyrose-flagship-2/assets/js/visual-recovery.min.js",
+        "http://127.0.0.1:60960/wp-content/themes/skyyrose-flagship-2/assets/sot/fonts/hanken-grotesk-latin.woff2",
+        "http://127.0.0.1:60960/wp-content/themes/skyyrose-flagship-2/assets/sot/fonts/anton-latin.woff2",
+        "http://127.0.0.1:60960/wp-content/themes/skyyrose-flagship-2/assets/derived/fonts/archivo-normal-width.woff2",
+        "http://127.0.0.1:60960/wp-content/themes/skyyrose-flagship-2/assets/sot/fonts/inter-latin.woff2"
+      ],
+      "decoded": {
+        "src": "http://127.0.0.1:60960/wp-content/themes/skyyrose-flagship-2/assets/derived/card-fronts/kids-002-768w.webp?v=d01a75645e901914ef8a27fa9c5cf79a8f2a2197213cb4f5af29e9f3c1d40769",
+        "width": 576,
+        "height": 720,
+        "alt": "Kids Colorblock Hoodie Set — Purple/Black",
+        "role": "collection_hero",
+        "sku": "kids-002",
+        "fit": "contain"
+      },
+      "layout": {
+        "width": 1440,
+        "height": 900,
+        "scrollWidth": 1440,
+        "arrivalHeight": 826.796875,
+        "headingHeight": 100.796875,
+        "state": "admitted",
+        "actions": [
+          {
+            "href": "#shop",
+            "height": 48
+          },
+          {
+            "href": "#world",
+            "height": 44
+          }
+        ],
+        "mediaVisible": true
+      },
+      "screenshot": {
+        "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261019/kids-arrival/run-85a1bda20/admitted-1440-no-preference.png",
+        "sha256": "0b28aa5f2f5bd9784ff843125b39758cf8043f73284c21a895e22ae5ce36bbb6",
+        "bytes": 532852
+      }
+    },
+    {
+      "scenario": "admitted",
+      "width": 1440,
+      "reducedMotion": "reduce",
+      "status": "PASS_COMPONENT_ASSERTIONS_VISUAL_REVIEW_PENDING",
+      "requests": [
+        "http://127.0.0.1:60960/fixture/admitted",
+        "http://127.0.0.1:60960/wp-content/themes/skyyrose-flagship-2/assets/derived/card-fronts/kids-002-768w.webp?v=d01a75645e901914ef8a27fa9c5cf79a8f2a2197213cb4f5af29e9f3c1d40769",
+        "http://127.0.0.1:60960/wp-content/themes/skyyrose-flagship-2/assets/css/design-tokens.min.css",
+        "http://127.0.0.1:60960/wp-content/themes/skyyrose-flagship-2/assets/css/theme.min.css",
+        "http://127.0.0.1:60960/wp-content/themes/skyyrose-flagship-2/assets/css/controls.min.css",
+        "http://127.0.0.1:60960/wp-content/themes/skyyrose-flagship-2/assets/css/visual-recovery.min.css",
+        "http://127.0.0.1:60960/wp-content/themes/skyyrose-flagship-2/assets/css/collection-world.min.css",
+        "http://127.0.0.1:60960/wp-content/themes/skyyrose-flagship-2/assets/js/visual-recovery.min.js",
+        "http://127.0.0.1:60960/wp-content/themes/skyyrose-flagship-2/assets/sot/fonts/hanken-grotesk-latin.woff2",
+        "http://127.0.0.1:60960/wp-content/themes/skyyrose-flagship-2/assets/sot/fonts/anton-latin.woff2",
+        "http://127.0.0.1:60960/wp-content/themes/skyyrose-flagship-2/assets/derived/fonts/archivo-normal-width.woff2",
+        "http://127.0.0.1:60960/wp-content/themes/skyyrose-flagship-2/assets/sot/fonts/inter-latin.woff2"
+      ],
+      "decoded": {
+        "src": "http://127.0.0.1:60960/wp-content/themes/skyyrose-flagship-2/assets/derived/card-fronts/kids-002-768w.webp?v=d01a75645e901914ef8a27fa9c5cf79a8f2a2197213cb4f5af29e9f3c1d40769",
+        "width": 576,
+        "height": 720,
+        "alt": "Kids Colorblock Hoodie Set — Purple/Black",
+        "role": "collection_hero",
+        "sku": "kids-002",
+        "fit": "contain"
+      },
+      "layout": {
+        "width": 1440,
+        "height": 900,
+        "scrollWidth": 1440,
+        "arrivalHeight": 826.796875,
+        "headingHeight": 100.796875,
+        "state": "admitted",
+        "actions": [
+          {
+            "href": "#shop",
+            "height": 48
+          },
+          {
+            "href": "#world",
+            "height": 44
+          }
+        ],
+        "mediaVisible": true
+      },
+      "screenshot": {
+        "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261019/kids-arrival/run-85a1bda20/admitted-1440-reduce.png",
+        "sha256": "0b28aa5f2f5bd9784ff843125b39758cf8043f73284c21a895e22ae5ce36bbb6",
+        "bytes": 532852
+      }
+    },
+    {
+      "scenario": "admitted",
+      "width": 390,
+      "reducedMotion": "no-preference",
+      "status": "PASS_COMPONENT_ASSERTIONS_VISUAL_REVIEW_PENDING",
+      "requests": [
+        "http://127.0.0.1:60960/fixture/admitted",
+        "http://127.0.0.1:60960/wp-content/themes/skyyrose-flagship-2/assets/derived/card-fronts/kids-002-480w.webp?v=20b0d5e61d0d611a6261dd562588c44221bc0f30da6bae213ef6e8e88be975cb",
+        "http://127.0.0.1:60960/wp-content/themes/skyyrose-flagship-2/assets/css/design-tokens.min.css",
+        "http://127.0.0.1:60960/wp-content/themes/skyyrose-flagship-2/assets/css/theme.min.css",
+        "http://127.0.0.1:60960/wp-content/themes/skyyrose-flagship-2/assets/css/controls.min.css",
+        "http://127.0.0.1:60960/wp-content/themes/skyyrose-flagship-2/assets/css/visual-recovery.min.css",
+        "http://127.0.0.1:60960/wp-content/themes/skyyrose-flagship-2/assets/css/collection-world.min.css",
+        "http://127.0.0.1:60960/wp-content/themes/skyyrose-flagship-2/assets/js/visual-recovery.min.js",
+        "http://127.0.0.1:60960/wp-content/themes/skyyrose-flagship-2/assets/sot/fonts/hanken-grotesk-latin.woff2",
+        "http://127.0.0.1:60960/wp-content/themes/skyyrose-flagship-2/assets/sot/fonts/anton-latin.woff2",
+        "http://127.0.0.1:60960/wp-content/themes/skyyrose-flagship-2/assets/derived/fonts/archivo-normal-width.woff2",
+        "http://127.0.0.1:60960/wp-content/themes/skyyrose-flagship-2/assets/sot/fonts/inter-latin.woff2"
+      ],
+      "decoded": {
+        "src": "http://127.0.0.1:60960/wp-content/themes/skyyrose-flagship-2/assets/derived/card-fronts/kids-002-480w.webp?v=20b0d5e61d0d611a6261dd562588c44221bc0f30da6bae213ef6e8e88be975cb",
+        "width": 358,
+        "height": 447,
+        "alt": "Kids Colorblock Hoodie Set — Purple/Black",
+        "role": "collection_hero",
+        "sku": "kids-002",
+        "fit": "contain"
+      },
+      "layout": {
+        "width": 390,
+        "height": 844,
+        "scrollWidth": 390,
+        "arrivalHeight": 925.046875,
+        "headingHeight": 44,
+        "state": "admitted",
+        "actions": [
+          {
+            "href": "#shop",
+            "height": 48
+          },
+          {
+            "href": "#world",
+            "height": 44
+          }
+        ],
+        "mediaVisible": true
+      },
+      "screenshot": {
+        "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261019/kids-arrival/run-85a1bda20/admitted-390-no-preference.png",
+        "sha256": "aa9565e69212cb31867827b16ed0e4de085172ee0ff0e7626be17b9e987a3be6",
+        "bytes": 270763
+      }
+    },
+    {
+      "scenario": "admitted",
+      "width": 390,
+      "reducedMotion": "reduce",
+      "status": "PASS_COMPONENT_ASSERTIONS_VISUAL_REVIEW_PENDING",
+      "requests": [
+        "http://127.0.0.1:60960/fixture/admitted",
+        "http://127.0.0.1:60960/wp-content/themes/skyyrose-flagship-2/assets/derived/card-fronts/kids-002-480w.webp?v=20b0d5e61d0d611a6261dd562588c44221bc0f30da6bae213ef6e8e88be975cb",
+        "http://127.0.0.1:60960/wp-content/themes/skyyrose-flagship-2/assets/css/design-tokens.min.css",
+        "http://127.0.0.1:60960/wp-content/themes/skyyrose-flagship-2/assets/css/theme.min.css",
+        "http://127.0.0.1:60960/wp-content/themes/skyyrose-flagship-2/assets/css/controls.min.css",
+        "http://127.0.0.1:60960/wp-content/themes/skyyrose-flagship-2/assets/css/visual-recovery.min.css",
+        "http://127.0.0.1:60960/wp-content/themes/skyyrose-flagship-2/assets/css/collection-world.min.css",
+        "http://127.0.0.1:60960/wp-content/themes/skyyrose-flagship-2/assets/js/visual-recovery.min.js",
+        "http://127.0.0.1:60960/wp-content/themes/skyyrose-flagship-2/assets/sot/fonts/hanken-grotesk-latin.woff2",
+        "http://127.0.0.1:60960/wp-content/themes/skyyrose-flagship-2/assets/sot/fonts/anton-latin.woff2",
+        "http://127.0.0.1:60960/wp-content/themes/skyyrose-flagship-2/assets/derived/fonts/archivo-normal-width.woff2",
+        "http://127.0.0.1:60960/wp-content/themes/skyyrose-flagship-2/assets/sot/fonts/inter-latin.woff2"
+      ],
+      "decoded": {
+        "src": "http://127.0.0.1:60960/wp-content/themes/skyyrose-flagship-2/assets/derived/card-fronts/kids-002-480w.webp?v=20b0d5e61d0d611a6261dd562588c44221bc0f30da6bae213ef6e8e88be975cb",
+        "width": 358,
+        "height": 447,
+        "alt": "Kids Colorblock Hoodie Set — Purple/Black",
+        "role": "collection_hero",
+        "sku": "kids-002",
+        "fit": "contain"
+      },
+      "layout": {
+        "width": 390,
+        "height": 844,
+        "scrollWidth": 390,
+        "arrivalHeight": 925.046875,
+        "headingHeight": 44,
+        "state": "admitted",
+        "actions": [
+          {
+            "href": "#shop",
+            "height": 48
+          },
+          {
+            "href": "#world",
+            "height": 44
+          }
+        ],
+        "mediaVisible": true
+      },
+      "screenshot": {
+        "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261019/kids-arrival/run-85a1bda20/admitted-390-reduce.png",
+        "sha256": "aa9565e69212cb31867827b16ed0e4de085172ee0ff0e7626be17b9e987a3be6",
+        "bytes": 270763
+      }
+    },
+    {
+      "scenario": "withheld",
+      "width": 1440,
+      "reducedMotion": "no-preference",
+      "status": "PASS_COMPONENT_ASSERTIONS_VISUAL_REVIEW_PENDING",
+      "requests": [
+        "http://127.0.0.1:60960/fixture/withheld",
+        "http://127.0.0.1:60960/wp-content/themes/skyyrose-flagship-2/assets/css/design-tokens.min.css",
+        "http://127.0.0.1:60960/wp-content/themes/skyyrose-flagship-2/assets/css/theme.min.css",
+        "http://127.0.0.1:60960/wp-content/themes/skyyrose-flagship-2/assets/css/controls.min.css",
+        "http://127.0.0.1:60960/wp-content/themes/skyyrose-flagship-2/assets/css/visual-recovery.min.css",
+        "http://127.0.0.1:60960/wp-content/themes/skyyrose-flagship-2/assets/css/collection-world.min.css",
+        "http://127.0.0.1:60960/wp-content/themes/skyyrose-flagship-2/assets/js/visual-recovery.min.js",
+        "http://127.0.0.1:60960/wp-content/themes/skyyrose-flagship-2/assets/sot/fonts/hanken-grotesk-latin.woff2",
+        "http://127.0.0.1:60960/wp-content/themes/skyyrose-flagship-2/assets/sot/fonts/anton-latin.woff2",
+        "http://127.0.0.1:60960/wp-content/themes/skyyrose-flagship-2/assets/derived/fonts/archivo-normal-width.woff2",
+        "http://127.0.0.1:60960/wp-content/themes/skyyrose-flagship-2/assets/sot/fonts/inter-latin.woff2"
+      ],
+      "layout": {
+        "width": 1440,
+        "height": 900,
+        "scrollWidth": 1440,
+        "arrivalHeight": 492.578125,
+        "headingHeight": 100.796875,
+        "state": "unavailable",
+        "actions": [
+          {
+            "href": "#shop",
+            "height": 48
+          },
+          {
+            "href": "#world",
+            "height": 44
+          }
+        ],
+        "mediaVisible": false
+      },
+      "screenshot": {
+        "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261019/kids-arrival/run-85a1bda20/withheld-1440-no-preference.png",
+        "sha256": "59a28d1de9af2892518718ff069f2b9d7cf4570e430028024675366d594fb896",
+        "bytes": 33867
+      }
+    },
+    {
+      "scenario": "withheld",
+      "width": 1440,
+      "reducedMotion": "reduce",
+      "status": "PASS_COMPONENT_ASSERTIONS_VISUAL_REVIEW_PENDING",
+      "requests": [
+        "http://127.0.0.1:60960/fixture/withheld",
+        "http://127.0.0.1:60960/wp-content/themes/skyyrose-flagship-2/assets/css/design-tokens.min.css",
+        "http://127.0.0.1:60960/wp-content/themes/skyyrose-flagship-2/assets/css/theme.min.css",
+        "http://127.0.0.1:60960/wp-content/themes/skyyrose-flagship-2/assets/css/controls.min.css",
+        "http://127.0.0.1:60960/wp-content/themes/skyyrose-flagship-2/assets/css/visual-recovery.min.css",
+        "http://127.0.0.1:60960/wp-content/themes/skyyrose-flagship-2/assets/css/collection-world.min.css",
+        "http://127.0.0.1:60960/wp-content/themes/skyyrose-flagship-2/assets/js/visual-recovery.min.js",
+        "http://127.0.0.1:60960/wp-content/themes/skyyrose-flagship-2/assets/sot/fonts/hanken-grotesk-latin.woff2",
+        "http://127.0.0.1:60960/wp-content/themes/skyyrose-flagship-2/assets/sot/fonts/anton-latin.woff2",
+        "http://127.0.0.1:60960/wp-content/themes/skyyrose-flagship-2/assets/derived/fonts/archivo-normal-width.woff2",
+        "http://127.0.0.1:60960/wp-content/themes/skyyrose-flagship-2/assets/sot/fonts/inter-latin.woff2"
+      ],
+      "layout": {
+        "width": 1440,
+        "height": 900,
+        "scrollWidth": 1440,
+        "arrivalHeight": 492.578125,
+        "headingHeight": 100.796875,
+        "state": "unavailable",
+        "actions": [
+          {
+            "href": "#shop",
+            "height": 48
+          },
+          {
+            "href": "#world",
+            "height": 44
+          }
+        ],
+        "mediaVisible": false
+      },
+      "screenshot": {
+        "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261019/kids-arrival/run-85a1bda20/withheld-1440-reduce.png",
+        "sha256": "59a28d1de9af2892518718ff069f2b9d7cf4570e430028024675366d594fb896",
+        "bytes": 33867
+      }
+    },
+    {
+      "scenario": "withheld",
+      "width": 390,
+      "reducedMotion": "no-preference",
+      "status": "PASS_COMPONENT_ASSERTIONS_VISUAL_REVIEW_PENDING",
+      "requests": [
+        "http://127.0.0.1:60960/fixture/withheld",
+        "http://127.0.0.1:60960/wp-content/themes/skyyrose-flagship-2/assets/css/design-tokens.min.css",
+        "http://127.0.0.1:60960/wp-content/themes/skyyrose-flagship-2/assets/css/theme.min.css",
+        "http://127.0.0.1:60960/wp-content/themes/skyyrose-flagship-2/assets/css/controls.min.css",
+        "http://127.0.0.1:60960/wp-content/themes/skyyrose-flagship-2/assets/css/visual-recovery.min.css",
+        "http://127.0.0.1:60960/wp-content/themes/skyyrose-flagship-2/assets/css/collection-world.min.css",
+        "http://127.0.0.1:60960/wp-content/themes/skyyrose-flagship-2/assets/js/visual-recovery.min.js",
+        "http://127.0.0.1:60960/wp-content/themes/skyyrose-flagship-2/assets/sot/fonts/hanken-grotesk-latin.woff2",
+        "http://127.0.0.1:60960/wp-content/themes/skyyrose-flagship-2/assets/sot/fonts/anton-latin.woff2",
+        "http://127.0.0.1:60960/wp-content/themes/skyyrose-flagship-2/assets/derived/fonts/archivo-normal-width.woff2",
+        "http://127.0.0.1:60960/wp-content/themes/skyyrose-flagship-2/assets/sot/fonts/inter-latin.woff2"
+      ],
+      "layout": {
+        "width": 390,
+        "height": 844,
+        "scrollWidth": 390,
+        "arrivalHeight": 462.171875,
+        "headingHeight": 44,
+        "state": "unavailable",
+        "actions": [
+          {
+            "href": "#shop",
+            "height": 48
+          },
+          {
+            "href": "#world",
+            "height": 44
+          }
+        ],
+        "mediaVisible": false
+      },
+      "screenshot": {
+        "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261019/kids-arrival/run-85a1bda20/withheld-390-no-preference.png",
+        "sha256": "25793fd77b9fa444bedf13c383ee89332d433e3856f6818649e5044b20e2c6fa",
+        "bytes": 21007
+      }
+    },
+    {
+      "scenario": "withheld",
+      "width": 390,
+      "reducedMotion": "reduce",
+      "status": "PASS_COMPONENT_ASSERTIONS_VISUAL_REVIEW_PENDING",
+      "requests": [
+        "http://127.0.0.1:60960/fixture/withheld",
+        "http://127.0.0.1:60960/wp-content/themes/skyyrose-flagship-2/assets/css/design-tokens.min.css",
+        "http://127.0.0.1:60960/wp-content/themes/skyyrose-flagship-2/assets/css/theme.min.css",
+        "http://127.0.0.1:60960/wp-content/themes/skyyrose-flagship-2/assets/css/controls.min.css",
+        "http://127.0.0.1:60960/wp-content/themes/skyyrose-flagship-2/assets/css/visual-recovery.min.css",
+        "http://127.0.0.1:60960/wp-content/themes/skyyrose-flagship-2/assets/css/collection-world.min.css",
+        "http://127.0.0.1:60960/wp-content/themes/skyyrose-flagship-2/assets/js/visual-recovery.min.js",
+        "http://127.0.0.1:60960/wp-content/themes/skyyrose-flagship-2/assets/sot/fonts/hanken-grotesk-latin.woff2",
+        "http://127.0.0.1:60960/wp-content/themes/skyyrose-flagship-2/assets/sot/fonts/anton-latin.woff2",
+        "http://127.0.0.1:60960/wp-content/themes/skyyrose-flagship-2/assets/derived/fonts/archivo-normal-width.woff2",
+        "http://127.0.0.1:60960/wp-content/themes/skyyrose-flagship-2/assets/sot/fonts/inter-latin.woff2"
+      ],
+      "layout": {
+        "width": 390,
+        "height": 844,
+        "scrollWidth": 390,
+        "arrivalHeight": 462.171875,
+        "headingHeight": 44,
+        "state": "unavailable",
+        "actions": [
+          {
+            "href": "#shop",
+            "height": 48
+          },
+          {
+            "href": "#world",
+            "height": 44
+          }
+        ],
+        "mediaVisible": false
+      },
+      "screenshot": {
+        "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261019/kids-arrival/run-85a1bda20/withheld-390-reduce.png",
+        "sha256": "25793fd77b9fa444bedf13c383ee89332d433e3856f6818649e5044b20e2c6fa",
+        "bytes": 21007
+      }
+    },
+    {
+      "scenario": "early-error",
+      "width": 1440,
+      "reducedMotion": "no-preference",
+      "status": "PASS_COMPONENT_ASSERTIONS_VISUAL_REVIEW_PENDING",
+      "requests": [
+        "http://127.0.0.1:60960/fixture/early-error",
+        "http://127.0.0.1:60960/wp-content/themes/skyyrose-flagship-2/assets/derived/card-fronts/kids-002-768w.webp?v=d01a75645e901914ef8a27fa9c5cf79a8f2a2197213cb4f5af29e9f3c1d40769",
+        "http://127.0.0.1:60960/wp-content/themes/skyyrose-flagship-2/assets/css/design-tokens.min.css",
+        "http://127.0.0.1:60960/wp-content/themes/skyyrose-flagship-2/assets/css/theme.min.css",
+        "http://127.0.0.1:60960/wp-content/themes/skyyrose-flagship-2/assets/css/controls.min.css",
+        "http://127.0.0.1:60960/wp-content/themes/skyyrose-flagship-2/assets/css/visual-recovery.min.css",
+        "http://127.0.0.1:60960/wp-content/themes/skyyrose-flagship-2/assets/css/collection-world.min.css",
+        "http://127.0.0.1:60960/wp-content/themes/skyyrose-flagship-2/assets/js/visual-recovery.min.js",
+        "http://127.0.0.1:60960/wp-content/themes/skyyrose-flagship-2/assets/sot/fonts/hanken-grotesk-latin.woff2",
+        "http://127.0.0.1:60960/wp-content/themes/skyyrose-flagship-2/assets/sot/fonts/anton-latin.woff2",
+        "http://127.0.0.1:60960/wp-content/themes/skyyrose-flagship-2/assets/derived/fonts/archivo-normal-width.woff2",
+        "http://127.0.0.1:60960/wp-content/themes/skyyrose-flagship-2/assets/sot/fonts/inter-latin.woff2"
+      ],
+      "failureBeforeController": {
+        "state": "loading",
+        "complete": true,
+        "naturalWidth": 0,
+        "controllerInitialized": false
+      },
+      "layout": {
+        "width": 1440,
+        "height": 900,
+        "scrollWidth": 1440,
+        "arrivalHeight": 492.578125,
+        "headingHeight": 100.796875,
+        "state": "unavailable",
+        "actions": [
+          {
+            "href": "#shop",
+            "height": 48
+          },
+          {
+            "href": "#world",
+            "height": 44
+          }
+        ],
+        "mediaVisible": false
+      },
+      "screenshot": {
+        "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261019/kids-arrival/run-85a1bda20/early-error-1440-no-preference.png",
+        "sha256": "59a28d1de9af2892518718ff069f2b9d7cf4570e430028024675366d594fb896",
+        "bytes": 33867
+      }
+    },
+    {
+      "scenario": "early-error",
+      "width": 1440,
+      "reducedMotion": "reduce",
+      "status": "PASS_COMPONENT_ASSERTIONS_VISUAL_REVIEW_PENDING",
+      "requests": [
+        "http://127.0.0.1:60960/fixture/early-error",
+        "http://127.0.0.1:60960/wp-content/themes/skyyrose-flagship-2/assets/derived/card-fronts/kids-002-768w.webp?v=d01a75645e901914ef8a27fa9c5cf79a8f2a2197213cb4f5af29e9f3c1d40769",
+        "http://127.0.0.1:60960/wp-content/themes/skyyrose-flagship-2/assets/css/design-tokens.min.css",
+        "http://127.0.0.1:60960/wp-content/themes/skyyrose-flagship-2/assets/css/theme.min.css",
+        "http://127.0.0.1:60960/wp-content/themes/skyyrose-flagship-2/assets/css/controls.min.css",
+        "http://127.0.0.1:60960/wp-content/themes/skyyrose-flagship-2/assets/css/visual-recovery.min.css",
+        "http://127.0.0.1:60960/wp-content/themes/skyyrose-flagship-2/assets/css/collection-world.min.css",
+        "http://127.0.0.1:60960/wp-content/themes/skyyrose-flagship-2/assets/js/visual-recovery.min.js",
+        "http://127.0.0.1:60960/wp-content/themes/skyyrose-flagship-2/assets/sot/fonts/hanken-grotesk-latin.woff2",
+        "http://127.0.0.1:60960/wp-content/themes/skyyrose-flagship-2/assets/sot/fonts/anton-latin.woff2",
+        "http://127.0.0.1:60960/wp-content/themes/skyyrose-flagship-2/assets/derived/fonts/archivo-normal-width.woff2",
+        "http://127.0.0.1:60960/wp-content/themes/skyyrose-flagship-2/assets/sot/fonts/inter-latin.woff2"
+      ],
+      "failureBeforeController": {
+        "state": "loading",
+        "complete": true,
+        "naturalWidth": 0,
+        "controllerInitialized": false
+      },
+      "layout": {
+        "width": 1440,
+        "height": 900,
+        "scrollWidth": 1440,
+        "arrivalHeight": 492.578125,
+        "headingHeight": 100.796875,
+        "state": "unavailable",
+        "actions": [
+          {
+            "href": "#shop",
+            "height": 48
+          },
+          {
+            "href": "#world",
+            "height": 44
+          }
+        ],
+        "mediaVisible": false
+      },
+      "screenshot": {
+        "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261019/kids-arrival/run-85a1bda20/early-error-1440-reduce.png",
+        "sha256": "59a28d1de9af2892518718ff069f2b9d7cf4570e430028024675366d594fb896",
+        "bytes": 33867
+      }
+    },
+    {
+      "scenario": "early-error",
+      "width": 390,
+      "reducedMotion": "no-preference",
+      "status": "PASS_COMPONENT_ASSERTIONS_VISUAL_REVIEW_PENDING",
+      "requests": [
+        "http://127.0.0.1:60960/fixture/early-error",
+        "http://127.0.0.1:60960/wp-content/themes/skyyrose-flagship-2/assets/derived/card-fronts/kids-002-480w.webp?v=20b0d5e61d0d611a6261dd562588c44221bc0f30da6bae213ef6e8e88be975cb",
+        "http://127.0.0.1:60960/wp-content/themes/skyyrose-flagship-2/assets/css/design-tokens.min.css",
+        "http://127.0.0.1:60960/wp-content/themes/skyyrose-flagship-2/assets/css/theme.min.css",
+        "http://127.0.0.1:60960/wp-content/themes/skyyrose-flagship-2/assets/css/controls.min.css",
+        "http://127.0.0.1:60960/wp-content/themes/skyyrose-flagship-2/assets/css/visual-recovery.min.css",
+        "http://127.0.0.1:60960/wp-content/themes/skyyrose-flagship-2/assets/css/collection-world.min.css",
+        "http://127.0.0.1:60960/wp-content/themes/skyyrose-flagship-2/assets/js/visual-recovery.min.js",
+        "http://127.0.0.1:60960/wp-content/themes/skyyrose-flagship-2/assets/sot/fonts/hanken-grotesk-latin.woff2",
+        "http://127.0.0.1:60960/wp-content/themes/skyyrose-flagship-2/assets/sot/fonts/anton-latin.woff2",
+        "http://127.0.0.1:60960/wp-content/themes/skyyrose-flagship-2/assets/derived/fonts/archivo-normal-width.woff2",
+        "http://127.0.0.1:60960/wp-content/themes/skyyrose-flagship-2/assets/sot/fonts/inter-latin.woff2"
+      ],
+      "failureBeforeController": {
+        "state": "loading",
+        "complete": true,
+        "naturalWidth": 0,
+        "controllerInitialized": false
+      },
+      "layout": {
+        "width": 390,
+        "height": 844,
+        "scrollWidth": 390,
+        "arrivalHeight": 462.171875,
+        "headingHeight": 44,
+        "state": "unavailable",
+        "actions": [
+          {
+            "href": "#shop",
+            "height": 48
+          },
+          {
+            "href": "#world",
+            "height": 44
+          }
+        ],
+        "mediaVisible": false
+      },
+      "screenshot": {
+        "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261019/kids-arrival/run-85a1bda20/early-error-390-no-preference.png",
+        "sha256": "25793fd77b9fa444bedf13c383ee89332d433e3856f6818649e5044b20e2c6fa",
+        "bytes": 21007
+      }
+    },
+    {
+      "scenario": "early-error",
+      "width": 390,
+      "reducedMotion": "reduce",
+      "status": "PASS_COMPONENT_ASSERTIONS_VISUAL_REVIEW_PENDING",
+      "requests": [
+        "http://127.0.0.1:60960/fixture/early-error",
+        "http://127.0.0.1:60960/wp-content/themes/skyyrose-flagship-2/assets/derived/card-fronts/kids-002-480w.webp?v=20b0d5e61d0d611a6261dd562588c44221bc0f30da6bae213ef6e8e88be975cb",
+        "http://127.0.0.1:60960/wp-content/themes/skyyrose-flagship-2/assets/css/design-tokens.min.css",
+        "http://127.0.0.1:60960/wp-content/themes/skyyrose-flagship-2/assets/css/theme.min.css",
+        "http://127.0.0.1:60960/wp-content/themes/skyyrose-flagship-2/assets/css/controls.min.css",
+        "http://127.0.0.1:60960/wp-content/themes/skyyrose-flagship-2/assets/css/visual-recovery.min.css",
+        "http://127.0.0.1:60960/wp-content/themes/skyyrose-flagship-2/assets/css/collection-world.min.css",
+        "http://127.0.0.1:60960/wp-content/themes/skyyrose-flagship-2/assets/js/visual-recovery.min.js",
+        "http://127.0.0.1:60960/wp-content/themes/skyyrose-flagship-2/assets/sot/fonts/hanken-grotesk-latin.woff2",
+        "http://127.0.0.1:60960/wp-content/themes/skyyrose-flagship-2/assets/sot/fonts/anton-latin.woff2",
+        "http://127.0.0.1:60960/wp-content/themes/skyyrose-flagship-2/assets/derived/fonts/archivo-normal-width.woff2",
+        "http://127.0.0.1:60960/wp-content/themes/skyyrose-flagship-2/assets/sot/fonts/inter-latin.woff2"
+      ],
+      "failureBeforeController": {
+        "state": "loading",
+        "complete": true,
+        "naturalWidth": 0,
+        "controllerInitialized": false
+      },
+      "layout": {
+        "width": 390,
+        "height": 844,
+        "scrollWidth": 390,
+        "arrivalHeight": 462.171875,
+        "headingHeight": 44,
+        "state": "unavailable",
+        "actions": [
+          {
+            "href": "#shop",
+            "height": 48
+          },
+          {
+            "href": "#world",
+            "height": 44
+          }
+        ],
+        "mediaVisible": false
+      },
+      "screenshot": {
+        "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261019/kids-arrival/run-85a1bda20/early-error-390-reduce.png",
+        "sha256": "25793fd77b9fa444bedf13c383ee89332d433e3856f6818649e5044b20e2c6fa",
+        "bytes": 21007
+      }
+    },
+    {
+      "scenario": "late-error",
+      "width": 1440,
+      "reducedMotion": "no-preference",
+      "status": "PASS_COMPONENT_ASSERTIONS_VISUAL_REVIEW_PENDING",
+      "requests": [
+        "http://127.0.0.1:60960/fixture/late-error",
+        "http://127.0.0.1:60960/wp-content/themes/skyyrose-flagship-2/assets/derived/card-fronts/kids-002-768w.webp?v=d01a75645e901914ef8a27fa9c5cf79a8f2a2197213cb4f5af29e9f3c1d40769",
+        "http://127.0.0.1:60960/wp-content/themes/skyyrose-flagship-2/assets/css/design-tokens.min.css",
+        "http://127.0.0.1:60960/wp-content/themes/skyyrose-flagship-2/assets/css/theme.min.css",
+        "http://127.0.0.1:60960/wp-content/themes/skyyrose-flagship-2/assets/css/controls.min.css",
+        "http://127.0.0.1:60960/wp-content/themes/skyyrose-flagship-2/assets/css/visual-recovery.min.css",
+        "http://127.0.0.1:60960/wp-content/themes/skyyrose-flagship-2/assets/css/collection-world.min.css",
+        "http://127.0.0.1:60960/wp-content/themes/skyyrose-flagship-2/assets/js/visual-recovery.min.js",
+        "http://127.0.0.1:60960/wp-content/themes/skyyrose-flagship-2/assets/sot/fonts/hanken-grotesk-latin.woff2",
+        "http://127.0.0.1:60960/wp-content/themes/skyyrose-flagship-2/assets/sot/fonts/anton-latin.woff2",
+        "http://127.0.0.1:60960/wp-content/themes/skyyrose-flagship-2/assets/derived/fonts/archivo-normal-width.woff2",
+        "http://127.0.0.1:60960/wp-content/themes/skyyrose-flagship-2/assets/sot/fonts/inter-latin.woff2",
+        "http://127.0.0.1:60960/synthetic-missing-product.webp"
+      ],
+      "decoded": {
+        "src": "http://127.0.0.1:60960/wp-content/themes/skyyrose-flagship-2/assets/derived/card-fronts/kids-002-768w.webp?v=d01a75645e901914ef8a27fa9c5cf79a8f2a2197213cb4f5af29e9f3c1d40769",
+        "width": 576,
+        "height": 720,
+        "alt": "Kids Colorblock Hoodie Set — Purple/Black",
+        "role": "collection_hero",
+        "sku": "kids-002",
+        "fit": "contain"
+      },
+      "layout": {
+        "width": 1440,
+        "height": 900,
+        "scrollWidth": 1440,
+        "arrivalHeight": 492.578125,
+        "headingHeight": 100.796875,
+        "state": "unavailable",
+        "actions": [
+          {
+            "href": "#shop",
+            "height": 48
+          },
+          {
+            "href": "#world",
+            "height": 44
+          }
+        ],
+        "mediaVisible": false
+      },
+      "screenshot": {
+        "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261019/kids-arrival/run-85a1bda20/late-error-1440-no-preference.png",
+        "sha256": "59a28d1de9af2892518718ff069f2b9d7cf4570e430028024675366d594fb896",
+        "bytes": 33867
+      }
+    },
+    {
+      "scenario": "late-error",
+      "width": 1440,
+      "reducedMotion": "reduce",
+      "status": "PASS_COMPONENT_ASSERTIONS_VISUAL_REVIEW_PENDING",
+      "requests": [
+        "http://127.0.0.1:60960/fixture/late-error",
+        "http://127.0.0.1:60960/wp-content/themes/skyyrose-flagship-2/assets/derived/card-fronts/kids-002-768w.webp?v=d01a75645e901914ef8a27fa9c5cf79a8f2a2197213cb4f5af29e9f3c1d40769",
+        "http://127.0.0.1:60960/wp-content/themes/skyyrose-flagship-2/assets/css/design-tokens.min.css",
+        "http://127.0.0.1:60960/wp-content/themes/skyyrose-flagship-2/assets/css/theme.min.css",
+        "http://127.0.0.1:60960/wp-content/themes/skyyrose-flagship-2/assets/css/controls.min.css",
+        "http://127.0.0.1:60960/wp-content/themes/skyyrose-flagship-2/assets/css/visual-recovery.min.css",
+        "http://127.0.0.1:60960/wp-content/themes/skyyrose-flagship-2/assets/css/collection-world.min.css",
+        "http://127.0.0.1:60960/wp-content/themes/skyyrose-flagship-2/assets/js/visual-recovery.min.js",
+        "http://127.0.0.1:60960/wp-content/themes/skyyrose-flagship-2/assets/sot/fonts/hanken-grotesk-latin.woff2",
+        "http://127.0.0.1:60960/wp-content/themes/skyyrose-flagship-2/assets/sot/fonts/anton-latin.woff2",
+        "http://127.0.0.1:60960/wp-content/themes/skyyrose-flagship-2/assets/derived/fonts/archivo-normal-width.woff2",
+        "http://127.0.0.1:60960/wp-content/themes/skyyrose-flagship-2/assets/sot/fonts/inter-latin.woff2",
+        "http://127.0.0.1:60960/synthetic-missing-product.webp"
+      ],
+      "decoded": {
+        "src": "http://127.0.0.1:60960/wp-content/themes/skyyrose-flagship-2/assets/derived/card-fronts/kids-002-768w.webp?v=d01a75645e901914ef8a27fa9c5cf79a8f2a2197213cb4f5af29e9f3c1d40769",
+        "width": 576,
+        "height": 720,
+        "alt": "Kids Colorblock Hoodie Set — Purple/Black",
+        "role": "collection_hero",
+        "sku": "kids-002",
+        "fit": "contain"
+      },
+      "layout": {
+        "width": 1440,
+        "height": 900,
+        "scrollWidth": 1440,
+        "arrivalHeight": 492.578125,
+        "headingHeight": 100.796875,
+        "state": "unavailable",
+        "actions": [
+          {
+            "href": "#shop",
+            "height": 48
+          },
+          {
+            "href": "#world",
+            "height": 44
+          }
+        ],
+        "mediaVisible": false
+      },
+      "screenshot": {
+        "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261019/kids-arrival/run-85a1bda20/late-error-1440-reduce.png",
+        "sha256": "59a28d1de9af2892518718ff069f2b9d7cf4570e430028024675366d594fb896",
+        "bytes": 33867
+      }
+    },
+    {
+      "scenario": "late-error",
+      "width": 390,
+      "reducedMotion": "no-preference",
+      "status": "PASS_COMPONENT_ASSERTIONS_VISUAL_REVIEW_PENDING",
+      "requests": [
+        "http://127.0.0.1:60960/fixture/late-error",
+        "http://127.0.0.1:60960/wp-content/themes/skyyrose-flagship-2/assets/derived/card-fronts/kids-002-480w.webp?v=20b0d5e61d0d611a6261dd562588c44221bc0f30da6bae213ef6e8e88be975cb",
+        "http://127.0.0.1:60960/wp-content/themes/skyyrose-flagship-2/assets/css/design-tokens.min.css",
+        "http://127.0.0.1:60960/wp-content/themes/skyyrose-flagship-2/assets/css/theme.min.css",
+        "http://127.0.0.1:60960/wp-content/themes/skyyrose-flagship-2/assets/css/controls.min.css",
+        "http://127.0.0.1:60960/wp-content/themes/skyyrose-flagship-2/assets/css/visual-recovery.min.css",
+        "http://127.0.0.1:60960/wp-content/themes/skyyrose-flagship-2/assets/css/collection-world.min.css",
+        "http://127.0.0.1:60960/wp-content/themes/skyyrose-flagship-2/assets/js/visual-recovery.min.js",
+        "http://127.0.0.1:60960/wp-content/themes/skyyrose-flagship-2/assets/sot/fonts/hanken-grotesk-latin.woff2",
+        "http://127.0.0.1:60960/wp-content/themes/skyyrose-flagship-2/assets/sot/fonts/anton-latin.woff2",
+        "http://127.0.0.1:60960/wp-content/themes/skyyrose-flagship-2/assets/derived/fonts/archivo-normal-width.woff2",
+        "http://127.0.0.1:60960/wp-content/themes/skyyrose-flagship-2/assets/sot/fonts/inter-latin.woff2",
+        "http://127.0.0.1:60960/synthetic-missing-product.webp"
+      ],
+      "decoded": {
+        "src": "http://127.0.0.1:60960/wp-content/themes/skyyrose-flagship-2/assets/derived/card-fronts/kids-002-480w.webp?v=20b0d5e61d0d611a6261dd562588c44221bc0f30da6bae213ef6e8e88be975cb",
+        "width": 358,
+        "height": 447,
+        "alt": "Kids Colorblock Hoodie Set — Purple/Black",
+        "role": "collection_hero",
+        "sku": "kids-002",
+        "fit": "contain"
+      },
+      "layout": {
+        "width": 390,
+        "height": 844,
+        "scrollWidth": 390,
+        "arrivalHeight": 462.171875,
+        "headingHeight": 44,
+        "state": "unavailable",
+        "actions": [
+          {
+            "href": "#shop",
+            "height": 48
+          },
+          {
+            "href": "#world",
+            "height": 44
+          }
+        ],
+        "mediaVisible": false
+      },
+      "screenshot": {
+        "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261019/kids-arrival/run-85a1bda20/late-error-390-no-preference.png",
+        "sha256": "25793fd77b9fa444bedf13c383ee89332d433e3856f6818649e5044b20e2c6fa",
+        "bytes": 21007
+      }
+    },
+    {
+      "scenario": "late-error",
+      "width": 390,
+      "reducedMotion": "reduce",
+      "status": "PASS_COMPONENT_ASSERTIONS_VISUAL_REVIEW_PENDING",
+      "requests": [
+        "http://127.0.0.1:60960/fixture/late-error",
+        "http://127.0.0.1:60960/wp-content/themes/skyyrose-flagship-2/assets/derived/card-fronts/kids-002-480w.webp?v=20b0d5e61d0d611a6261dd562588c44221bc0f30da6bae213ef6e8e88be975cb",
+        "http://127.0.0.1:60960/wp-content/themes/skyyrose-flagship-2/assets/css/design-tokens.min.css",
+        "http://127.0.0.1:60960/wp-content/themes/skyyrose-flagship-2/assets/css/theme.min.css",
+        "http://127.0.0.1:60960/wp-content/themes/skyyrose-flagship-2/assets/css/controls.min.css",
+        "http://127.0.0.1:60960/wp-content/themes/skyyrose-flagship-2/assets/css/visual-recovery.min.css",
+        "http://127.0.0.1:60960/wp-content/themes/skyyrose-flagship-2/assets/css/collection-world.min.css",
+        "http://127.0.0.1:60960/wp-content/themes/skyyrose-flagship-2/assets/js/visual-recovery.min.js",
+        "http://127.0.0.1:60960/wp-content/themes/skyyrose-flagship-2/assets/sot/fonts/hanken-grotesk-latin.woff2",
+        "http://127.0.0.1:60960/wp-content/themes/skyyrose-flagship-2/assets/sot/fonts/anton-latin.woff2",
+        "http://127.0.0.1:60960/wp-content/themes/skyyrose-flagship-2/assets/derived/fonts/archivo-normal-width.woff2",
+        "http://127.0.0.1:60960/wp-content/themes/skyyrose-flagship-2/assets/sot/fonts/inter-latin.woff2",
+        "http://127.0.0.1:60960/synthetic-missing-product.webp"
+      ],
+      "decoded": {
+        "src": "http://127.0.0.1:60960/wp-content/themes/skyyrose-flagship-2/assets/derived/card-fronts/kids-002-480w.webp?v=20b0d5e61d0d611a6261dd562588c44221bc0f30da6bae213ef6e8e88be975cb",
+        "width": 358,
+        "height": 447,
+        "alt": "Kids Colorblock Hoodie Set — Purple/Black",
+        "role": "collection_hero",
+        "sku": "kids-002",
+        "fit": "contain"
+      },
+      "layout": {
+        "width": 390,
+        "height": 844,
+        "scrollWidth": 390,
+        "arrivalHeight": 462.171875,
+        "headingHeight": 44,
+        "state": "unavailable",
+        "actions": [
+          {
+            "href": "#shop",
+            "height": 48
+          },
+          {
+            "href": "#world",
+            "height": 44
+          }
+        ],
+        "mediaVisible": false
+      },
+      "screenshot": {
+        "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261019/kids-arrival/run-85a1bda20/late-error-390-reduce.png",
+        "sha256": "25793fd77b9fa444bedf13c383ee89332d433e3856f6818649e5044b20e2c6fa",
+        "bytes": 21007
+      }
+    }
+  ],
+  "cleanup": [
+    {
+      "label": "context:admitted:1440:no-preference",
+      "status": "PASS"
+    },
+    {
+      "label": "context:admitted:1440:reduce",
+      "status": "PASS"
+    },
+    {
+      "label": "context:admitted:390:no-preference",
+      "status": "PASS"
+    },
+    {
+      "label": "context:admitted:390:reduce",
+      "status": "PASS"
+    },
+    {
+      "label": "context:withheld:1440:no-preference",
+      "status": "PASS"
+    },
+    {
+      "label": "context:withheld:1440:reduce",
+      "status": "PASS"
+    },
+    {
+      "label": "context:withheld:390:no-preference",
+      "status": "PASS"
+    },
+    {
+      "label": "context:withheld:390:reduce",
+      "status": "PASS"
+    },
+    {
+      "label": "context:early-error:1440:no-preference",
+      "status": "PASS"
+    },
+    {
+      "label": "context:early-error:1440:reduce",
+      "status": "PASS"
+    },
+    {
+      "label": "context:early-error:390:no-preference",
+      "status": "PASS"
+    },
+    {
+      "label": "context:early-error:390:reduce",
+      "status": "PASS"
+    },
+    {
+      "label": "context:late-error:1440:no-preference",
+      "status": "PASS"
+    },
+    {
+      "label": "context:late-error:1440:reduce",
+      "status": "PASS"
+    },
+    {
+      "label": "context:late-error:390:no-preference",
+      "status": "PASS"
+    },
+    {
+      "label": "context:late-error:390:reduce",
+      "status": "PASS"
+    },
+    {
+      "label": "browser-connection",
+      "status": "PASS"
+    },
+    {
+      "label": "browser-server",
+      "status": "PASS"
+    },
+    {
+      "label": "owned-browser-child-exit",
+      "status": "PASS"
+    },
+    {
+      "label": "fixture-http-server",
+      "status": "PASS"
+    }
+  ],
+  "limits": [
+    "Page request interception is not process-wide network containment",
+    "Offline rendered component; no native WordPress/WooCommerce session, installed-stack or privacy-collector qualification"
+  ],
+  "authentication": "NOT_APPLICABLE_OFFLINE_NO_CREDENTIALS",
+  "browserChild": {
+    "pid": 88891,
+    "exitCode": 0,
+    "signalCode": null
+  }
+}

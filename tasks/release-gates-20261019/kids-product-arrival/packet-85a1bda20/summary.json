@@ -1,0 +1,135 @@
+{
+  "schema": "skyyrose.kids-product-arrival-component.v1",
+  "status": "PASS_BOUNDED_COMPONENT_RENDER_AND_VISUAL_REVIEW",
+  "source_commit": "85a1bda20f82c9d70f4ccfc7b0b0be94d84a8786",
+  "source_tree": "b7f64bcb5aee46bc56ac46df4967bf570bff82a6",
+  "source_report": {
+    "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261019/kids-arrival/run-85a1bda20/results.json",
+    "sha256": "621cd50c478c9a81baa4b8565aa934c6ef6cbbfa74dc7e963bbd8873a9f73ec8",
+    "bytes": 44985
+  },
+  "cases": 16,
+  "cleanup_rows": 20,
+  "browser_child": {
+    "pid": 88891,
+    "exitCode": 0,
+    "signalCode": null
+  },
+  "screenshots": 16,
+  "distinct_screenshot_bodies": 4,
+  "screenshot_groups": {
+    "0b28aa5f2f5bd9784ff843125b39758cf8043f73284c21a895e22ae5ce36bbb6": [
+      {
+        "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261019/kids-arrival/run-85a1bda20/admitted-1440-no-preference.png",
+        "sha256": "0b28aa5f2f5bd9784ff843125b39758cf8043f73284c21a895e22ae5ce36bbb6",
+        "bytes": 532852
+      },
+      {
+        "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261019/kids-arrival/run-85a1bda20/admitted-1440-reduce.png",
+        "sha256": "0b28aa5f2f5bd9784ff843125b39758cf8043f73284c21a895e22ae5ce36bbb6",
+        "bytes": 532852
+      }
+    ],
+    "aa9565e69212cb31867827b16ed0e4de085172ee0ff0e7626be17b9e987a3be6": [
+      {
+        "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261019/kids-arrival/run-85a1bda20/admitted-390-no-preference.png",
+        "sha256": "aa9565e69212cb31867827b16ed0e4de085172ee0ff0e7626be17b9e987a3be6",
+        "bytes": 270763
+      },
+      {
+        "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261019/kids-arrival/run-85a1bda20/admitted-390-reduce.png",
+        "sha256": "aa9565e69212cb31867827b16ed0e4de085172ee0ff0e7626be17b9e987a3be6",
+        "bytes": 270763
+      }
+    ],
+    "59a28d1de9af2892518718ff069f2b9d7cf4570e430028024675366d594fb896": [
+      {
+        "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261019/kids-arrival/run-85a1bda20/withheld-1440-no-preference.png",
+        "sha256": "59a28d1de9af2892518718ff069f2b9d7cf4570e430028024675366d594fb896",
+        "bytes": 33867
+      },
+      {
+        "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261019/kids-arrival/run-85a1bda20/withheld-1440-reduce.png",
+        "sha256": "59a28d1de9af2892518718ff069f2b9d7cf4570e430028024675366d594fb896",
+        "bytes": 33867
+      },
+      {
+        "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261019/kids-arrival/run-85a1bda20/early-error-1440-no-preference.png",
+        "sha256": "59a28d1de9af2892518718ff069f2b9d7cf4570e430028024675366d594fb896",
+        "bytes": 33867
+      },
+      {
+        "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261019/kids-arrival/run-85a1bda20/early-error-1440-reduce.png",
+        "sha256": "59a28d1de9af2892518718ff069f2b9d7cf4570e430028024675366d594fb896",
+        "bytes": 33867
+      },
+      {
+        "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261019/kids-arrival/run-85a1bda20/late-error-1440-no-preference.png",
+        "sha256": "59a28d1de9af2892518718ff069f2b9d7cf4570e430028024675366d594fb896",
+        "bytes": 33867
+      },
+      {
+        "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261019/kids-arrival/run-85a1bda20/late-error-1440-reduce.png",
+        "sha256": "59a28d1de9af2892518718ff069f2b9d7cf4570e430028024675366d594fb896",
+        "bytes": 33867
+      }
+    ],
+    "25793fd77b9fa444bedf13c383ee89332d433e3856f6818649e5044b20e2c6fa": [
+      {
+        "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261019/kids-arrival/run-85a1bda20/withheld-390-no-preference.png",
+        "sha256": "25793fd77b9fa444bedf13c383ee89332d433e3856f6818649e5044b20e2c6fa",
+        "bytes": 21007
+      },
+      {
+        "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261019/kids-arrival/run-85a1bda20/withheld-390-reduce.png",
+        "sha256": "25793fd77b9fa444bedf13c383ee89332d433e3856f6818649e5044b20e2c6fa",
+        "bytes": 21007
+      },
+      {
+        "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261019/kids-arrival/run-85a1bda20/early-error-390-no-preference.png",
+        "sha256": "25793fd77b9fa444bedf13c383ee89332d433e3856f6818649e5044b20e2c6fa",
+        "bytes": 21007
+      },
+      {
+        "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261019/kids-arrival/run-85a1bda20/early-error-390-reduce.png",
+        "sha256": "25793fd77b9fa444bedf13c383ee89332d433e3856f6818649e5044b20e2c6fa",
+        "bytes": 21007
+      },
+      {
+        "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261019/kids-arrival/run-85a1bda20/late-error-390-no-preference.png",
+        "sha256": "25793fd77b9fa444bedf13c383ee89332d433e3856f6818649e5044b20e2c6fa",
+        "bytes": 21007
+      },
+      {
+        "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261019/kids-arrival/run-85a1bda20/late-error-390-reduce.png",
+        "sha256": "25793fd77b9fa444bedf13c383ee89332d433e3856f6818649e5044b20e2c6fa",
+        "bytes": 21007
+      }
+    ]
+  },
+  "observed_regressions": "PHP syntax and21 collection-imagery assertions passed;18 hero-controller unit tests passed (2product fallback/16existing motion). Session terminal evidence, no new nativeWP execution implied.",
+  "visual_reviews": [
+    {
+      "reviewer": "Integration",
+      "scope": "Opened all four distinct desktop/mobile admitted/fallback PNGs; all16 screenshots byte-match these four. Readable heading/copy/actions, complete contained garment, compactmissingmedia."
+    },
+    {
+      "reviewer_thread": "01a0f769-1e1a-76e1-aa99-1c4bd2dc6149",
+      "scope": "Independent source/assertion/visual review:16cases/20cleanupPASS, deterministicpreinitfailure observed, all16screens hash-match4viewed bodies; boundedcomponentPASSonly."
+    }
+  ],
+  "fixture_review": {
+    "reviewer_thread": "01a0fc6f-5745-7342-b2a9-c2effe7bcd2b",
+    "scope": "Independent914file395979849byteGit/blob/mode/bothcopycensus/distinctinodecheck; solelogicalKidsadmissiondeletion confirmed; sourceunchanged. No browser rerun."
+  },
+  "limits": [
+    "Real templates/media gate/builtassets in a browser; WordPress/WooCommerce request layer stubbed",
+    "No full-page navigation/cart/session/checkout/native runtime or physical-device qualification",
+    "No process-wide network containment or privacy-collector completeness proof",
+    "Build dependencies2294 entries pre/post exact; browser dependency package metadata pinned by run; full Playwright package pre/post byte census not captured in this component run",
+    "Existing image usage is staging-only; no new production/creative/immersive/media/GLB acceptance",
+    "Old frozen source d953e51e, ZIP and diagnostics unchanged; candidate needs final successor package/adoption identities"
+  ],
+  "holds": "ALL_LIVE_CONVERSION_DEPLOYMENT_AND_EXISTING_HOLDS_REMAIN",
+  "authentication": "NOT_APPLICABLE_OFFLINE"
+}
