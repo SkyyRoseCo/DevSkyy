@@ -1,0 +1,92 @@
+{
+  "schema": "skyyrose.public-context-collector-unqualified-checkpoint.v1",
+  "status": "NOT_READY_UNCONDITIONALLY_HELD_ENTRYPOINT",
+  "authentication": "NOT_APPLICABLE",
+  "current_sources": {
+    "tools/v2-runtime/gate4-private-collector/context.cjs": {
+      "path": "tools/v2-runtime/gate4-private-collector/context.cjs",
+      "sha256": "79b49be7e47a899c02d84881cea0bdd8745cdc5894831a2ccb51ebd80da07240",
+      "bytes": 21143
+    },
+    "tools/v2-runtime/gate4-private-collector/context-ownership.cjs": {
+      "path": "tools/v2-runtime/gate4-private-collector/context-ownership.cjs",
+      "sha256": "3bc987a5d90949f3b0ad0491cff16c22bf0aea7fe4382300b4e85b844b1b02eb",
+      "bytes": 3251
+    },
+    "tools/v2-runtime/gate4-private-collector/context-launcher.py": {
+      "path": "tools/v2-runtime/gate4-private-collector/context-launcher.py",
+      "sha256": "4a10768013a7063f7d4b616ed1866e33678d611b061303ea16fa85645a2638f6",
+      "bytes": 6674
+    },
+    "tools/v2-runtime/gate4-private-collector/test-context-controls.cjs": {
+      "path": "tools/v2-runtime/gate4-private-collector/test-context-controls.cjs",
+      "sha256": "b43ce226abc4feff9a188dcf0b8d1d088f72db1a9addabe419696f9d479b3761",
+      "bytes": 7356
+    },
+    "tasks/release-gates-20261019/gate4-private-collector-context/PLAN.md": {
+      "path": "tasks/release-gates-20261019/gate4-private-collector-context/PLAN.md",
+      "sha256": "2271cd56a78be626a6830b94e555ac1e6e5a273180806c57041216ebb9d663e6",
+      "bytes": 4754
+    }
+  },
+  "source_reviews": {
+    "collector_capability_architect": "PRE_EXEC_DESIGN_ONLY_NO_IMPLEMENTATION_OR_RUNTIME_ACCEPTANCE",
+    "collector_typescript_review": "HELD_ENTRYPOINT_AND_PLAN_SCOPE_PASS_NOT_CAPTURE_OWNERSHIP",
+    "gate4_python_review": "DRAFT_LAUNCHER_NARROW_SOURCE_CHECKPOINT_PASS_NOT_HANDSHAKE_OR_RUNTIME"
+  },
+  "old_node_only_controls": {
+    "receipt": {
+      "path": ".artifacts/release-gates-20261019/gate4-private-collector-context/controls-1792441762540/results.json",
+      "sha256": "0fce05c4d2c2163975720056f03d04530f56ef9af1ca8afa67886bd15bc2f921",
+      "bytes": 28765
+    },
+    "source_archives": {
+      "tools/v2-runtime/gate4-private-collector/context.cjs": {
+        "path": ".artifacts/release-gates-20261019/gate4-private-collector-context/controls-1792441762540/source-snapshots/tools/v2-runtime/gate4-private-collector/context.cjs",
+        "sha256": "74375938696a86c39662131c3f85869711e0fbad7af9043d9923faa83fd25d86",
+        "bytes": 21035
+      },
+      "tools/v2-runtime/gate4-private-collector/context-ownership.cjs": {
+        "path": ".artifacts/release-gates-20261019/gate4-private-collector-context/controls-1792441762540/source-snapshots/tools/v2-runtime/gate4-private-collector/context-ownership.cjs",
+        "sha256": "3bc987a5d90949f3b0ad0491cff16c22bf0aea7fe4382300b4e85b844b1b02eb",
+        "bytes": 3251
+      },
+      "tools/v2-runtime/gate4-private-collector/test-context-controls.cjs": {
+        "path": ".artifacts/release-gates-20261019/gate4-private-collector-context/controls-1792441762540/source-snapshots/tools/v2-runtime/gate4-private-collector/test-context-controls.cjs",
+        "sha256": "b43ce226abc4feff9a188dcf0b8d1d088f72db1a9addabe419696f9d479b3761",
+        "bytes": 7356
+      },
+      "tools/v2-runtime/gate4-private-collector/capability.cjs": {
+        "path": ".artifacts/release-gates-20261019/gate4-private-collector-context/controls-1792441762540/source-snapshots/tools/v2-runtime/gate4-private-collector/capability.cjs",
+        "sha256": "1292fb1c036b6f1d6aac5b7dab47337fc89646332a6eca881ea6a67917c194d4",
+        "bytes": 30064
+      },
+      "tools/v2-runtime/gate4-private-collector/pipe.cjs": {
+        "path": ".artifacts/release-gates-20261019/gate4-private-collector-context/controls-1792441762540/source-snapshots/tools/v2-runtime/gate4-private-collector/pipe.cjs",
+        "sha256": "4ae15171559ba67bab4b754f6fe869c7d1f708f112fa5c848e59d7550aa4ded7",
+        "bytes": 3245
+      },
+      "tasks/release-gates-20261019/gate4-private-collector-context/PLAN.md": {
+        "path": ".artifacts/release-gates-20261019/gate4-private-collector-context/controls-1792441762540/source-snapshots/tasks/release-gates-20261019/gate4-private-collector-context/PLAN.md",
+        "sha256": "530add756c5dc9c5961e8c35682d72b0f14d7579e16deb92d01ed031d30db1e0",
+        "bytes": 3688
+      }
+    },
+    "actual_status": "PASS_BOUNDED_OWNERSHIP_CONTROLS_NO_BROWSER",
+    "controls": 12,
+    "scope": "FRAMING_AND_EXISTING_NODE_PROCESS_TESTS_ONLY; browserleaderexitwithprofilelessdescendantsnotcovered"
+  },
+  "no_browser_execution": true,
+  "no_broker_execution": true,
+  "remaining_local_work": [
+    "Integrate parent registration/identity/sourcepin validation before ACK and Chromium takeover check before context",
+    "Harmless synthetic exec proving same PID/PGID and exact CDP descriptor inheritance",
+    "Missing/stale/wrong/tampered ACK and registration; nonregular/oversized files; executable drift; failedexec",
+    "Browserstand-in leader death with profileless samegroupdescendants using actual registered productioncleanup path",
+    "Independent remaininggroupcleanup after earliercleanupfailure",
+    "Integrated source/control review before bounded actual five-request browser capability probe",
+    "Then qualify original12request correlation,40route/profile contract,storage races,sanitation and policy separately"
+  ],
+  "existing_privacy_verdicts": "ORIGINAL_FAIL_AND_EIGHT_UNKNOWN_UNCHANGED",
+  "authority": "ALL_EXISTING_LIVE_HOLDS_REMAIN"
+}
