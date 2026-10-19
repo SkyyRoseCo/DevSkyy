@@ -449,7 +449,7 @@ def setup():
         + json.dumps(URL)
         + ");\ndefine('WP_SITEURL',"
         + json.dumps(URL)
-        + ");\ndefine('AUTH_KEY','synthetic-no-remote-authority');\ndefine('SECURE_AUTH_KEY','synthetic-no-remote-authority');\ndefine('LOGGED_IN_KEY','synthetic-no-remote-authority');\ndefine('NONCE_KEY','synthetic-no-remote-authority');\ndefine('ABSPATH',__DIR__.'/');\nrequire_once ABSPATH.'wp-settings.php';\n"
+        + ");\ndefine('AUTH_KEY','synthetic-no-remote-authority');\ndefine('SECURE_AUTH_KEY','synthetic-no-remote-authority');\ndefine('LOGGED_IN_KEY','synthetic-no-remote-authority');\ndefine('NONCE_KEY','synthetic-no-remote-authority');\nif(!defined('ABSPATH')){define('ABSPATH',__DIR__.'/');}\nrequire_once ABSPATH.'wp-settings.php';\n"
     )
     guard(SITE / "wp-config.php")
     (SITE / "wp-config.php").write_text(config)
