@@ -1,0 +1,79 @@
+{
+  "schema": "skyyrose.private-hpos-v1-additive-acceptance.v1",
+  "status": "ACCEPTED_PRIVATE_SYNTHETIC_HPOS_NATIVE_V1_EVIDENCE",
+  "recorded_utc": "2026-10-19T20:44:19.491560+00:00",
+  "execution_source": "7632a0798eb60ffdd5e652b88e5fa099d4712b72",
+  "evidence_commit": "bb8b0c250e6a4e7190ec919782ed92018f3796e7",
+  "run": "1792441452292547000",
+  "manifest": {
+    "path": "tasks/release-gates-20261019/gate4-hpos-v1/packet-1792441452292547000/continuation-manifest.json",
+    "sha256": "64c9a2c78a13d5bc74573cf98939b6ba0bde744915d75ff1e8eeb56c846f59a8",
+    "bytes": 1576
+  },
+  "index": {
+    "path": "tasks/release-gates-20261019/gate4-hpos-v1/packet-1792441452292547000/evidence-index.json",
+    "sha256": "be4946b9865963b784c986316c53eb0bd122839b9cf3f55eaa5e3891eeb2e4a9",
+    "bytes": 96210
+  },
+  "original_report": {
+    "path": "tasks/release-gates-20261019/gate4-hpos-v1/packet-1792441452292547000/results.json",
+    "sha256": "7936fc12e5d3bf0e943bfa2b4cc6a67e794c5e96703033699417ef16ebdaca95",
+    "bytes": 176212
+  },
+  "reviews": [
+    {
+      "reviewer": "release_reconciliation_architect",
+      "scope": "Actual execution/assertions/source bounds",
+      "verdict": "PASS"
+    },
+    {
+      "reviewer": "gate4_restore_db_review",
+      "scope": "Actual native object/SQL/refusal/persistence/stock evidence",
+      "verdict": "PASS"
+    },
+    {
+      "reviewer": "gate4_python_review",
+      "scope": "Exact freezer source and execution/source/receipt bindings before offline packaging",
+      "verdict": "PASS"
+    },
+    {
+      "reviewer_thread": "01a0fc6f-5745-7342-b2a9-c2effe7bcd2b",
+      "scope": "Independent frozen artifact/source/runtime/census integrity",
+      "verdict": "ACCEPTED",
+      "reported_pin_checks": 129568,
+      "reported_distinct_files_hashed": 108463,
+      "reported_errors": 0,
+      "direct_refs": 449,
+      "qualified_files": 35651,
+      "prior_qualified_files": 37031,
+      "qualified_and_prior_exact_census": true,
+      "frozen_git_files": 7,
+      "executed_source_pins": 17,
+      "runtime_binaries": 5,
+      "raw_success_and_failure_receipts": 355
+    }
+  ],
+  "runtime_outcome": {
+    "steps": 20,
+    "payment_observations": 12,
+    "native_hpos_orders": 7,
+    "refusal_controls": [
+      "18PASS",
+      "17PASS+1NA_ALREADY_SELECTED_GATEWAY",
+      "18PASS"
+    ],
+    "services_stopped": true,
+    "protected_originals_and_prior_fixture_unchanged": true,
+    "cleanup_errors": []
+  },
+  "retained_limits": [
+    "Sevenplugin PHP8.5.6/MariaDB13 synthetic HPOS-native fakegateway only",
+    "Three named refusals permit exactly attributed native gateway/date/customer-state writes, not physical NOOP",
+    "Bare-handler probe paid stock0to-1; no general handler/realgateway stock safety follows",
+    "Four failed attempts and prior forced-refund physicalrewriteFAIL remain unchanged",
+    "No populated-sync lifecycle rerun or prior CPT packet rewrite",
+    "No installed33/runtimeparity/browser/HTTP/session/realgateway/privacy/release qualification",
+    "Private historical1290/1292synthetic insertionownershipNOT_ESTABLISHED, untouched; no liveorphan inference"
+  ],
+  "live_authority": "ALL_LIVE_CONVERSION_DEPLOYMENT_AND_OTHER_EXISTING_HOLDS_REMAIN"
+}
