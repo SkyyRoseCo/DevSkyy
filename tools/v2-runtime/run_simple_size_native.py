@@ -710,9 +710,9 @@ def qualify(seed):
             payload["extensions"] = {"skyyrose-simple-size": {"size": size}}
         return api.api("cart/add-item", payload)
 
-    assert api_add(products["br-001"], "S")[0] == 200
-    assert api_add(products["br-001"], "M")[0] == 200
-    assert api_add(products["br-001"], "S")[0] == 200
+    assert api_add(products["br-001"], "S")[0] == 201
+    assert api_add(products["br-001"], "M")[0] == 201
+    assert api_add(products["br-001"], "S")[0] == 201
     items = api.api("cart")[1]["items"]
     assert len(items) == 2 and sorted(item["quantity"] for item in items) == [1, 2]
     record("ACTUAL_STORE_API_INGRESS_HASHING_AND_TYPED_REFUSALS")
