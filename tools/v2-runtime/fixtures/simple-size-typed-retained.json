@@ -1,0 +1,23 @@
+{
+  "source_path": "tasks/release-gates-20261019/gate4-populated/run-1792441452292547000/hpos-object-proof-seed-pre-conversion.json",
+  "source_sha256": "115c7561751010e33d47d90437abb63e2989d38ba46bcd224bc09b9bca07e03a",
+  "json_path": [
+    "helper_snapshot",
+    "orders",
+    "v1_success",
+    "items",
+    "1",
+    "meta_data",
+    3,
+    "value"
+  ],
+  "scope": "Exact native synthetic HPOS metadata extraction; no full-order or real-customer claim",
+  "payload": {
+    "boolean": true,
+    "fractional": 1.0,
+    "integer": 1
+  },
+  "source_checkout": "/Users/theceo/.codex/worktrees/release-gates-20261019/DevSkyy",
+  "payload_sha256": "7a4d16defa34851dfea4ec6aa318471321bc6e01972f85fd5431636ea8311168",
+  "provenance": "SOURCE_VERIFIED_EXTRACTION; portable unit controls use the pinned minimal payload, not an external runtime"
+}

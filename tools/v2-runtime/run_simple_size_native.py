@@ -7,10 +7,15 @@ installed configuration, credentials, external HTTP, conversion or deployment.
 from __future__ import annotations
 
 import ctypes
+from contextlib import contextmanager
+from datetime import datetime
+import argparse
 import hashlib
+import html
 import http.cookiejar
 import json
 import os
+import re
 import signal
 from pathlib import Path
 import socket
@@ -54,7 +59,7 @@ CLIENT_PROFILE = (
     + '")))'
 )
 REPORT: dict = {
-    "schema": "skyyrose.simple-size-native.v1",
+    "schema": "skyyrose.simple-size-native.v2",
     "status": "INCOMPLETE",
     "authentication": "NOT_APPLICABLE_SYNTHETIC_LOCAL",
     "run": RUN,
@@ -69,6 +74,7 @@ REPORT: dict = {
 CHILDREN: list[subprocess.Popen] = []
 COMMAND_CHILDREN: list[subprocess.Popen] = []
 SEQ = 0
+STORAGE = "hpos"
 TASK_ENV = {
     "PATH": "/opt/homebrew/bin:/usr/bin:/bin",
     "TMPDIR": str(PRIVATE / "tmp"),
@@ -267,7 +273,32 @@ def native(*args):
     marker = b"SS_RESULT="
     if marker not in body:
         raise RuntimeError("Missing native result marker")
-    return json.loads(body.rsplit(marker, 1)[1])
+    value = json.loads(body.rsplit(marker, 1)[1])
+    validate_observed_orders(value)
+    return value
+
+
+def validate_observed_orders(value):
+    if isinstance(value, dict):
+        if "data_store" in value and "native_data" in value:
+            expected = (
+                "Automattic\\WooCommerce\\Internal\\DataStores\\Orders\\OrdersTableDataStore"
+                if STORAGE == "hpos"
+                else "WC_Order_Data_Store_CPT"
+            )
+            assert value["data_store"] == expected
+            for item in value["items"]:
+                typed = [
+                    row["value"] for row in item["meta_data"] if row["key"] == "_ss_typed_history"
+                ]
+                assert len(typed) == 1 and canonical(typed[0]) == canonical(
+                    {"boolean": True, "fractional": 1.0, "integer": 1}
+                )
+        for child in value.values():
+            validate_observed_orders(child)
+    elif isinstance(value, list):
+        for child in value:
+            validate_observed_orders(child)
 
 
 def clone_tree(source, target, skip=None):
@@ -323,11 +354,15 @@ class Client:
             NoRedirect(),
         )
         self.token = None
+        self.rest_nonce = None
 
     def request(self, path, payload=None, method=None, api=False):
+        capacity()
         if not path.startswith("/") or path.startswith("//"):
             raise ValueError("Own loopback path required")
         headers = {}
+        if self.rest_nonce:
+            headers["X-WP-Nonce"] = self.rest_nonce
         if api and self.token:
             headers["Cart-Token"] = self.token
         if payload is not None:
@@ -443,7 +478,9 @@ def setup():
     config = (
         "<?php\ndefine('DB_NAME','sr_simple_size_fixture');\ndefine('DB_USER','root');\ndefine('DB_PASSWORD','');\ndefine('DB_HOST',"
         + json.dumps("localhost:" + SOCKET)
-        + ");\ndefine('DB_CHARSET','utf8mb4');\n$table_prefix='wp_';\ndefine('SKYYROSE_RELEASE_SYNTHETIC_FIXTURE',true);\ndefine('SR_SIMPLE_SIZE_FIXTURE_ROOT',"
+        + ");\ndefine('DB_CHARSET','utf8mb4');\n$table_prefix='wp_';\ndefine('SKYYROSE_RELEASE_SYNTHETIC_FIXTURE',true);\ndefine('SR_SIMPLE_SIZE_STORAGE',"
+        + json.dumps(STORAGE)
+        + ");\ndefine('SR_SIMPLE_SIZE_FIXTURE_ROOT',"
         + json.dumps(str(PRIVATE))
         + ");\ndefine('DISABLE_WP_CRON',true);\ndefine('WP_HTTP_BLOCK_EXTERNAL',true);\ndefine('AUTOMATIC_UPDATER_DISABLED',true);\ndefine('WP_DEBUG',false);\ndefine('WP_HOME',"
         + json.dumps(URL)
@@ -553,6 +590,13 @@ def setup():
     )
     wp("plugin", "activate", *PLUGINS)
     wp("theme", "activate", "skyyrose-flagship-2")
+    wp(
+        "option",
+        "update",
+        "woocommerce_custom_orders_table_enabled",
+        "yes" if STORAGE == "hpos" else "no",
+    )
+    wp("option", "update", "woocommerce_custom_orders_table_data_sync_enabled", "no")
     seed = native("init")
     write(PRIVATE / "seed.json", seed)
     assert (
@@ -562,7 +606,8 @@ def setup():
     )
     assert (
         len(seed["runtime"]["plugins"]) == 7
-        and "OrdersTableDataStore" in seed["legacy"]["data_store"]
+        and ("OrdersTableDataStore" if STORAGE == "hpos" else "WC_Order_Data_Store_CPT")
+        in seed["legacy"]["data_store"]
     )
     profile = (
         CLIENT_PROFILE
@@ -679,7 +724,7 @@ def qualify(seed):
         native("option", "ss_drop_mode", "")
         assert "skyyrose_simple_size_order" in native("payment-check", order["id"])["errors"]
         before = processor_count()
-        native("pay", order["id"])
+        pay_order(order["id"])
         assert processor_count() == before
         record(
             "CLASSIC_DROPPED_PERSISTENCE_REFUSED_" + kind.upper(),
@@ -737,9 +782,568 @@ def qualify(seed):
         "Native admin/email/REST size readback and actual order-again reselection",
         "Final successor build/package/preview adoption",
     ]
+    return paired
+
+
+def pay_order(order_id):
+    label = "pay-" + str(SEQ + 1)
+    event_start = len(events())
+    wp(
+        "eval-file",
+        ROOT / "tools/v2-runtime/simple-size-native-controls.php",
+        "pay",
+        order_id,
+        label,
+    )
+    path = PRIVATE / (label + ".json")
+    result = json.loads(path.read_text())
+    validate_observed_orders(result)
+    assert result["order"]["id"] == order_id
+    assert ("OrdersTableDataStore" if STORAGE == "hpos" else "WC_Order_Data_Store_CPT") in result[
+        "order"
+    ]["data_store"]
+    result["events_from"] = event_start
+    return result
+
+
+def canonical(value):
+    return json.dumps(
+        value, sort_keys=True, separators=(",", ":"), ensure_ascii=False, allow_nan=False
+    )
+
+
+def immutable_order(order, allow_stock_meta=False):
+    value = json.loads(
+        json.dumps(
+            {
+                key: order[key]
+                for key in [
+                    "id",
+                    "items",
+                    "generation",
+                    "raw_size_rows",
+                    "raw_generation_rows",
+                    "total",
+                    "fixture_order_meta",
+                ]
+            }
+        )
+    )
+    if allow_stock_meta:
+        for item in value["items"]:
+            item["meta_data"] = [row for row in item["meta_data"] if row["key"] != "_reduced_stock"]
+    return canonical(value)
+
+
+def payment_history_preserved(before, after, event_start):
+    assert immutable_order(before) == immutable_order(after)
+    for field in ("stock", "stock_reduced", "paid", "paid_timestamp", "transaction_id"):
+        assert canonical(before[field]) == canonical(after[field])
+    changed = [
+        key
+        for key in set(before["native_data"]) | set(after["native_data"])
+        if canonical(before["native_data"].get(key)) != canonical(after["native_data"].get(key))
+    ]
+    assert set(changed) <= {"payment_method", "payment_method_title", "date_modified"}
+    if changed:
+        observed = events()[event_start:]
+        starts = [row["data"] for row in observed if row["event"] == "native_pay_started"]
+        finishes = [row["data"] for row in observed if row["event"] == "native_pay_finished"]
+        assert len(starts) == len(finishes) == 1
+        start, finish = starts[0], finishes[0]
+        assert start["id"] == finish["id"] == before["id"]
+        assert start["label"] == finish["label"] and start["at"] <= finish["at"]
+        saves = [
+            row["data"]
+            for row in observed
+            if row["event"] == "native_pay_order_saved" and row["data"]["id"] == before["id"]
+        ]
+        assert saves
+        assert all(
+            save["label"] == start["label"]
+            and start["at"] <= save["at"] <= finish["at"]
+            and any(
+                frame["class"] == "WC_Form_Handler" and frame["function"] == "pay_action"
+                for frame in save["stack"]
+            )
+            and not any(frame["function"].startswith("skyyrose2_") for frame in save["stack"])
+            for save in saves
+        )
+        for field in changed:
+            assert canonical(after["native_data"][field]) == canonical(saves[-1]["values"][field])
+        if "payment_method" in changed:
+            assert after["native_data"]["payment_method"] == "ss_offline"
+        if "payment_method_title" in changed:
+            assert after["native_data"]["payment_method_title"] == "Synthetic offline"
+        if "date_modified" in changed:
+            modified = datetime.fromisoformat(after["native_data"]["date_modified"]).timestamp()
+            assert start["at"] <= modified <= finish["at"]
+    return sorted(changed)
+
+
+def fresh_classic(seed, sizes=("S",)):
+    client = Client()
+    client.control("empty")
+    for size in sizes:
+        classic_add(client, seed["products"]["br-001"], size)
+    before_ids = {row["id"] for row in native("orders")}
+    before = processor_count()
+    classic_checkout(client)
+    order = own_new_order(before_ids)
+    assert processor_count() == before + 1 and order["generation"] and not order["paid"]
+    return client, order
+
+
+@contextmanager
+def changed_projection(kind):
+    target = SITE / "wp-content/themes/skyyrose-flagship-2/data/simple-product-sizes.json"
+    guard(target)
+    before = target.read_bytes()
+    expected = pin(target)
+    preimage = PRIVATE / ("projection-preimage-" + kind + ".json")
+    guard(preimage)
+    with preimage.open("xb") as stream:
+        stream.write(before)
+    try:
+        if kind == "missing":
+            target.unlink()
+        else:
+            value = json.loads(before)
+            if kind == "stale":
+                value["product_registry_sha256"] = "0" * 64
+            elif kind == "removed-size":
+                value["products"]["br-001"]["sizes"].remove("S")
+                value["products_sha256"] = hashlib.sha256(
+                    json.dumps(
+                        value["products"], separators=(",", ":"), ensure_ascii=False
+                    ).encode()
+                ).hexdigest()
+            else:
+                raise ValueError("Unknown projection control")
+            target.write_text(json.dumps(value, indent=2) + "\n")
+        yield
+    finally:
+        guard(target)
+        target.write_bytes(before)
+        target.chmod(expected["mode"])
+        assert pin(target) == expected
+
+
+def qualify_saved_orders(seed, paired):
+    # Pre-save classic guards cannot prove these persisted-history paths.
+    client, order = fresh_classic(seed)
+    before = native("order", order["id"])
+    entries = processor_count()
+    response = classic_checkout(client)
+    assert json.loads(response["body"])["result"] == "failure" and processor_count() == entries
+    assert "saved order is unchanged" in json.loads(response["body"])["messages"]
+    assert canonical(native("order", order["id"])) == canonical(before)
+    ids = {row["id"] for row in native("orders")}
+    classic_checkout(client)
+    distinct = own_new_order(ids)
+    assert distinct["id"] != order["id"] and processor_count() == entries + 1
+    assert canonical(native("order", order["id"])) == canonical(before)
+    record(
+        "CLASSIC_RESUME_REFUSES_BEFORE_DELETE_THEN_CREATES_DISTINCT_ORDER",
+        prior_id=order["id"],
+        successor_id=distinct["id"],
+    )
+    for kind in ["both", "duplicate", "conflict", "quantity"]:
+        _, order = fresh_classic(seed)
+        native("mutate", order["id"], kind)
+        before = native("order", order["id"])
+        assert "skyyrose_simple_size_order" in native("payment-check", order["id"])["errors"]
+        entries = processor_count()
+        payment = pay_order(order["id"])
+        after = native("order", order["id"])
+        assert processor_count() == entries
+        changes = payment_history_preserved(before, after, payment["events_from"])
+        record(
+            "FRESH_PERSISTED_METADATA_REFUSAL_" + kind.upper(),
+            order_id=order["id"],
+            permitted_native_changes=changes,
+        )
+    native("option", "ss_payment_outcome", "failure")
+    for kind in ["missing", "stale", "removed-size"]:
+        with changed_projection(kind):
+            api = Client()
+            api.control("empty")
+            assert api.api("cart")[0] == 200
+            status, body = api.api(
+                "cart/add-item",
+                {
+                    "id": seed["products"]["br-001"],
+                    "quantity": 1,
+                    "extensions": {"skyyrose-simple-size": {"size": "S"}},
+                },
+            )
+            assert status == 400 and body["code"] == "skyyrose_simple_size_input"
+            before = native("order", paired["id"])
+            entries = processor_count()
+            pay_order(paired["id"])
+            assert processor_count() == entries + 1 and immutable_order(
+                native("order", paired["id"])
+            ) == immutable_order(before)
+        record("NEW_PURCHASE_REFUSED_SAVED_SELECTION_PAYABLE_PROJECTION_" + kind.upper())
+    history = native("history", "remove")
+    try:
+        api = Client()
+        api.control("empty")
+        assert api.api("cart")[0] == 200
+        assert (
+            api.api(
+                "cart/add-item",
+                {
+                    "id": seed["products"]["br-001"],
+                    "quantity": 1,
+                    "extensions": {"skyyrose-simple-size": {"size": "S"}},
+                },
+            )[0]
+            == 400
+        )
+        entries = processor_count()
+        assert "skyyrose_simple_size_order" in native("payment-check", paired["id"])["errors"]
+        pay_order(paired["id"])
+        assert processor_count() == entries
+    finally:
+        restored = native("history", "restore")
+        assert restored["preimage_sha256"] == history["preimage_sha256"]
+    record("MISSING_TRUSTED_HISTORY_REFUSES_AND_EXACT_PREIMAGE_RESTORED")
+    _, order = fresh_classic(seed, ("S", "M"))
+    native("pool", "1")
+    try:
+        entries = processor_count()
+        before = native("order", order["id"])
+        outcome = pay_order(order["id"])
+        assert processor_count() == entries and outcome["notices"]["error"]
+        assert native("order", order["id"])["stock"] == before["stock"]
+    finally:
+        native("pool", "5")
+    record("TWO_SIZE_SAVED_ORDER_REFUSES_EXHAUSTED_SHARED_PREORDER_POOL")
+    before = native("order", order["id"])
+    entries = processor_count()
+    pay_order(order["id"])
+    failed_payment = native("order", order["id"])
+    assert processor_count() == entries + 1 and not failed_payment["paid"]
+    assert (
+        failed_payment["stock"] == before["stock"]
+        and failed_payment["stock_reduced"] == before["stock_reduced"]
+    )
+    assert immutable_order(failed_payment) == immutable_order(before)
+    before = failed_payment
+    native("option", "ss_payment_outcome", "success")
+    entries = processor_count()
+    pay_order(order["id"])
+    paid = native("order", order["id"])
+    parent = str(seed["products"]["br-001"])
+    assert processor_count() == entries + 1 and paid["paid"] and paid["stock_reduced"]
+    assert paid["status"] == "processing" and paid["transaction_id"] == "synthetic-size-" + str(
+        paid["id"]
+    )
+    assert paid["stock"][parent] == before["stock"][parent] - 2
+    assert paid["total"] == "160.00" and immutable_order(paid, True) == immutable_order(
+        before, True
+    )
+    for item in paid["items"]:
+        reductions = [row["value"] for row in item["meta_data"] if row["key"] == "_reduced_stock"]
+        assert len(reductions) == 1 and int(reductions[0]) == item["quantity"]
+    entries = processor_count()
+    pay_order(order["id"])
+    retry = native("order", order["id"])
+    assert processor_count() == entries and canonical(retry) == canonical(paid)
+    record(
+        "TWO_SIZE_SHARED_PARENT_STOCK_ONCE_AND_PAID_RETRY_IMMUTABLE",
+        order_id=paid["id"],
+        parent_stock_before=before["stock"][parent],
+        parent_stock_after=paid["stock"][parent],
+    )
+    legacy_id = seed["legacy"]["id"]
+    before = native("order", legacy_id)
+    entries = processor_count()
+    pay_order(legacy_id)
+    after = native("order", legacy_id)
+    assert (
+        processor_count() == entries + 1
+        and after["paid"]
+        and after["generation"] == []
+        and after["raw_size_rows"] == []
+    )
+    assert immutable_order(after, True) == immutable_order(before, True)
+    assert after["stock"][parent] == before["stock"][parent] - 1
+    record(
+        "SYNTHETIC_PRIOR_NATIVE_ORDER_EXPLICIT_FINGERPRINT_PAYABLE_SIZE_UNKNOWN",
+        order_id=legacy_id,
+        scope="Native order created before enabling history; hand-built V1-shaped promise, not historical producer execution",
+    )
+    native("option", "ss_payment_outcome", "failure")
+    return paid
+
+
+def api_add(client, product_id, size=None):
+    payload = {"id": product_id, "quantity": 1}
+    if size is not None:
+        payload["extensions"] = {"skyyrose-simple-size": {"size": size}}
+    return client.api("cart/add-item", payload)
+
+
+def api_checkout(client):
+    address = {
+        "first_name": "Synthetic",
+        "last_name": "Fixture",
+        "address_1": "1 Test Way",
+        "address_2": "",
+        "city": "Oakland",
+        "state": "CA",
+        "postcode": "94612",
+        "country": "US",
+    }
+    return client.api(
+        "checkout",
+        {
+            "billing_address": {
+                **address,
+                "email": "fixture@example.invalid",
+                "phone": "5105550100",
+            },
+            "shipping_address": address,
+            "payment_method": "ss_offline",
+            "payment_data": [],
+            "customer_note": "",
+        },
+    )
+
+
+def fresh_api(seed, mixed=False, variable_only=False):
+    client = Client()
+    client.control("empty")
+    assert client.api("cart")[0] == 200
+    if not variable_only:
+        assert api_add(client, seed["products"]["br-001"], "S")[0] == 201
+        assert {"key": "Size", "value": "S"} in client.api("cart")[1]["items"][0]["item_data"]
+    if mixed or variable_only:
+        assert api_add(client, seed["products"]["variation-A"])[0] == 201
+    ids = {row["id"] for row in native("orders")}
+    count = processor_count()
+    status, body = api_checkout(client)
+    assert status == 400 and body["payment_result"]["payment_status"] == "failure"
+    order = own_new_order(ids)
+    assert processor_count() == count + 1 and bool(order["generation"]) == (not variable_only)
+    assert body["order_id"] == order["id"]
+    assert not order["paid"]
+    return client, order
+
+
+def qualify_store_checkout(seed):
+    client, order = fresh_api(seed)
+    assert len(order["raw_size_rows"]) == 2 and len(order["generation"]) == 1
+    before = native("order", order["id"])
+    assert client.api("checkout")[0] == 200
+    assert (
+        client.api("checkout", {"customer_note": "Synthetic unchanged-cart draft update"}, "PATCH")[
+            0
+        ]
+        == 200
+    )
+    assert immutable_order(native("order", order["id"])) == immutable_order(before)
+    count = processor_count()
+    status, result = api_checkout(client)
+    assert (
+        status == 400
+        and result["payment_result"]["payment_status"] == "failure"
+        and result["order_id"] == order["id"]
+    )
+    assert processor_count() == count + 1 and immutable_order(
+        native("order", order["id"])
+    ) == immutable_order(before)
+    record(
+        "ACTUAL_STORE_API_CHECKOUT_PERSISTENCE_SAME_CART_GET_PATCH_AND_RETRY", order_id=order["id"]
+    )
+    for method in ["GET", "PATCH"]:
+        client, order = fresh_api(seed)
+        native("mutate", order["id"], "draft")
+        native("mutate", order["id"], "both")
+        before = native("order", order["id"])
+        count = processor_count()
+        status, body = client.api(
+            "checkout", None if method == "GET" else {"customer_note": "must refuse"}, method
+        )
+        assert status == 409 and body["code"] == "skyyrose_simple_size_saved_order"
+        assert processor_count() == count and canonical(native("order", order["id"])) == canonical(
+            before
+        )
+        record(
+            "ACTUAL_STORE_API_MISSING_BOTH_DRAFT_" + method + "_REFUSES_BEFORE_DELETE",
+            order_id=order["id"],
+        )
+    client, order = fresh_api(seed)
+    native("mutate", order["id"], "draft")
+    before = native("order", order["id"])
+    # Actual cart synchronization reaches the same pre-delete barrier.
+    count = processor_count()
+    status, body = api_add(client, seed["products"]["br-001"], "M")
+    assert status == 409 and body["code"] == "skyyrose_simple_size_saved_order"
+    assert processor_count() == count and canonical(native("order", order["id"])) == canonical(
+        before
+    )
+    assert client.control("inspect")["draft"] == 0
+    # Core may already hold a draft object in the refused request; only a subsequent
+    # request creates the distinct order after the session pointer is detached.
+    ids = {row["id"] for row in native("orders")}
+    count = processor_count()
+    status, result = api_checkout(client)
+    after = own_new_order(ids)
+    assert (
+        status == 400
+        and result["payment_result"]["payment_status"] == "failure"
+        and result["order_id"] == after["id"]
+        and processor_count() == count + 1
+    )
+    assert after["id"] != order["id"] and immutable_order(
+        native("order", order["id"])
+    ) == immutable_order(before)
+    record(
+        "ACTUAL_STORE_API_CHANGED_CHECKOUT_DRAFT_PRESERVED_AND_DETACHED",
+        prior_id=order["id"],
+        successor_id=after["id"],
+    )
+    client, order = fresh_api(seed)
+    before = native("order", order["id"])
+    assert api_add(client, seed["products"]["br-001"], "M")[0] == 201
+    ids = {row["id"] for row in native("orders")}
+    count = processor_count()
+    status, result = api_checkout(client)
+    after = own_new_order(ids)
+    assert (
+        status == 400
+        and result["payment_result"]["payment_status"] == "failure"
+        and result["order_id"] == after["id"]
+        and processor_count() == count + 1
+    )
+    assert after["id"] != order["id"] and immutable_order(
+        native("order", order["id"])
+    ) == immutable_order(before)
+    record("ACTUAL_STORE_API_CHANGED_PENDING_ORDER_USES_NATIVE_NEW_ORDER")
+    client, variable = fresh_api(seed, variable_only=True)
+    native("mutate", variable["id"], "draft")
+    items = client.api("cart")[1]["items"]
+    assert client.api("cart/update-item", {"key": items[0]["key"], "quantity": 2})[0] == 200
+    assert client.api("checkout")[0] == 200
+    assert (
+        client.api("checkout", {"customer_note": "Native variable-only draft"}, "PATCH")[0] == 200
+    )
+    changed = native("order", variable["id"])
+    assert changed["generation"] == [] and changed["items"][0]["quantity"] == 2
+    record("ACTUAL_STORE_API_VARIABLE_ONLY_DRAFT_EDIT_REMAINS_NATIVE", order_id=variable["id"])
+    for kind in ["variable-remove", "variable-alter"]:
+        _, mixed = fresh_api(seed, mixed=True)
+        assert len(mixed["items"]) == 2
+        native("mutate", mixed["id"], kind)
+        before = native("order", mixed["id"])
+        assert "skyyrose_simple_size_order" in native("payment-check", mixed["id"])["errors"]
+        count = processor_count()
+        payment = pay_order(mixed["id"])
+        assert processor_count() == count
+        payment_history_preserved(before, native("order", mixed["id"]), payment["events_from"])
+        record("MIXED_ORDER_COMPLETE_MEMBERSHIP_REFUSAL_" + kind.upper(), order_id=mixed["id"])
+
+
+def text_content(body):
+    return re.sub(r"\s+", " ", html.unescape(re.sub(r"<[^>]*>", " ", body)))
+
+
+def qualify_readback(seed, paid):
+    readback = native("readback", paid["id"])
+    assert sorted(re.findall(r"Size\s*:\s*(S|M)\b", text_content(readback["admin_html"]))) == [
+        "M",
+        "S",
+    ]
+    assert sorted(re.findall(r"Size\s*:\s*(S|M)\b", text_content(readback["email_html"]))) == [
+        "M",
+        "S",
+    ]
+    assert readback["rest_status"] == 200
+    record(
+        "NATIVE_EMAIL_AND_CLI_META_FORMATTER_AND_PRIVILEGED_REST_SERIALIZATION",
+        order_id=paid["id"],
+        limits="CLI formatter is not an authenticated admin screen",
+    )
+    admin = Client()
+    admin.control("login")
+    identity = admin.control("inspect")
+    assert identity["user_id"] == 1 and "administrator" in identity["roles"]
+    screen_path = (
+        "/wp-admin/admin.php?page=wc-orders&action=edit&id="
+        if STORAGE == "hpos"
+        else "/wp-admin/post.php?action=edit&post="
+    ) + str(paid["id"])
+    screen = admin.request(screen_path)
+    assert screen["status"] == 200
+    items = admin.request(
+        "/wp-admin/admin-ajax.php",
+        {
+            "action": "woocommerce_load_order_items",
+            "order_id": paid["id"],
+            "security": identity["order_item_nonce"],
+        },
+    )
+    assert items["status"] == 200 and sorted(
+        re.findall(r"Size\s*:\s*(S|M)\b", text_content(items["body"]))
+    ) == ["M", "S"]
+    admin.rest_nonce = identity["rest_nonce"]
+    response = admin.request("/?rest_route=/wc/v3/orders/" + str(paid["id"]))
+    assert response["status"] == 200
+    order = json.loads(response["body"])
+    assert len(order["line_items"]) == 2
+    assert sorted(
+        next(row["value"] for row in item["meta_data"] if row["key"] == "Size")
+        for item in order["line_items"]
+    ) == ["M", "S"]
+    assert all(
+        any(row["key"] == "_skyyrose_simple_size_v1" for row in item["meta_data"])
+        for item in order["line_items"]
+    )
+    record(
+        "AUTHENTICATED_SYNTHETIC_ADMIN_SCREEN_AJAX_AND_V3_REST_READBACK",
+        site=URL,
+        native_user_id=1,
+        native_roles=identity["roles"],
+        real_account_authentication="NOT_APPLICABLE_SYNTHETIC_SIGNED_COOKIE_ONLY",
+    )
+    native("mutate", seed["legacy"]["id"], "completed")
+    admin.control("empty")
+    nonce = admin.control("again-url")["nonce"]
+    response = admin.request(
+        "/?"
+        + urllib.parse.urlencode(
+            {"ss_control": "inspect", "order_again": seed["legacy"]["id"], "_wpnonce": nonce}
+        )
+    )
+    assert response["status"] == 302
+    destination = urllib.parse.urlparse(response["headers"]["Location"])
+    assert destination.scheme == "http" and destination.netloc == "127.0.0.1:" + str(PORT)
+    assert response["headers"]["Location"] == admin.control("again-url")["cart_url"]
+    state = admin.control("inspect")
+    assert state["cart"] == []
+    assert any(
+        "Choose a size again" in row["notice"]
+        and "Choose size" in row["notice"]
+        and "href=" in row["notice"]
+        for row in state["notices"].get("notice", [])
+    )
+    record("ACTUAL_NATIVE_ORDER_AGAIN_REQUIRES_FRESH_SELECTION_WITH_PDP_LINK")
 
 
 def main():
+    global STORAGE
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--storage", choices=("hpos", "cpt"), default="hpos")
+    STORAGE = parser.parse_args().storage
+    REPORT["storage"] = STORAGE
+    REPORT["limits"][0] = (
+        "Fresh synthetic WP7.1.3/Woo11.2.1/seven-plugin "
+        + STORAGE.upper()
+        + " site; not installed-stack parity or synchronized-storage qualification"
+    )
     if not __debug__:
         raise RuntimeError("Assertions required")
     os.umask(0o077)
@@ -779,7 +1383,16 @@ def main():
     write(PRIVATE / "results.json", REPORT)
     try:
         seed = setup()
-        qualify(seed)
+        paired = qualify(seed)
+        paid = qualify_saved_orders(seed, paired)
+        qualify_store_checkout(seed)
+        qualify_readback(seed, paid)
+        REPORT["status"] = "PASS_NATIVE_SIMPLE_SIZE_" + STORAGE.upper() + "_MATRIX"
+        REPORT["remaining"] = [
+            "Final successor build/package/preview/adoption",
+            "Installed plugin/configuration/exact runtime gaps and full installed-stack qualification remain open",
+            "Other storage mode and synchronized-storage claims require their separate actual evidence",
+        ]
     except BaseException as error:
         REPORT["status"] = "FAIL"
         REPORT["error"] = {"type": type(error).__name__, "message": str(error)}
