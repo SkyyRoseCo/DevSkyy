@@ -93,8 +93,10 @@ def validate_attribution(audit, site, site_inventory):
         # Capture contains DML only. An unparseable timestamp writer cannot be
         # silently dropped as if it were proved unrelated to the target refund.
         assert re.search(r"^\s*UPDATE\s+`?wp_wc_orders`?\s+SET\b", sql, re.I), sql
-        where = re.search(r"\bWHERE\s+`?id`?\s*=\s*'?([0-9]+)'?(?:\s|$)", sql, re.I)
-        assert where, "Unattributed timestamp writer scope"
+        tail = re.search(r"\bWHERE\b(.*)\Z", sql, re.I | re.S)
+        assert tail, "Missing timestamp writer scope"
+        where = re.fullmatch(r"\s*`?id`?\s*=\s*([0-9]+)\s*;?\s*", tail[1])
+        assert where, "Unattributed or compound timestamp writer scope"
         if int(where[1]) != target:
             continue
         value = re.search(r"`?date_updated_gmt`?\s*=\s*'([^']+)'", sql, re.I)

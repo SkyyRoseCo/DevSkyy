@@ -127,6 +127,8 @@ def main():
             "wrong-file",
             "reordered-chain",
             "extra-unattributed-writer",
+            "foreign-or-target-scope",
+            "target-or-foreign-scope",
         ]:
             bad = json.loads(json.dumps(value["audit"]))
             query = bad["queries"][witness["query_index"]]
@@ -138,9 +140,26 @@ def main():
             elif mutation == "reordered-chain":
                 a, b = positions[3:5]
                 query["stack"][a], query["stack"][b] = query["stack"][b], query["stack"][a]
-            else:
+            elif mutation == "extra-unattributed-writer":
                 extra = json.loads(json.dumps(query))
                 extra["stack"] = []
+                bad["queries"].append(extra)
+            else:
+                extra = json.loads(json.dumps(query))
+                target = bad["id"]
+                first, second = (
+                    (target + 100000, target)
+                    if mutation == "foreign-or-target-scope"
+                    else (target, target + 100000)
+                )
+                extra["sql"] = re.sub(
+                    r"\bWHERE\b.*\Z",
+                    "WHERE `id` = " + str(first) + " OR `id` = " + str(second),
+                    extra["sql"],
+                    flags=re.I | re.S,
+                )
+                if mutation == "foreign-or-target-scope":
+                    extra["stack"] = []
                 bad["queries"].append(extra)
             try:
                 validate_attribution(bad, site, inventory)
