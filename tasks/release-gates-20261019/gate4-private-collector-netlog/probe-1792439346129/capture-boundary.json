@@ -1,0 +1,48 @@
+{
+  "status": "PASS_PRIVATE_DIAGNOSTIC_CAPTURE_ONLY",
+  "authentication": "NOT_APPLICABLE",
+  "source_commit": "fa6e1e397a304e264c47e9f74cb58169aaf5db4d",
+  "terminal": {
+    "code": 0,
+    "signal": null
+  },
+  "browser_terminal": {
+    "code": 0,
+    "signal": null
+  },
+  "browser_version": {
+    "product": "HeadlessChrome/153.0.8010.12",
+    "revision": "@971a7443b0c9b0a9b2860529b33331b76077ec62",
+    "protocolVersion": "1.3"
+  },
+  "binaries": {
+    "node": {
+      "sha256": "18e387c90ab8a8400183e8bdd396376e1e875b91b4c874b894dcade7b35bf572",
+      "bytes": 112937728
+    },
+    "chromium": {
+      "sha256": "a0bfe7b4da4787b66058477d696cd1d09065d25f06a548947722b9af77ee8282",
+      "bytes": 169253248
+    }
+  },
+  "source_identity_unchanged": true,
+  "closed_netlog": {
+    "sha256": "1851d835ca11ff5a8817446a14181353eda638485bd497e571d491c4bb881ef0",
+    "bytes": 114056
+  },
+  "group_stopped": true,
+  "group_cleanup_errors": [],
+  "fixture_closed": true,
+  "pipe_and_stdio_closed": true,
+  "inherited_denial_controls": [
+    "EPERM",
+    "EPERM",
+    "EPERM",
+    "EPERM"
+  ],
+  "limits": [
+    "Synthetic HTTP/1 diagnostic fixture only",
+    "Global completeness, sanitation and policy remain UNKNOWN",
+    "No live operation authority"
+  ]
+}

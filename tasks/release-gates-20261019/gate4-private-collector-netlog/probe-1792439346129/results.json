@@ -1,0 +1,66 @@
+{
+  "schema": "skyyrose.private-netlog-diagnostic-review.v1",
+  "status": "PASS_BOUNDED_DIAGNOSTIC_RECONCILIATION_ONLY",
+  "authentication": "NOT_APPLICABLE",
+  "capture_source_commit": "fa6e1e397a304e264c47e9f74cb58169aaf5db4d",
+  "offline_source_commit": "557f728920e201ad63c274e89aed519e22e28c83",
+  "offline_source": {
+    "path": "tools/v2-runtime/gate4-private-collector/review-netlog.cjs",
+    "sha256": "5c925ee5766abb774cb6d6048a6b1ca6f05ceeb882522824a7f39c1a109f28ac",
+    "bytes": 21110
+  },
+  "observed": {
+    "server_requests": 5,
+    "netlog_http_hops": 5,
+    "logical_request_sources": 4,
+    "initial_service_worker_request": "OBSERVED_WITH_EXACT_SENT_COOKIE",
+    "response_repeated_cookies": 2,
+    "repeated_cookie_expires_comma": true,
+    "chains": [
+      {
+        "source_id": 14,
+        "paths": [
+          "/probe"
+        ],
+        "closed_lifetime": true,
+        "final_filtered_body_bytes": 332
+      },
+      {
+        "source_id": 23,
+        "paths": [
+          "/redirect",
+          "/data"
+        ],
+        "closed_lifetime": true,
+        "final_filtered_body_bytes": 18
+      },
+      {
+        "source_id": 30,
+        "paths": [
+          "/sw.js"
+        ],
+        "closed_lifetime": true,
+        "final_filtered_body_bytes": 189
+      },
+      {
+        "source_id": 34,
+        "paths": [
+          "/worker-data"
+        ],
+        "closed_lifetime": true,
+        "final_filtered_body_bytes": 18
+      }
+    ]
+  },
+  "cdp": {
+    "requests": 4,
+    "missing_paths": [
+      "/sw.js"
+    ],
+    "verdict": "TARGET_CDP_INITIAL_SCRIPT_GAP_RETAINED"
+  },
+  "completeness": "UNKNOWN_DIAGNOSTIC_FIXTURE_ONLY",
+  "policy": "UNKNOWN_NO_ACCEPTANCE_CONTRACT",
+  "sanitation": "UNKNOWN_RAW_REMAINS_PRIVATE",
+  "cleanup": "PASS_OWNED_PROCESSES_STOPPED"
+}

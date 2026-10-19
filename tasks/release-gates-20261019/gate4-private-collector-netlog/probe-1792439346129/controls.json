@@ -1,0 +1,94 @@
+{
+  "mock_source": {
+    "status": "PASS_MOCK_ONLY_SOURCE_CONTROLS",
+    "authentication": "NOT_APPLICABLE",
+    "source": {
+      "sha256": "9f801bca953ecbcdf9d8b119d1fc9dcb419c85a5ce5119420735f16e4c352324",
+      "bytes": 16826
+    },
+    "control_source": {
+      "sha256": "110ee03942e69fa62daefa07e63f3c83d5c5d57880563b9e7148c4425890fe4d",
+      "bytes": 1802
+    },
+    "controls": [
+      "guarded-kill-throw-retains-finalization",
+      "binary-pin-drift",
+      "closed-file-drift"
+    ]
+  },
+  "retained_observation_mutations": [
+    {
+      "mutation": "body-before-delegate",
+      "status": "PASS_REFUSED_MODIFIED_RETAINED_OBSERVATION"
+    },
+    {
+      "mutation": "duplicate-logical-request",
+      "status": "PASS_REFUSED_MODIFIED_RETAINED_OBSERVATION"
+    },
+    {
+      "mutation": "invalid-phase",
+      "status": "PASS_REFUSED_MODIFIED_RETAINED_OBSERVATION"
+    },
+    {
+      "mutation": "missing-delegate-end",
+      "status": "PASS_REFUSED_MODIFIED_RETAINED_OBSERVATION"
+    },
+    {
+      "mutation": "missing-initial-sw",
+      "status": "PASS_REFUSED_MODIFIED_RETAINED_OBSERVATION"
+    },
+    {
+      "mutation": "missing-intermediate-end",
+      "status": "PASS_REFUSED_MODIFIED_RETAINED_OBSERVATION"
+    },
+    {
+      "mutation": "missing-lifetime-end",
+      "status": "PASS_REFUSED_MODIFIED_RETAINED_OBSERVATION"
+    },
+    {
+      "mutation": "redirect-changed",
+      "status": "PASS_REFUSED_MODIFIED_RETAINED_OBSERVATION"
+    },
+    {
+      "mutation": "request-cookie-changed",
+      "status": "PASS_REFUSED_MODIFIED_RETAINED_OBSERVATION"
+    },
+    {
+      "mutation": "request-cookie-missing",
+      "status": "PASS_REFUSED_MODIFIED_RETAINED_OBSERVATION"
+    },
+    {
+      "mutation": "response-cookie-changed",
+      "status": "PASS_REFUSED_MODIFIED_RETAINED_OBSERVATION"
+    },
+    {
+      "mutation": "reversed-delegate",
+      "status": "PASS_REFUSED_MODIFIED_RETAINED_OBSERVATION"
+    },
+    {
+      "mutation": "truncated-json",
+      "status": "PASS_REFUSED_MODIFIED_RETAINED_OBSERVATION"
+    },
+    {
+      "mutation": "unknown-event",
+      "status": "PASS_REFUSED_MODIFIED_RETAINED_OBSERVATION"
+    }
+  ],
+  "actual_cli_privacy_negative": {
+    "status": "PASS_ACTUAL_CLI_COOKIE_MISMATCH_REDACTED",
+    "authentication": "NOT_APPLICABLE",
+    "exit": 1,
+    "public_error_code": "RECONCILE",
+    "raw_markers_absent": true,
+    "reader": {
+      "sha256": "5c925ee5766abb774cb6d6048a6b1ca6f05ceeb882522824a7f39c1a109f28ac",
+      "bytes": 21110
+    },
+    "private_receipt": {
+      "path": ".artifacts/release-gates-20261019/gate4-private-collector-netlog/cli-privacy-control-1792440268719555000.json",
+      "sha256": "12a2bc18f8f4d3c9d7fed0f76cebb7787bbed3391973f79d927ef48da75c34b7",
+      "bytes": 593
+    }
+  },
+  "limits": "Mock helpers are not end-to-end cleanup failure qualification; retained-observation changes are offline controls, not native network-loss executions"
+}

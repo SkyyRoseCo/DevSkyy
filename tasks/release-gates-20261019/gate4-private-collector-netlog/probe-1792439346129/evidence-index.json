@@ -1,0 +1,98 @@
+{
+  ".artifacts/release-gates-20261019/gate4-private-collector-netlog/freeze_packet.py": {
+    "sha256": "3de2586a75ef1a3ef556330f93839d2644dae602f8c7cb23714b4fd2e2429035",
+    "bytes": 15263
+  },
+  ".artifacts/release-gates-20261019/gate4-private-collector-netlog/qualified-retention-1792439346129.json": {
+    "sha256": "f13e570f77aec1060f2938ca77fb4c80cebbea703c72fc643acc119e84bc7554",
+    "bytes": 9814
+  },
+  ".artifacts/release-gates-20261019/gate4-private-collector-netlog/auxiliary-retention-1792439346129.json": {
+    "sha256": "adefc779d2f2781227361231076e8269c0e334916819394a12e31a782fd53acf",
+    "bytes": 1314
+  },
+  ".artifacts/release-gates-20261019/gate4-private-collector-netlog/review-1792439346129-1792440204982/results.json": {
+    "sha256": "aa03738200562f9df2cd92c9d480dec6da8dd45af612750926af89bcb3ca4ff0",
+    "bytes": 5371
+  },
+  ".artifacts/release-gates-20261019/gate4-private-collector-netlog/cli-privacy-control-1792440268719555000.json": {
+    "sha256": "12a2bc18f8f4d3c9d7fed0f76cebb7787bbed3391973f79d927ef48da75c34b7",
+    "bytes": 593
+  },
+  ".artifacts/release-gates-20261019/gate4-private-collector-netlog/source-controls-1792439204004.json": {
+    "sha256": "989991fee20990a3e2c85d4929bd2bc1283201a7d38ed5ffa41c6ac639e49fd3",
+    "bytes": 450
+  },
+  "tasks/release-gates-20261019/gate4-private-collector-netlog/probe-1792439346129/capture-boundary.json": {
+    "sha256": "7cbdd782c689eb1b418b166f07fc7ae81d8873326076788616d5625c7707dba0",
+    "bytes": 1257
+  },
+  "tasks/release-gates-20261019/gate4-private-collector-netlog/probe-1792439346129/controls.json": {
+    "sha256": "baac4b1d2fd8668919676f09150d650c1ad390466b375c4298d374280715b393",
+    "bytes": 2932
+  },
+  "tasks/release-gates-20261019/gate4-private-collector-netlog/probe-1792439346129/results.json": {
+    "sha256": "f551382edfe646355a65410a4ed77d2671519b15c6f2f4756f02a53301a513dc",
+    "bytes": 1798
+  },
+  "tasks/release-gates-20261019/gate4-private-collector-netlog/probe-1792439346129/README.md": {
+    "sha256": "ae47ed6831212420e4f74c71536e7ee808339adb3018957f1fa68042b8900aaf",
+    "bytes": 1736
+  },
+  "tasks/release-gates-20261019/gate4-private-collector-netlog/probe-1792439346129/source-provenance.json": {
+    "sha256": "460328b3485e431ea105e8779964ca8bdea21a9fb747b7b6b5615f3595270e4c",
+    "bytes": 3054
+  },
+  ".artifacts/release-gates-20261019/gate4-private-collector-netlog/source-snapshots/fa6e1e397a304e264c47e9f74cb58169aaf5db4d/tools/v2-runtime/gate4-private-collector/netlog.cjs": {
+    "sha256": "9f801bca953ecbcdf9d8b119d1fc9dcb419c85a5ce5119420735f16e4c352324",
+    "bytes": 16826
+  },
+  ".artifacts/release-gates-20261019/gate4-private-collector-netlog/source-snapshots/fa6e1e397a304e264c47e9f74cb58169aaf5db4d/tools/v2-runtime/gate4-private-collector/test-netlog-controls.cjs": {
+    "sha256": "110ee03942e69fa62daefa07e63f3c83d5c5d57880563b9e7148c4425890fe4d",
+    "bytes": 1802
+  },
+  ".artifacts/release-gates-20261019/gate4-private-collector-netlog/source-snapshots/fa6e1e397a304e264c47e9f74cb58169aaf5db4d/tools/v2-runtime/gate4-private-collector/pipe.cjs": {
+    "sha256": "4ae15171559ba67bab4b754f6fe869c7d1f708f112fa5c848e59d7550aa4ded7",
+    "bytes": 3245
+  },
+  ".artifacts/release-gates-20261019/gate4-private-collector-netlog/source-snapshots/fa6e1e397a304e264c47e9f74cb58169aaf5db4d/tools/v2-runtime/gate4-private-collector/capability.cjs": {
+    "sha256": "1292fb1c036b6f1d6aac5b7dab47337fc89646332a6eca881ea6a67917c194d4",
+    "bytes": 30064
+  },
+  ".artifacts/release-gates-20261019/gate4-private-collector-netlog/source-snapshots/fa6e1e397a304e264c47e9f74cb58169aaf5db4d/tasks/release-gates-20261019/gate4-private-collector-netlog/PLAN.md": {
+    "sha256": "6fc7f96c7b0670af30f834c7aad7f6a3016433a30807153f8b007ef2f205933e",
+    "bytes": 4516
+  },
+  ".artifacts/release-gates-20261019/gate4-private-collector-netlog/source-snapshots/557f728920e201ad63c274e89aed519e22e28c83/tools/v2-runtime/gate4-private-collector/review-netlog.cjs": {
+    "sha256": "5c925ee5766abb774cb6d6048a6b1ca6f05ceeb882522824a7f39c1a109f28ac",
+    "bytes": 21110
+  },
+  ".artifacts/release-gates-20261019/gate4-private-collector-netlog/probe-1792439346129/results.json": {
+    "sha256": "b6ed7f62bd9ec8f5d2010dbd53900e931addff99eb74edfec5d5878c056cf6d9",
+    "bytes": 9727
+  },
+  ".artifacts/release-gates-20261019/gate4-private-collector-netlog/probe-1792439346129/worker-results.json": {
+    "sha256": "0ad3440e49c78689785d194bd9e706d5fd6203a3b536403ad64d978577b8f9ff",
+    "bytes": 5644
+  },
+  ".artifacts/release-gates-20261019/gate4-private-collector-netlog/probe-1792439346129/netlog.json": {
+    "sha256": "1851d835ca11ff5a8817446a14181353eda638485bd497e571d491c4bb881ef0",
+    "bytes": 114056
+  },
+  ".artifacts/release-gates-20261019/gate4-private-collector-netlog/probe-1792439346129/server-requests.json": {
+    "sha256": "e2eb57e7795a1ff7f1a14fe4979972a2f9adc9767d9f66a0e1fcb2cc8b93ecaf",
+    "bytes": 5721
+  },
+  ".artifacts/release-gates-20261019/gate4-private-collector-netlog/probe-1792439346129/raw-cdp.json": {
+    "sha256": "5d28f5fb2e211ba9b22eb132eb2921ed89a791250d731856f13274eed3720538",
+    "bytes": 59688
+  },
+  ".artifacts/release-gates-20261019/gate4-private-collector-netlog/probe-1792439346129/source-at-start.json": {
+    "sha256": "c8d0caf02118cff9ad00778565ea82e8e0c3d0a8c580846d1504e38917b5b08d",
+    "bytes": 857
+  },
+  ".artifacts/release-gates-20261019/gate4-private-collector-netlog/probe-1792439346129/binaries-at-start.json": {
+    "sha256": "7ca30c6d0a24d957009fb1a0faf99024dc3a992c9efcaaf00fd01b80b99266b4",
+    "bytes": 251
+  }
+}

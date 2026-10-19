@@ -1,0 +1,23 @@
+{
+  "schema": "skyyrose.private-netlog-diagnostic-continuation.v1",
+  "status": "PASS_BOUNDED_DIAGNOSTIC_FINAL_REVIEW_PENDING",
+  "authentication": "NOT_APPLICABLE_SYNTHETIC_OFFLINE_FIXTURE",
+  "probe": "1792439346129",
+  "capture_source_commit": "fa6e1e397a304e264c47e9f74cb58169aaf5db4d",
+  "offline_source_commit": "557f728920e201ad63c274e89aed519e22e28c83",
+  "evidence_index": {
+    "sha256": "3ed84d5f543924f8c33d611584b1406d285a7b58e3f77c9099bc43f6176420ca",
+    "bytes": 5596
+  },
+  "qualified_retained_files": 37,
+  "auxiliary_retained_files": 5,
+  "capture_completeness": "UNKNOWN_DIAGNOSTIC_FIXTURE_ONLY",
+  "policy": "UNKNOWN",
+  "sanitation": "UNKNOWN",
+  "historical_12_vs_11_collector": "UNCHANGED_UNKNOWN",
+  "holds": [
+    "Live conversion/sync/config/credentials/orders/payments/backup/restore",
+    "Push/merge/deploy/activation/publication/cutover",
+    "Paid/provider/media generation/GLB promotion"
+  ]
+}

@@ -1,0 +1,56 @@
+[
+  {
+    "phase": "native_capture",
+    "commit": "fa6e1e397a304e264c47e9f74cb58169aaf5db4d",
+    "path": "tools/v2-runtime/gate4-private-collector/netlog.cjs",
+    "retained_copy": ".artifacts/release-gates-20261019/gate4-private-collector-netlog/source-snapshots/fa6e1e397a304e264c47e9f74cb58169aaf5db4d/tools/v2-runtime/gate4-private-collector/netlog.cjs",
+    "sha256": "9f801bca953ecbcdf9d8b119d1fc9dcb419c85a5ce5119420735f16e4c352324",
+    "bytes": 16826,
+    "git_body_verified": true
+  },
+  {
+    "phase": "native_capture",
+    "commit": "fa6e1e397a304e264c47e9f74cb58169aaf5db4d",
+    "path": "tools/v2-runtime/gate4-private-collector/test-netlog-controls.cjs",
+    "retained_copy": ".artifacts/release-gates-20261019/gate4-private-collector-netlog/source-snapshots/fa6e1e397a304e264c47e9f74cb58169aaf5db4d/tools/v2-runtime/gate4-private-collector/test-netlog-controls.cjs",
+    "sha256": "110ee03942e69fa62daefa07e63f3c83d5c5d57880563b9e7148c4425890fe4d",
+    "bytes": 1802,
+    "git_body_verified": true
+  },
+  {
+    "phase": "native_capture",
+    "commit": "fa6e1e397a304e264c47e9f74cb58169aaf5db4d",
+    "path": "tools/v2-runtime/gate4-private-collector/pipe.cjs",
+    "retained_copy": ".artifacts/release-gates-20261019/gate4-private-collector-netlog/source-snapshots/fa6e1e397a304e264c47e9f74cb58169aaf5db4d/tools/v2-runtime/gate4-private-collector/pipe.cjs",
+    "sha256": "4ae15171559ba67bab4b754f6fe869c7d1f708f112fa5c848e59d7550aa4ded7",
+    "bytes": 3245,
+    "git_body_verified": true
+  },
+  {
+    "phase": "native_capture",
+    "commit": "fa6e1e397a304e264c47e9f74cb58169aaf5db4d",
+    "path": "tools/v2-runtime/gate4-private-collector/capability.cjs",
+    "retained_copy": ".artifacts/release-gates-20261019/gate4-private-collector-netlog/source-snapshots/fa6e1e397a304e264c47e9f74cb58169aaf5db4d/tools/v2-runtime/gate4-private-collector/capability.cjs",
+    "sha256": "1292fb1c036b6f1d6aac5b7dab47337fc89646332a6eca881ea6a67917c194d4",
+    "bytes": 30064,
+    "git_body_verified": true
+  },
+  {
+    "phase": "native_capture",
+    "commit": "fa6e1e397a304e264c47e9f74cb58169aaf5db4d",
+    "path": "tasks/release-gates-20261019/gate4-private-collector-netlog/PLAN.md",
+    "retained_copy": ".artifacts/release-gates-20261019/gate4-private-collector-netlog/source-snapshots/fa6e1e397a304e264c47e9f74cb58169aaf5db4d/tasks/release-gates-20261019/gate4-private-collector-netlog/PLAN.md",
+    "sha256": "6fc7f96c7b0670af30f834c7aad7f6a3016433a30807153f8b007ef2f205933e",
+    "bytes": 4516,
+    "git_body_verified": true
+  },
+  {
+    "phase": "offline_reader",
+    "commit": "557f728920e201ad63c274e89aed519e22e28c83",
+    "path": "tools/v2-runtime/gate4-private-collector/review-netlog.cjs",
+    "retained_copy": ".artifacts/release-gates-20261019/gate4-private-collector-netlog/source-snapshots/557f728920e201ad63c274e89aed519e22e28c83/tools/v2-runtime/gate4-private-collector/review-netlog.cjs",
+    "sha256": "5c925ee5766abb774cb6d6048a6b1ca6f05ceeb882522824a7f39c1a109f28ac",
+    "bytes": 21110,
+    "git_body_verified": true
+  }
+]
