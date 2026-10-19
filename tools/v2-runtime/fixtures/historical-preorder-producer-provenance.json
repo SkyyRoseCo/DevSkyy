@@ -1,0 +1,12 @@
+{
+  "git_commit": "c0ce274f1b86bda0d8c03bd693bf2eebb6499154",
+  "git_path": "wordpress-theme/skyyrose-flagship/inc/woocommerce-preorder.php",
+  "blob_sha256": "34b8c9826741becf3d86a4eae1de0209faf8778d213a5bb7abe3271c17331ff8",
+  "function_sha256_excluding_final_LF": "ad5444fd708f1d26eca843b0e6658f525718ffeaaff3460e5cec44e79c35e16b",
+  "function_dependencies": [
+    "absint native WordPress function"
+  ],
+  "old_hooks_loaded": false,
+  "wrapper_sha256": "b7dd7bc02c3167803f986d05e13975e40e064cd4ddeb23ea6081b4192e34a42a",
+  "scope": "Exact retained function only; no historical theme hooks. Synthetic config only before trusted-history fingerprint initialization. No actual successor runtime execution yet."
+}

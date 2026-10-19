@@ -1059,6 +1059,32 @@ def qualify_saved_orders(seed, paired):
     )
     legacy_id = seed["legacy"]["id"]
     before = native("order", legacy_id)
+    producer = seed["historical_producer"]
+    assert (
+        producer["wrapper_sha256"]
+        == "b7dd7bc02c3167803f986d05e13975e40e064cd4ddeb23ea6081b4192e34a42a"
+    )
+    assert producer["old_hooks_loaded"] is False
+    promise = producer["promise"]
+    assert type(promise["available_at_add_to_cart"]) is int
+    assert promise["available_at_add_to_cart"] == 5 and "available" not in promise
+    assert promise["product_id"] == seed["products"]["br-001"]
+    assert before["generation"] == [] and before["raw_size_rows"] == []
+    assert canonical(
+        [
+            row["value"]
+            for row in before["items"][0]["meta_data"]
+            if row["key"] == "_skyyrose_preorder_snapshot"
+        ]
+    ) == canonical([promise])
+    native("option", "ss_payment_outcome", "failure")
+    entries = processor_count()
+    pay_order(legacy_id)
+    failed = native("order", legacy_id)
+    assert processor_count() == entries + 1 and not failed["paid"]
+    assert canonical(failed["stock"]) == canonical(before["stock"])
+    assert not failed["stock_reduced"] and immutable_order(failed) == immutable_order(before)
+    native("option", "ss_payment_outcome", "success")
     entries = processor_count()
     pay_order(legacy_id)
     after = native("order", legacy_id)
@@ -1070,10 +1096,18 @@ def qualify_saved_orders(seed, paired):
     )
     assert immutable_order(after, True) == immutable_order(before, True)
     assert after["stock"][parent] == before["stock"][parent] - 1
+    assert after["status"] == "processing" and after["transaction_id"] == "synthetic-size-" + str(
+        legacy_id
+    )
+    entries = processor_count()
+    pay_order(legacy_id)
+    assert processor_count() == entries and canonical(native("order", legacy_id)) == canonical(
+        after
+    )
     record(
-        "SYNTHETIC_PRIOR_NATIVE_ORDER_EXPLICIT_FINGERPRINT_PAYABLE_SIZE_UNKNOWN",
+        "EXACT_HISTORICAL_PRODUCER_PRIOR_ORDER_FAILURE_RETRY_STOCK_ONCE_SIZE_UNKNOWN",
         order_id=legacy_id,
-        scope="Native order created before enabling history; hand-built V1-shaped promise, not historical producer execution",
+        scope="Exact Git-bound historical function executed with synthetic config before persistence/fingerprint; no historical hooks, no live order or size inference",
     )
     native("option", "ss_payment_outcome", "failure")
     return paid
@@ -1360,6 +1394,8 @@ def main():
         Path(__file__),
         ROOT / "tools/v2-runtime/simple-size-native-fixture.php",
         ROOT / "tools/v2-runtime/simple-size-native-controls.php",
+        ROOT / "tools/v2-runtime/fixtures/historical-preorder-producer.php",
+        ROOT / "tools/v2-runtime/fixtures/historical-preorder-producer-provenance.json",
         THEME / "inc/simple-product-sizes.php",
         THEME / "functions.php",
         THEME / "data/simple-product-sizes.json",
