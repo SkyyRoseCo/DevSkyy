@@ -1,0 +1,70 @@
+{
+  "tasks/release-gates-20261019/gate4-private-collector/probe-1792437936803/results.json": {
+    "sha256": "e2c15b28e760fc0954a57351df3494ce9e6ad578d611f2a9a59b5efcd052abd2",
+    "bytes": 7445
+  },
+  "tasks/release-gates-20261019/gate4-private-collector/probe-1792437936803/README.md": {
+    "sha256": "9ba1b19cdd08ba17e02b1d83119238e8d6ea7490761c1d155d80cb0f1a719bac",
+    "bytes": 2041
+  },
+  ".artifacts/release-gates-20261019/gate4-private-collector/qualified-retention-1792437936803.json": {
+    "sha256": "d1004f5c02fef0722384c743c138adfb1765d72154843afd633facf9744b86b0",
+    "bytes": 9618
+  },
+  ".artifacts/release-gates-20261019/gate4-private-collector/development-retention-1792437936803.json": {
+    "sha256": "623c33050feeb0425d0fc3e958472ba9f8698bea4f5bc34d0fb9705b837787b1",
+    "bytes": 20528
+  },
+  ".artifacts/release-gates-20261019/gate4-private-collector/source-versions-1792437936803.json": {
+    "sha256": "cd20aaf65631ed7d60f60f3686c4e7914da5bd5057f9f4e11e894bb1a597166a",
+    "bytes": 2048
+  },
+  ".artifacts/release-gates-20261019/gate4-private-collector/controls-1792437837508/results.json": {
+    "sha256": "64b2f93d3f026d73bab399cb186ef8fb293a718138e8a78317a71238416c7780",
+    "bytes": 23425
+  },
+  ".artifacts/release-gates-20261019/gate4-private-collector/offline-controls-1792438169311.json": {
+    "sha256": "3c6c2b11c829e035d2734fb06180a28c39a45c543c4e38d41df74a74e4f96059",
+    "bytes": 1167
+  },
+  ".artifacts/release-gates-20261019/gate4-private-collector/freeze_capability.py": {
+    "sha256": "23fabd7197cfad44a7d3d4954c963520e9588d8bade35690f67d7006fd1245e2",
+    "bytes": 7883
+  },
+  "tasks/release-gates-20261019/gate4-private-collector/PLAN.md": {
+    "sha256": "3545aa393e221ac365640901263d24da1aefbd39a5efbc4cb48e151c185b6d12",
+    "bytes": 5586
+  },
+  "tasks/release-gates-20261019/gate4-local/privacy-manifest.json": {
+    "sha256": "1f644994e296a8db705ebbdc1a8a96dc6de323a8ef6f5ed3a2765b07697b196e",
+    "bytes": 6472
+  },
+  "tasks/release-gates-20261019/gate4-local/evidence/privacy-toolchain.json": {
+    "sha256": "c4bb666643a6a2a2d42182da5f121fe4c39edadad3d922e59a12968cbf869b34",
+    "bytes": 4928
+  },
+  "tools/v2-runtime/gate4-private-collector/review-capability.cjs": {
+    "sha256": "f1e665cd5c86f4af7581fc7d4bf6af99e39483ac405ccb8eea1edf71347bf570",
+    "bytes": 12379
+  },
+  "tools/v2-runtime/gate4-private-collector/capability.cjs": {
+    "sha256": "1292fb1c036b6f1d6aac5b7dab47337fc89646332a6eca881ea6a67917c194d4",
+    "bytes": 30064
+  },
+  "tools/v2-runtime/gate4-private-collector/pipe.cjs": {
+    "sha256": "4ae15171559ba67bab4b754f6fe869c7d1f708f112fa5c848e59d7550aa4ded7",
+    "bytes": 3245
+  },
+  "tools/v2-runtime/gate4-private-collector/test-controls.cjs": {
+    "sha256": "f29a4fd16ed9cee86cd99c0f04c7113bae6e5f9362931c25aa50c33c4456e50f",
+    "bytes": 9203
+  },
+  "tools/v2-runtime/phase3b-browser/node_modules/playwright-core/types/protocol.d.ts": {
+    "sha256": "0410ed82a9ac63269dc1471ed249b280e2d461249a3a331e71cdb54cdf10db33",
+    "bytes": 814210
+  },
+  "tools/v2-runtime/phase3b-browser/node_modules/playwright-core/package.json": {
+    "sha256": "f061c58427e47e843e26d201f0a57076c734e57c734ecbbd87d4a23b7a20db9b",
+    "bytes": 876
+  }
+}

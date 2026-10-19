@@ -1,0 +1,47 @@
+{
+  "run-1792433070751620000": {
+    "results": "tasks/release-gates-20261019/gate4-populated/run-1792433070751620000/results.json",
+    "status": "FAIL_EXECUTION",
+    "source_head": "18ad976466325359d8788ce3234390d644d95279",
+    "failure": {
+      "type": "AssertionError",
+      "message": "('command-00007.txt', 3)"
+    }
+  },
+  "run-1792433195188287000": {
+    "results": "tasks/release-gates-20261019/gate4-populated/run-1792433195188287000/results.json",
+    "status": "FAIL_CLEANUP",
+    "source_head": "72e393eb0bbc814540cc60c2d39a28b5af6038bd",
+    "failure": {
+      "type": "AssertionError",
+      "message": "Native cross-store semantic mismatch: cpt-to-hpos"
+    }
+  },
+  "run-1792434336944579000": {
+    "results": "tasks/release-gates-20261019/gate4-populated/run-1792434336944579000/results.json",
+    "status": "FAIL_EXECUTION",
+    "source_head": "24c0e0835d03f5b4120fc74cef0fcc2f84f9dfd3",
+    "failure": {
+      "type": "AssertionError",
+      "message": "First native batch changed authoritative business invariants"
+    }
+  },
+  "run-1792435155535280000": {
+    "results": "tasks/release-gates-20261019/gate4-populated/run-1792435155535280000/results.json",
+    "status": "FAIL_EXECUTION",
+    "source_head": "2cd09fd0cd19fa72790dd32d718026c8ac4ee7db",
+    "failure": {
+      "type": "AssertionError",
+      "message": ""
+    }
+  },
+  "run-1792436377553439000": {
+    "results": "tasks/release-gates-20261019/gate4-populated/run-1792436377553439000/results.json",
+    "status": "FAIL_EXECUTION",
+    "source_head": "ae17d6eb5e9ba2726e448f276814dd0d3684a11d",
+    "failure": {
+      "type": "AssertionError",
+      "message": ""
+    }
+  }
+}

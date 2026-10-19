@@ -1,0 +1,266 @@
+{
+  "status": "OBSERVED_NATIVE_FORCED_REFUND_PHYSICAL_REWRITE",
+  "original_run_status": "FAIL_EXECUTION",
+  "authentication": "NOT_APPLICABLE",
+  "run": "1792436377553439000",
+  "native_source": "ae17d6eb5e9ba2726e448f276814dd0d3684a11d",
+  "offline_source": "692e9b4df18b8a3f4f72dc4df231bdfacd5ac011",
+  "lineage": [
+    {
+      "key": "_order_currency",
+      "old_meta_id": 1001,
+      "new_meta_id": 1205,
+      "post_id": 45,
+      "value_sha256": "a26cdf3a6e709124385d4d7eb9bff6b897a58ed5597fbab779b89849dbe81b21"
+    },
+    {
+      "key": "_cart_discount",
+      "old_meta_id": 1002,
+      "new_meta_id": 1206,
+      "post_id": 45,
+      "value_sha256": "5feceb66ffc86f38d952786c6d696c79c2dbc239dd4e91b46729d73a27fb57e9"
+    },
+    {
+      "key": "_cart_discount_tax",
+      "old_meta_id": 1003,
+      "new_meta_id": 1207,
+      "post_id": 45,
+      "value_sha256": "5feceb66ffc86f38d952786c6d696c79c2dbc239dd4e91b46729d73a27fb57e9"
+    },
+    {
+      "key": "_order_shipping",
+      "old_meta_id": 1004,
+      "new_meta_id": 1208,
+      "post_id": 45,
+      "value_sha256": "5feceb66ffc86f38d952786c6d696c79c2dbc239dd4e91b46729d73a27fb57e9"
+    },
+    {
+      "key": "_order_shipping_tax",
+      "old_meta_id": 1005,
+      "new_meta_id": 1209,
+      "post_id": 45,
+      "value_sha256": "5feceb66ffc86f38d952786c6d696c79c2dbc239dd4e91b46729d73a27fb57e9"
+    },
+    {
+      "key": "_order_tax",
+      "old_meta_id": 1006,
+      "new_meta_id": 1210,
+      "post_id": 45,
+      "value_sha256": "03b26944890929ff751653acb2f2af795cee38f937f379f52ed654a68ce91216"
+    },
+    {
+      "key": "_order_total",
+      "old_meta_id": 1007,
+      "new_meta_id": 1211,
+      "post_id": 45,
+      "value_sha256": "127f512f2581ef426205ecc56c7870c8dd0fd289daa1f7b0ced4e912eb4ba6cd"
+    },
+    {
+      "key": "_order_version",
+      "old_meta_id": 1008,
+      "new_meta_id": 1212,
+      "post_id": 45,
+      "value_sha256": "61aa569ee0d4a9509adb11a8d36eb22f75309632c69936e1f7b4c7a1c2ed80ce"
+    }
+  ],
+  "controls": [
+    {
+      "mutation": "other-table",
+      "status": "PASS_REFUSED_MODIFIED_RETAINED_OBSERVATION"
+    },
+    {
+      "mutation": "changed-value",
+      "status": "PASS_REFUSED_MODIFIED_RETAINED_OBSERVATION"
+    },
+    {
+      "mutation": "extra-row",
+      "status": "PASS_REFUSED_MODIFIED_RETAINED_OBSERVATION"
+    },
+    {
+      "mutation": "wrong-post-id",
+      "status": "PASS_REFUSED_MODIFIED_RETAINED_OBSERVATION"
+    },
+    {
+      "mutation": "unattributed-delete",
+      "status": "PASS_REFUSED_MODIFIED_RETAINED_OBSERVATION"
+    },
+    {
+      "mutation": "extra-writer",
+      "status": "PASS_REFUSED_MODIFIED_RETAINED_OBSERVATION"
+    },
+    {
+      "mutation": "changed-native-field",
+      "status": "PASS_REFUSED_MODIFIED_RETAINED_OBSERVATION"
+    },
+    {
+      "mutation": "duplicate-new-meta-id",
+      "status": "PASS_REFUSED_MODIFIED_RETAINED_OBSERVATION"
+    },
+    {
+      "mutation": "null-to-empty-string",
+      "status": "PASS_REFUSED_MODIFIED_RETAINED_OBSERVATION"
+    },
+    {
+      "mutation": "missing-required-table",
+      "status": "PASS_REFUSED_MODIFIED_RETAINED_OBSERVATION"
+    },
+    {
+      "mutation": "replaced-required-table",
+      "status": "PASS_REFUSED_MODIFIED_RETAINED_OBSERVATION"
+    }
+  ],
+  "input_pins": {
+    "tasks/release-gates-20261019/gate4-populated/run-1792436377553439000/results.json": {
+      "sha256": "04afcda4789ccd222cadff9d33b25a796fa631991b27f2358e4c9cfbd272dd3c",
+      "bytes": 2575234
+    },
+    ".artifacts/release-gates-20261019/gate4-populated/run-1792436377553439000/site-at-start.json": {
+      "sha256": "d471e74ad3ee631b3a403c07c0d1732f02fb1f3f4745588046c36b4a869ba683",
+      "bytes": 7508775
+    },
+    "tasks/release-gates-20261019/gate4-populated/run-1792436377553439000/command-00210.json": {
+      "sha256": "9f8ea4899a415204d1777ab61dfa9397da5f7e1e19d304fb5d204b1d1fd11218",
+      "bytes": 1076
+    },
+    "tasks/release-gates-20261019/gate4-populated/run-1792436377553439000/command-00210.txt": {
+      "sha256": "9da94ca7398dfeb7c85f3ab27fbaa76773231c715ab70b3288ab1d411766abac",
+      "bytes": 112388
+    },
+    "tasks/release-gates-20261019/gate4-populated/run-1792436377553439000/command-00211.json": {
+      "sha256": "ea9333a10bb196117732df8f6db9fc335abfd02e27fef5079ffe2a550bf82843",
+      "bytes": 1081
+    },
+    "tasks/release-gates-20261019/gate4-populated/run-1792436377553439000/command-00211.txt": {
+      "sha256": "ca18cd16289990665827ccb5f9b3249a6607e6190d8e5cff2040f8d5e8acaf9f",
+      "bytes": 211741
+    },
+    "tasks/release-gates-20261019/gate4-populated/run-1792436377553439000/command-00212.json": {
+      "sha256": "b624f953a26f5403366e5afda6d83f7763ab7f5d5d9abd8dd821f236973bea52",
+      "bytes": 1076
+    },
+    "tasks/release-gates-20261019/gate4-populated/run-1792436377553439000/command-00212.txt": {
+      "sha256": "9da94ca7398dfeb7c85f3ab27fbaa76773231c715ab70b3288ab1d411766abac",
+      "bytes": 112388
+    },
+    ".artifacts/release-gates-20261019/gate4-populated/run-1792436377553439000/wordpress/wp-content/plugins/woocommerce/includes/data-stores/abstract-wc-order-data-store-cpt.php": {
+      "sha256": "6170144e3c69a10166bbec11bba2d6d24f020ffc0e94e9252cbe573c52a49caf",
+      "bytes": 49522
+    },
+    ".artifacts/release-gates-20261019/gate4-populated/run-1792436377553439000/wordpress/wp-includes/post.php": {
+      "sha256": "34678856a4326b7e76ef120ba80a9e46c6903193e058b988555ec5c1f5cb8f26",
+      "bytes": 305589
+    },
+    ".artifacts/release-gates-20261019/gate4-populated/run-1792436377553439000/wordpress/wp-content/plugins/woocommerce/includes/data-stores/class-wc-data-store-wp.php": {
+      "sha256": "b0be67d82d0c1f21e1cfe0077dde94855d1689e0aa6f714bb536297399e39778",
+      "bytes": 22313
+    },
+    ".artifacts/release-gates-20261019/gate4-populated/run-1792436377553439000/wordpress/wp-content/plugins/woocommerce/includes/data-stores/class-wc-order-refund-data-store-cpt.php": {
+      "sha256": "e175d932cb779dc21cd0f9caa7b2afbac8fd4f0794b680d6ce8e8ed6e9a6c77c",
+      "bytes": 4279
+    },
+    ".artifacts/release-gates-20261019/gate4-populated/run-1792436377553439000/wordpress/wp-content/plugins/woocommerce/includes/class-wc-data-store.php": {
+      "sha256": "e7b9c236bb0d879c5388ba7bfe0ff0afb7775c085422d33e6206481a32178f43",
+      "bytes": 6752
+    },
+    ".artifacts/release-gates-20261019/gate4-populated/run-1792436377553439000/wordpress/wp-content/plugins/woocommerce/src/Internal/DataStores/Orders/OrdersTableDataStore.php": {
+      "sha256": "bdba8944ed0c86c20aed3e1127f9d0585a5cb0e0740edabe1eae24cd9f8b7b63",
+      "bytes": 127103
+    },
+    ".artifacts/release-gates-20261019/gate4-populated/run-1792436377553439000/wordpress/wp-includes/class-wpdb.php": {
+      "sha256": "e15403e90032dd0508811301505e491d4212de5152581a98f51b744a1a3903bd",
+      "bytes": 121437
+    },
+    ".artifacts/release-gates-20261019/gate4-populated/run-1792436377553439000/wordpress/wp-includes/meta.php": {
+      "sha256": "b1b49d1d3ddbf10d0f17286f53c30ce9582c636a4679f9a0ef92ee5ebb020a3e",
+      "bytes": 66739
+    },
+    ".artifacts/release-gates-20261019/gate4-populated/run-1792436377553439000/wordpress/wp-content/plugins/woocommerce/src/Internal/DataStores/Orders/DataSynchronizer.php": {
+      "sha256": "a431e293f882f6ed0517de243856bff419454888d65d1c0e5779ad7959abc594",
+      "bytes": 36905
+    },
+    ".artifacts/release-gates-20261019/gate4-populated/run-1792436377553439000/wordpress/wp-content/plugins/woocommerce/src/Internal/DataStores/Orders/OrdersTableRefundDataStore.php": {
+      "sha256": "109f582afcb3461b3d84087e1731d3e1d75135e045b53821956458bedc68ac36",
+      "bytes": 6636
+    },
+    ".artifacts/release-gates-20261019/gate4-populated/run-1792436377553439000/sql-preimages/snapshot-000046/wp_wc_orders.txt": {
+      "sha256": "2f05d6dd223e138c2eeeaa24cd31a2be79a2bc358237cc477a08cf3c1e80f2aa",
+      "bytes": 5136
+    },
+    ".artifacts/release-gates-20261019/gate4-populated/run-1792436377553439000/sql-preimages/snapshot-000046/wp_woocommerce_order_items.txt": {
+      "sha256": "6c833d50ee3a9c5e27f977d4a3310256435e1b06dd75c73dda65bf48d83417d7",
+      "bytes": 2680
+    },
+    ".artifacts/release-gates-20261019/gate4-populated/run-1792436377553439000/sql-preimages/snapshot-000046/wp_wc_order_operational_data.txt": {
+      "sha256": "29cb80ac2619d794a65b3099fdcfb27c59c3097099704838013b49adb232d165",
+      "bytes": 3520
+    },
+    ".artifacts/release-gates-20261019/gate4-populated/run-1792436377553439000/sql-preimages/snapshot-000046/wp_posts.txt": {
+      "sha256": "caa77c134230aa44173c3f31e8a3bd74e608594a6d955210d609cba24807c72c",
+      "bytes": 68268
+    },
+    ".artifacts/release-gates-20261019/gate4-populated/run-1792436377553439000/sql-preimages/snapshot-000046/wp_postmeta.txt": {
+      "sha256": "f124092301989a6f068fac75d47562b5e7785d3e2a5faeb4fcfc477f04d1e249",
+      "bytes": 74260
+    },
+    ".artifacts/release-gates-20261019/gate4-populated/run-1792436377553439000/sql-preimages/snapshot-000046/wp_wc_order_addresses.txt": {
+      "sha256": "26ab0a18c8f2b9ea5fcc8109bb5882c499f5bf9438f615f4d9e1377b49c960af",
+      "bytes": 5140
+    },
+    ".artifacts/release-gates-20261019/gate4-populated/run-1792436377553439000/sql-preimages/snapshot-000046/wp_woocommerce_order_itemmeta.txt": {
+      "sha256": "762deb12935868f0c06e96266e48f6d09c834a4710e206aa7b4b317ae9f3c7e3",
+      "bytes": 32866
+    },
+    ".artifacts/release-gates-20261019/gate4-populated/run-1792436377553439000/sql-preimages/snapshot-000046/wp_wc_orders_meta.txt": {
+      "sha256": "d7a89ae17a719652a6ff745f9435b77f39f9ae2a11c9af53566b82561e4c31bb",
+      "bytes": 12644
+    },
+    ".artifacts/release-gates-20261019/gate4-populated/run-1792436377553439000/sql-preimages/snapshot-000047/wp_wc_orders.txt": {
+      "sha256": "2f05d6dd223e138c2eeeaa24cd31a2be79a2bc358237cc477a08cf3c1e80f2aa",
+      "bytes": 5136
+    },
+    ".artifacts/release-gates-20261019/gate4-populated/run-1792436377553439000/sql-preimages/snapshot-000047/wp_woocommerce_order_items.txt": {
+      "sha256": "6c833d50ee3a9c5e27f977d4a3310256435e1b06dd75c73dda65bf48d83417d7",
+      "bytes": 2680
+    },
+    ".artifacts/release-gates-20261019/gate4-populated/run-1792436377553439000/sql-preimages/snapshot-000047/wp_wc_order_operational_data.txt": {
+      "sha256": "29cb80ac2619d794a65b3099fdcfb27c59c3097099704838013b49adb232d165",
+      "bytes": 3520
+    },
+    ".artifacts/release-gates-20261019/gate4-populated/run-1792436377553439000/sql-preimages/snapshot-000047/wp_posts.txt": {
+      "sha256": "caa77c134230aa44173c3f31e8a3bd74e608594a6d955210d609cba24807c72c",
+      "bytes": 68268
+    },
+    ".artifacts/release-gates-20261019/gate4-populated/run-1792436377553439000/sql-preimages/snapshot-000047/wp_postmeta.txt": {
+      "sha256": "f01b78a04a51e165ee521a66f56779cf7ee0c9767013484462596548ae8f5e3a",
+      "bytes": 74260
+    },
+    ".artifacts/release-gates-20261019/gate4-populated/run-1792436377553439000/sql-preimages/snapshot-000047/wp_wc_order_addresses.txt": {
+      "sha256": "26ab0a18c8f2b9ea5fcc8109bb5882c499f5bf9438f615f4d9e1377b49c960af",
+      "bytes": 5140
+    },
+    ".artifacts/release-gates-20261019/gate4-populated/run-1792436377553439000/sql-preimages/snapshot-000047/wp_woocommerce_order_itemmeta.txt": {
+      "sha256": "762deb12935868f0c06e96266e48f6d09c834a4710e206aa7b4b317ae9f3c7e3",
+      "bytes": 32866
+    },
+    ".artifacts/release-gates-20261019/gate4-populated/run-1792436377553439000/sql-preimages/snapshot-000047/wp_wc_orders_meta.txt": {
+      "sha256": "d7a89ae17a719652a6ff745f9435b77f39f9ae2a11c9af53566b82561e4c31bb",
+      "bytes": 12644
+    }
+  },
+  "source_pins": {
+    "tools/v2-runtime/audit_gate4_forced_refund.py": {
+      "sha256": "35f1fd1c6afefb143845211203d419e3d0f7ae5b47f0140bc9d5d910ec23cc39",
+      "bytes": 13123
+    },
+    "tools/v2-runtime/gate4_refund_attribution.py": {
+      "sha256": "3f8e704d50ad72121fb4c53cf13a6e83a6ee30c688df43ae01b27db41886838c",
+      "bytes": 11441
+    }
+  },
+  "limits": [
+    "Original failed physical-NOOP test remains FAIL; no migration waiver or installed parity",
+    "Private raw preimages have post-run retention hashes only; failed driver never closed its capture-time SQL index",
+    "Ordinary selected-empty retry and previously unreached rollback/final checks require separate execution",
+    "All other raw rows/tables, values/types/multiplicity, dates, native order/payment/refund/item/product/stock data remain exact"
+  ]
+}

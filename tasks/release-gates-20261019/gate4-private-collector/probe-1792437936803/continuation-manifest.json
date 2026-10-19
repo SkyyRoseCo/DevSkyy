@@ -1,0 +1,28 @@
+{
+  "schema": "skyyrose.private-capability-continuation.v1",
+  "status": "BOUNDED_EXECUTION_OBSERVED_CAPTURE_GATE_UNKNOWN_REVIEW_PENDING",
+  "authentication": "NOT_APPLICABLE",
+  "capture_source": "3859b5c8ddc4f9a0cb48f81ab1680ab82861f046",
+  "offline_source": "1adf308d7598e2f0ca9fd4c130bcab822daf4a6c",
+  "probe": "1792437936803",
+  "evidence_index": {
+    "sha256": "c095824cc89a8b8d0b5da646d28cd7a541699cd17eb0d0dc18170836d9884fc1",
+    "bytes": 3219
+  },
+  "qualified_retention": ".artifacts/release-gates-20261019/gate4-private-collector/qualified-retention-1792437936803.json",
+  "development_retention": ".artifacts/release-gates-20261019/gate4-private-collector/development-retention-1792437936803.json",
+  "source_versions": ".artifacts/release-gates-20261019/gate4-private-collector/source-versions-1792437936803.json",
+  "capture_completeness": "UNKNOWN_MISSING_SERVICE_WORKER_MAIN_REQUEST",
+  "policy": "UNKNOWN",
+  "source_controls": 21,
+  "observation_controls": 4,
+  "redacted_failure_controls": 2,
+  "matrix40_executed": false,
+  "original_live_privacy": "FAIL_EIGHT_UNKNOWN_UNCHANGED",
+  "holds": [
+    "Live conversion/configuration/data/acquisition/credentials/orders/payments/backup/restore",
+    "Push/merge/deploy/activation/publication/cutover",
+    "Paid/provider/media/GLB promotion"
+  ],
+  "owner_decision_needed_now": false
+}

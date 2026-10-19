@@ -1,0 +1,34 @@
+{
+  "schema": "skyyrose.private-populated-continuation.v1",
+  "status": "PASS_PRIVATE_NATIVE_EXECUTION_FINAL_REVIEW_PENDING",
+  "authentication": "NOT_APPLICABLE_SYNTHETIC_OFFLINE_FIXTURE",
+  "executed_source_commit": "92de06b4f4dba653ef2f40c6ca3d1b1fed539b82",
+  "separate_offline_validation": {
+    "source_commit": "1adf308d7598e2f0ca9fd4c130bcab822daf4a6c",
+    "receipt": "tasks/release-gates-20261019/gate4-populated/attribution-1792437370289798000-1792438189660585000/results.json",
+    "sha256": "c09ac9daaf8ec71ae3cac4821f98ca1f9dcc674cda77f828faf476b978a469bb",
+    "bytes": 6832
+  },
+  "run": "1792437370289798000",
+  "evidence_index": {
+    "sha256": "62d25b07d8e6aaa847962b20724123a2f120b9c489e245dc46adef0ac1de0fbc",
+    "bytes": 992688
+  },
+  "qualified_retained_files": 37031,
+  "unchanged_executable_php_files": 20878,
+  "source_versions_index": ".artifacts/release-gates-20261019/gate4-populated/source-versions-1792437370289798000.json",
+  "prior_accepted_packet": "481b1406b376ca302f270f17663d641d10ada04d",
+  "prior_installed_packet": "f69230595ef7f06a4cadd166f9066b2e86c10125",
+  "frozen_zip": {
+    "sha256": "d9f24f5e35728ab693675727c7da009406979f468aa7dd54a09122e6ccd84dd6",
+    "bytes": 293655342
+  },
+  "owner_decision_needed_now": false,
+  "historical_orphan_ownership": "NOT_ESTABLISHED_UNTOUCHED",
+  "holds": [
+    "Live conversion/sync/config/credentials/orders/payments/backup/restore",
+    "Push/merge/deploy/activation/publication/cutover",
+    "Paid/provider/media generation/GLB promotion"
+  ],
+  "review_scope": "Native source/assertion and exhaustive artifact acceptance remain separate; no installed/live/release claim"
+}

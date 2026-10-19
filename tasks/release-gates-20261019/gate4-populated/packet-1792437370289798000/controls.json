@@ -1,0 +1,182 @@
+{
+  "retained_forced_replay_observation": {
+    "path": "tasks/release-gates-20261019/gate4-populated/forced-replay-observation.json",
+    "sha256": "d83b389baaaca3bcc600d866e11655b34e9c1492e37eeb65ea0df23644a9bb59",
+    "bytes": 12463,
+    "status": "OBSERVED_NATIVE_FORCED_REFUND_PHYSICAL_REWRITE",
+    "controls": [
+      {
+        "mutation": "other-table",
+        "status": "PASS_REFUSED_MODIFIED_RETAINED_OBSERVATION"
+      },
+      {
+        "mutation": "changed-value",
+        "status": "PASS_REFUSED_MODIFIED_RETAINED_OBSERVATION"
+      },
+      {
+        "mutation": "extra-row",
+        "status": "PASS_REFUSED_MODIFIED_RETAINED_OBSERVATION"
+      },
+      {
+        "mutation": "wrong-post-id",
+        "status": "PASS_REFUSED_MODIFIED_RETAINED_OBSERVATION"
+      },
+      {
+        "mutation": "unattributed-delete",
+        "status": "PASS_REFUSED_MODIFIED_RETAINED_OBSERVATION"
+      },
+      {
+        "mutation": "extra-writer",
+        "status": "PASS_REFUSED_MODIFIED_RETAINED_OBSERVATION"
+      },
+      {
+        "mutation": "changed-native-field",
+        "status": "PASS_REFUSED_MODIFIED_RETAINED_OBSERVATION"
+      },
+      {
+        "mutation": "duplicate-new-meta-id",
+        "status": "PASS_REFUSED_MODIFIED_RETAINED_OBSERVATION"
+      },
+      {
+        "mutation": "null-to-empty-string",
+        "status": "PASS_REFUSED_MODIFIED_RETAINED_OBSERVATION"
+      },
+      {
+        "mutation": "missing-required-table",
+        "status": "PASS_REFUSED_MODIFIED_RETAINED_OBSERVATION"
+      },
+      {
+        "mutation": "replaced-required-table",
+        "status": "PASS_REFUSED_MODIFIED_RETAINED_OBSERVATION"
+      }
+    ]
+  },
+  "ordered_writer_negatives": [
+    {
+      "mutation": "wrong-class",
+      "status": "PASS_REFUSED_MODIFIED_RETAINED_TRACE"
+    },
+    {
+      "mutation": "wrong-file",
+      "status": "PASS_REFUSED_MODIFIED_RETAINED_TRACE"
+    },
+    {
+      "mutation": "reordered-chain",
+      "status": "PASS_REFUSED_MODIFIED_RETAINED_TRACE"
+    },
+    {
+      "mutation": "extra-unattributed-writer",
+      "status": "PASS_REFUSED_MODIFIED_RETAINED_TRACE"
+    },
+    {
+      "mutation": "foreign-or-target-scope",
+      "status": "PASS_REFUSED_MODIFIED_RETAINED_TRACE"
+    },
+    {
+      "mutation": "target-or-foreign-scope",
+      "status": "PASS_REFUSED_MODIFIED_RETAINED_TRACE"
+    },
+    {
+      "mutation": "multirow-upsert",
+      "status": "PASS_REFUSED_MODIFIED_RETAINED_TRACE"
+    },
+    {
+      "mutation": "wrong-refund-type",
+      "status": "PASS_REFUSED_MODIFIED_RETAINED_TRACE"
+    },
+    {
+      "mutation": "extra-upsert-assignment",
+      "status": "PASS_REFUSED_MODIFIED_RETAINED_TRACE"
+    },
+    {
+      "mutation": "mismatched-values-assignment",
+      "status": "PASS_REFUSED_MODIFIED_RETAINED_TRACE"
+    },
+    {
+      "mutation": "extra-upsert-column",
+      "status": "PASS_REFUSED_MODIFIED_RETAINED_TRACE"
+    },
+    {
+      "mutation": "wrong-owned-source-id",
+      "status": "PASS_REFUSED_MODIFIED_RETAINED_TRACE"
+    },
+    {
+      "mutation": "other-unique-key",
+      "status": "PASS_REFUSED_MODIFIED_RETAINED_TRACE"
+    },
+    {
+      "mutation": "wrong-writer-id",
+      "status": "PASS_REFUSED_MODIFIED_RETAINED_TRACE"
+    },
+    {
+      "mutation": "target-delete-before-upsert",
+      "status": "PASS_REFUSED_MODIFIED_RETAINED_TRACE"
+    },
+    {
+      "mutation": "target-replace-before-upsert",
+      "status": "PASS_REFUSED_MODIFIED_RETAINED_TRACE"
+    },
+    {
+      "mutation": "unqualified-source-update",
+      "status": "PASS_REFUSED_MODIFIED_RETAINED_TRACE"
+    }
+  ],
+  "mock": {
+    "status": "PASS_MOCK_ONLY_SOURCE_CONTROLS",
+    "authentication": "NOT_APPLICABLE",
+    "source_sha256": "ffa6ab297081a03ff5a03824294d46c0931e9a1893e9a6ac074c9b5f9f8287ae",
+    "control_source_sha256": "3256fc25273e40ce655e6b934ade4d62b263cffd3e468200429299e31f03eedb",
+    "controls": [
+      "cleanup_failures_preserve_reporting_and_nonzero_exit",
+      "inventory_failure_distinct_from_successful_service_stop",
+      "all_children_attempted_despite_fallback_errors",
+      "protected_inventory_checks_after_cleanup_failure",
+      "unique_exclusive_sql_preimages_and_pins",
+      "boolean_float_and_multiplicity_differences_refused"
+    ],
+    "limits": "AST extracted actual functions and terminal block with mocked dependencies; no native runtime claim",
+    "terminal_exit": 1
+  },
+  "native_typed_roundtrip": {
+    "status": "PASS_NATIVE_PERSISTENCE_ENCODING_DECODING_TYPED_COMPARISON",
+    "controls": [
+      {
+        "mutation": "bool-to-int",
+        "status": "PASS_REFUSED_TYPED_NATIVE_ROUNDTRIP"
+      },
+      {
+        "mutation": "float-to-int",
+        "status": "PASS_REFUSED_TYPED_NATIVE_ROUNDTRIP"
+      }
+    ],
+    "negative_multiplicity_refused": true
+  },
+  "native_payload_index_negatives": {
+    "status": "PASS_PAYLOAD_VALIDATOR_CONTROLS",
+    "authentication": "NOT_APPLICABLE",
+    "controls": [
+      {
+        "mutation": "changed-value",
+        "status": "PASS_REFUSED_MODIFIED_RETAINED_NATIVE_PAYLOAD"
+      },
+      {
+        "mutation": "duplicate-value",
+        "status": "PASS_REFUSED_MODIFIED_RETAINED_NATIVE_PAYLOAD"
+      },
+      {
+        "mutation": "missing-row",
+        "status": "PASS_REFUSED_MODIFIED_RETAINED_NATIVE_PAYLOAD"
+      },
+      {
+        "mutation": "changed-public-value",
+        "status": "PASS_REFUSED_MODIFIED_RETAINED_NATIVE_PAYLOAD"
+      },
+      {
+        "mutation": "duplicate-public-key",
+        "status": "PASS_REFUSED_MODIFIED_RETAINED_NATIVE_PAYLOAD"
+      }
+    ],
+    "scope": "Modified copies of actual native fresh-read payload; no new native database corruption controls"
+  },
+  "limits": "Payload-copy index negatives test validators; they do not claim extra native database-corruption executions. Older restore helper text logs without command sidecars have post-run retention pins only, not invented capture-time attestation."
+}

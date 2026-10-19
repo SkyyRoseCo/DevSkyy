@@ -1,0 +1,198 @@
+{
+  "status": "PASS_SEPARATE_ORDERED_CLASS_FILE_ALL_WRITERS_VALIDATION",
+  "authentication": "NOT_APPLICABLE",
+  "native_run": "1792437370289798000",
+  "offline_validation_source": "1adf308d7598e2f0ca9fd4c130bcab822daf4a6c",
+  "limits": "New offline assertions on complete retained native captures; no WordPress/database execution or retroactive claim that native driver had these stronger assertions",
+  "native_executed_source": "92de06b4f4dba653ef2f40c6ca3d1b1fed539b82",
+  "attribution": {
+    "status": "PASS_ORDERED_PINNED_NATIVE_ATTRIBUTION",
+    "target_refund_id": 45,
+    "timestamp_writers": [
+      {
+        "query_index": 7,
+        "required_frame_positions": [
+          6,
+          8,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17
+        ]
+      }
+    ],
+    "refund_saves": [
+      {
+        "save_index": 0,
+        "required_frame_positions": [
+          4,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13
+        ]
+      }
+    ],
+    "native_source_pins": {
+      "wp-content/plugins/woocommerce/includes/abstracts/abstract-wc-order.php": {
+        "sha256": "76abebbe8b17f0c4ae2c11e462cb0c379df57c3a84ecc81461671d9be7dade8c",
+        "bytes": 102138,
+        "mode": 420
+      },
+      "wp-content/plugins/woocommerce/includes/class-wc-data-store.php": {
+        "sha256": "e7b9c236bb0d879c5388ba7bfe0ff0afb7775c085422d33e6206481a32178f43",
+        "bytes": 6752,
+        "mode": 420
+      },
+      "wp-content/plugins/woocommerce/includes/data-stores/abstract-wc-order-data-store-cpt.php": {
+        "sha256": "6170144e3c69a10166bbec11bba2d6d24f020ffc0e94e9252cbe573c52a49caf",
+        "bytes": 49522,
+        "mode": 420
+      },
+      "wp-content/plugins/woocommerce/includes/data-stores/class-wc-data-store-wp.php": {
+        "sha256": "b0be67d82d0c1f21e1cfe0077dde94855d1689e0aa6f714bb536297399e39778",
+        "bytes": 22313,
+        "mode": 420
+      },
+      "wp-content/plugins/woocommerce/src/Internal/DataStores/Orders/DataSynchronizer.php": {
+        "sha256": "a431e293f882f6ed0517de243856bff419454888d65d1c0e5779ad7959abc594",
+        "bytes": 36905,
+        "mode": 420
+      },
+      "wp-content/plugins/woocommerce/src/Internal/DataStores/Orders/OrdersTableDataStore.php": {
+        "sha256": "bdba8944ed0c86c20aed3e1127f9d0585a5cb0e0740edabe1eae24cd9f8b7b63",
+        "bytes": 127103,
+        "mode": 420
+      },
+      "wp-content/plugins/woocommerce/src/Internal/DataStores/Orders/OrdersTableRefundDataStore.php": {
+        "sha256": "109f582afcb3461b3d84087e1731d3e1d75135e045b53821956458bedc68ac36",
+        "bytes": 6636,
+        "mode": 420
+      },
+      "wp-content/plugins/woocommerce/src/Internal/Utilities/DatabaseUtil.php": {
+        "sha256": "6c3432ff76a5a509415c86aec9493c01957f06f467761879af4f48f709d41f6f",
+        "bytes": 16483,
+        "mode": 420
+      }
+    },
+    "limits": "Attempted SQL and argument-free native stacks; persisted outcome is checked separately by SQL/native readbacks"
+  },
+  "controls": [
+    {
+      "mutation": "wrong-class",
+      "status": "PASS_REFUSED_MODIFIED_RETAINED_TRACE"
+    },
+    {
+      "mutation": "wrong-file",
+      "status": "PASS_REFUSED_MODIFIED_RETAINED_TRACE"
+    },
+    {
+      "mutation": "reordered-chain",
+      "status": "PASS_REFUSED_MODIFIED_RETAINED_TRACE"
+    },
+    {
+      "mutation": "extra-unattributed-writer",
+      "status": "PASS_REFUSED_MODIFIED_RETAINED_TRACE"
+    },
+    {
+      "mutation": "foreign-or-target-scope",
+      "status": "PASS_REFUSED_MODIFIED_RETAINED_TRACE"
+    },
+    {
+      "mutation": "target-or-foreign-scope",
+      "status": "PASS_REFUSED_MODIFIED_RETAINED_TRACE"
+    },
+    {
+      "mutation": "multirow-upsert",
+      "status": "PASS_REFUSED_MODIFIED_RETAINED_TRACE"
+    },
+    {
+      "mutation": "wrong-refund-type",
+      "status": "PASS_REFUSED_MODIFIED_RETAINED_TRACE"
+    },
+    {
+      "mutation": "extra-upsert-assignment",
+      "status": "PASS_REFUSED_MODIFIED_RETAINED_TRACE"
+    },
+    {
+      "mutation": "mismatched-values-assignment",
+      "status": "PASS_REFUSED_MODIFIED_RETAINED_TRACE"
+    },
+    {
+      "mutation": "extra-upsert-column",
+      "status": "PASS_REFUSED_MODIFIED_RETAINED_TRACE"
+    },
+    {
+      "mutation": "wrong-owned-source-id",
+      "status": "PASS_REFUSED_MODIFIED_RETAINED_TRACE"
+    },
+    {
+      "mutation": "other-unique-key",
+      "status": "PASS_REFUSED_MODIFIED_RETAINED_TRACE"
+    },
+    {
+      "mutation": "wrong-writer-id",
+      "status": "PASS_REFUSED_MODIFIED_RETAINED_TRACE"
+    },
+    {
+      "mutation": "target-delete-before-upsert",
+      "status": "PASS_REFUSED_MODIFIED_RETAINED_TRACE"
+    },
+    {
+      "mutation": "target-replace-before-upsert",
+      "status": "PASS_REFUSED_MODIFIED_RETAINED_TRACE"
+    },
+    {
+      "mutation": "unqualified-source-update",
+      "status": "PASS_REFUSED_MODIFIED_RETAINED_TRACE"
+    }
+  ],
+  "input_pins": {
+    "tasks/release-gates-20261019/gate4-populated/run-1792437370289798000/results.json": {
+      "sha256": "c9d8b5eff06186f42d588443ef1dfb08cd17bfada299b065fe12ddae4fbe2f8f",
+      "bytes": 2774528
+    },
+    "tasks/release-gates-20261019/gate4-populated/run-1792437370289798000/command-00158.json": {
+      "sha256": "59f8fbdc74c497169349f08835332ce31ecfb5f970f8cc745e13c451a301ae57",
+      "bytes": 1074
+    },
+    "tasks/release-gates-20261019/gate4-populated/run-1792437370289798000/command-00158.txt": {
+      "sha256": "311cf263e9d407f4bd321804c1622195c43082e88c2461b0dc97a06f2b63350b",
+      "bytes": 640625
+    },
+    "tasks/release-gates-20261019/gate4-populated/run-1792437370289798000/command-00159.json": {
+      "sha256": "1032b821807366b808ce2584fed6beb310ff3a9a50d080378ccf8eac948c7e3c",
+      "bytes": 1076
+    },
+    "tasks/release-gates-20261019/gate4-populated/run-1792437370289798000/command-00159.txt": {
+      "sha256": "9118685109025aeadde988e71e84fdb5f3663d39f42b4ebdf8c9658704a8ed4a",
+      "bytes": 100556
+    },
+    ".artifacts/release-gates-20261019/gate4-populated/run-1792437370289798000/site-at-start.json": {
+      "sha256": "3e143db9b0355ac9a9e04fd026252a364dfe5a87da43b95fa51ffe74134f3977",
+      "bytes": 7508775
+    },
+    ".artifacts/release-gates-20261019/gate4-populated/run-1792437370289798000/native-executed-driver.py": {
+      "sha256": "ffa6ab297081a03ff5a03824294d46c0931e9a1893e9a6ac074c9b5f9f8287ae",
+      "bytes": 54558
+    }
+  },
+  "source_pins": {
+    "tools/v2-runtime/verify_gate4_refund_attribution.py": {
+      "sha256": "627ce1a4a9b431d693a384357dac39c3a49658b30c9e8c8bd2ce28ab57165f3e",
+      "bytes": 6536
+    },
+    "tools/v2-runtime/gate4_refund_attribution.py": {
+      "sha256": "3f8e704d50ad72121fb4c53cf13a6e83a6ee30c688df43ae01b27db41886838c",
+      "bytes": 11441
+    }
+  }
+}
