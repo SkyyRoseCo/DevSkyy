@@ -1,0 +1,161 @@
+{
+  "schema": "skyyrose.retained-managed-package-recovery.v1",
+  "status": "EXACT_RECORDED_WOO_UPDATE_MANAGER_PACKAGE_RECOVERED_ONLY",
+  "authentication": "NOT_APPLICABLE_OFFLINE_NO_FRESH_AUTHENTICATED_ACCESS",
+  "source_commit": "529ead2f3b7330b3da1c7f8baf27f168e8dc1a67",
+  "baseline": {
+    "path": "/Users/theceo/.codex/worktrees/release-gates-20261019/DevSkyy/.artifacts/release-gates-20261019/installed-baseline-raw-r2.json",
+    "sha256": "f2379c9d4fef40a53552279b26b2fea6a1c34110d09aee174de6b1531de5258e",
+    "bytes": 3651265
+  },
+  "candidate_root": "/Users/theceo/Documents/AutoSorted 2/Others/skyyrose_co_15May2025_1750254942/skyyrose_co_15May2025_1750254942/home1/jpllicmy/public_html/med/wp-content/upgrade/plugins/woo-update-manager",
+  "component": "woo-update-manager",
+  "recorded_version": "1.0.3",
+  "candidate_version": "1.0.3",
+  "recorded_files": 5,
+  "recorded_bytes": 6915,
+  "exact_recorded_census_match": true,
+  "retained": {
+    "SECURITY.md": {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261019/managed-snapshot-followup/recovered-woo-update-manager/SECURITY.md",
+      "sha256": "67c21e95716beb2bdd31a2ffcb72ef4b667d4a0da2529adef5ca2dedf542a00e",
+      "bytes": 1925
+    },
+    "changelog.txt": {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261019/managed-snapshot-followup/recovered-woo-update-manager/changelog.txt",
+      "sha256": "fbbc989b35d0f1238f753adee614a3629b836a981fd4e05d28df2dd03696ce5b",
+      "bytes": 515
+    },
+    "includes/class-woo-subscription-data-updater.php": {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261019/managed-snapshot-followup/recovered-woo-update-manager/includes/class-woo-subscription-data-updater.php",
+      "sha256": "3d5074ab3470347a38d8bd49addad9e313db98198a3002549abf7d04a6e6a636",
+      "bytes": 2202
+    },
+    "readme.txt": {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261019/managed-snapshot-followup/recovered-woo-update-manager/readme.txt",
+      "sha256": "ecbefb645009c54a9b554683d362523ca8fa06a2588228f251da1a538dfd3ddb",
+      "bytes": 664
+    },
+    "woo-update-manager.php": {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261019/managed-snapshot-followup/recovered-woo-update-manager/woo-update-manager.php",
+      "sha256": "7af5e6c2a71bcf28cacf3fdf01067ad6f4db3a484c80e3697477cba8f6c4bcbd",
+      "bytes": 1609
+    }
+  },
+  "controls": [
+    {
+      "mutation": "changed-byte",
+      "status": "PASS_REFUSED"
+    },
+    {
+      "mutation": "missing-member",
+      "status": "PASS_REFUSED"
+    },
+    {
+      "mutation": "extra-member",
+      "status": "PASS_REFUSED"
+    },
+    {
+      "mutation": "mock-walker-permission-error",
+      "status": "PASS_REFUSED"
+    }
+  ],
+  "other_candidates": [
+    {
+      "path": "/Users/theceo/Documents/AutoSorted 2/Others/skyyrose_co_15May2025_1750254942/skyyrose_co_15May2025_1750254942/home1/jpllicmy/public_html/med/wp-content/advanced-cache.php",
+      "sha256": "e0b7f0b62720bc68c88386bf01bf13b574d8731e08ca0e71fb480843e8978a57",
+      "bytes": 6628,
+      "plugin_version": null,
+      "baseline_field": "drop-ins/advanced-cache.php",
+      "expected": {
+        "sha256": "b4fa690cbeafe454ae653925f63fc9ce4e032b962a9a21b0885ae1221443978a",
+        "symlink": true
+      },
+      "body_hash_matches": false,
+      "scope": "OLDER_BACKUP_CANDIDATE_SOURCE_ONLY_NO_EXECUTION"
+    },
+    {
+      "path": "/Users/theceo/Documents/AutoSorted 2/Others/skyyrose_co_15May2025_1750254942/skyyrose_co_15May2025_1750254942/home1/jpllicmy/public_html/med/wp-content/object-cache.php",
+      "sha256": "ecb56c5bde26d7760be49e78cb937eb4574dd0548422b96fa6834d38a6c2c0a0",
+      "bytes": 1793,
+      "plugin_version": null,
+      "baseline_field": "drop-ins/object-cache.php",
+      "expected": {
+        "sha256": "b68651c34f3898f746a5fd7abd433f9d2decc39d6068e1168a03afbdc1696869",
+        "symlink": true
+      },
+      "body_hash_matches": false,
+      "scope": "OLDER_BACKUP_CANDIDATE_SOURCE_ONLY_NO_EXECUTION"
+    },
+    {
+      "path": "/Users/theceo/Documents/AutoSorted 2/Others/skyyrose_co_15May2025_1750254942/skyyrose_co_15May2025_1750254942/home1/jpllicmy/public_html/med/wp-content/upgrade/plugins/elementor-pro/elementor-pro.php",
+      "sha256": "84bba2ddd2c7e5f42104e589260afc85fd9d9ce40e94e797818a2bc81cbddf5d",
+      "bytes": 7983,
+      "plugin_version": "3.28.0",
+      "baseline_field": "plugins/elementor-pro/elementor-pro.php",
+      "expected": {
+        "sha256": "7ffe23ec24ff744594e1efd604b7163d08a028a1355fb2d651e2420ab7288a72",
+        "bytes": 8177,
+        "symlink": false
+      },
+      "body_hash_matches": false,
+      "scope": "OLDER_BACKUP_CANDIDATE_SOURCE_ONLY_NO_EXECUTION"
+    },
+    {
+      "path": "/Users/theceo/Documents/AutoSorted 2/Others/skyyrose_co_15May2025_1750254942/skyyrose_co_15May2025_1750254942/home1/jpllicmy/public_html/med/wp-content/upgrade/plugins/litespeed-cache/lib/object-cache.php",
+      "sha256": "ecb56c5bde26d7760be49e78cb937eb4574dd0548422b96fa6834d38a6c2c0a0",
+      "bytes": 1793,
+      "plugin_version": null,
+      "baseline_field": "drop-ins/object-cache.php",
+      "expected": {
+        "sha256": "b68651c34f3898f746a5fd7abd433f9d2decc39d6068e1168a03afbdc1696869",
+        "symlink": true
+      },
+      "body_hash_matches": false,
+      "scope": "OLDER_BACKUP_CANDIDATE_SOURCE_ONLY_NO_EXECUTION"
+    },
+    {
+      "path": "/Users/theceo/Documents/AutoSorted 2/Others/skyyrose_co_15May2025_1750254942/skyyrose_co_15May2025_1750254942/home1/jpllicmy/public_html/med/wp-content/upgrade/plugins/speedycache/main/advanced-cache.php",
+      "sha256": "e0b7f0b62720bc68c88386bf01bf13b574d8731e08ca0e71fb480843e8978a57",
+      "bytes": 6628,
+      "plugin_version": null,
+      "baseline_field": "drop-ins/advanced-cache.php",
+      "expected": {
+        "sha256": "b4fa690cbeafe454ae653925f63fc9ce4e032b962a9a21b0885ae1221443978a",
+        "symlink": true
+      },
+      "body_hash_matches": false,
+      "scope": "OLDER_BACKUP_CANDIDATE_SOURCE_ONLY_NO_EXECUTION"
+    },
+    {
+      "path": "/Users/theceo/Documents/AutoSorted 2/Others/skyyrose_co_15May2025_1750254942/skyyrose_co_15May2025_1750254942/home1/jpllicmy/public_html/med/wp-content/upgrade/plugins/woo-update-manager/woo-update-manager.php",
+      "sha256": "7af5e6c2a71bcf28cacf3fdf01067ad6f4db3a484c80e3697477cba8f6c4bcbd",
+      "bytes": 1609,
+      "plugin_version": "1.0.3",
+      "baseline_field": "plugins/woo-update-manager/woo-update-manager.php",
+      "expected": {
+        "sha256": "7af5e6c2a71bcf28cacf3fdf01067ad6f4db3a484c80e3697477cba8f6c4bcbd",
+        "bytes": 1609,
+        "symlink": false
+      },
+      "body_hash_matches": true,
+      "scope": "OLDER_BACKUP_CANDIDATE_SOURCE_ONLY_NO_EXECUTION"
+    }
+  ],
+  "remaining_plugin_bodies": [
+    "commercegurus-commercekit",
+    "elementor-pro",
+    "layout-grid",
+    "big-sky"
+  ],
+  "limits": [
+    "Exact recorded census only; source bytes were never executed, installed, activated or bootstrapped",
+    "Older Elementor Pro 3.28.0 and cache bodies differ; they are not substitutes for installed bytes",
+    "Managed loader hashes identify dereferenced readable bytes, not symlink text or link targets",
+    "Managed loader/cache dependencies, effective private/service configuration and exact installed-stack runtime/isolated restore remain open",
+    "Filename search covers its recorded roots/exclusions only; it is not an exhaustive content or absence proof",
+    "Historical synthetic orphan ownership remains not established; original datadir untouched",
+    "No SQL, configuration values, customer/order data, backup acquisition, services or external actions"
+  ],
+  "holds": "ALL_LIVE_CONVERSION_DEPLOYMENT_AND_EXISTING_HOLDS_REMAIN"
+}

@@ -1,0 +1,51 @@
+{
+  "schema": "skyyrose.additive-offline-package-manifest.v1",
+  "status": "RECORDED_CODE_PACKAGE_ONLY_REVIEW_PENDING",
+  "source_commit": "529ead2f3b7330b3da1c7f8baf27f168e8dc1a67",
+  "files": [
+    {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/tasks/release-gates-20261019/gate4-managed-snapshot-followup/findings.json",
+      "sha256": "4622d1f88c5bad2e80e942991ef07b0506ec525cfbbf9f82c7c5b55620f5eb82",
+      "bytes": 8005
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/tasks/release-gates-20261019/gate4-managed-snapshot-followup/evidence-index.json",
+      "sha256": "5f1c4dbe5775d6207eaaff27a2280816c2581777f616b74293319f085bbd4510",
+      "bytes": 4717
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/tasks/release-gates-20261019/gate4-managed-snapshot-followup/runtime-configuration-disposition.json",
+      "sha256": "be9fc28e346f430878781eb4104e335bd889829885d07edf86cf6b340fd727b9",
+      "bytes": 4145
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/tasks/release-gates-20261019/gate4-managed-snapshot-followup/execution.json",
+      "sha256": "8e3ddd3115569f12487731a2eab44aaa92cde869c0e5cb0fbb5fb299869b0607",
+      "bytes": 1296
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/tasks/release-gates-20261019/gate4-managed-snapshot-followup/README.md",
+      "sha256": "527296e6325238a4f2d7cac4b8f523766cfa24c096f649338888a7479918d396",
+      "bytes": 2429
+    }
+  ],
+  "private_leads": [
+    {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261019/managed-snapshot-followup/filename-discovery.json",
+      "sha256": "f6989d74f599d9c55a06d6953e0ac1d62c04e92e19a1ca9062c0a584d6f3a984",
+      "bytes": 2372
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261019/managed-snapshot-followup/candidate-comparisons.json",
+      "sha256": "f189def780354b81a88965101debd09f69929e96a4fa18f07dfb75a0ad9e7c5e",
+      "bytes": 4503
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261019/managed-snapshot-followup/runtime-leads.json",
+      "sha256": "fc38193881e6677e411d6a4d4b9f254bd1cfacfe3d288e8c1a9fa691578a35a6",
+      "bytes": 2199
+    }
+  ],
+  "prior_frozen_packets": "UNCHANGED",
+  "release_authority": false
+}

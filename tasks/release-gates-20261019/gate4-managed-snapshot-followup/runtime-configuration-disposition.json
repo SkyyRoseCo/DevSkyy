@@ -1,0 +1,89 @@
+{
+  "authentication": "NOT_APPLICABLE_OFFLINE",
+  "retained_leads": [
+    {
+      "path": "/Users/theceo/Documents/Codex/2026-10-02/task/commerce-release/tools/v2-source-certification/runtime-php-baseline.json",
+      "sha256": "9085c641f089f57f3037ed7302078f866b8ea08fda36abd4ff28386efd1b198f",
+      "bytes": 8347,
+      "disposition": "THEME_PHP_FILE_DIGEST_MAP_NOT_PHP_ENGINE_CONFIGURATION",
+      "digest_entries": 81
+    },
+    {
+      "path": "/Users/theceo/Documents/Codex/2026-10-02/task/commerce-release/tasks/initial-commerce-release-20261002/evidence/staging-installed-final.json",
+      "sha256": "69dee896fd82cd2a3e20dd95479bd7eed38c952a752b831ca1b994e3501a95f1",
+      "bytes": 141318,
+      "disposition": "DATED_STAGING_THEME_ONLY_NOT_INSTALLED_PRODUCTION",
+      "metadata": {
+        "target": "https://staging-7e48-skyyrose.wpcomstaging.com",
+        "stylesheet": "skyyrose-flagship-2",
+        "version": "2.5.0",
+        "utc": "2026-10-02T23:54:07+00:00",
+        "count": 639
+      }
+    },
+    {
+      "path": "/Users/theceo/Documents/Codex/2026-10-02/task/commerce-release/tasks/initial-commerce-release-20261002/evidence/installed-enhancement-decisions.json",
+      "sha256": "f72c622368ab808d6778dad3c32d849f11a121e2a37c6e838c04d82e86031284",
+      "bytes": 19847,
+      "disposition": "LOCAL_SOURCE_DECISIONS_NOT_INSTALLED_PLUGIN_OR_EFFECTIVE_CONFIGURATION",
+      "metadata": {
+        "schema": 1,
+        "input_identity": "38dbcdeb811ab2af1f8820c6272407ab789f30fb97858f394753e283747b817b",
+        "authority": "Local source decision; no staging rollback or deployment authorized"
+      }
+    },
+    {
+      "path": "/Users/theceo/Documents/Codex/2026-10-02/task/commerce-release/tasks/integration-release-20261001/evidence/native-matrix-final/local-environment.json",
+      "sha256": "79ae38ac751eebfdfb4591dd5934eeb962385e573babbd77f4f7163ff6ecad26",
+      "bytes": 83,
+      "disposition": "DATED_LOCAL_FIXTURE_NOT_INSTALLED_STACK",
+      "metadata": {
+        "home": "http://127.0.0.1:18362",
+        "wp": "7.1.2",
+        "woo": "11.1.2",
+        "database": "sqlite"
+      }
+    }
+  ],
+  "effective_config_values_read": false,
+  "runtime_executed": false,
+  "managed_target_content_hash_leads": {
+    "mu-plugins/woocommerce-fraud-protection-loader.php": {
+      "sha256": "dc322007ab40d1b334d39d8888e935306f0fb6965038fe3cfe0687873dce814a",
+      "bytes": 2257,
+      "symlink": true
+    },
+    "mu-plugins/wpcomsh-loader.php": {
+      "sha256": "b349a1e8510fbcccec6df09c7dea57fe680ca4ed0ea037a1d1b2c44ac724a4c0",
+      "bytes": 885,
+      "symlink": true
+    },
+    "drop-ins/advanced-cache.php": {
+      "sha256": "b4fa690cbeafe454ae653925f63fc9ce4e032b962a9a21b0885ae1221443978a",
+      "symlink": true
+    },
+    "drop-ins/object-cache.php": {
+      "sha256": "b68651c34f3898f746a5fd7abd433f9d2decc39d6068e1168a03afbdc1696869",
+      "symlink": true
+    }
+  },
+  "managed_scope": "Hashes are readable target content observed by hash_file in the dated installed inventory; literal link text/targets, dependency trees and effective service settings were not captured. No matching loader filename was returned in the bounded filename discovery; this does not prove no body exists elsewhere.",
+  "baseline": {
+    "path": "/Users/theceo/.codex/worktrees/release-gates-20261019/DevSkyy/.artifacts/release-gates-20261019/installed-baseline-raw-r2.json",
+    "sha256": "f2379c9d4fef40a53552279b26b2fea6a1c34110d09aee174de6b1531de5258e",
+    "bytes": 3651265
+  },
+  "inventory_reader": {
+    "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/tools/v2-runtime/read-installed-baseline.php",
+    "sha256": "e48710c0d057f3c96eaaa5e23bff580741ee835202d662b321643616ae79b833",
+    "bytes": 3948
+  },
+  "remaining_installed_runtime": {
+    "wp": "7.1.3",
+    "woo": "11.2.1",
+    "php": "8.4.26",
+    "mariadb": "11.8.9",
+    "status": "NOT_QUALIFIED_LOCALLY_FULL_STACK_AND_ISOLATED_RESTORE_OPEN"
+  },
+  "remaining_effective_configuration": "Private configuration/service bindings, PHP extensions/limits/ini, database/cache settings remain unqualified; no configuration values read."
+}

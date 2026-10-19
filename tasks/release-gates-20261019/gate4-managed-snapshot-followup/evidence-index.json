@@ -1,0 +1,83 @@
+{
+  "inputs": [
+    {
+      "path": "/Users/theceo/.codex/worktrees/release-gates-20261019/DevSkyy/.artifacts/release-gates-20261019/installed-baseline-raw-r2.json",
+      "sha256": "f2379c9d4fef40a53552279b26b2fea6a1c34110d09aee174de6b1531de5258e",
+      "bytes": 3651265
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261019/managed-snapshot-followup/filename-discovery.json",
+      "sha256": "f6989d74f599d9c55a06d6953e0ac1d62c04e92e19a1ca9062c0a584d6f3a984",
+      "bytes": 2372
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261019/managed-snapshot-followup/candidate-comparisons.json",
+      "sha256": "f189def780354b81a88965101debd09f69929e96a4fa18f07dfb75a0ad9e7c5e",
+      "bytes": 4503
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/tools/v2-runtime/audit_gate4_managed_followup.py",
+      "sha256": "607d5335f7ff9b2c76a1305511d4c55a16fff9fd7743f7163b2b614fddcf028b",
+      "bytes": 8719
+    }
+  ],
+  "candidate_files": [
+    {
+      "path": "/Users/theceo/Documents/AutoSorted 2/Others/skyyrose_co_15May2025_1750254942/skyyrose_co_15May2025_1750254942/home1/jpllicmy/public_html/med/wp-content/upgrade/plugins/woo-update-manager/SECURITY.md",
+      "sha256": "67c21e95716beb2bdd31a2ffcb72ef4b667d4a0da2529adef5ca2dedf542a00e",
+      "bytes": 1925
+    },
+    {
+      "path": "/Users/theceo/Documents/AutoSorted 2/Others/skyyrose_co_15May2025_1750254942/skyyrose_co_15May2025_1750254942/home1/jpllicmy/public_html/med/wp-content/upgrade/plugins/woo-update-manager/changelog.txt",
+      "sha256": "fbbc989b35d0f1238f753adee614a3629b836a981fd4e05d28df2dd03696ce5b",
+      "bytes": 515
+    },
+    {
+      "path": "/Users/theceo/Documents/AutoSorted 2/Others/skyyrose_co_15May2025_1750254942/skyyrose_co_15May2025_1750254942/home1/jpllicmy/public_html/med/wp-content/upgrade/plugins/woo-update-manager/includes/class-woo-subscription-data-updater.php",
+      "sha256": "3d5074ab3470347a38d8bd49addad9e313db98198a3002549abf7d04a6e6a636",
+      "bytes": 2202
+    },
+    {
+      "path": "/Users/theceo/Documents/AutoSorted 2/Others/skyyrose_co_15May2025_1750254942/skyyrose_co_15May2025_1750254942/home1/jpllicmy/public_html/med/wp-content/upgrade/plugins/woo-update-manager/readme.txt",
+      "sha256": "ecbefb645009c54a9b554683d362523ca8fa06a2588228f251da1a538dfd3ddb",
+      "bytes": 664
+    },
+    {
+      "path": "/Users/theceo/Documents/AutoSorted 2/Others/skyyrose_co_15May2025_1750254942/skyyrose_co_15May2025_1750254942/home1/jpllicmy/public_html/med/wp-content/upgrade/plugins/woo-update-manager/woo-update-manager.php",
+      "sha256": "7af5e6c2a71bcf28cacf3fdf01067ad6f4db3a484c80e3697477cba8f6c4bcbd",
+      "bytes": 1609
+    }
+  ],
+  "results": [
+    {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/tasks/release-gates-20261019/gate4-managed-snapshot-followup/findings.json",
+      "sha256": "4622d1f88c5bad2e80e942991ef07b0506ec525cfbbf9f82c7c5b55620f5eb82",
+      "bytes": 8005
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261019/managed-snapshot-followup/recovered-woo-update-manager/SECURITY.md",
+      "sha256": "67c21e95716beb2bdd31a2ffcb72ef4b667d4a0da2529adef5ca2dedf542a00e",
+      "bytes": 1925
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261019/managed-snapshot-followup/recovered-woo-update-manager/changelog.txt",
+      "sha256": "fbbc989b35d0f1238f753adee614a3629b836a981fd4e05d28df2dd03696ce5b",
+      "bytes": 515
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261019/managed-snapshot-followup/recovered-woo-update-manager/includes/class-woo-subscription-data-updater.php",
+      "sha256": "3d5074ab3470347a38d8bd49addad9e313db98198a3002549abf7d04a6e6a636",
+      "bytes": 2202
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261019/managed-snapshot-followup/recovered-woo-update-manager/readme.txt",
+      "sha256": "ecbefb645009c54a9b554683d362523ca8fa06a2588228f251da1a538dfd3ddb",
+      "bytes": 664
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261019/managed-snapshot-followup/recovered-woo-update-manager/woo-update-manager.php",
+      "sha256": "7af5e6c2a71bcf28cacf3fdf01067ad6f4db3a484c80e3697477cba8f6c4bcbd",
+      "bytes": 1609
+    }
+  ]
+}

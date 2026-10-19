@@ -1,0 +1,31 @@
+{
+  "schema": "skyyrose.offline-audit-execution-receipt.v1",
+  "recorded_utc": "2026-10-19T21:15:01.708756+00:00",
+  "source_commit": "529ead2f3b7330b3da1c7f8baf27f168e8dc1a67",
+  "source": {
+    "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/tools/v2-runtime/audit_gate4_managed_followup.py",
+    "sha256": "607d5335f7ff9b2c76a1305511d4c55a16fff9fd7743f7163b2b614fddcf028b",
+    "bytes": 8719
+  },
+  "interpreter": {
+    "path": "/opt/homebrew/Cellar/python@3.14/3.14.7/Frameworks/Python.framework/Versions/3.14/bin/python3.14",
+    "sha256": "87d4df53fd91304be5bac391fb204643c36b7df2023c04a0953bcbc7d4fdf634",
+    "bytes": 34640
+  },
+  "invocation": [
+    "-B",
+    "-I",
+    "tools/v2-runtime/audit_gate4_managed_followup.py"
+  ],
+  "observed_terminal_exit": 0,
+  "observed_stdout": "EXACT_RECORDED_WOO_UPDATE_MANAGER_PACKAGE_RECOVERED_ONLY",
+  "control_count": 4,
+  "retained_php_execution": false,
+  "results": {
+    "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/tasks/release-gates-20261019/gate4-managed-snapshot-followup/findings.json",
+    "sha256": "4622d1f88c5bad2e80e942991ef07b0506ec525cfbbf9f82c7c5b55620f5eb82",
+    "bytes": 8005
+  },
+  "reference_integrity_checks": 15,
+  "authentication": "NOT_APPLICABLE_OFFLINE"
+}
