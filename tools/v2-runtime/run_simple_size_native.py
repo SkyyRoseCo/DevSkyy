@@ -566,9 +566,9 @@ def setup():
     )
     profile = (
         CLIENT_PROFILE
-        + '(allow network-bind (local ip "127.0.0.1:'
+        + '(allow network-bind (local ip "localhost:'
         + str(PORT)
-        + '"))(allow network-inbound (local ip "127.0.0.1:'
+        + '"))(allow network-inbound (local ip "localhost:'
         + str(PORT)
         + '"))'
     )
