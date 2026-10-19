@@ -1,4 +1,6 @@
-# Gate 4 local continuation
+# Gate 4 local continuation — historical fencing checkpoint
+
+This page records the earlier fencing checkpoint. See [CURRENT-STATUS.md](CURRENT-STATUS.md) and [continuation-manifest.json](continuation-manifest.json) for the completed local privacy, restore, and storage subsets and the remaining holds. The statements below retain their original checkpoint scope.
 
 The frozen d953/aa065/ZIPd9 storefront remains unchanged. The private core successor source is `499ebb4b04eb21ea11fa7876d9675f203f7ea126`; use `fence-manifest.json` for the31-case report, source/receipt pins, independent review and scope. It is not adopted into the frozen CLI/package.
 
