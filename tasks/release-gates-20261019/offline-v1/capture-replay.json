@@ -1,0 +1,455 @@
+{
+  "status": "PASS_OFFLINE_DIAGNOSIS_ONLY",
+  "packet_sha256": "3ee434b85b1324eea92960ca4fc7b384bb067fe57670102a108dbe21da441f19",
+  "classifier_source_sha256": "e91406cba2e727ed26d2ac85c592b8d0b7aa084b07c972de5427466e64223499",
+  "profiles": [
+    {
+      "profile": "desktop",
+      "receipt_sha256": "d8c86e8ed55dbc9c4265278aac293be662892e7a9261974270365d3870383ae0",
+      "original_exported_counts": {
+        "CAPTURED_SENT_COOKIE_NAMES": 128,
+        "UNKNOWN": 494
+      },
+      "pure_classifier_counts": {
+        "CAPTURED_SENT_COOKIE_NAMES": 128,
+        "NOT_TRANSMITTED_INITIAL_CSP_DENIAL": 399,
+        "NOT_TRANSMITTED_RENDERER_MEMORY_REUSE": 91,
+        "UNKNOWN": 4
+      },
+      "unsupported_rows": [
+        {
+          "request_id": "36C26C2A9D9094B6A15E4E38C321A82C",
+          "url": "https://skyyrose.co/product/br-002/",
+          "type": "Prefetch",
+          "sequence": [
+            "request",
+            "response"
+          ],
+          "requests": [
+            {
+              "url": "https://skyyrose.co/product/br-002/",
+              "scheme": "https",
+              "method": "GET",
+              "type": "Prefetch",
+              "timestamp": 27712.780544,
+              "initiator_type": "script",
+              "frame_id": "38FD9C0C07283BF51EA3EED22EB0AE36",
+              "loader_id": "36C26C2A9D9094B6A15E4E38C321A82C",
+              "redirected": false,
+              "trust_token_params_present": false
+            }
+          ],
+          "request_extra_count": 1,
+          "response_extra_count": 1,
+          "responses": [
+            {
+              "status": 200,
+              "has_extra_info": true,
+              "from_disk_cache": false,
+              "protocol": "h2",
+              "from_service_worker": false,
+              "from_prefetch_cache": true,
+              "router_present": false
+            }
+          ],
+          "finished": [],
+          "failed": [],
+          "cache_events": 0,
+          "original_exported_disposition": "UNKNOWN",
+          "pure_classifier_disposition": "UNKNOWN",
+          "failing_assertions": [
+            "assert len(row[\"finished\"]) + len(row[\"failed\"]) == 1"
+          ],
+          "cookie_absence_proven": false
+        },
+        {
+          "request_id": "97B4FBADB9C4002BF312035D0007FC6B",
+          "url": "https://skyyrose.co/product/br-002/",
+          "type": "Document",
+          "sequence": [
+            "request",
+            "response",
+            "finished"
+          ],
+          "requests": [
+            {
+              "url": "https://skyyrose.co/product/br-002/",
+              "scheme": "https",
+              "method": "GET",
+              "type": "Document",
+              "timestamp": 27712.781773,
+              "initiator_type": "other",
+              "frame_id": "38FD9C0C07283BF51EA3EED22EB0AE36",
+              "loader_id": "97B4FBADB9C4002BF312035D0007FC6B",
+              "redirected": false,
+              "trust_token_params_present": false
+            }
+          ],
+          "request_extra_count": 0,
+          "response_extra_count": 0,
+          "responses": [
+            {
+              "status": 200,
+              "has_extra_info": true,
+              "from_disk_cache": false,
+              "protocol": "h2",
+              "from_service_worker": false,
+              "from_prefetch_cache": true,
+              "router_present": false
+            }
+          ],
+          "finished": [
+            {
+              "timestamp": 27712.803507,
+              "encoded_data_length": 56376
+            }
+          ],
+          "failed": [],
+          "cache_events": 0,
+          "original_exported_disposition": "UNKNOWN",
+          "pure_classifier_disposition": "UNKNOWN",
+          "failing_assertions": [
+            "assert all(\n                res[key] is False\n                for key in [\"from_service_worker\", \"from_prefetch_cache\", \"router_present\"]\n            )"
+          ],
+          "cookie_absence_proven": false
+        },
+        {
+          "request_id": "36056.756",
+          "url": "https://js.stripe.com/v3/",
+          "type": "Script",
+          "sequence": [
+            "request",
+            "failed"
+          ],
+          "requests": [
+            {
+              "url": "https://js.stripe.com/v3/",
+              "scheme": "https",
+              "method": "GET",
+              "type": "Script",
+              "timestamp": 27712.883786,
+              "initiator_type": "parser",
+              "frame_id": "38FD9C0C07283BF51EA3EED22EB0AE36",
+              "loader_id": "97B4FBADB9C4002BF312035D0007FC6B",
+              "redirected": false,
+              "trust_token_params_present": false
+            }
+          ],
+          "request_extra_count": 0,
+          "response_extra_count": 0,
+          "responses": [],
+          "finished": [],
+          "failed": [
+            {
+              "error": "",
+              "timestamp": 27712.883789,
+              "type": "Script",
+              "canceled": false,
+              "blocked_reason": "csp",
+              "cors_error": null,
+              "cors_failed_parameter_present": null,
+              "presence": {
+                "timestamp": true,
+                "type": true,
+                "errorText": true,
+                "canceled": true,
+                "blockedReason": true,
+                "corsErrorStatus": false
+              }
+            }
+          ],
+          "cache_events": 0,
+          "original_exported_disposition": "UNKNOWN",
+          "pure_classifier_disposition": "UNKNOWN",
+          "failing_assertions": [
+            "assert len(row[\"extras\"]) == 1"
+          ],
+          "cookie_absence_proven": false
+        },
+        {
+          "request_id": "36056.860",
+          "url": "https://skyyrose.co/wp-content/plugins/jetpack/_inc/blocks/swiper.js",
+          "type": "Other",
+          "sequence": [
+            "request",
+            "cache",
+            "response",
+            "finished"
+          ],
+          "requests": [
+            {
+              "url": "https://skyyrose.co/wp-content/plugins/jetpack/_inc/blocks/swiper.js",
+              "scheme": "https",
+              "method": "GET",
+              "type": "Other",
+              "timestamp": 27713.181743,
+              "initiator_type": "parser",
+              "frame_id": "38FD9C0C07283BF51EA3EED22EB0AE36",
+              "loader_id": "FF619533A831D9A98BB387AFA60A4474",
+              "redirected": false,
+              "trust_token_params_present": false
+            }
+          ],
+          "request_extra_count": 0,
+          "response_extra_count": 0,
+          "responses": [
+            {
+              "status": 200,
+              "has_extra_info": true,
+              "from_disk_cache": false,
+              "protocol": "h2",
+              "from_service_worker": false,
+              "from_prefetch_cache": false,
+              "router_present": false
+            }
+          ],
+          "finished": [
+            {
+              "timestamp": 27713.181773,
+              "encoded_data_length": 0
+            }
+          ],
+          "failed": [],
+          "cache_events": 1,
+          "original_exported_disposition": "UNKNOWN",
+          "pure_classifier_disposition": "UNKNOWN",
+          "failing_assertions": [
+            "assert len(row[\"extras\"]) == 1"
+          ],
+          "cookie_absence_proven": false
+        }
+      ]
+    },
+    {
+      "profile": "mobile",
+      "receipt_sha256": "14978ec24a14dfc0b825bc8ed2cf37986df71a340190b583ffc1dc3490d245d4",
+      "original_exported_counts": {
+        "CAPTURED_SENT_COOKIE_NAMES": 120,
+        "UNKNOWN": 460
+      },
+      "pure_classifier_counts": {
+        "CAPTURED_SENT_COOKIE_NAMES": 120,
+        "NOT_TRANSMITTED_INITIAL_CSP_DENIAL": 399,
+        "NOT_TRANSMITTED_RENDERER_MEMORY_REUSE": 57,
+        "UNKNOWN": 4
+      },
+      "unsupported_rows": [
+        {
+          "request_id": "9FB08CE8C5AA77828256E71166B48BE9",
+          "url": "https://skyyrose.co/product/br-002/",
+          "type": "Prefetch",
+          "sequence": [
+            "request",
+            "response"
+          ],
+          "requests": [
+            {
+              "url": "https://skyyrose.co/product/br-002/",
+              "scheme": "https",
+              "method": "GET",
+              "type": "Prefetch",
+              "timestamp": 27720.247315,
+              "initiator_type": "script",
+              "frame_id": "67660BA1EE011063B275477285D72727",
+              "loader_id": "9FB08CE8C5AA77828256E71166B48BE9",
+              "redirected": false,
+              "trust_token_params_present": false
+            }
+          ],
+          "request_extra_count": 1,
+          "response_extra_count": 1,
+          "responses": [
+            {
+              "status": 200,
+              "has_extra_info": true,
+              "from_disk_cache": false,
+              "protocol": "h2",
+              "from_service_worker": false,
+              "from_prefetch_cache": true,
+              "router_present": false
+            }
+          ],
+          "finished": [],
+          "failed": [],
+          "cache_events": 0,
+          "original_exported_disposition": "UNKNOWN",
+          "pure_classifier_disposition": "UNKNOWN",
+          "failing_assertions": [
+            "assert len(row[\"finished\"]) + len(row[\"failed\"]) == 1"
+          ],
+          "cookie_absence_proven": false
+        },
+        {
+          "request_id": "D92E773611E063F1976A84CC1CAA9D90",
+          "url": "https://skyyrose.co/product/br-002/",
+          "type": "Document",
+          "sequence": [
+            "request",
+            "response",
+            "finished"
+          ],
+          "requests": [
+            {
+              "url": "https://skyyrose.co/product/br-002/",
+              "scheme": "https",
+              "method": "GET",
+              "type": "Document",
+              "timestamp": 27720.248399,
+              "initiator_type": "other",
+              "frame_id": "67660BA1EE011063B275477285D72727",
+              "loader_id": "D92E773611E063F1976A84CC1CAA9D90",
+              "redirected": false,
+              "trust_token_params_present": false
+            }
+          ],
+          "request_extra_count": 0,
+          "response_extra_count": 0,
+          "responses": [
+            {
+              "status": 200,
+              "has_extra_info": true,
+              "from_disk_cache": false,
+              "protocol": "h2",
+              "from_service_worker": false,
+              "from_prefetch_cache": true,
+              "router_present": false
+            }
+          ],
+          "finished": [
+            {
+              "timestamp": 27720.276216,
+              "encoded_data_length": 56448
+            }
+          ],
+          "failed": [],
+          "cache_events": 0,
+          "original_exported_disposition": "UNKNOWN",
+          "pure_classifier_disposition": "UNKNOWN",
+          "failing_assertions": [
+            "assert all(\n                res[key] is False\n                for key in [\"from_service_worker\", \"from_prefetch_cache\", \"router_present\"]\n            )"
+          ],
+          "cookie_absence_proven": false
+        },
+        {
+          "request_id": "36272.757",
+          "url": "https://skyyrose.co/wp-content/themes/skyyrose-flagship/assets/sot/video/tsrc-spin-alpha.webm",
+          "type": "Media",
+          "sequence": [
+            "request",
+            "response",
+            "failed"
+          ],
+          "requests": [
+            {
+              "url": "https://skyyrose.co/wp-content/themes/skyyrose-flagship/assets/sot/video/tsrc-spin-alpha.webm",
+              "scheme": "https",
+              "method": "GET",
+              "type": "Media",
+              "timestamp": 27721.03619,
+              "initiator_type": "script",
+              "frame_id": "67660BA1EE011063B275477285D72727",
+              "loader_id": "D92E773611E063F1976A84CC1CAA9D90",
+              "redirected": false,
+              "trust_token_params_present": false
+            }
+          ],
+          "request_extra_count": 1,
+          "response_extra_count": 0,
+          "responses": [
+            {
+              "status": 206,
+              "has_extra_info": false,
+              "from_disk_cache": true,
+              "protocol": "h2",
+              "from_service_worker": false,
+              "from_prefetch_cache": false,
+              "router_present": false
+            }
+          ],
+          "finished": [],
+          "failed": [
+            {
+              "error": "net::ERR_ABORTED",
+              "timestamp": 27721.301727,
+              "type": "Media",
+              "canceled": true,
+              "blocked_reason": null,
+              "cors_error": null,
+              "cors_failed_parameter_present": null,
+              "presence": {
+                "timestamp": true,
+                "type": true,
+                "errorText": true,
+                "canceled": true,
+                "blockedReason": false,
+                "corsErrorStatus": false
+              }
+            }
+          ],
+          "cache_events": 0,
+          "original_exported_disposition": "UNKNOWN",
+          "pure_classifier_disposition": "UNKNOWN",
+          "failing_assertions": [
+            "assert len(row[\"finished\"]) == 1 and not row[\"failed\"]"
+          ],
+          "cookie_absence_proven": false
+        },
+        {
+          "request_id": "36272.758",
+          "url": "https://js.stripe.com/v3/",
+          "type": "Script",
+          "sequence": [
+            "request",
+            "failed"
+          ],
+          "requests": [
+            {
+              "url": "https://js.stripe.com/v3/",
+              "scheme": "https",
+              "method": "GET",
+              "type": "Script",
+              "timestamp": 27721.038245,
+              "initiator_type": "parser",
+              "frame_id": "67660BA1EE011063B275477285D72727",
+              "loader_id": "D92E773611E063F1976A84CC1CAA9D90",
+              "redirected": false,
+              "trust_token_params_present": false
+            }
+          ],
+          "request_extra_count": 0,
+          "response_extra_count": 0,
+          "responses": [],
+          "finished": [],
+          "failed": [
+            {
+              "error": "",
+              "timestamp": 27721.038247,
+              "type": "Script",
+              "canceled": false,
+              "blocked_reason": "csp",
+              "cors_error": null,
+              "cors_failed_parameter_present": null,
+              "presence": {
+                "timestamp": true,
+                "type": true,
+                "errorText": true,
+                "canceled": true,
+                "blockedReason": true,
+                "corsErrorStatus": false
+              }
+            }
+          ],
+          "cache_events": 0,
+          "original_exported_disposition": "UNKNOWN",
+          "pure_classifier_disposition": "UNKNOWN",
+          "failing_assertions": [
+            "assert len(row[\"extras\"]) == 1"
+          ],
+          "cookie_absence_proven": false
+        }
+      ]
+    }
+  ],
+  "authority": "Consumed checkpoint remains FAIL; no runner/browser/provider invoked and no retry authority inferred.",
+  "limits": "Pure per-row replay does not qualify globally failed capture or convert missing cookie evidence into absence."
+}

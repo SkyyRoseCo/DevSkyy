@@ -1,0 +1,41 @@
+{
+  "classification": "SOURCE_VERIFIED_RETAINED_GIT",
+  "authentication": "NOT_APPLICABLE",
+  "files": [
+    {
+      "source_commit": "66e844369c60192ae66133199e15c2b0fbcf9ab7",
+      "source_path": "tools/production-runtime/inert-snapshot.cjs",
+      "retained_path": "tasks/release-gates-20261019/offline-v1/inert-snapshot.cjs",
+      "sha256": "10e916d7bb8ae8adb436915656d68fd8375088d0cb9982b22771bda57997cfef"
+    },
+    {
+      "source_commit": "66e844369c60192ae66133199e15c2b0fbcf9ab7",
+      "source_path": "tools/production-runtime/test-inert-snapshot.cjs",
+      "retained_path": "tasks/release-gates-20261019/offline-v1/test-inert-snapshot.cjs",
+      "sha256": "12d86a22940321363268272cc0ea6f51d154282091908c553ec6de6a13998fbe"
+    },
+    {
+      "source_commit": "66e844369c60192ae66133199e15c2b0fbcf9ab7",
+      "source_path": "tasks/initial-commerce-release-20261002/offline-diagnosis/legacy-sanitizer.json",
+      "retained_path": "tasks/release-gates-20261019/offline-v1/legacy-sanitizer.json",
+      "sha256": "ea058fab2633bf85678ee62259d59564d4d63f4f281e0a4de6ff02a7b1f020cc"
+    },
+    {
+      "source_commit": "66e844369c60192ae66133199e15c2b0fbcf9ab7",
+      "source_path": "tasks/initial-commerce-release-20261002/offline-diagnosis/capture-replay.json",
+      "retained_path": "tasks/release-gates-20261019/offline-v1/capture-replay.json",
+      "sha256": "4b7e09304bd1274709a7a0de9e75b65f45001c6a3bd6bc1fe86d3bb064c829de"
+    },
+    {
+      "source_commit": "66e844369c60192ae66133199e15c2b0fbcf9ab7",
+      "source_path": "tasks/initial-commerce-release-20261002/offline-diagnosis/replay_capture.py",
+      "retained_path": "tasks/release-gates-20261019/offline-v1/replay_capture.py",
+      "sha256": "125265f66c7f13b5031b1ac682164827fa1430b3b68c4424467878801eed9e6b"
+    }
+  ],
+  "limits": [
+    "Original consumed collector and complete failure packet unavailable",
+    "No new live checkpoint authority",
+    "Retained replay results are historical observations"
+  ]
+}

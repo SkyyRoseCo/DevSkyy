@@ -1,0 +1,66 @@
+{
+  "schema": "skyyrose.release-source-selection.v1",
+  "recorded_utc": "2026-10-19T08:37:15.446252+00:00",
+  "status": "COMPARISON_BASE_SELECTED_NOT_FROZEN",
+  "base": {
+    "ref": "origin/main",
+    "commit": "cebe98935a5fd22169b58d3504783eef00016e66",
+    "network_verified": true,
+    "checkout": "/Users/theceo/.codex/worktrees/release-gates-20261019/DevSkyy",
+    "branch": "codex/release-gates-20261019",
+    "theme_version": "2.5.5"
+  },
+  "excluded_working_tree": {
+    "checkout": "/Users/theceo/DevSkyy",
+    "branch": "feat/single-product-entry-point",
+    "head": "50b1dad47dbe8146dc89e2e27db82ba8b9d15f78",
+    "status_entries_before_session_log": 544,
+    "reason": "Older diverged source plus concurrent unreviewed changes; preserved."
+  },
+  "historical_candidates": [
+    "a662e707d698a687d7d1d2efed3975b9aa7325b9",
+    "fbbedd5ac6aa5fc5b40fd2fdb04f629cfc55d162"
+  ],
+  "adoptions": [],
+  "explicit_exclusions": [
+    "whole historical integration branch",
+    "unreviewed dirty main changes",
+    "PR1037 wholesale merge",
+    "draft PR1079 cinematic experiment"
+  ],
+  "source_pins": {
+    "wordpress-theme/skyyrose-flagship/data/logo-registry.json": "5eb683a13285772b264dabc5f1f84665087bc39b1b89cce4371a8c0d8fcc1580",
+    "package-lock.json": "00403c377c7877726947574e0adff37acd51228cbbc64429f98efb91e590942a",
+    "wordpress-theme/skyyrose-flagship-2/package.json": "8a81b29fef1f5f68785d24010dda2ef1ebcd7e67ff37eda996ecfe3381f19014",
+    "tools/v2-source-certification/build-inputs.json": "5e328c59e7d4fa8abc873c9cef390faa912abc71f9e522d432c2cb2bcc077943",
+    "tools/v2-runtime/variation-migration.php": "a27641ba240f08239c860686e5a6560c960150c57d3921e91cc09d43414f197e",
+    "wordpress-theme/skyyrose-flagship-2/inc/woocommerce-compat.php": "98fb6726e5704a5ac741d9b20b2bc38bb1578633998cacbe2ecac79d7ed778a1"
+  },
+  "dependency_gaps": [],
+  "owners": {
+    "integration": "01a0f768-2383-7262-b88c-7efe97126979",
+    "v2": "01a0f644-1a4e-78b3-b964-9156e1b4c57b",
+    "3d": "01a0f644-1a78-7a03-8d31-1e0864390f6a",
+    "preorder": "01a0f644-1981-7a90-ac72-8c66f8f6fd18"
+  },
+  "holds": [
+    "production attempts",
+    "live size conversion",
+    "real orders/payments",
+    "push/merge/deploy/activation/publication/cutover",
+    "paid provider generation",
+    "candidate-bound Corey immersive creative acceptance"
+  ],
+  "gate_status": {
+    "1": "NOT_RUN",
+    "2": "NOT_RUN",
+    "3": "NOT_RUN",
+    "4": "NOT_RUN",
+    "5": "NOT_RUN"
+  },
+  "dependency_resolution": {
+    "owning_lock": "wordpress-theme/skyyrose-flagship-2/npm-shrinkwrap.json",
+    "baseline_lock_present": true,
+    "correction": "Initial package-lock-only check missed the committed owning shrinkwrap. No dependency replacement is required."
+  }
+}

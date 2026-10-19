@@ -1,0 +1,8 @@
+{
+  "source_sha256": "61298598e8787678eccd7b301dd0982c5a1340ac9178c9ede258a207371e64eb",
+  "source_bytes": 55646,
+  "source_name": "consumed e526 shared-verifier.py",
+  "literal_sha256": "b11326f5465953ed7b5521cb2ac861c58d04b5a496acb44dd3f3adb7e6aa0dc9",
+  "DOM_SANITIZER": "()=>{\n const clone=document.documentElement.cloneNode(true);\n clone.querySelectorAll('script').forEach(n=>{if(!n.src)n.textContent='[INLINE SCRIPT REDACTED]'});\n clone.querySelectorAll('input,textarea').forEach(n=>{n.setAttribute('value','[REDACTED]');if(n.tagName==='TEXTAREA')n.textContent='[REDACTED]'});\n clone.querySelectorAll('*').forEach(n=>{for(const a of [...n.attributes]){\n  if(/nonce|token|security|cart.?item.?key|cart.?hash|session/i.test(a.name))n.setAttribute(a.name,'[REDACTED]');\n  else if(['href','src','action','poster'].includes(a.name)){try{const u=new URL(a.value,location.href);u.search='';u.hash='';n.setAttribute(a.name,u.href)}catch{n.setAttribute(a.name,a.value.split(/[?#]/)[0])}}\n  else if(a.name==='srcset'){n.removeAttribute(a.name)}\n  else if(/^on/i.test(a.name))n.setAttribute(a.name,'[INLINE HANDLER REDACTED]');\n }});\n return '<!doctype html>'+clone.outerHTML;\n}",
+  "scope": "exact retained string extracted offline; no controlled runner invoked"
+}
