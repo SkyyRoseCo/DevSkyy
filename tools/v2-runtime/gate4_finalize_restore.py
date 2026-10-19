@@ -433,6 +433,9 @@ add_filter('wp_theme_files_cache_ttl',function($ttl,$kind){file_put_contents(AUD
             raise
         finally:
             lock.rmdir()
+    assert (
+        REPORT["status"] == "PASS_PRIVATE_RESTORE_RECONCILIATION_AND_EXACT_POSTBOOT_STATE"
+    ), REPORT["status"]
     print(REPORT["status"])
 
 
