@@ -1,0 +1,66 @@
+{
+  "schema": "skyyrose.successor-preparation-binding.v1",
+  "status": "TRACKED_PARENT_PREPARATION_ONLY",
+  "prepared_root": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy",
+  "initial_head": "856745c859c9c58d1dc2218d8e28722cb3b43b91",
+  "inputs": [
+    {
+      "path": "/Users/theceo/.codex/worktrees/release-gates-20261019/DevSkyy/.artifacts/release-gates-20261019/storefront-successor-prep/prepare.py",
+      "sha256": "8d8c914d2f96a37073b7ec4dcecb595547e0e831ad623d3d66c762e9595d9b9e",
+      "bytes": 10794
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/release-gates-20261019/DevSkyy/.artifacts/release-gates-20261019/storefront-successor-prep/pinned-stage0-source-manifest.json",
+      "sha256": "a26ac0f5726ae2f07c5c99cf6e25a83abd1dda9774b3ef1ccab0013a3d0564b6",
+      "bytes": 3779585
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/release-gates-20261019/DevSkyy/.artifacts/release-gates-20261019/storefront-successor-prep/results.json",
+      "sha256": "2bab5c7d75a306c1917acd57757eb9524fae9d24dd05ecf9abc39ed9280ed90f",
+      "bytes": 1004
+    }
+  ],
+  "reported_result": {
+    "status": "PASS_ISOLATED_COW_PARENT_TREE_ONLY",
+    "utc": "2026-10-19T21:07:40.508200+00:00",
+    "source": "/Users/theceo/.codex/worktrees/release-gates-20261019/DevSkyy",
+    "target": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy",
+    "commit": "856745c859c9c58d1dc2218d8e28722cb3b43b91",
+    "branch": "codex/storefront-successor-20261019",
+    "entries": 12840,
+    "regular_files": 12295,
+    "symlinks": 539,
+    "uninitialized_gitlinks": 6,
+    "source_and_target_complete_tracked_census_equal": true,
+    "source_originals_unchanged": true,
+    "private_write_isolation_canary_passed": true,
+    "available_before": 2646269952,
+    "available_after": 2634317824,
+    "authentication": "NOT_APPLICABLE",
+    "limits": [
+      "No ignored data/dependencies or Gitlink contents copied",
+      "External skill symlinks recreated inertly, not adopted or executed",
+      "Shared disk headroom is not reserved",
+      "No services, database, media, provider, acquisition, conversion or deployment action"
+    ]
+  },
+  "post_preparation_checks": {
+    "canonical_registry": {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/logo-registry.json",
+      "sha256": "5eb683a13285772b264dabc5f1f84665087bc39b1b89cce4371a8c0d8fcc1580",
+      "bytes": 905116
+    },
+    "product_reader": {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/skyyrose/core/product.py",
+      "sha256": "65b3f2e01b756676661d3964b19d7dad7db3359973fa1b7738819796d17bf55b",
+      "bytes": 20189
+    },
+    "reader_root_matches_successor": true,
+    "product_count": 33,
+    "sync_product_registry_check": "PASS_CSV_DOSSIERS_ASSET_MANIFEST",
+    "subsequent_read_side_effect": "Empty untracked logo-registry.json.lock created after preparation; not part of copied tracked baseline. Preserved."
+  },
+  "independent_review": "Fresh Astra separately verified both tracked file censuses, literal symlinks, empty gitlinks, distinct file inodes and canary; preparation scope only. Source/build/runtime/release acceptance not implied.",
+  "authentication": "NOT_APPLICABLE_OFFLINE",
+  "holds": "ALL_LIVE_CONVERSION_DEPLOYMENT_AND_EXISTING_HOLDS_REMAIN"
+}

@@ -1,0 +1,256 @@
+{
+  "schema": "skyyrose.public-context-source-phase-successor.v1",
+  "status": "LATEST_SOURCE_READY_FOR_HARMLESS_CONTROLS_UNRUN_BROWSER_HELD",
+  "historical_checkpoint": {
+    "source_commit": "b18a8f9fb",
+    "path": "/Users/theceo/.codex/worktrees/release-gates-20261019/DevSkyy/tasks/release-gates-20261019/gate4-private-collector-context/checkpoint.json",
+    "scope": "HISTORICAL_ONLY; its no_broker_execution=true described that earlier source phase and is superseded by attempted phases below",
+    "pin": {
+      "path": "/Users/theceo/.codex/worktrees/release-gates-20261019/DevSkyy/tasks/release-gates-20261019/gate4-private-collector-context/checkpoint.json",
+      "sha256": "6f7b9d4061f34a2cd5785a9898df1251285b8d9109374c9bc9560c5f5d69efe0",
+      "bytes": 5546
+    }
+  },
+  "attempted_phases": [
+    {
+      "run": "1792443027920",
+      "executed_source": "b0000248a0694a4e69d64e599506afaa3d0c0072",
+      "terminal_receipt": {
+        "path": "/Users/theceo/.codex/worktrees/release-gates-20261019/DevSkyy/.artifacts/release-gates-20261019/gate4-private-collector-context/broker-controls-1792443027920/results.json",
+        "sha256": "14525cdda8321a4c6c81f40b05d24063700f1f67e2c1d6a8d9e58a40637e02a2",
+        "bytes": 7267
+      },
+      "original_status": "FAIL_CONTROL_FINAL_BOUNDARY",
+      "recorded_control_labels": 0,
+      "scope_limit": "Python launcher/process-image mismatch; original cleanup boundary failed, later no-ACK deadline absence is separate",
+      "source_archives": [
+        {
+          "path": "/Users/theceo/.codex/worktrees/release-gates-20261019/DevSkyy/.artifacts/release-gates-20261019/gate4-private-collector-context/broker-controls-1792443027920/source-snapshots/tools/v2-runtime/gate4-private-collector/context.cjs",
+          "sha256": "4c24bdb788e41e6953993e3938799b7c69a538616792b6e57083a95a72065022",
+          "bytes": 22162
+        },
+        {
+          "path": "/Users/theceo/.codex/worktrees/release-gates-20261019/DevSkyy/.artifacts/release-gates-20261019/gate4-private-collector-context/broker-controls-1792443027920/source-snapshots/tools/v2-runtime/gate4-private-collector/context-ownership.cjs",
+          "sha256": "3bc987a5d90949f3b0ad0491cff16c22bf0aea7fe4382300b4e85b844b1b02eb",
+          "bytes": 3251
+        },
+        {
+          "path": "/Users/theceo/.codex/worktrees/release-gates-20261019/DevSkyy/.artifacts/release-gates-20261019/gate4-private-collector-context/broker-controls-1792443027920/source-snapshots/tools/v2-runtime/gate4-private-collector/context-broker.cjs",
+          "sha256": "011652399e91b4594998e445dd1953eca43d40c499cf9f8efa6370b650fdb88d",
+          "bytes": 7521
+        },
+        {
+          "path": "/Users/theceo/.codex/worktrees/release-gates-20261019/DevSkyy/.artifacts/release-gates-20261019/gate4-private-collector-context/broker-controls-1792443027920/source-snapshots/tools/v2-runtime/gate4-private-collector/context-launcher.py",
+          "sha256": "4a10768013a7063f7d4b616ed1866e33678d611b061303ea16fa85645a2638f6",
+          "bytes": 6674
+        },
+        {
+          "path": "/Users/theceo/.codex/worktrees/release-gates-20261019/DevSkyy/.artifacts/release-gates-20261019/gate4-private-collector-context/broker-controls-1792443027920/source-snapshots/tools/v2-runtime/gate4-private-collector/test-context-broker.cjs",
+          "sha256": "c47dba9ea4b9e363566b66e96731e2532652e18ccfebe069cff6c025a339e1e0",
+          "bytes": 13183
+        },
+        {
+          "path": "/Users/theceo/.codex/worktrees/release-gates-20261019/DevSkyy/.artifacts/release-gates-20261019/gate4-private-collector-context/broker-controls-1792443027920/source-snapshots/tools/v2-runtime/gate4-private-collector/test-context-controls.cjs",
+          "sha256": "b43ce226abc4feff9a188dcf0b8d1d088f72db1a9addabe419696f9d479b3761",
+          "bytes": 7356
+        },
+        {
+          "path": "/Users/theceo/.codex/worktrees/release-gates-20261019/DevSkyy/.artifacts/release-gates-20261019/gate4-private-collector-context/broker-controls-1792443027920/source-snapshots/tools/v2-runtime/gate4-private-collector/capability.cjs",
+          "sha256": "1292fb1c036b6f1d6aac5b7dab47337fc89646332a6eca881ea6a67917c194d4",
+          "bytes": 30064
+        },
+        {
+          "path": "/Users/theceo/.codex/worktrees/release-gates-20261019/DevSkyy/.artifacts/release-gates-20261019/gate4-private-collector-context/broker-controls-1792443027920/source-snapshots/tools/v2-runtime/gate4-private-collector/pipe.cjs",
+          "sha256": "4ae15171559ba67bab4b754f6fe869c7d1f708f112fa5c848e59d7550aa4ded7",
+          "bytes": 3245
+        },
+        {
+          "path": "/Users/theceo/.codex/worktrees/release-gates-20261019/DevSkyy/.artifacts/release-gates-20261019/gate4-private-collector-context/broker-controls-1792443027920/source-snapshots/tasks/release-gates-20261019/gate4-private-collector-context/PLAN.md",
+          "sha256": "2c5b8ba011db262524b483c1ff319d7371c62c2b33fabdb21eb33003f8e34e51",
+          "bytes": 5279
+        }
+      ],
+      "retained_cleanup": [
+        {
+          "stopped": false,
+          "error": "The expression evaluated to a falsy value:\n\n  assert.ok(current.group === current.pid && current.command.includes(entry.folder) && image(current.pid) === fs.realpathSync(PYTHON))\n"
+        }
+      ],
+      "separate_postfailure_deadline_observation": {
+        "path": "/Users/theceo/.codex/worktrees/release-gates-20261019/DevSkyy/.artifacts/release-gates-20261019/gate4-private-collector-context/broker-controls-1792443027920/postfailure-deadline-census.json",
+        "sha256": "a213a58fc907c776998d27b96e828369d919215eb1a257648ef3dc819f0b49d3",
+        "bytes": 445
+      }
+    },
+    {
+      "run": "1792443259359",
+      "executed_source": "ba2b3e2181ba66912e941935ef664f78388db993",
+      "terminal_receipt": {
+        "path": "/Users/theceo/.codex/worktrees/release-gates-20261019/DevSkyy/.artifacts/release-gates-20261019/gate4-private-collector-context/broker-controls-1792443259359/results.json",
+        "sha256": "9d86dd2300d859218b85654b6e683d4072584cec0915da6d670d843557afaf33",
+        "bytes": 7651
+      },
+      "original_status": "FAIL_HARMLESS_BROKER_CONTROLS",
+      "recorded_control_labels": 15,
+      "scope_limit": "Invalid generated Node target syntax; retained 15 negative labels do not establish strengthened no-exec qualification",
+      "source_archives": [
+        {
+          "path": "/Users/theceo/.codex/worktrees/release-gates-20261019/DevSkyy/.artifacts/release-gates-20261019/gate4-private-collector-context/broker-controls-1792443259359/source-snapshots/tools/v2-runtime/gate4-private-collector/context.cjs",
+          "sha256": "9b8a7f91ff5b32b4b9d9b6c73df691800fae8c99cd8d08c41bef4541e55b89da",
+          "bytes": 21744
+        },
+        {
+          "path": "/Users/theceo/.codex/worktrees/release-gates-20261019/DevSkyy/.artifacts/release-gates-20261019/gate4-private-collector-context/broker-controls-1792443259359/source-snapshots/tools/v2-runtime/gate4-private-collector/context-ownership.cjs",
+          "sha256": "3bc987a5d90949f3b0ad0491cff16c22bf0aea7fe4382300b4e85b844b1b02eb",
+          "bytes": 3251
+        },
+        {
+          "path": "/Users/theceo/.codex/worktrees/release-gates-20261019/DevSkyy/.artifacts/release-gates-20261019/gate4-private-collector-context/broker-controls-1792443259359/source-snapshots/tools/v2-runtime/gate4-private-collector/context-broker.cjs",
+          "sha256": "a23d65e97b0b143127a5305e63431882656196423add8ebe5bf7a9d4c5a75f6b",
+          "bytes": 9715
+        },
+        {
+          "path": "/Users/theceo/.codex/worktrees/release-gates-20261019/DevSkyy/.artifacts/release-gates-20261019/gate4-private-collector-context/broker-controls-1792443259359/source-snapshots/tools/v2-runtime/gate4-private-collector/context-launcher.py",
+          "sha256": "4a10768013a7063f7d4b616ed1866e33678d611b061303ea16fa85645a2638f6",
+          "bytes": 6674
+        },
+        {
+          "path": "/Users/theceo/.codex/worktrees/release-gates-20261019/DevSkyy/.artifacts/release-gates-20261019/gate4-private-collector-context/broker-controls-1792443259359/source-snapshots/tools/v2-runtime/gate4-private-collector/test-context-broker.cjs",
+          "sha256": "2b435e7ec8a20cd27f66bb961eacb773a9c7e04b897ae37ce0701aa5a8be5609",
+          "bytes": 17252
+        },
+        {
+          "path": "/Users/theceo/.codex/worktrees/release-gates-20261019/DevSkyy/.artifacts/release-gates-20261019/gate4-private-collector-context/broker-controls-1792443259359/source-snapshots/tools/v2-runtime/gate4-private-collector/test-context-controls.cjs",
+          "sha256": "b43ce226abc4feff9a188dcf0b8d1d088f72db1a9addabe419696f9d479b3761",
+          "bytes": 7356
+        },
+        {
+          "path": "/Users/theceo/.codex/worktrees/release-gates-20261019/DevSkyy/.artifacts/release-gates-20261019/gate4-private-collector-context/broker-controls-1792443259359/source-snapshots/tools/v2-runtime/gate4-private-collector/capability.cjs",
+          "sha256": "1292fb1c036b6f1d6aac5b7dab47337fc89646332a6eca881ea6a67917c194d4",
+          "bytes": 30064
+        },
+        {
+          "path": "/Users/theceo/.codex/worktrees/release-gates-20261019/DevSkyy/.artifacts/release-gates-20261019/gate4-private-collector-context/broker-controls-1792443259359/source-snapshots/tools/v2-runtime/gate4-private-collector/pipe.cjs",
+          "sha256": "4ae15171559ba67bab4b754f6fe869c7d1f708f112fa5c848e59d7550aa4ded7",
+          "bytes": 3245
+        },
+        {
+          "path": "/Users/theceo/.codex/worktrees/release-gates-20261019/DevSkyy/.artifacts/release-gates-20261019/gate4-private-collector-context/broker-controls-1792443259359/source-snapshots/tasks/release-gates-20261019/gate4-private-collector-context/PLAN.md",
+          "sha256": "46c579ae99c17ba217bd838991a802413efee376ea132cc963e7ab2c96560fc6",
+          "bytes": 6063
+        }
+      ],
+      "retained_cleanup": [
+        {
+          "stopped": true,
+          "errors": []
+        }
+      ]
+    },
+    {
+      "run": "1792443394784",
+      "executed_source": "ab58941eaf9b67246d99fa8cfbfc4e94afe7cf4a",
+      "terminal_receipt": {
+        "path": "/Users/theceo/.codex/worktrees/release-gates-20261019/DevSkyy/.artifacts/release-gates-20261019/gate4-private-collector-context/broker-controls-1792443394784/results.json",
+        "sha256": "cbc1c15dffe09d20793e7b8e5edff20cecc57a20fb37bf22465a4fe83c7cde01",
+        "bytes": 36488
+      },
+      "original_status": "FAIL_HARMLESS_BROKER_CONTROLS",
+      "recorded_control_labels": 15,
+      "scope_limit": "Lossy unsigned Node Number device vs signed Python device comparison; no observed descriptor loss, positive roundtrip incomplete",
+      "source_archives": [
+        {
+          "path": "/Users/theceo/.codex/worktrees/release-gates-20261019/DevSkyy/.artifacts/release-gates-20261019/gate4-private-collector-context/broker-controls-1792443394784/source-snapshots/tools/v2-runtime/gate4-private-collector/context.cjs",
+          "sha256": "9b8a7f91ff5b32b4b9d9b6c73df691800fae8c99cd8d08c41bef4541e55b89da",
+          "bytes": 21744
+        },
+        {
+          "path": "/Users/theceo/.codex/worktrees/release-gates-20261019/DevSkyy/.artifacts/release-gates-20261019/gate4-private-collector-context/broker-controls-1792443394784/source-snapshots/tools/v2-runtime/gate4-private-collector/context-ownership.cjs",
+          "sha256": "3bc987a5d90949f3b0ad0491cff16c22bf0aea7fe4382300b4e85b844b1b02eb",
+          "bytes": 3251
+        },
+        {
+          "path": "/Users/theceo/.codex/worktrees/release-gates-20261019/DevSkyy/.artifacts/release-gates-20261019/gate4-private-collector-context/broker-controls-1792443394784/source-snapshots/tools/v2-runtime/gate4-private-collector/context-broker.cjs",
+          "sha256": "a23d65e97b0b143127a5305e63431882656196423add8ebe5bf7a9d4c5a75f6b",
+          "bytes": 9715
+        },
+        {
+          "path": "/Users/theceo/.codex/worktrees/release-gates-20261019/DevSkyy/.artifacts/release-gates-20261019/gate4-private-collector-context/broker-controls-1792443394784/source-snapshots/tools/v2-runtime/gate4-private-collector/context-launcher.py",
+          "sha256": "4a10768013a7063f7d4b616ed1866e33678d611b061303ea16fa85645a2638f6",
+          "bytes": 6674
+        },
+        {
+          "path": "/Users/theceo/.codex/worktrees/release-gates-20261019/DevSkyy/.artifacts/release-gates-20261019/gate4-private-collector-context/broker-controls-1792443394784/source-snapshots/tools/v2-runtime/gate4-private-collector/test-context-broker.cjs",
+          "sha256": "3d4849218b9e66bceba1aee8cb93819cdec6ef979183418d83819298589a99d4",
+          "bytes": 17350
+        },
+        {
+          "path": "/Users/theceo/.codex/worktrees/release-gates-20261019/DevSkyy/.artifacts/release-gates-20261019/gate4-private-collector-context/broker-controls-1792443394784/source-snapshots/tools/v2-runtime/gate4-private-collector/test-context-controls.cjs",
+          "sha256": "b43ce226abc4feff9a188dcf0b8d1d088f72db1a9addabe419696f9d479b3761",
+          "bytes": 7356
+        },
+        {
+          "path": "/Users/theceo/.codex/worktrees/release-gates-20261019/DevSkyy/.artifacts/release-gates-20261019/gate4-private-collector-context/broker-controls-1792443394784/source-snapshots/tools/v2-runtime/gate4-private-collector/capability.cjs",
+          "sha256": "1292fb1c036b6f1d6aac5b7dab47337fc89646332a6eca881ea6a67917c194d4",
+          "bytes": 30064
+        },
+        {
+          "path": "/Users/theceo/.codex/worktrees/release-gates-20261019/DevSkyy/.artifacts/release-gates-20261019/gate4-private-collector-context/broker-controls-1792443394784/source-snapshots/tools/v2-runtime/gate4-private-collector/pipe.cjs",
+          "sha256": "4ae15171559ba67bab4b754f6fe869c7d1f708f112fa5c848e59d7550aa4ded7",
+          "bytes": 3245
+        },
+        {
+          "path": "/Users/theceo/.codex/worktrees/release-gates-20261019/DevSkyy/.artifacts/release-gates-20261019/gate4-private-collector-context/broker-controls-1792443394784/source-snapshots/tasks/release-gates-20261019/gate4-private-collector-context/PLAN.md",
+          "sha256": "46c579ae99c17ba217bd838991a802413efee376ea132cc963e7ab2c96560fc6",
+          "bytes": 6063
+        }
+      ],
+      "retained_cleanup": [
+        {
+          "stopped": true,
+          "errors": [
+            "Owned group required SIGTERM"
+          ]
+        }
+      ]
+    }
+  ],
+  "latest_source_commit": "856745c859c9c58d1dc2218d8e28722cb3b43b91",
+  "latest_sources": {
+    "context.cjs": {
+      "path": "/Users/theceo/.codex/worktrees/release-gates-20261019/DevSkyy/tools/v2-runtime/gate4-private-collector/context.cjs",
+      "sha256": "9b8a7f91ff5b32b4b9d9b6c73df691800fae8c99cd8d08c41bef4541e55b89da",
+      "bytes": 21744
+    },
+    "context-broker.cjs": {
+      "path": "/Users/theceo/.codex/worktrees/release-gates-20261019/DevSkyy/tools/v2-runtime/gate4-private-collector/context-broker.cjs",
+      "sha256": "c897f67b2f74056cb4c5b2fefc478bac822726d1299c2338c4469511d2ce9c00",
+      "bytes": 9956
+    },
+    "context-launcher.py": {
+      "path": "/Users/theceo/.codex/worktrees/release-gates-20261019/DevSkyy/tools/v2-runtime/gate4-private-collector/context-launcher.py",
+      "sha256": "73a2fe81758362cd45b170c38ba983232acd1b46d270077f1501107327e25003",
+      "bytes": 6684
+    },
+    "test-context-broker.cjs": {
+      "path": "/Users/theceo/.codex/worktrees/release-gates-20261019/DevSkyy/tools/v2-runtime/gate4-private-collector/test-context-broker.cjs",
+      "sha256": "ab6baa8b15d2532b6c073e2cfe2a3c9be03258cc354aeaeb3d77885200be1112",
+      "bytes": 20743
+    }
+  },
+  "latest_controls": "UNRUN_20_ACTUAL_HARMLESS_CONTROLS_PLUS5_MODIFIED_FRAME_CONTROLS_PLANNED",
+  "source_reviews": "Architect and language source review only; no runtime acceptance",
+  "no_chromium_browser_execution": true,
+  "original_privacy_fail_and_eight_unknown": "UNCHANGED",
+  "priority": "Collector held; no matching latest-source controls or browser run performed. Separate storefront successor prepared, installed-evidence follow-up proceeds offline.",
+  "holds": "ALL_LIVE_CONVERSION_DEPLOYMENT_AND_EXISTING_HOLDS_REMAIN",
+  "prior_private_projection": {
+    "path": "/Users/theceo/.codex/worktrees/release-gates-20261019/DevSkyy/.artifacts/release-gates-20261019/gate4-private-collector-context/source-phase-successor-856745c85.json",
+    "sha256": "eeadb0b42372f1869bf6f275870f4ed17177501675ddac1fbfb93218a776e2b3",
+    "bytes": 15711
+  },
+  "projection_correction": "Preserve singular error and plural errors exactly as recorded; omitted fields are not interpreted as an empty error list. Original receipts unchanged.",
+  "prior_phase_operation_observation": true,
+  "operation_observation_scope": "Prior phase checkpoint only; this projection performs no fresh process census and makes no current process-absence claim.",
+  "bound_utc": "2026-10-19T21:11:53.482663+00:00"
+}
