@@ -1,0 +1,76 @@
+{
+  "schema": "skyyrose.code-recovery-preflight-disposition.v1",
+  "status": "PREPARATION_ONLY_NO_EXPORT_OR_DOWNLOAD",
+  "checked_utc": "2026-10-19T20:41:37.027054+00:00",
+  "authentication_this_run": "NOT_APPLICABLE_LOCAL_RETAINED_RECEIPT_READ_ONLY",
+  "preflight_source": {
+    "path": "/Users/theceo/Documents/Codex/2026-10-19/task/backup-code-selection-preflight-20261019.json",
+    "sha256": "2c6d7a427d7d97e8ddb7f4d5668de9fc04174c1b077973c8efacd542cdaf2ca8",
+    "bytes": 3166
+  },
+  "source_reported_backup_ui_point": "1792407869.732",
+  "source_reported_selected_files": 1459,
+  "source_reported_plugin_files": 1456,
+  "recorded_plugin_census": {
+    "big-sky": {
+      "recorded_files": 0,
+      "recorded_regular_bytes": 0,
+      "scope": "NO_RECORDED_BODY_CENSUS_NO_ZERO_FILE_INFERENCE",
+      "recovered": false
+    },
+    "commercegurus-commercekit": {
+      "recorded_files": 122,
+      "recorded_regular_bytes": 2154405,
+      "scope": "RECORDED_CENSUS_ONLY",
+      "recovered": false
+    },
+    "elementor-pro": {
+      "recorded_files": 1327,
+      "recorded_regular_bytes": 13992714,
+      "scope": "RECORDED_CENSUS_ONLY",
+      "recovered": false
+    },
+    "layout-grid": {
+      "recorded_files": 0,
+      "recorded_regular_bytes": 0,
+      "scope": "NO_RECORDED_BODY_CENSUS_NO_ZERO_FILE_INFERENCE",
+      "recovered": false
+    },
+    "woo-update-manager": {
+      "recorded_files": 5,
+      "recorded_regular_bytes": 6915,
+      "scope": "RECORDED_CENSUS_ONLY",
+      "recovered": false
+    }
+  },
+  "three_custom_mu_sources": "ALL_THREE_EXIST_LOCALLY_WITH_RECORDED_BODY_HASHES; privacy body recovery newly added, no fresh export needed to close that body gap",
+  "capacity_observation": {
+    "available_bytes": 1753284608,
+    "proposed_minimum_before_transfer_bytes": 2147483648,
+    "minimum_satisfied": false,
+    "shared_volume_not_reserved": true
+  },
+  "next_allowed_local_work": [
+    "Retain and review exact source bindings without execution",
+    "Prepare code-only member/path/hash validation and explicit complete-package limits"
+  ],
+  "future_acquisition_prerequisites": [
+    "Specific approval for the exact existing-point code-only export; existing holds remain",
+    "Meet headroom floor and verify actual transfer/expanded-size limits before any transfer",
+    "Preserve exclusions of SQL, root configuration, uploads, CRM and private raw receipts",
+    "Inspect actual archive members, paths, symlinks, sizes, hashes and package versions before any test use; Big Sky/Layout Grid lack baseline body census",
+    "Managed MU/cache/service configuration and full isolated restore are separate gaps, not covered by this proposal"
+  ],
+  "actions_performed": [
+    "Local sanitized receipt hash/schema review",
+    "Local installed hash-census counts",
+    "Filesystem free-space observation"
+  ],
+  "actions_not_performed": [
+    "No authenticated site request",
+    "No export/download/backup/restore job",
+    "No configuration/SQL/customer/order record read",
+    "No source execution or live conversion/deployment",
+    "No evidence deletion"
+  ]
+}

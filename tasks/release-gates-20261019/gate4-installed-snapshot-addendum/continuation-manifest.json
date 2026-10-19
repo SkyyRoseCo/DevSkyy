@@ -1,0 +1,26 @@
+{
+  "schema": "skyyrose.installed-snapshot-addendum-manifest.v1",
+  "status": "RECOVERED_CODE_BODY_ONLY_INDEPENDENT_REVIEW_PENDING",
+  "audit_source_commit": "2bcfe90d28a536fa299a6463a0938b44cd3660b2",
+  "audit_source": {
+    "sha256": "443cdca9188ab6a16687506f8bcf57ec2453412e7afb1b6762d946efa218e2f3",
+    "bytes": 9049
+  },
+  "files": {
+    "README.md": {
+      "sha256": "d0b58ec8ab3bd82eb1c8c0b964663dec110f313f0541ee2e3b8612f5a8796df0",
+      "bytes": 4026
+    },
+    "evidence-index.json": {
+      "sha256": "6edaccdeff3dbf187e6e2c0773d88b81a74c9fcb4325124925fc619ab30b8da0",
+      "bytes": 2627
+    },
+    "findings.json": {
+      "sha256": "28275961b17925e3e99852511cfdf5f9429f394866a43b4afe213a211e9d7032",
+      "bytes": 4496
+    }
+  },
+  "prior_installed_packet": "f69230595ef7f06a4cadd166f9066b2e86c10125",
+  "live_authority": "HOLD_NO_CHANGE",
+  "authentication": "NOT_APPLICABLE_OFFLINE_READS"
+}

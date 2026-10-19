@@ -1,0 +1,105 @@
+{
+  "schema": "skyyrose.offline-installed-snapshot-addendum.v1",
+  "status": "EXACT_RECORDED_PRIVACY_MU_BODY_RECOVERED_ONLY",
+  "authentication": "NOT_APPLICABLE_OFFLINE_AUDIT_NO_FRESH_AUTHENTICATED_ACCESS",
+  "source_commit": "2bcfe90d28a536fa299a6463a0938b44cd3660b2",
+  "recovered": {
+    "snapshot_field": "code_hashes.mu-plugins/skyyrose-search-tracking-privacy.php",
+    "expected": {
+      "sha256": "afc2f6d8a4ae6280de28b6c1306564cc86053acc713c52e5ab0b5717b3ef58f2",
+      "bytes": 2181,
+      "symlink": false
+    },
+    "historical_path": "/Users/theceo/Documents/Codex/2026-10-02/task/commerce-release/tools/production-runtime/search-tracking-privacy.php",
+    "git_commit": "a662e707d698a687d7d1d2efed3975b9aa7325b9",
+    "git_path": "tools/production-runtime/search-tracking-privacy.php",
+    "retained_path": ".artifacts/release-gates-20261019/installed-snapshot-addendum/skyyrose-search-tracking-privacy.php",
+    "retained_pin": {
+      "sha256": "afc2f6d8a4ae6280de28b6c1306564cc86053acc713c52e5ab0b5717b3ef58f2",
+      "bytes": 2181
+    },
+    "executed": false
+  },
+  "controls": [
+    {
+      "mutation": "changed-byte",
+      "status": "PASS_REFUSED_MODIFIED_CODE_COPY"
+    },
+    {
+      "mutation": "truncated",
+      "status": "PASS_REFUSED_MODIFIED_CODE_COPY"
+    },
+    {
+      "mutation": "extra-byte",
+      "status": "PASS_REFUSED_MODIFIED_CODE_COPY"
+    }
+  ],
+  "older_runtime_and_config_leads": {
+    "native-merchant-environment.json": {
+      "home": "http://127.0.0.1:18362",
+      "wp": "7.1.2",
+      "woo": "11.1.2",
+      "db": "sqlite",
+      "disposition": "LOCAL_SQLITE_FIXTURE_NOT_INSTALLED_MARIADB_RUNTIME"
+    },
+    "staging-runtime-final.json": {
+      "target": "https://staging-7e48-skyyrose.wpcomstaging.com",
+      "stylesheet": "skyyrose-flagship-2",
+      "version": "2.5.0",
+      "utc": "2026-10-02T23:54:07+00:00",
+      "count": 639,
+      "disposition": "DATED_STAGING_THEME_FILE_CENSUS_NOT_INSTALLED_PRODUCTION_RUNTIME"
+    },
+    "cache-source-paths.txt": {
+      "pin": {
+        "sha256": "f46e61cad0ca67782cf8067465030d7a291a388e3add41c5e616e7367240b200",
+        "bytes": 684
+      },
+      "disposition": "DATED_SOURCE_OR_PATH_LIST_NOT_EFFECTIVE_SERVICE_CONFIGURATION"
+    },
+    "edge-cache-source-readonly.php.txt": {
+      "pin": {
+        "sha256": "98e764989bf52e2f81aba4f0455fbc0ce184d6a9f12e283198bd7be698e66abb",
+        "bytes": 47314
+      },
+      "disposition": "DATED_SOURCE_OR_PATH_LIST_NOT_EFFECTIVE_SERVICE_CONFIGURATION"
+    }
+  },
+  "existing_metadata_receipts": {
+    "observed_ui_utc": "2026-10-19T20:23:28Z",
+    "observed_service_utc": "2026-10-19T20:13:53Z",
+    "verification_this_run": "LOCAL_RECEIPT_HASH_AND_SCHEMA_ONLY_NOT_REAUTHENTICATED",
+    "principal_scope": "UI_REPORTED_DISPLAY_SKYYROSECO_NOT_NUMERIC_ID_OR_CONNECTOR_IDENTITY",
+    "site_id": 238510894,
+    "selected_backup_label": "Oct 19, 2026, 4:04 AM",
+    "backup_count": 477,
+    "five_plugin_directory_names": [
+      "big-sky",
+      "commercegurus-commercekit",
+      "elementor-pro",
+      "layout-grid",
+      "woo-update-manager"
+    ],
+    "scope": "DIRECTORY_METADATA_ONLY_NO_RECOVERED_PACKAGE_BYTES_SNAPSHOT_ID_CHECKSUM_OR_RESTORE_PROOF"
+  },
+  "remaining": [
+    "Five named plugin bodies and complete installed package census",
+    "Managed MU loader and cache drop-in bodies/service bindings",
+    "Private effective configuration, PHP extensions/limits/ini and database/cache settings",
+    "PHP8.4.26/MariaDB11.8.9 full installed-stack execution and isolated restore proof",
+    "Privacy collector completeness/storage/race/sanitation and policy evidence",
+    "Private synthetic orphan insertion ownership remains not established; untouched, no live orphan inference"
+  ],
+  "limits": [
+    "Matching source does not prove activation, coexistence, dependencies, effective hook behavior or privacy policy success",
+    "No SQL/customer/order/configuration value read; no recovered PHP executed",
+    "Previously incomplete offline search stays incomplete; no global absence claim",
+    "Backup metadata receipts are observations from another scoped run, not fresh authenticated actions here",
+    "All prior frozen evidence retains its original verdict; local HPOS/CPT proof does not qualify the installed stack"
+  ],
+  "holds": [
+    "Live conversion/sync/configuration/credentials/orders/payments/backup/export/restore",
+    "Push/merge/deploy/activation/publication/cutover",
+    "Paid/provider/media/GLB promotion"
+  ]
+}
