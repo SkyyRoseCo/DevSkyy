@@ -7,10 +7,12 @@ const { EventEmitter } = require('node:events');
 const { PassThrough } = require('node:stream');
 const { spawn } = require('node:child_process');
 const { Pipe } = require('./pipe.cjs');
-const { cleanGroup, groupCensus, main } = require('./capability.cjs');
+const { cleanGroup, groupCensus, main, requireAttachments, finalAttachmentVerdict, trackSetup } = require('./capability.cjs');
 const ROOT = path.resolve(__dirname, '../../..');
 const out = path.join(ROOT, '.artifacts/release-gates-20261019/gate4-private-collector', 'controls-' + Date.now());
 fs.mkdirSync(out, { recursive: true, mode: 0o700 });
+const sourcePins = () => Object.fromEntries(['pipe.cjs', 'capability.cjs', 'test-controls.cjs'].map(name => [name, crypto.createHash('sha256').update(fs.readFileSync(path.join(__dirname, name))).digest('hex')]));
+const sourceStart = sourcePins();
 const report = { status: 'INCOMPLETE', authentication: 'NOT_APPLICABLE', scope: 'Mock transport and actual synthetic owned-process/preflight controls; no browser or website qualification', controls: [] };
 function fake() { const child = new EventEmitter(); child.stdio = [null, null, null, new PassThrough(), new PassThrough()]; return child; }
 function control(name, action) { action(); report.controls.push({ name, status: 'PASS' }); }
@@ -39,6 +41,18 @@ async function groupControl(name, code, waitForExit) {
     control('unknown response identity fails', () => { const pipe = new Pipe(fake(), []); pipe.consume(Buffer.from('{"id":999,"result":{}}\0')); assert.match(pipe.failure.message, /Unknown/); });
     control('truncated intentional EOF fails', () => { const child = fake(); const pipe = new Pipe(child, []); pipe.expectClose(); pipe.consume(Buffer.from('{')); child.stdio[4].emit('end'); assert.ok(pipe.failure); });
     control('oversize pipe fails closed', () => { const pipe = new Pipe(fake(), []); pipe.consume(Buffer.alloc(16 * 1024 * 1024 + 1, 65)); assert.ok(pipe.failure); });
+    const late = {}; let dependentCapture = false; await Promise.resolve().then(() => { late.attachment_error = 'synthetic late setup rejection'; });
+    assert.throws(() => { requireAttachments(late); dependentCapture = true; }, /Attachment boundary/); assert.equal(dependentCapture, false);
+    report.controls.push({ name: 'late setup rejection after readiness aborts dependent capture', status: 'PASS_MOCK_BOUNDARY_CONTROL' });
+    const shutdownRace = { status: 'PASS_PRIVATE_CAPABILITY_EXECUTION_ONLY' };
+    await new Promise(resolve => setTimeout(() => { shutdownRace.attachment_error = 'synthetic setup rejection during browser close'; resolve(); }, 5));
+    assert.equal(finalAttachmentVerdict(shutdownRace, 0), false); assert.equal(shutdownRace.status, 'FAIL_CAPABILITY_EXECUTION');
+    report.controls.push({ name: 'cleanup-time setup rejection prevents final PASS', status: 'PASS_MOCK_FINALIZATION_RACE_CONTROL' });
+    const pending = new Set(); const actualOrdering = { status: 'PASS_PRIVATE_CAPABILITY_EXECUTION_ONLY' };
+    trackSetup(Promise.reject(Error('synthetic setup race')), pending, error => { actualOrdering.attachment_error = error.message; });
+    await Promise.allSettled([...pending]);
+    assert.equal(pending.size, 0); assert.equal(actualOrdering.attachment_error, 'synthetic setup race'); assert.equal(finalAttachmentVerdict(actualOrdering, pending.size), false);
+    report.controls.push({ name: 'actual handled-promise catch precedes set removal and final gate', status: 'PASS_MOCK_PROMISE_ORDER_CONTROL' });
     await groupControl('ordinary empty group', '', true);
     await groupControl('early leader exit with descendant', "require('child_process').spawn(process.execPath,['-e','setInterval(()=>{},1000)'],{stdio:'ignore'}).unref()", true);
     await groupControl('timeout-style live owned group', 'setInterval(()=>{},1000)', false);
@@ -49,7 +63,8 @@ async function groupControl(name, code, waitForExit) {
     report.status = 'PASS_BOUNDED_SOURCE_CONTROLS';
   } catch (error) { report.status = 'FAIL_SOURCE_CONTROLS'; report.failure = error.message; process.exitCode = 1; }
   finally {
-    report.sources = Object.fromEntries(['pipe.cjs', 'capability.cjs', 'test-controls.cjs'].map(name => [name, crypto.createHash('sha256').update(fs.readFileSync(path.join(__dirname, name))).digest('hex')]));
+    report.source_start = sourceStart; report.sources = sourcePins();
+    if (JSON.stringify(report.sources) !== JSON.stringify(sourceStart)) { report.status = 'FAIL_CONTROL_SOURCE_DRIFT'; process.exitCode = 1; }
     fs.writeFileSync(path.join(out, 'results.json'), JSON.stringify(report, null, 2) + '\n', { flag: 'wx', mode: 0o600 }); console.log(JSON.stringify({ status: report.status, controls: report.controls.length, out }));
   }
 })();

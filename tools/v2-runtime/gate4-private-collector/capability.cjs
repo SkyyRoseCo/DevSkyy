@@ -58,10 +58,18 @@ function fixture(request, response, ledger, origin) {
   window.popup=open('/popup','synthetic-popup');await navigator.serviceWorker.register('/sw.js');await navigator.serviceWorker.ready;window.fixtureState.ready=true;
   })().catch(e=>{window.fixtureState.error=String(e)})</script>`);
 }
+function requireAttachments(result) { if (result.attachment_error) throw Error('Attachment boundary failed: ' + result.attachment_error); }
+function trackSetup(task, pending, onError) {
+  let completed;
+  completed = Promise.resolve(task).catch(onError).finally(() => pending.delete(completed));
+  pending.add(completed);
+  return completed;
+}
+function finalAttachmentVerdict(result, pendingCount) { if (result.attachment_error || pendingCount) { if (!result.status.startsWith('FAIL_')) result.status = 'FAIL_CAPABILITY_EXECUTION'; result.attachment_error ||= 'Unresolved target setup tasks'; return false; } return true; }
 async function worker(folder, spki) {
   const journal = []; const targets = []; const operations = []; const raw = { journal, targets, operations };
   const result = { status: 'INCOMPLETE', authentication: 'NOT_APPLICABLE', policy: 'UNKNOWN_NO_ACCEPTANCE_CONTRACT', limits: ['Capability execution only; not 40-route/profile collector qualification', 'HTTP/1 only; HTTP/2/QUIC UNKNOWN', 'Atomic cross-target boundary, worker quiescence, partitioned storage and races UNKNOWN', 'No sanitation or arbitrary-secret-removal qualification'] };
-  let child; let transport; let exited = false; let exitSignal;
+  let child; let transport; let exited = false; let exitSignal; const pendingAttach = new Set();
   const attempt = async (label, method, params, session) => { try { const value = await transport.send(method, params, session); operations.push({ label, method, session, status: 'METHOD_SUCCEEDED', value }); return value; } catch (error) { operations.push({ label, method, session, status: 'UNKNOWN_METHOD_FAILED', error: error.message }); return null; } };
   try {
     result.source_start = sourceClosure();
@@ -79,7 +87,7 @@ async function worker(folder, spki) {
     result.version = await transport.send('Browser.getVersion');
     result.startup_targets = await transport.send('Target.getTargets');
     assert.equal(result.startup_targets.targetInfos.length, 0, 'Unexpected startup target');
-    const sessions = new Map(); const targetOwners = new Map(); const pendingAttach = new Set(); let attachmentFailure = null;
+    const sessions = new Map(); const targetOwners = new Map(); let attachmentFailure = null;
     transport.on('event', event => {
       if (event.method !== 'Target.attachedToTarget') return;
       const info = event.params; const row = { session: info.sessionId, parentSession: event.sessionId || null, info: info.targetInfo, paused: info.waitingForDebugger, attachedAtSequence: journal.length, enabled: false, resumed: false }; targets.push(row); sessions.set(info.sessionId, row);
@@ -98,7 +106,7 @@ async function worker(folder, spki) {
         if (!row.enabled) { row.verdict = 'UNKNOWN_REQUIRED_SETUP_FAILED_NOT_RESUMED'; throw Error('Required target setup failed: ' + info.targetInfo.type); }
         row.resumeResult = await attempt('explicit-resume', 'Runtime.runIfWaitingForDebugger', {}, info.sessionId); row.resumed = row.resumeResult !== null; row.resumedAtSequence = journal.length;
         if (!row.resumed) throw Error('Target resume failed');
-      })(); pendingAttach.add(task); task.finally(() => pendingAttach.delete(task)).catch(error => { attachmentFailure ||= error; result.attachment_error = error.message; });
+      })(); trackSetup(task, pendingAttach, error => { attachmentFailure ||= error; result.attachment_error = String(error?.message || error); });
     });
     await transport.send('Target.setDiscoverTargets', { discover: true });
     await transport.send('Target.setAutoAttach', { autoAttach: true, waitForDebuggerOnStart: true, flatten: true });
@@ -119,12 +127,16 @@ async function worker(folder, spki) {
     }
     await new Promise(resolve => setTimeout(resolve, 2000));
     await Promise.all([...pendingAttach]);
+    requireAttachments(result);
+    if (attachmentFailure) throw attachmentFailure;
     result.cutoff = { epoch: Date.now(), sequence: journal.length, atomic: false, completeness: 'UNKNOWN_NOT_ATOMIC' };
     result.raw_dom_before_projection = await transport.send('Runtime.evaluate', { expression: 'document.documentElement.outerHTML', returnByValue: true }, main.session);
     result.cookies_after = await transport.send('Storage.getCookies', { browserContextId: context.browserContextId });
     for (const row of targets.filter(t => ['page', 'iframe'].includes(t.info.type))) {
+      if (attachmentFailure) throw attachmentFailure;
       await attempt('frame-tree', 'Page.getFrameTree', {}, row.session);
       for (const origin of [HTTP, HTTPS]) {
+        if (attachmentFailure) throw attachmentFailure;
         for (const isLocalStorage of [true, false]) await attempt('raw-dom-storage', 'DOMStorage.getDOMStorageItems', { storageId: { securityOrigin: origin, isLocalStorage } }, row.session);
         const dbs = await attempt('idb-names', 'IndexedDB.requestDatabaseNames', { securityOrigin: origin }, row.session);
         for (const databaseName of dbs?.databaseNames || []) {
@@ -142,12 +154,15 @@ async function worker(folder, spki) {
     result.cross_origin_frame = result.frame_observations.some(event => event.frame.url === HTTPS + '/frame') ? 'OBSERVED_FRAME_NAVIGATION_ONLY_STORAGE_EXECUTION_UNQUALIFIED' : 'UNKNOWN_FRAME_NOT_OBSERVED';
     result.out_of_process_frame = result.target_types.includes('iframe') ? 'OBSERVED_TARGET_ONLY_NOT_FULL_QUALIFICATION' : 'UNKNOWN_NOT_EXERCISED';
     result.target_coverage = result.expected_target_types.every(t => result.target_types.includes(t)) && targets.every(t => t.paused && t.recursive && t.enabled && t.resumed) ? 'OBSERVED_REQUIRED_TYPES_EARLY_ENABLED' : 'UNKNOWN_UNSUPPORTED_OR_MISSING_TARGET';
+    if (attachmentFailure) throw attachmentFailure;
+    requireAttachments(result);
     result.status = 'PASS_PRIVATE_CAPABILITY_EXECUTION_ONLY';
     assert.equal(transport.failure, null);
     await transport.send('Target.disposeBrowserContext', { browserContextId: context.browserContextId });
   } catch (error) { result.status = 'FAIL_CAPABILITY_EXECUTION'; result.failure = { type: error.name, message: error.message }; process.exitCode = 1; }
   finally {
     result.cleanup_errors = [];
+    if (result.attachment_error) { result.status = 'FAIL_CAPABILITY_EXECUTION'; process.exitCode = 1; }
     if (transport && !exited) { try { transport.expectClose(); await transport.send('Browser.close'); } catch (error) { result.cleanup_errors.push(error.message); } }
     const end = Date.now() + 5000; while (child && !exited && Date.now() < end) await new Promise(resolve => setTimeout(resolve, 25));
     if (child && !exited) { try { child.kill('SIGKILL'); } catch (error) { result.cleanup_errors.push(error.message); } result.cleanup_errors.push('Owned browser required SIGKILL'); const killedEnd = Date.now() + 3000; while (!exited && Date.now() < killedEnd) await new Promise(resolve => setTimeout(resolve, 25)); }
@@ -156,6 +171,9 @@ async function worker(folder, spki) {
     if (transport?.failure) { result.status = result.cleanup_errors.length ? 'FAIL_CAPABILITY_CLEANUP' : 'FAIL_CAPABILITY_EXECUTION'; result.transport_failure = transport.failure.message; process.exitCode = 1; }
     try { result.source_end = sourceClosure(); assert.deepEqual(result.source_end, result.source_start); } catch (error) { result.status = 'FAIL_SOURCE_IDENTITY'; result.source_identity_failure = error.message; process.exitCode = 1; }
     result.cleanup_status = result.owned_browser_stopped && !result.cleanup_errors.length ? 'OBSERVED_LEADER_STOPPED_PARENT_GROUP_VERIFICATION_REQUIRED' : 'FAIL_CLEANUP';
+    const setupOutcomes = await Promise.allSettled([...pendingAttach]);
+    if (setupOutcomes.some(outcome => outcome.status === 'rejected')) result.attachment_error ||= 'Unhandled setup completion rejection';
+    if (!finalAttachmentVerdict(result, pendingAttach.size)) process.exitCode = 1;
     save(path.join(folder, 'raw-capabilities.json'), raw); save(path.join(folder, 'worker-results.json'), result);
   }
 }
@@ -230,4 +248,4 @@ async function main(control = null) {
   return summary;
 }
 if (require.main === module) main().catch(error => { console.error(error); process.exitCode = 1; });
-module.exports = { cleanGroup, groupCensus, main };
+module.exports = { cleanGroup, groupCensus, main, requireAttachments, finalAttachmentVerdict, trackSetup };
