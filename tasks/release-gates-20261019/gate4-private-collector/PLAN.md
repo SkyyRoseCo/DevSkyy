@@ -1,0 +1,27 @@
+# Bounded local collector capability plan
+
+Preparation and private synthetic execution only. Authentication is not applicable. No live store, account, configuration, backup, conversion, payment, deployment or provider action is authorized. Preserve installed packet f69230595ef7f06a4cadd166f9066b2e86c10125, original live privacy FAIL/eight UNKNOWN, all older accepted local evidence, frozen storefront d953e51ee9e01448fe6b04960d5958d8ac424954 and canonical product registry. No product facts or media change.
+
+Owner contract: `/Users/theceo/Documents/Codex/2026-10-19/private-collector-readiness-20261019.md`. This plan is a capability gate before implementing its ten-route/four-profile collector. Architect pre-plan review found the existing single-target collector blocks service workers, attaches after page creation, disables cache and rewrites DOM before reading limited storage. It must remain separate.
+
+## First capability gate
+
+Implement a small source-pinned recorder and deterministic private HTTP/1 fixture. Start from the recorded exact Node22.23.2 and Chromium153 binaries. Pin actual executable/protocol/fixture sources; recheck identities rather than claiming package-recommended browser parity. Use Chromium's remote-debugging pipe with explicit session routing, avoiding conflicting Playwright auto-attachment. The transport itself is a capability to test; failure must be retained, bounded and UNKNOWN.
+
+Launch a new disposable private Chromium profile without startup pages. Enable browser target discovery and flattened auto-attachment with debugger pause before creating a browser context/page. For every attached session, record target/session/parent/type, attempt recursive auto-attach and required recording domains, and only then resume it. Record command/response IDs, errors and monotonic sequence/time. A locally consecutive journal does not prove upstream completeness. Compare against a separate fixture-server request ledger. Unsupported domain/target/session behavior must be explicit and prevents a global completeness PASS.
+
+Parent fixture endpoints are fixed newly owned loopback HTTP18484 and HTTPS18486. Bind exclusively, refuse reuse and never proxy. Launch the recording child under inherited OS network denial allowing only those exact endpoints; probe external TCP/UDP, inherited child denial and unrelated loopback. Generate a private throwaway self-signed certificate, pin certificate and SPKI, scope Chromium's exception to that exact SPKI and do not alter OS trust. Only HTTP/1 is in scope; HTTP/2, HTTP/3/QUIC and installed TLS behavior remain UNKNOWN.
+
+Exercise one anonymous fresh-context fixture: main page, cross-origin frame, popup, dedicated/shared/service workers, permitted redirect, repeated Set-Cookie with an Expires comma, and deterministic script requests. Record observed targets and server requests, including initial navigation. Test exact repeated-header evidence and extra-info order/correlation. Do not infer absent cookies from missing headers. Raw headers and cookie markers remain private.
+
+Read raw DOM and storage before any projection or document rewrite: context cookies, frame/origin/local/session state, IndexedDB schema/entries and Cache Storage names/entries. Record actual method support and pagination. This first probe does not establish an atomic cross-target snapshot, complete partitioned storage, arbitrary value serialization or worker quiescence. Those verdicts remain UNKNOWN until race/partition/data-type tests qualify them. No global storage or policy PASS may follow from a few successful protocol calls.
+
+Use explicit deadlines for every command/action and overall worker. Retain failed receipts. Close only owned browser/process group, fixture servers and throwaway resources; record cleanup errors separately and fail on unknown survivors. No original database or storefront is started or edited.
+
+## Follow-up boundary
+
+After this probe is reviewed, implement a conservative offline reducer and synthetic event-loss/redirect/header/target/storage-race controls. Preserve all eight historical UNKNOWN regressions. Only then expand to the owner matrix: ten exact routes, desktop1440x900/mobile390x844, full/reduced motion, fresh contexts, top/middle/bottom scroll, alternate route, back/forward/reload, 30-second action deadlines. Two-second quiet is a boundary observation, not completeness proof. No login, consent, forms, cart, checkout or payment actions.
+
+Every receipt keeps independent verdicts for execution, supported capture surfaces, data knowledge, sanitation, policy and cleanup. Policy is UNKNOWN without a versioned real acceptance contract. Raw artifacts stay private; only reviewed structural fields and hashes may enter Git. Projection never executes captured scripts/resources. Arbitrary secret-removal and visual/storefront fidelity are not inferred from marker controls.
+
+Correct example (source-verified/recorded): the accepted old collector's serviceWorkers:block and single main session support its recorded restricted local fixture only; a new observed service-worker target is a required capability test here. Incorrect example (illustrative): treating a successful Network.enable call or a quiet event stream as complete worker/storage capture; correction: independently reconcile fixture requests/targets and retain unsupported boundaries as UNKNOWN.
