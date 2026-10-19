@@ -456,7 +456,7 @@ def collision_control(label):
     )
 
 
-def wrong_type_control(label, order_id):
+def wrong_type_control(label, order_id, source=False):
     hpos = next_batch()["hpos"]
     source_table, source_field = ("wp_wc_orders", "type") if hpos else ("wp_posts", "post_type")
     target_table, target_field = ("wp_posts", "post_type") if hpos else ("wp_wc_orders", "type")
@@ -483,6 +483,8 @@ def wrong_type_control(label, order_id):
         .strip()
     )
     assert actual == expected
+    if source:
+        target_table, target_field = source_table, source_field
     wrong = "shop_order_refund" if expected == "shop_order" else "shop_order"
     before = scope()
     assert (
@@ -505,7 +507,10 @@ def wrong_type_control(label, order_id):
     )
     held = scope()
     refusal = native("preflight", order_id, expected=(3,))
-    assert not refusal["ok"] and "Caller collision guard" in refusal["error"]
+    assert (
+        not refusal["ok"]
+        and ("Owned source type/parent" if source else "Caller collision guard") in refusal["error"]
+    )
     assert row_pins(held) == row_pins(scope())
     assert (
         sql(
@@ -528,7 +533,7 @@ def wrong_type_control(label, order_id):
     after = scope()
     assert row_pins(before) == row_pins(after)
     record(
-        "CALLER_OWNED_WRONG_TYPE_REFUSED_" + label,
+        "CALLER_OWNED_WRONG_" + ("SOURCE" if source else "DESTINATION") + "_TYPE_REFUSED_" + label,
         order_id=order_id,
         expected=expected,
         wrong=wrong,
@@ -1053,6 +1058,7 @@ def main():
             ), "Interruption needs real work remaining"
             record("INTERRUPTED_BETWEEN_BATCHES_" + direction, first=first, remaining=remaining)
             wrong_type_control(direction, int(first["batch"][0]))
+            wrong_type_control(direction, int(first["batch"][0]), source=True)
             time.sleep(1.1)
             native("newer", direction + "-paused")
             newer = inspect()

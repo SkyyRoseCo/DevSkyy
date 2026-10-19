@@ -9,7 +9,7 @@ $private = $root . '/.artifacts/release-gates-20261019/gate4-populated/run-' . $
 if ( ! defined( 'WP_CLI' ) || ! WP_CLI || ! defined( 'SKYYROSE_RELEASE_SYNTHETIC_FIXTURE' ) || ! SKYYROSE_RELEASE_SYNTHETIC_FIXTURE || DB_NAME !== 'sr_release_fixture' || realpath( ABSPATH ) !== realpath( $private . '/wordpress' ) || $GLOBALS['wpdb']->get_var( 'SELECT @@socket' ) !== ( '/tmp/sr-g4-pop-' . substr( $run, -12 ) . '.sock' ) || get_option( 'home' ) !== 'http://127.0.0.1:18362' ) { throw new RuntimeException( 'Exact disposable populated identity required.' ); }
 $mode = $args[0] ?? '';
 $state_file = $private . '/case.json';
-$case = file_exists( $state_file ) ? json_decode( file_get_contents( $state_file ), true, 512, JSON_THROW_ON_ERROR ) : array( 'run' => $run, 'orders' => array(), 'products' => array(), 'deleted' => array(), 'writes_closed' => false );
+$case = file_exists( $state_file ) ? json_decode( file_get_contents( $state_file ), true, 512, JSON_THROW_ON_ERROR ) : array( 'run' => $run, 'orders' => array(), 'products' => array(), 'created' => array(), 'deleted' => array(), 'writes_closed' => false );
 if ( $case['run'] !== $run ) { throw new RuntimeException( 'Foreign case refused.' ); }
 function g4p_json( $value, $flags = 0 ) { return wp_json_encode( $value, $flags | JSON_PRESERVE_ZERO_FRACTION | JSON_THROW_ON_ERROR ); }
 function g4p_save() { global $case, $state_file; file_put_contents( $state_file, g4p_json( $case, JSON_THROW_ON_ERROR ), LOCK_EX ); chmod( $state_file, 0600 ); }
@@ -62,7 +62,7 @@ function g4p_new_order( $role, $product, $promise, $quantity = 1 ) {
     $order->set_address( array( 'first_name' => 'Synthetic', 'last_name' => 'Fixture', 'address_1' => '1 Test Way', 'city' => 'Oakland', 'state' => 'CA', 'postcode' => '94612', 'country' => 'US', 'email' => 'fixture@example.invalid' ), 'billing' ); $order->set_address( $order->get_address( 'billing' ), 'shipping' );
     $order->update_meta_data( '_g4_owner', $run ); $order->update_meta_data( '_g4_role', $role ); foreach ( array( 'repeat', 'repeat', 'different' ) as $value ) { $order->add_meta_data( '_g4_duplicate', $value, false ); }
     $item = new WC_Order_Item_Product(); $item->set_product( $product ); $item->set_quantity( $quantity ); $item->set_subtotal( 80 * $quantity ); $item->set_total( 80 * $quantity ); $item->add_meta_data( '_skyyrose_preorder_snapshot', $promise ); $item->add_meta_data( '_g4_typed', array( 'boolean' => true, 'integer' => 1, 'fractional' => 1.0 ) ); foreach ( array( 'repeat', 'repeat', 'different' ) as $value ) { $item->add_meta_data( '_g4_duplicate', $value, false ); } $order->add_item( $item ); $order->calculate_totals(); $order->save();
-    $case['orders'][ $role ] = $order->get_id(); g4p_save(); return g4p_owned( $order->get_id() );
+    $case['orders'][ $role ] = $order->get_id(); $case['created'][ $order->get_id() ] = array( 'run' => $run, 'role' => $role, 'type' => $order->get_type(), 'parent_id' => $order->get_parent_id() ); g4p_save(); return g4p_owned( $order->get_id() );
 }
 function g4p_product( $role ) {
     global $case, $run; $product = new WC_Product_Simple(); $product->set_name( 'Synthetic populated fixture ' . $role ); $product->set_sku( 'synthetic-gate4-pop-' . $run . '-' . $role ); $product->set_status( 'publish' ); $product->set_virtual( true ); $product->set_regular_price( '80' ); $product->set_manage_stock( true ); $product->set_stock_quantity( 30 ); $product->update_meta_data( '_g4_owner', $run ); $product->update_meta_data( '_is_preorder', '1' ); $product->update_meta_data( '_preorder_available', '30' ); $product->save(); $case['products'][ $role ] = $product->get_id(); g4p_save(); return $product;
@@ -90,9 +90,16 @@ function g4p_gateway_setup() {
 function g4p_batch_preflight( $batch ) {
     global $case, $run, $wpdb; $hpos = Automattic\WooCommerce\Utilities\OrderUtil::custom_orders_table_usage_is_enabled();
     foreach ( $batch as $id ) {
-        if ( isset( $case['deleted'][ $id ] ) ) { if ( $case['deleted'][ $id ]['run'] !== $run ) { throw new RuntimeException( 'Foreign tombstone refused.' ); } $order = null; }
-        else { $order = g4p_owned( $id ); }
-        $expected_type = $order ? $order->get_type() : $case['deleted'][ $id ]['type'];
+        $ledger = $case['created'][ $id ] ?? null;
+        if ( ! is_array( $ledger ) || $ledger['run'] !== $run || ( $case['orders'][ $ledger['role'] ] ?? null ) !== $id ) { throw new RuntimeException( 'Owned source creation ledger membership required.' ); }
+        $expected_type = $ledger['type']; $expected_parent = $ledger['parent_id'];
+        if ( isset( $case['deleted'][ $id ] ) ) { $deleted = $case['deleted'][ $id ]; if ( $deleted['run'] !== $run || $deleted['type'] !== $expected_type || $deleted['before']['data']['parent_id'] !== $expected_parent ) { throw new RuntimeException( 'Owned source tombstone ledger mismatch.' ); } $order = null; }
+        else {
+            $source_table = $hpos ? $wpdb->prefix . 'wc_orders' : $wpdb->posts; $source_type = $hpos ? 'type' : 'post_type'; $source_parent = $hpos ? 'parent_order_id' : 'post_parent';
+            $source = $wpdb->get_row( $wpdb->prepare( "SELECT {$source_type} AS type, {$source_parent} AS parent_id FROM {$source_table} WHERE id=%d", $id ), ARRAY_A );
+            if ( $wpdb->last_error || ! $source || $source['type'] !== $expected_type || (int) $source['parent_id'] !== $expected_parent ) { throw new RuntimeException( 'Owned source type/parent differs from creation ledger.' ); }
+            $order = g4p_owned( $id ); if ( $order->get_type() !== $expected_type || $order->get_parent_id() !== $expected_parent ) { throw new RuntimeException( 'Owned source native object differs from creation ledger.' ); }
+        }
         if ( ! in_array( $expected_type, array( 'shop_order', 'shop_order_refund' ), true ) ) { throw new RuntimeException( 'Owned source order type required.' ); }
         if ( $hpos ) {
             $type = $wpdb->get_var( $wpdb->prepare( "SELECT post_type FROM {$wpdb->posts} WHERE ID=%d", $id ) ); if ( $wpdb->last_error ) { throw new RuntimeException( 'Unreadable CPT destination refused.' ); }
@@ -162,7 +169,7 @@ try {
         $refund_suffix = $args[1] ?? ''; if ( ! in_array( $refund_suffix, array( '', 'hpos' ), true ) || ( $refund_suffix === 'hpos' && ! Automattic\WooCommerce\Utilities\OrderUtil::custom_orders_table_usage_is_enabled() ) ) { throw new RuntimeException( 'Bounded native refund authority required.' ); } $refund_role = 'financial_refund' . ( $refund_suffix ? '_hpos' : '' );
         if ( isset( $case['orders'][ $refund_role ] ) ) { throw new RuntimeException( 'One native refund only.' ); } g4p_gateway_setup(); $order = g4p_owned( $case['orders']['v2_financial'] ); if ( ! $order->is_paid() ) { throw new RuntimeException( 'Paid financial order required.' ); } $item = current( $order->get_items() ); $taxes = $item->get_taxes(); $refund_taxes = array_map( static fn( $value ) => (float) $value / 2, $taxes['total'] );
         $refund = wc_create_refund( array( 'order_id' => $order->get_id(), 'amount' => (float) $item->get_total() / 2 + array_sum( $refund_taxes ), 'reason' => 'Synthetic native partial refund ' . $refund_suffix, 'refund_payment' => true, 'restock_items' => true, 'line_items' => array( $item->get_id() => array( 'qty' => 1, 'refund_total' => (float) $item->get_total() / 2, 'refund_tax' => $refund_taxes ) ) ) );
-        if ( is_wp_error( $refund ) ) { throw new RuntimeException( 'Native refund failed.' ); } $refund->update_meta_data( '_g4_owner', $run ); $refund->update_meta_data( '_g4_role', $refund_role ); foreach ( array( 'repeat', 'repeat', 'different' ) as $value ) { $refund->add_meta_data( '_g4_duplicate', $value, false ); } $refund->save(); $case['orders'][ $refund_role ] = $refund->get_id(); g4p_save();
+        if ( is_wp_error( $refund ) ) { throw new RuntimeException( 'Native refund failed.' ); } $refund->update_meta_data( '_g4_owner', $run ); $refund->update_meta_data( '_g4_role', $refund_role ); foreach ( array( 'repeat', 'repeat', 'different' ) as $value ) { $refund->add_meta_data( '_g4_duplicate', $value, false ); } $refund->save(); $case['orders'][ $refund_role ] = $refund->get_id(); $case['created'][ $refund->get_id() ] = array( 'run' => $run, 'role' => $refund_role, 'type' => $refund->get_type(), 'parent_id' => $refund->get_parent_id() ); g4p_save();
     } elseif ( $mode === 'make-delete' ) {
         $suffix = $args[1] ?? ''; if ( ! preg_match( '/^[a-z0-9-]+$/D', $suffix ) ) { throw new RuntimeException( 'Owned deletion-role label required.' ); } $parent = wc_get_product( $case['products']['main'] ); $child = wc_get_product( $parent->get_children()[0] ); $promise = skyyrose2_preorder_snapshot( skyyrose2_preorder_config( $parent->get_id(), $child->get_id(), array( 'attribute_size' => '2T' ) ) ); g4p_new_order( 'delete-' . $suffix, $child, $promise );
     } elseif ( $mode === 'delete' ) {
