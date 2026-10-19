@@ -217,6 +217,41 @@ def test_lh_native_workflow_dependencies_are_hash_bound_and_fail_closed() -> Non
 
 
 def test_paid_execution_needs_portable_authorities_and_receipts() -> None:
+    """A source bound outside the repository must fail closed before any receipt check.
+
+    BR-COMMERCE-2 sources are now tracked repo-relative files, so the missing
+    authority is made explicit instead of relying on an uncommitted path.
+    """
+    contract_root = Path(__file__).resolve().parents[1] / "scene-contracts"
+    manifest = json.loads(
+        (contract_root / "br-commerce-2-higgsfield-comfy-ooda.json").read_text(encoding="utf-8")
+    )
+    manifest["execute_blockers"] = []
+    manifest["credit_control"]["prompt_review_receipt"] = None
+    manifest["credit_control"]["approval_receipt"] = None
+    manifest["source_bindings"][0][
+        "path"
+    ] = "Comfy/external-authorities/BR-COMMERCE-2/not-committed-anywhere.png"
+
+    report = scene_ooda.observe(manifest)
+
+    assert report["configuration_ready"] is False
+    assert any(check["status"] == "MISSING" for check in report["source_checks"])
+    assert report["credit_control_check"]["prompt_review"]["status"] == "MISSING_RECEIPT"
+    assert report["credit_control_check"]["paid_approval"]["status"] == "MISSING_RECEIPT"
+    assert report["paid_authorized"] is False
+    assert report["paid_execution_ready"] is False
+
+
+def test_paid_execution_needs_receipts_even_if_text_blockers_are_removed(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    """Receipt gates must block paid_execution even when execute_blockers is cleared.
+
+    Source files for BR-COMMERCE-2 may not exist on every developer machine.
+    We patch verify_file to return PASS so the test stays focused on the receipt
+    gate behaviour rather than local file availability.
+    """
     contract_root = Path(__file__).resolve().parents[1] / "scene-contracts"
     manifest = json.loads(
         (contract_root / "br-commerce-2-higgsfield-comfy-ooda.json").read_text(encoding="utf-8")
@@ -225,10 +260,21 @@ def test_paid_execution_needs_portable_authorities_and_receipts() -> None:
     manifest["credit_control"]["prompt_review_receipt"] = None
     manifest["credit_control"]["approval_receipt"] = None
 
+    def _always_pass(path: Path, expected_sha256: str | None) -> dict:  # type: ignore[type-arg]
+        return {
+            "path": str(path),
+            "exists": True,
+            "status": "PASS" if expected_sha256 else "PRESENT_UNHASHED",
+            "actual_sha256": expected_sha256 or ("a" * 64),
+        }
+
+    monkeypatch.setattr(scene_ooda, "verify_file", _always_pass)
+
     report = scene_ooda.observe(manifest)
 
-    assert report["configuration_ready"] is False
-    assert any(check["status"] == "MISSING" for check in report["source_checks"])
+    assert (
+        report["configuration_ready"] is True
+    ), "configuration_ready must be True when sources pass and blockers are cleared"
     assert report["credit_control_check"]["prompt_review"]["status"] == "MISSING_RECEIPT"
     assert report["credit_control_check"]["paid_approval"]["status"] == "MISSING_RECEIPT"
     assert report["paid_authorized"] is False

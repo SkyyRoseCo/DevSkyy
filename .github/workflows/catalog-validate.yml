@@ -9,6 +9,49 @@ on:
       - "skyyrose/elite_studio/commerce.py"
       - "scripts/validate_catalog_consistency.py"
       - ".github/workflows/catalog-validate.yml"
+      - "scripts/asset_sot_census.py"
+      - "tests/scripts/test_asset_sot_census.py"
+      - "tasks/catalog-reconciliation/image-library/inventory.json"
+      - "wordpress-theme/skyyrose-flagship-2/data/**"
+      - "assets/hub/manifest.json"
+      - "data/sot-images.json"
+      - "assets/products/manifest.json"
+      - "**.[pP][nN][gG]"
+      - "**.[jJ][pP][gG]"
+      - "**.[jJ][pP][eE][gG]"
+      - "**.[wW][eE][bB][pP]"
+      - "**.[aA][vV][iI][fF]"
+      - "**.[gG][iI][fF]"
+      - "**.[sS][vV][gG]"
+      - "**.[iI][cC][oO]"
+      - "**.[bB][mM][pP]"
+      - "**.[tT][iI][fF]"
+      - "**.[tT][iI][fF][fF]"
+      - "**.[hH][eE][iI][cC]"
+      - "**.[pP][sS][dD]"
+      - "**.[hH][dD][rR]"
+      - "**.[eE][xX][rR]"
+      - "**.[kK][tT][xX]2"
+      - "**.[mM][pP]4"
+      - "**.[wW][eE][bB][mM]"
+      - "**.[mM][oO][vV]"
+      - "**.[mM]4[vV]"
+      - "**.[gG][lL][bB]"
+      - "**.[gG][lL][tT][fF]"
+      - "**.[fF][bB][xX]"
+      - "**.[oO][bB][jJ]"
+      - "**.[uU][sS][dD][zZ]"
+      - "**.[bB][lL][eE][nN][dD]"
+      - "**.[wW][oO][fF][fF]2"
+      - "**.[wW][oO][fF][fF]"
+      - "**.[tT][tT][fF]"
+      - "**.[oO][tT][fF]"
+      - "**.[eE][oO][tT]"
+      - "**.[mM][pP]3"
+      - "**.[wW][aA][vV]"
+      - "**.[oO][gG][gG]"
+      - "**.[mM]4[aA]"
+      - "**.[pP][dD][fF]"
       - "scripts/sync_catalog_downstream.py"
       - "skyyrose/elite_studio/tests/test_catalog_consistency.py"
       - "skyyrose/elite_studio/tests/conftest.py"
@@ -26,6 +69,10 @@ on:
       - "skyyrose/core/dossier_loader.py"
       - "skyyrose/core/sot_images.py"
       - "scripts/sync_product_registry.py"
+      - "assets/products/manifest.json"
+      - "scripts/build_asset_manifest.py"
+      - "skyyrose/core/asset_manifest.py"
+      - "tests/test_sync_manifest_projection.py"
       - "tests/test_unified_product_registry.py"
       - "tests/test_registry_product_readers.py"
       - "tests/test_registry_php_parity.py"
@@ -52,6 +99,49 @@ on:
       - "skyyrose/elite_studio/logo_registry.py"
       - "scripts/validate_catalog_consistency.py"
       - ".github/workflows/catalog-validate.yml"
+      - "scripts/asset_sot_census.py"
+      - "tests/scripts/test_asset_sot_census.py"
+      - "tasks/catalog-reconciliation/image-library/inventory.json"
+      - "wordpress-theme/skyyrose-flagship-2/data/**"
+      - "assets/hub/manifest.json"
+      - "data/sot-images.json"
+      - "assets/products/manifest.json"
+      - "**.[pP][nN][gG]"
+      - "**.[jJ][pP][gG]"
+      - "**.[jJ][pP][eE][gG]"
+      - "**.[wW][eE][bB][pP]"
+      - "**.[aA][vV][iI][fF]"
+      - "**.[gG][iI][fF]"
+      - "**.[sS][vV][gG]"
+      - "**.[iI][cC][oO]"
+      - "**.[bB][mM][pP]"
+      - "**.[tT][iI][fF]"
+      - "**.[tT][iI][fF][fF]"
+      - "**.[hH][eE][iI][cC]"
+      - "**.[pP][sS][dD]"
+      - "**.[hH][dD][rR]"
+      - "**.[eE][xX][rR]"
+      - "**.[kK][tT][xX]2"
+      - "**.[mM][pP]4"
+      - "**.[wW][eE][bB][mM]"
+      - "**.[mM][oO][vV]"
+      - "**.[mM]4[vV]"
+      - "**.[gG][lL][bB]"
+      - "**.[gG][lL][tT][fF]"
+      - "**.[fF][bB][xX]"
+      - "**.[oO][bB][jJ]"
+      - "**.[uU][sS][dD][zZ]"
+      - "**.[bB][lL][eE][nN][dD]"
+      - "**.[wW][oO][fF][fF]2"
+      - "**.[wW][oO][fF][fF]"
+      - "**.[tT][tT][fF]"
+      - "**.[oO][tT][fF]"
+      - "**.[eE][oO][tT]"
+      - "**.[mM][pP]3"
+      - "**.[wW][aA][vV]"
+      - "**.[oO][gG][gG]"
+      - "**.[mM]4[aA]"
+      - "**.[pP][dD][fF]"
       - "scripts/build_v7_cards.py"
       - "skyyrose/core/catalog_loader.py"
       - "skyyrose/core/product_registry.py"
@@ -66,6 +156,10 @@ on:
       - "skyyrose/core/dossier_loader.py"
       - "skyyrose/core/sot_images.py"
       - "scripts/sync_product_registry.py"
+      - "assets/products/manifest.json"
+      - "scripts/build_asset_manifest.py"
+      - "skyyrose/core/asset_manifest.py"
+      - "tests/test_sync_manifest_projection.py"
       - "tests/test_unified_product_registry.py"
       - "tests/test_registry_product_readers.py"
       - "tests/test_registry_php_parity.py"
@@ -110,7 +204,7 @@ jobs:
           # without pytest-asyncio pytest errors "Unknown config option").
           # No project/base install — `.[dev]` pulls the heavy provider stack, was
           # timing out, and silently fell back to a pytest-only env that failed.
-          pip install pytest pytest-asyncio pytest-timeout Pillow PyYAML jsonschema cryptography PyJWT argon2-cffi passlib email-validator fastapi python-multipart --quiet
+          pip install pytest pytest-asyncio pytest-timeout Pillow PyYAML jsonschema cryptography PyJWT argon2-cffi passlib bcrypt email-validator fastapi python-multipart --quiet
 
       - name: Run catalog consistency validator
         run: |
@@ -143,6 +237,16 @@ jobs:
         # visual-manifest.json must exist in the tracked theme assets.
         run: |
           python wordpress-theme/skyyrose-flagship/data/verify-visual-manifest.py
+        env:
+          PYTHONPATH: ${{ github.workspace }}
+
+      - name: Asset SOT census (every in-scope media file has an owning ledger)
+        # Fails on any tracked/untracked media file referenced by no ledger
+        # (registry, visual-manifest, typography, projections, Flagship 2 media
+        # ledgers, review-area inventory). Ledger missing/unreadable = exit 2.
+        run: |
+          python scripts/asset_sot_census.py --check
+          pytest tests/scripts/test_asset_sot_census.py -v --tb=short
         env:
           PYTHONPATH: ${{ github.workspace }}
 

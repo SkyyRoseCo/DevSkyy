@@ -40,7 +40,7 @@ Each scroll-snap landing is a magazine page that serves a distinct role. Four ro
 | Meta block (right) | Space Mono 9px / 0.3em letter-spacing. Three lines: "VOL. IV", "S/S 2026", "THE TOWN · DROP 01". |
 | Cover photo | `assets/branding/hero/forbidden-midnight-{480,768,1280,1680}w.webp` — `<picture>` with `srcset` for responsive. Fullbleed behind masthead. Dark overlay gradient top + bottom. |
 | Monogram graffiti | Playfair italic 700 / 96px / `#B76E79` / rotated -7deg / overlaid on photo, positioned right-third. |
-| Cover line | Bebas Neue 56px desktop / 32px mobile, color split: "Luxury Grows from" white, "Concrete." rose-gold. |
+No brand slogan is authorized; retain the brand-name heading.
 | By-line | Inter 10px / 0.3em letter-spacing / "By Corey Foster · Oakland · 2026" |
 | Barcode | SVG inline. Below it: Space Mono 9px "03 · 26 · DROP 01". |
 

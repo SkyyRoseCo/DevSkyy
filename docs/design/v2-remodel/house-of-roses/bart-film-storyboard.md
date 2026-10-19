@@ -55,8 +55,10 @@ Jersey Series entry chapter:
   destination board, house star/rose emblem, and SkyyRose wordmark.
 
 It deliberately contains no BART word mark, livery, route map, station mark,
-or service claim. The older `jersey-series-bart-*` experiment remains retained
-historical provenance only and is never the visual authority for new work.
+or service claim. The older `jersey-series-bart-*` experiment was rejected by Corey on
+2026-10-09. Its MP4, WebM, poster and build script were removed from the
+active theme. Historical Git revisions are provenance only; do not reuse,
+regenerate or adopt that film for new work.
 
 ### Jersey product truth
 
@@ -72,16 +74,14 @@ The canonical catalog and generated `data/sot-images.json` bind the following ch
 
 No Jersey Series product image may be substituted with `BR-004`, a generic Black Rose hoodie, or an invented jersey. The film remains `MEDIA BLOCKED` until the canonical bytes are materialized, eyes-on checked against the garments, and rights are recorded.
 
-### Local founder-review previsualization
+### Rejected previsualization — removed
 
-The candidate now includes a reproducible, poster-first **previsualization** assembled from the selected composition reference and exact on-model Jersey Series media available in canonical V1. It is evidence of pacing, BART chapter structure, progressive enhancement, and the dedicated jersey reveal—not release clearance for those source bytes.
-
-- Build: `scripts/build-jersey-bart-film.sh`
-- MP4: `assets/video/jersey-series-bart-journey.mp4`
-- WebM: `assets/video/jersey-series-bart-journey.webm`
-- Poster: `assets/video/jersey-series-bart-poster.webp`
-- Verified encoding: 1920×1080, H.264/yuv420p, 30fps, 16 seconds.
-- Release gate still required: source-byte rights record, eyes-on garment/SKU check, founder approval, and candidate-bound browser/performance review.
+Corey instructed on 2026-10-09: “do not use that old film get rid of irt”.
+The old 16-second Jersey slideshow, both video formats, its poster and its
+rebuild script were removed from the active theme. It must not be used as
+campaign footage, a fallback, or the basis of the new Jersey film. This is
+an explicit rejection, not a pending review candidate. Removal here is local;
+it does not establish deletion of historical deployments or other checkouts.
 
 ## Header collection-scene reel
 

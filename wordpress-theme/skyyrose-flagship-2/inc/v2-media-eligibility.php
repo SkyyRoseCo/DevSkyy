@@ -18,16 +18,21 @@ function skyyrose2_media_record_allowed( $relative, $record, $role = '', $sku = 
 	$file = realpath( SKYYROSE2_DIR . '/' . $relative );
 	$root = realpath( SKYYROSE2_DIR );
 	$hash = $record['sha256'] ?? '';
-	if ( ! $file || ! $root || 0 !== strpos( $file, $root . DIRECTORY_SEPARATOR ) || is_link( SKYYROSE2_DIR . '/' . $relative ) || ! is_file( $file ) || ! is_string( $hash ) || ! preg_match( '/^[a-f0-9]{64}$/D', $hash ) || ! hash_equals( $hash, hash_file( 'sha256', $file ) ) ) { return false; }
+	if ( ! $file || ! $root || 0 !== strpos( $file, $root . DIRECTORY_SEPARATOR ) || is_link( SKYYROSE2_DIR . '/' . $relative ) || ! is_file( $file ) || ! is_string( $hash ) || ! preg_match( '/^[a-f0-9]{64}$/D', $hash ) || ! hash_equals( $hash, skyyrose2_media_sha256( $file ) ) ) { return false; }
 	$kind = $record['kind'] ?? '';
 	if ( ! is_array( $record['roles'] ?? null ) || empty( $record['roles'] ) || ( isset( $record['skus'] ) && ! is_array( $record['skus'] ) ) ) { return false; }
 	$inventory = skyyrose2_media_inventory();
 	if ( in_array( $hash, $inventory['disallowed_legacy_sha256'] ?? array(), true ) ) { return false; }
 	if ( 'FOUNDER_AUTHORIZED_COLLECTION_FILM' === ( $record['status'] ?? '' ) ) { return skyyrose2_founder_film_allowed( $relative, $record, $role, $sku ); }
 	if ( 'DELIVERY_DERIVATIVE' === ( $record['status'] ?? '' ) ) { return skyyrose2_media_delivery_derivative_allowed( $relative, $record, $role, $sku ); }
+	// A new use never rewrites the original card/scene decision. Validate that
+	// original first, then the exact source-bound founder reuse grant.
+	if ( $role && ! in_array( $role, $record['roles'], true ) ) {
+		return 'photograph' === $kind && skyyrose2_media_record_allowed( $relative, $record, '', $sku ) && in_array( $role, skyyrose2_media_usage_roles( $relative, $record ), true );
+	}
 	if ( in_array( $kind, array( 'housemark', 'font', 'icon', 'house_art' ), true ) ) {
 		$authority = SKYYROSE2_DIR . '/data/v2-canonical-media.json';
-		if ( ! is_file( $authority ) || is_link( $authority ) || ! hash_equals( 'b4957a6f9210c6c906990a974e7f3f432cc4b2fe9d9ae94d09958e590c1a673e', hash_file( 'sha256', $authority ) ) ) { return false; }
+		if ( ! is_file( $authority ) || is_link( $authority ) || ! hash_equals( 'b4957a6f9210c6c906990a974e7f3f432cc4b2fe9d9ae94d09958e590c1a673e', skyyrose2_media_sha256( $authority ) ) ) { return false; }
 		$canonical = json_decode( file_get_contents( $authority ), true );
 		$exact = $canonical['assets'][ $relative ] ?? null;
 		// House art is the unchanged homepage hero only: no SKU, no collection, no
@@ -47,7 +52,7 @@ function skyyrose2_media_record_allowed( $relative, $record, $role = '', $sku = 
 	$receipt = SKYYROSE2_DIR . '/' . $review['path'];
 	$receipt_real = realpath( $receipt );
 	if ( ! $receipt_real || 0 !== strpos( $receipt_real, $root . DIRECTORY_SEPARATOR ) ) { return false; }
-	if ( ! is_file( $receipt ) || is_link( $receipt ) || ! preg_match( '/^[a-f0-9]{64}$/D', $review['sha256'] ?? '' ) || ! hash_equals( $review['sha256'], hash_file( 'sha256', $receipt ) ) ) { return false; }
+	if ( ! is_file( $receipt ) || is_link( $receipt ) || ! preg_match( '/^[a-f0-9]{64}$/D', $review['sha256'] ?? '' ) || ! hash_equals( $review['sha256'], skyyrose2_media_sha256( $receipt ) ) ) { return false; }
 	$data = json_decode( file_get_contents( $receipt ), true );
 	if ( ! is_array( $data ) ) { return false; }
 	foreach ( array( 'roles', 'skus', 'collections' ) as $binding ) {
@@ -60,20 +65,36 @@ function skyyrose2_media_record_allowed( $relative, $record, $role = '', $sku = 
 	return is_array( $data ) && ( $data['asset_sha256'] ?? '' ) === $hash && ( $data['reviewer'] ?? '' ) === $review['reviewer'] && 'PASS' === ( $data['verdict'] ?? '' ) && true === ( $data['v2_originality_pass'] ?? false ) && true === ( $data['product_fidelity_pass'] ?? false );
 }
 
+/**
+ * Request-scoped sha256 of a file. The gate hashes the same masters, renditions
+ * and receipts for every srcset candidate and again at the HTML boundary; the
+ * memo is keyed by the file's current stat identity (inode, size, mtime, ctime),
+ * re-read on every call, so any write to the file is hashed afresh.
+ */
+function skyyrose2_media_sha256( $path ) {
+	static $memo = array();
+	clearstatcache( true, $path );
+	$stat = @stat( $path ); // phpcs:ignore WordPress.PHP.NoSilencedErrors.Discouraged -- a missing file is an ordinary fail-closed result.
+	if ( ! $stat ) { return false; }
+	$key = $path . "\0" . $stat['ino'] . ':' . $stat['size'] . ':' . $stat['mtime'] . ':' . $stat['ctime'];
+	if ( ! array_key_exists( $key, $memo ) ) { $memo[ $key ] = hash_file( 'sha256', $path ); }
+	return $memo[ $key ];
+}
+
 /** A current, hash-bound owner decision grants only the exact card role. */
 function skyyrose2_founder_card_allowed( $relative, $record, $role = '', $sku = '' ) {
 	if ( 'photograph' !== ( $record['kind'] ?? '' ) || 'V2_ORIGINAL_20261002' !== ( $record['origin'] ?? '' ) || array( 'card_front' ) !== ( $record['roles'] ?? null ) || ( $role && 'card_front' !== $role ) || ! is_array( $record['skus'] ?? null ) || 1 !== count( $record['skus'] ) || ! is_array( $record['collections'] ?? null ) || 1 !== count( $record['collections'] ) || ( $sku && array( $sku ) !== $record['skus'] ) ) { return false; }
 	$review = $record['review'] ?? array();
 	if ( 'Corey' !== ( $review['reviewer'] ?? '' ) || 'ACCEPTED' !== ( $review['verdict'] ?? '' ) || ! preg_match( '#^data/v2-media-reviews/[A-Za-z0-9_.-]+\.json$#D', $review['path'] ?? '' ) ) { return false; }
 	$file = SKYYROSE2_DIR . '/' . $review['path'];
-	if ( ! is_file( $file ) || is_link( $file ) || ! is_string( $review['sha256'] ?? null ) || ! hash_equals( $review['sha256'], hash_file( 'sha256', $file ) ) ) { return false; }
+	if ( ! is_file( $file ) || is_link( $file ) || ! is_string( $review['sha256'] ?? null ) || ! hash_equals( $review['sha256'], skyyrose2_media_sha256( $file ) ) ) { return false; }
 	$data = json_decode( file_get_contents( $file ), true );
 	if ( ! is_array( $data ) || 'skyyrose.founder-card-acceptance.v1' !== ( $data['schema'] ?? '' ) || 'Corey' !== ( $data['reviewer'] ?? '' ) || 'ACCEPTED' !== ( $data['verdict'] ?? '' ) || 'FOUNDER_CONFIRMED' !== ( $data['authority'] ?? '' ) || ( $data['asset_sha256'] ?? '' ) !== $record['sha256'] || empty( $data['decision_text'] ) || 'ALL 33 PRODUCTS. add them to their card NOW.' !== ( $data['placement_authorization'] ?? '' ) ) { return false; }
 	foreach ( array( 'roles', 'skus', 'collections', 'producer', 'production_id' ) as $key ) { if ( ( $data[ $key ] ?? null ) !== ( $record[ $key ] ?? null ) ) { return false; } }
 	$source = $data['decision_source'] ?? array();
 	if ( ! preg_match( '#^data/v2-media-reviews/owner-[A-Za-z0-9_.-]+\.json$#D', $source['path'] ?? '' ) ) { return false; }
 	$file = SKYYROSE2_DIR . '/' . $source['path'];
-	if ( ! is_file( $file ) || is_link( $file ) || ! is_string( $source['sha256'] ?? null ) || ! hash_equals( $source['sha256'], hash_file( 'sha256', $file ) ) ) { return false; }
+	if ( ! is_file( $file ) || is_link( $file ) || ! is_string( $source['sha256'] ?? null ) || ! hash_equals( $source['sha256'], skyyrose2_media_sha256( $file ) ) ) { return false; }
 	$original = json_decode( file_get_contents( $file ), true );
 	if ( ! is_array( $original ) || ( $original['decision_text'] ?? $original['decision_evidence']['verbatim'] ?? '' ) !== $data['decision_text'] ) { return false; }
 	$schema = $original['schema'] ?? '';
@@ -117,7 +138,7 @@ function skyyrose2_media_delivery_derivative_allowed( $relative, $record, $role 
 	$delivery = $record['delivery_manifest'] ?? null;
 	$manifest_path = 'assets/derived/card-fronts/manifest.json';
 	$manifest_file = SKYYROSE2_DIR . '/' . $manifest_path;
-	if ( ! is_array( $delivery ) || $manifest_path !== ( $delivery['path'] ?? '' ) || ! is_file( $manifest_file ) || is_link( $manifest_file ) || ! is_string( $delivery['sha256'] ?? null ) || ! preg_match( '/^[a-f0-9]{64}$/D', $delivery['sha256'] ) || ! hash_equals( $delivery['sha256'], hash_file( 'sha256', $manifest_file ) ) ) { return false; }
+	if ( ! is_array( $delivery ) || $manifest_path !== ( $delivery['path'] ?? '' ) || ! is_file( $manifest_file ) || is_link( $manifest_file ) || ! is_string( $delivery['sha256'] ?? null ) || ! preg_match( '/^[a-f0-9]{64}$/D', $delivery['sha256'] ) || ! hash_equals( $delivery['sha256'], skyyrose2_media_sha256( $manifest_file ) ) ) { return false; }
 	$manifest = json_decode( file_get_contents( $manifest_file ), true );
 	$entry = $manifest['products'][ $owner ] ?? null;
 	if ( 'skyyrose.card-renditions.v1' !== ( $manifest['schema'] ?? '' ) || ! is_array( $entry ) || $source !== ( $entry['source'] ?? '' ) || $master['sha256'] !== ( $entry['source_sha256'] ?? '' ) || ( $entry['source_review'] ?? null ) != $master['review'] ) { return false; }
@@ -138,8 +159,81 @@ function skyyrose2_media_path_allowed( $relative, $role = '', $sku = '' ) {
 	return skyyrose2_media_record_allowed( $relative, $data['assets'][ $relative ] ?? null, $role, $sku );
 }
 
+/** Read a hash-bound receipt without following any aliases or escaping the theme. */
+function skyyrose2_media_usage_document( $binding ) {
+	if ( ! is_array( $binding ) || count( $binding ) !== 2 || ! isset( $binding['path'], $binding['sha256'] ) || ! is_string( $binding['path'] ) || ! preg_match( '#^data/v2-media-reviews/[A-Za-z0-9_.-]+\.json$#D', $binding['path'] ) || ! is_string( $binding['sha256'] ) || ! preg_match( '/^[a-f0-9]{64}$/D', $binding['sha256'] ) ) { return null; }
+	$cursor = SKYYROSE2_DIR;
+	foreach ( explode( '/', $binding['path'] ) as $part ) { $cursor .= '/' . $part; if ( is_link( $cursor ) ) { return null; } }
+	$root = realpath( SKYYROSE2_DIR ); $real = realpath( $cursor );
+	if ( ! $root || ! $real || 0 !== strpos( $real, $root . DIRECTORY_SEPARATOR ) || ! is_file( $cursor ) || ! hash_equals( $binding['sha256'], skyyrose2_media_sha256( $cursor ) ) ) { return null; }
+	$data = json_decode( file_get_contents( $cursor ), true );
+	return is_array( $data ) ? $data : null;
+}
+
+/** Additional placement authority, distinct from independent visual acceptance. */
+function skyyrose2_media_usage_roles( $relative, $record ) {
+	if ( ! in_array( $record['status'] ?? '', array( 'INDEPENDENT_VISUAL_PASS', 'FOUNDER_ACCEPTED' ), true ) ) { return array(); }
+	$grant = skyyrose2_media_usage_document( skyyrose2_media_inventory()['usage_adoptions'][ $relative ] ?? null );
+	$source = array( 'path' => $relative, 'sha256' => $record['sha256'] ?? '', 'review' => array( 'path' => $record['review']['path'] ?? '', 'sha256' => $record['review']['sha256'] ?? '' ) );
+	if ( ! $grant || 'skyyrose.media-usage-adoption.v1' !== ( $grant['schema'] ?? '' ) || 'AUTHORIZED_REUSE' !== ( $grant['status'] ?? '' ) || 'FOUNDER_CONFIRMED' !== ( $grant['authority'] ?? '' ) || 'https://staging-7e48-skyyrose.wpcomstaging.com' !== ( $grant['target'] ?? '' ) || $source != ( $grant['source'] ?? null ) || ( $record['skus'] ?? null ) !== ( $grant['skus'] ?? null ) || ( $record['collections'] ?? null ) !== ( $grant['collections'] ?? null ) ) { return array(); }
+	$roles = $grant['roles'] ?? null;
+	if ( ! is_array( $roles ) || ! array_is_list( $roles ) || ! $roles || ! is_array( $record['skus'] ?? null ) || 1 !== count( $record['skus'] ) || ! is_array( $record['collections'] ?? null ) || 1 !== count( $record['collections'] ) ) { return array(); }
+	foreach ( $roles as $value ) { if ( ! is_string( $value ) || ! in_array( $value, array( 'pdp_on_model_front', 'collection_hero', 'collection_story', 'merchandise_scene' ), true ) ) { return array(); } }
+	if ( count( array_unique( $roles ) ) !== count( $roles ) ) { return array(); }
+	$authority = skyyrose2_media_usage_document( $grant['authorization'] ?? null );
+	$assignment = array( 'source' => $source, 'skus' => $grant['skus'], 'collections' => $grant['collections'], 'roles' => $roles );
+	if ( ! $authority || 'skyyrose.media-usage-authority.v1' !== ( $authority['schema'] ?? '' ) || 'FOUNDER_CONFIRMED' !== ( $authority['authority'] ?? '' ) || 'do it' !== ( $authority['decision_text'] ?? '' ) || 'REUSE_APPROVED_UNCHANGED_MEDIA' !== ( $authority['mode'] ?? '' ) || ( $authority['target'] ?? '' ) !== $grant['target'] || empty( $authority['antecedent_scope'] ) || $assignment != ( $authority['assignments'][ $relative ] ?? null ) ) { return array(); }
+	return $roles;
+}
+
+/** Effective roles are derived; historical roles and receipts remain unchanged. */
+function skyyrose2_media_effective_roles( $relative, $record = null ) {
+	$record = $record ?? ( skyyrose2_media_inventory()['assets'][ $relative ] ?? null );
+	if ( ! is_array( $record ) || ! skyyrose2_media_record_allowed( $relative, $record ) ) { return array(); }
+	if ( 'DELIVERY_DERIVATIVE' === ( $record['status'] ?? '' ) ) { return skyyrose2_media_effective_roles( $record['source_path'] ); }
+	return array_values( array_unique( array_merge( $record['roles'], skyyrose2_media_usage_roles( $relative, $record ) ) ) );
+}
+
 function skyyrose2_media_uri( $relative, $role = '', $sku = '' ) {
-	return skyyrose2_media_path_allowed( $relative, $role, $sku ) ? SKYYROSE2_URI . '/' . $relative : '';
+	if ( ! skyyrose2_media_path_allowed( $relative, $role, $sku ) ) { return ''; }
+	// Bind the public cache key to the verified bytes, including unchanged paths
+	// whose preceding image is still held by the host's long-lived edge cache.
+	$record = skyyrose2_media_inventory()['assets'][ $relative ];
+	return SKYYROSE2_URI . '/' . $relative . '?v=' . $record['sha256'];
+}
+
+/** Canonical collection placement, not a filename-selected or inherited hero. */
+function skyyrose2_collection_media( $collection, $role ) {
+	if ( ! in_array( $role, array( 'collection_hero', 'collection_story', 'merchandise_scene' ), true ) || ! function_exists( 'skyyrose2_presentation_registry' ) ) { return array(); }
+	$registry = skyyrose2_presentation_registry();
+	$binding = $registry['collections'][ $collection ]['imagery'][ $role ] ?? null;
+	if ( ! is_array( $binding ) || $role !== ( $binding['role'] ?? '' ) || empty( $binding['src'] ) || empty( $binding['sku'] ) ) { return array(); }
+	$path = $binding['src']; $sku = $binding['sku'];
+	$inventory = skyyrose2_media_inventory(); $record = $inventory['assets'][ $path ] ?? null;
+	$product = $registry['products'][ $sku ] ?? null;
+	if ( ! is_array( $record ) || ! is_array( $product ) || array( $collection ) !== ( $record['collections'] ?? null ) || array( $sku ) !== ( $record['skus'] ?? null ) || $collection !== ( $product['collection'] ?? '' ) || ( $binding['sha256'] ?? '' ) !== ( $record['sha256'] ?? null ) || ( $binding['usage_adoption'] ?? null ) != ( $inventory['usage_adoptions'][ $path ] ?? null ) ) { return array(); }
+	if ( 'merchandise_scene' === $role ? empty( $product['is_preorder'] ) : ! empty( $product['is_preorder'] ) ) { return array(); }
+	$uri = skyyrose2_media_uri( $path, $role, $sku );
+	if ( ! $uri ) { return array(); }
+	$size = getimagesize( SKYYROSE2_DIR . '/' . $path );
+	if ( ! $size || $size[0] !== ( $binding['width'] ?? null ) || $size[1] !== ( $binding['height'] ?? null ) || ! is_string( $binding['alt'] ?? null ) || '' === $binding['alt'] ) { return array(); }
+	$image = array( 'src' => $uri, 'path' => $path, 'sha256' => $record['sha256'], 'sku' => $sku, 'skus' => array( $sku ), 'collection' => $collection, 'role' => $role, 'width' => $size[0], 'height' => $size[1], 'alt' => $binding['alt'] );
+	if ( 'assets/v2-original/products/' . $sku . '.png' === $path && function_exists( 'skyyrose2_approved_card_front_renditions' ) ) {
+		$manifest = json_decode( file_get_contents( SKYYROSE2_DIR . '/assets/derived/card-fronts/manifest.json' ), true );
+		$delivery = $manifest['products'][ $sku ] ?? array();
+		if ( ( $delivery['source'] ?? '' ) !== $path || ( $delivery['source_sha256'] ?? '' ) !== $record['sha256'] ) { return array(); }
+		$image = array_merge( $image, skyyrose2_approved_card_front_renditions( $sku, $image, $delivery, $uri, $role ) );
+	}
+	return $image;
+}
+
+/** Uncropped responsive image used by the collection story, index, home chapters and reserve. */
+function skyyrose2_collection_media_markup( $image, $priority = 'lazy', $sizes = '(max-width: 47.99em) calc(100vw - 2rem), (max-width: 74.99em) 48vw, 560px' ) {
+	if ( ! is_array( $image ) || empty( $image['src'] ) ) { return ''; }
+	$src = $image['display_src'] ?? $image['src'];
+	$width = $image['display_width'] ?? $image['width']; $height = $image['display_height'] ?? $image['height'];
+	$responsive = ! empty( $image['srcset'] ) ? ' srcset="' . esc_attr( $image['srcset'] ) . '" sizes="' . esc_attr( $sizes ) . '"' : '';
+	return '<img data-media-role="' . esc_attr( $image['role'] ) . '" data-media-sku="' . esc_attr( $image['sku'] ) . '" src="' . esc_url( $src ) . '" width="' . esc_attr( $width ) . '" height="' . esc_attr( $height ) . '" alt="' . esc_attr( $image['alt'] ) . '"' . $responsive . ( 'eager' === $priority ? ' loading="eager" fetchpriority="high"' : ' loading="lazy"' ) . ' decoding="async">';
 }
 
 /** External attachments have no V2 byte/source binding and fail closed. */
@@ -150,7 +244,7 @@ function skyyrose2_media_url( $url ) {
 	$prefix = rtrim( SKYYROSE2_URI, '/' ) . '/';
 	if ( 0 !== strpos( $url, $prefix ) ) { return ''; }
 	$relative = rawurldecode( explode( '?', explode( '#', substr( $url, strlen( $prefix ) ) )[0] )[0] );
-	return skyyrose2_media_path_allowed( $relative ) ? $url : '';
+	return skyyrose2_media_uri( $relative );
 }
 
 /** A responsive family has one eligible original and identical reviewed bindings. */
@@ -162,7 +256,7 @@ function skyyrose2_media_family( $url ) {
 	$record = skyyrose2_media_inventory()['assets'][ $relative ] ?? null;
 	if ( ! is_array( $record ) ) { return null; }
 	$master = 'DELIVERY_DERIVATIVE' === ( $record['status'] ?? '' ) ? $record['source_path'] : $relative;
-	return array( 'master' => $master, 'kind' => $record['kind'], 'roles' => $record['roles'], 'skus' => $record['skus'] ?? array(), 'collections' => $record['collections'] ?? array() );
+	return array( 'master' => $master, 'kind' => $record['kind'], 'roles' => skyyrose2_media_effective_roles( $master ), 'skus' => $record['skus'] ?? array(), 'collections' => $record['collections'] ?? array() );
 }
 
 /** Keep only width descriptors with real pixels from the primary image's family. */
@@ -178,7 +272,7 @@ function skyyrose2_media_srcset_value( $value, $primary ) {
 		$dimensions = getimagesize( SKYYROSE2_DIR . '/' . $relative );
 		$width = (int) $match[2];
 		if ( ! $dimensions || $width !== $dimensions[0] || isset( $allowed[ $width ] ) ) { continue; }
-		$allowed[ $width ] = $match[1] . ' ' . $width . 'w';
+		$allowed[ $width ] = skyyrose2_media_uri( $relative ) . ' ' . $width . 'w';
 	}
 	return implode( ', ', $allowed );
 }
@@ -186,13 +280,20 @@ function skyyrose2_media_srcset_value( $value, $primary ) {
 function skyyrose2_media_srcset( $sources, $size_array = array(), $image_src = '' ) {
 	if ( ! is_array( $sources ) ) { return false; }
 	if ( function_exists( 'is_admin' ) && is_admin() && ! ( function_exists( 'wp_doing_ajax' ) && wp_doing_ajax() ) ) { return $sources; }
-	return array_filter( $sources, static function ( $source ) use ( $image_src ) {
+	$filtered = array_filter( $sources, static function ( $source ) use ( $image_src ) {
 		return is_array( $source ) && 'w' === ( $source['descriptor'] ?? '' ) && is_int( $source['value'] ?? null ) && '' !== skyyrose2_media_srcset_value( ( $source['url'] ?? '' ) . ' ' . $source['value'] . 'w', $image_src );
 	} );
+	foreach ( $filtered as &$source ) { $source['url'] = skyyrose2_media_url( $source['url'] ); }
+	unset( $source );
+	return $filtered;
 }
 
 function skyyrose2_media_attachment_src( $image ) {
-	return is_array( $image ) && skyyrose2_media_url( $image[0] ?? '' ) ? $image : false;
+	if ( ! is_array( $image ) ) { return false; }
+	$url = skyyrose2_media_url( $image[0] ?? '' );
+	if ( ! $url ) { return false; }
+	$image[0] = $url;
+	return $image;
 }
 
 function skyyrose2_media_variation( $data, $product = null, $variation = null ) {
@@ -206,7 +307,7 @@ function skyyrose2_media_variation( $data, $product = null, $variation = null ) 
 		}
 		$data['image']['srcset'] = $primary ? skyyrose2_media_srcset_value( $data['image']['srcset'] ?? '', $primary ) : '';
 		if ( $primary ) {
-			$data['image']['full_src'] = SKYYROSE2_URI . '/' . $family['master'];
+			$data['image']['full_src'] = skyyrose2_media_uri( $family['master'] );
 			$dimensions = getimagesize( SKYYROSE2_DIR . '/' . $family['master'] );
 			if ( $dimensions ) { $data['image']['full_src_w'] = $dimensions[0]; $data['image']['full_src_h'] = $dimensions[1]; }
 		}
@@ -240,7 +341,7 @@ function skyyrose2_media_filter_html( $html, $expected_family = null ) {
 		if ( ! is_string( $path ) || ! preg_match( '/\.(?:png|jpe?g|webp|gif|avif|svg|mp4|webm)(?:$)/i', $path ) ) { return $match[0]; }
 		$url = skyyrose2_media_url( $match[2] );
 		if ( $url && $expected_family && skyyrose2_media_family( $url ) !== $expected_family ) { $url = ''; }
-		return $url ? $match[0] : 'none';
+		return $url ? 'url(' . $match[1] . $url . $match[1] . ')' : 'none';
 	}, $html );
 }
 
@@ -254,17 +355,6 @@ add_filter( 'wp_calculate_image_srcset', 'skyyrose2_media_srcset', PHP_INT_MAX, 
 add_filter( 'woocommerce_available_variation', 'skyyrose2_media_variation', PHP_INT_MAX, 3 );
 add_filter( 'woocommerce_cart_item_thumbnail', 'skyyrose2_media_filter_html', PHP_INT_MAX );
 add_filter( 'post_thumbnail_html', 'skyyrose2_media_filter_html', PHP_INT_MAX );
-
-/** Read a hash-bound receipt without following any aliases or escaping the theme. */
-function skyyrose2_media_usage_document( $binding ) {
-	if ( ! is_array( $binding ) || count( $binding ) !== 2 || ! isset( $binding['path'], $binding['sha256'] ) || ! is_string( $binding['path'] ) || ! preg_match( '#^data/v2-media-reviews/[A-Za-z0-9_.-]+\.json$#D', $binding['path'] ) || ! is_string( $binding['sha256'] ) || ! preg_match( '/^[a-f0-9]{64}$/D', $binding['sha256'] ) ) { return null; }
-	$cursor = SKYYROSE2_DIR;
-	foreach ( explode( '/', $binding['path'] ) as $part ) { $cursor .= '/' . $part; if ( is_link( $cursor ) ) { return null; } }
-	$root = realpath( SKYYROSE2_DIR ); $real = realpath( $cursor );
-	if ( ! $root || ! $real || 0 !== strpos( $real, $root . DIRECTORY_SEPARATOR ) || ! is_file( $cursor ) || ! hash_equals( $binding['sha256'], hash_file( 'sha256', $cursor ) ) ) { return null; }
-	$data = json_decode( file_get_contents( $cursor ), true );
-	return is_array( $data ) ? $data : null;
-}
 
 /** Current founder film authorization, exact delivery bytes, no product-role reuse. */
 function skyyrose2_founder_film_allowed( $relative, $record, $role = '', $sku = '' ) {

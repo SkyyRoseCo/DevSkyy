@@ -1,135 +1,7 @@
 # Memory
 
-| session | Made prompt engineering, typed prompt chaining, and prompt caching
-first-class Fashion Theme Team capabilities. Added a governed Brain contract,
-taxonomy routing, cache keys/invalidation/privacy rules, verifier enforcement,
-and active V2 ledger scope. |
-/Users/theceo/plugins/fashion-theme-team/skills/fashion-theme-team/brain/prompts/,
-/Users/theceo/DevSkyy-skyyrose-flagship-v2-prototype/.fashion-theme/v2-remodel-ledger.json
-| cache is optimization only; candidate/SOT/approval/schema changes fail closed
-and invalidate | ~4k | | session | Ran role-by-role gap sweep on
-`fashion-theme-team` agents and added explicit claim-bound handoff requirements
-to all nine roles (`Handoff requirement`), ensuring deterministic artifact +
-eyes-on review or authoritative documentation + executable evidence. Added this
-consistency pass for catalog and WooCommerce charters plus lead/discretion
-roles. | /Users/theceo/plugins/fashion-theme-team | 9 role charters now aligned
-on evidence discipline and `BLOCKED` fallback | ~1k | | session | Loaded the
-installed Fashion Theme Team into the current multi-agent runtime. Active
-reusable cohort: `fashion-theme-lead` (`019fd5c0-7344-7180-873a-5bac6dab8c52`),
-`brand-experience-architect` (`019fd5c0-728f-7453-a587-ac2ed8ac31a5`),
-`fashion-design-system-engineer` (`019fd5c0-7445-7c41-af9d-cbd6feadd3b1`), and
-`woocommerce-theme-engineer` (`019fd5c0-75f1-7992-8bbe-dc6a1553628e`). Runtime
-limit is four threads, so frontend, catalog, accessibility/performance, visual
-QA, and release roles must be swapped in by the lead phase-by-phase. | Codex
-multi-agent runtime, `fashion-theme-team@personal` | four-role foundation cohort
-READY; no project inspection or edits performed | ~2k | | session | Hardened the
-fashion-theme-team tool-budget and verification contract. Added
-`references/tool-budget-and-loading.md`, updated SKILL and team contract to
-require temporary tool-profile expansion discipline, strengthened lead handoff
-evidence requirements, and updated verifier/plugin metadata to enforce the new
-policy. | /Users/theceo/plugins/fashion-theme-team | gap pass: docs-policy
-alignment and profile discipline added | ~4k | | session | Built and installed
-`fashion-theme-team@personal` v0.1.0 as a nine-role end-to-end
-fashion/WooCommerce delivery team. Added dedicated
-`fashion-design-system-engineer` ownership for tokens, primitives, components,
-states, motion, docs, fixtures, and adoption. Included orchestration skill,
-independent QA/release roles, hooks, preflight/report/integrity scripts, and
-personal marketplace registration. | ~/plugins/fashion-theme-team,
-~/.agents/plugins/marketplace.json,
-tasks/fashion-theme-team-plugin-audit-2026-08-05.md | plugin validator PASS;
-skill validator PASS; integrity PASS; ShellCheck PASS; DevSkyy preflight found 3
-themes; installed and enabled cache integrity PASS | ~12k | | session | Audited
-the requested conversion of the historical `fashion-theme-architect` role into a
-full end-to-end plugin team. No standalone `fashion-theme-developer` definition
-exists; recovered its charter from Claude team session `session-5db8882f` and
-proposed an eight-role `fashion-theme-team` with isolated implementation,
-independent QA, release evidence, and human deployment approval. |
-tasks/fashion-theme-team-plugin-audit-2026-08-05.md | planning only; awaiting
-founder approval before scaffold or marketplace changes | ~4k | | session |
-Refreshed the AI Designer MCP OAuth grant through `codex mcp login aidesigner`;
-browser consent callback completed successfully. | Codex MCP credential store |
-login succeeded; new sessions can connect with refreshed OAuth | ~1k | | session
-| Enabled load-on-demand tool discovery for Codex and Claude globally and in
-DevSkyy: Claude forces MCP Tool Search; Codex uses code-mode-only with deferred
-capability discovery and skill search. Corrected router/context-budget docs so
-callable inventory is not counted as resident schema context. |
-~/.claude/settings.json, ~/.codex/config.toml, .claude/settings.json,
-.codex/config.toml, .claude/hooks/router/README.md,
-.agents/skills/context-budget/SKILL.md, .claude/skills/context-budget/SKILL.md |
-Codex doctor 17 ok/0 fail; Claude doctor found no installation issues; new
-sessions required | ~3k | | 19:26 | Added explicit AGENTS.md instruction to
-consult `.wolf/memory.md` before making changes; verified and mirrored this
-requirement in the root AGENTS session log compliance rule. Also ran a hook diff
-check between `.claude/hooks/hooks.json` and `.codex/hooks/hooks.json` to
-confirm matcher/script parity before this change. | AGENTS.md,
-.claude/hooks/hooks.json, .codex/hooks/hooks.json | no functional regressions;
-file changes applied | ~2k | | 01:15 | Seeded
-elite-theme-platform/adapters/nextjs/ — 4 files: README.md (adapter positioning
-vs WP storefront), contract.ts (6-method typed interface stubs:
-scaffold/build/deploy/monitor/commerceBind/heal, dashboard-flavored), tokens.ts
-(DASHBOARD_TOKENS dark-ops set derived from monitoring/page.tsx + globals.css),
-component-kit.md (5 vocabulary entries
-StatCard/SignalBadge/CycleTimeline/KBTable/KeyholeRow mapped to
-storefront-autonomy canonical paths) |
-elite-theme-platform/adapters/nextjs/README.md, contract.ts, tokens.ts,
-component-kit.md | 4 files created | ~8k | | 22:18 | Elite Studio PASS 1 audit +
-PASS 2 fixes: 3 CRITICAL (compositor_node budget gate, tryon_node budget gate,
-_find_garment_image stub), 4 HIGH deferred, 4 MEDIUM (3 fixed: logger f-string,
-2x print->logging). Zero new test failures vs baseline. |
-tasks/elite-studio-audit-2026-05-22.md, skyyrose/elite_studio/graph/nodes.py,
-skyyrose/elite_studio/agents/tryon_agent.py,
-skyyrose/elite_studio/agents/generator_agent.py,
-skyyrose/elite_studio/graph/runner.py, skyyrose/elite_studio/retry.py | 25 pass
-/ 28 fail (all pre-existing) | ~18k | | 14:59 | Built devflow-review workflow:
-scripts/devworkflows/review.sh (ruff+tsc+phpcs in parallel, bash 3 compat, FIX=1
-auto-fix mode, loop-until-green protocol) + .claude/skills/devflow-review.md.
-Replaces dead fwstack plugin. Smoke-tested: clean on 23 changed files, correctly
-detects ruff E702. | scripts/devworkflows/review.sh,
-.claude/skills/devflow-review.md, .wolf/anatomy.md | exit 0 confirmed | ~4k | |
-15:32 | Phase 13 executed: 13-01 regression gate (2 PASS/1 FAIL — CURS-01
-confirmed, CURS-03 gap surfaced); 13-02 annotations (REQUIREMENTS.md CURS-03 [ ]
-open, ROADMAP.md 2/2 partial, verify_live_structure.py HOMEPAGE_ASSERTIONS +
-Assertion); bug-097 logged | tests/test_luxury_cursor.py,
-.planning/REQUIREMENTS.md, .planning/ROADMAP.md,
-scripts/verify_live_structure.py, .wolf/buglog.json | commit 818868654 | ~8k |
-[cmem #4001] | 11:40 | Priority 6 complete: wired assets page to real data — GET
-/assets/per-sku (WP image dir scan, 60s TTL) + GET /assets/datasets (HfApi, 300s
-TTL); Zod schemas + types + client methods; assets page gets Disk Images tile +
-SKU breakdown panel + HF datasets table | api/v1/assets.py,
-frontend/app/admin/assets/page.tsx, frontend/lib/api/endpoints/assets.ts,
-frontend/lib/api/schemas.ts, frontend/lib/api/types.ts | commit e525affd1;
-pytest 93 pass; type-check + lint + build clean | ~12k | [cmem #3455] | session
-| Priority 3 complete: wired admin/agents page to real backend; useAgents()
-hook + agents API client + Zod schemas; fixed lib/api.ts shadow bug by importing
-directly from endpoints/agents.ts; 592 pytest pass |
-frontend/app/admin/agents/page.tsx, frontend/hooks/useAgents.ts,
-frontend/lib/api/endpoints/agents.ts, frontend/lib/api/schemas.ts,
-frontend/lib/api/types.ts, frontend/lib/api/index.ts | commit f0a0e501b | ~8k |
-| 00:43 | Three.js pin r160→r147 in inc/enqueue.php (fixes 9 dead /examples/js/
-404s); skyy-3d.js:130 GLTFLoader fallback to window.THREE.GLTFLoader |
-inc/enqueue.php, assets/js/skyy-3d.js | lint:php 0 errors | ~3k | | session | UX
-audit + fix: (1) about-hero.jpg 404 → swapped to homepage-story-founder.webp in
-template-about.php:11; (2) personalization.js REST URL double-? bug → changed
-'?' to '&' at line 199; (3) nav audit report-only | template-about.php,
-assets/js/personalization.js | lint:php 0 errors | ~5k | | 22:34 | Bug-fix pass:
-removed wc_get_products() from front-page.php + preorder-gateway.php, added
-kids-capsule collection, removed fake fallback SKUs, fixed mascot path in
-404.php, guarded .closest() in experience-analyzer.js | front-page.php,
-template-preorder-gateway.php, assets/js/experience-analyzer.js, 404.php | npm
-run lint:php: 0 errors | ~4k | | 22:32 | Immersive scene 404 fix: added
-file_exists() guard + CSS gradient fallback for missing scene images |
-template-parts/immersive-scene.php | rooms preserved, hotspots intact,
-data-missing-scene attr added | ~3k | | 17:57 | Source-of-truth refactor:
-deleted root agent_sdk/, agents/base_super_agent.py, my_agent/,
-tests/test_hybrid_integration.py | 14 files edited, 4 deleted | all
-sdk.python.agent_sdk imports verified OK | ~8k | | 19:24 | Restored 3 Phase
-16-gutted agents to sync implementations | prompt_enrichment_agent.py,
-safety_agent.py, upscaling_agent.py | 39/39 tests passing | ~6k | | 19:35 | OPEN
-WORK: 70 Elite Studio test failures remain from Phase 16 ADK-promotion damage |
-test_cli, test_generator_phase_b2, test_ghost_mannequin__, test_graph_builder,
-test_graph_nodes_, test_graph_runner, test_color_correction_agent,
-test_tryon_agent, test_variant_agent, test_vision_test_registry | deferred, not
-yet fixed | ~1k |
+> Live handoff log: newest rows at the bottom. Older entries are archived in
+> `.wolf/memory-archive/` (rotated by `scripts/wolf_memory_rotate.py`).
 
 > Chronological action log. Hooks and AI append to this file automatically. Old
 > sessions are consolidated by the daemon weekly. | 11:30 | Created
@@ -3235,6 +3107,9 @@ User authorized "do it" for Kids-first timed boards and parallel collection arc 
 | 20:24 | FOUNDER CORRECTION: "EVERY sku has a copy" — my 14-no-copy claim came from reading 2 files. All 33 have catalog.description (= live WC copy). Resolver now layers copy + names source | skyyrose/core/product.py, tasks/lessons.md, tasks/product-identity-sot-audit-2026-09-17.html | corrected in code, gate, doc, memory | ~8k |
 | 05:40 | Ran /superpowers:verification-before-completion + /code-review, then committed. Code-review scan found 3 HIGH of mine (functions >50 lines) → split _section/render_page (CSS+IIFE to module constants) and build_box_glb; main_enterprise's 2 HIGH verified identical at HEAD (pre-existing, my diff there is 3 lines) | scripts/build_glb_triage.py, tests/pipelines/blender_render/glb_fixture.py | 0 CRITICAL/HIGH across 41 files; 315 py + 13 phpunit pass; mypy 1710 files clean | ~60k |
 | 05:44 | COMMITTED bc1a0a626 (66 files) + 220686ae4 (prettier regression fix). Pre-commit lint-staged EXPANDED derived .min + vendored three (three.module.min.js 691KB→952KB, product-3d-viewer.min.js 5.7KB→11.5KB) — caught by comparing commit insertions (45,991) vs staged (15,978); .prettierignore now excludes **/*.min.* + lib/**, re-vendored + rebuilt, 14/14 sha256 match. bug-332 | .prettierignore, assets/js/lib/three-0.170.0/, *.min.js, *.min.css | both commits verified; build:js 39/39 + build:css 61/61 in sync | ~25k |
+> Live handoff log: newest rows at the bottom. Older entries are archived in
+> `.wolf/memory-archive/` (rotated by `scripts/wolf_memory_rotate.py`).
+
 | 20:41 | Registry organization enforced: JSON Schema 2020-12 + organize_product_registry.py (--check/--apply) + 7 tests; wired into drift hook + CI | wordpress-theme/skyyrose-flagship/data/logo-registry.schema.json, scripts/organize_product_registry.py, tests/test_registry_organization.py, .claude/hooks/catalog-drift-guard.sh, .github/workflows/catalog-validate.yml | live registry: 0 schema, 0 consistency, 0 missing-asset, 35 order (cosmetic, reorder proved lossless); 52/52 tests green | ~30k |
 | 12:08 | Stop-gate failure diagnosed: test_bulk_ingest_max_100_assets timeout is PRE-EXISTING, not from this session's work. Measured scaling 1→100 assets (linear ~0.14s/asset, 100 sequential sqlite commits); not a deadlock, not network | api/v1/brand_assets.py (unchanged), .wolf/buglog.json | bug-333 logged with measurements + 2 real fix options; NOT fixed (other subsystem, founder call) | ~12k |
 | 12:31 | Pointer sweep: repointed CLAUDE.md, SOT.md, AGENTS.md, docs/CLAUDE.md, ~/.claude/CLAUDE.md, plugin product-registry-authority.md, and agents wp-catalog-sync + wp-frontend at the single entry point get_product(sku) | 8 files | narrow readers demoted to "single-field needs"; gaps list documented as the absence contract | ~10k |
@@ -3287,12 +3162,149 @@ User authorized "do it" for Kids-first timed boards and parallel collection arc 
 | 02:35 | Consolidated dep bumps branch deps/consolidated-bumps-20260927: 11 dependabot PRs (973 974 969 947 955 946 933 931+932 929 816) re-applied on main, locks regenerated; fastmcp held at 3.4.4 (4.x needs mcp 2) | pyproject.toml uv.lock package*.json ci.yml requirements | frontend+root+pytest 7574 pass, canary [all] resolves | ~40k |
 | 12:46 | PR #1011 review: black (3 files, CI 26.10.0), empty tagline slots guarded (fashion context prompt, Elementor luxury hero h1, 6 frontend renderers), copy fixes; hook gates run by hand (prettier would churn 6 tsx whole-file) | context.py knowledge.py luxury_home_builder.py prompt_engineering.py finetune_pipeline.py frontend/*.tsx cerebrum.md | fixed, pushed to chore/no-tagline-20261006 | ~60k |
 | 12:56 | PR #1011 cycle 2: Codex threads verified — removed 16 live "Where Love Meets Luxury" sites (MascotBubble, home builders, hf-spaces, SDK prompts), enforcement test now case-insensitive over 14 dirs with founder-quote allow-list, LGfC recorded as retired, POT founder msgids restored, blogdescription migration + SETUP_VERSION 4.6.0, collection-plan theme default | brand.yaml test_brand_enforcement.py nodes.py collection_planner.py theme-activation-setup.php skyyrose.pot + 20 copy sites | 48/48 + linters green | ~45k |
+| 02:35 | Consolidated dep bumps branch deps/consolidated-bumps-20260927: 11 dependabot PRs (973 974 969 947 955 946 933 931+932 929 816) re-applied on main, locks regenerated; fastmcp held at 3.4.4 (4.x needs mcp 2) | pyproject.toml uv.lock package*.json ci.yml requirements | frontend+root+pytest 7574 pass, canary [all] resolves | ~40k |
+| 12:46 | PR #1011 review: black (3 files, CI 26.10.0), empty tagline slots guarded (fashion context prompt, Elementor luxury hero h1, 6 frontend renderers), copy fixes; hook gates run by hand (prettier would churn 6 tsx whole-file) | context.py knowledge.py luxury_home_builder.py prompt_engineering.py finetune_pipeline.py frontend/*.tsx cerebrum.md | fixed, pushed to chore/no-tagline-20261006 | ~60k |
+| 12:56 | PR #1011 cycle 2: Codex threads verified — removed 16 live "Where Love Meets Luxury" sites (MascotBubble, home builders, hf-spaces, SDK prompts), enforcement test now case-insensitive over 14 dirs with founder-quote allow-list, LGfC recorded as retired, POT founder msgids restored, blogdescription migration + SETUP_VERSION 4.6.0, collection-plan theme default | brand.yaml test_brand_enforcement.py nodes.py collection_planner.py theme-activation-setup.php skyyrose.pot + 20 copy sites | 48/48 + linters green | ~45k |
+| 04:28 | Fixed 3 tagline violations: missing period in front-page.php + template-preorder-gateway.php; wrong capitalization in template-about.php                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         | front-page.php:158, template-preorder-gateway.php:70, template-about.php:109                                                                                                                                                                                                                                                                                                                                                                     | "" canonical now consistent across all 3 templates                               | ~2k     |
+
+
+"SkyyRose" (was "SkyyRoseLuxury Streetwear Born From Struggle"). Primary
+
+
+
+
+
+
+
+
+
+
+
+  the open topic-choice flagged in `blog-retired-brand-copy.md`. Each:
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+| 06:35 | Promoted the throwaway anisotropy harness to a TRACKED QC tool: skyyrose/elite_studio/pipeline3d/webgl_qc.py + templates/webgl_qc_harness.html + scripts/glb_qc_render.py + 29 tests. Renders in the PRODUCTION three.js viewer (not model-viewer like glb_fidelity.py — different engine answers a different question). Parity constants can't be imported (the viewer is an IIFE) so a test regexes BOTH sources and fails on drift — red-green proved. Added the pdp-initial angle: production opens at (0, 0.1*framing.height, distance), NOT level, so `front` was never the opening view. VOID is exit code 2, not a log line. Serve root = temp dir on 127.0.0.1, three tree resolved from the theme fail-closed and never copied (it's sha256-pinned). E2E reproduces the recorded numbers EXACTLY: br-006 184/11.98%, lh-004 199/7.77% | skyyrose/elite_studio/pipeline3d/{webgl_qc.py,templates/,README.md}, scripts/glb_qc_render.py, tests/elite_studio/pipeline3d/test_webgl_qc.py, pyproject.toml | 215 tests pass; ruff/black/isort/mypy clean; malformed GLB fails in 0.04s with no browser launch | ~55k |
+| 06:18 | review 9953f3135 glb_qc: 32-mutation run on test_webgl_qc.py (6 requested: d=diff_report self-check SURVIVED; render()/server-bind/CLI exit codes/harness JS all untested); live render VOID exit 2 + cross-process PNG hashes identical; server 127.0.0.1 traversal 404 | tests/elite_studio/pipeline3d/test_webgl_qc.py, skyyrose/elite_studio/pipeline3d/webgl_qc.py | findings returned to orchestrator, tree restored | ~90k |
+| 06:19 | session start (startup) — 762a9ee6 on feat/single-product-entry-point @9953f3135 · uncommitted: 100 | .augment/settings.json .claude/CLAUDE.md .claude/commands/CLAUDE.md .claude/rules/agents.md .claude/rules/prompt-techniques.md (+95 more) | open | — |
+| 07:40 | Fixed all 13 findings from the adversarial review of webgl_qc (2 of 3 reviewers reported; live-attack reviewer still running). Two real FAIL-OPENS closed: (1) a frame that is 100% one colour (material broke to transparent / shader failed to link) was ok:true + exit 0 — now RenderFailedError, proved on a real crafted invisible-material GLB; (2) console/page errors never affected the exit code, and three reports shader link failures via console.error WITHOUT throwing — now they fail the render. Also: empty angles rejected, stale PNGs in out_dir refused unless --overwrite (PNGs written only after EVERY render succeeds), --diff typos fail in 0.04s before rendering, KeyError/playwright errors converted to tagged WebGlQcError, label charset locked down, diff self-check now genuinely proves discrimination (1-pixel 2-level nudge) with no temp file, parity gate strips comments + requires exactly one match + covers outputColorSpace and the two-axis fit formula | skyyrose/elite_studio/pipeline3d/{webgl_qc.py,templates/webgl_qc_harness.html}, scripts/glb_qc_render.py, tests/elite_studio/pipeline3d/test_webgl_qc.py, tests/scripts/test_glb_qc_render.py | 29→66 tests incl. 1 real-browser (byte-identical determinism); mutation run 13/13 RED (reviewer found 6 survivors); still reproduces 184/11.98% | ~60k |
+| 13:48 | CAUGHT bug-337 before PR: first push was broken on clean checkout (product.py imported an UNCOMMITTED registry module). Founder: verify+code-review Codex foundation, then stack. Rebuilt 4 commits on codex/unified-product-registry@f5b6cb550 in isolated worktree .claude/worktrees/product-stack; foundation files byte-identical to tested tree | feat/product-entry-point-stack | clean-tip: 106 passed, projections PASS, org 0 schema/0 consistency; 10 commits vs main (5 foundation + 5 mine). memory.md force-added: gitignored on main+foundation, contradicting founder mandate. Code review running (foundation-reviewer); PR held until verdict | ~40k |
+| 06:41 | Higgsfield SDK setup: higgsfield-client 0.2.0 added as optional extra `higgsfield` (uv add --no-sync; uv pip install into .venv — uv sync is exact and would strip imagery pkgs). Root main.py = Seedance 2.5 t2v via subscribe(); SDK subscribe() RETURNS (does not raise) on failed/nsfw/canceled, so main.py asserts status==completed + polled Completed, else exit 1. HF_KEY loaded from gitignored .env.local, value never printed. Paid run NOT executed — awaiting founder key entry + y | main.py, tests/test_higgsfield_main.py, pyproject.toml, uv.lock | 26/26 offline tests, ruff/black/isort clean, no-cred run exit 2 | ~45k |
+| 08:15 | Third (live-attack) reviewer landed: core claims HELD under attack (byte-identical across processes incl. under CPU contention; 25 raw-socket traversal attempts mid-render all 404; loopback-only per lsof; 14/14 vendor pins intact). Fixed its 4 still-open items + 3 INFO: `--size 99999` crashed chrome-headless-shell and HUNG 7+ min leaking a listener → size bounded [16,4096] in module AND argparse, launch timeout, page crash = failure; label `a%41` percent-decoded to `aA` so one label silently rendered another's GLB → confident WRONG VOID (allow-list already blocked it; added urlencode + assert harness-reported glb == requested); VOID moved exit 2→3 because argparse owns 2 (mistyped flag must never read as "rendered nothing"); bad label was a traceback → usage error; `!== null` predicate let `undefined` through (intermittent null deref) → `!= null` + null-safe evaluate; no-scene GLB got a raw three TypeError → named error; directory listings off; WebGL context pointer normalised so reports diff clean | skyyrose/elite_studio/pipeline3d/{webgl_qc.py,templates/webgl_qc_harness.html}, scripts/glb_qc_render.py, tests/ | 79 tests (incl. real browser), mutation 17/17 RED, 649 pass across pipeline3d+scripts, longest fn 49 | ~35k |
+| 08:40 | /verification-before-completion + /code-review on the QC tool commits. Fresh evidence: 79 tests pass incl. real browser, 731 across pipeline3d+scripts+blender worker+render API, ruff/black/isort/mypy clean, 9 live CLI behaviours each with the expected exit code (0/1/2/3), mutation 17/17 RED, formatter-ignore gate 25/25, freshness-guard --all 6/6, 14/14 vendor pins, build:js 39/39 + build:css 61/61. Review scan: 0 CRITICAL; HIGH _render_frames nesting depth 5 → 3 via _loopback/_chromium context managers; console.log in verify-formatter-ignores.mjs judged a false positive (CLI stdout, not a debug leftover); 4 missing docstrings added | skyyrose/elite_studio/pipeline3d/webgl_qc.py | reproduces 184/255 11.98% after the refactor; no stray processes or listeners | ~20k |
+| 01:10 | /code-review of the 105+30 uncommitted files in the shared checkout (other sessions' work), then fixed findings 1-3 tests-first. (1) HIGH main.py: `python main.py` submitted a billable Higgsfield Seedance generation with no manifest/TTY/opt-in — added confirm_billable_run(), same contract as pipeline3d/cli._confirm (manifest always, SKYYROSE_AUTO_CONFIRM=="1" only opt-in, no TTY aborts, EOF = no), exit 5; is_tty resolved at CALL time, not as a def-time default. (2) MEDIUM worktree_fleet/git_ops.py: refs/paths reached git argv positionally — reproduced base_ref="--force" ACCEPTED by `git worktree add`; _reject_option_like() at the argv chokepoint (add/remove/push_status); claim() runs git before INSERT so no phantom row. (3) MEDIUM store.release() had no owner check — any session could close another's claim, force skipped dirty/unpushed; owner now REQUIRED, checked before git, force does NOT waive it (stale claims are prune()'s job). ReleaseInput.owner is now required — callers of worktree_release must pass it; the running MCP server keeps old code until restarted. COMMIT of this tree was DENIED by the auto-mode classifier (shared resource) — everything here is still uncommitted | main.py, mcp_servers/worktree_fleet/{git_ops,store,tools}.py, tests/test_higgsfield_main.py, tests/mcp_servers/test_worktree_fleet_{git_ops,store}.py | RED 36 failed (right reasons) → GREEN 80 passed; wider 222 passed; ruff clean; 11/11 mutations killed; mypy absent from .venv (unverified). Open: #4 PHP registry hashed per request (438KB), #5 silent empty catalog, ready.glb stray | ~60k |
+| 01:40 | Peer session (devskyy-2f, relayed for the founder) flagged — and I verified against origin/main — that the two buglog entries I logged an hour earlier took ids main already uses (main bug-339 = #949 reference census, bug-340 = catalog-drift-guard; main runs to bug-347). Renumbered MINE to bug-348 (main.py money gate) and bug-349 (worktree-fleet option injection + release ownership). Root cause is the tool, not the caller: mcp_servers/wolf_memory/store.py seeds the counter from the LOCAL buglog, so it de-races sessions on one checkout but not branches — any branch behind main will collide. NOT done (not my branch, commit denied): merging origin/main's buglog (341-347 absent here, bug-177 shows occurrences=1 vs main's 2) — ids are only final after that merge. Also confirmed the peer's HIGH: git_ops._commit_subjects returns [] on a FAILED git log, so push_status says NO_NEW_COMMITS for an unresolvable base_ref and release() passes — a fail-open my review missed; peer is patching it | .wolf/buglog.json | verified by JSON parse; last two ids = bug-348/349 | ~8k |
+| 02:30 | Closed a standing-bypass in main.py's money gate (gate authored by devskyy-4e): load_dotenv(.env.local) ran BEFORE the SKYYROSE_AUTO_CONFIRM read, so one line in the env file auto-confirmed EVERY future billable run (contra one-manifest-one-y). Reproduced RED first, then moved the env read into main() before load_dotenv and passed auto_confirmed= into confirm_billable_run | main.py, tests/test_higgsfield_main.py | 46/46 pass (new TestMoneyGate::test_env_file_cannot_grant_the_opt_in), ruff/black/isort clean; paid run STILL not made — HF_KEY line in .env.local is empty | ~12k |
+| 02:55 | Two peer sessions changed/extended my fixes in this checkout; verified both myself rather than taking the reports. (a) devskyy-41 moved the SKYYROSE_AUTO_CONFIRM read in main.py to BEFORE load_dotenv(.env.local) — my gate let a line in the env file approve every billable run; reverted the order as a mutation and their test went red, so it guards. Following that class found the same hole in my pushed bug322 gate via an import-time load_dotenv in integrations/openai_agents_api.py:30 — fixed + committed in the v2 worktree (1ce74222c, unpushed). (b) devskyy-2f's worktree-fleet-fail-closed.patch: READ before applying, backed up the 4 untracked targets (scratchpad/pre-peer-patch), dry-run, applied clean. _commit_subjects now raises on a failed git log, PushState.UNKNOWN for an unresolvable base_ref, adoption requires refs/heads/<branch>. Their e2e repro: base_ref='mian' was no_new_commits + released, now unknown + refused. Then hardened it one step, test first: the release gate was a deny-list of refusing states, so any PushState added later would pass — inverted to an allow-list (UP_TO_DATE, NO_NEW_COMMITS) | main.py, mcp_servers/worktree_fleet/{git_ops,store}.py, tests/mcp_servers/test_worktree_fleet_{git_ops,store}.py | tests/mcp_servers + test_higgsfield_main: 118 passed; ruff check+format clean; allow-list RED was behavioural (assert True is False). All still UNCOMMITTED in the shared checkout | ~30k |
+| 03:40 | Pushed 1ce74222c (.env opt-in guard) to PR #950 on the founder's word. Then applied devskyy-2f's two patches for the five remaining MCP-server items, each: read in full -> back up the untracked targets (scratchpad/pre-hardening-patch, pre-cerebrum-patch) -> dry-run -> apply -> own test run -> live .wolf files fingerprinted before/after (fleet.db, cerebrum.md, buglog.json all byte-identical). Items: heartbeat on an unregistered path now KeyError; prune collects per-candidate git failures and continues; `git worktree add` moved OUTSIDE locked_transaction (row inserted first, deleted on git failure); worktree_path must be absolute and a repo sibling or under .claude/worktrees (all 4 live rows already equal their resolved path, checked read-only); cerebrum_append refuses newlines / leading '#', heading match anchored. Two changes of mine on top, each demonstrated first: (1) tests/mcp_servers/conftest.py used os.environ.setdefault, so an exported FLEET_DB_PATH beat the sandbox (probe: sandboxed=False) — now assigned, plus atexit cleanup of the temp dir; (2) validate_cerebrum_entry only caught LF/CR — U+2028/2029, NEL, VT, FF, FS/GS/RS all ACCEPTED while splitlines() saw 2 lines; now splitlines()-based incl. a lone trailing break. Severity honest: strict CommonMark does not break on those, so defence in depth | mcp_servers/{worktree_fleet,wolf_memory}/{store,tools}.py, tests/mcp_servers/{conftest,test_worktree_fleet_tools,test_worktree_fleet_store,test_wolf_memory_cerebrum}.py | tests/mcp_servers + test_higgsfield_main: 152 passed; ruff check+format clean; line-break RED behavioural (8x DID NOT RAISE), mutation back to LF/CR KILLED. Running MCP servers keep OLD code until restarted. Still UNCOMMITTED in the shared checkout; 8 stale mcp-servers-tests-* dirs left in TMPDIR (not mine to rm) | ~45k |
+| 05:10 | Stop-gate failed: tests/test_bug263_fork_safety.py "conftest darwin guard did not pre-spawn the resource tracker". NOT a guard regression — the tests/mcp_servers/conftest.py applied an hour earlier sat in a dir with no __init__.py, so pytest registered it as plain `conftest`, shadowing the ROOT conftest that the bug-263 test imports. Isolated with a repro (pair: 1 failed/110 passed) AND a control (nested conftest moved aside: passed); peer devskyy-2f reached the same cause independently and sent a one-file marker patch, read + applied -> pair 111 passed, mid-suite probe shows `import conftest` = /conftest.py. Logged bug-350. Then ran the WHOLE tree, because scoped runs are what hid it — and my `-o addopts=""` habit stripped `-m "not slow and not integration"`, so test_live_smoke_single_turn sent a LIVE Anthropic request with no STOP-AND-SHOW (400 credit balance too low: nothing generated/billed, by luck). Logged bug-351 + memory feedback_never_override_pytest_addopts. Under that override 9 failed (3 dino = torchvision not installed, 1 live smoke, 5 gdpr 400s) — all deselected by repo config, all fail identically alone and none touch changed files | tests/mcp_servers/__init__.py (new) | AUTHORITATIVE, repo config: tests/ = 7261 passed, 0 failed, 129 deselected, exit 0 (126.9s); live .wolf/{fleet.db,cerebrum.md,buglog.json} sha256-identical across all three full runs | ~40k |
+| 05:45 | Stop-gate failed a second time, different test: tests/services/test_three_d_providers.py::TestReplicateProvider::test_generate_from_text_success — "Cannot resolve hostname: replicate.com". Not a regression: DNS resolved again minutes later, the test passed alone, it had passed in the 7261-pass run 10 min earlier, and no file in its path is modified. Real defect underneath: the test mocks both API clients but not SSRFProtection._resolve_hostname, which does a live getaddrinfo — a transient resolver outage spanned both gate runs. Fixed with a module autouse fixture stubbing ONLY resolution (public address), so validate_url's scheme/private/metadata checks still run (verified 169.254.169.254, 127.0.0.1, file:// still refused). Logged bug-352. Self-corrections: (1) ruff format rewrapped 3 unrelated `with` lines in a tracked file — restored from backup and re-added the fixture pre-formatted, diff now +17/-0; (2) my first whole-tree "DNS dead" census failed ALL getaddrinfo incl. numeric IPs + localhost and so reported FALSE failures in my own loopback-server tests — rebuilt as scratchpad/dns_outage_run.py (fails only external hostnames); census still running at time of writing | tests/services/test_three_d_providers.py | RED 3 failed with DNS forced dead -> GREEN 78 passed dead, 78 passed normal; ruff check clean. Known from the partial census, NOT fixed (pre-existing, unrequested): tests/test_p0_ssrf_replicate.py (2) and tests/services/ml/test_gemini_client.py::test_from_url also need live DNS | ~25k |
+| 06:30 | DNS-outage census of the whole tests/ tree finished (scratchpad/dns_outage_run.py: external hostnames fail, numeric IPs + localhost resolve; repo addopts kept, so no integration tests): 17 failed / 7244 passed. 2 of the 17 are HARNESS ARTIFACTS, proven — TestCrossProcessConcurrency (wolf_memory_store) passes under `python -m pytest` and fails under script + pytest.main with NO dns patch at all (child processes lose the repo root on sys.path). REAL live-DNS dependencies = 15 tests in 3 files, all pre-existing, none fixed (unrequested): tests/api/test_brand_assets.py x10 (8x `422 == 200`, 2x KeyError 'id' downstream — bug-333 fixed its embedder call but URL validation still resolves), tests/test_p0_ssrf_replicate.py x4 (assert the REAL validator allows replicate.delivery / example.com / huggingface.co — arguably intentional, but they belong behind the integration marker or a stubbed resolver), tests/services/ml/test_gemini_client.py::TestImageInput::test_from_url x1. tests/services/test_three_d_providers.py no longer in the list (bug-352 fix holds). The many `ERROR tests/...` lines in the log are captured logging, not pytest errors — the tally line has no errors | (none — census only) | any of those 15 will block the Stop gate during the next resolver outage, same as today | ~10k |
+| 07:15 | Founder asked to check the three still-open items; read-only survey, nothing changed. (1) SHARED CHECKOUT feat/single-product-entry-point @140ba4aaa: 52 ahead / 112 behind origin/main; 107 tracked-changed + 33 untracked. #948 AND #949 are both MERGED, so the product-registry work here is superseded on main. Of the uncommitted files: 21 identical to main, 80 differ, 25 exist nowhere else (mcp_servers/ 11, tests/mcp_servers/ 7, 2 launcher shims, main.py + its test, arch HTML, .augment/settings.json, stray ready.glb). The branch's 3 unpushed commits are all on pushed feat/glb-qc-renderer. REGISTRY IS STALE HERE: field-level diff of logo-registry.json vs main = 0 values here that main lacks; main has 22 this lacks (20 corrections, 2 keepers) + a `collections` section; 101 diffs are the label 'founder product dossier' vs main's 'derived_from_dossier'; the 3 dossier.content diffs (Last Oakland Football br-009, Love Hurts Bomber lh-004, Windbreaker Set sg-015) are the OLD hedged text here ("unresolved generation hold", "not newly confirmed by the founder") vs FOUNDER_CONFIRMED on main -> never commit this registry/dossiers/CSV over main. (2) BUGLOG: clean merge = main's 318 + local-only bug-348..352 (all above main's max 347, no renumber); 4 shared entries differ only because main is newer (bug-177 occ 2 vs 1; 231/321/335 fix text). (3) MCP SERVERS: 3 pairs running, started Sep 17 05:14, Sep 17 10:15, Sep 18 06:19 — all BEFORE the Sep 19-20 fixes (source mtime Sep 20 02:50), so every live session still runs code with no release-ownership check, open option injection, ok:true heartbeat and LF-only cerebrum validation until its MCP is reconnected | (none) | survey only | ~20k |
+| 08:24 | Added scripts/env_import.sh (batch env-key import: clipboard/file/stdin -> gitignored env file, last-value-wins dedupe, chmod 600, names-only summary, fails closed on empty source / non-ignored target). Bug found while testing: `cat $TARGET 2>/dev/null` on a missing target aborted the pipeline under set -e+pipefail, silently (exit 1, no stderr) | scripts/env_import.sh, tests/scripts/test_env_import.py | 14/14 pass, shellcheck clean, bash -n ok | ~15k |
 | 2026-09-21 | PR #953 MERGED (squash 61f8c7c2f, 20/20 checks). On the founder's word, cleaned up its branch: proved tree(branch tip baf0c5d18) == tree(squash commit) — identical, so every byte is on main (a squash makes --is-ancestor say NO; compare trees) — then worktree_release (no force; gate passed), `git worktree remove` WITHOUT --force, `git branch -D`, `git push origin --delete`. Only ignored test by-products went with the worktree (44K scratch brand_learning.db, one telemetry log, an empty lock). Another session's baf0c5d18 fixed an isort regression my repo-root main.py caused (bare `main` became first-party) — I had linted only touched files, never the whole repo | (none) | local + remote branch gone, PR still MERGED, other two worktrees and this checkout untouched | ~6k |
 | 11:42 | session end (other) — 04c286ee on feat/single-product-entry-point @62fa6466b · uncommitted: 105 | .augment/settings.json .claude/CLAUDE.md .claude/commands/CLAUDE.md .claude/rules/agents.md .claude/rules/prompt-techniques.md (+100 more) | closed | — |
 | 11:43 | session end (other) — 40d66117 on feat/single-product-entry-point @62fa6466b · uncommitted: 105 | .augment/settings.json .claude/CLAUDE.md .claude/commands/CLAUDE.md .claude/rules/agents.md .claude/rules/prompt-techniques.md (+100 more) | closed | — |
 | 11:44 | session end (other) — b6deeee9 on feat/single-product-entry-point @62fa6466b · uncommitted: 105 | .augment/settings.json .claude/CLAUDE.md .claude/commands/CLAUDE.md .claude/rules/agents.md .claude/rules/prompt-techniques.md (+100 more) | closed | — |
 | 2026-09-21 | /doctor "Conflicting scopes" for MCP server `devskyy` (project .mcp.json relative `.venv/bin/python devskyy_mcp.py` vs local ~/.claude.json absolute paths). Kept LOCAL: the project entry is not on origin/main, and its relative paths fail in every worktree (no .venv there); its PYTHONPATH=. is redundant since the script's own dir lands on sys.path. GOTCHA: `claude mcp remove devskyy -s project` rewrote .mcp.json keeping ONLY `mcpServers` — it silently deleted the four parked `_disabled_mcpServers__*` blocks (claude-context, exa, firecrawl, postgresql; 88 -> 30 lines). Caught because the numstat jumped 1 -> 59 deletions; restored from a pre-change backup, then wrote origin/main's exact bytes (semantically identical once devskyy is gone). Never use `claude mcp add/remove -s project` on this repo's .mcp.json — edit the JSON by hand | .mcp.json | byte-identical to origin/main; devskyy connected via the absolute-path entry; conflict gone | ~8k |
 | 12:24 | FIRST PAID Higgsfield run executed with founder y: Seedance 2.5 t2v 5s/720p/16:9 -> request aa81a322-483a-44aa-81a4-1043c3d44935 Completed, URL verified HTTP 200 video/mp4 3.6MB. Response shape {"video":{"url":...}} now pinned in main.py comment + PR #956 body rewritten from 'not verified' to verified. 3 PRs open from this session: #956 (higgsfield extra + CI install), #957 (env_import.sh), #958 (.wolf/memory.md merge=union) | main.py (via worktree hf-seedance), PR #956 body | run exit 0; curl HTTP/2 200 content-length 3767905; #956 checks re-running after push 042e8f9d8 | ~10k |
+| 13:53 | session end (other) — cac67612 on feat/single-product-entry-point @ba061452f · uncommitted: 105 | .augment/settings.json .claude/CLAUDE.md .claude/commands/CLAUDE.md .claude/rules/agents.md .claude/rules/prompt-techniques.md (+100 more) | closed | — |
+| 13:55 | session end (other) — 2131621d on feat/single-product-entry-point @ba061452f · uncommitted: 106 | .augment/settings.json .claude/CLAUDE.md .claude/commands/CLAUDE.md .claude/rules/agents.md .claude/rules/prompt-techniques.md (+101 more) | closed | — |
+| 2026-09-21 | Stop gate blocked twice on tests/test_asset_manifest.py (manifest from Sep 13 pinned old registry/catalog hashes after ANOTHER session's 13:37 launch-image-coverage edit). Not mine (my only commit here: ba061452f, .mcp.json only); messaged devskyy-41 + theceo-c8. Founder then ran `python scripts/build_asset_manifest.py` via `!` — but in my v2 worktree (session cwd), where it only bumped generated_at; reverted that line, then ran it HERE as intended: 3 lines changed (generated_at + the two shas), test_asset_manifest 14 passed. WARNING for whoever commits this tree: today's registry edit was made ON THE STALE COPY — field-level vs origin/main: 0 fields only here, 148 only on main (collections section 115, corrections 20, authority_contract 8, keepers 2). The genuinely new content is front_model_image for 3 products repointed from ghost-front to *-approved-front-model.webp: BLACK Rose Joggers, BLACK Rose Hoodie — Signature Edition, Kids Colorblock Hoodie Set Purple/Black. Port THOSE onto main's registry; do not commit this registry over main | assets/products/manifest.json | manifest UNCOMMITTED; backup at scratchpad/manifest.before-regen.json | ~12k |
+| 2026-09-21 | Founder corrected my render QC of the BLACK Rose Hoodie — Signature Edition: right-chest logo = silicone 3D cutout, large logo = LEFT SIDE HIP, NOT sleeve (FOUNDER_CONFIRMED). origin/main's registry ALREADY says exactly that (dossier `left-hip … NOT on the sleeve` + FOUNDER_VERBATIM correction 2026-06-09), so no registry write — my error was judging from the folded flat-lay photo without reading the dossier. Re-checked the proposed approved-front-model render with full-res crops: large rose cluster IS on the body at the left hip between the kangaroo pocket edge and the side seam, sleeve clean (matches); chest mark on wearer's right, tonal, but 3D silicone relief not verifiable at this resolution. BLACK Rose Joggers render still fails (no white waistband/cuffs, white instead of black drawstring); kids purple set consistent. Founder's keep/reject call on the three images still open; none tracked, pointers exist only in the stale ~/DevSkyy registry | (none) | lesson saved to memory: read dossier placements before pixels | ~10k |
+| 21:30 | SECURITY bug-357: audit printed dotenv key NAMES; on a malformed env file the KEY side is the secret → ~46 prose-parsed entries (~30 live creds) into transcript. Containment checked: .wolf/ CLEAN, today's claude-mem CLEAN; pre-existing 40 marker lines / 19 files in ~/.claude-mem/logs (Apr–Jul, local only). Rotation is the founder's action. | tasks/lessons.md, memory/feedback_env_redaction_whitelist.md | logged, rotation pending | ~15k |
+| 21:30 | .env.secrets analysed, NOT rewritten (values change at rotation — would be done twice). Root cause: L5 closing quote is U+201D curly, L233 opens `"` never closes. 32→98 keys; only 4 flip behaviour (OPENAI/ANTHROPIC = concatenated garbage, JWT_SECRET_KEY, SSH_HOST). Line-by-line disposition, zero values. | tasks/env-secrets-restructure-plan.md | plan durable, blocked on rotation | ~8k |
+| 21:30 | SOT-assets stop-gate attributed: PASSES on pristine origin/main; fails only in main checkout from 4 stale Sept-13 SOT files binding 3 untracked webps (.gitignore:297). 3 model webps SHA-verified identical to FOUNDER_APPROVED_V2_CARD manifest — they are real on-model fronts, NOT ghosts; tasks/launch-20260921-image-coverage.md:17 is WRONG about them. | tests/test_sot_assets_tracked.py | BLOCKED: both fixes (`git add -f` 3 binaries; `git checkout origin/main -- ` 5 files) denied by permission classifier as "Modify Shared Resources". Needs a founder Bash permission rule or manual run. | ~10k |
 | 12:57 | session end (prompt_input_exit) — 725da350 on feat/single-product-entry-point @a5c40d311 · uncommitted: 464 | .augment/agents/brand-experience-architect.md .augment/settings.json .claude/CLAUDE.md .claude/agents/theme-heal-doctor.md .claude/commands/CLAUDE.md (+459 more) | closed | — |
 | 12:57 | session start (startup) — 8fc21b05 on feat/single-product-entry-point @a5c40d311 · uncommitted: 464 | .augment/agents/brand-experience-architect.md .augment/settings.json .claude/CLAUDE.md .claude/agents/theme-heal-doctor.md .claude/commands/CLAUDE.md (+459 more) | open | — |
 | 12:58 | session end (prompt_input_exit) — 8fc21b05 on feat/single-product-entry-point @a5c40d311 · uncommitted: 464 | .augment/agents/brand-experience-architect.md .augment/settings.json .claude/CLAUDE.md .claude/agents/theme-heal-doctor.md .claude/commands/CLAUDE.md (+459 more) | closed | — |

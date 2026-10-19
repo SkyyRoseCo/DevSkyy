@@ -111,6 +111,13 @@ while ( have_posts() ) :
 								</button>
 							<?php endif; ?>
 						</div>
+
+						<?php
+						// "View in 3D" sits with the photos (founder decision, WS3). Prints
+						// only when _product_3d_model holds a valid same-origin GLB; the
+						// gallery itself is untouched.
+						skyyrose_woocommerce_3d_model_button();
+						?>
 					</div>
 
 					<!-- Info Column -->

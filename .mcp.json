@@ -25,6 +25,16 @@
       "env": {
         "PYTHONPATH": "."
       }
+    },
+    "awwwards-mcp": {
+      "command": "node",
+      "args": [
+        "${HOME}/Developer/motion-references/Awwwards-mcp/dist/cli.js"
+      ],
+      "env": {
+        "AWWWARDS_CACHE_DIR": "${HOME}/Developer/motion-references/.awwwards-cache",
+        "AWWWARDS_AUTO_UPDATE": "0"
+      }
     }
   },
   "_disabled_mcpServers__firecrawl_needs_api_key": {

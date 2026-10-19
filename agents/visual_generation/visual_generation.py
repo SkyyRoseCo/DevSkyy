@@ -438,7 +438,7 @@ class GoogleVeoClient:
         Style: Luxury streetwear brand video, editorial quality
         Movement: Smooth camera movements, professional cinematography
         Lighting: High-end fashion lighting, dramatic shadows
-        Brand: SkyyRose - premium streetwear
+        Brand: SkyyRose premium streetwear
         Colors: Rose gold, black, white accents
         Quality: 4K, cinematic, professional
         """

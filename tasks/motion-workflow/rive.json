@@ -1,0 +1,73 @@
+{
+  "_note": "Scaffold of rive-app/rive-runtime as read 2026-10-14 via gh + npm + README. Nothing installed.",
+  "repo": "https://github.com/rive-app/rive-runtime",
+  "license": "MIT",
+  "default_branch": "main",
+  "stars": 1223,
+  "description": "Low-level C++ Rive runtime and renderer",
+  "last_push": "2026-10-14",
+  "versioning": "no GitHub releases (releases/latest 404); consumed through language runtimes",
+  "what_this_repo_is": "The C++ core: loads .riv files, advances state machines/animations, draws through an abstract Renderer; built-in GPU renderer targets Metal, Vulkan, D3D11/12, OpenGL/WebGL. Apple, Android, Flutter, Unity, Unreal and web runtimes all wrap it.",
+  "IMPORTANT": "This repo is NOT installed into a JS app. You build C++ from it only to embed natively (needs clang, premake5, platform SDK). The web runtime that wraps it is a separate npm family.",
+  "web_runtime_npm_family": {
+    "@rive-app/canvas": {
+      "version": "2.44.2",
+      "unpacked_bytes": 5648430,
+      "renderer": "Canvas2D"
+    },
+    "@rive-app/canvas-lite": {
+      "version": "2.44.2",
+      "unpacked_bytes": 2868182,
+      "renderer": "Canvas2D, reduced feature set"
+    },
+    "@rive-app/webgl2": {
+      "version": "2.44.2",
+      "unpacked_bytes": 5866443,
+      "renderer": "WebGL2 (Rive renderer)"
+    },
+    "@rive-app/canvas-single": {
+      "version": "2.44.2",
+      "unpacked_bytes": 7066384,
+      "note": "wasm inlined in the JS, single file"
+    },
+    "@rive-app/react-canvas": {
+      "version": "4.36.0",
+      "unpacked_bytes": 47794,
+      "note": "React wrapper; pulls in @rive-app/canvas"
+    },
+    "@rive-app/react-webgl2": {
+      "version": "4.36.0",
+      "unpacked_bytes": 47696,
+      "note": "React wrapper over the WebGL2 runtime"
+    },
+    "caveat": "Sizes are unpacked dist sizes from npm view, including the wasm payload; transfer size is smaller and was not measured"
+  },
+  "asset_dependency": {
+    "format": ".riv files authored in the Rive editor",
+    "status": "NONE exist in this repo for SkyyRose; a runtime without .riv assets renders nothing",
+    "owner": "founder / design; authoring is a separate paid-tool workflow"
+  },
+  "skyyrose_fit": {
+    "surfaces": [
+      "frontend/ via @rive-app/react-canvas (or react-webgl2)",
+      "theme via @rive-app/canvas (vanilla; wasm must be self-hosted, no CDN per theme rule)"
+    ],
+    "plausible_uses": [
+      "interactive UI micro-animations driven by state machines (size selector, add-to-bag, toggles)",
+      "mascot-like characters; NOTE the mascot is a GLB (v6) and its behaviour is founder-locked, do not replace"
+    ],
+    "overlap": "Motion already handles UI transitions; Rive adds designer-authored state-machine animation with a visual editor",
+    "brand_constraints": [
+      "Self-host wasm and .riv files (zero-CDN theme rule)",
+      "prefers-reduced-motion path",
+      "Any character or logo animation must match the canonical reference; QC against real asset, not a description"
+    ]
+  },
+  "gaps": [
+    "Not installed",
+    "No .riv assets",
+    "Editor licence/plan unknown",
+    "Transfer size and wasm self-hosting path untested",
+    "Whether Rive is wanted over Motion is a founder call"
+  ]
+}

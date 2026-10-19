@@ -1,0 +1,15 @@
+# Runtime deps of `python -m pipelines.blender_render.worker` inside the render image.
+# The list is what `import pipelines.blender_render.worker` actually pulls in (measured
+# 2026-09-17 in the repo venv): pydantic/Pillow/boto3/redis are used directly; numpy, httpx,
+# rich, click and zstandard arrive transitively through pipelines.clothing_3d's package
+# __init__ (it imports the TRELLIS pipeline eagerly). The Dockerfile import-checks the
+# worker at build time, so a missing entry fails the build rather than the first job.
+pydantic>=2.11,<3
+Pillow>=11,<13
+boto3>=1.35,<2
+redis>=5,<7
+numpy>=1.26,<3
+httpx>=0.27,<1
+rich>=13,<15
+click>=8,<9
+zstandard>=0.22,<1

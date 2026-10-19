@@ -1,0 +1,66 @@
+{
+  "_note": "Scaffold of catdad/canvas-confetti as read 2026-10-14 via gh + npm + README. Nothing installed.",
+  "repo": "https://github.com/catdad/canvas-confetti",
+  "license": "ISC",
+  "default_branch": "master",
+  "stars": 12807,
+  "description": "performant confetti animation in the browser",
+  "latest_release": {
+    "tag": "1.9.4",
+    "date": "2025-10-25"
+  },
+  "maintenance": "last push 2025-10-25; stable, low-churn",
+  "npm": {
+    "canvas-confetti": "1.9.4",
+    "unpackedSize_bytes": 92370,
+    "runtime_dependencies": "none",
+    "types": "@types/canvas-confetti@1.9.0 (DefinitelyTyped; package ships no types)"
+  },
+  "api": {
+    "confetti(options)": "fire once on a shared full-page canvas; returns Promise (or null if unsupported)",
+    "confetti.create(canvas, {resize, useWorker, disableForReducedMotion})": "bind to your own canvas; useWorker moves rendering to an OffscreenCanvas worker and transfers canvas control",
+    "confetti.shapeFromPath({path, matrix?})": "custom vector shape from an SVG path",
+    "confetti.shapeFromText({text, scalar?, color?, fontFamily?})": "text or emoji shape",
+    "confetti.reset()": "clear in-flight confetti",
+    "confetti.Promise": "override Promise implementation"
+  },
+  "options": {
+    "particleCount": "50",
+    "angle": "90",
+    "spread": "45",
+    "startVelocity": "45",
+    "decay": "0.9",
+    "gravity": "1",
+    "drift": "0",
+    "flat": "false",
+    "ticks": "200",
+    "origin": "{x,y} 0..1",
+    "colors": "array of HEX strings",
+    "shapes": "['star'] default; square|circle|star|Shape",
+    "scalar": "1",
+    "zIndex": "100",
+    "disableForReducedMotion": "false"
+  },
+  "skyyrose_fit": {
+    "surfaces": [
+      "frontend/ (React; needs 'use client', fire from effect/handler)",
+      "theme (vanilla; single ~92 KB unpacked file, no bundler needed, would be vendored self-hosted)"
+    ],
+    "plausible_uses": [
+      "order-confirmation or pre-order success moment",
+      "founder-approved milestone moments in admin"
+    ],
+    "brand_constraints": [
+      "Colours must come from brand tokens (#B76E79 rose gold, #D4AF37 gold, #C0C0C0 silver, #DC143C crimson, #0A0A0A); never default rainbow",
+      "Set disableForReducedMotion: true (also an accessibility requirement)",
+      "Founder voice: garment is the protagonist, no urgency timers; confetti must not read as a promotion gimmick. Founder call before any storefront use",
+      "Visual refs are streetwear (Kith, Oaklandish, Culture Kings, FoG, Palm Angels), not novelty; a luxury-restrained particle burst is the bar"
+    ],
+    "perf": "canvas particle sim; useWorker keeps main thread free; no WebGL context, so no conflict with three.js"
+  },
+  "gaps": [
+    "Not installed",
+    "No visual QC done",
+    "Storefront use needs founder approval"
+  ]
+}

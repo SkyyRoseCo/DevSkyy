@@ -1,7 +1,9 @@
 <?php
 define('ABSPATH', __DIR__);
 function skyyrose2_collections() { return ['signature'=>['name'=>'Signature'],'black-rose'=>['name'=>'Black Rose'],'love-hurts'=>['name'=>'Love Hurts']]; }
-function skyyrose2_collection_commerce_scenes($slug) { return [['hero_composed'=>true,'width'=>100,'height'=>100]]; }
+// The worlds rail renders each world's registry collection imagery (2.5.3).
+function skyyrose2_collection_media($slug, $role) { return ['src'=>'/fixture/'.$slug.'.webp','width'=>100,'height'=>150,'role'=>$role,'sku'=>'fixture','alt'=>$slug]; }
+function skyyrose2_collection_media_markup($image, ...$args) { return '<img src="'.esc_url($image['src']).'" alt="">'; }
 function skyyrose2_collection_url($slug) { return '/collections/'.$slug.'/'; }
 function get_template_part(...$args) {}
 function absint($n) { return abs((int)$n); }

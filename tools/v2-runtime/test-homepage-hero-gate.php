@@ -92,7 +92,8 @@ if ( 'real' !== $mode ) { file_put_contents( $eligibility_file, json_encode( $in
 
 require $theme . '/inc/v2-media-eligibility.php';
 
-$expected = SKYYROSE2_URI . '/' . $hero;
+// The public URL carries the cache key bound to the founder-ruled bytes (2.5.3).
+$expected = SKYYROSE2_URI . '/' . $hero . '?v=' . $hero_sha;
 switch ( $mode ) {
 	case 'real':
 	case 'fixture-baseline':

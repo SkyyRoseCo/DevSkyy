@@ -2,7 +2,7 @@
 
 **AI-driven luxury fashion e-commerce platform for the SkyyRose brand.**
 
-[![CI](https://github.com/The-Skyy-Rose-Collection-LLC/DevSkyy/actions/workflows/ci.yml/badge.svg)](https://github.com/The-Skyy-Rose-Collection-LLC/DevSkyy/actions)
+[![CI](https://github.com/SkyyRoseCo/DevSkyy/actions/workflows/ci.yml/badge.svg)](https://github.com/SkyyRoseCo/DevSkyy/actions)
 [![Python 3.11+](https://img.shields.io/badge/python-3.11+-blue.svg)](https://www.python.org/downloads/)
 [![TypeScript 5.0+](https://img.shields.io/badge/TypeScript-5.0+-blue.svg)](https://www.typescriptlang.org/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
@@ -27,6 +27,7 @@
 ```bash
 # Install
 make install                         # Python API + dev tooling
+npm ci                               # Root JS tooling + Husky Git hooks
 cd frontend && npm install           # Next.js dashboard
 
 # Run locally (pick one approach)
@@ -95,13 +96,16 @@ core/                      ← Foundation (auth, cache, events, errors, runtime)
 | **Services**    | `services/` `orchestration/` `pipelines/` `imagery/` `ai_3d/` | Business logic, RAG, 3D generation        |
 | **Integration** | `mcp_servers/` `mcp_tools/` `integrations/` `sync/`           | MCP, third-party APIs, WordPress sync     |
 | **Frontend**    | `frontend/` `src/` `public/` `__mocks__/`                     | Next.js dashboard, 3D collections         |
-| **WordPress**   | `wordpress-theme/skyyrose-flagship/` `wordpress/`             | Production WP theme + deployment tools    |
-| **Content**     | `assets/` `data/` `datasets/` `models/` `hf-spaces/`          | Imagery, catalogs, ML models, HF spaces   |
-| **DevOps**      | `monitoring/` `scripts/` `tests/` `cli/` `tools/` `config/`   | Observability, tests, CLI tools           |
-| **Docs**        | `docs/` `archive/` `examples/` `tasks/`                       | Documentation, historical refs, examples  |
+| **WordPress**   | `wordpress-theme/skyyrose-flagship/` `wordpress-theme/skyyrose-flagship-2/` `wordpress/` | Production WP themes (V1 + V2) + tools |
+| **Content**     | `assets/` `data/` `datasets/` `models/` `hf-spaces/` `renders/` `imagery/`               | Imagery, catalogs, ML models, renders   |
+| **Design**      | `design-system/` `ds-bundle/` `eval/` `editorial-staging/`                               | Design tokens, brand eval, staging      |
+| **Media**       | `Comfy/` `skyyrose/elite_studio/` `pipelines/`                                            | ComfyUI workflows, elite studio, media  |
+| **Platform**    | `aos/` `billing/` `grpc_server/` `sdk/` `devskyy_workflows/` `skyyrose/`                 | AOS runtime, billing, gRPC, SDK         |
+| **DevOps**      | `monitoring/` `scripts/` `tests/` `cli/` `tools/` `config/`                              | Observability, tests, CLI tools         |
+| **Docs**        | `docs/` `archive/` `examples/` `tasks/` `knowledge-base/`                                | Documentation, lessons, examples        |
 
 Entry points at root: `main_enterprise.py` (API), `devskyy_mcp.py` (MCP server),
-`conftest.py` (pytest).
+`conftest.py` (pytest), `SOT.md` (source of truth registry).
 
 ---
 
@@ -109,13 +113,22 @@ Entry points at root: `main_enterprise.py` (API), `devskyy_mcp.py` (MCP server),
 
 Each workspace is isolated with its own dependencies:
 
-| Workspace      | Runtime           | Install                      | Dev                                 |
-| -------------- | ----------------- | ---------------------------- | ----------------------------------- |
-| **Python API** | Python 3.11+      | `make install`               | `make dev`                          |
-| **Dashboard**  | Node.js 22, npm   | `cd frontend && npm install` | `npm run dev`                       |
-| **WordPress**  | PHP 8.2, SFTP     | See `.env.wordpress`         | `bash scripts/deploy-theme.sh`      |
-| **Imagery**    | Python (isolated) | `.venv-imagery/`             | `pip install rembg`                 |
-| **ADK Agents** | Python (isolated) | `.venv-agents/`              | Numpy conflicts — use separate venv |
+At the repository root, use `npm ci` with the tracked `package-lock.json`.
+The install's `prepare` script installs Husky and builds the root TypeScript
+package. Husky owns `core.hooksPath`; do not run `pre-commit install` or unset
+that setting. The separate `.pre-commit-config.yaml` remains available for
+explicit checks with `pre-commit run --all-files` (which may reformat files).
+Avoid mixing npm and pnpm in the same root `node_modules` directory.
+
+| Workspace        | Runtime           | Install                                      | Dev                                          |
+| ---------------- | ----------------- | -------------------------------------------- | -------------------------------------------- |
+| **Python API**   | Python 3.11+      | `make install`                               | `make dev`                                   |
+| **Dashboard**    | Node.js 22, npm   | `cd frontend && npm install`                 | `npm run dev`                                |
+| **WordPress V1** | PHP 8.2, SFTP     | See `.env.wordpress`                         | `bash scripts/deploy-theme.sh`               |
+| **WordPress V2** | Node.js 22        | `cd wordpress-theme/skyyrose-flagship-2 && npm install` | `npm run build`                   |
+| **Imagery**      | Python (isolated) | `pip install -r requirements-imagery.txt`    | `scripts/oai_render/`                        |
+| **ADK Agents**   | Python (isolated) | `.venv-agents/` (`pip install google-adk`)   | Numpy conflicts — use separate venv          |
+| **ComfyUI**      | Python (isolated) | See `Comfy/README.md`                        | `comfy` CLI                                  |
 
 ---
 
@@ -146,13 +159,19 @@ for detailed guides.
 ## Deployment
 
 ```bash
-# WordPress theme (skyyrose.co)
+# WordPress theme V1 (skyyrose.co)
 bash scripts/deploy-theme.sh
+
+# WordPress theme V2 (build + deploy)
+cd wordpress-theme/skyyrose-flagship-2 && npm run build
 
 # Frontend (Vercel — devskyy.app)
 cd frontend && git push origin main  # auto-deploys
 
-# API (Docker)
+# API (Fly.io)
+fly deploy --config fly.toml
+
+# API (Docker local)
 docker-compose up -d
 ```
 
@@ -162,4 +181,4 @@ Full procedures in [docs/RUNBOOK.md](docs/RUNBOOK.md).
 
 ## License
 
-MIT © The Skyy Rose Collection LLC
+MIT © SkyyRose LLC
