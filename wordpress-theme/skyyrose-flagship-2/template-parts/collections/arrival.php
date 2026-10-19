@@ -9,6 +9,11 @@ defined( 'ABSPATH' ) || exit;
 $arrival              = $args['collection'];
 $arrival_slug         = $args['slug'];
 $arrival_presentation = $args['presentation'];
+// Kids has an admitted product still, rather than an admitted monument film.
+if ( 'kids-capsule' === $arrival_slug ) {
+	get_template_part( 'template-parts/collections/arrival-product', null, $args );
+	return;
+}
 $arrival_cinema = skyyrose2_collection_cinema( $arrival_slug );
 $arrival_motion = $arrival_cinema['motion'] ?? skyyrose2_collection_hero_motion( $arrival_slug, $arrival['hero'] );
 $arrival_lockup       = $arrival_presentation['lockup'] ?? array(

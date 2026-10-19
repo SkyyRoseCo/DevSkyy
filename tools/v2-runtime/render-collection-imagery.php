@@ -12,6 +12,8 @@
  * Usage: php render-collection-imagery.php <home|black-rose|collections> [theme-dir]
  */
 $page  = $argv[1] ?? 'black-rose';
+$arrival_only = in_array( '--arrival-only', $argv, true );
+$arrival_routes = array( 'signature', 'black-rose', 'love-hurts', 'kids-capsule' );
 $theme = realpath( $argv[2] ?? dirname( __DIR__, 2 ) . '/wordpress-theme/skyyrose-flagship-2' );
 define( 'ABSPATH', $theme . '/' );
 define( 'OBJECT', 'OBJECT' );
@@ -45,7 +47,7 @@ function add_query_arg( $key, $value, $url ) { return $url . '?' . rawurlencode(
 function is_admin() { return false; } function wp_doing_ajax() { return false; }
 function is_user_logged_in() { return false; } function is_customize_preview() { return false; } function is_preview() { return false; }
 function is_front_page() { return 'home' === $GLOBALS['render_route']; }
-function is_page_template( $template = '' ) { return 'black-rose' === $GLOBALS['render_route'] && ( '' === $template || 'template-collection.php' === $template ); }
+function is_page_template( $template = '' ) { return in_array( $GLOBALS['render_route'], array( 'signature', 'black-rose', 'love-hurts', 'kids-capsule' ), true ) && ( '' === $template || 'template-collection.php' === $template ); }
 function is_page() { return 'home' !== $GLOBALS['render_route']; }
 function is_singular( ...$args ) { return false; } function is_single() { return false; }
 function is_shop() { return false; } function is_product_taxonomy() { return false; }
@@ -98,12 +100,12 @@ foreach ( skyyrose2_performance_route_preloads() as $preload ) {
 	echo '>';
 }
 echo "\n</head><body>\n";
-if ( 'black-rose' === $page ) {
-	$world_args = array( 'slug' => 'black-rose', 'collection' => $collections['black-rose'], 'presentation' => skyyrose2_collection_presentation( 'black-rose' ), 'products' => array(), 'shop_url' => '/shop/', 'pieces_anchor' => '#world', 'world_statement' => true );
-	echo '<main id="primary" class="sr2-collection-world" data-collection="black-rose">';
+if ( in_array( $page, $arrival_routes, true ) ) {
+	$world_args = array( 'slug' => $page, 'collection' => $collections[ $page ], 'presentation' => skyyrose2_collection_presentation( $page ), 'products' => array(), 'shop_url' => '/shop/', 'pieces_anchor' => '#world', 'world_statement' => true );
+	echo '<main id="primary" class="sr2-collection-world" data-collection="' . esc_attr( $page ) . '">';
 	get_template_part( 'template-parts/collections/arrival', null, $world_args );
 	echo "\n<!-- editorial, scroll-world and the product edit are WooCommerce-owned and not rendered offline -->\n";
-	get_template_part( 'template-parts/collections/story', null, $world_args );
+	if ( ! $arrival_only ) { get_template_part( 'template-parts/collections/story', null, $world_args ); }
 	echo '</main>';
 } elseif ( 'collections' === $page ) {
 	echo '<main id="primary">';
@@ -119,7 +121,7 @@ if ( 'black-rose' === $page ) {
 }
 echo "\n<nav class=\"sr2-house-nav__previews\" data-render-fragment=\"header collection previews\">\n";
 $header_source = file_get_contents( SKYYROSE2_DIR . '/inc/global-shell.php' );
-if ( preg_match( '#<\?php foreach \( skyyrose2_collections\(\) as \$slug => \$collection \) : \?>(.*?)<\?php endforeach; \?>#s', $header_source, $preview_loop ) ) {
+if ( ! $arrival_only && preg_match( '#<\?php foreach \( skyyrose2_collections\(\) as \$slug => \$collection \) : \?>(.*?)<\?php endforeach; \?>#s', $header_source, $preview_loop ) ) {
 	foreach ( $collections as $slug => $collection ) { eval( '?>' . $preview_loop[1] . '<?php ' ); }
 }
 echo "</nav>\n</body></html>\n";

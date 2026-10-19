@@ -39,6 +39,8 @@ function fixture({
   currentSrc = '/responsive-640.webp',
   naturalWidth = 640,
   imageMissing = false,
+  productArrival = false,
+  documentLoading = false,
 } = {}) {
   const imageDecode = deferred();
   const playback = deferred();
@@ -100,10 +102,18 @@ function fixture({
         img: imageMissing ? null : image,
       })[selector],
   };
+  const productImage = Object.assign(new Target(), { complete: false, naturalWidth: 0 });
+  const productMedia = { hidden: false, querySelector: () => productImage };
+  const product = { dataset: { mediaState: 'admitted' }, querySelector: () => productMedia };
   const document = Object.assign(new Target(), {
     hidden: false,
+    readyState: documentLoading ? 'loading' : 'complete',
     documentElement: { dataset: {} },
-    querySelectorAll: selector => (selector === '[data-recovery-hero]' ? [hero] : []),
+    querySelectorAll: selector => {
+      if (selector === '[data-recovery-hero]') return [hero];
+      if (selector === '[data-product-arrival]' && productArrival) return [product];
+      return [];
+    },
   });
   let observer;
   class Observer {
@@ -147,6 +157,9 @@ function fixture({
     button,
     hero,
     document,
+    product,
+    productMedia,
+    productImage,
     window,
     classes,
     runAgain,
@@ -159,6 +172,27 @@ function fixture({
     },
   };
 }
+
+test('product still arriving after inline controller handles an image already failed before DOM parsing completed', () => {
+  const f = fixture({ productArrival: true, documentLoading: true });
+  f.productImage.complete = true;
+  f.productImage.naturalWidth = 0;
+  assert.equal(f.productMedia.hidden, false);
+  f.document.emit('DOMContentLoaded');
+  assert.equal(f.productMedia.hidden, true);
+  assert.equal(f.product.dataset.mediaState, 'unavailable');
+});
+
+test('decoded product still stays visible, then later image failure compacts the arrival', () => {
+  const f = fixture({ productArrival: true });
+  f.productImage.complete = true;
+  f.productImage.naturalWidth = 768;
+  assert.equal(f.productMedia.hidden, false);
+  assert.equal(f.product.dataset.mediaState, 'admitted');
+  f.productImage.emit('error');
+  assert.equal(f.productMedia.hidden, true);
+  assert.equal(f.product.dataset.mediaState, 'unavailable');
+});
 
 test('visible hero defers video source assignment/load/play until actual responsive decode settles', async () => {
   const f = fixture();

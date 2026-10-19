@@ -345,7 +345,7 @@ function skyyrose2_performance_art_directed_preloads( $desktop, $tablet, $mobile
  * @param string $slug Collection slug.
  * @return array<string,string>
  */
-function skyyrose2_performance_collection_preload( $slug ) {
+function skyyrose2_performance_collection_preload( $slug, $sizes = '(max-width: 47.99em) calc(100vw - 2rem), (max-width: 74.99em) 48vw, 560px' ) {
 	$image = function_exists( 'skyyrose2_collection_media' ) ? skyyrose2_collection_media( $slug, 'collection_hero' ) : array();
 	if ( ! $image ) {
 		return array();
@@ -361,7 +361,7 @@ function skyyrose2_performance_collection_preload( $slug ) {
 	}
 	if ( ! empty( $image['srcset'] ) ) {
 		$resource['imagesrcset'] = $image['srcset'];
-		$resource['imagesizes']  = '(max-width: 47.99em) calc(100vw - 2rem), (max-width: 74.99em) 48vw, 560px';
+		$resource['imagesizes']  = $sizes;
 	}
 	return $resource;
 }
@@ -393,6 +393,10 @@ function skyyrose2_performance_route_preloads() {
 		$slug        = sanitize_title( get_post_field( 'post_name', get_queried_object_id() ) );
 		$collections = skyyrose2_collections();
 		$collection  = $collections[ $slug ] ?? array();
+		if ( 'kids-capsule' === $slug ) {
+			$still = skyyrose2_performance_collection_preload( $slug, '(max-width: 47.99em) calc(100vw - 2rem), 40vw' );
+			return $still ? array( $still ) : array();
+		}
 		if ( ! empty( $collection['hero'] ) ) {
 			// The arrival <picture> selects its candidate by viewport, so the hint is art-directed the same way.
 			return skyyrose2_performance_art_directed_preloads(

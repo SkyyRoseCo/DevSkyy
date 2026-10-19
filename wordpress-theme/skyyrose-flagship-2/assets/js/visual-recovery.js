@@ -3,6 +3,23 @@
   'use strict';
   if (document.documentElement.dataset.recoveryInitialized) return;
   document.documentElement.dataset.recoveryInitialized = 'true';
+  // This controller can run inline before the arrival is parsed. Bind after
+  // parsing and handle an image that already failed before listeners existed.
+  const initProductArrivals = () => {
+    document.querySelectorAll('[data-product-arrival]').forEach(arrival => {
+      const media = arrival.querySelector('[data-product-arrival-media]');
+      const image = media?.querySelector('img');
+      if (!image) return;
+      const unavailable = () => {
+        media.hidden = true;
+        arrival.dataset.mediaState = 'unavailable';
+      };
+      image.addEventListener('error', unavailable, { once: true });
+      if (image.complete && !image.naturalWidth) unavailable();
+    });
+  };
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', initProductArrivals, { once: true });
+  else initProductArrivals();
   const reduced = matchMedia('(prefers-reduced-motion: reduce)');
   const connection = navigator.connection;
   const heroes = [];
