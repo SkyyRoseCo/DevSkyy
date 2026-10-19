@@ -18,10 +18,32 @@ const HTTP = 'http://127.0.0.1:18484';
 const HTTPS = 'https://127.0.0.1:18486';
 const MARKER = 'SYNTHETIC_PRIVATE_CAPABILITY_MARKER';
 function pin(file) { const bytes = fs.readFileSync(file); return { sha256: crypto.createHash('sha256').update(bytes).digest('hex'), bytes: bytes.length }; }
+function objectStoreParams(storageKey, databaseName, objectStoreName, skipCount) {
+  assert.ok(typeof storageKey === 'string' && storageKey.length > 0);
+  assert.ok(Number.isSafeInteger(skipCount) && skipCount >= 0);
+  return { storageKey, databaseName, objectStoreName, skipCount, pageSize: 100 };
+}
+function advancePage(state, data, kind) {
+  assert.ok(state.pages < 10 && !state.done);
+  const rows = kind === 'idb' ? data.objectStoreDataEntries : data.cacheDataEntries;
+  assert.ok(Array.isArray(rows) && rows.length <= 100);
+  if (kind === 'idb') assert.equal(typeof data.hasMore, 'boolean');
+  else {
+    assert.ok(Number.isSafeInteger(data.returnCount) && data.returnCount >= 0);
+    if (state.total !== undefined) assert.equal(data.returnCount, state.total, 'Cache count changed during pagination');
+    state.total = data.returnCount;
+  }
+  state.pages++; state.count += rows.length;
+  if (kind === 'cache') assert.ok(state.count <= state.total);
+  state.done = kind === 'idb' ? !data.hasMore : state.count === state.total;
+  assert.ok(state.done || rows.length > 0, 'Storage pagination made no progress');
+  return state.done;
+}
 function sourceClosure() {
   return Object.fromEntries([
     path.join(__dirname, 'capability.cjs'), path.join(__dirname, 'pipe.cjs'), path.join(__dirname, 'test-controls.cjs'),
     path.join(ROOT, 'tools/v2-runtime/phase3b-browser/node_modules/playwright-core/types/protocol.d.ts'),
+    path.join(ROOT, 'tools/v2-runtime/phase3b-browser/node_modules/playwright-core/package.json'),
     path.join(ROOT, 'tasks/release-gates-20261019/gate4-private-collector/PLAN.md'),
   ].map(file => [path.relative(ROOT, file), pin(file)]));
 }
@@ -36,7 +58,8 @@ async function denial() {
   return { tcp, udp, unrelated_loopback: other, inherited_child_tcp: inherited };
 }
 function fixture(request, response, ledger, origin) {
-  ledger.push({ sequence: ledger.length + 1, epoch: Date.now(), method: request.method, url: origin + request.url, rawHeaders: request.rawHeaders });
+  const record = { sequence: ledger.length + 1, epoch: Date.now(), method: request.method, url: origin + request.url, rawHeaders: request.rawHeaders }; ledger.push(record);
+  response.once('finish', () => { record.emittedStatus = response.statusCode; record.emittedHeaderText = response._header; });
   response.setHeader('Cache-Control', 'no-store');
   response.setHeader('Content-Type', 'text/javascript');
   const url = new URL(request.url, origin);
@@ -66,10 +89,11 @@ function trackSetup(task, pending, onError) {
   return completed;
 }
 function finalAttachmentVerdict(result, pendingCount) { if (result.attachment_error || pendingCount) { if (!result.status.startsWith('FAIL_')) result.status = 'FAIL_CAPABILITY_EXECUTION'; result.attachment_error ||= 'Unresolved target setup tasks'; return false; } return true; }
+function finalTransportVerdict(result, transport, childClosed) { if (transport && (!childClosed || !transport.closed || transport.buffer.length || transport.failure)) { if (!result.status.startsWith('FAIL_')) result.status = 'FAIL_CAPABILITY_TRANSPORT'; result.final_transport_failure = transport.failure?.message || 'Browser stdio/pipe did not drain'; return false; } return true; }
 async function worker(folder, spki) {
   const journal = []; const targets = []; const operations = []; const raw = { journal, targets, operations };
   const result = { status: 'INCOMPLETE', authentication: 'NOT_APPLICABLE', policy: 'UNKNOWN_NO_ACCEPTANCE_CONTRACT', limits: ['Capability execution only; not 40-route/profile collector qualification', 'HTTP/1 only; HTTP/2/QUIC UNKNOWN', 'Atomic cross-target boundary, worker quiescence, partitioned storage and races UNKNOWN', 'No sanitation or arbitrary-secret-removal qualification'] };
-  let child; let transport; let exited = false; let exitSignal; const pendingAttach = new Set();
+  let child; let transport; let exited = false; let childClosed = false; let exitSignal; const pendingAttach = new Set();
   const attempt = async (label, method, params, session) => { try { const value = await transport.send(method, params, session); operations.push({ label, method, session, status: 'METHOD_SUCCEEDED', value }); return value; } catch (error) { operations.push({ label, method, session, status: 'UNKNOWN_METHOD_FAILED', error: error.message }); return null; } };
   try {
     result.source_start = sourceClosure();
@@ -82,6 +106,7 @@ async function worker(folder, spki) {
     const log = fs.openSync(path.join(folder, 'browser-stderr.txt'), 'wx', 0o600);
     child = spawn(CHROME, args, { stdio: ['ignore', 'ignore', log, 'pipe', 'pipe'] }); fs.closeSync(log);
     child.once('exit', (code, signal) => { exited = true; exitSignal = { code, signal }; });
+    child.once('close', () => { childClosed = true; });
     child.once('error', error => { result.browser_spawn_error = error.message; });
     transport = new Pipe(child, journal);
     result.version = await transport.send('Browser.getVersion');
@@ -132,19 +157,49 @@ async function worker(folder, spki) {
     result.cutoff = { epoch: Date.now(), sequence: journal.length, atomic: false, completeness: 'UNKNOWN_NOT_ATOMIC' };
     result.raw_dom_before_projection = await transport.send('Runtime.evaluate', { expression: 'document.documentElement.outerHTML', returnByValue: true }, main.session);
     result.cookies_after = await transport.send('Storage.getCookies', { browserContextId: context.browserContextId });
+    result.frame_storage = [];
+    const seenFrames = new Set();
     for (const row of targets.filter(t => ['page', 'iframe'].includes(t.info.type))) {
       if (attachmentFailure) throw attachmentFailure;
-      await attempt('frame-tree', 'Page.getFrameTree', {}, row.session);
-      for (const origin of [HTTP, HTTPS]) {
+      const tree = await attempt('frame-tree', 'Page.getFrameTree', {}, row.session);
+      const frames = [];
+      const walk = node => { if (!node) return; frames.push(node.frame); for (const child of node.childFrames || []) walk(child); };
+      walk(tree?.frameTree);
+      await attempt('idb-enable', 'IndexedDB.enable', {}, row.session);
+      for (const frame of frames) {
         if (attachmentFailure) throw attachmentFailure;
-        for (const isLocalStorage of [true, false]) await attempt('raw-dom-storage', 'DOMStorage.getDOMStorageItems', { storageId: { securityOrigin: origin, isLocalStorage } }, row.session);
-        const dbs = await attempt('idb-names', 'IndexedDB.requestDatabaseNames', { securityOrigin: origin }, row.session);
+        if (seenFrames.has(frame.id)) continue;
+        seenFrames.add(frame.id);
+        const routed = targets.find(target => target.info.type === 'iframe' && target.info.targetId === frame.id) || row;
+        const key = await attempt('frame-storage-key', 'Storage.getStorageKey', { frameId: frame.id }, routed.session);
+        const entry = { frameId: frame.id, ownerSession: routed.session, origin: frame.securityOrigin, storageKey: key?.storageKey || null, verdict: 'UNKNOWN_CAPABILITY_ONLY' };
+        result.frame_storage.push(entry);
+        if (!key?.storageKey) continue;
+        const storageKey = key.storageKey;
+        for (const isLocalStorage of [true, false]) await attempt('raw-dom-storage', 'DOMStorage.getDOMStorageItems', { storageId: { storageKey, isLocalStorage } }, routed.session);
+        const dbs = await attempt('idb-names', 'IndexedDB.requestDatabaseNames', { storageKey }, routed.session);
         for (const databaseName of dbs?.databaseNames || []) {
-          const db = await attempt('idb-schema', 'IndexedDB.requestDatabase', { securityOrigin: origin, databaseName }, row.session);
-          for (const store of db?.databaseWithObjectStores?.objectStores || []) await attempt('idb-page', 'IndexedDB.requestData', { securityOrigin: origin, databaseName, objectStoreName: store.name, indexName: '', skipCount: 0, pageSize: 100 }, row.session);
+          const db = await attempt('idb-schema', 'IndexedDB.requestDatabase', { storageKey, databaseName }, routed.session);
+          for (const store of db?.databaseWithObjectStores?.objectStores || []) {
+            const state = { count: 0, pages: 0, done: false };
+            for (let page = 0; page < 10; page++) {
+              const data = await attempt('idb-page', 'IndexedDB.requestData', objectStoreParams(storageKey, databaseName, store.name, state.count), routed.session);
+              if (!data) break;
+              if (advancePage(state, data, 'idb')) break;
+            }
+            operations.push({ label: 'idb-pagination-boundary', session: routed.session, frameId: frame.id, databaseName, store: store.name, entries: state.count, status: state.done ? 'OBSERVED_TERMINAL_PAGE' : 'UNKNOWN_PAGINATION_INCOMPLETE' });
+          }
         }
-        const caches = await attempt('cache-names', 'CacheStorage.requestCacheNames', { securityOrigin: origin }, row.session);
-        for (const cache of caches?.caches || []) await attempt('cache-page', 'CacheStorage.requestEntries', { cacheId: cache.cacheId, skipCount: 0, pageSize: 100 }, row.session);
+        const caches = await attempt('cache-names', 'CacheStorage.requestCacheNames', { storageKey }, routed.session);
+        for (const cache of caches?.caches || []) {
+          const state = { count: 0, pages: 0, done: false };
+          for (let page = 0; page < 10; page++) {
+            const data = await attempt('cache-page', 'CacheStorage.requestEntries', { cacheId: cache.cacheId, skipCount: state.count, pageSize: 100 }, routed.session);
+            if (!data) break;
+            if (advancePage(state, data, 'cache')) break;
+          }
+          operations.push({ label: 'cache-pagination-boundary', session: routed.session, frameId: frame.id, cacheId: cache.cacheId, entries: state.count, status: state.done ? 'OBSERVED_TERMINAL_PAGE' : 'UNKNOWN_PAGINATION_INCOMPLETE' });
+        }
       }
     }
     result.final_targets = await transport.send('Target.getTargets');
@@ -164,9 +219,9 @@ async function worker(folder, spki) {
     result.cleanup_errors = [];
     if (result.attachment_error) { result.status = 'FAIL_CAPABILITY_EXECUTION'; process.exitCode = 1; }
     if (transport && !exited) { try { transport.expectClose(); await transport.send('Browser.close'); } catch (error) { result.cleanup_errors.push(error.message); } }
-    const end = Date.now() + 5000; while (child && !exited && Date.now() < end) await new Promise(resolve => setTimeout(resolve, 25));
-    if (child && !exited) { try { child.kill('SIGKILL'); } catch (error) { result.cleanup_errors.push(error.message); } result.cleanup_errors.push('Owned browser required SIGKILL'); const killedEnd = Date.now() + 3000; while (!exited && Date.now() < killedEnd) await new Promise(resolve => setTimeout(resolve, 25)); }
-    result.browser_exit = exitSignal || null; result.owned_browser_stopped = !child || exited;
+    const end = Date.now() + 5000; while (child && !childClosed && Date.now() < end) await new Promise(resolve => setTimeout(resolve, 25));
+    if (child && !childClosed) { try { child.kill('SIGKILL'); } catch (error) { result.cleanup_errors.push(error.message); } result.cleanup_errors.push('Owned browser required SIGKILL'); const killedEnd = Date.now() + 3000; while (!childClosed && Date.now() < killedEnd) await new Promise(resolve => setTimeout(resolve, 25)); }
+    result.browser_exit = exitSignal || null; result.owned_browser_stopped = !child || (exited && childClosed); result.browser_stdio_closed = childClosed;
     if (!result.owned_browser_stopped || result.cleanup_errors.length) { result.status = 'FAIL_CAPABILITY_CLEANUP'; process.exitCode = 1; }
     if (transport?.failure) { result.status = result.cleanup_errors.length ? 'FAIL_CAPABILITY_CLEANUP' : 'FAIL_CAPABILITY_EXECUTION'; result.transport_failure = transport.failure.message; process.exitCode = 1; }
     try { result.source_end = sourceClosure(); assert.deepEqual(result.source_end, result.source_start); } catch (error) { result.status = 'FAIL_SOURCE_IDENTITY'; result.source_identity_failure = error.message; process.exitCode = 1; }
@@ -174,6 +229,7 @@ async function worker(folder, spki) {
     const setupOutcomes = await Promise.allSettled([...pendingAttach]);
     if (setupOutcomes.some(outcome => outcome.status === 'rejected')) result.attachment_error ||= 'Unhandled setup completion rejection';
     if (!finalAttachmentVerdict(result, pendingAttach.size)) process.exitCode = 1;
+    if (!finalTransportVerdict(result, transport, childClosed)) process.exitCode = 1;
     save(path.join(folder, 'raw-capabilities.json'), raw); save(path.join(folder, 'worker-results.json'), result);
   }
 }
@@ -218,6 +274,7 @@ async function main(control = null) {
   try {
     if (control === 'synthetic-preflight-failure') throw Error('Synthetic certificate preflight failure');
     summary.source = sourceClosure();
+    summary.protocol_reference = { package_version: JSON.parse(fs.readFileSync(path.join(ROOT, 'tools/v2-runtime/phase3b-browser/node_modules/playwright-core/package.json'))).version, runtime_used: false, limits: 'Protocol reference only; raw pipe uses no Playwright runtime. Prior collector Playwright1.58.2 is a distinct nested dependency.' };
     summary.source_commit = checked('/usr/bin/git', ['rev-parse', 'HEAD'], { cwd: ROOT, encoding: 'utf8' }).trim();
     save(path.join(folder, 'source-at-parent-start.json'), summary.source);
     checked('/usr/bin/openssl', ['req', '-x509', '-newkey', 'rsa:2048', '-nodes', '-keyout', key, '-out', cert, '-days', '1', '-subj', '/CN=localhost', '-addext', 'subjectAltName=IP:127.0.0.1,DNS:localhost']); fs.chmodSync(key, 0o600);
@@ -248,4 +305,4 @@ async function main(control = null) {
   return summary;
 }
 if (require.main === module) main().catch(error => { console.error(error); process.exitCode = 1; });
-module.exports = { cleanGroup, groupCensus, main, requireAttachments, finalAttachmentVerdict, trackSetup };
+module.exports = { cleanGroup, groupCensus, main, requireAttachments, finalAttachmentVerdict, finalTransportVerdict, trackSetup, objectStoreParams, advancePage };
