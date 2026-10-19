@@ -1,0 +1,31 @@
+{
+  "schema": "skyyrose.storage-preservation-mock-controls.v1",
+  "status": "PASS_MOCKED_PRESERVATION_CONTROLS",
+  "authentication": "NOT_APPLICABLE",
+  "method": "Actual source preservation helpers with temporary private filesystem and mocked process outcomes; no native database startup",
+  "controls": [
+    {
+      "name": "failed preflight never stops encountered unowned service or moves originals",
+      "status": "PASS"
+    },
+    {
+      "name": "failed second initial rename restores only moved original path, untouched mysql remains original",
+      "status": "PASS"
+    },
+    {
+      "name": "surviving-daemon",
+      "status": "PASS_FAIL_CLOSED",
+      "services_started": false
+    },
+    {
+      "name": "one-quarantine-rename-failure",
+      "status": "PASS_FAIL_CLOSED",
+      "services_started": false
+    }
+  ],
+  "source_pins": {
+    "tools/v2-runtime/test_gate4_preservation.py": "94adbcd43a050674f27e1ecfd934f11a67a42cb45e719d1c39a5dd4aa6ffe385",
+    "tools/v2-runtime/test_gate4_storage.py": "d55f1acde427d7b4fae9d068989282ef59dec9d7fa98245c7672ad7a2524f73f"
+  },
+  "private_fixture": ".artifacts/release-gates-20261019/gate4-local/preservation-controls-1792425059017223000"
+}

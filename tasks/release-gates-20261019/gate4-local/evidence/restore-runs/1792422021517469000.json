@@ -1,0 +1,44 @@
+{
+  "status": "INCOMPLETE",
+  "authentication": "NOT_APPLICABLE",
+  "steps": [
+    {
+      "step": "COMPLETE_COLD_BACKUP",
+      "manifest_sha256": "d1a36fd790fcb56f3ea2a93c70d5ce45579f9a6a9bf45260ec74ec5cb3b79904",
+      "db_files": 516,
+      "site_files": 35317,
+      "tables": 150
+    },
+    {
+      "step": "POST_BACKUP_NATIVE_AND_CODE_ROLLBACK",
+      "existing_order": 2156,
+      "new_order": 2164,
+      "stock": 18,
+      "native_snapshot_sha256": "47b2f90e0bdad6095afc2cded25a007acde59d4510a5de48405ebbf37264a751",
+      "delta_sha256": "e193aa0877700f9f104b118834e70926c0ee12d0060e43b9f8abe7092bee73f9",
+      "filesystem_delta_files": 2,
+      "rollback_scope": "Compatible comment-only code candidate booted, archive bytes restored, current DB retained; no arbitrary-version compatibility claim",
+      "candidate_sha256": "1ba3b3533d0b46a7f99d9e338ce850f1a82d82583f9e660e156de25bd1c3066b",
+      "restored_sha256": "9c7fb86e5e1cfdcbc76f446363d52ff487c64d350bb7f46ba5855f164c909dda",
+      "candidate_boot_changed_tables": []
+    }
+  ],
+  "limits": [
+    "Synthetic MariaDB13 private profile only; no production backup/restore or full installed-stack parity",
+    "New binlog instrumentation cannot establish historical orphan ownership"
+  ],
+  "failure": {
+    "type": "AssertionError",
+    "message": ""
+  },
+  "cleanup": [
+    {
+      "socket": "/tmp/sr-gate4-restore-01a0f768.sock",
+      "stopped": true
+    },
+    {
+      "socket": "/tmp/sr-gate4-01a0f768.sock",
+      "stopped": true
+    }
+  ]
+}

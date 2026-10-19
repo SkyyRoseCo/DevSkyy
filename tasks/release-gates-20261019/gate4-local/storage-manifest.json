@@ -1,0 +1,61 @@
+{
+  "schema": "skyyrose.private-four-storage-successor.v1",
+  "status": "PASS_FOUR_INDEPENDENT_NATIVE_STORAGE_MODES",
+  "authentication": "NOT_APPLICABLE",
+  "executed_source_commit": "2a874640b476d25d430a709d91f68720fa790332",
+  "source_pins": {
+    "tools/v2-runtime/test_gate4_storage.py": "d55f1acde427d7b4fae9d068989282ef59dec9d7fa98245c7672ad7a2524f73f",
+    "tools/v2-runtime/gate4_restore_local.py": "cbf07a5f180acd340f6a7dd482999d2137b67207b47db9d81cdf71a9e4391663",
+    "tools/v2-runtime/gate4-storage-mode.php": "47f8992c35dcee0bd6371d644a88d8a4d5223a3129ee3672cb2285f8b3cb41c8",
+    "tools/v2-runtime/gate4-recovery-fixture.php": "c3aa5b3ab7c4207ec01b7152e5a1ef3b8d01c24587533084b2059f35d375d5c3",
+    "tools/v2-runtime/variation-migration-core-next.php": "6fed2167b9606924dd2c61c8e6227feb2184ff20bab9bfa99a06ff410332905e",
+    "tools/v2-runtime/gate4_finalize_restore.py": "1ce539392c4f4115f9bee3993760dfe96031eb7c626eb0e01cd4d0373f0ec183"
+  },
+  "run": "1792425206613758000",
+  "modes": [
+    "legacy-nosync",
+    "legacy-sync",
+    "hpos-nosync",
+    "hpos-sync"
+  ],
+  "evidence": {
+    "tasks/release-gates-20261019/gate4-local/evidence/cleanup-failure-controls.json": {
+      "sha256": "f8f6693cb812147802e0f0f3283693e54866bae6dc6f55d7f7db90b847885c49",
+      "bytes": 1435
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/storage-1792425206613758000.json": {
+      "sha256": "2efae94e52974f3c9fc2e8acb6c4ac9ee3ee8ed35d042bbe535ecef76643681c",
+      "bytes": 8533
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/storage-preservation-controls.json": {
+      "sha256": "21dd291757dee569be661189cd028a71763b28fcdce713dd2d9bee1cd157666d",
+      "bytes": 1202
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/storage-raw-local-index.json": {
+      "sha256": "900cb7b2f01b9f70b9d84da1f7bef063d76a4ee0f4d36052511b1495f7a927f9",
+      "bytes": 42790080
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/storage-results.json": {
+      "sha256": "2efae94e52974f3c9fc2e8acb6c4ac9ee3ee8ed35d042bbe535ecef76643681c",
+      "bytes": 8533
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/storage-1792424067180310000.json": {
+      "sha256": "99b8258f47d961e004888a9ac87e4741e06136c016910bb3cb4d63cf50440e76",
+      "bytes": 692
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/storage-1792424880026818000.json": {
+      "sha256": "8e332ff8d4f9b2a65c3da0332e4995001bc5f3df763d6eb7a16e851e84193e87",
+      "bytes": 1649
+    }
+  },
+  "raw_files": 142533,
+  "preservation": "Populated workingclone exact bytes/modes restored; completed restore coldDB exact bytes/modes unchanged; all owned services stopped",
+  "limits": [
+    "Four independently initialized order-empty fixtures; no populated-store authority transition or synchronization proof",
+    "Available seven-commerce-plugin profile only, not full installed-stack or production parity",
+    "Original populated clone and completed restore/coldbackup preserved; historical orphan untouched",
+    "Native history/payment/duplicate/stock checks in each independently initialized fixture; no populated-store authority switch or synchronization-equivalence claim",
+    "Failed native populated-switch and missing-schema attempts retained as INCOMPLETE"
+  ],
+  "assertion_scope": "Unchanged V1/V2 historical snapshots and native payment eligibility; actual payment/duplicate payment and stock20to18 for existing V2 plus newly created variation order. No actual V1 payment test."
+}

@@ -1,0 +1,2582 @@
+{
+  "aria_log.00000001": {
+    "sha256": "038421276a3b7ba3d090f3b6c3b7e54a4910a997368806b61e6a02f24db6da43",
+    "bytes": 417792,
+    "mode": 432
+  },
+  "aria_log_control": {
+    "sha256": "badf88cac40ca6a7993c0876294780b2afb0513270c001a07114e52284d528cc",
+    "bytes": 52,
+    "mode": 432
+  },
+  "ib_buffer_pool": {
+    "sha256": "f22d301514d697e9e77ebb50bd30de98040c5cee775a0a75c170fd00d2d9d292",
+    "bytes": 11800,
+    "mode": 416
+  },
+  "ib_logfile0": {
+    "sha256": "8492f0176d8417a04973efb2e89c41779942eff176636555f07ff59a8fc87368",
+    "bytes": 100663296,
+    "mode": 432
+  },
+  "ibdata1": {
+    "sha256": "2ebc66761947db281b447bb5aae45c0ce0c41c31cc899c3ba52088be34e81172",
+    "bytes": 12582912,
+    "mode": 432
+  },
+  "mariadb_upgrade_info": {
+    "sha256": "558350bf4765c338232a6278077f4d68ae700b3a4d671fa7c5504952a2b9a1cd",
+    "bytes": 14,
+    "mode": 420
+  },
+  "multi-master.info": {
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "bytes": 0,
+    "mode": 432
+  },
+  "mysql/column_stats.MAD": {
+    "sha256": "f0e986a67b2e1c6c0b27f3f64f9be322954290b9c0129fb6504b94beecabb287",
+    "bytes": 8192,
+    "mode": 432
+  },
+  "mysql/column_stats.MAI": {
+    "sha256": "1e27e9924a75b04c7eeef294dfab93422ac89e4571538878ead66cb5697185be",
+    "bytes": 8192,
+    "mode": 432
+  },
+  "mysql/column_stats.frm": {
+    "sha256": "3083fde8c39f85b8602e0a1fbf545f6548715f9497ad2a41aa87690e4ad9987e",
+    "bytes": 2367,
+    "mode": 432
+  },
+  "mysql/columns_priv.MAD": {
+    "sha256": "f0e986a67b2e1c6c0b27f3f64f9be322954290b9c0129fb6504b94beecabb287",
+    "bytes": 8192,
+    "mode": 432
+  },
+  "mysql/columns_priv.MAI": {
+    "sha256": "3e2222f23ccf0715f4a133aeef0716b7f2e697c279e5054ece3104b219d02337",
+    "bytes": 8192,
+    "mode": 432
+  },
+  "mysql/columns_priv.frm": {
+    "sha256": "17353564d0c8fd65b6384a82a91267b371823635aa98c6cd5c00c8198c8313d9",
+    "bytes": 2840,
+    "mode": 432
+  },
+  "mysql/db.MAD": {
+    "sha256": "f0e986a67b2e1c6c0b27f3f64f9be322954290b9c0129fb6504b94beecabb287",
+    "bytes": 8192,
+    "mode": 432
+  },
+  "mysql/db.MAI": {
+    "sha256": "938ed610c9c1246b6328cf4d89c894e7ce33cc8d0d3bca3bce2cfb62fd7d1c58",
+    "bytes": 8192,
+    "mode": 432
+  },
+  "mysql/db.frm": {
+    "sha256": "eb4aa01ed0f2800475f3dbae28dcf369de972ba5bfdf051beddd6b2134fac53d",
+    "bytes": 3489,
+    "mode": 432
+  },
+  "mysql/db.opt": {
+    "sha256": "fe460131a3b0abd250dd5031cb2ae880bb89ad2302ad7fa8b4fe2c7b4f3c64c3",
+    "bytes": 67,
+    "mode": 432
+  },
+  "mysql/event.MAD": {
+    "sha256": "f0e986a67b2e1c6c0b27f3f64f9be322954290b9c0129fb6504b94beecabb287",
+    "bytes": 8192,
+    "mode": 432
+  },
+  "mysql/event.MAI": {
+    "sha256": "220ccafcc29e68fb1eceb51d2e81da489e8a8cd9b75c017dc89afba406ae94ea",
+    "bytes": 8192,
+    "mode": 432
+  },
+  "mysql/event.frm": {
+    "sha256": "a93d7f7017d0d0d67bdf452d33b31b49af9f881c705e7d582d302d23ad1ebfed",
+    "bytes": 4678,
+    "mode": 432
+  },
+  "mysql/func.MAD": {
+    "sha256": "f0e986a67b2e1c6c0b27f3f64f9be322954290b9c0129fb6504b94beecabb287",
+    "bytes": 8192,
+    "mode": 432
+  },
+  "mysql/func.MAI": {
+    "sha256": "c3d74d86a0b3d2d52ed97ef4ac2e6bbb70bb1de46c510bcaaac2f6a675af35d4",
+    "bytes": 8192,
+    "mode": 432
+  },
+  "mysql/func.frm": {
+    "sha256": "0d46fae35e913ecfda19b31a61d7f8e5c73b939c962bcf892bbaf435eb3dca01",
+    "bytes": 1583,
+    "mode": 432
+  },
+  "mysql/general_log.CSM": {
+    "sha256": "b47960c9f6d968e8644eadb9c95978e081a8ac3a6ea0c51de22603c23a360a08",
+    "bytes": 35,
+    "mode": 432
+  },
+  "mysql/general_log.CSV": {
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "bytes": 0,
+    "mode": 432
+  },
+  "mysql/general_log.frm": {
+    "sha256": "aff13383f2960de0bb023cbc8f788fd23b730bcc277a3bcf66c9bdb6f759e5cf",
+    "bytes": 804,
+    "mode": 432
+  },
+  "mysql/global_priv.MAD": {
+    "sha256": "5c83a5204a55304256e14ccd96ea3736739467407fc35433461ba38527c6e535",
+    "bytes": 16384,
+    "mode": 432
+  },
+  "mysql/global_priv.MAI": {
+    "sha256": "c8abfb1d1155302e7ededa944a124907a5dbff71b2dc7c710f14f27868172274",
+    "bytes": 16384,
+    "mode": 432
+  },
+  "mysql/global_priv.frm": {
+    "sha256": "a196a5ead35e2d4c30ad71d80144194b14668867e1fff292843cde2dfa2c6aec",
+    "bytes": 2183,
+    "mode": 432
+  },
+  "mysql/gtid_slave_pos.frm": {
+    "sha256": "19deabe0187ef47ecb690daa144cd2fc06ea45efe1104f846954425f5e9c9dc1",
+    "bytes": 1027,
+    "mode": 432
+  },
+  "mysql/gtid_slave_pos.ibd": {
+    "sha256": "11f55bb21876c255485c1467add79f6096d36fc8aa34646963607a69f66bfc38",
+    "bytes": 65536,
+    "mode": 432
+  },
+  "mysql/help_category.MAD": {
+    "sha256": "d2ae20786245e4557f54668f616583d3b1a7d7240fe1407d3e53e708baf18f84",
+    "bytes": 16384,
+    "mode": 432
+  },
+  "mysql/help_category.MAI": {
+    "sha256": "1d49d779283f9adcc596a4d25097e2af7ae0695e490a0e946314fc59ee0f49bb",
+    "bytes": 24576,
+    "mode": 432
+  },
+  "mysql/help_category.frm": {
+    "sha256": "eaa017232ffcd45c0526b17857e0b31eb7b710df437152e91c5f61effc2a956f",
+    "bytes": 1708,
+    "mode": 432
+  },
+  "mysql/help_keyword.MAD": {
+    "sha256": "f094a4f69e38fbafbf146eb2230902724f1ac0615d4a861e518221463feacae7",
+    "bytes": 16384,
+    "mode": 432
+  },
+  "mysql/help_keyword.MAI": {
+    "sha256": "947f1fc35e7d17ad86e75d78cc8027e3993e7c91acec586641bd4a6cd5fd0dba",
+    "bytes": 24576,
+    "mode": 432
+  },
+  "mysql/help_keyword.frm": {
+    "sha256": "e58ebbf49afcad462a38fed265f1842b8487f367c907f85fa901fafee0e2cd83",
+    "bytes": 1640,
+    "mode": 432
+  },
+  "mysql/help_relation.MAD": {
+    "sha256": "fa144842503597072948f2e7df9a905515df8cbf0285dc1fc70f4bc0ff78007d",
+    "bytes": 16384,
+    "mode": 432
+  },
+  "mysql/help_relation.MAI": {
+    "sha256": "d154716779ef9ea840f4aa83cbcdf73fb34e791146908a2ec392ba3841ce4e9f",
+    "bytes": 24576,
+    "mode": 432
+  },
+  "mysql/help_relation.frm": {
+    "sha256": "125559c4489ba06e6058e8dea8958e450632ae40ed422da18b7592a51429ad16",
+    "bytes": 1461,
+    "mode": 432
+  },
+  "mysql/help_topic.MAD": {
+    "sha256": "b68af0d05ca763384d56f5f5c7137daffba206205858cfc2274dbcb47887a64f",
+    "bytes": 2359296,
+    "mode": 432
+  },
+  "mysql/help_topic.MAI": {
+    "sha256": "2fdcc54936a6c57f64ecd02f77bfdee027e0f428ac0c16f4f25447e3dcb056c4",
+    "bytes": 40960,
+    "mode": 432
+  },
+  "mysql/help_topic.frm": {
+    "sha256": "aaa34f21678a337b4588ba3b13ce9dc91ef1ba3100d02ebf57319aec92b111d9",
+    "bytes": 1778,
+    "mode": 432
+  },
+  "mysql/index_stats.MAD": {
+    "sha256": "f0e986a67b2e1c6c0b27f3f64f9be322954290b9c0129fb6504b94beecabb287",
+    "bytes": 8192,
+    "mode": 432
+  },
+  "mysql/index_stats.MAI": {
+    "sha256": "3f25fb38e360adf31ed1d999cdc85cc2757ccca8918c758472effbf948ed6d71",
+    "bytes": 8192,
+    "mode": 432
+  },
+  "mysql/index_stats.frm": {
+    "sha256": "dc63b15d1a8f69ea3d9c7d7f3618216af58339ada6e6f1d7231ab5fb036f713d",
+    "bytes": 1630,
+    "mode": 432
+  },
+  "mysql/innodb_index_stats.frm": {
+    "sha256": "863c3eb4b70c8d44d0fb8ea9e902532bd77c87ac5375a2c7c88c6b27a7194d8b",
+    "bytes": 5407,
+    "mode": 432
+  },
+  "mysql/innodb_index_stats.ibd": {
+    "sha256": "1f7e1ed239a4ccb73c7bd23bf9060998a157b014fc6a5d885bde79cee1ef97c2",
+    "bytes": 589824,
+    "mode": 432
+  },
+  "mysql/innodb_table_stats.frm": {
+    "sha256": "f0f2918df0ccd6b006d7816edc0f3de8f8deca3792ff9cfc7f2bd444cebfb9da",
+    "bytes": 1912,
+    "mode": 432
+  },
+  "mysql/innodb_table_stats.ibd": {
+    "sha256": "0cd7466cc4d914eaaf7e0ceb97dba6f9bc3972d1b97d722d27bc0ca9635014d8",
+    "bytes": 65536,
+    "mode": 432
+  },
+  "mysql/plugin.MAD": {
+    "sha256": "f0e986a67b2e1c6c0b27f3f64f9be322954290b9c0129fb6504b94beecabb287",
+    "bytes": 8192,
+    "mode": 432
+  },
+  "mysql/plugin.MAI": {
+    "sha256": "656e4b98ae5fba238e5a543ecd0a12f8b135a8ed19d0179724726f15847348f7",
+    "bytes": 8192,
+    "mode": 432
+  },
+  "mysql/plugin.frm": {
+    "sha256": "e45928075ab20c6b8c115ec6ad1491622ba8478bfaa455ed5181d212e7457677",
+    "bytes": 1519,
+    "mode": 432
+  },
+  "mysql/proc.MAD": {
+    "sha256": "423a7c52afd060ceac7777f2e11e91577d7bb006ce77f908b8ff29585369eec9",
+    "bytes": 466944,
+    "mode": 432
+  },
+  "mysql/proc.MAI": {
+    "sha256": "458e285a533444268ba8fd4d90522d57d546e34ecbad4228596154684bbee4b0",
+    "bytes": 16384,
+    "mode": 432
+  },
+  "mysql/proc.frm": {
+    "sha256": "351b37cbe4642cfb8237afd6d5fb15ad60de4b71b842a102c29d4297b9caf7e5",
+    "bytes": 4549,
+    "mode": 432
+  },
+  "mysql/procs_priv.MAD": {
+    "sha256": "f0e986a67b2e1c6c0b27f3f64f9be322954290b9c0129fb6504b94beecabb287",
+    "bytes": 8192,
+    "mode": 432
+  },
+  "mysql/procs_priv.MAI": {
+    "sha256": "0ffb2d48e29c5e7acc1cfeed5811e18d41348f5fadd6394e6f553e6a6e325b7b",
+    "bytes": 8192,
+    "mode": 432
+  },
+  "mysql/procs_priv.frm": {
+    "sha256": "1aff24f007c5db0ad769f91a9f6a7d91bc283195e956aa68c180a26f705d7790",
+    "bytes": 4376,
+    "mode": 432
+  },
+  "mysql/proxies_priv.MAD": {
+    "sha256": "de5b717e962bf4ffc8278eb0d73505afb91e8812865f6a1566a01cbfbc621548",
+    "bytes": 16384,
+    "mode": 432
+  },
+  "mysql/proxies_priv.MAI": {
+    "sha256": "6f23eaaa7f76920fa61803146cdb3ebf14231d13a0d19bee02ce093e9b4d02da",
+    "bytes": 24576,
+    "mode": 432
+  },
+  "mysql/proxies_priv.frm": {
+    "sha256": "49ed9acf6c41e24551c9c6be56af28d58dbeb81deec7dae63525c1febb97a652",
+    "bytes": 5029,
+    "mode": 432
+  },
+  "mysql/roles_mapping.MAD": {
+    "sha256": "f0e986a67b2e1c6c0b27f3f64f9be322954290b9c0129fb6504b94beecabb287",
+    "bytes": 8192,
+    "mode": 432
+  },
+  "mysql/roles_mapping.MAI": {
+    "sha256": "e8ece8a7073c1edb59d60da257e90c2a42f4045befa161d7dbe1a3fa94eb0da9",
+    "bytes": 8192,
+    "mode": 432
+  },
+  "mysql/roles_mapping.frm": {
+    "sha256": "045f4b152fa0812fca3187eb252b63b44e95a4c32870559c0eb89bc0a8c764d9",
+    "bytes": 2535,
+    "mode": 432
+  },
+  "mysql/servers.MAD": {
+    "sha256": "f0e986a67b2e1c6c0b27f3f64f9be322954290b9c0129fb6504b94beecabb287",
+    "bytes": 8192,
+    "mode": 432
+  },
+  "mysql/servers.MAI": {
+    "sha256": "cb7d7106fa9cad84f61409d104005532704c96bd1cb029b30acb23d7dd2eaf3c",
+    "bytes": 8192,
+    "mode": 432
+  },
+  "mysql/servers.frm": {
+    "sha256": "4bbe351072c19b591f5ed0b34e8a89b2206ae58ff0701adca02a1e1d9d5879c7",
+    "bytes": 10383,
+    "mode": 432
+  },
+  "mysql/slow_log.CSM": {
+    "sha256": "b47960c9f6d968e8644eadb9c95978e081a8ac3a6ea0c51de22603c23a360a08",
+    "bytes": 35,
+    "mode": 432
+  },
+  "mysql/slow_log.CSV": {
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "bytes": 0,
+    "mode": 432
+  },
+  "mysql/slow_log.frm": {
+    "sha256": "3ad3a8bc8b5fcf2c2c4fd1138a56c1dee15e1d1fab272bcc8c3205cd90cdba6f",
+    "bytes": 2386,
+    "mode": 432
+  },
+  "mysql/table_stats.MAD": {
+    "sha256": "f0e986a67b2e1c6c0b27f3f64f9be322954290b9c0129fb6504b94beecabb287",
+    "bytes": 8192,
+    "mode": 432
+  },
+  "mysql/table_stats.MAI": {
+    "sha256": "cfce2738cf723148e6241fda5a9ad2d119e399ec3475f8cf14ad5db1f63f8b6c",
+    "bytes": 8192,
+    "mode": 432
+  },
+  "mysql/table_stats.frm": {
+    "sha256": "a63b85c0750dd8c15ff32718ed7b894a8434a75fb86052a8086471ff2c638839",
+    "bytes": 1375,
+    "mode": 432
+  },
+  "mysql/tables_priv.MAD": {
+    "sha256": "764bacc829178ef1cf003091add5908ed147e2bfc155150107d4c3f6dd038c5e",
+    "bytes": 16384,
+    "mode": 432
+  },
+  "mysql/tables_priv.MAI": {
+    "sha256": "a51b47082be79026bb9a4cc2d1291ed957c461378b4c1b2ed25e814e10758bc4",
+    "bytes": 24576,
+    "mode": 432
+  },
+  "mysql/tables_priv.frm": {
+    "sha256": "488c18c4132e5222ae2b404ec3e9666db8a3a50570904f548d7d200aa0a7f7b4",
+    "bytes": 4441,
+    "mode": 432
+  },
+  "mysql/time_zone.MAD": {
+    "sha256": "f0e986a67b2e1c6c0b27f3f64f9be322954290b9c0129fb6504b94beecabb287",
+    "bytes": 8192,
+    "mode": 432
+  },
+  "mysql/time_zone.MAI": {
+    "sha256": "82e81a12ca745bb96d605130efc1b358ab61e92c5be6229a3fed36f3389a6bc3",
+    "bytes": 8192,
+    "mode": 432
+  },
+  "mysql/time_zone.frm": {
+    "sha256": "665a2b0983c2f73ae5ea45fda3c241e21141fd56128b9dac9e9d91f62c90d43c",
+    "bytes": 974,
+    "mode": 432
+  },
+  "mysql/time_zone_leap_second.MAD": {
+    "sha256": "f0e986a67b2e1c6c0b27f3f64f9be322954290b9c0129fb6504b94beecabb287",
+    "bytes": 8192,
+    "mode": 432
+  },
+  "mysql/time_zone_leap_second.MAI": {
+    "sha256": "13eac273ecdfc0429d40985e3e950e7b01445704903db0f2400c2fcaae3a6e53",
+    "bytes": 8192,
+    "mode": 432
+  },
+  "mysql/time_zone_leap_second.frm": {
+    "sha256": "1285c91ccb1323c87b9a7b02f3457d505007c833b34841103c2f35083ad89d85",
+    "bytes": 972,
+    "mode": 432
+  },
+  "mysql/time_zone_name.MAD": {
+    "sha256": "f0e986a67b2e1c6c0b27f3f64f9be322954290b9c0129fb6504b94beecabb287",
+    "bytes": 8192,
+    "mode": 432
+  },
+  "mysql/time_zone_name.MAI": {
+    "sha256": "6a24b68ae806a53813dcf78943205865c702001b04f7da47fac5f22359a42850",
+    "bytes": 8192,
+    "mode": 432
+  },
+  "mysql/time_zone_name.frm": {
+    "sha256": "cbabb85543ac3bb926154b70d04c52e5808d90567862ea9d645e6dcaef304da3",
+    "bytes": 1147,
+    "mode": 432
+  },
+  "mysql/time_zone_transition.MAD": {
+    "sha256": "f0e986a67b2e1c6c0b27f3f64f9be322954290b9c0129fb6504b94beecabb287",
+    "bytes": 8192,
+    "mode": 432
+  },
+  "mysql/time_zone_transition.MAI": {
+    "sha256": "e5352014e5e3b443e5b8dafca5a5b217aca7a2ee479857f1a676a455b5bf8e1d",
+    "bytes": 8192,
+    "mode": 432
+  },
+  "mysql/time_zone_transition.frm": {
+    "sha256": "ff612828df501ab878f52fbebf5c957848f7aa2a9fd957cb4cb6bc752dcb0c52",
+    "bytes": 1014,
+    "mode": 432
+  },
+  "mysql/time_zone_transition_type.MAD": {
+    "sha256": "f0e986a67b2e1c6c0b27f3f64f9be322954290b9c0129fb6504b94beecabb287",
+    "bytes": 8192,
+    "mode": 432
+  },
+  "mysql/time_zone_transition_type.MAI": {
+    "sha256": "824f15619847ff71de4aa440d9a3370ce31a0798cee3f206a9992e391d420334",
+    "bytes": 8192,
+    "mode": 432
+  },
+  "mysql/time_zone_transition_type.frm": {
+    "sha256": "bf986290636309ee77287001d4d74ff463f0415f0bc00dcf4c371cf2a14da61d",
+    "bytes": 1080,
+    "mode": 432
+  },
+  "mysql/transaction_registry.frm": {
+    "sha256": "6bc49305f6707a312ae81f8d90b9a0e766531e626833e4e5cbf9d0fb333da16b",
+    "bytes": 2624,
+    "mode": 432
+  },
+  "mysql/transaction_registry.ibd": {
+    "sha256": "6bd9f1915e7c89242239c74b1b0f3292cf54406419c5beda87a35dffa6674efb",
+    "bytes": 114688,
+    "mode": 432
+  },
+  "mysql/user.frm": {
+    "sha256": "0a6154e0f65b7d3525c31d84b7d0423ce9f9c5bc035a301651a27b83184a1485",
+    "bytes": 13612,
+    "mode": 432
+  },
+  "performance_schema/db.opt": {
+    "sha256": "72a584704be83015c95d6644887ce3b0fc9976bfbddc1548afbaf9134848ed2f",
+    "bytes": 67,
+    "mode": 432
+  },
+  "sr_release_fixture/FTS_000000000000006b_0000000000000131_INDEX_1.ibd": {
+    "sha256": "93d3977428cf4f5abbb1d60d9f9a18b155b7fd759ae21e336f53ca63301b00a6",
+    "bytes": 65536,
+    "mode": 432
+  },
+  "sr_release_fixture/FTS_000000000000006b_0000000000000131_INDEX_2.ibd": {
+    "sha256": "d237e27b0d797c6b8b84627717f97600158fd8344af80370b0b0c3dcb37c2882",
+    "bytes": 65536,
+    "mode": 432
+  },
+  "sr_release_fixture/FTS_000000000000006b_0000000000000131_INDEX_3.ibd": {
+    "sha256": "9ad252da49bfdd823343483d2c58704ad3ad92e3bd171c58305fa88519af66e6",
+    "bytes": 65536,
+    "mode": 432
+  },
+  "sr_release_fixture/FTS_000000000000006b_0000000000000131_INDEX_4.ibd": {
+    "sha256": "efd0df39c55c580501bb65d9174cdc7c8cb42913ec34fa745ce3d0efbfc2bd8e",
+    "bytes": 65536,
+    "mode": 432
+  },
+  "sr_release_fixture/FTS_000000000000006b_0000000000000131_INDEX_5.ibd": {
+    "sha256": "889b6a91fba169db5ed7295c96f83504587938a5e0e2923649a99f9e731dcc5e",
+    "bytes": 65536,
+    "mode": 432
+  },
+  "sr_release_fixture/FTS_000000000000006b_0000000000000131_INDEX_6.ibd": {
+    "sha256": "efa727df78a42b7f2c212d7bb068dd1e60ecf87a234f04fb48239ac0a6f7fdb4",
+    "bytes": 65536,
+    "mode": 432
+  },
+  "sr_release_fixture/FTS_000000000000006b_BEING_DELETED.ibd": {
+    "sha256": "d9b09f8b5efb0e78bbcb285094030ce8df21868d9ab0316202cdbce643fa5857",
+    "bytes": 65536,
+    "mode": 432
+  },
+  "sr_release_fixture/FTS_000000000000006b_BEING_DELETED_CACHE.ibd": {
+    "sha256": "6ef80cd77fb8503a08881f8231ff03f9d9b825b228eb684abd783590608d8abc",
+    "bytes": 65536,
+    "mode": 432
+  },
+  "sr_release_fixture/FTS_000000000000006b_CONFIG.ibd": {
+    "sha256": "23fb153ef12c7672b2d48c5826bc94c4de296355404300fad169be9ffe38235a",
+    "bytes": 65536,
+    "mode": 432
+  },
+  "sr_release_fixture/FTS_000000000000006b_DELETED.ibd": {
+    "sha256": "a5b8f9e2e1133ba2d8701b40a9a76b24165008592204349a8f190f2f6401aa06",
+    "bytes": 65536,
+    "mode": 432
+  },
+  "sr_release_fixture/FTS_000000000000006b_DELETED_CACHE.ibd": {
+    "sha256": "675e02096f6ce8f5fccf456db4ed667a16c714e75c0e31c0c366259fcc0c7e4f",
+    "bytes": 65536,
+    "mode": 432
+  },
+  "sr_release_fixture/db.opt": {
+    "sha256": "4b99820a17c2f6847d05ab6b41f769def789276c99dbfac7dc0df1b5f021d088",
+    "bytes": 67,
+    "mode": 432
+  },
+  "sr_release_fixture/wp_actionscheduler_actions.frm": {
+    "sha256": "3938b0bf62760e69710f2564abc48545aacf593bfed4a7f5077fd2f45c079d40",
+    "bytes": 39387,
+    "mode": 432
+  },
+  "sr_release_fixture/wp_actionscheduler_actions.ibd": {
+    "sha256": "d3054740ac6af7da10e080e9f7503d39fd6e1f6169436233a348e798877caed5",
+    "bytes": 10485760,
+    "mode": 432
+  },
+  "sr_release_fixture/wp_actionscheduler_claims.frm": {
+    "sha256": "55ca1332b0a0b606f75f8f3d7ea4d010303438d19c16e4c47dfb653188030b55",
+    "bytes": 1464,
+    "mode": 432
+  },
+  "sr_release_fixture/wp_actionscheduler_claims.ibd": {
+    "sha256": "68c62504bc2fe39d6aedaa8691c03c9d3e8913cb60b20d6e43bf2c3d9d8f2dbc",
+    "bytes": 81920,
+    "mode": 432
+  },
+  "sr_release_fixture/wp_actionscheduler_groups.frm": {
+    "sha256": "c5243e77c95c20659073146f075bc47e9de96a883c40911573d4205bc17db1d7",
+    "bytes": 2468,
+    "mode": 432
+  },
+  "sr_release_fixture/wp_actionscheduler_groups.ibd": {
+    "sha256": "dd8e781363dd52fc362d7c35d16dc23081e30bd0d15c1ffe0e75197e62c9bbf0",
+    "bytes": 81920,
+    "mode": 432
+  },
+  "sr_release_fixture/wp_actionscheduler_logs.frm": {
+    "sha256": "3492d97b8c6cff6eafb3fece5d6dc09d0256072b51ae51ac67aec6d7fbbe559d",
+    "bytes": 2055,
+    "mode": 432
+  },
+  "sr_release_fixture/wp_actionscheduler_logs.ibd": {
+    "sha256": "885aa236cb833ed87d8a37590b7f922b550cf3355404dca3a28bf103b5069720",
+    "bytes": 409600,
+    "mode": 432
+  },
+  "sr_release_fixture/wp_commentmeta.frm": {
+    "sha256": "c1c796e14756fdf8f89b29570ca0eaa17415a561384f1a9eb9ceed6816958df1",
+    "bytes": 3038,
+    "mode": 432
+  },
+  "sr_release_fixture/wp_commentmeta.ibd": {
+    "sha256": "bd1953eb0832be09c6bed47e0eb017348f8e4c59c19cb942d2ea17782675140c",
+    "bytes": 163840,
+    "mode": 432
+  },
+  "sr_release_fixture/wp_comments.frm": {
+    "sha256": "28afd1288159a5ec8b3bca8d4980e20a82cf2a916b9686e673b4dbf1af503133",
+    "bytes": 8157,
+    "mode": 432
+  },
+  "sr_release_fixture/wp_comments.ibd": {
+    "sha256": "655a7f33a17af086e5058de73f433cbe6d6ffb26537b335a80ae09ae64f66b49",
+    "bytes": 393216,
+    "mode": 432
+  },
+  "sr_release_fixture/wp_e_events.frm": {
+    "sha256": "a846611d53f95319fe0f06612bc64846bc869ebc46c53b255331d1f262d13637",
+    "bytes": 1490,
+    "mode": 432
+  },
+  "sr_release_fixture/wp_e_events.ibd": {
+    "sha256": "aba568590a794a3f987d24f44734d05f0873b8448cfe06aee03a573607d82c3f",
+    "bytes": 81920,
+    "mode": 432
+  },
+  "sr_release_fixture/wp_kirki_cm_reference.frm": {
+    "sha256": "fc8f8d4899a94d9276b7e5c5ea96bd236865d03edfc79c010e63ebef3dbcc36c",
+    "bytes": 3032,
+    "mode": 432
+  },
+  "sr_release_fixture/wp_kirki_cm_reference.ibd": {
+    "sha256": "d6b7f910b20f05aa465511eb73eeda9c89c5b85c43b0168598ae43865f103251",
+    "bytes": 98304,
+    "mode": 432
+  },
+  "sr_release_fixture/wp_kirki_collaborations.frm": {
+    "sha256": "2a12c22686a7983048b215a8051c0252ee336dfcbd57c6148afe56d73d717da0",
+    "bytes": 2456,
+    "mode": 432
+  },
+  "sr_release_fixture/wp_kirki_collaborations.ibd": {
+    "sha256": "6594a1e32019a7e9c64b7961315d02c7dd6fbf0aef3e5b27005f47b8d7ff72b6",
+    "bytes": 65536,
+    "mode": 432
+  },
+  "sr_release_fixture/wp_kirki_collaborations_connected.frm": {
+    "sha256": "4bb740b28b85b36f61e534dfbd6e1be6ce4447c1d92f90abf342c7a437a66c72",
+    "bytes": 1289,
+    "mode": 432
+  },
+  "sr_release_fixture/wp_kirki_collaborations_connected.ibd": {
+    "sha256": "765f68418e3757f39c87c0c0844b40dbbb54ed1ea9756de378c2291fee047905",
+    "bytes": 65536,
+    "mode": 432
+  },
+  "sr_release_fixture/wp_kirki_collaborations_sent.frm": {
+    "sha256": "ad7adeda5cd25d3b0050de866287d4f1587f9f43faab140a7a94bd915451f6d7",
+    "bytes": 1265,
+    "mode": 432
+  },
+  "sr_release_fixture/wp_kirki_collaborations_sent.ibd": {
+    "sha256": "eb7e36f8f2db6b0a8d1cc316a822667fc3f976cc15e4a04afb4ca0b8e7d0b135",
+    "bytes": 65536,
+    "mode": 432
+  },
+  "sr_release_fixture/wp_kirki_comments.frm": {
+    "sha256": "c62f646e42e8e6573d9b568c3e779f3a421ae56133177412c5fa1a7755a604a7",
+    "bytes": 2728,
+    "mode": 432
+  },
+  "sr_release_fixture/wp_kirki_comments.ibd": {
+    "sha256": "f8787dafe06d7e32d245bb22bdf56d7cd792431c5e9e0220ed89b1b98f2d050b",
+    "bytes": 81920,
+    "mode": 432
+  },
+  "sr_release_fixture/wp_kirki_comments_seen.frm": {
+    "sha256": "4725c4346ff2a3a5f91e6946c37fcaeb14c679ee445d1a6043f5317140700c9c",
+    "bytes": 1978,
+    "mode": 432
+  },
+  "sr_release_fixture/wp_kirki_comments_seen.ibd": {
+    "sha256": "0fe138f49bc4e4f7a4bd8229de0a49fb465093d023c8b65600b8dd0064e3d549",
+    "bytes": 98304,
+    "mode": 432
+  },
+  "sr_release_fixture/wp_kirki_forms.frm": {
+    "sha256": "8791f904bc66f8d58bb3f260c988cfc7fb7d138af66b9ce8900f80b93a65fb52",
+    "bytes": 3122,
+    "mode": 432
+  },
+  "sr_release_fixture/wp_kirki_forms.ibd": {
+    "sha256": "46df47c39a3530738a53ffe8d1252fb53a43f119846a35d7e5a5635823685004",
+    "bytes": 65536,
+    "mode": 432
+  },
+  "sr_release_fixture/wp_kirki_forms_data.frm": {
+    "sha256": "57e5fe2f461c9457eb91f2e57dbf5d6233b018ed05d38fbe2886d415018afdaa",
+    "bytes": 12145,
+    "mode": 432
+  },
+  "sr_release_fixture/wp_kirki_forms_data.ibd": {
+    "sha256": "3d81669f939cefe4e61e56f6b6602420fc96718e2caccd5245be4738f388dbb5",
+    "bytes": 81920,
+    "mode": 432
+  },
+  "sr_release_fixture/wp_kirki_stage_data.frm": {
+    "sha256": "258ccfc73a8fa5a88766b32ad283ab45aa630fe3bc8dd4b71e9e7c3d81b34ba2",
+    "bytes": 2285,
+    "mode": 432
+  },
+  "sr_release_fixture/wp_kirki_stage_data.ibd": {
+    "sha256": "690303b330ab108be0a3d7fa66103b8024e9bc87e34b123083fe2d6a6ef26b22",
+    "bytes": 81920,
+    "mode": 432
+  },
+  "sr_release_fixture/wp_kirki_stages.frm": {
+    "sha256": "aa9d4f8630cacb2370353977974f6ece0be835765b2d06fba7c2da76b2f6e545",
+    "bytes": 3904,
+    "mode": 432
+  },
+  "sr_release_fixture/wp_kirki_stages.ibd": {
+    "sha256": "fd2004f03fd333f95f421de6733e79b89c4d19f1ba747d4a9baeab094173dc81",
+    "bytes": 114688,
+    "mode": 432
+  },
+  "sr_release_fixture/wp_links.frm": {
+    "sha256": "4641fdb248c82f042711e1b766e00fad128553792314d7231406284a82c9865e",
+    "bytes": 8106,
+    "mode": 432
+  },
+  "sr_release_fixture/wp_links.ibd": {
+    "sha256": "875a85b6fa6080e589269e8d9220df0906025afd2fb395c7bf26f8b54dfa34b0",
+    "bytes": 81920,
+    "mode": 432
+  },
+  "sr_release_fixture/wp_litespeed_url.frm": {
+    "sha256": "b24d3e6b06a07b5a9c4f3d6b6597a494cfb1375609da5ada4deb898dbd034278",
+    "bytes": 7961,
+    "mode": 432
+  },
+  "sr_release_fixture/wp_litespeed_url.ibd": {
+    "sha256": "8e36cf2960c072d9a7de39e3a4391b40e3ad8082d586c0d4228588f304111b41",
+    "bytes": 98304,
+    "mode": 432
+  },
+  "sr_release_fixture/wp_litespeed_url_file.frm": {
+    "sha256": "46f9eb1c736c8c737cd5723d0f404b4b6babfa3fe03648370b745eb7297ec8fb",
+    "bytes": 3890,
+    "mode": 432
+  },
+  "sr_release_fixture/wp_litespeed_url_file.ibd": {
+    "sha256": "fded398ef7cbbf5d76140cd02ba598140750829c284dc1f4b6785f7d65f1bca4",
+    "bytes": 147456,
+    "mode": 432
+  },
+  "sr_release_fixture/wp_mailpoet_automation_run_logs.frm": {
+    "sha256": "65388d0b7aac0f2877ca976fce1bef6859adc384e69d47d5c444825c29036eb8",
+    "bytes": 6277,
+    "mode": 432
+  },
+  "sr_release_fixture/wp_mailpoet_automation_run_logs.ibd": {
+    "sha256": "3ea6cd611def6565b146e8fb030c3838afa2628b66fb3c420835e42917268fc4",
+    "bytes": 147456,
+    "mode": 432
+  },
+  "sr_release_fixture/wp_mailpoet_automation_run_subjects.frm": {
+    "sha256": "4ab08e480199b4ceec602302c21545320f29c0b06cc7e205230acd30b9c1527b",
+    "bytes": 3553,
+    "mode": 432
+  },
+  "sr_release_fixture/wp_mailpoet_automation_run_subjects.ibd": {
+    "sha256": "ecc71d8b7ee737d503ad3367825e2adfbe3ed3fa0381ce9aed8756181126bdfb",
+    "bytes": 98304,
+    "mode": 432
+  },
+  "sr_release_fixture/wp_mailpoet_automation_runs.frm": {
+    "sha256": "6b2ac9a28d33a7b2085ae72c42ed4dac03034c5de1c2ed845ec1b6e668e591c0",
+    "bytes": 5887,
+    "mode": 432
+  },
+  "sr_release_fixture/wp_mailpoet_automation_runs.ibd": {
+    "sha256": "57646c6859c1acabeea71c21dd562cb3fad6ca4f009de7723ab3d442f22de0c4",
+    "bytes": 163840,
+    "mode": 432
+  },
+  "sr_release_fixture/wp_mailpoet_automation_triggers.frm": {
+    "sha256": "a7aa5a8f43d56e0bb762e49df61aaf2c7fe6157a27e879be87fe463b3207bd60",
+    "bytes": 1730,
+    "mode": 432
+  },
+  "sr_release_fixture/wp_mailpoet_automation_triggers.ibd": {
+    "sha256": "a0a9c219b256d394b00a227c9336e474600341b8e7b282aa9fbfb0bdac2f6e8b",
+    "bytes": 65536,
+    "mode": 432
+  },
+  "sr_release_fixture/wp_mailpoet_automation_versions.frm": {
+    "sha256": "d7c2bd4358e8add53b03901a360a8465432f4e5b671f37f8ff45f07caa47b89e",
+    "bytes": 1549,
+    "mode": 432
+  },
+  "sr_release_fixture/wp_mailpoet_automation_versions.ibd": {
+    "sha256": "a91163b3607aee639d79784eb0156ec433968d3efef878ba8371e28b89b8070e",
+    "bytes": 81920,
+    "mode": 432
+  },
+  "sr_release_fixture/wp_mailpoet_automations.frm": {
+    "sha256": "ad8aa9687e4116c114d77b470166f14ab3699cc4830c439f1f7140a657887fa8",
+    "bytes": 2699,
+    "mode": 432
+  },
+  "sr_release_fixture/wp_mailpoet_automations.ibd": {
+    "sha256": "c15b7c626496324dcbd68aade2d7a977a8076abe936652955218d31bf03e0b66",
+    "bytes": 81920,
+    "mode": 432
+  },
+  "sr_release_fixture/wp_mailpoet_custom_fields.frm": {
+    "sha256": "0c3bc5647739acdff8614777fcee0c91dd154b5ca43024570a83af99800831da",
+    "bytes": 2315,
+    "mode": 432
+  },
+  "sr_release_fixture/wp_mailpoet_custom_fields.ibd": {
+    "sha256": "886a6a3594237ce9d99cc270dbdfd3ecab7906d28875b5f17b7577e595769036",
+    "bytes": 81920,
+    "mode": 432
+  },
+  "sr_release_fixture/wp_mailpoet_dynamic_segment_filters.frm": {
+    "sha256": "2ffa7cba25155f3f362f41406794f4efa51fa524ef24fe7a42538db6013e3d0e",
+    "bytes": 3649,
+    "mode": 432
+  },
+  "sr_release_fixture/wp_mailpoet_dynamic_segment_filters.ibd": {
+    "sha256": "29aa412212245f12cb98001eb70305e9af370b1cb746d24a06b6a444843cea78",
+    "bytes": 81920,
+    "mode": 432
+  },
+  "sr_release_fixture/wp_mailpoet_feature_flags.frm": {
+    "sha256": "1cce8371e3d7758a40e4da7d7fb5587856ecc18e8372a9dc3d68056647d7cf56",
+    "bytes": 1927,
+    "mode": 432
+  },
+  "sr_release_fixture/wp_mailpoet_feature_flags.ibd": {
+    "sha256": "5291d13af269e625ecce4acb24f044daa28ef68b37115eb9c8380f8e5aab1dcb",
+    "bytes": 81920,
+    "mode": 432
+  },
+  "sr_release_fixture/wp_mailpoet_forms.frm": {
+    "sha256": "fea131e674872cfa8c69ee25c435f21a5f53e3e13f1faf0ec3f01f1ae7ffd1ce",
+    "bytes": 1618,
+    "mode": 432
+  },
+  "sr_release_fixture/wp_mailpoet_forms.ibd": {
+    "sha256": "2192da8e6fd925ea627225801b24450b7be95fbea4bd5db0c8e6cc60bf86aff9",
+    "bytes": 65536,
+    "mode": 432
+  },
+  "sr_release_fixture/wp_mailpoet_log.frm": {
+    "sha256": "17245b41dfb8e92e34d022f1b49084ef23b7baafbd0f9781bc41493f1da9bd52",
+    "bytes": 3127,
+    "mode": 432
+  },
+  "sr_release_fixture/wp_mailpoet_log.ibd": {
+    "sha256": "27d7037d2947982b0dcb4be02772ac5bb39d5f1e679d454c469667610ff2defd",
+    "bytes": 98304,
+    "mode": 432
+  },
+  "sr_release_fixture/wp_mailpoet_migrations.frm": {
+    "sha256": "6f8df42be24b9eca68f4f331cba48ac56d350adc9526e8987bbe23ac89107ee8",
+    "bytes": 2331,
+    "mode": 432
+  },
+  "sr_release_fixture/wp_mailpoet_migrations.ibd": {
+    "sha256": "9b1519d1a4bbf16f1a1d9fde202c8f7ba35d77783df96dcd57afd4ec079fdce8",
+    "bytes": 81920,
+    "mode": 432
+  },
+  "sr_release_fixture/wp_mailpoet_newsletter_links.frm": {
+    "sha256": "90825dd3defe4fb6147b4a532c2c6d0f200a19a77175b8dd83e16c1a7e621043",
+    "bytes": 10982,
+    "mode": 432
+  },
+  "sr_release_fixture/wp_mailpoet_newsletter_links.ibd": {
+    "sha256": "8611def23ebfaf09339df4d8e14a31c1fd1f1f581e72827b4cc437eef396254c",
+    "bytes": 114688,
+    "mode": 432
+  },
+  "sr_release_fixture/wp_mailpoet_newsletter_option.frm": {
+    "sha256": "3fee4a2c55037771f174869ace63be02726fbbd0d3972e78e2dec3eb5a82c248",
+    "bytes": 1586,
+    "mode": 432
+  },
+  "sr_release_fixture/wp_mailpoet_newsletter_option.ibd": {
+    "sha256": "33a743538b62a0c3877987a329f5046f42e17b4d5599129da85a052808b20c67",
+    "bytes": 81920,
+    "mode": 432
+  },
+  "sr_release_fixture/wp_mailpoet_newsletter_option_fields.frm": {
+    "sha256": "520ce5d0bef0af62f75cd971b41d0be1ec5e769e727d5bdb10037e1541e37abb",
+    "bytes": 2258,
+    "mode": 432
+  },
+  "sr_release_fixture/wp_mailpoet_newsletter_option_fields.ibd": {
+    "sha256": "85ef2431ddb3c9daa82b012917855802994f70e386ab17c7d90ff5fb0f8f5e44",
+    "bytes": 81920,
+    "mode": 432
+  },
+  "sr_release_fixture/wp_mailpoet_newsletter_posts.frm": {
+    "sha256": "643dff913f8cc723e699a43fd16d620f4e80a85b05aed4b0b6e67b33deb96c53",
+    "bytes": 1543,
+    "mode": 432
+  },
+  "sr_release_fixture/wp_mailpoet_newsletter_posts.ibd": {
+    "sha256": "cdb6b43fa290e4003a7cf09877b058e20bddb88b67e8c16c8c24b0ac4bcc5281",
+    "bytes": 81920,
+    "mode": 432
+  },
+  "sr_release_fixture/wp_mailpoet_newsletter_segment.frm": {
+    "sha256": "90172b9b42be228a263eb70cb8b5a7f0db59d8f146ef51eb02e82bfb521497cd",
+    "bytes": 1546,
+    "mode": 432
+  },
+  "sr_release_fixture/wp_mailpoet_newsletter_segment.ibd": {
+    "sha256": "177eafa116ba7d33d767fd27d23e76c55ae0a4c067ceb3949aef567344b4db20",
+    "bytes": 81920,
+    "mode": 432
+  },
+  "sr_release_fixture/wp_mailpoet_newsletter_templates.frm": {
+    "sha256": "550581e2aab49c223c07fc2369ef70fac2176cd0356a36cde074c5550cbe806f",
+    "bytes": 4273,
+    "mode": 432
+  },
+  "sr_release_fixture/wp_mailpoet_newsletter_templates.ibd": {
+    "sha256": "1e84ef18fc5ad1d0770e81c4bac947c546d55db70ebd074985920444747e4d4d",
+    "bytes": 10485760,
+    "mode": 432
+  },
+  "sr_release_fixture/wp_mailpoet_newsletters.frm": {
+    "sha256": "e02e100bcea16968e8cdbbddd7946c6c952ae255c18c0019b4c7ebd21efd11b5",
+    "bytes": 9686,
+    "mode": 432
+  },
+  "sr_release_fixture/wp_mailpoet_newsletters.ibd": {
+    "sha256": "315882bc0f0b97f74abe5a3a45514d2a5a78a63bbe5424db4d0546192b40e50c",
+    "bytes": 114688,
+    "mode": 432
+  },
+  "sr_release_fixture/wp_mailpoet_scheduled_task_subscribers.frm": {
+    "sha256": "07740ee642ac0f04a4e7d4f0ad219d7a090c9ccf2333c4194722b51361393706",
+    "bytes": 1609,
+    "mode": 432
+  },
+  "sr_release_fixture/wp_mailpoet_scheduled_task_subscribers.ibd": {
+    "sha256": "41b769fb51b0de7bf71d80f071f41961f2fc8628b3bc0fccb7b24f1f14052de1",
+    "bytes": 81920,
+    "mode": 432
+  },
+  "sr_release_fixture/wp_mailpoet_scheduled_tasks.frm": {
+    "sha256": "93a8bea7ef1492de4baf98915d3dc1332ed558688e1c3045dc3d1fe7020fa58b",
+    "bytes": 2695,
+    "mode": 432
+  },
+  "sr_release_fixture/wp_mailpoet_scheduled_tasks.ibd": {
+    "sha256": "ccb815f372c9652e65d6c60c0f3fdf6dba5683d4fd5a00d3ef0d90dc6429b917",
+    "bytes": 98304,
+    "mode": 432
+  },
+  "sr_release_fixture/wp_mailpoet_segments.frm": {
+    "sha256": "71b1183f46087d0ce32f8648e3df5389fd862d465d48dd7a13d948a854f91a75",
+    "bytes": 4088,
+    "mode": 432
+  },
+  "sr_release_fixture/wp_mailpoet_segments.ibd": {
+    "sha256": "7a59e7229264833e7c21d55b00a5d54a29a00a3e6fa5b5df3da818259d1ee9d0",
+    "bytes": 98304,
+    "mode": 432
+  },
+  "sr_release_fixture/wp_mailpoet_sending_queues.frm": {
+    "sha256": "b845978be36c0008d0450655b6fed5d7df8354faa94eb0c9bb7cfb7589e01ed0",
+    "bytes": 3349,
+    "mode": 432
+  },
+  "sr_release_fixture/wp_mailpoet_sending_queues.ibd": {
+    "sha256": "8ca3b1116281ab9fba1fe6bda2ef28b248846bf75e0db29ff1a3640b3c4dbd7c",
+    "bytes": 98304,
+    "mode": 432
+  },
+  "sr_release_fixture/wp_mailpoet_settings.frm": {
+    "sha256": "ab926a4c1ebd00f81297939b7ab01edc9d12e17131381fb666db9b0e3526456f",
+    "bytes": 1737,
+    "mode": 432
+  },
+  "sr_release_fixture/wp_mailpoet_settings.ibd": {
+    "sha256": "423939e780f9a90618e13b21602ab5cec0f361962caebd212e6ee05c5dfa220b",
+    "bytes": 81920,
+    "mode": 432
+  },
+  "sr_release_fixture/wp_mailpoet_statistics_bounces.frm": {
+    "sha256": "12727c2ebcd0c2ce76f24039145f2f0269c57429a25c10ec73617275f311ad61",
+    "bytes": 1057,
+    "mode": 432
+  },
+  "sr_release_fixture/wp_mailpoet_statistics_bounces.ibd": {
+    "sha256": "39a0a4149cbcc160c89915a48ad401638dfd2ff1c3daa8dc79e9349583171b13",
+    "bytes": 65536,
+    "mode": 432
+  },
+  "sr_release_fixture/wp_mailpoet_statistics_clicks.frm": {
+    "sha256": "78dde7adc2efd106f0705c81709bbed5cac7054f819e22b1520b3a7c3b9a669c",
+    "bytes": 2684,
+    "mode": 432
+  },
+  "sr_release_fixture/wp_mailpoet_statistics_clicks.ibd": {
+    "sha256": "3106356eeaac83c39aeeb894f14d285979ac81cb31d7b832ebd43012b0d84f6e",
+    "bytes": 114688,
+    "mode": 432
+  },
+  "sr_release_fixture/wp_mailpoet_statistics_forms.frm": {
+    "sha256": "da37dc6369620868dfc45f16d129eb75ac9f1ffe60f310af91a92e194e286fbd",
+    "bytes": 1511,
+    "mode": 432
+  },
+  "sr_release_fixture/wp_mailpoet_statistics_forms.ibd": {
+    "sha256": "06cc7bfc1c20c60b9d4784aebdf8245386126b02b710ca71a6ae413dff3bde4c",
+    "bytes": 81920,
+    "mode": 432
+  },
+  "sr_release_fixture/wp_mailpoet_statistics_newsletters.frm": {
+    "sha256": "37615bd297e52ac11c4385432d6c532aa2c77f56b3f9be5795f296874b08728e",
+    "bytes": 3051,
+    "mode": 432
+  },
+  "sr_release_fixture/wp_mailpoet_statistics_newsletters.ibd": {
+    "sha256": "9dc456a0683afb781590ac204e831e4f71627db0a3c2dc0d649cd120d21bd80d",
+    "bytes": 147456,
+    "mode": 432
+  },
+  "sr_release_fixture/wp_mailpoet_statistics_opens.frm": {
+    "sha256": "39a991b884a01907b6ac941036764bf65c86edff68397fe955d37c25155fe055",
+    "bytes": 3576,
+    "mode": 432
+  },
+  "sr_release_fixture/wp_mailpoet_statistics_opens.ibd": {
+    "sha256": "af2eb0625d8a0b9605a581cff28de058bd39bc415872a50f8254081163d9f116",
+    "bytes": 147456,
+    "mode": 432
+  },
+  "sr_release_fixture/wp_mailpoet_statistics_unsubscribes.frm": {
+    "sha256": "abb821660c27cec97a2af55ece4d6736cd5fa592af1ef0e88961b437a94ba232",
+    "bytes": 5718,
+    "mode": 432
+  },
+  "sr_release_fixture/wp_mailpoet_statistics_unsubscribes.ibd": {
+    "sha256": "86fcd4294ae9cec9dd8c29606ecd4a4f5c5349c4b93fae604258ad9eb8bac7bb",
+    "bytes": 131072,
+    "mode": 432
+  },
+  "sr_release_fixture/wp_mailpoet_statistics_woocommerce_purchases.frm": {
+    "sha256": "ce5985cd6c43f7f5d62b7f5b8706f7c595faa26349ae3567bc2bc4af23db8747",
+    "bytes": 3912,
+    "mode": 432
+  },
+  "sr_release_fixture/wp_mailpoet_statistics_woocommerce_purchases.ibd": {
+    "sha256": "8010fea89b4b6469eccd70e6cd78c6cfb94d07cb7a0611addacdff45f9a3c28d",
+    "bytes": 147456,
+    "mode": 432
+  },
+  "sr_release_fixture/wp_mailpoet_stats_notifications.frm": {
+    "sha256": "5a71c908125e9c257cc0f4f8bf9df447505d64c628ef67fc428c15f2c9a5b800",
+    "bytes": 2033,
+    "mode": 432
+  },
+  "sr_release_fixture/wp_mailpoet_stats_notifications.ibd": {
+    "sha256": "72d31fad06766f3e673504a72edf012b6459ce5e0fbe9079a10d9210bdaf55c3",
+    "bytes": 98304,
+    "mode": 432
+  },
+  "sr_release_fixture/wp_mailpoet_subscriber_custom_field.frm": {
+    "sha256": "f3e1f295bdce4c31094f7898a2e2fbcbdf5ef588869d5945740cc005f0aa0705",
+    "bytes": 1584,
+    "mode": 432
+  },
+  "sr_release_fixture/wp_mailpoet_subscriber_custom_field.ibd": {
+    "sha256": "9858c2a7c82b2b64aff0887c50e88eb1d954b613083c2e3dbe19d1b2b581543c",
+    "bytes": 81920,
+    "mode": 432
+  },
+  "sr_release_fixture/wp_mailpoet_subscriber_ips.frm": {
+    "sha256": "d358a7e309c84768b3ea9fe8bce99eb30e35bca56310681a0ea078e5af9459d0",
+    "bytes": 1623,
+    "mode": 432
+  },
+  "sr_release_fixture/wp_mailpoet_subscriber_ips.ibd": {
+    "sha256": "673f509e5573f383293935e06f527975a26e03f889b2faf611e95f88b9a4aacb",
+    "bytes": 81920,
+    "mode": 432
+  },
+  "sr_release_fixture/wp_mailpoet_subscriber_segment.frm": {
+    "sha256": "2aaf6ea8101761750f5242cce30b6a826b93f99682a9260ad904e58454908555",
+    "bytes": 2599,
+    "mode": 432
+  },
+  "sr_release_fixture/wp_mailpoet_subscriber_segment.ibd": {
+    "sha256": "8d6229a92f38ca5d11151f9440da39312fce6e4dad940e6b66c0f47bdf8cda30",
+    "bytes": 114688,
+    "mode": 432
+  },
+  "sr_release_fixture/wp_mailpoet_subscriber_tag.frm": {
+    "sha256": "2317f7bbf855360ff057fa5dae96d90e93743ba44c44b6ac452e42b07d9d784c",
+    "bytes": 2032,
+    "mode": 432
+  },
+  "sr_release_fixture/wp_mailpoet_subscriber_tag.ibd": {
+    "sha256": "c018125529858fcc6782554944cee61ebba8d329a4fac0d2c3960a423826edaf",
+    "bytes": 98304,
+    "mode": 432
+  },
+  "sr_release_fixture/wp_mailpoet_subscribers.frm": {
+    "sha256": "a6cdb4334b456da1703c223819813bd13c3e7c7100900df01cfd388ee1f73144",
+    "bytes": 15118,
+    "mode": 432
+  },
+  "sr_release_fixture/wp_mailpoet_subscribers.ibd": {
+    "sha256": "c638f07f63dde55b2fa2f3afa5d177dfd20a7903a7632bd383aefdc452322a42",
+    "bytes": 360448,
+    "mode": 432
+  },
+  "sr_release_fixture/wp_mailpoet_tags.frm": {
+    "sha256": "2490845ab57b515b6367d36f85f0ac7b7c8b5836f937b74bb0506267056a7c70",
+    "bytes": 2341,
+    "mode": 432
+  },
+  "sr_release_fixture/wp_mailpoet_tags.ibd": {
+    "sha256": "6bb1f541d55e820a9f111a6870db0e0940a027765ecca7920e1831fe23e02eda",
+    "bytes": 81920,
+    "mode": 432
+  },
+  "sr_release_fixture/wp_mailpoet_user_agents.frm": {
+    "sha256": "bb074febcec95fbe39af56be170286685a44cdf48f1f6f33e91f38885cabc0e7",
+    "bytes": 1668,
+    "mode": 432
+  },
+  "sr_release_fixture/wp_mailpoet_user_agents.ibd": {
+    "sha256": "ca873ddb96e1f9fed8cef400a01816f2f421e2306b3341d7872f2b449a011d9a",
+    "bytes": 81920,
+    "mode": 432
+  },
+  "sr_release_fixture/wp_mailpoet_user_flags.frm": {
+    "sha256": "eae1f53e86d70159dc293fba587d4e56cf4466deccddb4956df0847af3ca7f68",
+    "bytes": 2780,
+    "mode": 432
+  },
+  "sr_release_fixture/wp_mailpoet_user_flags.ibd": {
+    "sha256": "567d4c74f8b95d0590821e275efe624b8b8b99828394cdaa7f3ba08b8bdca19c",
+    "bytes": 81920,
+    "mode": 432
+  },
+  "sr_release_fixture/wp_oauth_access_tokens.frm": {
+    "sha256": "afb2463a62e6aba1bbaea98dcd119db574d7f1e01e5a97494662fad0c53a74db",
+    "bytes": 22566,
+    "mode": 432
+  },
+  "sr_release_fixture/wp_oauth_access_tokens.ibd": {
+    "sha256": "efec2b17a300d6eeb81dfbd6c76b42c867dde04e9168b70d5b86e9a9c4d191cc",
+    "bytes": 65536,
+    "mode": 432
+  },
+  "sr_release_fixture/wp_oauth_authorization_codes.frm": {
+    "sha256": "63f0a4c2365dd1bd1b83975295668595b1ea5a58ddcee7f8cb10fffe0eb75ab9",
+    "bytes": 43649,
+    "mode": 432
+  },
+  "sr_release_fixture/wp_oauth_authorization_codes.ibd": {
+    "sha256": "d2300a15dfb1a39136de8151930983c65ef8abfadae06d76ee5b07d4539031dc",
+    "bytes": 81920,
+    "mode": 432
+  },
+  "sr_release_fixture/wp_oauth_jwt.frm": {
+    "sha256": "f68119bbb453c578ec469b87db9a9003af6f2fb4b25ae9bfba696e4fb5cb8417",
+    "bytes": 10561,
+    "mode": 432
+  },
+  "sr_release_fixture/wp_oauth_jwt.ibd": {
+    "sha256": "3d691ecd19933e0ecd30d611cc7e2b0a9fd844da50d4e9ec029ed6c1f4b89922",
+    "bytes": 81920,
+    "mode": 432
+  },
+  "sr_release_fixture/wp_oauth_public_keys.frm": {
+    "sha256": "f045cd75ac007f37992fdcd316cf1014cd3c7e993c8966eaa092d05eeb2234df",
+    "bytes": 18685,
+    "mode": 432
+  },
+  "sr_release_fixture/wp_oauth_public_keys.ibd": {
+    "sha256": "1079ef4f4da9032510cf910face928f5ebf4389bcef2da3d3dddfd5663c0f7a8",
+    "bytes": 81920,
+    "mode": 432
+  },
+  "sr_release_fixture/wp_oauth_refresh_tokens.frm": {
+    "sha256": "e11f204474260d24d189cd5c32f2da496c790d11b4b6d961d411503b169d168c",
+    "bytes": 19382,
+    "mode": 432
+  },
+  "sr_release_fixture/wp_oauth_refresh_tokens.ibd": {
+    "sha256": "9446b4a9fb5769765c44aaa2c2c4ab79694ebc6abce5b331e70770dc283942e8",
+    "bytes": 81920,
+    "mode": 432
+  },
+  "sr_release_fixture/wp_oauth_scopes.frm": {
+    "sha256": "bde1294a89887e9023bfc57e8b7cfdcf62a797fdf51b477a259b2a394c9b0554",
+    "bytes": 1299,
+    "mode": 432
+  },
+  "sr_release_fixture/wp_oauth_scopes.ibd": {
+    "sha256": "1a4e3de1eb4e532ae710929049c2cc4e20a132f4a6e03e7f67e6a5888a8294f1",
+    "bytes": 65536,
+    "mode": 432
+  },
+  "sr_release_fixture/wp_options.frm": {
+    "sha256": "935c5737a4dbc32f89950c429e27174b0cd69cc9b6a7fca00ebc6e05a242bbc2",
+    "bytes": 2859,
+    "mode": 432
+  },
+  "sr_release_fixture/wp_options.ibd": {
+    "sha256": "763f36d7d9e96ad54ca11a8fe4b8a02a34cb215b7b2eecc2732336c87f7490ed",
+    "bytes": 11534336,
+    "mode": 432
+  },
+  "sr_release_fixture/wp_postmeta.frm": {
+    "sha256": "4266c6cdf23f65825165f0ec0acfb03f14c24ca5e2fec11d76d6ba973cdb542a",
+    "bytes": 3035,
+    "mode": 432
+  },
+  "sr_release_fixture/wp_postmeta.ibd": {
+    "sha256": "1f59eb548e5435bab8b8aa0e4d9e1c556e756facd784ae067ea21adccef66a28",
+    "bytes": 14680064,
+    "mode": 432
+  },
+  "sr_release_fixture/wp_posts.frm": {
+    "sha256": "c6dd2dc424cd19b98ff878085c47c910fc72de5056c94b1cc04a73cdb33c6eb4",
+    "bytes": 7708,
+    "mode": 432
+  },
+  "sr_release_fixture/wp_posts.ibd": {
+    "sha256": "66bcb5c4868d7b9a059228b034b1ed0332afba3f84b567601c2085819b1cae13",
+    "bytes": 10485760,
+    "mode": 432
+  },
+  "sr_release_fixture/wp_site_mail_logs.frm": {
+    "sha256": "178027501359550ce50ed9ed2a544c96dcc064436c4a4fcff2eab647c003be1d",
+    "bytes": 6867,
+    "mode": 432
+  },
+  "sr_release_fixture/wp_site_mail_logs.ibd": {
+    "sha256": "54e800916e7e5083f6ea98af0c05abde7083d97ee48dd130476ba7c786611686",
+    "bytes": 81920,
+    "mode": 432
+  },
+  "sr_release_fixture/wp_site_mail_statuses.frm": {
+    "sha256": "8fbd1372c5249721337829390831247b5ae1e9fa8c51b850003f6ee26ea7b519",
+    "bytes": 4790,
+    "mode": 432
+  },
+  "sr_release_fixture/wp_site_mail_statuses.ibd": {
+    "sha256": "365dd0b51f40a48aa93622682d9dd39d75ed775403d5c7ae4f41d1d09c23ca95",
+    "bytes": 81920,
+    "mode": 432
+  },
+  "sr_release_fixture/wp_site_mail_suppressions.frm": {
+    "sha256": "d1fd5e77abe9b19e0f3fc4fc22cc48a3b1935c14e6c45587121a2ceae6819059",
+    "bytes": 3613,
+    "mode": 432
+  },
+  "sr_release_fixture/wp_site_mail_suppressions.ibd": {
+    "sha256": "86b6f82f610bfd336c850aaa0e783b83bc26c7ccdc6dfc52fa9884cd8acb0162",
+    "bytes": 81920,
+    "mode": 432
+  },
+  "sr_release_fixture/wp_stripe_tax_for_wc_calculate_tax.frm": {
+    "sha256": "116d16cfca55601629985f5d1a05af4215087a1ce0bc95324370c786f2822b05",
+    "bytes": 2662,
+    "mode": 432
+  },
+  "sr_release_fixture/wp_stripe_tax_for_wc_calculate_tax.ibd": {
+    "sha256": "e4493d81c7823fc39519fcfa1440d2131c85ed055c0682b40d676a8e40ababe5",
+    "bytes": 98304,
+    "mode": 432
+  },
+  "sr_release_fixture/wp_stripe_tax_for_wc_options.frm": {
+    "sha256": "25835c45d001c3d7cc391b1becb2317c3301f21c8baed09d559210cd48c91463",
+    "bytes": 1737,
+    "mode": 432
+  },
+  "sr_release_fixture/wp_stripe_tax_for_wc_options.ibd": {
+    "sha256": "50a8040b6e5e6e8d206b1f14185ec231ebd527f85fde2d7963fa1b7edd83d1b8",
+    "bytes": 65536,
+    "mode": 432
+  },
+  "sr_release_fixture/wp_stripe_tax_for_wc_products.frm": {
+    "sha256": "d7d20471eaef0a8ca21d8c68b94d11c4592429fe33450b21b1bb4766f315f978",
+    "bytes": 1069,
+    "mode": 432
+  },
+  "sr_release_fixture/wp_stripe_tax_for_wc_products.ibd": {
+    "sha256": "60aff210904bf7d43fbbe67ffc75ce2ccabe1baeb0e6357f3961ce88d2624147",
+    "bytes": 65536,
+    "mode": 432
+  },
+  "sr_release_fixture/wp_stripe_tax_for_wc_tax_codes.frm": {
+    "sha256": "0c83ccb47b39c03387527b5d915f0aecdb60e2baa178b4deea214cd78838de6f",
+    "bytes": 1045,
+    "mode": 432
+  },
+  "sr_release_fixture/wp_stripe_tax_for_wc_tax_codes.ibd": {
+    "sha256": "96b4528ec598195bc3eb5b693a744c171f136bad63dc4b89ac91718c11f60301",
+    "bytes": 65536,
+    "mode": 432
+  },
+  "sr_release_fixture/wp_stripe_tax_for_wc_tax_transactions.frm": {
+    "sha256": "5269dade144c405f90ad9e3443d7f68416f7a9bc56e292c9f092815babf528b2",
+    "bytes": 1024,
+    "mode": 432
+  },
+  "sr_release_fixture/wp_stripe_tax_for_wc_tax_transactions.ibd": {
+    "sha256": "7a0c7750f04c858359ad14bc20417a6ce0d7a63f0a5a08fe11fe908cfbbe6959",
+    "bytes": 81920,
+    "mode": 432
+  },
+  "sr_release_fixture/wp_term_relationships.frm": {
+    "sha256": "3f5d0f624abd6f4f733fe5b663f1df2a4d03410f26ca6d86003ca82dc73c8d8b",
+    "bytes": 1500,
+    "mode": 432
+  },
+  "sr_release_fixture/wp_term_relationships.ibd": {
+    "sha256": "757a0f0a4738bc8197929301626cb1635d4dce0818accba72572fe22c315560b",
+    "bytes": 212992,
+    "mode": 432
+  },
+  "sr_release_fixture/wp_term_taxonomy.frm": {
+    "sha256": "fff0f6612ccd6e767941ce02ba5be8dce3d4addf5b9f8e1dd7eeeebda4b78525",
+    "bytes": 2214,
+    "mode": 432
+  },
+  "sr_release_fixture/wp_term_taxonomy.ibd": {
+    "sha256": "224b303d2b2be615d6ca89b68295cf7acaa86c2d39aafbe8ed03b63f591f455b",
+    "bytes": 98304,
+    "mode": 432
+  },
+  "sr_release_fixture/wp_termmeta.frm": {
+    "sha256": "fdaa080338a0b88187eb135a6aa60ebeecc031fee02b3bd33a059e7d5c7261f8",
+    "bytes": 3035,
+    "mode": 432
+  },
+  "sr_release_fixture/wp_termmeta.ibd": {
+    "sha256": "433683a9f74de34441aa29ea62c89c6ba404f5e27866a7c5f84ca20656c3f6aa",
+    "bytes": 98304,
+    "mode": 432
+  },
+  "sr_release_fixture/wp_terms.frm": {
+    "sha256": "cb3c92053eeba35e12fcbf52cab733ba15705e016fb30a024bc8fea0c24a1337",
+    "bytes": 3597,
+    "mode": 432
+  },
+  "sr_release_fixture/wp_terms.ibd": {
+    "sha256": "1fbfd3c4ee37cf87593e82ef81c6e01d275c0c13f33f0667c7500489d95379ab",
+    "bytes": 98304,
+    "mode": 432
+  },
+  "sr_release_fixture/wp_usermeta.frm": {
+    "sha256": "d6f6bd18e5a2e1780ecf8b5fb9a20445b8ecb92a963a5e3ab7c0a14554874d9a",
+    "bytes": 3036,
+    "mode": 432
+  },
+  "sr_release_fixture/wp_usermeta.ibd": {
+    "sha256": "cce166c224e18d9a8763014b94721a8b56fe483de3c91e06f17151252d52f143",
+    "bytes": 131072,
+    "mode": 432
+  },
+  "sr_release_fixture/wp_users.frm": {
+    "sha256": "d41c6fab3a1547d8a4e7bde3fda41f9b6250bb34c29313b4316a778c47b68280",
+    "bytes": 6968,
+    "mode": 432
+  },
+  "sr_release_fixture/wp_users.ibd": {
+    "sha256": "521d429f8751e5541df3332e74c0ce1a22054ea3410530625c628be1f7c79df5",
+    "bytes": 114688,
+    "mode": 432
+  },
+  "sr_release_fixture/wp_wc_admin_note_actions.frm": {
+    "sha256": "6b3bdcba02259a8cfea449dd1107bcdcd218a49765b9f9ccaa6ec79357f2cef4",
+    "bytes": 7784,
+    "mode": 432
+  },
+  "sr_release_fixture/wp_wc_admin_note_actions.ibd": {
+    "sha256": "2cfa88738f9be824f5b76c7bbfb4b9da40d2cd7868191ac1c2642eb64c421d1c",
+    "bytes": 81920,
+    "mode": 432
+  },
+  "sr_release_fixture/wp_wc_admin_notes.frm": {
+    "sha256": "81ddf27012de5bec7ab001f573bf3ff8e8388829a21b146e148336b966fdb8a6",
+    "bytes": 5863,
+    "mode": 432
+  },
+  "sr_release_fixture/wp_wc_admin_notes.ibd": {
+    "sha256": "4a7bf5073a79233d99f1251ee3a846814ae36033beb739a8d21d139b13ce365c",
+    "bytes": 65536,
+    "mode": 432
+  },
+  "sr_release_fixture/wp_wc_category_lookup.frm": {
+    "sha256": "1830200c5234596e325ca03a6e4d308db052cce71f3a4dfc260691095dc43eba",
+    "bytes": 980,
+    "mode": 432
+  },
+  "sr_release_fixture/wp_wc_category_lookup.ibd": {
+    "sha256": "c70272cfbaedf5c48cf395bc36f3d8815a7675c9c92f74174257f9d9d84dae3b",
+    "bytes": 65536,
+    "mode": 432
+  },
+  "sr_release_fixture/wp_wc_customer_lookup.frm": {
+    "sha256": "51d52e66d75020f014f06ec8827e52e232f4e517029ef31d0bddb53be09b76f3",
+    "bytes": 6673,
+    "mode": 432
+  },
+  "sr_release_fixture/wp_wc_customer_lookup.ibd": {
+    "sha256": "e379268db6c6a7de6e2a08e9fdc23c5198ed203c1b7f76b232134248830f8c83",
+    "bytes": 98304,
+    "mode": 432
+  },
+  "sr_release_fixture/wp_wc_download_log.frm": {
+    "sha256": "08e4471827c5b7a9dd58fb9828fe5a93076bdefe1c0c8e510f0c3f21e49854b1",
+    "bytes": 2461,
+    "mode": 432
+  },
+  "sr_release_fixture/wp_wc_download_log.ibd": {
+    "sha256": "324caaf85e528c8f1088a653e7d591f1bf6d7d3a265b36df7af82be35c8b1170",
+    "bytes": 98304,
+    "mode": 432
+  },
+  "sr_release_fixture/wp_wc_email_unsubscribes.frm": {
+    "sha256": "f87a1aa1e45e44330109daaa5678937b85930c3a436697c95b7dc9b73321355e",
+    "bytes": 2126,
+    "mode": 432
+  },
+  "sr_release_fixture/wp_wc_email_unsubscribes.ibd": {
+    "sha256": "6b274b0fe0ec4232f574c19588da8cddfe93bb13a1e19b7e9a1a39791465ab6d",
+    "bytes": 81920,
+    "mode": 432
+  },
+  "sr_release_fixture/wp_wc_order_addresses.frm": {
+    "sha256": "06007eca41bf83df9763b408b35004175bbf2329d3ee0151a958d98d488d5b6f",
+    "bytes": 5085,
+    "mode": 432
+  },
+  "sr_release_fixture/wp_wc_order_addresses.ibd": {
+    "sha256": "8d579c77954d8d1e7c5d13e7d032a44c2284e4931c75e9f91229c1a9fde3d830",
+    "bytes": 212992,
+    "mode": 432
+  },
+  "sr_release_fixture/wp_wc_order_coupon_lookup.frm": {
+    "sha256": "76f0a130f63d47d6038039b35cde7eaab092835e87107effaaf8f6d6763a201c",
+    "bytes": 2026,
+    "mode": 432
+  },
+  "sr_release_fixture/wp_wc_order_coupon_lookup.ibd": {
+    "sha256": "8965dbb29135aea0637022925153384c79f25c9fc914646c5143148215369838",
+    "bytes": 98304,
+    "mode": 432
+  },
+  "sr_release_fixture/wp_wc_order_operational_data.frm": {
+    "sha256": "b1ba93892ee9b180faebf15431f4943fc55eac1b8738804d58d24731477597fa",
+    "bytes": 3866,
+    "mode": 432
+  },
+  "sr_release_fixture/wp_wc_order_operational_data.ibd": {
+    "sha256": "f1e517e31aaf160c17f205576e65e2a07f3d9c315cbc0ac54c31b76102f672e1",
+    "bytes": 212992,
+    "mode": 432
+  },
+  "sr_release_fixture/wp_wc_order_product_lookup.frm": {
+    "sha256": "97f6dfe51514dca169c66cf3d01ee52483a265e570e3a245d39bed5af8569083",
+    "bytes": 3856,
+    "mode": 432
+  },
+  "sr_release_fixture/wp_wc_order_product_lookup.ibd": {
+    "sha256": "da708a8ad835d68cf8fc5ffab9d353304f9041e88419c06758c16985d62939dd",
+    "bytes": 147456,
+    "mode": 432
+  },
+  "sr_release_fixture/wp_wc_order_stats.frm": {
+    "sha256": "fea2ac3b70e0945c18ee11fc27f5c852b5f374bcb344e5526b258f8a43d1484c",
+    "bytes": 3435,
+    "mode": 432
+  },
+  "sr_release_fixture/wp_wc_order_stats.ibd": {
+    "sha256": "6051ea709844b7a3d732858c3957bc159fa6c7e9f803c3151afb855161731d57",
+    "bytes": 131072,
+    "mode": 432
+  },
+  "sr_release_fixture/wp_wc_order_tax_lookup.frm": {
+    "sha256": "c1a010a2db08c85cecf52900a27663d28025455a9b4facde9647e763e20902db",
+    "bytes": 2174,
+    "mode": 432
+  },
+  "sr_release_fixture/wp_wc_order_tax_lookup.ibd": {
+    "sha256": "6d123ef78fca6ab0a8140169a6707733c956e9e868937b0b840030f55cab9f4c",
+    "bytes": 98304,
+    "mode": 432
+  },
+  "sr_release_fixture/wp_wc_orders.frm": {
+    "sha256": "a9deee868b1ac953fbf69e58bebbb39edcddf6b6d3fadf7bd8e871e273cf3ada",
+    "bytes": 8591,
+    "mode": 432
+  },
+  "sr_release_fixture/wp_wc_orders.ibd": {
+    "sha256": "e95a13ac06d60b8a9b32d6f6bafa261e896858cdeb0eaa13f5ab427a6266af36",
+    "bytes": 344064,
+    "mode": 432
+  },
+  "sr_release_fixture/wp_wc_orders_meta.frm": {
+    "sha256": "acddb109d7858012b511aa49773154f8a5187b2e0a13d7c8dae946be99613af1",
+    "bytes": 3029,
+    "mode": 432
+  },
+  "sr_release_fixture/wp_wc_orders_meta.ibd": {
+    "sha256": "444f8e62b7dda9e5e5697d342d431ee21754cf1b9fc0a5457f0ad41a18b97221",
+    "bytes": 442368,
+    "mode": 432
+  },
+  "sr_release_fixture/wp_wc_product_attributes_lookup.frm": {
+    "sha256": "ec107959ce6d95813a6b039d197fe083b09e9f39c2d2d67f29b94a370a876e49",
+    "bytes": 2708,
+    "mode": 432
+  },
+  "sr_release_fixture/wp_wc_product_attributes_lookup.ibd": {
+    "sha256": "c3bf8d9a41653d10f68363cdee8ed42405dcf53e5eeb0b99ff4ed8f71431d7f7",
+    "bytes": 114688,
+    "mode": 432
+  },
+  "sr_release_fixture/wp_wc_product_download_directories.frm": {
+    "sha256": "2880fb967ae38a6af06878c1fc2a41f156b17b5fb1b0405cc7ba3de503ab0d9c",
+    "bytes": 2495,
+    "mode": 432
+  },
+  "sr_release_fixture/wp_wc_product_download_directories.ibd": {
+    "sha256": "cb9043e90fc8eb6862522134babdac04704146b498230e593b157746aad34d9c",
+    "bytes": 81920,
+    "mode": 432
+  },
+  "sr_release_fixture/wp_wc_product_meta_lookup.frm": {
+    "sha256": "c11fbe557293be7ea4d0c0b38d14a2fb5a3231b3f4bf6f0c0d2040d1ffef024b",
+    "bytes": 7311,
+    "mode": 432
+  },
+  "sr_release_fixture/wp_wc_product_meta_lookup.ibd": {
+    "sha256": "855687188654a3aa86e236d2f796e236e232daca377b06fd9a8791e1588df584",
+    "bytes": 819200,
+    "mode": 432
+  },
+  "sr_release_fixture/wp_wc_rate_limits.frm": {
+    "sha256": "ab34d914389062f5d2a2f460add64a8dc1ee89d5154b528a1a95a9c8822328df",
+    "bytes": 2346,
+    "mode": 432
+  },
+  "sr_release_fixture/wp_wc_rate_limits.ibd": {
+    "sha256": "0a52b8ca15d3115d472677b78b95aa87913b688ed705b1d8b753c351f76270b8",
+    "bytes": 81920,
+    "mode": 432
+  },
+  "sr_release_fixture/wp_wc_reserved_stock.frm": {
+    "sha256": "65b23efe62690386eb69827d77694a25b6c1d1126b4476ec5fef8ea7f7b89bbd",
+    "bytes": 1563,
+    "mode": 432
+  },
+  "sr_release_fixture/wp_wc_reserved_stock.ibd": {
+    "sha256": "453cd15f73a6203708f92c6d56ca71ca4ffc5cfbc53a184d11d6c0b2a94f5017",
+    "bytes": 81920,
+    "mode": 432
+  },
+  "sr_release_fixture/wp_wc_stock_notificationmeta.frm": {
+    "sha256": "545df4a93b247515d2c1e57898fcc1b8f91b2b9e3923efccd0acd373bee527ba",
+    "bytes": 3038,
+    "mode": 432
+  },
+  "sr_release_fixture/wp_wc_stock_notificationmeta.ibd": {
+    "sha256": "7bf7fdb1fa9201c4e3a09f98e26c282345ed810b8f0a18ebc6b28c77ef6911f3",
+    "bytes": 98304,
+    "mode": 432
+  },
+  "sr_release_fixture/wp_wc_stock_notifications.frm": {
+    "sha256": "473f3fa1ad3db271a4825c4a5c94c46b6107febd521d52e1266f4263841e56c4",
+    "bytes": 3406,
+    "mode": 432
+  },
+  "sr_release_fixture/wp_wc_stock_notifications.ibd": {
+    "sha256": "306c7724e4e14b0296baf40d575beee4303ddeaaaa0a4b3d80c5539ebe70bb92",
+    "bytes": 114688,
+    "mode": 432
+  },
+  "sr_release_fixture/wp_wc_tax_rate_classes.frm": {
+    "sha256": "b33784d61a447facd8ecdd809684026c4c6d5e02ba591cb77da5b92214220f4a",
+    "bytes": 3081,
+    "mode": 432
+  },
+  "sr_release_fixture/wp_wc_tax_rate_classes.ibd": {
+    "sha256": "e8c95f6e9610972ed72a6fb6b44a26f565fe3b5cdd2b9d7b251b3ca728955fa2",
+    "bytes": 81920,
+    "mode": 432
+  },
+  "sr_release_fixture/wp_wc_webhooks.frm": {
+    "sha256": "6f0bf529b3b19cded5951c1048beda4934e619a49da2d270a65bb1d26ed5b5f6",
+    "bytes": 3465,
+    "mode": 432
+  },
+  "sr_release_fixture/wp_wc_webhooks.ibd": {
+    "sha256": "cf6cf2a1ea5cd7ee8676a8ec33f369a23bf0c4928ff128006203d091efe23806",
+    "bytes": 81920,
+    "mode": 432
+  },
+  "sr_release_fixture/wp_woocommerce_api_keys.frm": {
+    "sha256": "817c6ccc42ce109e42a09614567cf45e78ff2fc2151ffc78e8704209572aaef8",
+    "bytes": 3467,
+    "mode": 432
+  },
+  "sr_release_fixture/wp_woocommerce_api_keys.ibd": {
+    "sha256": "02d99b59f77c156bcd3b17211723e2a824251841190e19583aea1e3a326f8ed7",
+    "bytes": 98304,
+    "mode": 432
+  },
+  "sr_release_fixture/wp_woocommerce_attribute_taxonomies.frm": {
+    "sha256": "d2dfe9fb79992ccd06c5a7013be33c6a229be5a41277559e4e230ad043c12298",
+    "bytes": 3365,
+    "mode": 432
+  },
+  "sr_release_fixture/wp_woocommerce_attribute_taxonomies.ibd": {
+    "sha256": "9befdfa0a74b5061c65003e4d08c8eaa2a9a131355c1dff2683ed5442e78054e",
+    "bytes": 81920,
+    "mode": 432
+  },
+  "sr_release_fixture/wp_woocommerce_downloadable_product_permissions.frm": {
+    "sha256": "f9efd5c291ca1b674eb346c04fa2153e378dccc282794f955b1098b4b5986f9c",
+    "bytes": 5514,
+    "mode": 432
+  },
+  "sr_release_fixture/wp_woocommerce_downloadable_product_permissions.ibd": {
+    "sha256": "8f54c4a1c3409d7a5f9f72b42651252ce2f3c08f87ba41a0d39beda1fd72cb2d",
+    "bytes": 147456,
+    "mode": 432
+  },
+  "sr_release_fixture/wp_woocommerce_log.frm": {
+    "sha256": "0d1f91b784008a08c7947418dd79945ae12b2137a9e27a7d3e68db552a4e5b19",
+    "bytes": 2380,
+    "mode": 432
+  },
+  "sr_release_fixture/wp_woocommerce_log.ibd": {
+    "sha256": "309d091d1f8fce6235320991c9e927abc6a898b3db705862b8c3d87bf9077681",
+    "bytes": 81920,
+    "mode": 432
+  },
+  "sr_release_fixture/wp_woocommerce_order_itemmeta.frm": {
+    "sha256": "23186d7e723018aa9057842a6250120aba4c266818a6aac9aeed1aea49e8be28",
+    "bytes": 3041,
+    "mode": 432
+  },
+  "sr_release_fixture/wp_woocommerce_order_itemmeta.ibd": {
+    "sha256": "a087334148bffe16284dc4f617cc484ac0556268b47519c0555a155386d60f88",
+    "bytes": 966656,
+    "mode": 432
+  },
+  "sr_release_fixture/wp_woocommerce_order_items.frm": {
+    "sha256": "62d6b574f588fe96a3f5ecbfd9b0961dff29a9164f820190c4cf78902df58f26",
+    "bytes": 2341,
+    "mode": 432
+  },
+  "sr_release_fixture/wp_woocommerce_order_items.ibd": {
+    "sha256": "401691d5d510a2e9fa672f8d4cccb5f55174495dc59fad723a0046f04bb206c2",
+    "bytes": 163840,
+    "mode": 432
+  },
+  "sr_release_fixture/wp_woocommerce_payment_tokenmeta.frm": {
+    "sha256": "d797ba3cc5155d19f4748541e2be675951b9f6d5ed95ee341ec6fc8660cf61f4",
+    "bytes": 3044,
+    "mode": 432
+  },
+  "sr_release_fixture/wp_woocommerce_payment_tokenmeta.ibd": {
+    "sha256": "4a9cbb679e9685db710da2adf3e7d56a0f0ec8c9546690f808946886d6aae8aa",
+    "bytes": 98304,
+    "mode": 432
+  },
+  "sr_release_fixture/wp_woocommerce_payment_tokens.frm": {
+    "sha256": "835af957abd3965888ae4319fa60b7c7d157a5c54c798e01c6ebf6e1f223a6cb",
+    "bytes": 3173,
+    "mode": 432
+  },
+  "sr_release_fixture/wp_woocommerce_payment_tokens.ibd": {
+    "sha256": "94cb1fad7231a06a48ee64d780607c44bdfb1e0edc4aebb1ad5aba47c774b9fd",
+    "bytes": 81920,
+    "mode": 432
+  },
+  "sr_release_fixture/wp_woocommerce_sessions.frm": {
+    "sha256": "4411b75e2ccc70cab696215fc6c86036f3a293a93678261f6d837a2df8e6f613",
+    "bytes": 2156,
+    "mode": 432
+  },
+  "sr_release_fixture/wp_woocommerce_sessions.ibd": {
+    "sha256": "f7bc55b5968d833850cbf0e65501af7aa83c060c4c1bbad15dddd1c6ec4dd9ba",
+    "bytes": 163840,
+    "mode": 432
+  },
+  "sr_release_fixture/wp_woocommerce_shipping_zone_locations.frm": {
+    "sha256": "30a0ff359280dbc18d579b47645af73b144c7874e2041f9bd5e578be13bc47dd",
+    "bytes": 2975,
+    "mode": 432
+  },
+  "sr_release_fixture/wp_woocommerce_shipping_zone_locations.ibd": {
+    "sha256": "1edbc780a4f25c5a2e25dbdfc4591cca4f8b1c9a2327c096f6e2c8050250f3cf",
+    "bytes": 98304,
+    "mode": 432
+  },
+  "sr_release_fixture/wp_woocommerce_shipping_zone_methods.frm": {
+    "sha256": "85de1ed1eb17ce697cdfffab5798c540bc3fa0db09f9f0ba943fc62f53ce6c16",
+    "bytes": 2846,
+    "mode": 432
+  },
+  "sr_release_fixture/wp_woocommerce_shipping_zone_methods.ibd": {
+    "sha256": "603c6ce06587fdf0f3d79b88d47bc3ac2edf3e8fc371567be91645d1bd870d90",
+    "bytes": 98304,
+    "mode": 432
+  },
+  "sr_release_fixture/wp_woocommerce_shipping_zones.frm": {
+    "sha256": "4c3f0034bed0274b17658f9aaf5a9b731836ce4fa93002dac537cd523ef5b5f1",
+    "bytes": 2288,
+    "mode": 432
+  },
+  "sr_release_fixture/wp_woocommerce_shipping_zones.ibd": {
+    "sha256": "c0705ed6d31d1d3d6a9595c9623b3c80c70625d36c6f7777d61c7479023c86d3",
+    "bytes": 81920,
+    "mode": 432
+  },
+  "sr_release_fixture/wp_woocommerce_tax_rate_locations.frm": {
+    "sha256": "55324154ea19317b9eba3ba996544230e161a33cb57f0782326d77adbc75823d",
+    "bytes": 2979,
+    "mode": 432
+  },
+  "sr_release_fixture/wp_woocommerce_tax_rate_locations.ibd": {
+    "sha256": "26fb4e02777a1af9a109c729f5d0ac714e58fbd90056e7a4211126d95c7ad4f7",
+    "bytes": 98304,
+    "mode": 432
+  },
+  "sr_release_fixture/wp_woocommerce_tax_rates.frm": {
+    "sha256": "4428a9c83d7ba80d56ba4d188638966d1e5ec14ed151e398ee8e3977c2ecca82",
+    "bytes": 5661,
+    "mode": 432
+  },
+  "sr_release_fixture/wp_woocommerce_tax_rates.ibd": {
+    "sha256": "ba3d253dbaec5288f76d37108c7c68ccccb6dfb3a8110d2b8dcfd9f8e8a254fe",
+    "bytes": 131072,
+    "mode": 432
+  },
+  "sr_release_fixture/wp_zbs_admlog.frm": {
+    "sha256": "3dd3560e7b8a8ae2b12ca6273a63685807919a7ef70c05617f984380c99db775",
+    "bytes": 2715,
+    "mode": 432
+  },
+  "sr_release_fixture/wp_zbs_admlog.ibd": {
+    "sha256": "f40b149ec9b2edd07abb21efa31a9b4de568c8f0e0fa5c6feb6251dabe6d5566",
+    "bytes": 65536,
+    "mode": 432
+  },
+  "sr_release_fixture/wp_zbs_aka.frm": {
+    "sha256": "cf7764a701126204667748db552e09290365349db8effaed8afef7bee49490a2",
+    "bytes": 2172,
+    "mode": 432
+  },
+  "sr_release_fixture/wp_zbs_aka.ibd": {
+    "sha256": "8955e92e8909359ba088e6d56d25bbb7cd64655c52119c519d29af185c76f3f1",
+    "bytes": 81920,
+    "mode": 432
+  },
+  "sr_release_fixture/wp_zbs_companies.frm": {
+    "sha256": "d358bf2c464edae0e092d83fa69c21a3db43900eed21faac4d83e8088ac545b0",
+    "bytes": 14085,
+    "mode": 432
+  },
+  "sr_release_fixture/wp_zbs_companies.ibd": {
+    "sha256": "f8871b89468fc7c64afd7f63ba1b28b07c697b6583696f8a4293edd07bbbe364",
+    "bytes": 131072,
+    "mode": 432
+  },
+  "sr_release_fixture/wp_zbs_contacts.frm": {
+    "sha256": "cd5e60d9416dafa5cbe975397ca2791eb4c403bdb133059dde59db86ea7f7cbf",
+    "bytes": 13833,
+    "mode": 432
+  },
+  "sr_release_fixture/wp_zbs_contacts.ibd": {
+    "sha256": "e9ba28b9bc35a11db639af5adbec651eb910b74a1460e26132161c17f29e7ba9",
+    "bytes": 98304,
+    "mode": 432
+  },
+  "sr_release_fixture/wp_zbs_customfields.frm": {
+    "sha256": "cf092c952cc1d862ee9b6e6938192a609485df3d8f1754832b431df42260913f",
+    "bytes": 8502,
+    "mode": 432
+  },
+  "sr_release_fixture/wp_zbs_customfields.ibd": {
+    "sha256": "34a38e40bc3f8bdadc78fdfabb880e5c66dfeb441af849cad4f9f952745c4dbe",
+    "bytes": 98304,
+    "mode": 432
+  },
+  "sr_release_fixture/wp_zbs_event_reminders.frm": {
+    "sha256": "b22e6b200ec1cdecc17fe69f29f91205cebac71536043f31bc6b11fc540d3313",
+    "bytes": 1189,
+    "mode": 432
+  },
+  "sr_release_fixture/wp_zbs_event_reminders.ibd": {
+    "sha256": "1838415a2f8a79a7dce08aa62346ddb834d208596ce56c4e6af1cb9efbcb187c",
+    "bytes": 65536,
+    "mode": 432
+  },
+  "sr_release_fixture/wp_zbs_events.frm": {
+    "sha256": "4a8af72fdec57c60207ad659569efab72b5016904b01dc7260c5526bc30c77fe",
+    "bytes": 4049,
+    "mode": 432
+  },
+  "sr_release_fixture/wp_zbs_events.ibd": {
+    "sha256": "9a9fdfac5de40ef19a550c8add4b4f388643e7530a5f409218c5c4ed791faf1e",
+    "bytes": 131072,
+    "mode": 432
+  },
+  "sr_release_fixture/wp_zbs_externalsources.frm": {
+    "sha256": "cf7bc63071a475018471985183ebac76141bbc126eaaa4ee9d977f6ea4082c25",
+    "bytes": 4873,
+    "mode": 432
+  },
+  "sr_release_fixture/wp_zbs_externalsources.ibd": {
+    "sha256": "ac122bdd27c6eafad080c6cb4cfa60e29ecd98a5811d047c48c9e3c5029cee58",
+    "bytes": 114688,
+    "mode": 432
+  },
+  "sr_release_fixture/wp_zbs_forms.frm": {
+    "sha256": "45187a8eafc7f7c6c1d12c3894088afcae52589148e075d92aac10e0cff27475",
+    "bytes": 11855,
+    "mode": 432
+  },
+  "sr_release_fixture/wp_zbs_forms.ibd": {
+    "sha256": "2b14503bc242654a1d04e933efd9b96a780744309582657e852bb97eccf57b41",
+    "bytes": 98304,
+    "mode": 432
+  },
+  "sr_release_fixture/wp_zbs_invoices.frm": {
+    "sha256": "9af55f13d836624158463fd75909fd1a0a5f048db88bd305aff99d036495e17d",
+    "bytes": 11494,
+    "mode": 432
+  },
+  "sr_release_fixture/wp_zbs_invoices.ibd": {
+    "sha256": "5cdf2568e5d99b976fc42aba267af526695cd4fa5bffa4991dcda2ef592318a1",
+    "bytes": 147456,
+    "mode": 432
+  },
+  "sr_release_fixture/wp_zbs_lineitems.frm": {
+    "sha256": "b3b7b8b07f1ff2e12062571c77d7492d175272db05b7b42b120da424d294af0b",
+    "bytes": 4671,
+    "mode": 432
+  },
+  "sr_release_fixture/wp_zbs_lineitems.ibd": {
+    "sha256": "8d02bd5c6903a3bf028a9a4b1a012eb48e0f7a90ca4d750fb85f6622c98da7e2",
+    "bytes": 98304,
+    "mode": 432
+  },
+  "sr_release_fixture/wp_zbs_logs.frm": {
+    "sha256": "b2115c859fa3ab108e757b34a071495af7778cbbfb2fc513de56f13a796bc37b",
+    "bytes": 3773,
+    "mode": 432
+  },
+  "sr_release_fixture/wp_zbs_logs.ibd": {
+    "sha256": "796c0799e33c2399864f6beac1b88ee08cf5c5eecb2d4be40106e2488c2c2453",
+    "bytes": 98304,
+    "mode": 432
+  },
+  "sr_release_fixture/wp_zbs_meta.frm": {
+    "sha256": "619beefe28093974ad1b92d00e22f524c2dff7b7193bbef73b87a4efbfda9d28",
+    "bytes": 2475,
+    "mode": 432
+  },
+  "sr_release_fixture/wp_zbs_meta.ibd": {
+    "sha256": "e4c293b53be38307cbfa6948c8357716acf00885523ba30d5880f440c45d2b08",
+    "bytes": 81920,
+    "mode": 432
+  },
+  "sr_release_fixture/wp_zbs_notifications.frm": {
+    "sha256": "98d4409c6b5052499f097359e35df1d10622dd997c665d1ae1b1dcb15c494d6e",
+    "bytes": 2360,
+    "mode": 432
+  },
+  "sr_release_fixture/wp_zbs_notifications.ibd": {
+    "sha256": "4251ecae117f3760f761bfb9fecc7372e85ffdebc7b9faebb9832fd8c7990e63",
+    "bytes": 65536,
+    "mode": 432
+  },
+  "sr_release_fixture/wp_zbs_object_links.frm": {
+    "sha256": "982498a975b6462618ac45fd1b9a01b1124b06e84ff2cf00fdf89e302b45b151",
+    "bytes": 2148,
+    "mode": 432
+  },
+  "sr_release_fixture/wp_zbs_object_links.ibd": {
+    "sha256": "dc9ff84e0f7a957cbb641066fc611d851458a03119e5e05cefc8f6dc0a8b8d33",
+    "bytes": 98304,
+    "mode": 432
+  },
+  "sr_release_fixture/wp_zbs_quotes.frm": {
+    "sha256": "fbef538d74613924b83f5f6adcddc61249096761d22ea55997305aee34979c79",
+    "bytes": 6817,
+    "mode": 432
+  },
+  "sr_release_fixture/wp_zbs_quotes.ibd": {
+    "sha256": "a6b240cafe72f16b5a7f2892ca9df68f12d92f085bc48b0fb3a6c699fa3c5fcd",
+    "bytes": 147456,
+    "mode": 432
+  },
+  "sr_release_fixture/wp_zbs_quotes_templates.frm": {
+    "sha256": "e2f0a8faacd35973457d07d38efa4cf93c1ecfb9a9b3312ac4f393aa53d1d6e7",
+    "bytes": 3158,
+    "mode": 432
+  },
+  "sr_release_fixture/wp_zbs_quotes_templates.ibd": {
+    "sha256": "e577b389f647dd97f73a14b3e6914426cf40aa21e00ace6cf910ad3537ba509f",
+    "bytes": 98304,
+    "mode": 432
+  },
+  "sr_release_fixture/wp_zbs_security_log.frm": {
+    "sha256": "742be9c6ea4916a0a4a8b1e6c7c74ee6c778ff59bbd5f0df41b7d8e384b618ef",
+    "bytes": 2297,
+    "mode": 432
+  },
+  "sr_release_fixture/wp_zbs_security_log.ibd": {
+    "sha256": "d8e4e90b502d80066ab6403927aea522898a0d061b9230add4a1832c0d886593",
+    "bytes": 65536,
+    "mode": 432
+  },
+  "sr_release_fixture/wp_zbs_segments.frm": {
+    "sha256": "b74c2d96630d05b057b99ebf762063e7a9acdc63360aac03667631bb1c51bf2d",
+    "bytes": 1795,
+    "mode": 432
+  },
+  "sr_release_fixture/wp_zbs_segments.ibd": {
+    "sha256": "cb16ed49401029700550b8b92df45b09da1df804a8acebaef1a06e8f740cd26d",
+    "bytes": 65536,
+    "mode": 432
+  },
+  "sr_release_fixture/wp_zbs_segments_conditions.frm": {
+    "sha256": "20f5ac5da97aac3fac24b379e351fdb8f1193366d031b69dcb982ebbabf6bac6",
+    "bytes": 2921,
+    "mode": 432
+  },
+  "sr_release_fixture/wp_zbs_segments_conditions.ibd": {
+    "sha256": "b35a2277ce165fc67c63368ec44b35ae27f6171eec7d9d0ed664f7c92999e9a4",
+    "bytes": 65536,
+    "mode": 432
+  },
+  "sr_release_fixture/wp_zbs_settings.frm": {
+    "sha256": "0c911bdb1bf980141d2a16daf6eba466a213d6e13e108023bc4023a380f2672e",
+    "bytes": 2442,
+    "mode": 432
+  },
+  "sr_release_fixture/wp_zbs_settings.ibd": {
+    "sha256": "e178f0cf9734a2c1a9eacb3eec465833b0a98d44970894f4f1242a7c0e68247d",
+    "bytes": 98304,
+    "mode": 432
+  },
+  "sr_release_fixture/wp_zbs_sys_cronmanagerlogs.frm": {
+    "sha256": "4450a37153953a28ccf0ef181cd337a84f0cd5be0b41a98132a60b0c96ac1387",
+    "bytes": 1473,
+    "mode": 432
+  },
+  "sr_release_fixture/wp_zbs_sys_cronmanagerlogs.ibd": {
+    "sha256": "79e6ab289e8ea438c52233c5be2d8f4c9859436c4818e9b495f8194f5445adcd",
+    "bytes": 65536,
+    "mode": 432
+  },
+  "sr_release_fixture/wp_zbs_sys_email.frm": {
+    "sha256": "d95249507ef727fa7a895b42804523d32b7503124dd57dcdf62724cc5c0ce84c",
+    "bytes": 5657,
+    "mode": 432
+  },
+  "sr_release_fixture/wp_zbs_sys_email.ibd": {
+    "sha256": "bdb157d9fc9d33208b005a19c6763c3c68dc6e3c844922cbf0d7b43cb7d18dfc",
+    "bytes": 65536,
+    "mode": 432
+  },
+  "sr_release_fixture/wp_zbs_sys_email_hist.frm": {
+    "sha256": "c3d30cf2c9cf169870a7b677fb38c692274f2604ca4041f4c3932accdf7306a9",
+    "bytes": 6618,
+    "mode": 432
+  },
+  "sr_release_fixture/wp_zbs_sys_email_hist.ibd": {
+    "sha256": "8e486b97f24ce8dd72a9253549eadbda6ba127e716a74a5ba8b922bd0b766a55",
+    "bytes": 98304,
+    "mode": 432
+  },
+  "sr_release_fixture/wp_zbs_tags.frm": {
+    "sha256": "6b774e1c79a55dee0889b742c046b1b9d6c9286e07bdd8f2ced794e6c47c7499",
+    "bytes": 2390,
+    "mode": 432
+  },
+  "sr_release_fixture/wp_zbs_tags.ibd": {
+    "sha256": "1ffc32ba27c19647ae6efac6aec544059e543b3af0220c14f26bed7f1dadd5fd",
+    "bytes": 65536,
+    "mode": 432
+  },
+  "sr_release_fixture/wp_zbs_tags_links.frm": {
+    "sha256": "353c75a4fd41843ae91aedd876a0945f016fcae3dfb2968dcca14ee933d63702",
+    "bytes": 2587,
+    "mode": 432
+  },
+  "sr_release_fixture/wp_zbs_tags_links.ibd": {
+    "sha256": "7d013b768de2a3e4398e55b1842a4f08414c32e3a89624b97e975bb99e1079fb",
+    "bytes": 114688,
+    "mode": 432
+  },
+  "sr_release_fixture/wp_zbs_tax_table.frm": {
+    "sha256": "b04497514f6b96bca44efe3e5f923d4bdb3561aeffd41f6cdee71158ab8d15db",
+    "bytes": 1458,
+    "mode": 432
+  },
+  "sr_release_fixture/wp_zbs_tax_table.ibd": {
+    "sha256": "ca2cc0945e6707ee038ca4b23b380208ac4ada71a01fb77d37ed2c84c3469d36",
+    "bytes": 65536,
+    "mode": 432
+  },
+  "sr_release_fixture/wp_zbs_temphash.frm": {
+    "sha256": "b50efbfc38358eeb86acfaf6396287dde4147a598afca573102122c6751dd6a4",
+    "bytes": 2216,
+    "mode": 432
+  },
+  "sr_release_fixture/wp_zbs_temphash.ibd": {
+    "sha256": "675185af01c652c263fc7941aa9f17d289c5c37f1977ee62f0c7f1f8de4b217f",
+    "bytes": 65536,
+    "mode": 432
+  },
+  "sr_release_fixture/wp_zbs_tracking.frm": {
+    "sha256": "c4281d2f9d7e2a81374b92e3c38fb305c5fcf2d9eff39aa009b1508a3813facc",
+    "bytes": 5457,
+    "mode": 432
+  },
+  "sr_release_fixture/wp_zbs_tracking.ibd": {
+    "sha256": "64a521b20ac9b6803f5fd2130ff7ff69915a927a1433e1e50ae1544d39a8c0b4",
+    "bytes": 65536,
+    "mode": 432
+  },
+  "sr_release_fixture/wp_zbs_transactions.frm": {
+    "sha256": "31134ebfab7eccc588a9bcc9feffa308dffd54db19a5c4f4d4b3203a9e717810",
+    "bytes": 8984,
+    "mode": 432
+  },
+  "sr_release_fixture/wp_zbs_transactions.ibd": {
+    "sha256": "6ad959dabe6979a9a646717c9f0890d39b8d179e0f9ff59ef39c4ee402042e7d",
+    "bytes": 212992,
+    "mode": 432
+  },
+  "sys/db.opt": {
+    "sha256": "72a584704be83015c95d6644887ce3b0fc9976bfbddc1548afbaf9134848ed2f",
+    "bytes": 67,
+    "mode": 432
+  },
+  "sys/host_summary.frm": {
+    "sha256": "5cb3754439d869d35c9019d24a666754cb48011d15e183d6e1edb9cd28b17f86",
+    "bytes": 4092,
+    "mode": 432
+  },
+  "sys/host_summary_by_file_io.frm": {
+    "sha256": "3c685cb77fd48d7f4af132c6e3e04e89bd452c48d0c70808a671080c40b3981b",
+    "bytes": 2414,
+    "mode": 432
+  },
+  "sys/host_summary_by_file_io_type.frm": {
+    "sha256": "f71ffb94386feda7f4e217a2aa530c66e46e6d572b09837fc8593b178042c6cb",
+    "bytes": 3053,
+    "mode": 432
+  },
+  "sys/host_summary_by_stages.frm": {
+    "sha256": "753132db70dfdd58eb6bb66a9610a36117c7b3437bae9b4bd2489ba627e2a005",
+    "bytes": 2837,
+    "mode": 432
+  },
+  "sys/host_summary_by_statement_latency.frm": {
+    "sha256": "3288daf02c9893748dd568d9a62ffd2abcada2e728721bdcd192c04476ef4ad5",
+    "bytes": 4208,
+    "mode": 432
+  },
+  "sys/host_summary_by_statement_type.frm": {
+    "sha256": "7fc14b748e2332f185a51326d3c284fda830943a9726642e19f557411ebc35ad",
+    "bytes": 4567,
+    "mode": 432
+  },
+  "sys/innodb_buffer_stats_by_schema.frm": {
+    "sha256": "635499f443ea7240a4ccc2ce06e20c748469b4c951297f0432f6f21f10b37904",
+    "bytes": 2689,
+    "mode": 432
+  },
+  "sys/innodb_buffer_stats_by_table.frm": {
+    "sha256": "e5559af0ebff7a4149b1cc596225741f2101619e293cce5a8d8f259596335f97",
+    "bytes": 3085,
+    "mode": 432
+  },
+  "sys/innodb_lock_waits.frm": {
+    "sha256": "c92293589e45b953b0459489ca2a0b4cdce8b26c3a9a6f78282be49aed729bbf",
+    "bytes": 5653,
+    "mode": 432
+  },
+  "sys/io_by_thread_by_latency.frm": {
+    "sha256": "c98619787707d1b1538e24e3ba6733db206051f4ba1a2b2540799771e1d18f72",
+    "bytes": 4975,
+    "mode": 432
+  },
+  "sys/io_global_by_file_by_bytes.frm": {
+    "sha256": "91c46991b7d5b8e961df50a01c7aabbd0f47954c0aff84cffc81147811b78c7e",
+    "bytes": 4157,
+    "mode": 432
+  },
+  "sys/io_global_by_file_by_latency.frm": {
+    "sha256": "51378d3d79e3a31b13f390417a26688cbcb691af53b9672a202158db366cdf12",
+    "bytes": 2664,
+    "mode": 432
+  },
+  "sys/io_global_by_wait_by_bytes.frm": {
+    "sha256": "96df15f74dd08f38d2330356c500ab804cbc23a0b6b6d78b6e9bd9c43f081036",
+    "bytes": 5176,
+    "mode": 432
+  },
+  "sys/io_global_by_wait_by_latency.frm": {
+    "sha256": "214b7dc8ef2c0a1f0a26713a82e5c77d896a94c3b044560d2ec6595fc13c6e58",
+    "bytes": 5019,
+    "mode": 432
+  },
+  "sys/latest_file_io.frm": {
+    "sha256": "dcfae958b6b2151be4f5d380d0b1b922057897973c3620f9893512d6e69243e1",
+    "bytes": 3529,
+    "mode": 432
+  },
+  "sys/memory_by_host_by_current_bytes.frm": {
+    "sha256": "303364d27c434d501f279edf7600ce085bc2cfe5b7bab9652c38ca54710fac73",
+    "bytes": 3494,
+    "mode": 432
+  },
+  "sys/memory_by_thread_by_current_bytes.frm": {
+    "sha256": "627854cc4e64ac4990a10f7cdc610d480933eb2c64ae96a8f427feca021673d8",
+    "bytes": 3272,
+    "mode": 432
+  },
+  "sys/memory_by_user_by_current_bytes.frm": {
+    "sha256": "5d9e545f77e199076ab12d161c8686b39fbfa48ffabf4bf4e4ecd588ec9a25c2",
+    "bytes": 3494,
+    "mode": 432
+  },
+  "sys/memory_global_by_current_bytes.frm": {
+    "sha256": "c0ca307450d18c582fe06a580860f908d7c6a03cc40c47058fb2329fc42cb39d",
+    "bytes": 3424,
+    "mode": 432
+  },
+  "sys/memory_global_total.frm": {
+    "sha256": "428f37a9b698b5ea8a4f9d5efb2efc76efcdfe9cf93c91cb90cba89b402380c0",
+    "bytes": 866,
+    "mode": 432
+  },
+  "sys/metrics.frm": {
+    "sha256": "a21db1cca295638fbeaa7fe1cce0445066ae9242cd6df7167984007d1dd25d6d",
+    "bytes": 5516,
+    "mode": 432
+  },
+  "sys/privileges_by_table_by_level.frm": {
+    "sha256": "566427d320ecb82b03f6e0762673feef7e2d57474f6a566bf4e287fae97ad0c1",
+    "bytes": 4962,
+    "mode": 432
+  },
+  "sys/processlist.frm": {
+    "sha256": "2e23ad3df6c010415fde318826c966e5edf74898d40319f305b71edd06e97ac9",
+    "bytes": 8704,
+    "mode": 432
+  },
+  "sys/ps_check_lost_instrumentation.frm": {
+    "sha256": "0e915a982a0e7e6605db1fea2274f31f6ec62a26ead57d300562999fcbdcdc34",
+    "bytes": 1146,
+    "mode": 432
+  },
+  "sys/schema_auto_increment_columns.frm": {
+    "sha256": "994a5ebafa9dbb75f993a9fb20b1108d45fcadd63ae119172d03573fbef3b616",
+    "bytes": 6407,
+    "mode": 432
+  },
+  "sys/schema_index_statistics.frm": {
+    "sha256": "7da2a17ab5cd202b813808114825abd756fbf4d6c69dabb7829f6822191ab7dc",
+    "bytes": 3725,
+    "mode": 432
+  },
+  "sys/schema_object_overview.frm": {
+    "sha256": "42d8db4eeb0ea33480cead7bcc58ce8ec61810d73ca2e75966e16d0b05d2f199",
+    "bytes": 3793,
+    "mode": 432
+  },
+  "sys/schema_redundant_indexes.frm": {
+    "sha256": "916f07ee03e460f7dbc4a1333f767b2575977c5f67ad7013f11b0fda98342f25",
+    "bytes": 5508,
+    "mode": 432
+  },
+  "sys/schema_table_lock_waits.frm": {
+    "sha256": "f9dfe6168856463cc790b422be6a178b7c920377eb27bc85ac0533bd4a3387bc",
+    "bytes": 5288,
+    "mode": 432
+  },
+  "sys/schema_table_statistics.frm": {
+    "sha256": "e98de3b4667aaaa7de2c2ff047893495f78e6552781a2007e87a20cf5f84ecc6",
+    "bytes": 4112,
+    "mode": 432
+  },
+  "sys/schema_table_statistics_with_buffer.frm": {
+    "sha256": "0d61473d28a03db3db334defb9141bc62647e858c8033a7ca1e3dc1ce28e4d46",
+    "bytes": 5514,
+    "mode": 432
+  },
+  "sys/schema_tables_with_full_table_scans.frm": {
+    "sha256": "7e6aa332ba4adedfd395ca261932a23ec1564c61496cb1e69c404c8e4b9e838e",
+    "bytes": 2058,
+    "mode": 432
+  },
+  "sys/schema_unused_indexes.frm": {
+    "sha256": "299924079296fb7d3e0c9c20a1f1527a5ed6e46f6ba506293b3c65f9342422ff",
+    "bytes": 2364,
+    "mode": 432
+  },
+  "sys/session.frm": {
+    "sha256": "e0a350fb6c359bb6e0668ef5eb351d0ab5f72835867c8ea2490473239887ab5d",
+    "bytes": 3089,
+    "mode": 432
+  },
+  "sys/session_ssl_status.frm": {
+    "sha256": "ad016d14fad63e30996b5b1962082074abb9c673b5fcb038b38bfd2ecd41fc62",
+    "bytes": 2101,
+    "mode": 432
+  },
+  "sys/statement_analysis.frm": {
+    "sha256": "2a9bdae5cc722cf74bf3d00e3cefffacc35d45a46fdcb18dcff5191c84aa39ea",
+    "bytes": 7240,
+    "mode": 432
+  },
+  "sys/statements_with_errors_or_warnings.frm": {
+    "sha256": "3854d7a4ca4a293071c021b53049c53723e9cb83debccaf0d081c5b6cd3b6409",
+    "bytes": 3869,
+    "mode": 432
+  },
+  "sys/statements_with_full_table_scans.frm": {
+    "sha256": "04c0a376f79d7efea46a5c3796780d0bee340aa80e2da54dd1226d6964a019be",
+    "bytes": 5777,
+    "mode": 432
+  },
+  "sys/statements_with_runtimes_in_95th_percentile.frm": {
+    "sha256": "fc5171c11c564059766fcbbac3f91e3f5585e9cb3deee86f23d01a7fbce01b23",
+    "bytes": 3625,
+    "mode": 432
+  },
+  "sys/statements_with_sorting.frm": {
+    "sha256": "0561665326756f8af212723cd86ecddb5ed4c70ba7102591c9e5875296312541",
+    "bytes": 4447,
+    "mode": 432
+  },
+  "sys/statements_with_temp_tables.frm": {
+    "sha256": "087b940d4e5d2b4c7b3686c23ff0637bd98578a6b2ce642c0664b8768066a636",
+    "bytes": 4446,
+    "mode": 432
+  },
+  "sys/sys_config.MAD": {
+    "sha256": "e8e9172c28ab89cc13803356e2d7d72a764539f2daa2479ec5602a5ce6a1c88a",
+    "bytes": 16384,
+    "mode": 432
+  },
+  "sys/sys_config.MAI": {
+    "sha256": "0679b27cce0ec141a80de30ec1f52828834d82a71ca9bd9977db17fe948d4396",
+    "bytes": 16384,
+    "mode": 432
+  },
+  "sys/sys_config.frm": {
+    "sha256": "ec6737d834c916e00f4613d2a5b1045971eac44416cf97f4dad3310113a34600",
+    "bytes": 2160,
+    "mode": 432
+  },
+  "sys/user_summary.frm": {
+    "sha256": "3eb1249d859e0d97b2d68e474d0849ecd9ca4c5a2c343d1fd8e5ad878d2f6dc3",
+    "bytes": 4786,
+    "mode": 432
+  },
+  "sys/user_summary_by_file_io.frm": {
+    "sha256": "3756648c99fb7f41b6ae8bd2c814a9bf5d3f531f8e8881281b8ef3b7adfc18b2",
+    "bytes": 2414,
+    "mode": 432
+  },
+  "sys/user_summary_by_file_io_type.frm": {
+    "sha256": "4dee3c4d3def754a98d36a5e1fb38417ad731d60988e4706f4ea40a181c2354c",
+    "bytes": 3001,
+    "mode": 432
+  },
+  "sys/user_summary_by_stages.frm": {
+    "sha256": "6a6d87516db56c27daee8a72e96a8b427a188700e36de3d216ecae979397d714",
+    "bytes": 2803,
+    "mode": 432
+  },
+  "sys/user_summary_by_statement_latency.frm": {
+    "sha256": "427826491c76b64e3e0bcc8accbceec090799603a7a09eaa601bff1a8ce9ba71",
+    "bytes": 4208,
+    "mode": 432
+  },
+  "sys/user_summary_by_statement_type.frm": {
+    "sha256": "cc4874b2d993a1ab3abe14ec0f67e3d77013fcb00db5612f98bf221a608207a9",
+    "bytes": 4533,
+    "mode": 432
+  },
+  "sys/version.frm": {
+    "sha256": "979409bcd861deacf4796c0d33b956efa014c38dc27e6581f570cffbd7e9456b",
+    "bytes": 525,
+    "mode": 432
+  },
+  "sys/wait_classes_global_by_avg_latency.frm": {
+    "sha256": "d940e534024a828cad921af96f391a438a65dfb9e8c3ee231d7698221cfbdd35",
+    "bytes": 3827,
+    "mode": 432
+  },
+  "sys/wait_classes_global_by_latency.frm": {
+    "sha256": "1a3574639271ccb31d5c32540b15a7c58b78f1757d8303c9a83e232c9733cd46",
+    "bytes": 3491,
+    "mode": 432
+  },
+  "sys/waits_by_host_by_latency.frm": {
+    "sha256": "b507350be30c8f202408bb4ee39348e2c708c6825eaaaaeb193670d6ff11f82a",
+    "bytes": 3290,
+    "mode": 432
+  },
+  "sys/waits_by_user_by_latency.frm": {
+    "sha256": "50922f5c022872aeeb90b4b3cfe62bc80648df81954b1f8c72b7c740cb8622b7",
+    "bytes": 3493,
+    "mode": 432
+  },
+  "sys/waits_global_by_latency.frm": {
+    "sha256": "5c0999bf6fda0ffecb22b5cdceab4198c57aecdd4124384605075b58a248853b",
+    "bytes": 2499,
+    "mode": 432
+  },
+  "sys/x@0024host_summary.frm": {
+    "sha256": "a288dd1abf89b2a6991ded7faec7adaa1ecfc0ecfea77db04ecf6ce3d99e2981",
+    "bytes": 3793,
+    "mode": 432
+  },
+  "sys/x@0024host_summary_by_file_io.frm": {
+    "sha256": "3562cee184118868fb94686f2e08dbb6804b6dbc186678997871c79faf10a88d",
+    "bytes": 2360,
+    "mode": 432
+  },
+  "sys/x@0024host_summary_by_file_io_type.frm": {
+    "sha256": "d264b140f3f1b942f3021b461bd114261be64673fa5249aa57e52b22f15575df",
+    "bytes": 2945,
+    "mode": 432
+  },
+  "sys/x@0024host_summary_by_stages.frm": {
+    "sha256": "75e274cec361fb507c61825d66b91d9983c7227709d0fc8f4b6f826766105938",
+    "bytes": 2729,
+    "mode": 432
+  },
+  "sys/x@0024host_summary_by_statement_latency.frm": {
+    "sha256": "6d1e87de4efce0a8d7fd7109489329dfbc10a8a487c009c3afeb4e19090d0d44",
+    "bytes": 4046,
+    "mode": 432
+  },
+  "sys/x@0024host_summary_by_statement_type.frm": {
+    "sha256": "f273b8165c738437250a65ea1aef2ea603b8ad25cd389cf7d95a5974d936030e",
+    "bytes": 4405,
+    "mode": 432
+  },
+  "sys/x@0024innodb_buffer_stats_by_schema.frm": {
+    "sha256": "60d36efdb7b441bef5a6da28336af175b521bba44b2963d437f9cf3b32b8ba79",
+    "bytes": 2667,
+    "mode": 432
+  },
+  "sys/x@0024innodb_buffer_stats_by_table.frm": {
+    "sha256": "89aa13db0331370e7cde301c67a32c21b0dd5ecba1e7a598579b546afd514e3a",
+    "bytes": 3063,
+    "mode": 432
+  },
+  "sys/x@0024innodb_lock_waits.frm": {
+    "sha256": "91ea9f278389799d73e482e9fae0252d647a92403c165016bcfd270a7bc44156",
+    "bytes": 5505,
+    "mode": 432
+  },
+  "sys/x@0024io_by_thread_by_latency.frm": {
+    "sha256": "d424a9a87316214ccbcffe6c3cc577209cb83d5f9d7273a1a6b1ce43c506349f",
+    "bytes": 4759,
+    "mode": 432
+  },
+  "sys/x@0024io_global_by_file_by_bytes.frm": {
+    "sha256": "cc679e6c3257a1d1f5abf09a6a31725c54493e8cb3d442786083a7b9a97358a3",
+    "bytes": 3888,
+    "mode": 432
+  },
+  "sys/x@0024io_global_by_file_by_latency.frm": {
+    "sha256": "afdee1a30d1b850b5a7bea06ec47d40b14d1e9b42c4171fe79d9f37c41461e6b",
+    "bytes": 2389,
+    "mode": 432
+  },
+  "sys/x@0024io_global_by_wait_by_bytes.frm": {
+    "sha256": "9ce7097bb1ec10e4fb2e2a951d1df542407cf2adec1aaa29e2e6684524da662a",
+    "bytes": 4753,
+    "mode": 432
+  },
+  "sys/x@0024io_global_by_wait_by_latency.frm": {
+    "sha256": "6e8e1c73ffc3e29bd9c1632dbcb87889a802d86f8f085a1ccd217f5d9909f416",
+    "bytes": 4527,
+    "mode": 432
+  },
+  "sys/x@0024latest_file_io.frm": {
+    "sha256": "e683504056f86efe1bd7a7db74f406b8d0448051ea09ad5ad5f22821adac66d9",
+    "bytes": 3374,
+    "mode": 432
+  },
+  "sys/x@0024memory_by_host_by_current_bytes.frm": {
+    "sha256": "553390d6d621bc85a6877ddcc9d8ce635d0efe8435bf11ddd48694873e49565f",
+    "bytes": 3326,
+    "mode": 432
+  },
+  "sys/x@0024memory_by_thread_by_current_bytes.frm": {
+    "sha256": "aaecfab03e97afd5a24c3afb1c271b69b8248e396662af66230af4a91a87b528",
+    "bytes": 3105,
+    "mode": 432
+  },
+  "sys/x@0024memory_by_user_by_current_bytes.frm": {
+    "sha256": "2df3ab27fd2e2d46df6a84cab2971e7b31f382d56a1fb336c9eb05c01ba85117",
+    "bytes": 3326,
+    "mode": 432
+  },
+  "sys/x@0024memory_global_by_current_bytes.frm": {
+    "sha256": "ceb7d0a220a22ca086102de8f33498cb1e5f90d4e53de926355f27ac26dbcaab",
+    "bytes": 3256,
+    "mode": 432
+  },
+  "sys/x@0024memory_global_total.frm": {
+    "sha256": "e50a0e0ef33a584f628ea1893cda59011b12082a7014007c289fca69457cc8c8",
+    "bytes": 824,
+    "mode": 432
+  },
+  "sys/x@0024processlist.frm": {
+    "sha256": "2725e50842fb459fd7fda0cb7db83b4d387f91dbaa11d85737b5929d16a0165c",
+    "bytes": 8208,
+    "mode": 432
+  },
+  "sys/x@0024ps_digest_95th_percentile_by_avg_us.frm": {
+    "sha256": "0b9285acb4578ca42fdbe440898ea84b651a85bca691e64fe749303e5430cc08",
+    "bytes": 2027,
+    "mode": 432
+  },
+  "sys/x@0024ps_digest_avg_latency_distribution.frm": {
+    "sha256": "d297d83de12d735a32793b5790c6210122b1c952126751e555fa3470ac9c6e3b",
+    "bytes": 1080,
+    "mode": 432
+  },
+  "sys/x@0024ps_schema_table_statistics_io.frm": {
+    "sha256": "16cac2acfda74e537068a2018e08f68ce96de49272ee6a6557aa4154d480597a",
+    "bytes": 3373,
+    "mode": 432
+  },
+  "sys/x@0024schema_flattened_keys.frm": {
+    "sha256": "ef4dfb8854793ab1a6f5bc97817e58561041828898f0bbb6606d96c63dba90ae",
+    "bytes": 2567,
+    "mode": 432
+  },
+  "sys/x@0024schema_index_statistics.frm": {
+    "sha256": "f0f293314ff938dd47c766b25cbd887700b0f874b76683869704250c8edb8a3d",
+    "bytes": 3509,
+    "mode": 432
+  },
+  "sys/x@0024schema_table_lock_waits.frm": {
+    "sha256": "d2dd32ad9518f2ea25c9023d619c4c5cc4d3633147c931705b30a682906d0ec2",
+    "bytes": 5214,
+    "mode": 432
+  },
+  "sys/x@0024schema_table_statistics.frm": {
+    "sha256": "04ce0fe394dba391b2bb846745162af212627e412d877816adbf6b0013f7f855",
+    "bytes": 3596,
+    "mode": 432
+  },
+  "sys/x@0024schema_table_statistics_with_buffer.frm": {
+    "sha256": "8930e1d29fb4f473a756a973463a7e0dbdfd1eef37ead677116c4f897024be40",
+    "bytes": 4928,
+    "mode": 432
+  },
+  "sys/x@0024schema_tables_with_full_table_scans.frm": {
+    "sha256": "07541a50ca2001229922bf0d734cb229098ba1997a1d0a7f71fa5bd526e726ce",
+    "bytes": 2004,
+    "mode": 432
+  },
+  "sys/x@0024session.frm": {
+    "sha256": "244410eae669143d7ddda67bd0517554bdc33e3f5a55741ebb93ed3cf30e15e8",
+    "bytes": 3215,
+    "mode": 432
+  },
+  "sys/x@0024statement_analysis.frm": {
+    "sha256": "c81ca7a3cf89f681957ec655d6645dd728dc975932fec27c49252eea7f759e72",
+    "bytes": 6950,
+    "mode": 432
+  },
+  "sys/x@0024statements_with_errors_or_warnings.frm": {
+    "sha256": "852c6335678856f732ecda43e873712d880f7f348a6dde5e052832f8948c0d1b",
+    "bytes": 3795,
+    "mode": 432
+  },
+  "sys/x@0024statements_with_full_table_scans.frm": {
+    "sha256": "8e3eb289d13637c16b96e5da840d7112c3eb4ab163f688f85b210ac7ef88756b",
+    "bytes": 5613,
+    "mode": 432
+  },
+  "sys/x@0024statements_with_runtimes_in_95th_percentile.frm": {
+    "sha256": "ceec208878e07008debeb7562bdebfc709b7806879c1dde4d8c32c32d61f449c",
+    "bytes": 3389,
+    "mode": 432
+  },
+  "sys/x@0024statements_with_sorting.frm": {
+    "sha256": "56310920b8c3382bb85142368eae20a955f965fecb7cf69694fc4def2bcc2b75",
+    "bytes": 4319,
+    "mode": 432
+  },
+  "sys/x@0024statements_with_temp_tables.frm": {
+    "sha256": "df2593968c9d648ea78728392f94920fc86ae9bb3828b4d931c1bc8000a40058",
+    "bytes": 4318,
+    "mode": 432
+  },
+  "sys/x@0024user_summary.frm": {
+    "sha256": "8ebfb3bfef45810c74af10d15cbae4ca91ef79b4d5c5dc3f0fac8b095a384658",
+    "bytes": 4540,
+    "mode": 432
+  },
+  "sys/x@0024user_summary_by_file_io.frm": {
+    "sha256": "48fa081d08d0bfe068ad53bb1cafff89392450d23e4225a11105a7a47167cead",
+    "bytes": 2360,
+    "mode": 432
+  },
+  "sys/x@0024user_summary_by_file_io_type.frm": {
+    "sha256": "5901136258ccd938b46a042a5cb6c577187326cdd6dab2fa8a555ce0a622c0a0",
+    "bytes": 2893,
+    "mode": 432
+  },
+  "sys/x@0024user_summary_by_stages.frm": {
+    "sha256": "3c3cb30c9ac898f22ebb548d35eb299d82be3cdfd16cd3456eb3e69d9e7e99f0",
+    "bytes": 2695,
+    "mode": 432
+  },
+  "sys/x@0024user_summary_by_statement_latency.frm": {
+    "sha256": "a18955cbbf814899af1a462a39a7b8b2a289934fdfa8ff31ee87ff8889593350",
+    "bytes": 4046,
+    "mode": 432
+  },
+  "sys/x@0024user_summary_by_statement_type.frm": {
+    "sha256": "8123be6ad84cdbfc6a276e56f5ce7d2f9ca5f407bf0f9f71fd5697357720887f",
+    "bytes": 4371,
+    "mode": 432
+  },
+  "sys/x@0024wait_classes_global_by_avg_latency.frm": {
+    "sha256": "959b50c3dfc2bfe6ae64b6c22167ce023107dc04952f8907d681b50b295f202a",
+    "bytes": 3503,
+    "mode": 432
+  },
+  "sys/x@0024wait_classes_global_by_latency.frm": {
+    "sha256": "e37d05502632dd2e2d7fe7d2cd9f2cec233c0021720d379d310a8e44d9bfb2d4",
+    "bytes": 3278,
+    "mode": 432
+  },
+  "sys/x@0024waits_by_host_by_latency.frm": {
+    "sha256": "e2600013246d3645aa701a281d8348746d6eef1d18a3e51bdc544c3ee3079ba1",
+    "bytes": 3128,
+    "mode": 432
+  },
+  "sys/x@0024waits_by_user_by_latency.frm": {
+    "sha256": "36bbf29fff8bf31f23d3dbb684dbeba38a1f4c22c3ee343f5ea3ea9d50093b29",
+    "bytes": 3331,
+    "mode": 432
+  },
+  "sys/x@0024waits_global_by_latency.frm": {
+    "sha256": "424046c4ab6b6e4055768eb3653de53fdc5028a86b1725035f963f6a71d6c451",
+    "bytes": 2337,
+    "mode": 432
+  },
+  "undo001": {
+    "sha256": "1638240e094072b8f04555d1254d2b75ded28d0f29aecdc49c98bd3f5c1294cb",
+    "bytes": 10485760,
+    "mode": 432
+  },
+  "undo002": {
+    "sha256": "a9ff9954d68e84de6e1f4ac80887a1f54de37e0a107ef306f9dfeb7fbe241f3f",
+    "bytes": 10485760,
+    "mode": 432
+  },
+  "undo003": {
+    "sha256": "089b19f1700b4ab3f28fe68198e0c145454b6b48318f00ac8da87223458ca25e",
+    "bytes": 10485760,
+    "mode": 432
+  }
+}

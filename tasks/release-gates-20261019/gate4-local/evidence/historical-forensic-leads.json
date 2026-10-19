@@ -1,0 +1,60 @@
+{
+  "schema": "skyyrose.historical-orphan-binary-leads.v1",
+  "status": "OWNERSHIP_NOT_ESTABLISHED",
+  "original_datadir_started": false,
+  "authentication": "NOT_APPLICABLE",
+  "artifact": ".artifacts/release-gates-20261019/runtime-official/mysql/ib_logfile0",
+  "sha256": "b1e32435d8ebc26f01b5c6839e30cffbd86c92ab961276433d84e9d21d081b83",
+  "bytes": 100663296,
+  "literal_searches": {
+    "synthetic_sku": {
+      "count": 31,
+      "offsets": [
+        34654631,
+        34665361,
+        34685981,
+        34687597,
+        34688786,
+        34690402,
+        34691374,
+        34692990,
+        34698184,
+        34698318,
+        34699459,
+        34701075,
+        34702103,
+        34703719,
+        34705074,
+        34706690,
+        34707878,
+        34709494,
+        34712711,
+        34714327,
+        34715546,
+        34717162,
+        34720303,
+        34721919,
+        34723144,
+        34724760,
+        34726152,
+        34727768,
+        34728987,
+        34730603,
+        35584032
+      ]
+    },
+    "writer_token": {
+      "count": 3,
+      "offsets": [
+        34723055,
+        34726063,
+        34728898
+      ]
+    }
+  },
+  "limits": [
+    "Read-only byte searches are not qualified InnoDB redo decoding",
+    "A literal occurrence cannot bind operation/transaction/connection to child1292 insertion",
+    "No parser-backed contemporaneous insertion evidence recovered; historical child1292 remains unadopted and undeleted"
+  ]
+}

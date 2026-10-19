@@ -1,0 +1,84 @@
+{
+  "schema": "skyyrose.private-recovery-toolchain.v1",
+  "tools": {
+    "python": {
+      "path": "/opt/homebrew/Cellar/python@3.14/3.14.7/Frameworks/Python.framework/Versions/3.14/bin/python3.14",
+      "sha256": "87d4df53fd91304be5bac391fb204643c36b7df2023c04a0953bcbc7d4fdf634",
+      "bytes": 34640
+    },
+    "php": {
+      "path": "/opt/homebrew/Cellar/php/8.5.6/bin/php",
+      "sha256": "f43e04e1d2b994542c30cc5d2dad0b3de03a2865e19e260d82ac47aea2b9c92f",
+      "bytes": 23817136
+    },
+    "mariadb": {
+      "path": "/opt/homebrew/Cellar/mariadb/13.0.2_1/bin/mariadb",
+      "sha256": "4773715a4595859bfefab646d31dc6f796bcfe3d2f2d97fd871ed5a739ba8eac",
+      "bytes": 5012000
+    },
+    "mariadbd": {
+      "path": "/opt/homebrew/Cellar/mariadb/13.0.2_1/bin/mariadbd",
+      "sha256": "8eee893db73f2b9f1f633a3a45e2c94917b9d5fe9931f8b2b0867b0df6a36b31",
+      "bytes": 22331152
+    },
+    "mariadb-binlog": {
+      "path": "/opt/homebrew/Cellar/mariadb/13.0.2_1/bin/mariadb-binlog",
+      "sha256": "f790a81d952d0d7f392ff93f69c58e4e70ee24231a5f4af0ad7d6d2fcecc9aeb",
+      "bytes": 5160480
+    },
+    "mariadb-install-db": {
+      "path": "/opt/homebrew/Cellar/mariadb/13.0.2_1/scripts/mariadb-install-db",
+      "sha256": "1cd865dd7e82e355a54e4986a7130a28cc2b8aa2388582617608ac7ab01249bb",
+      "bytes": 22867
+    },
+    "wp-cli": {
+      "path": "/opt/homebrew/Cellar/wp-cli/2.12.0/bin/wp",
+      "sha256": "ce34ddd838f7351d6759068d09793f26755463b4a4610a5a5c0a97b68220d85c",
+      "bytes": 7142777
+    }
+  },
+  "runtime_profile": {
+    "php_prefix": [
+      "-d",
+      "memory_limit=1G",
+      "-d",
+      "error_reporting=24575"
+    ],
+    "wp_skip_plugins": [
+      "akismet",
+      "elementor",
+      "site-mailer",
+      "gutenberg",
+      "image-optimization",
+      "jetpack",
+      "jetpack-boost",
+      "zero-bs-crm",
+      "jwt-authentication-for-wp-rest-api",
+      "kirki",
+      "klaviyo",
+      "litespeed-cache",
+      "mailpoet",
+      "one-click-demo-import",
+      "page-optimize",
+      "pinterest-for-woocommerce",
+      "tiktok-for-business",
+      "wordpress-importer",
+      "oauth2-provider"
+    ],
+    "profile": "(version 1)(allow default)(deny network*)(allow network-outbound (remote unix-socket (literal \"/private/tmp/sr-gate4-01a0f768.sock\")))",
+    "qualification": "AVAILABLE_COMMERCE_SUBSET_NOT_COMPLETE_INSTALLED_STACK"
+  },
+  "runtime_profile_sha256": "4324b507358d8d9392fca0d83adefa279b4d0edba1d0c5f36903ff18e800e04a",
+  "versions": {
+    "php": "8.5.6",
+    "MariaDB": "13.0.2",
+    "WP": "7.1.3",
+    "WooCommerce": "11.2.1",
+    "WPCLI": "2.12.0"
+  },
+  "limits": [
+    "Native macOS libraries/shared-cache/transitive binary bytes not fully qualified",
+    "Installed baseline PHP8.4.26/MariaDB11.8.9 mismatch remains",
+    "CLI memory request1G but observed effective memory_limit=-1 in available commerce profile; no memory parity claim"
+  ]
+}

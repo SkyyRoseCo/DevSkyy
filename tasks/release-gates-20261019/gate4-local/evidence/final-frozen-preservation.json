@@ -1,0 +1,21 @@
+{
+  "schema": "skyyrose.final-gate4-frozen-preservation.v1",
+  "authentication": "NOT_APPLICABLE",
+  "original_datadir_started": false,
+  "original_files": 311,
+  "original_bytes": 199449528,
+  "original_full_inventory_unchanged": true,
+  "original_inventory": ".artifacts/release-gates-20261019/gate4-local/original-cold-datadir-hashes.json",
+  "original_inventory_sha256": "645d683b01e400edd3ed3dec673eaf7730676aa545d03aa66cb50101a02d5098",
+  "frozen_zip_sha256": "d9f24f5e35728ab693675727c7da009406979f468aa7dd54a09122e6ccd84dd6",
+  "frozen_zip_bytes": 293655342,
+  "frozen_packet": {
+    "tasks/release-gates-20261019/adoption-manifest.json": "5321da1f90281de8a8648326c2d7cced7c0c039b37c70c4395c74913eb781dff",
+    "tasks/release-gates-20261019/evidence-index.json": "03ff570c3686f06615b776f37f32c5fafe144723ee6d355be943c942066e9fb4"
+  },
+  "services": {
+    "/tmp/sr-gate4-01a0f768.sock": "STOPPED",
+    "/tmp/sr-gate4-restore-01a0f768.sock": "STOPPED",
+    "/tmp/sr-release-01a0f768.sock": "STOPPED"
+  }
+}

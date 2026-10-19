@@ -1,0 +1,58 @@
+{
+  "schema": "skyyrose.private-postboot-restore.v1",
+  "status": "PASS_PRIVATE_RESTORE_RECONCILIATION_AND_EXACT_POSTBOOT_STATE",
+  "authentication": "NOT_APPLICABLE",
+  "steps": [
+    {
+      "step": "EXACT_RELOCATION_CACHE_REPRODUCED",
+      "names": [
+        "_site_transient_timeout_wp_theme_files_patterns-9a1c8135973a22db9063ee2e0a8eb182",
+        "_site_transient_wp_theme_files_patterns-9a1c8135973a22db9063ee2e0a8eb182"
+      ],
+      "first_id": 4075,
+      "auto_increment": 4077,
+      "ttl": 1800,
+      "window": [
+        1792423809,
+        1792423811
+      ],
+      "write_attempts": 2,
+      "confirmed_inserted_rows": 2,
+      "source_options_receipt_sha256": "55e9db6ce730c4fd51db8835821dc36c4efb8cb7bcc68cde686c19152a84d6d0",
+      "audit_file": ".artifacts/release-gates-20261019/gate4-local/restore/query-audit-1792423766997277000.jsonl",
+      "audit_sha256": "b9ad8fd289493158bc779b04af26bfe06d8a241e12ea89e2479b4fa08174d27b",
+      "all_other_rows_tables_schemas_unchanged": true
+    },
+    {
+      "step": "UNRELATED_OPTION_DRIFT_REFUSED",
+      "target_available": false
+    },
+    {
+      "step": "UNINSTRUMENTED_NATIVE_BOOT_AND_FRESH_CHECKPOINT_RETRY_EXACT",
+      "native_orders_payment_stock_equal": true,
+      "all150_tables_exact_postboot": true,
+      "filesystem_state_control_exact": true,
+      "replay_performed": false
+    }
+  ],
+  "limits": [
+    "Synthetic local restore only, no live restore/release or installed runtime parity",
+    "Pre-bootstrap exact150-table source equality remains separate from two exact relocated theme-cache insertions"
+  ],
+  "source_pins_at_start": {
+    "tools/v2-runtime/gate4_finalize_restore.py": "6e6e7f840bdac9586c2efc5026108a7d7c6471badd1b52ea761057c552ee5fd9",
+    "tools/v2-runtime/gate4_restore_local.py": "cbf07a5f180acd340f6a7dd482999d2137b67207b47db9d81cdf71a9e4391663",
+    "tools/v2-runtime/gate4-recovery-fixture.php": "c3aa5b3ab7c4207ec01b7152e5a1ef3b8d01c24587533084b2059f35d375d5c3",
+    ".artifacts/release-gates-20261019/gate4-local/restore/control/gate4-recovery-fixture.php": "c3aa5b3ab7c4207ec01b7152e5a1ef3b8d01c24587533084b2059f35d375d5c3"
+  },
+  "initial_native_receipt": {
+    "name": "restore-1792422346756436000-command-15865.txt",
+    "sha256": "a2c0fc1b3e3a4141f67646cdbacbd4cf04e711afd502ad72a54733d021395ae9",
+    "end_time": 1792423170
+  },
+  "audit_overlay_sha256": "7b6f9d1b59d626c2415b991e377727f8cc421614638331e644aee5d52eaeed10",
+  "cleanup_errors": [],
+  "owned_service_stopped": true,
+  "final_cold_inventory_sha256": "e435290d1668ad534bcc3a324e8551a9884757f46a34d4acc1833b5578538921",
+  "checkpoint_sha256": "6e5fc98cc93b8e57eeddea8a5439dd0180c4a1122985e61cf1884a49bb8e43c6"
+}

@@ -1,0 +1,17 @@
+{
+  "schema": "skyyrose.restore-terminal-guard-source-bridge.v1",
+  "executed_source_commit": "c78611f4d2bc793a4f44938333d0a02e6cb43596",
+  "success_source_pins": {
+    "tools/v2-runtime/gate4_finalize_restore.py": "6e6e7f840bdac9586c2efc5026108a7d7c6471badd1b52ea761057c552ee5fd9",
+    "tools/v2-runtime/gate4_restore_local.py": "cbf07a5f180acd340f6a7dd482999d2137b67207b47db9d81cdf71a9e4391663",
+    "tools/v2-runtime/gate4-recovery-fixture.php": "c3aa5b3ab7c4207ec01b7152e5a1ef3b8d01c24587533084b2059f35d375d5c3",
+    ".artifacts/release-gates-20261019/gate4-local/restore/control/gate4-recovery-fixture.php": "c3aa5b3ab7c4207ec01b7152e5a1ef3b8d01c24587533084b2059f35d375d5c3"
+  },
+  "reviewed_successor_commit": "466ea3fd539cb65dde655bc7ed1708717dfed6c8",
+  "correction": "One terminal PASS assertion added after reports/lock cleanup; no successful database path change",
+  "executed_database_replay_repeated": false,
+  "correction_evidence": "tasks/release-gates-20261019/gate4-local/evidence/cleanup-failure-controls.json",
+  "correction_evidence_sha256": "f8f6693cb812147802e0f0f3283693e54866bae6dc6f55d7f7db90b847885c49",
+  "independent_review": "bounded Astra architect accepted source bridge and mocked actual AST terminal cleanup branch; original success pins remain original",
+  "candidate_finalizer_sha256": "1ce539392c4f4115f9bee3993760dfe96031eb7c626eb0e01cd4d0373f0ec183"
+}

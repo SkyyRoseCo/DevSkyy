@@ -1,0 +1,12 @@
+{
+  "schema": "skyyrose.gate4-authority-unchanged.v1",
+  "registry_sha256": "5eb683a13285772b264dabc5f1f84665087bc39b1b89cce4371a8c0d8fcc1580",
+  "reader_sha256": "65b3f2e01b756676661d3964b19d7dad7db3359973fa1b7738819796d17bf55b",
+  "products": 33,
+  "projection_check": "PASS CSV/all dossiers/asset manifest match registry",
+  "canonical_reader_sku": "kids-001",
+  "canonical_reader_result_sha256": "aae19e5018536ae8660a99747711f50f0d4959f8839646a44e98589c51187b69",
+  "product_writes": false,
+  "founder_authority": "FOUNDER_CONFIRMED facts preserved",
+  "frozen_zip_sha256": "d9f24f5e35728ab693675727c7da009406979f468aa7dd54a09122e6ccd84dd6"
+}

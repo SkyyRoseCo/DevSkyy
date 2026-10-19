@@ -1,0 +1,18 @@
+{
+  "schema": "skyyrose.synthetic-four-storage-modes.v1",
+  "status": "INCOMPLETE",
+  "authentication": "NOT_APPLICABLE",
+  "runtime_profile_sha256": "4324b507358d8d9392fca0d83adefa279b4d0edba1d0c5f36903ff18e800e04a",
+  "modes": [],
+  "limits": [
+    "Fresh synthetic orders only; no existing installed HPOS authority/sync adoption or full installed-stack parity",
+    "Original datadir remains stopped; source is disposable clone; external gateway effects disabled"
+  ],
+  "failure": {
+    "type": "AssertionError",
+    "message": "('restore-1792424067180310000-command-6.txt', 1)"
+  },
+  "original_storage_settings_restored": true,
+  "cleanup_errors": [],
+  "owned_service_stopped": true
+}

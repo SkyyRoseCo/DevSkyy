@@ -1,0 +1,113 @@
+{
+  "status": "INCOMPLETE",
+  "authentication": "NOT_APPLICABLE",
+  "steps": [
+    {
+      "step": "UNPAID_NATIVE_ORDER_CONTROL_REFUSED",
+      "order_id": 2166
+    },
+    {
+      "step": "COMPLETE_COLD_BACKUP",
+      "manifest_sha256": "e8091a9c9fffaced20031c6b266377bfbc038ba70f2e9ccc31589baaf43fcd52",
+      "db_files": 516,
+      "site_files": 35318,
+      "tables": 150
+    },
+    {
+      "step": "POST_BACKUP_NATIVE_AND_CODE_ROLLBACK",
+      "existing_order": 2166,
+      "new_order": 2174,
+      "stock": 18,
+      "native_snapshot_sha256": "20c77b23a5daa317dee4d485ca31e444ecd0f15e5aa2959baefd8bebc201b3b0",
+      "delta_sha256": "a356b08d802ecd06f9671c804a8c8a51a32c46361bfe9bd272fe8a8f9cb58d1f",
+      "filesystem_delta_files": 2,
+      "rollback_scope": "Compatible comment-only code candidate booted, archive bytes restored, current DB retained; no arbitrary-version compatibility claim",
+      "candidate_sha256": "1ba3b3533d0b46a7f99d9e338ce850f1a82d82583f9e660e156de25bd1c3066b",
+      "restored_sha256": "9c7fb86e5e1cfdcbc76f446363d52ff487c64d350bb7f46ba5855f164c909dda",
+      "candidate_boot_changed_tables": []
+    },
+    {
+      "step": "RESTORED_PRE_BOOT",
+      "attempt": "native-baseline",
+      "physical_files_verified": true,
+      "application_tables_verified": 150,
+      "config_overlay": "Only synthetic source socket replaced with isolated restore socket"
+    },
+    {
+      "step": "NATIVE_BASELINE_RESTORE_VERIFIED",
+      "baseline_native_ids_and_promises": true
+    },
+    {
+      "step": "RESTORED_PRE_BOOT",
+      "attempt": "after-native-probe",
+      "physical_files_verified": true,
+      "application_tables_verified": 150,
+      "config_overlay": "Only synthetic source socket replaced with isolated restore socket"
+    },
+    {
+      "step": "INTERRUPTED_REPLAY_REFUSED",
+      "target_available": false,
+      "complete_transaction_boundary": 1256
+    },
+    {
+      "step": "RESTORED_PRE_BOOT",
+      "attempt": "after-partial",
+      "physical_files_verified": true,
+      "application_tables_verified": 150,
+      "config_overlay": "Only synthetic source socket replaced with isolated restore socket"
+    },
+    {
+      "step": "NATIVE_ID_COLLISION_REFUSED",
+      "target_available": false,
+      "conflicting_id": 2174
+    },
+    {
+      "step": "RESTORED_PRE_BOOT",
+      "attempt": "after-collision",
+      "physical_files_verified": true,
+      "application_tables_verified": 150,
+      "config_overlay": "Only synthetic source socket replaced with isolated restore socket"
+    },
+    {
+      "step": "STALE_CHECKPOINT_REFUSED",
+      "target_available": false,
+      "unchanged_drifted_target": true,
+      "receipt": "restore-1792422346756436000-stale-checkpoint.txt",
+      "sha256": "10d16deb3d7b32327f118788bd91ad2d1e42d62bece70421fdd726635b6e6874"
+    },
+    {
+      "step": "RECONCILIATION_EXACT_AND_RETRY_NOOP",
+      "tables": 150,
+      "highwater_reconciled": [
+        "wp_wc_order_operational_data"
+      ],
+      "checkpoint_sha256": "89d22faebd72dd99f11758c8d6b51d54b191735191f47e179c2af40c3796b558",
+      "duplicate_replay_performed": false
+    },
+    {
+      "step": "NATIVE_NEWER_ORDER_STATE_VERIFIED",
+      "native_ids_payment_stock_promises_equal": true,
+      "post_probe_changed_tables": [
+        "wp_options"
+      ]
+    }
+  ],
+  "limits": [
+    "Synthetic MariaDB13 private profile only; no production backup/restore or full installed-stack parity",
+    "New binlog instrumentation cannot establish historical orphan ownership"
+  ],
+  "failure": {
+    "type": "AssertionError",
+    "message": "Native probe changed database; review changes before declaring restored target available"
+  },
+  "cleanup": [
+    {
+      "socket": "/tmp/sr-gate4-restore-01a0f768.sock",
+      "stopped": true
+    },
+    {
+      "socket": "/tmp/sr-gate4-01a0f768.sock",
+      "stopped": true
+    }
+  ]
+}

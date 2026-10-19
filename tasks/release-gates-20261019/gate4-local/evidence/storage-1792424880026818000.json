@@ -1,0 +1,29 @@
+{
+  "schema": "skyyrose.independent-native-storage-modes.v1",
+  "status": "INCOMPLETE",
+  "run": "1792424880026818000",
+  "authentication": "NOT_APPLICABLE",
+  "modes": [],
+  "limits": [
+    "Four independently initialized order-empty fixtures; no populated-store authority transition or synchronization proof",
+    "Available seven-commerce-plugin profile only, not full installed-stack or production parity",
+    "Original populated clone and completed restore/coldbackup preserved; historical orphan untouched"
+  ],
+  "source_pins_at_start": {
+    "tools/v2-runtime/test_gate4_storage.py": "7dd70e45da684b6ebebecdbf9064cbb3e5964885a1c831a7bf5deb8ab1584a59",
+    "tools/v2-runtime/gate4_restore_local.py": "cbf07a5f180acd340f6a7dd482999d2137b67207b47db9d81cdf71a9e4391663",
+    "tools/v2-runtime/gate4-storage-mode.php": "d158b9d407073908f495bbb659469db232079bd58ca36fd782873decaebbba81",
+    "tools/v2-runtime/gate4-recovery-fixture.php": "c3aa5b3ab7c4207ec01b7152e5a1ef3b8d01c24587533084b2059f35d375d5c3",
+    "tools/v2-runtime/variation-migration-core-next.php": "6fed2167b9606924dd2c61c8e6227feb2184ff20bab9bfa99a06ff410332905e",
+    "tools/v2-runtime/gate4_finalize_restore.py": "1ce539392c4f4115f9bee3993760dfe96031eb7c626eb0e01cd4d0373f0ec183"
+  },
+  "preservation_manifest_sha256": "f49783d14f8b79c37118c0251e6d40ac9952f456252cdeb94667aacd6d598ae6",
+  "failure": {
+    "type": "AssertionError",
+    "message": "('restore-1792424880026529000-command-6.txt', 1)"
+  },
+  "populated_clone_full_file_bytes_modes_restored": true,
+  "completed_restore_cold_bytes_modes_unchanged": true,
+  "cleanup_errors": [],
+  "owned_services_stopped": true
+}

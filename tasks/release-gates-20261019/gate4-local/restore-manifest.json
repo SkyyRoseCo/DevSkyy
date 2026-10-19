@@ -1,0 +1,80 @@
+{
+  "schema": "skyyrose.private-recovery-successor.v1",
+  "status": "PASS_PRIVATE_RESTORE_RECONCILIATION_AND_EXACT_POSTBOOT_STATE",
+  "authentication": "NOT_APPLICABLE",
+  "executed_source_commit": "c78611f4d2bc793a4f44938333d0a02e6cb43596",
+  "execution_provenance": "Main run launched at older HEAD with exact source pins retrospectively matched to c78611f4d; successful finalizer pins preserved at executed version. Terminal fail-closed assertion subsequently qualified by actual-source AST mocked cleanup control; no replay repetition or source relabeling.",
+  "successful_finalizer_run": "1792423766997277000",
+  "source_bridge": "tasks/release-gates-20261019/gate4-local/evidence/restore-source-bridge.json",
+  "main_run_status_preserved": "INCOMPLETE_TWO_RELOCATED_THEME_CACHE_ROWS",
+  "postboot_resolution": "Exactly two path-derived native theme cache rows reproduced and confirmed inserted; unrelated drift refused; all150tables and native payments/stock verified; no allocator reset",
+  "coverage": {
+    "cold_db_files": 516,
+    "site_files": 35318,
+    "operational_state_files": 37282,
+    "control_files": 4,
+    "tables": 150,
+    "newer_order_id": 2174,
+    "existing_paid_order_id": 2166,
+    "stock_before": 20,
+    "stock_after": 18,
+    "raw_index_files": 28161
+  },
+  "evidence": {
+    "tasks/release-gates-20261019/gate4-local/evidence/cleanup-failure-controls.json": {
+      "sha256": "f8f6693cb812147802e0f0f3283693e54866bae6dc6f55d7f7db90b847885c49",
+      "bytes": 1435
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/recovery-toolchain.json": {
+      "sha256": "ce9050f2ed223e68018341b45e61fbe2ecd6094bd0e2680a5830a5d52fb1294e",
+      "bytes": 2900
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/restore-backup-manifest.json": {
+      "sha256": "e8091a9c9fffaced20031c6b266377bfbc038ba70f2e9ccc31589baaf43fcd52",
+      "bytes": 18416641
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/restore-delta-manifest.json": {
+      "sha256": "a356b08d802ecd06f9671c804a8c8a51a32c46361bfe9bd272fe8a8f9cb58d1f",
+      "bytes": 7953324
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/restore-development-permission-failure.json": {
+      "sha256": "156c345584495118fc43fe3ebd132cc08ee4ffc471de196dad693fc95d2f0679",
+      "bytes": 402
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/restore-final-checkpoint.json": {
+      "sha256": "6e5fc98cc93b8e57eeddea8a5439dd0180c4a1122985e61cf1884a49bb8e43c6",
+      "bytes": 18323627
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/restore-final-cold-files.json": {
+      "sha256": "e435290d1668ad534bcc3a324e8551a9884757f46a34d4acc1833b5578538921",
+      "bytes": 87463
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/restore-postboot-results.json": {
+      "sha256": "c93d9b551be68834744a9178d7efa0eb5559e82f6b83589171214c2cd0ed9181",
+      "bytes": 2693
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/restore-pre-postboot-incomplete.json": {
+      "sha256": "415287360fcadab81e0165dbad2bc7f16e5e3a8cae0f0f26567afb019ffa9d61",
+      "bytes": 3861
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/restore-raw-local-index.json": {
+      "sha256": "d66a53668c550adcb47aef5e2cdffc173851d7c7510ad887429f306e74deb7f9",
+      "bytes": 5774672
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/restore-results.json": {
+      "sha256": "415287360fcadab81e0165dbad2bc7f16e5e3a8cae0f0f26567afb019ffa9d61",
+      "bytes": 3861
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/restore-source-bridge.json": {
+      "sha256": "a455734892b447cfafdb47ca5bd0a36083bc6186b1be53e6b5f335086b8a1b58",
+      "bytes": 1390
+    }
+  },
+  "limits": [
+    "Synthetic local seven-commerce-plugin profile only; PHP8.5.6/MariaDB13.0.2 differ from installed PHP8.4.26/MariaDB11.8.9",
+    "Complete selected private fixture backup, not a live/installed backup",
+    "Code rollback qualification is comment-only compatible candidate; not arbitrary-version compatibility",
+    "New ROW binlog instrumentation cannot prove historical orphan ownership",
+    "No live restore/conversion/deployment/activation authority"
+  ]
+}

@@ -1,0 +1,7 @@
+{
+  "status": "FAIL_CLOSED_BEFORE_RESTORED_DB_BOOT",
+  "run": "1792422021517469000",
+  "cause": "Python tar data filter changes group-writable0660 files to0640; all physical bytes equal but strict permissions differ",
+  "cleanup": "both sockets stopped",
+  "correction": "safe data-filter extraction then restore archived permission bits after path validation; no ownership or special bits restored"
+}

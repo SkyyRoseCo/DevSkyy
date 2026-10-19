@@ -1,0 +1,71 @@
+{
+  "schema": "skyyrose.gate4-local-continuation.v1",
+  "status": "LOCAL_SUBSETS_COMPLETE_GATE4_AND_RELEASE_HELD",
+  "source_head": "2a874640b476d25d430a709d91f68720fa790332",
+  "authentication": "NOT_APPLICABLE_FOR_SYNTHETIC_LOCAL_RUNS",
+  "subsets": {
+    "private_fencing": "PASS31CASES",
+    "private_privacy": "PASS24NETWORK_35ARTIFACT_CONTROLS_2REDACTED_VIEWER_REPLAYS",
+    "private_restore": "PASS_COMPLETE_SELECTED_FIXTURE_RESTORE_NEWER_ORDER_RECONCILIATION_POSTBOOT",
+    "private_storage": "PASS_FOUR_INDEPENDENT_NATIVE_STORAGE_MODES"
+  },
+  "evidence": {
+    "tasks/release-gates-20261019/gate4-local/evidence/authority-unchanged.json": {
+      "sha256": "5d7406c41f3e219a85aa22bfa2c6a02f87f977317bf4ade7b3e7c3bcceca3307",
+      "bytes": 647
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/final-frozen-preservation.json": {
+      "sha256": "8c08e36d3211d31b6772c3ec4488452f00f2eb7c8f5ba11a63f5ef9b7f3bb863",
+      "bytes": 1012
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/historical-forensic-leads.json": {
+      "sha256": "2c250d6b88d99727f435da76cababbf34758510fdf219153cfb656a7eacf562a",
+      "bytes": 1460
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/historical-ownership-search.json": {
+      "sha256": "3fdf4cb5e9ba8fd896dbee2d8c0315e5803820d77c83997ec34ebe2bcd8c399d",
+      "bytes": 3465
+    },
+    "tasks/release-gates-20261019/gate4-local/fence-manifest.json": {
+      "sha256": "88c4ade1292d625ea0f4a0a7f262eff3b9d38919a58af562130b84cfe7c77a59",
+      "bytes": 4314
+    },
+    "tasks/release-gates-20261019/gate4-local/privacy-manifest.json": {
+      "sha256": "99080985c386a99d7922319d0dce63ff4554b2f9da1dd897c12d5c97d6c352b1",
+      "bytes": 6091
+    },
+    "tasks/release-gates-20261019/gate4-local/restore-manifest.json": {
+      "sha256": "b4acc8ab6883fe03424a272a1335a00fb9c22cfc3b7307b86b4dd8a7ee434c12",
+      "bytes": 4200
+    },
+    "tasks/release-gates-20261019/gate4-local/storage-manifest.json": {
+      "sha256": "2cc0c155d09b139539f375911ac920f26b2afa1fae22a5e447cddf72689a1386",
+      "bytes": 3512
+    }
+  },
+  "historical_orphan": {
+    "parent_id": 1290,
+    "child_id": 1292,
+    "ownership": "NOT_ESTABLISHED",
+    "action": "UNADOPTED_UNDELETED",
+    "new_leads": "31SKU and3writer-token literal redo occurrences; no qualified transaction/connection/insert ownership proof",
+    "original_datadir_started": false
+  },
+  "open": [
+    "Contemporaneous historical orphan insertion ownership remains missing",
+    "Complete authenticated installed plugin/MU/drop-in/config/runtime parity remains unavailable; seven proprietary/platform components missing, managed file coverage gaps, PHP/DB mismatch",
+    "Original consumed live privacy capture remains FAIL/eightUNKNOWN; no live retry or acceptance",
+    "Populated order-store migration/synchronization, actual production recovery and release authorization remain unqualified",
+    "Full immersive/creative/hotspot/GLB/physical installed acceptance remains held"
+  ],
+  "holds": [
+    "Live conversion/sync/config/credentials/orders/payments and live backup/restore",
+    "Push/merge/deploy/activation/publication/cutover",
+    "Paid/provider/media generation and GLB promotion"
+  ],
+  "frozen_source": "d953e51ee9e01448fe6b04960d5958d8ac424954",
+  "frozen_evidence": "aa0652dc4269e3c79b86d939e7b630783a63a148",
+  "frozen_packet_unchanged": true,
+  "supersession": "Metadata-only successor ledger; prior fence/standalone/frozen manifests retain their original historical open labels. No silent adoption into frozen source/ZIP.",
+  "storage_assertion_scope": "Unchanged V1/V2 historical snapshots and native payment eligibility; actual payment/duplicate payment and stock20to18 for existing V2 plus newly created variation order. No actual V1 payment test."
+}

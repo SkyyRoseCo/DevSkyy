@@ -1,0 +1,31 @@
+{
+  "schema": "skyyrose.mocked-terminal-cleanup-control.v1",
+  "status": "PASS_FAIL_CLOSED_CONTROLS",
+  "authentication": "NOT_APPLICABLE",
+  "method": "Actual source AST terminal finally and guard, primary-complete boolean and cleanup failure mocked; no native DB operation/replay performed",
+  "source_pins": {
+    "tools/v2-runtime/test_gate4_cleanup.py": "db3b41fc0ed9bd93df49d741315a91611baae63116c449eb7cb450e80d87f3fd",
+    "tools/v2-runtime/gate4_finalize_restore.py": "1ce539392c4f4115f9bee3993760dfe96031eb7c626eb0e01cd4d0373f0ec183",
+    "tools/v2-runtime/test_gate4_storage.py": "d55f1acde427d7b4fae9d068989282ef59dec9d7fa98245c7672ad7a2524f73f"
+  },
+  "controls": [
+    {
+      "kind": "finalizer",
+      "exit_code": 1,
+      "terminal_status": "FAIL_CLEANUP",
+      "lock_released": true,
+      "checkpoint_unreleased": true,
+      "receipt": ".artifacts/release-gates-20261019/gate4-local/cleanup-controls-1792425058816656000/finalizer.txt",
+      "receipt_sha256": "c71eea3fc629f20f4dc2d1fe87e9519daa9ab7af866437bcd48f9e455274a28c"
+    },
+    {
+      "kind": "storage",
+      "exit_code": 1,
+      "terminal_status": "FAIL_CLEANUP",
+      "lock_released": true,
+      "checkpoint_unreleased": false,
+      "receipt": ".artifacts/release-gates-20261019/gate4-local/cleanup-controls-1792425058816656000/storage.txt",
+      "receipt_sha256": "f6b7fd67a3dd9655e87dc8ea95b5dee067b3fd48c54f6908f3b0a0881768f083"
+    }
+  ]
+}

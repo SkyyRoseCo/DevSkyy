@@ -1,0 +1,238 @@
+{
+  "schema": "skyyrose.independent-native-storage-modes.v1",
+  "status": "PASS_FOUR_INDEPENDENT_NATIVE_STORAGE_MODES",
+  "run": "1792425206613758000",
+  "authentication": "NOT_APPLICABLE",
+  "modes": [
+    {
+      "label": "legacy-nosync",
+      "status": "PASS_NATIVE_HISTORY_PAYMENT_DUPLICATE_STOCK",
+      "initial_order_store_item_counts": [
+        0,
+        0,
+        0
+      ],
+      "authority": "no",
+      "sync": "no",
+      "native_store_class": "WC_Order_Data_Store_CPT",
+      "native_schema_initialized_empty": {
+        "wc_orders": 0,
+        "wc_order_addresses": 0,
+        "wc_order_operational_data": 0,
+        "wc_orders_meta": 0,
+        "woocommerce_order_items": 0,
+        "woocommerce_order_itemmeta": 0
+      },
+      "observed_runtime": {
+        "ok": true,
+        "authority_option": "no",
+        "sync_option": "no",
+        "hpos": false,
+        "native_store_class": "WC_Order_Data_Store_CPT",
+        "initialized_empty_tables": null,
+        "php_version": "8.5.6",
+        "memory_limit": "-1",
+        "wp_version": "7.1.3",
+        "woocommerce_version": "11.2.1"
+      },
+      "active_plugins": [
+        "stripe-tax-for-woocommerce",
+        "woocommerce-gateway-stripe",
+        "woocommerce-payments",
+        "woocommerce-paypal-payments",
+        "woocommerce-services",
+        "woocommerce-shipping",
+        "woocommerce"
+      ],
+      "parent_id": 10,
+      "baseline_orders": [
+        11,
+        12
+      ],
+      "new_order": 19,
+      "stock_before": 20,
+      "stock_after": 18,
+      "snapshot_sha256": "05d1223924921b9cd9fdefa4fe03d1ba2ea457f746e2d2708b0c13a802ff1871",
+      "fixture": ".artifacts/release-gates-20261019/gate4-local/storage-fixtures/1792425206613758000/legacy-nosync",
+      "cold_inventory_sha256": "38baf4b4a8d60cb3081373eef331a52ac7bf6657ceec7017f515bffc58ed3f69",
+      "owned_service_stopped": true
+    },
+    {
+      "label": "legacy-sync",
+      "status": "PASS_NATIVE_HISTORY_PAYMENT_DUPLICATE_STOCK",
+      "initial_order_store_item_counts": [
+        0,
+        0,
+        0
+      ],
+      "authority": "no",
+      "sync": "yes",
+      "native_store_class": "WC_Order_Data_Store_CPT",
+      "native_schema_initialized_empty": {
+        "wc_orders": 0,
+        "wc_order_addresses": 0,
+        "wc_order_operational_data": 0,
+        "wc_orders_meta": 0,
+        "woocommerce_order_items": 0,
+        "woocommerce_order_itemmeta": 0
+      },
+      "observed_runtime": {
+        "ok": true,
+        "authority_option": "no",
+        "sync_option": "yes",
+        "hpos": false,
+        "native_store_class": "WC_Order_Data_Store_CPT",
+        "initialized_empty_tables": null,
+        "php_version": "8.5.6",
+        "memory_limit": "-1",
+        "wp_version": "7.1.3",
+        "woocommerce_version": "11.2.1"
+      },
+      "active_plugins": [
+        "stripe-tax-for-woocommerce",
+        "woocommerce-gateway-stripe",
+        "woocommerce-payments",
+        "woocommerce-paypal-payments",
+        "woocommerce-services",
+        "woocommerce-shipping",
+        "woocommerce"
+      ],
+      "parent_id": 10,
+      "baseline_orders": [
+        11,
+        12
+      ],
+      "new_order": 19,
+      "stock_before": 20,
+      "stock_after": 18,
+      "snapshot_sha256": "53e593ee805efbb1e190fe2c29ceeb94e4e101d29d166bfbede9031586a85e9f",
+      "fixture": ".artifacts/release-gates-20261019/gate4-local/storage-fixtures/1792425206613758000/legacy-sync",
+      "cold_inventory_sha256": "432214582ee948ba84731b07e2d7e792d1cf50c5c87af96013424e081c70839d",
+      "owned_service_stopped": true
+    },
+    {
+      "label": "hpos-nosync",
+      "status": "PASS_NATIVE_HISTORY_PAYMENT_DUPLICATE_STOCK",
+      "initial_order_store_item_counts": [
+        0,
+        0,
+        0
+      ],
+      "authority": "yes",
+      "sync": "no",
+      "native_store_class": "Automattic\\WooCommerce\\Internal\\DataStores\\Orders\\OrdersTableDataStore",
+      "native_schema_initialized_empty": {
+        "wc_orders": 0,
+        "wc_order_addresses": 0,
+        "wc_order_operational_data": 0,
+        "wc_orders_meta": 0,
+        "woocommerce_order_items": 0,
+        "woocommerce_order_itemmeta": 0
+      },
+      "observed_runtime": {
+        "ok": true,
+        "authority_option": "yes",
+        "sync_option": "no",
+        "hpos": true,
+        "native_store_class": "Automattic\\WooCommerce\\Internal\\DataStores\\Orders\\OrdersTableDataStore",
+        "initialized_empty_tables": null,
+        "php_version": "8.5.6",
+        "memory_limit": "-1",
+        "wp_version": "7.1.3",
+        "woocommerce_version": "11.2.1"
+      },
+      "active_plugins": [
+        "stripe-tax-for-woocommerce",
+        "woocommerce-gateway-stripe",
+        "woocommerce-payments",
+        "woocommerce-paypal-payments",
+        "woocommerce-services",
+        "woocommerce-shipping",
+        "woocommerce"
+      ],
+      "parent_id": 10,
+      "baseline_orders": [
+        11,
+        12
+      ],
+      "new_order": 19,
+      "stock_before": 20,
+      "stock_after": 18,
+      "snapshot_sha256": "b11a476078b6515e791dade0c125353cc8afa179ca0b3358dc33412e02a87646",
+      "fixture": ".artifacts/release-gates-20261019/gate4-local/storage-fixtures/1792425206613758000/hpos-nosync",
+      "cold_inventory_sha256": "4d5f36f53ae0b7eabb3c71f6ea591839431032d34d19344a9e2c570154f3a737",
+      "owned_service_stopped": true
+    },
+    {
+      "label": "hpos-sync",
+      "status": "PASS_NATIVE_HISTORY_PAYMENT_DUPLICATE_STOCK",
+      "initial_order_store_item_counts": [
+        0,
+        0,
+        0
+      ],
+      "authority": "yes",
+      "sync": "yes",
+      "native_store_class": "Automattic\\WooCommerce\\Internal\\DataStores\\Orders\\OrdersTableDataStore",
+      "native_schema_initialized_empty": {
+        "wc_orders": 0,
+        "wc_order_addresses": 0,
+        "wc_order_operational_data": 0,
+        "wc_orders_meta": 0,
+        "woocommerce_order_items": 0,
+        "woocommerce_order_itemmeta": 0
+      },
+      "observed_runtime": {
+        "ok": true,
+        "authority_option": "yes",
+        "sync_option": "yes",
+        "hpos": true,
+        "native_store_class": "Automattic\\WooCommerce\\Internal\\DataStores\\Orders\\OrdersTableDataStore",
+        "initialized_empty_tables": null,
+        "php_version": "8.5.6",
+        "memory_limit": "-1",
+        "wp_version": "7.1.3",
+        "woocommerce_version": "11.2.1"
+      },
+      "active_plugins": [
+        "stripe-tax-for-woocommerce",
+        "woocommerce-gateway-stripe",
+        "woocommerce-payments",
+        "woocommerce-paypal-payments",
+        "woocommerce-services",
+        "woocommerce-shipping",
+        "woocommerce"
+      ],
+      "parent_id": 10,
+      "baseline_orders": [
+        11,
+        12
+      ],
+      "new_order": 19,
+      "stock_before": 20,
+      "stock_after": 18,
+      "snapshot_sha256": "dd59a5ba9ca6b246b4b81c20f315f7540ba866ef7f14011ac6ab447d522f2aa3",
+      "fixture": ".artifacts/release-gates-20261019/gate4-local/storage-fixtures/1792425206613758000/hpos-sync",
+      "cold_inventory_sha256": "67edc06a9f42fd9c850ccf2176fc7074b0af10f54c2200b05eaf81a9d8b77f45",
+      "owned_service_stopped": true
+    }
+  ],
+  "limits": [
+    "Four independently initialized order-empty fixtures; no populated-store authority transition or synchronization proof",
+    "Available seven-commerce-plugin profile only, not full installed-stack or production parity",
+    "Original populated clone and completed restore/coldbackup preserved; historical orphan untouched"
+  ],
+  "source_pins_at_start": {
+    "tools/v2-runtime/test_gate4_storage.py": "d55f1acde427d7b4fae9d068989282ef59dec9d7fa98245c7672ad7a2524f73f",
+    "tools/v2-runtime/gate4_restore_local.py": "cbf07a5f180acd340f6a7dd482999d2137b67207b47db9d81cdf71a9e4391663",
+    "tools/v2-runtime/gate4-storage-mode.php": "47f8992c35dcee0bd6371d644a88d8a4d5223a3129ee3672cb2285f8b3cb41c8",
+    "tools/v2-runtime/gate4-recovery-fixture.php": "c3aa5b3ab7c4207ec01b7152e5a1ef3b8d01c24587533084b2059f35d375d5c3",
+    "tools/v2-runtime/variation-migration-core-next.php": "6fed2167b9606924dd2c61c8e6227feb2184ff20bab9bfa99a06ff410332905e",
+    "tools/v2-runtime/gate4_finalize_restore.py": "1ce539392c4f4115f9bee3993760dfe96031eb7c626eb0e01cd4d0373f0ec183"
+  },
+  "preservation_manifest_sha256": "f49783d14f8b79c37118c0251e6d40ac9952f456252cdeb94667aacd6d598ae6",
+  "populated_clone_full_file_bytes_modes_restored": true,
+  "completed_restore_cold_bytes_modes_unchanged": true,
+  "cleanup_errors": [],
+  "owned_services_stopped": true
+}
