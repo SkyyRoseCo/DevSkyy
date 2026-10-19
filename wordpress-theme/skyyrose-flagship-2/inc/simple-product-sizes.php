@@ -332,8 +332,32 @@ add_action( 'woocommerce_store_api_cart_errors', 'skyyrose2_simple_size_store_er
  * POST and cart synchronisation. Cart-errors alone runs too late on GET/PATCH.
  * Use the supplied hash so this check cannot recursively calculate a hash.
  */
+function skyyrose2_simple_size_native_header_hash() {
+	$class = 'Automattic\\WooCommerce\\StoreApi\\Routes\\V1\\AbstractCartRoute';
+	if ( ! defined( 'WC_ABSPATH' ) || ! class_exists( $class ) ) { return false; }
+	$method = new ReflectionMethod( $class, 'add_response_headers' );
+	$source = realpath( WC_ABSPATH . 'src/StoreApi/Routes/V1/AbstractCartRoute.php' );
+	if ( ! $source || $class !== $method->getDeclaringClass()->getName() || realpath( $method->getFileName() ) !== $source ) { return false; }
+	$stack = debug_backtrace( DEBUG_BACKTRACE_IGNORE_ARGS | DEBUG_BACKTRACE_PROVIDE_OBJECT, 12 );
+	foreach ( $stack as $index => $frame ) {
+		if ( 'get_cart_hash' !== ( $frame['function'] ?? '' ) ) { continue; }
+		$caller = $stack[ $index + 1 ] ?? array();
+		if ( 'WC_Cart' === ( $frame['class'] ?? '' ) && 'get_cart_hash' === ( $frame['function'] ?? '' )
+			&& $source === realpath( $frame['file'] ?? '' ) && ( $frame['line'] ?? 0 ) >= $method->getStartLine() && ( $frame['line'] ?? 0 ) <= $method->getEndLine()
+			&& $class === ( $caller['class'] ?? '' ) && 'add_response_headers' === ( $caller['function'] ?? '' ) && ( $caller['object'] ?? null ) instanceof $class ) {
+			return true;
+		}
+		// A native header ancestor cannot exempt a nested functional hash.
+		return false;
+	}
+	return false;
+}
+
 function skyyrose2_simple_size_guard_api_draft( $hash ) {
 	if ( ! WC()->is_store_api_request() || ! WC()->session ) { return $hash; }
+	// Native formatting runs outside its RouteException catch. It only reads the
+	// hash for a response header; every functional hash call still checks history.
+	if ( skyyrose2_simple_size_native_header_hash() ) { return $hash; }
 	$id = WC()->session->get( 'store_api_draft_order', 0 );
 	if ( ! $id ) { return $hash; }
 	try {
@@ -355,6 +379,41 @@ function skyyrose2_simple_size_guard_api_draft( $hash ) {
 	return $hash;
 }
 add_filter( 'woocommerce_cart_hash', 'skyyrose2_simple_size_guard_api_draft', 5 );
+
+/** Native cart synchronization also runs outside Woo's RouteException handler.
+ * Preserve ordinary dispatch/permissions and catch only our saved-history refusal
+ * around the original native callback, without retrying or bypassing any guard.
+ */
+function skyyrose2_simple_size_store_route_boundary( $endpoints ) {
+	if ( ! defined( 'WC_ABSPATH' ) ) { return $endpoints; }
+	$native = array(
+		'Automattic\\WooCommerce\\StoreApi\\Routes\\V1\\AbstractCartRoute' => 'AbstractCartRoute.php',
+		'Automattic\\WooCommerce\\StoreApi\\Routes\\V1\\Checkout' => 'Checkout.php',
+	);
+	foreach ( $endpoints as $route => &$handlers ) {
+		if ( ! preg_match( '#^/wc/store/v[0-9]+/(?:cart(?:/|$)|checkout(?:/|$))#', $route ) || ! is_array( $handlers ) ) { continue; }
+		foreach ( $handlers as &$handler ) {
+			$callback = is_array( $handler ) ? ( $handler['callback'] ?? null ) : null;
+			if ( ! is_array( $callback ) || 2 !== count( $callback ) || ! ( $callback[0] ?? null ) instanceof \Automattic\WooCommerce\StoreApi\Routes\V1\AbstractCartRoute || 'get_response' !== ( $callback[1] ?? null ) ) { continue; }
+			$method = new ReflectionMethod( $callback[0], 'get_response' );
+			$declaring = $method->getDeclaringClass()->getName();
+			if ( ! isset( $native[ $declaring ] ) ) { continue; }
+			$source = realpath( WC_ABSPATH . 'src/StoreApi/Routes/V1/' . $native[ $declaring ] );
+			if ( ! $source || realpath( $method->getFileName() ) !== $source ) { continue; }
+			$handler['callback'] = static function( $request ) use ( $callback ) {
+				try { return call_user_func( $callback, $request ); }
+				catch ( \Automattic\WooCommerce\StoreApi\Exceptions\RouteException $error ) {
+					if ( 'skyyrose_simple_size_saved_order' !== $error->getErrorCode() || 409 !== $error->getCode() ) { throw $error; }
+					return new WP_Error( $error->getErrorCode(), $error->getMessage(), array( 'status' => 409 ) );
+				}
+			};
+		}
+		unset( $handler );
+	}
+	unset( $handlers );
+	return $endpoints;
+}
+add_filter( 'rest_endpoints', 'skyyrose2_simple_size_store_route_boundary', 20 );
 
 /** Fresh persisted state is mandatory on both payment entry points. */
 function skyyrose2_simple_size_payment( $order, $errors ) {
