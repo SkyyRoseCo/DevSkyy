@@ -2,6 +2,9 @@
 
 from __future__ import annotations
 import json
+import ctypes
+import os
+import stat
 from pathlib import Path
 import shutil
 import subprocess
@@ -183,20 +186,107 @@ def pay(role, outcome, label, kind="valid"):
     return before, after, rows
 
 
-def setup():
-    containment()
+def clone_private_code(expected_source):
+    """APFS independent copy-on-write files; never hardlinks or fallback copies."""
+    reserve = 1024**3
+    free_before = shutil.disk_usage(PRIVATE).free
+    assert free_before >= reserve, "Insufficient private fixture reserve"
+    library = ctypes.CDLL("/usr/lib/libSystem.B.dylib", use_errno=True)
+    clone = library.clonefile
+    clone.argtypes = [ctypes.c_char_p, ctypes.c_char_p, ctypes.c_int]
+    clone.restype = ctypes.c_int
+
+    def regular_clone(source, destination):
+        source, destination = Path(source), Path(destination)
+        assert source.is_file() and not source.is_symlink()
+        assert not source.stat().st_mode & (stat.S_ISUID | stat.S_ISGID)
+        assert not destination.exists() and not destination.is_symlink()
+        if clone(os.fsencode(source), os.fsencode(destination), 0) != 0:
+            error = ctypes.get_errno()
+            raise OSError(error, os.strerror(error))
+        assert source.stat().st_ino != destination.stat().st_ino
+        assert stat.S_IMODE(source.stat().st_mode) == stat.S_IMODE(destination.stat().st_mode)
+        return str(destination)
+
+    canary = PRIVATE / "clone-isolation-canary"
+    canary.mkdir()
+    source = canary / "source.bin"
+    source.write_bytes(b"Synthetic private clone isolation\n" * 4096)
+    source.chmod(0o600)
+    destination = canary / "clone.bin"
+    source_pin = pin(source)
+    regular_clone(source, destination)
+    assert pin(destination) == source_pin
+    destination.write_bytes(b"Changed clone only\n")
+    assert pin(source) == source_pin and source.stat().st_mode & 0o777 == 0o600
+    assert pin(destination) != source_pin
+
+    original = (ORIGINAL / "wordpress").resolve()
+    target = PRIVATE / "wordpress"
+    expected = {
+        name: row
+        for name, row in expected_source.items()
+        if not name.startswith("wp-content/uploads/")
+    }
+    count = 0
+    for directory, directories, files in os.walk(original, followlinks=False):
+        if Path(directory) == original / "wp-content":
+            directories[:] = [name for name in directories if name != "uploads"]
+        assert not any((Path(directory) / name).is_symlink() for name in directories + files)
+
+    def copy_file(src, dst):
+        nonlocal count
+        src, dst = Path(src), Path(dst)
+        assert src.resolve().is_relative_to(original)
+        assert dst.parent.resolve().is_relative_to(target.resolve())
+        result = regular_clone(src, dst)
+        count += 1
+        return result
+
     shutil.copytree(
-        ORIGINAL / "wordpress",
-        PRIVATE / "wordpress",
+        original,
+        target,
         ignore=lambda directory, names: (
-            ["uploads"] if Path(directory) == ORIGINAL / "wordpress/wp-content" else []
+            ["uploads"] if Path(directory) == original / "wp-content" else []
         ),
+        copy_function=copy_file,
     )
+    assert count == len(expected) and base.inventory(target) == expected
+    evidence = PRIVATE / "code-clone-verification.json"
+    write(
+        evidence,
+        {
+            "method": "macOS clonefile flags0; no fallback",
+            "files": expected,
+            "cloned_regular_files": count,
+            "source_and_destination_file_census_equal_before_config_edit": True,
+            "write_isolation_canary": {
+                "source_unchanged": source_pin,
+                "clone_after_write": pin(destination),
+                "distinct_inodes": True,
+                "source_mode": "0600",
+            },
+            "filesystem_available_before": free_before,
+            "filesystem_available_after_clone": shutil.disk_usage(PRIVATE).free,
+            "reserve_bytes": reserve,
+            "limits": "Concurrent filesystem use; reserve cannot prevent later ENOSPC. File bytes and modes verified; ACLs/shared OS-library bytes not qualified.",
+        },
+    )
+    record(
+        "APFS_PRIVATE_CODE_CLONE_ISOLATION_AND_COMPLETE_FILE_CENSUS",
+        receipt={"path": str(evidence.relative_to(ROOT)), **pin(evidence)},
+    )
+
+
+def setup(expected_source):
+    containment()
+    clone_private_code(expected_source)
     config = PRIVATE / "wordpress/wp-config.php"
     body = config.read_text()
     assert body.count("/tmp/sr-gate4-01a0f768.sock") == 1
     config.write_text(body.replace("/tmp/sr-gate4-01a0f768.sock", SOCKET))
     (PRIVATE / "mysql").mkdir()
+    assert shutil.disk_usage(PRIVATE).free >= 1024**3, "Insufficient fresh database reserve"
     command(
         [
             "/usr/bin/sandbox-exec",
@@ -545,7 +635,7 @@ def main():
             ).returncode
             != 0
         )
-        setup()
+        setup(protected["wordpress"])
         cases()
         assert all(pin(ROOT / p) == value for p, value in REPORT["source_pins"].items())
         complete = True
