@@ -24,6 +24,7 @@
   const chapterLinks = Array.from(root.querySelectorAll('.sr2-immersive__chapter-nav a'));
   const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
   const saveData = Boolean(navigator.connection && navigator.connection.saveData);
+  let posterReady = Boolean(poster && poster.complete && poster.naturalWidth > 0);
   let config = {};
 
   try {
@@ -44,22 +45,85 @@
     if (canvas) {
       canvas.hidden = true;
     }
-    announce('The static story scene is ready.');
+    announce(
+      posterReady
+        ? 'The static story scene is ready.'
+        : root.dataset.posterState === 'unavailable' || !poster
+          ? 'Scene imagery is unavailable. Continue with the story below.'
+          : 'Loading the story scene.'
+    );
+  }
+
+  function posterUnavailable() {
+    posterReady = false;
+    root.dataset.posterState = 'unavailable';
+    if (poster) {
+      poster.hidden = true;
+    }
+    if (status) {
+      status.classList.remove('screen-reader-text');
+    }
+    usePoster('poster-unavailable');
+  }
+
+  if (poster) {
+    poster.addEventListener('load', () => {
+      posterReady = poster.naturalWidth > 0;
+      root.dataset.posterState = posterReady ? 'ready' : 'unavailable';
+      if (!root.classList.contains('is-motion-ready')) {
+        usePoster(posterReady ? 'poster' : 'poster-unavailable');
+      }
+    });
+    poster.addEventListener('error', posterUnavailable);
+    if (poster.complete && !posterReady) {
+      posterUnavailable();
+    } else if (posterReady) {
+      root.dataset.posterState = 'ready';
+    }
   }
 
   function recoverImage(image) {
-    if (!poster || image === poster || image.dataset.fallbackApplied === 'true') {
+    if (image.dataset.fallbackApplied === 'true') {
       return;
     }
     image.dataset.fallbackApplied = 'true';
-    image.src = poster.currentSrc || poster.src;
-    image.alt = '';
+    image.hidden = true;
+    const message = document.createElement('p');
+    message.className = 'sr2-immersive__image-unavailable';
+    message.textContent = 'Scene image unavailable. Continue with the story and collection links.';
+    image.after(message);
+    const chapter = image.closest('.sr2-immersive__chapter');
+    const copy = chapter && chapter.querySelector('.sr2-chapter__copy');
+    if (copy) {
+      const sceneLinks = Array.from(chapter.querySelectorAll('[data-scene-product="true"]'));
+      if (sceneLinks.length) {
+        let related = copy.querySelector('.sr2-immersive__related-products');
+        if (!related) {
+          related = document.createElement('nav');
+          related.className = 'sr2-immersive__related-products';
+          related.setAttribute('aria-label', 'Related collection pieces');
+          copy.append(related);
+        }
+        sceneLinks.forEach(link => {
+          link.classList.remove('sr2-immersive__hotspot');
+          link.classList.add('sr2-immersive__related-product');
+          link.removeAttribute('style');
+          link.removeAttribute('data-scene-product');
+          const label = link.querySelector('.sr2-immersive__hotspot-copy small');
+          if (label) label.textContent = 'Explore collection piece';
+          related.append(link);
+        });
+      }
+    }
   }
 
-  // Only editorial chapter imagery may fall back to scenery. SKU images retain
-  // their own identity and accessible product link when media fails.
+  // PHP alone selects an authorized collection-story fallback. A hero's role
+  // never authorizes JS to reuse it for a failed chapter or SKU image.
   root.querySelectorAll('.sr2-immersive__chapter-media > img').forEach(image => {
     image.addEventListener('error', () => recoverImage(image), { once: true });
+    if (image.complete && image.naturalWidth === 0) {
+      recoverImage(image);
+    }
   });
 
   function updateProgress() {

@@ -64,11 +64,12 @@ $js_suffix  = ! ( defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ) && file_exists( $m
 wp_enqueue_style( 'skyyrose2-immersive', SKYYROSE2_URI . '/assets/css/immersive' . $css_suffix . '.css', array( 'skyyrose2-tokens', 'skyyrose2-theme' ), SKYYROSE2_VERSION );
 wp_enqueue_script( 'skyyrose2-immersive', SKYYROSE2_URI . '/assets/js/immersive' . $js_suffix . '.js', array( 'skyyrose2-theme' ), SKYYROSE2_VERSION, true );
 
-$poster_path = SKYYROSE2_DIR . '/assets/sot/' . $poster;
-if ( ! file_exists( $poster_path ) ) {
-	$poster = 'images/hero/kids-capsule-heir-throne-v3.webp';
-}
-$poster_uri = skyyrose2_sot_asset_uri( $poster );
+// Resolve the existing canonical collection/placement binding. A generic media
+// URI, a card approval or a filename cannot grant a hero/story placement.
+$entry_media = skyyrose2_collection_media( $collection_slug, 'collection_hero' );
+$story_media = skyyrose2_collection_media( $collection_slug, 'collection_story' );
+$poster_uri = $entry_media['src'] ?? '';
+$poster_available = '' !== $poster_uri;
 
 $scene_payload = array(
 	'collection'    => $collection_slug,
@@ -84,19 +85,17 @@ get_header();
 <main id="primary" tabindex="-1" class="sr2-immersive sr2-immersive--<?php echo esc_attr( $world_type ); ?>"
 	data-collection="<?php echo esc_attr( $collection_slug ); ?>"
 	data-world="<?php echo esc_attr( $world_type ); ?>"
-	data-scene-state="poster"
+	data-scene-state="<?php echo $poster_available ? 'poster-loading' : 'poster-unavailable'; ?>"
+	data-poster-state="<?php echo $poster_available ? 'loading' : 'unavailable'; ?>"
 	data-correlation-id="<?php echo esc_attr( $correlation_id ); ?>"
 	style="--sr2-immersive-accent: <?php echo esc_attr( $accent ); ?>; --sr2-immersive-accent-rgb: <?php echo esc_attr( $accent_rgb ); ?>;">
 	<div class="sr2-immersive__progress" aria-hidden="true"><span></span></div>
 
 	<section class="sr2-immersive__entry sr2-arrival" id="world-entry" aria-labelledby="immersive-world-title">
 		<div class="sr2-immersive__poster sr2-arrival__media" aria-hidden="true">
-			<img src="<?php echo esc_url( $poster_uri ); ?>"
-				alt=""
-				width="1672"
-				height="941"
-				fetchpriority="high"
-				decoding="async">
+			<?php if ( $poster_available ) : ?>
+			<?php echo skyyrose2_collection_media_markup( $entry_media, 'eager' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- escaped media renderer. ?>
+			<?php endif; ?>
 		</div>
 		<canvas class="sr2-immersive__canvas" width="1280" height="720" aria-hidden="true"></canvas>
 		<div class="sr2-immersive__entry-veil sr2-arrival__veil" aria-hidden="true"></div>
@@ -109,8 +108,8 @@ get_header();
 				<a class="sr2-immersive__enter sr2-editorial-link" href="<?php echo esc_url( skyyrose2_collection_url( $collection_slug ) ); ?>#shop"><?php esc_html_e( 'Shop collection', 'skyyrose-flagship-2' ); ?><span aria-hidden="true">↗</span></a>
 			</div>
 		</div>
-		<p class="sr2-immersive__scene-status screen-reader-text" aria-live="polite"><?php esc_html_e( 'The static story scene is ready.', 'skyyrose-flagship-2' ); ?></p>
-		<noscript><p class="sr2-immersive__noscript"><?php esc_html_e( 'The complete visual story is available below. Motion is optional.', 'skyyrose-flagship-2' ); ?></p></noscript>
+		<p class="sr2-immersive__scene-status <?php echo $poster_available ? 'screen-reader-text' : 'sr2-immersive__noscript'; ?>" aria-live="polite"><?php echo esc_html( $poster_available ? __( 'Loading the story scene.', 'skyyrose-flagship-2' ) : __( 'Scene imagery is unavailable. Continue with the story below.', 'skyyrose-flagship-2' ) ); ?></p>
+		<noscript><p class="sr2-immersive__noscript"><?php esc_html_e( 'Read the story and explore the collection below. Motion is optional.', 'skyyrose-flagship-2' ); ?></p></noscript>
 	</section>
 
 	<nav class="sr2-immersive__chapter-nav" aria-label="<?php esc_attr_e( 'Story chapters', 'skyyrose-flagship-2' ); ?>">
@@ -159,23 +158,31 @@ get_header();
 			$chapter_image = isset( $chapter['image'] ) ? ltrim( (string) $chapter['image'], '/' ) : '';
 			$is_scroll     = isset( $chapter['source'] ) && 'scroll-world' === $chapter['source'];
 			$image_path    = $is_scroll ? SKYYROSE2_DIR . '/assets/scroll-world/' . $chapter_image : SKYYROSE2_DIR . '/assets/sot/' . $chapter_image;
-			$image_uri     = $is_scroll ? skyyrose2_scroll_world_asset_uri( $chapter_image ) : skyyrose2_sot_asset_uri( $chapter_image );
-			$image_exists  = $chapter_image && file_exists( $image_path );
+			$relative      = ( $is_scroll ? 'assets/scroll-world/' : 'assets/sot/' ) . $chapter_image;
+			$record        = skyyrose2_media_inventory()['assets'][ $relative ] ?? array();
+			$image_uri     = array( $collection_slug ) === ( $record['collections'] ?? null ) ? skyyrose2_media_uri( $relative, 'collection_story' ) : '';
+			$image_exists  = $chapter_image && '' !== $image_uri && file_exists( $image_path );
 			$image_size    = $image_exists ? getimagesize( $image_path ) : false;
 			$hotspots      = isset( $chapter['hotspots'] ) && is_array( $chapter['hotspots'] ) ? $chapter['hotspots'] : array();
+			$scene_product_skus = $image_exists ? ( $record['skus'] ?? array() ) : array();
+			$scene_product_links = '';
+			$related_product_links = '';
 			$chapter_title = 'immersive-chapter-' . $chapter_id . '-title';
 			?>
-			<article class="sr2-immersive__chapter sr2-chapter<?php echo 1 === $index % 2 ? ' sr2-chapter--flip' : ''; ?>" id="chapter-<?php echo esc_attr( $chapter_id ); ?>" data-chapter="<?php echo esc_attr( $chapter_id ); ?>" data-index="<?php echo esc_attr( (string) $index ); ?>" aria-labelledby="<?php echo esc_attr( $chapter_title ); ?>">
+			<article class="sr2-immersive__chapter sr2-chapter<?php echo 1 === $index % 2 ? ' sr2-chapter--flip' : ''; ?>" id="chapter-<?php echo esc_attr( $chapter_id ); ?>" data-chapter="<?php echo esc_attr( $chapter_id ); ?>" data-index="<?php echo esc_attr( (string) $index ); ?>" data-original-scene-available="<?php echo $image_exists ? 'true' : 'false'; ?>" aria-labelledby="<?php echo esc_attr( $chapter_title ); ?>">
 				<div class="sr2-immersive__chapter-media sr2-chapter__scene">
 					<?php if ( $image_exists ) : ?>
 						<img src="<?php echo esc_url( $image_uri ); ?>"
 							alt="<?php echo esc_attr( $chapter['alt'] ?? $chapter['label'] ?? '' ); ?>"
+							data-media-role="collection_story" data-media-skus="<?php echo esc_attr( wp_json_encode( $scene_product_skus ) ); ?>"
 							width="<?php echo esc_attr( (string) ( $image_size ? $image_size[0] : 1344 ) ); ?>"
 							height="<?php echo esc_attr( (string) ( $image_size ? $image_size[1] : 896 ) ); ?>"
 							loading="lazy"
 							decoding="async">
+					<?php elseif ( ! empty( $story_media ) ) : ?>
+						<?php echo skyyrose2_collection_media_markup( $story_media ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- escaped media renderer. ?>
 					<?php else : ?>
-						<img src="<?php echo esc_url( $poster_uri ); ?>" alt="" width="1672" height="941" loading="lazy" decoding="async">
+						<p class="sr2-immersive__image-unavailable"><?php esc_html_e( 'Scene imagery is unavailable. Continue with the story below.', 'skyyrose-flagship-2' ); ?></p>
 					<?php endif; ?>
 					<div class="sr2-immersive__chapter-shade" aria-hidden="true"></div>
 					<?php foreach ( $hotspots as $hotspot ) : ?>
@@ -196,9 +203,14 @@ get_header();
 						}
 						$left = isset( $hotspot['left'] ) ? max( 8, min( 92, (float) $hotspot['left'] ) ) : 50;
 						$top  = isset( $hotspot['top'] ) ? max( 12, min( 88, (float) $hotspot['top'] ) ) : 50;
+						$is_depicted = in_array( $sku, $scene_product_skus, true );
+						ob_start();
 						?>
-						<a class="sr2-immersive__hotspot" href="<?php echo esc_url( get_permalink( $product->get_id() ) ); ?>"
+						<a class="<?php echo $is_depicted ? 'sr2-immersive__hotspot' : 'sr2-immersive__related-product'; ?>" href="<?php echo esc_url( get_permalink( $product->get_id() ) ); ?>"
+							<?php if ( $is_depicted ) : ?>
 							style="--hotspot-x: <?php echo esc_attr( (string) $left ); ?>%; --hotspot-y: <?php echo esc_attr( (string) $top ); ?>%;"
+							data-scene-product="true"
+							<?php endif; ?>
 							data-sku="<?php echo esc_attr( $sku ); ?>"
 							data-correlation-id="<?php echo esc_attr( $correlation_id ); ?>"
 							aria-label="<?php echo esc_attr( sprintf( __( 'Explore %s', 'skyyrose-flagship-2' ), $product->get_name() ) ); ?>">
@@ -207,9 +219,13 @@ get_header();
 									<img class="sr2-immersive__hotspot-image" src="<?php echo esc_url( $approved_front['card_src'] ?? $approved_front['src'] ); ?>" srcset="<?php echo esc_attr( $approved_front['srcset'] ?? '' ); ?>" sizes="(max-width: 47.99em) 5.5rem, clamp(11rem, 16vw, 16rem)" alt="<?php echo esc_attr( $approved_front['alt'] ); ?>" width="<?php echo esc_attr( (string) $approved_front['width'] ); ?>" height="<?php echo esc_attr( (string) $approved_front['height'] ); ?>" loading="lazy" decoding="async">
 								<?php endif; ?>
 							</span>
-							<span class="sr2-immersive__hotspot-copy"><small><?php esc_html_e( 'Piece in this scene', 'skyyrose-flagship-2' ); ?></small><strong><?php echo esc_html( $product->get_name() ); ?></strong><em><?php esc_html_e( 'View the product', 'skyyrose-flagship-2' ); ?> →</em></span>
+							<span class="sr2-immersive__hotspot-copy"><small><?php echo esc_html( $is_depicted ? __( 'Piece in this scene', 'skyyrose-flagship-2' ) : __( 'Explore collection piece', 'skyyrose-flagship-2' ) ); ?></small><strong><?php echo esc_html( $product->get_name() ); ?></strong><em><?php esc_html_e( 'View the product', 'skyyrose-flagship-2' ); ?> →</em></span>
 						</a>
+						<?php
+						if ( $is_depicted ) { $scene_product_links .= ob_get_clean(); } else { $related_product_links .= ob_get_clean(); }
+						?>
 					<?php endforeach; ?>
+					<?php echo $scene_product_links; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- escaped markup above. ?>
 				</div>
 				<div class="sr2-immersive__chapter-copy sr2-chapter__band">
 					<div class="sr2-chapter__copy">
@@ -218,6 +234,9 @@ get_header();
 						<p class="sr2-lede"><?php echo esc_html( $chapter['copy'] ?? '' ); ?></p>
 						<?php if ( ! empty( $chapter['aside'] ) ) : ?>
 							<p class="sr2-immersive__aside"><?php echo esc_html( $chapter['aside'] ); ?></p>
+						<?php endif; ?>
+						<?php if ( $related_product_links ) : ?>
+						<nav class="sr2-immersive__related-products" aria-label="<?php esc_attr_e( 'Related collection pieces', 'skyyrose-flagship-2' ); ?>"><?php echo $related_product_links; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- escaped markup above. ?></nav>
 						<?php endif; ?>
 					</div>
 				</div>

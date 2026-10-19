@@ -203,6 +203,27 @@
     transform 420ms var(--sr2-ease);
 }
 
+.sr2-immersive__related-products {
+  display: grid;
+  gap: var(--sr2-space-4);
+  margin-top: var(--sr2-space-6);
+}
+
+.sr2-immersive__related-product {
+  display: grid;
+  grid-template-columns: 5.5rem minmax(0, 1fr);
+  overflow: hidden;
+  border: 1px solid rgb(var(--sr2-immersive-accent-rgb) / 0.4);
+  background: var(--sr2-card);
+  color: var(--sr2-ink);
+  text-decoration: none;
+}
+
+.sr2-immersive__related-product:focus-visible {
+  outline: var(--sr2-focus-width) solid var(--sr2-focus-outer);
+  outline-offset: var(--sr2-focus-offset);
+}
+
 .sr2-immersive__hotspot-media {
   display: block;
   aspect-ratio: 3 / 4;

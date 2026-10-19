@@ -114,6 +114,10 @@ msgstr ""
 msgid "A room where imagination is treated like an heirloom, not an interruption."
 msgstr ""
 
+#: inc/woocommerce-compat.php:309
+msgid "A saved order is required before payment."
+msgstr ""
+
 #: template-immersive-love-hurts.php:19
 msgid "A story from the other side of the door"
 msgstr ""
@@ -322,7 +326,7 @@ msgstr ""
 msgid "Carry the first mark forward."
 msgstr ""
 
-#: template-parts/immersive/world.php:232
+#: template-parts/immersive/world.php:251
 msgid "Carry the world with you."
 msgstr ""
 
@@ -370,7 +374,7 @@ msgstr ""
 msgid "Choose a piece from a collection and it will wait for you here, with its live price and availability."
 msgstr ""
 
-#: inc/woocommerce-compat.php:120
+#: inc/woocommerce-compat.php:144
 msgid "Choose a positive whole number of items."
 msgstr ""
 
@@ -382,7 +386,7 @@ msgstr ""
 msgid "Choose a size to see whether that option is a pre-order. Full payment is due at checkout. Contact Client Services for shipping estimates before ordering."
 msgstr ""
 
-#: inc/woocommerce-compat.php:25
+#: inc/woocommerce-compat.php:43
 msgid "Choose a valid product and variation before adding it to your bag."
 msgstr ""
 
@@ -642,7 +646,7 @@ msgstr ""
 msgid "Enter her world"
 msgstr ""
 
-#: template-parts/collections/index.php:69 template-parts/immersive/world.php:235
+#: template-parts/collections/index.php:69 template-parts/immersive/world.php:254
 msgid "Enter the %s collection"
 msgstr ""
 
@@ -674,7 +678,7 @@ msgstr ""
 msgid "Enter the piece"
 msgstr ""
 
-#: template-parts/immersive/world.php:108
+#: template-parts/immersive/world.php:107
 msgid "Enter the story"
 msgstr ""
 
@@ -698,7 +702,7 @@ msgstr ""
 msgid "Exceptions and international exchanges"
 msgstr ""
 
-#: inc/woocommerce-compat.php:376 inc/woocommerce-compat.php:398
+#: inc/woocommerce-compat.php:463 inc/woocommerce-compat.php:485
 msgid "Expected ship date"
 msgstr ""
 
@@ -710,7 +714,7 @@ msgstr ""
 msgid "Explore"
 msgstr ""
 
-#: functions.php:623 template-parts/immersive/world.php:204 template-parts/v2-preorder.php:108
+#: functions.php:623 template-parts/immersive/world.php:216 template-parts/v2-preorder.php:108
 msgid "Explore %s"
 msgstr ""
 
@@ -720,6 +724,10 @@ msgstr ""
 
 #: functions.php:611
 msgid "Explore The Heir"
+msgstr ""
+
+#: template-parts/immersive/world.php:222
+msgid "Explore collection piece"
 msgstr ""
 
 #: template-parts/home/editorial-journal.php:25
@@ -1086,6 +1094,10 @@ msgstr ""
 msgid "Loading available options…"
 msgstr ""
 
+#: template-parts/immersive/world.php:111
+msgid "Loading the story scene."
+msgstr ""
+
 #: inc/global-shell.php:120 inc/global-shell.php:77
 msgid "Lookbook"
 msgstr ""
@@ -1430,7 +1442,7 @@ msgstr ""
 msgid "Piece from the house"
 msgstr ""
 
-#: template-parts/immersive/world.php:210
+#: template-parts/immersive/world.php:222
 msgid "Piece in this scene"
 msgstr ""
 
@@ -1446,7 +1458,7 @@ msgstr ""
 msgid "Post navigation"
 msgstr ""
 
-#: inc/global-shell.php:181 inc/global-shell.php:78 inc/presentation-registry.php:196 inc/presentation-registry.php:238 inc/starter-content.php:25 inc/woocommerce-compat.php:371 inc/woocommerce-compat.php:396
+#: inc/global-shell.php:181 inc/global-shell.php:78 inc/presentation-registry.php:196 inc/presentation-registry.php:238 inc/starter-content.php:25 inc/woocommerce-compat.php:458 inc/woocommerce-compat.php:483
 msgid "Pre-Order"
 msgstr ""
 
@@ -1606,6 +1618,10 @@ msgstr ""
 msgid "Read the story"
 msgstr ""
 
+#: template-parts/immersive/world.php:112
+msgid "Read the story and explore the collection below. Motion is optional."
+msgstr ""
+
 #: template-parts/home/kids-capsule-reveal.php:92
 msgid "Red Guard"
 msgstr ""
@@ -1616,6 +1632,10 @@ msgstr ""
 
 #: template-parts/home/kids-capsule-reveal.php:90
 msgid "Red arrives with energy. Purple arrives with possibility. Both sets protect room to move, play, and decide who they want to be next."
+msgstr ""
+
+#: template-parts/immersive/world.php:239
+msgid "Related collection pieces"
 msgstr ""
 
 #: woocommerce/cart/cart.php:109
@@ -1678,7 +1698,7 @@ msgstr ""
 msgid "Review the order options for each piece. Full payment is due at checkout. Review each product for shipping details, or contact Client Services for an estimate before ordering."
 msgstr ""
 
-#: inc/woocommerce-compat.php:333
+#: inc/woocommerce-compat.php:420
 msgid "Review the product promise and add the item again before checkout."
 msgstr ""
 
@@ -1710,12 +1730,20 @@ msgstr ""
 msgid "SKU:"
 msgstr ""
 
+#: inc/woocommerce-compat.php:315 inc/woocommerce-compat.php:321
+msgid "Save and review the order before payment."
+msgstr ""
+
 #: inc/global-shell.php:120 page-wishlist.php:9
 msgid "Saved pieces"
 msgstr ""
 
 #: template-immersive-signature.php:33
 msgid "Scene cue: follow the cable line toward the first piece."
+msgstr ""
+
+#: template-parts/immersive/world.php:111 template-parts/immersive/world.php:185
+msgid "Scene imagery is unavailable. Continue with the story below."
 msgstr ""
 
 #: template-parts/collections/scroll-world.php:20
@@ -1826,11 +1854,11 @@ msgstr ""
 msgid "Shop Signature"
 msgstr ""
 
-#: search.php:73 template-parts/immersive/world.php:236
+#: search.php:73 template-parts/immersive/world.php:255
 msgid "Shop all pieces"
 msgstr ""
 
-#: page-lookbook.php:64 template-parts/immersive/world.php:109
+#: page-lookbook.php:64 template-parts/immersive/world.php:108
 msgid "Shop collection"
 msgstr ""
 
@@ -2058,7 +2086,7 @@ msgstr ""
 msgid "Stories / Journal"
 msgstr ""
 
-#: template-parts/immersive/world.php:116
+#: template-parts/immersive/world.php:115
 msgid "Story chapters"
 msgstr ""
 
@@ -2222,10 +2250,6 @@ msgstr ""
 msgid "The collection worlds"
 msgstr ""
 
-#: template-parts/immersive/world.php:113
-msgid "The complete visual story is available below. Motion is optional."
-msgstr ""
-
 #: template-parts/home/kids-capsule-reveal.php:71
 msgid "The doors open for her."
 msgstr ""
@@ -2290,7 +2314,7 @@ msgstr ""
 msgid "The pre-order edit"
 msgstr ""
 
-#: inc/woocommerce-compat.php:229
+#: inc/woocommerce-compat.php:253
 msgid "The product or pre-order promise in your bag needs review. Remove it, review the product page, and add it again before checkout."
 msgstr ""
 
@@ -2306,15 +2330,27 @@ msgstr ""
 msgid "The route returns to the workroom. Every refined line still carries the hands, the family, and the city that taught the house how to build from concrete."
 msgstr ""
 
-#: template-parts/immersive/world.php:112
-msgid "The static story scene is ready."
+#: inc/woocommerce-compat.php:366
+msgid "The saved migration date needs review before payment."
+msgstr ""
+
+#: inc/woocommerce-compat.php:352
+msgid "The saved order identity needs review before payment."
+msgstr ""
+
+#: inc/woocommerce-compat.php:359
+msgid "The saved product identity needs review before payment."
+msgstr ""
+
+#: inc/woocommerce-compat.php:376
+msgid "The saved product selection needs review before payment."
 msgstr ""
 
 #: inc/presentation-registry.php:156
 msgid "The store processes information needed for orders, accounts, support, fraud prevention, and requested communications. This may include contact, billing, shipping, order, and device information."
 msgstr ""
 
-#: template-parts/immersive/world.php:231
+#: template-parts/immersive/world.php:250
 msgid "The story continues in the collection"
 msgstr ""
 
@@ -2354,12 +2390,20 @@ msgstr ""
 msgid "This piece could not be added. Open the product to try again."
 msgstr ""
 
-#: inc/woocommerce-compat.php:46
+#: inc/woocommerce-compat.php:70
 msgid "This pre-order availability needs review. Contact Client Services."
 msgstr ""
 
-#: inc/woocommerce-compat.php:52
+#: inc/woocommerce-compat.php:76
 msgid "This pre-order shipping estimate needs review. Contact Client Services."
+msgstr ""
+
+#: inc/woocommerce-compat.php:25
+msgid "This product is being updated. Review it again before checkout."
+msgstr ""
+
+#: inc/woocommerce-compat.php:18
+msgid "This product needs review before checkout. Please try again later."
 msgstr ""
 
 #: woocommerce/checkout/thankyou.php:46
@@ -2454,7 +2498,7 @@ msgstr ""
 msgid "View all pieces"
 msgstr ""
 
-#: template-parts/immersive/world.php:210
+#: template-parts/immersive/world.php:222
 msgid "View the product"
 msgstr ""
 
@@ -2530,7 +2574,7 @@ msgstr ""
 msgid "Worlds"
 msgstr ""
 
-#: inc/woocommerce-compat.php:372 inc/woocommerce-compat.php:396
+#: inc/woocommerce-compat.php:459 inc/woocommerce-compat.php:483
 msgid "Yes"
 msgstr ""
 
@@ -2546,7 +2590,7 @@ msgstr ""
 msgid "Your bag"
 msgstr ""
 
-#: inc/woocommerce-compat.php:136
+#: inc/woocommerce-compat.php:160
 msgid "Your bag exceeds the current pre-order availability. Review the quantity before checkout."
 msgstr ""
 

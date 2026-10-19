@@ -14,9 +14,9 @@ test('valid card images keep their error label hidden in delivered CSS', () => {
   }
 });
 
-test('immersive recovery binds editorial media, never product images', () => {
+test('immersive recovery hides failed editorial media without borrowing product or hero roles', () => {
   const listeners = [];
-  const editorial = { dataset: {}, addEventListener: (event, handler) => listeners.push(handler) };
+  const editorial = { dataset: {}, complete: false, src: '/chapter.webp', hidden: false, after(message) { this.message = message; }, closest: () => null, addEventListener: (event, handler) => listeners.push(handler) };
   const product = { dataset: {}, src: '/exact-sku.webp', alt: 'Exact garment' };
   const poster = { src: '/world.webp' };
   const root = {
@@ -29,9 +29,11 @@ test('immersive recovery binds editorial media, never product images', () => {
   const start = source.indexOf('function recoverImage(');
   const end = source.indexOf('function updateProgress()', start);
   assert.ok(start > 0 && end > start);
-  vm.runInNewContext(source.slice(start, end), { root, poster });
+  vm.runInNewContext(source.slice(start, end), { root, poster, document: { createElement: () => ({}) } });
   listeners[0]();
-  assert.equal(editorial.src, '/world.webp');
+  assert.equal(editorial.src, '/chapter.webp');
+  assert.equal(editorial.hidden, true);
+  assert.match(editorial.message.textContent, /image unavailable/);
   assert.equal(product.src, '/exact-sku.webp');
   assert.equal(product.alt, 'Exact garment');
 });
