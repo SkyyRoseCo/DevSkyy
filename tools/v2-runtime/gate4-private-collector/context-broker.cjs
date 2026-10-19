@@ -8,10 +8,12 @@ const { processes } = require('./context-ownership.cjs');
 const { cleanGroup } = require('./capability.cjs');
 const PYTHON = '/opt/homebrew/Cellar/python@3.14/3.14.7/Frameworks/Python.framework/Versions/3.14/bin/python3.14';
 const PYTHON_SHA = '87d4df53fd91304be5bac391fb204643c36b7df2023c04a0953bcbc7d4fdf634';
+const PYTHON_IMAGE = '/opt/homebrew/Cellar/python@3.14/3.14.7/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python';
+const PYTHON_IMAGE_SHA = 'e89d60f8ccee9db684801330198797723db2ac378cd53e5cfe523128feb76599';
 const pause = ms => new Promise(resolve => setTimeout(resolve, ms));
 const sha = body => crypto.createHash('sha256').update(body).digest('hex');
 function image(pid) {
-  assert.ok(Number.isSafeInteger(pid) && pid > 1); assert.equal(sha(fs.readFileSync(PYTHON)), PYTHON_SHA);
+  assert.ok(Number.isSafeInteger(pid) && pid > 1); assert.equal(sha(fs.readFileSync(PYTHON)), PYTHON_SHA); assert.equal(sha(fs.readFileSync(PYTHON_IMAGE)), PYTHON_IMAGE_SHA);
   // ABI matches the retained macOS SDK libproc.h proc_pidpath declaration.
   const script = "import ctypes,sys; l=ctypes.CDLL('/usr/lib/libproc.dylib'); f=l.proc_pidpath; f.argtypes=[ctypes.c_int,ctypes.c_void_p,ctypes.c_uint32]; f.restype=ctypes.c_int; b=ctypes.create_string_buffer(4096); n=f(int(sys.argv[1]),b,4096); sys.exit(1) if n<=0 else print(b.value.decode())";
   return cp.execFileSync(PYTHON, ['-I', '-c', script, String(pid)], { encoding: 'utf8', timeout: 5000, stdio: ['ignore', 'pipe', 'pipe'] }).trim();
@@ -50,8 +52,8 @@ function inspectBroker(folder, launcher, target, targetSHA, parentPid, nonce, sp
   assert.ok(spawned && spawned.kind === 'browser-spawn' && spawned.token === nonce && spawned.pid === row.pid && spawned.executable === launcher && spawned.profile === row.profile); assert.deepEqual(spawned.args, row.args);
   const current = processes().find(item => item.pid === row.pid);
   assert.ok(current && current.group === row.pid && current.parent === parentPid && current.command.includes(launcher) && current.command.includes(row.profile));
-  assert.equal(image(row.pid), fs.realpathSync(PYTHON));
-  return { ...row, birth: current.birth, broker_command: current.command, registration_sha256: sha(raw), launcher, image_before: fs.realpathSync(PYTHON) };
+  assert.equal(image(row.pid), PYTHON_IMAGE);
+  return { ...row, birth: current.birth, broker_command: current.command, registration_sha256: sha(raw), launcher, image_before: PYTHON_IMAGE };
 }
 function acknowledge(record, folder) {
   assert.equal(sha(readRegular(path.join(folder, 'broker-registration.json'), 65536)), record.registration_sha256);
@@ -81,4 +83,29 @@ async function closeAll(records, folder, closer = closeRegistered) {
   for (const record of records) { try { results.push({ pid: record.pid, ...await closer(record, folder) }); } catch (error) { errors.push({ pid: record.pid, error: error.message }); } }
   return { results, errors };
 }
-module.exports = { PYTHON, PYTHON_SHA, image, readRegular, pythonJSON, inspectBroker, acknowledge, takeover, closeRegistered, closeAll };
+function observeTerminal(child) {
+  // Resolve typed outcomes immediately; a spawn error must never become an
+  // unhandled rejection while the caller is still polling registration.
+  return new Promise(resolve => { child.once('error', error => resolve({ code: null, signal: null, spawn_error: error.code || error.name })); child.once('close', (code, signal) => resolve({ code, signal })); });
+}
+async function stopWorkerAndCloseUnacked(worker, folder, launcher, target, allowUnacked) {
+  const result = { worker: null, brokers: [], errors: [], final_census: [] };
+  try { result.worker = worker ? await cleanGroup(worker, folder) : { stopped: true, errors: [] }; } catch (error) { result.errors.push(error.message); }
+  // Quiesce the spawner first. A census before this point can miss a detached
+  // broker launched during the worker's shutdown grace interval.
+  if (allowUnacked) {
+    try {
+      assert.ok(result.worker?.stopped, 'Worker did not quiesce before broker census');
+      assert.ok(!fs.existsSync(path.join(folder, 'broker-ack.json')), 'Unregistered target ACK exists');
+      const candidates = processes().filter(row => row.command.includes(launcher) && row.command.includes(folder));
+      for (const row of candidates) {
+        try { assert.equal(row.group, row.pid); assert.equal(image(row.pid), PYTHON_IMAGE); result.brokers.push({ pid: row.pid, ...await cleanGroup({ pid: row.pid }, folder) }); }
+        catch (error) { result.errors.push(error.message); }
+      }
+    } catch (error) { result.errors.push(error.message); }
+  }
+  try { result.final_census = processes().filter(row => row.command.includes(folder) && (row.command.includes(launcher) || row.command.includes(target))); assert.deepEqual(result.final_census, []); }
+  catch (error) { result.errors.push(error.message); }
+  return result;
+}
+module.exports = { PYTHON, PYTHON_SHA, PYTHON_IMAGE, PYTHON_IMAGE_SHA, image, readRegular, pythonJSON, inspectBroker, acknowledge, takeover, closeRegistered, closeAll, observeTerminal, stopWorkerAndCloseUnacked };

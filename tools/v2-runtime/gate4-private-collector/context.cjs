@@ -7,7 +7,7 @@ const assert = require('node:assert/strict');
 const http = require('node:http');
 const cp = require('node:child_process');
 const { Frames, processes, profileCensus } = require('./context-ownership.cjs');
-const { PYTHON, PYTHON_SHA, image, inspectBroker, acknowledge, takeover, closeRegistered, closeAll } = require('./context-broker.cjs');
+const { PYTHON, PYTHON_SHA, PYTHON_IMAGE, PYTHON_IMAGE_SHA, inspectBroker, acknowledge, takeover, closeAll, observeTerminal, stopWorkerAndCloseUnacked } = require('./context-broker.cjs');
 const { cleanGroup, trackSetup } = require('./capability.cjs');
 const ROOT = path.resolve(__dirname, '../../..');
 const BASE = path.join(ROOT, '.artifacts/release-gates-20261019/gate4-private-collector-context');
@@ -103,21 +103,21 @@ async function main() {
   assert.equal(fs.realpathSync(process.execPath), fs.realpathSync(NODE));
   fs.mkdirSync(BASE, { recursive: true, mode: 0o700 }); const folder = path.join(BASE, 'probe-' + Date.now()); fs.mkdirSync(folder, { mode: 0o700 }); fs.mkdirSync(path.join(folder, 'tmp'), { mode: 0o700 });
   const token = crypto.randomUUID(); const report = { status: 'INCOMPLETE', authentication: 'NOT_APPLICABLE', completeness: 'UNKNOWN', policy: 'UNKNOWN', folder, ownership_errors: [] };
-  const ledger = []; const failures = []; const sockets = new Set(); let server; let child; let registration; let spawned; let ownershipClosed = false; const records = [];
+  const ledger = []; const failures = []; const sockets = new Set(); let server; let child; let registration; let spawned; let terminalOutcome; let ownershipClosed = false; const records = [];
   const frames = new Frames(record => { assert.ok(!spawned); assert.equal(record.kind, 'browser-spawn'); assert.equal(record.token, token); assert.equal(record.executable, LAUNCHER); spawned = record; });
   try {
-    report.source_start = sources(); save(path.join(folder, 'source-at-start.json'), report.source_start); save(path.join(folder, 'package-at-start.json'), packageTree()); report.package_index = pin(path.join(folder, 'package-at-start.json')); report.runtime = { node: pin(NODE), chromium: pin(CHROME), python: pin(PYTHON) };
-    assert.equal(report.runtime.python.sha256, PYTHON_SHA); assert.equal(report.runtime.node.sha256, '18e387c90ab8a8400183e8bdd396376e1e875b91b4c874b894dcade7b35bf572'); assert.equal(report.runtime.chromium.sha256, 'a0bfe7b4da4787b66058477d696cd1d09065d25f06a548947722b9af77ee8282');
+    report.source_start = sources(); save(path.join(folder, 'source-at-start.json'), report.source_start); save(path.join(folder, 'package-at-start.json'), packageTree()); report.package_index = pin(path.join(folder, 'package-at-start.json')); report.runtime = { node: pin(NODE), chromium: pin(CHROME), python: pin(PYTHON), pythonImage: pin(PYTHON_IMAGE) };
+    assert.equal(report.runtime.python.sha256, PYTHON_SHA); assert.equal(report.runtime.pythonImage.sha256, PYTHON_IMAGE_SHA); assert.equal(report.runtime.node.sha256, '18e387c90ab8a8400183e8bdd396376e1e875b91b4c874b894dcade7b35bf572'); assert.equal(report.runtime.chromium.sha256, 'a0bfe7b4da4787b66058477d696cd1d09065d25f06a548947722b9af77ee8282');
     report.source_commit = cp.execFileSync('/usr/bin/git', ['rev-parse', 'HEAD'], { cwd: ROOT, encoding: 'utf8' }).trim();
     server = http.createServer((q, s) => fixture(q, s, ledger, failures)); server.on('connection', s => { sockets.add(s); s.once('close', () => sockets.delete(s)); }); await new Promise((resolve, reject) => { server.once('error', reject); server.listen(18488, '127.0.0.1', resolve); });
     const profile = '(version 1)(allow default)(deny network*)(allow network-outbound (remote tcp "localhost:18488"))'; fs.writeFileSync(path.join(folder, 'containment.sb'), profile, { flag: 'wx', mode: 0o600 });
     const env = { ...process.env, TMPDIR: path.join(folder, 'tmp'), SR_CONTEXT_FOLDER: folder, SR_CONTEXT_NONCE: token }; const removed = []; for (const name of Object.keys(env)) if (/^(?:PW_|PWDEBUG$|PLAYWRIGHT_|NODE_OPTIONS$|NODE_PATH$|DYLD_|LD_PRELOAD$|PYTHONPATH$|PYTHONHOME$|HTTP_PROXY$|HTTPS_PROXY$|ALL_PROXY$|NO_PROXY$)/i.test(name)) { delete env[name]; removed.push(name); } report.removed_environment_names = removed.map(name => /^[A-Z][A-Z0-9_]*$/.test(name) ? name : 'OPAQUE_KEY_' + crypto.createHash('sha256').update(name).digest('hex').slice(0, 12));
     const log = fs.openSync(path.join(folder, 'worker.txt'), 'wx', 0o600); child = cp.spawn('/usr/bin/sandbox-exec', ['-p', profile, NODE, __filename, '--worker', folder, token], { detached: true, env, stdio: ['ignore', log, log, 'pipe', 'pipe'] }); fs.closeSync(log); report.worker_pid = child.pid;
     child.stdio[3].on('data', chunk => { try { frames.feed(chunk); } catch (e) { report.ownership_errors.push(e.message); } }); child.stdio[3].on('end', () => { ownershipClosed = true; try { frames.close(); } catch (e) { report.ownership_errors.push(e.message); } }); child.stdio[3].on('error', e => report.ownership_errors.push(e.message)); child.stdio[4].on('error', e => report.ownership_errors.push(e.message));
-    const terminal = new Promise((resolve, reject) => { child.once('error', reject); child.once('close', (code, signal) => resolve({ code, signal })); });
+    const terminal = observeTerminal(child).then(value => { terminalOutcome = value; return value; });
     const registrationEnd = Date.now() + 15000;
     while (!registration && Date.now() < registrationEnd) {
-      assert.deepEqual(report.ownership_errors, []);
+      assert.deepEqual(report.ownership_errors, []); assert.ok(!terminalOutcome, terminalOutcome?.spawn_error || 'Worker exited before ownership registration');
       if (spawned && fs.existsSync(path.join(folder, 'broker-registration.json'))) registration = inspectBroker(folder, LAUNCHER, CHROME, report.runtime.chromium.sha256, child.pid, token, spawned);
       else await pause(20);
     }
@@ -133,22 +133,11 @@ async function main() {
   finally {
     report.cleanup_errors = []; report.browser_groups = [];
     const closed = await closeAll(records, folder); report.browser_groups.push(...closed.results); report.cleanup_errors.push(...closed.errors.map(row => row.error));
-    // Before ACK the no-fork broker cannot create browser descendants. Recover only
-    // a still-live, exact Python launcher leader; never guess an unknown group.
-    try {
-      if (!registration) {
-        assert.ok(!fs.existsSync(path.join(folder, 'broker-ack.json')), 'Unregistered target ACK exists');
-        const candidates = processes().filter(row => row.command.includes(LAUNCHER) && row.command.includes(folder));
-        for (const row of candidates) {
-          try { assert.equal(row.group, row.pid); assert.equal(image(row.pid), fs.realpathSync(PYTHON)); report.browser_groups.push(await cleanGroup({ pid: row.pid }, folder)); report.ownership_errors.push('Unacknowledged broker required cleanup'); }
-          catch (e) { report.cleanup_errors.push(e.message); }
-        }
-      }
-    } catch (e) { report.cleanup_errors.push(e.message); }
-    try { report.worker_group = child ? await cleanGroup(child, folder) : { stopped: true, errors: [] }; } catch (e) { report.cleanup_errors.push(e.message); }
+    const quiesced = await stopWorkerAndCloseUnacked(child, folder, LAUNCHER, CHROME, !registration);
+    report.worker_group = quiesced.worker; report.browser_groups.push(...quiesced.brokers); report.cleanup_errors.push(...quiesced.errors); report.final_launcher_and_browser_census = quiesced.final_census;
     try { report.final_profile_census = profileCensus(folder, CHROME); assert.deepEqual(report.final_profile_census, []); assert.ok(report.worker_group.stopped && !report.worker_group.errors.length); assert.ok(report.browser_groups.every(row => row.stopped && !row.errors.length)); assert.deepEqual(report.ownership_errors, []); assert.deepEqual(report.cleanup_errors, []); } catch (e) { report.cleanup_errors.push(e.message); report.status = 'FAIL_PUBLIC_API_OWNERSHIP_CLEANUP'; process.exitCode = 1; }
     for (const socket of sockets) socket.destroy(); if (server) await new Promise(resolve => server.listening ? server.close(resolve) : resolve()); report.fixture_closed = !server?.listening;
-    try { report.source_end = sources(); assert.deepEqual(report.source_end, report.source_start); assert.deepEqual(packageTree(), JSON.parse(fs.readFileSync(path.join(folder, 'package-at-start.json')))); assert.deepEqual(pin(NODE), report.runtime.node); assert.deepEqual(pin(CHROME), report.runtime.chromium); assert.deepEqual(pin(PYTHON), report.runtime.python); } catch (e) { report.status = 'FAIL_PUBLIC_API_SOURCE_IDENTITY'; process.exitCode = 1; }
+    try { report.source_end = sources(); assert.deepEqual(report.source_end, report.source_start); assert.deepEqual(packageTree(), JSON.parse(fs.readFileSync(path.join(folder, 'package-at-start.json')))); assert.deepEqual(pin(NODE), report.runtime.node); assert.deepEqual(pin(CHROME), report.runtime.chromium); assert.deepEqual(pin(PYTHON), report.runtime.python); assert.deepEqual(pin(PYTHON_IMAGE), report.runtime.pythonImage); } catch (e) { report.status = 'FAIL_PUBLIC_API_SOURCE_IDENTITY'; process.exitCode = 1; }
     save(path.join(folder, 'ownership-records.json'), records); save(path.join(folder, 'server-requests.json'), ledger); save(path.join(folder, 'results.json'), report); console.log(JSON.stringify({ status: report.status, folder }));
   }
 }
