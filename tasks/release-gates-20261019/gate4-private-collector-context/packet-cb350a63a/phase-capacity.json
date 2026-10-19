@@ -1,0 +1,36 @@
+{
+  "schema": "skyyrose.local-phase-preflight.v1",
+  "authentication": "NOT_APPLICABLE_OFFLINE",
+  "observed_epoch_ns": 1792450018855321000,
+  "available_bytes": 1095725056,
+  "unchanged_floor_bytes": 1073741824,
+  "floor_alone_satisfied": true,
+  "phase_requirements": {
+    "one_fresh_native_repair_fixture": {
+      "planned_allocation_bytes": 1342177280,
+      "minimum_available_bytes": 2415919104,
+      "shortfall_bytes": 1320194048,
+      "status": "REFUSED_BEFORE_NEW_FIXTURE_OR_SERVICE"
+    },
+    "build_and_one_new_package": {
+      "planned_allocation_bytes": 536870912,
+      "minimum_available_bytes": 1610612736,
+      "shortfall_bytes": 514887680,
+      "status": "INSUFFICIENT_PHASE_HEADROOM"
+    }
+  },
+  "sequential_estimates": {
+    "durable_increment_per_retained_native_fixture_bytes": 234881024,
+    "basis": "Observed retainedMariaDB161832KiB, active174152KiB;224MiB estimateadds copiedmetadata/requestlogs/reserve. Active shared-volume free excursion~1GiB is unattributed and covered conservatively in1.25GiBnative phase budget.",
+    "two_fresh_native_fixtures_starting_headroom_bytes": 2650800128,
+    "two_native_then_build_starting_headroom_bytes": 2650800128,
+    "not_a_reservation_or_fixed_peak": true
+  },
+  "actions": "Onlyofflinepreflight; no nativefixturecreated, DB/HTTP service launched, package/build run or evidence removed. Recheck eachphase immediately before execution.",
+  "external_gaps": "Fourinstalledpluginbodies/managedMUcacheeffectiveconfig/exactinstalledPHP8.4.26MariaDB11.8.9/fullrestore remainmissing; historicalsyntheticorphansownershipunknown. Acquisition/liveconversion/deploymentheld.",
+  "private_receipt": {
+    "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261019/node-stat-source/final-phase-preflight.json",
+    "sha256": "cd44f49fd02ad89102dddea80610ceb4a0f72d0977d692c6fa565644bdb2a06a",
+    "bytes": 1646
+  }
+}

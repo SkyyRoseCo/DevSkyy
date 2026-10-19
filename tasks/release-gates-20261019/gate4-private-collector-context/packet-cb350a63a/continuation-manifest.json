@@ -1,0 +1,30 @@
+{
+  "schema": "skyyrose.collector-harmless-continuation.v1",
+  "status": "FROZEN_FOR_INDEPENDENT_ARTIFACT_REVIEW_ONLY",
+  "source_commit": "cb350a63a17cbdcf3aff7de909f90658e72422e9",
+  "files": {
+    "README.md": {
+      "sha256": "765c5e865d7a68c29d5504928e636a3be7a9675717b8de801a853bc4d0537ab6",
+      "bytes": 1421
+    },
+    "coverage.json": {
+      "sha256": "daa3005e16131275001c5ce97c142984ea7a4bc67deb9e7524940deb0a52da92",
+      "bytes": 4107
+    },
+    "evidence-index.json": {
+      "sha256": "a19b263308f4801a42927ba1e116bfb9bd86a9ad99005a2da2419eb7b7d4da5e",
+      "bytes": 5071
+    },
+    "phase-capacity.json": {
+      "sha256": "5b1e3073d9d30d7c5e5a768ab73f1677bd868942d8f90ccae936ca7f36b6f34f",
+      "bytes": 1936
+    },
+    "source-bindings.json": {
+      "sha256": "058e0138e0d015ca20c69e297abd35696cb191a04a82a39b8c9a62f330bf1aaa",
+      "bytes": 8201
+    }
+  },
+  "manifest_self_excluded": true,
+  "scope": "20actual harmlessownership/lifecycle+5modifiedframe controls; FD3rawframe limit explicit, browserentryheld, no OSnetworkdenial/privacy/releasequalification. Current resource preflight refuses newnativefixture before service start; build/package separate.",
+  "holds": "LIVE_CONVERSION_DEPLOYMENT_AND_EXISTING_HOLDS_REMAIN"
+}

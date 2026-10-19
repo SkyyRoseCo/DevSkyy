@@ -1,0 +1,67 @@
+{
+  "schema": "skyyrose.collector-harmless-control-coverage.v1",
+  "status": "PASS_BOUNDED_HARMLESS_OWNERSHIP_CONTROLS_BROWSER_HELD",
+  "authentication": "NOT_APPLICABLE_SYNTHETIC_LOCAL",
+  "runs": [
+    {
+      "result": {
+        "path": "/Users/theceo/.codex/worktrees/release-gates-20261019/DevSkyy/.artifacts/release-gates-20261019/gate4-private-collector-context/broker-controls-1792449369426/results.json",
+        "sha256": "e6250570b07a98f3889ef787a41f360001c436ece0cba739b57ab26f95addd0d",
+        "bytes": 5610
+      },
+      "source_commit": "856745c859c9c58d1dc2218d8e28722cb3b43b91",
+      "status": "FAIL_CONTROL_FINAL_BOUNDARY",
+      "qualified_controls": 0,
+      "failure": {
+        "type": "Error",
+        "message": "spawnSync /bin/ps EPERM"
+      },
+      "final_error": "spawnSync /bin/ps EPERM"
+    },
+    {
+      "result": {
+        "path": "/Users/theceo/.codex/worktrees/release-gates-20261019/DevSkyy/.artifacts/release-gates-20261019/gate4-private-collector-context/broker-controls-1792449542303/results.json",
+        "sha256": "23cdd9b461dad0a0a5ef867c49abbd59b7d706d9c1db6ff776e47235b2f248e0",
+        "bytes": 21107
+      },
+      "source_commit": "856745c859c9c58d1dc2218d8e28722cb3b43b91",
+      "status": "FAIL_HARMLESS_BROKER_CONTROLS",
+      "qualified_controls": 0,
+      "failure": {
+        "type": "AssertionError",
+        "message": "The input did not match the regular expression /^(?:0|[1-9][0-9]*)$/. Input:\n\n'-1'\n"
+      },
+      "final_error": null
+    },
+    {
+      "result": {
+        "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261019/gate4-private-collector-context/broker-controls-1792449783239/results.json",
+        "sha256": "ed8879ffb611546ed8bc9792c635b67d2f6ace8c98202cb5876b5cc3aecf726e",
+        "bytes": 193621
+      },
+      "source_commit": "cb350a63a17cbdcf3aff7de909f90658e72422e9",
+      "status": "PASS_HARMLESS_PRE_EXEC_OWNERSHIP_CONTROLS_ONLY",
+      "qualified_controls": 25,
+      "failure": null,
+      "final_error": null
+    }
+  ],
+  "actual_controls": 20,
+  "modified_retained_frame_controls": 5,
+  "scope": "ActualsamePID/PGID/imageandFD3/FD4handoff,15typedpretargetrefusals,registeredleaderdeath/profilelessdescendant,independentcleanupafterinjectedfailure,earlyENOENTanddelayedworker/brokergracecleanup. SyntheticNode/Pythononly.",
+  "cleanup": "PASS_SOURCE_ASSERTIONS_AND_TERMINAL_OBSERVATIONS; expectedinjectedfirstcleanupfailureisinthenegativecontrol,followedbyseparatelyverifiedrecovery. FirstouterwrapperFAILcleanupnotrelabelled; latercurrentabsenceonlyaddendum.",
+  "source_runtime_preservation": "Raw report source_start/source_end and runtime_start/runtime_end equal; allABIinputscheckedagain by executedsource.",
+  "limits": [
+    "No OSnetworkdenial qualification; incompatible extraouterwrapper was removed onlyforharmlesscontrols. Productionbrowsercontainmentunchanged.",
+    "No Chromium/browser/capture/privacy/route-profile/initialworker/headercompleteness/gateway/release qualification. Publiccontextentryunconditionallyrefusesexecution.",
+    "ExactNodeversionsource text supports interpretation, not attestation that pinnedbinarywasbuiltfromthosefiles. Inodeclaimlimitedtoobservedsupportednonnegativesigned64range.",
+    "Oldthreefailedphasesremainatfrozen529mapping; twoadditional856FAILsremainimmutable withzerocontrolsqualified. No rescoringpriornegative labels.",
+    "Post-exec FD3 Node frame was parsed/asserted but not retained as raw data. Signed/canonical equality is supported by exact-source executed assertions with retained broker pre-exec pipe identities, takeover and FD4 proof; independent raw post-exec frame replay is unavailable."
+  ],
+  "prior_phase_record": {
+    "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/tasks/release-gates-20261019/gate4-private-collector-context/source-phase-successor-856745c85.json",
+    "sha256": "1db09ba0a4c4db12c50a4673c6575850e03bd8022ce37b87ab27c350c80b2f76",
+    "bytes": 16933
+  },
+  "holds": "ALL_LIVE_CONVERSION_DEPLOYMENT_AND_EXISTING_HOLDS_REMAIN"
+}

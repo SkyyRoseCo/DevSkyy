@@ -1,0 +1,87 @@
+{
+  "schema": "skyyrose.collector-harmless-evidence-index.v1",
+  "refs": [
+    {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261019/node-stat-source/three-control-attempts-census.json",
+      "sha256": "2ef3551a1683ddc834e16809bc7cdf281fcceed5f1aed0fa159a9827b6471fae",
+      "bytes": 19765
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/release-gates-20261019/DevSkyy/.artifacts/release-gates-20261019/gate4-private-collector-context/broker-controls-1792449369426/results.json",
+      "sha256": "e6250570b07a98f3889ef787a41f360001c436ece0cba739b57ab26f95addd0d",
+      "bytes": 5610
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/release-gates-20261019/DevSkyy/.artifacts/release-gates-20261019/gate4-private-collector-context/broker-controls-1792449542303/results.json",
+      "sha256": "23cdd9b461dad0a0a5ef867c49abbd59b7d706d9c1db6ff776e47235b2f248e0",
+      "bytes": 21107
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261019/gate4-private-collector-context/broker-controls-1792449783239/results.json",
+      "sha256": "ed8879ffb611546ed8bc9792c635b67d2f6ace8c98202cb5876b5cc3aecf726e",
+      "bytes": 193621
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261019/node-stat-source/owned-node-preparation.json",
+      "sha256": "3d46c447ababe9fde13ce6b9c44c34b2a4d19234048e125e93f6e3b6a2f2c562",
+      "bytes": 2123
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261019/node-stat-source/phase-capacity-before-harmless.json",
+      "sha256": "577a15c88803903b16443a36fb0c24a41a26a36cfc4724624164036a74234455",
+      "bytes": 903
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261019/node-stat-source/v22.23.2/provenance.json",
+      "sha256": "1648b1cf34abce19a00b57554c60c8bd3bdbe86b8ebcc1f3eec6ff01819780e5",
+      "bytes": 659
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261019/node-stat-source/v22.23.2/node_file.h",
+      "sha256": "4d61c44826f0d6d25068b9f5006f2566bef6f0c72a21fcb24633e74e354ff99b",
+      "bytes": 17067
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261019/node-stat-source/v22.23.2/node_file-inl.h",
+      "sha256": "156324a5920721a29576e2a4fa72db791652e64f5cbf1f93b83f907aaeb3cb24",
+      "bytes": 14569
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/release-gates-20261019/DevSkyy/.artifacts/release-gates-20261019/gate4-private-collector-context/broker-controls-1792449369426/environmental-postdeadline-addendum.json",
+      "sha256": "5e142e640b2c7fa2b589841db8ff523be1849332de7273ada8859850e41a8583",
+      "bytes": 1242
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/release-gates-20261019/DevSkyy/.artifacts/release-gates-20261019/gate4-private-collector-context/broker-controls-1792449369426/recorded-identity-postdeadline.json",
+      "sha256": "aeca06a15972649011f8327bf8ecebf88498b35ead043063ee856d9913dceafe",
+      "bytes": 496
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/tasks/release-gates-20261019/gate4-private-collector-context/packet-cb350a63a/coverage.json",
+      "sha256": "daa3005e16131275001c5ce97c142984ea7a4bc67deb9e7524940deb0a52da92",
+      "bytes": 4107
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/tasks/release-gates-20261019/gate4-private-collector-context/packet-cb350a63a/source-bindings.json",
+      "sha256": "058e0138e0d015ca20c69e297abd35696cb191a04a82a39b8c9a62f330bf1aaa",
+      "bytes": 8201
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261019/node-stat-source/final-phase-preflight.json",
+      "sha256": "cd44f49fd02ad89102dddea80610ceb4a0f72d0977d692c6fa565644bdb2a06a",
+      "bytes": 1646
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/tasks/release-gates-20261019/gate4-private-collector-context/packet-cb350a63a/phase-capacity.json",
+      "sha256": "5b1e3073d9d30d7c5e5a768ab73f1677bd868942d8f90ccae936ca7f36b6f34f",
+      "bytes": 1936
+    }
+  ],
+  "census": {
+    "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261019/node-stat-source/three-control-attempts-census.json",
+    "sha256": "2ef3551a1683ddc834e16809bc7cdf281fcceed5f1aed0fa159a9827b6471fae",
+    "bytes": 19765
+  },
+  "entry_count": 84,
+  "scope": "Frozenforindependentreview;rawcode/runtime/ABI/command/log/typedrefusalsourcesareboundthroughrefsandcompletecensus. Runtimecopybytes/modes/distinctinodes/kernelimage andgroupabsence areinpreparationreceipt."
+}

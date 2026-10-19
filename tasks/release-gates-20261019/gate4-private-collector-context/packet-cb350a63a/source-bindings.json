@@ -1,0 +1,194 @@
+{
+  "schema": "skyyrose.collector-source-git-bindings.v1",
+  "bindings": [
+    {
+      "run": "broker-controls-1792449369426",
+      "commit": "856745c859c9c58d1dc2218d8e28722cb3b43b91",
+      "path": "tools/v2-runtime/gate4-private-collector/context.cjs",
+      "sha256": "9b8a7f91ff5b32b4b9d9b6c73df691800fae8c99cd8d08c41bef4541e55b89da",
+      "bytes": 21744
+    },
+    {
+      "run": "broker-controls-1792449369426",
+      "commit": "856745c859c9c58d1dc2218d8e28722cb3b43b91",
+      "path": "tools/v2-runtime/gate4-private-collector/context-ownership.cjs",
+      "sha256": "3bc987a5d90949f3b0ad0491cff16c22bf0aea7fe4382300b4e85b844b1b02eb",
+      "bytes": 3251
+    },
+    {
+      "run": "broker-controls-1792449369426",
+      "commit": "856745c859c9c58d1dc2218d8e28722cb3b43b91",
+      "path": "tools/v2-runtime/gate4-private-collector/context-broker.cjs",
+      "sha256": "c897f67b2f74056cb4c5b2fefc478bac822726d1299c2338c4469511d2ce9c00",
+      "bytes": 9956
+    },
+    {
+      "run": "broker-controls-1792449369426",
+      "commit": "856745c859c9c58d1dc2218d8e28722cb3b43b91",
+      "path": "tools/v2-runtime/gate4-private-collector/context-launcher.py",
+      "sha256": "73a2fe81758362cd45b170c38ba983232acd1b46d270077f1501107327e25003",
+      "bytes": 6684
+    },
+    {
+      "run": "broker-controls-1792449369426",
+      "commit": "856745c859c9c58d1dc2218d8e28722cb3b43b91",
+      "path": "tools/v2-runtime/gate4-private-collector/test-context-broker.cjs",
+      "sha256": "ab6baa8b15d2532b6c073e2cfe2a3c9be03258cc354aeaeb3d77885200be1112",
+      "bytes": 20743
+    },
+    {
+      "run": "broker-controls-1792449369426",
+      "commit": "856745c859c9c58d1dc2218d8e28722cb3b43b91",
+      "path": "tools/v2-runtime/gate4-private-collector/test-context-controls.cjs",
+      "sha256": "b43ce226abc4feff9a188dcf0b8d1d088f72db1a9addabe419696f9d479b3761",
+      "bytes": 7356
+    },
+    {
+      "run": "broker-controls-1792449369426",
+      "commit": "856745c859c9c58d1dc2218d8e28722cb3b43b91",
+      "path": "tools/v2-runtime/gate4-private-collector/capability.cjs",
+      "sha256": "1292fb1c036b6f1d6aac5b7dab47337fc89646332a6eca881ea6a67917c194d4",
+      "bytes": 30064
+    },
+    {
+      "run": "broker-controls-1792449369426",
+      "commit": "856745c859c9c58d1dc2218d8e28722cb3b43b91",
+      "path": "tools/v2-runtime/gate4-private-collector/pipe.cjs",
+      "sha256": "4ae15171559ba67bab4b754f6fe869c7d1f708f112fa5c848e59d7550aa4ded7",
+      "bytes": 3245
+    },
+    {
+      "run": "broker-controls-1792449369426",
+      "commit": "856745c859c9c58d1dc2218d8e28722cb3b43b91",
+      "path": "tasks/release-gates-20261019/gate4-private-collector-context/PLAN.md",
+      "sha256": "bc0cd79ca6303825d43d3ead649cdd7839c99d9f89ff411512a19723d58f6c68",
+      "bytes": 6907
+    },
+    {
+      "run": "broker-controls-1792449542303",
+      "commit": "856745c859c9c58d1dc2218d8e28722cb3b43b91",
+      "path": "tools/v2-runtime/gate4-private-collector/context.cjs",
+      "sha256": "9b8a7f91ff5b32b4b9d9b6c73df691800fae8c99cd8d08c41bef4541e55b89da",
+      "bytes": 21744
+    },
+    {
+      "run": "broker-controls-1792449542303",
+      "commit": "856745c859c9c58d1dc2218d8e28722cb3b43b91",
+      "path": "tools/v2-runtime/gate4-private-collector/context-ownership.cjs",
+      "sha256": "3bc987a5d90949f3b0ad0491cff16c22bf0aea7fe4382300b4e85b844b1b02eb",
+      "bytes": 3251
+    },
+    {
+      "run": "broker-controls-1792449542303",
+      "commit": "856745c859c9c58d1dc2218d8e28722cb3b43b91",
+      "path": "tools/v2-runtime/gate4-private-collector/context-broker.cjs",
+      "sha256": "c897f67b2f74056cb4c5b2fefc478bac822726d1299c2338c4469511d2ce9c00",
+      "bytes": 9956
+    },
+    {
+      "run": "broker-controls-1792449542303",
+      "commit": "856745c859c9c58d1dc2218d8e28722cb3b43b91",
+      "path": "tools/v2-runtime/gate4-private-collector/context-launcher.py",
+      "sha256": "73a2fe81758362cd45b170c38ba983232acd1b46d270077f1501107327e25003",
+      "bytes": 6684
+    },
+    {
+      "run": "broker-controls-1792449542303",
+      "commit": "856745c859c9c58d1dc2218d8e28722cb3b43b91",
+      "path": "tools/v2-runtime/gate4-private-collector/test-context-broker.cjs",
+      "sha256": "ab6baa8b15d2532b6c073e2cfe2a3c9be03258cc354aeaeb3d77885200be1112",
+      "bytes": 20743
+    },
+    {
+      "run": "broker-controls-1792449542303",
+      "commit": "856745c859c9c58d1dc2218d8e28722cb3b43b91",
+      "path": "tools/v2-runtime/gate4-private-collector/test-context-controls.cjs",
+      "sha256": "b43ce226abc4feff9a188dcf0b8d1d088f72db1a9addabe419696f9d479b3761",
+      "bytes": 7356
+    },
+    {
+      "run": "broker-controls-1792449542303",
+      "commit": "856745c859c9c58d1dc2218d8e28722cb3b43b91",
+      "path": "tools/v2-runtime/gate4-private-collector/capability.cjs",
+      "sha256": "1292fb1c036b6f1d6aac5b7dab47337fc89646332a6eca881ea6a67917c194d4",
+      "bytes": 30064
+    },
+    {
+      "run": "broker-controls-1792449542303",
+      "commit": "856745c859c9c58d1dc2218d8e28722cb3b43b91",
+      "path": "tools/v2-runtime/gate4-private-collector/pipe.cjs",
+      "sha256": "4ae15171559ba67bab4b754f6fe869c7d1f708f112fa5c848e59d7550aa4ded7",
+      "bytes": 3245
+    },
+    {
+      "run": "broker-controls-1792449542303",
+      "commit": "856745c859c9c58d1dc2218d8e28722cb3b43b91",
+      "path": "tasks/release-gates-20261019/gate4-private-collector-context/PLAN.md",
+      "sha256": "bc0cd79ca6303825d43d3ead649cdd7839c99d9f89ff411512a19723d58f6c68",
+      "bytes": 6907
+    },
+    {
+      "run": "broker-controls-1792449783239",
+      "commit": "cb350a63a17cbdcf3aff7de909f90658e72422e9",
+      "path": "tools/v2-runtime/gate4-private-collector/context.cjs",
+      "sha256": "9b8a7f91ff5b32b4b9d9b6c73df691800fae8c99cd8d08c41bef4541e55b89da",
+      "bytes": 21744
+    },
+    {
+      "run": "broker-controls-1792449783239",
+      "commit": "cb350a63a17cbdcf3aff7de909f90658e72422e9",
+      "path": "tools/v2-runtime/gate4-private-collector/context-ownership.cjs",
+      "sha256": "3bc987a5d90949f3b0ad0491cff16c22bf0aea7fe4382300b4e85b844b1b02eb",
+      "bytes": 3251
+    },
+    {
+      "run": "broker-controls-1792449783239",
+      "commit": "cb350a63a17cbdcf3aff7de909f90658e72422e9",
+      "path": "tools/v2-runtime/gate4-private-collector/context-broker.cjs",
+      "sha256": "c897f67b2f74056cb4c5b2fefc478bac822726d1299c2338c4469511d2ce9c00",
+      "bytes": 9956
+    },
+    {
+      "run": "broker-controls-1792449783239",
+      "commit": "cb350a63a17cbdcf3aff7de909f90658e72422e9",
+      "path": "tools/v2-runtime/gate4-private-collector/context-launcher.py",
+      "sha256": "73a2fe81758362cd45b170c38ba983232acd1b46d270077f1501107327e25003",
+      "bytes": 6684
+    },
+    {
+      "run": "broker-controls-1792449783239",
+      "commit": "cb350a63a17cbdcf3aff7de909f90658e72422e9",
+      "path": "tools/v2-runtime/gate4-private-collector/test-context-broker.cjs",
+      "sha256": "649078e621b904162b37819c87369f7f8d920bf4929e700e363b4626feb378c4",
+      "bytes": 21770
+    },
+    {
+      "run": "broker-controls-1792449783239",
+      "commit": "cb350a63a17cbdcf3aff7de909f90658e72422e9",
+      "path": "tools/v2-runtime/gate4-private-collector/test-context-controls.cjs",
+      "sha256": "b43ce226abc4feff9a188dcf0b8d1d088f72db1a9addabe419696f9d479b3761",
+      "bytes": 7356
+    },
+    {
+      "run": "broker-controls-1792449783239",
+      "commit": "cb350a63a17cbdcf3aff7de909f90658e72422e9",
+      "path": "tools/v2-runtime/gate4-private-collector/capability.cjs",
+      "sha256": "1292fb1c036b6f1d6aac5b7dab47337fc89646332a6eca881ea6a67917c194d4",
+      "bytes": 30064
+    },
+    {
+      "run": "broker-controls-1792449783239",
+      "commit": "cb350a63a17cbdcf3aff7de909f90658e72422e9",
+      "path": "tools/v2-runtime/gate4-private-collector/pipe.cjs",
+      "sha256": "4ae15171559ba67bab4b754f6fe869c7d1f708f112fa5c848e59d7550aa4ded7",
+      "bytes": 3245
+    },
+    {
+      "run": "broker-controls-1792449783239",
+      "commit": "cb350a63a17cbdcf3aff7de909f90658e72422e9",
+      "path": "tasks/release-gates-20261019/gate4-private-collector-context/PLAN.md",
+      "sha256": "647d8fcb12b073184b490ca46e9d5ad62c9f677b1795486a14faa05475d9de23",
+      "bytes": 8089
+    }
+  ]
+}
