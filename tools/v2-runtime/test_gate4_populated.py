@@ -34,6 +34,8 @@ PLUGINS = [
     "woocommerce-payments",
 ]
 SEQUENCE = 0
+SNAPSHOT = 0
+RAW_PINS = {}
 REPORT = {
     "schema": "skyyrose.private-populated-native.v1",
     "run": RUN,
@@ -170,7 +172,34 @@ def pay(role, outcome, label, kind="valid"):
             "shutdown_receipt": str((PRIVATE / ("request-" + label + ".json")).relative_to(ROOT)),
         },
     )
-    assert before["orders"][role]["immutable"] == after["orders"][role]["immutable"], label
+    assert same(before["orders"][role]["immutable"], after["orders"][role]["immutable"]), label
+    assert all(row["order_id"] == after["orders"][role]["data"]["id"] for row in rows), label
+    assert has(rows, "processor_entered") <= 1 and has(rows, "processor_completed") <= 1
+    if has(rows, "processor_completed"):
+        assert all(
+            has(rows, event) == 1
+            for event in [
+                "before_pay",
+                "validate_fields",
+                "processor_entered",
+                "native_payment_complete_hook",
+                "redirect",
+            ]
+        )
+        assert has(rows, "handler_returned") == 0 and after["orders"][role]["data"]["date_paid"]
+    else:
+        assert has(rows, "native_payment_complete_hook") == has(rows, "redirect") == 0
+        assert has(rows, "handler_returned") == 1
+    if kind != "valid":
+        assert all(
+            has(rows, event) == 0
+            for event in [
+                "before_pay",
+                "validate_fields",
+                "processor_entered",
+                "processor_completed",
+            ]
+        )
     return before, after, rows
 
 
@@ -178,7 +207,19 @@ def has(rows, event):
     return sum(x["event"] == event for x in rows)
 
 
-def scope():
+def canonical(value):
+    return json.dumps(value, sort_keys=True, separators=(",", ":"), allow_nan=False)
+
+
+def same(left, right):
+    return canonical(left) == canonical(right)
+
+
+def scope(exclude_order=None, exclude_items=None):
+    global SNAPSHOT
+    SNAPSHOT += 1
+    folder = PRIVATE / "sql-preimages" / f"snapshot-{SNAPSHOT:06}"
+    folder.mkdir(parents=True, exist_ok=False)
     result = {}
     for suffix in [
         "posts",
@@ -209,10 +250,27 @@ def scope():
             )
             + ")"
         )
-        rows = sql("SELECT " + expr + " AS x FROM `" + table + "` ORDER BY BINARY x;")
-        p = PRIVATE / "sql-preimages" / f"{SEQUENCE:05}-{table}.txt"
-        p.parent.mkdir(exist_ok=True)
-        p.write_bytes(rows)
+        where = ""
+        if exclude_order is not None:
+            field = (
+                "ID"
+                if suffix == "posts"
+                else (
+                    "id"
+                    if suffix == "wc_orders"
+                    else "post_id" if suffix == "postmeta" else "order_id"
+                )
+            )
+            if suffix == "woocommerce_order_itemmeta":
+                assert exclude_items and all(isinstance(n, int) and n > 0 for n in exclude_items)
+                where = " WHERE order_item_id NOT IN (" + ",".join(map(str, exclude_items)) + ")"
+            else:
+                where = " WHERE `" + field + "`<>" + str(int(exclude_order))
+        rows = sql("SELECT " + expr + " AS x FROM `" + table + "`" + where + " ORDER BY BINARY x;")
+        p = folder / (table + ".txt")
+        with p.open("xb") as output:
+            output.write(rows)
+        RAW_PINS[str(p.relative_to(ROOT))] = pin(p)
         result[table] = {
             "row_sha256": hashlib.sha256(rows).hexdigest(),
             "rows": len(rows.splitlines()),
@@ -385,7 +443,7 @@ def equivalence(label):
     assert (
         row_pins(before) == row_pins(middle) == row_pins(after)
     ), "Representation reads wrote order data"
-    assert left == right, "Native cross-store semantic mismatch: " + label
+    assert same(left, right), "Native cross-store semantic mismatch: " + label
     return left
 
 
@@ -427,6 +485,112 @@ def containment():
     )
 
 
+def verify_deleted(label, order_id, item_ids, unrelated_before):
+    case = json.loads((PRIVATE / "case.json").read_text())
+    entry = case["deleted"][str(order_id)]
+    assert (
+        entry["run"] == RUN
+        and entry["type"] == "shop_order"
+        and entry["before"]["data"]["id"] == order_id
+    )
+    counts = {}
+    for table, field in [
+        ("wp_posts", "ID"),
+        ("wp_postmeta", "post_id"),
+        ("wp_wc_orders", "id"),
+        ("wp_wc_orders_meta", "order_id"),
+        ("wp_wc_order_addresses", "order_id"),
+        ("wp_wc_order_operational_data", "order_id"),
+        ("wp_woocommerce_order_items", "order_id"),
+    ]:
+        count = sql(
+            "SELECT COUNT(*) FROM " + table + " WHERE " + field + "=" + str(order_id) + ";"
+        ).strip()
+        assert count == b"0", (table, count)
+        counts[table] = 0
+    count = sql(
+        "SELECT COUNT(*) FROM wp_woocommerce_order_itemmeta WHERE order_item_id IN ("
+        + ",".join(map(str, item_ids))
+        + ");"
+    ).strip()
+    assert count == b"0"
+    counts["wp_woocommerce_order_itemmeta"] = 0
+    after = scope(order_id, item_ids)
+    assert row_pins(unrelated_before) == row_pins(
+        after
+    ), "Deletion changed unrelated order/product rows"
+    record(
+        "EXACT_NATIVE_DELETION_AND_TOMBSTONE_CLEANUP_" + label,
+        order_id=order_id,
+        item_ids=item_ids,
+        absent=counts,
+        unrelated_before=unrelated_before,
+        unrelated_after=after,
+    )
+
+
+def cleanup_owned():
+    errors = []
+    if not base.PROCESSES:
+        return errors
+    try:
+        if any(child.poll() is None for child in base.PROCESSES):
+            base.stop(SOCKET)
+    except BaseException as error:
+        errors.append({"step": "graceful-shutdown", "error": type(error).__name__})
+    for child in base.PROCESSES:
+        try:
+            child.wait(timeout=20)
+        except BaseException as error:
+            errors.append(
+                {"step": "initial-child-wait", "pid": child.pid, "error": type(error).__name__}
+            )
+            try:
+                if child.poll() is None:
+                    child.terminate()
+                    child.wait(timeout=5)
+            except BaseException as terminate_error:
+                errors.append(
+                    {
+                        "step": "child-terminate",
+                        "pid": child.pid,
+                        "error": type(terminate_error).__name__,
+                    }
+                )
+            try:
+                if child.poll() is None:
+                    child.kill()
+                    child.wait(timeout=5)
+            except BaseException as kill_error:
+                errors.append(
+                    {"step": "child-kill", "pid": child.pid, "error": type(kill_error).__name__}
+                )
+        try:
+            if child.poll() is None:
+                errors.append({"step": "owned-child-survived", "pid": child.pid})
+        except BaseException as error:
+            errors.append(
+                {"step": "child-liveness-unknown", "pid": child.pid, "error": type(error).__name__}
+            )
+    try:
+        result = subprocess.run(
+            [
+                "/opt/homebrew/bin/mariadb-admin",
+                "--no-defaults",
+                "--socket=" + SOCKET,
+                "-uroot",
+                "ping",
+            ],
+            capture_output=True,
+            timeout=5,
+        )
+        if result.returncode == 0:
+            errors.append({"step": "owned-socket-still-live"})
+    except BaseException as error:
+        errors.append({"step": "socket-liveness-unknown", "error": type(error).__name__})
+    return errors
+
+
 def configure():
     base.PRIVATE = PRIVATE
     base.OUT = OUT
@@ -453,6 +617,12 @@ def main():
         ROOT / "tools/v2-runtime/gate4-populated-fixture.php",
         ROOT / "tools/v2-runtime/variation-migration-core-populated.php",
         Path(base.__file__),
+        ROOT / "logo-registry.json",
+        ROOT / "skyyrose/core/product.py",
+        ROOT / ".artifacts/release-gates-20261019/gate4-populated/historical-producer-blob.php",
+        ROOT / ".artifacts/release-gates-20261019/gate4-populated/historical-producer-function.php",
+        ROOT
+        / ".artifacts/release-gates-20261019/gate4-populated/historical-producer-provenance.json",
     ]
     REPORT["source_head"] = subprocess.check_output(
         ["git", "rev-parse", "HEAD"], cwd=ROOT, text=True
@@ -540,20 +710,45 @@ def main():
         }
         native("seed")
         seed = inspect()
+        type_controls = []
+        for mutation in ["bool-to-int", "float-to-int"]:
+            native("type-control", mutation)
+            observed = inspect()
+            assert not same(
+                seed["orders"]["v1_malformed"]["items"], observed["orders"]["v1_malformed"]["items"]
+            )
+            type_controls.append(
+                {"mutation": mutation, "status": "PASS_REFUSED_TYPED_NATIVE_ROUNDTRIP"}
+            )
+            native("type-control", "restore")
+            assert same(
+                seed["orders"]["v1_malformed"]["items"],
+                inspect()["orders"]["v1_malformed"]["items"],
+            )
+        assert not same({"value": True}, {"value": 1}) and not same({"value": 1.0}, {"value": 1})
+        assert not same(["repeat", "repeat", "different"], ["repeat", "different"])
+        write(
+            OUT / "typed-comparison-controls.json",
+            {
+                "status": "PASS_NATIVE_PERSISTENCE_ENCODING_DECODING_TYPED_COMPARISON",
+                "controls": type_controls,
+                "negative_multiplicity_refused": True,
+            },
+        )
         native("convert")
         converted = inspect()
-        assert {k: v["immutable"] for k, v in seed["orders"].items()} == {
-            k: v["immutable"] for k, v in converted["orders"].items()
-        }
+        assert same(
+            {k: v["immutable"] for k, v in seed["orders"].items()},
+            {k: v["immutable"] for k, v in converted["orders"].items()},
+        )
         record("EXACT_V1_V2_PERSISTED_AND_CONVERTED", snapshot=converted)
         for role, label, kind in [
             ("v1_success", "bad-nonce", "bad-nonce"),
             ("v1_success", "bad-key", "bad-key"),
         ]:
             before, after, rows = pay(role, "success", label, kind)
-            assert (
-                has(rows, "processor_entered") == 0
-                and before["orders"][role] == after["orders"][role]
+            assert has(rows, "processor_entered") == 0 and same(
+                before["orders"][role], after["orders"][role]
             )
             record("REQUEST_REFUSED_" + label, events=rows)
         for mutation in ["missing-id", "ambiguous-sku"]:
@@ -588,15 +783,15 @@ def main():
         before, after, rows = pay("v1_success", "success", "v1-duplicate")
         assert (
             has(rows, "processor_entered") == 0
-            and after["orders"]["v1_success"] == paid
-            and after["products"] == before["products"]
+            and same(after["orders"]["v1_success"], paid)
+            and same(after["products"], before["products"])
         )
         record("ACTUAL_V1_PAYMENT_DUPLICATE_NATIVE_STOCK", events=rows, paid=paid)
         before, after, rows = pay("v1_retry", "failure", "v1-failure")
         assert (
             has(rows, "processor_entered") == 1
             and has(rows, "processor_completed") == 0
-            and after["products"] == before["products"]
+            and same(after["products"], before["products"])
             and not after["orders"]["v1_retry"]["data"]["date_paid"]
         )
         before, after, rows = pay("v1_retry", "success", "v1-retry")
@@ -618,7 +813,7 @@ def main():
         assert (
             has(rows, "processor_entered") == has(rows, "gateway_native_stock_refusal") == 1
             and has(rows, "processor_completed") == 0
-            and after["products"] == before["products"]
+            and same(after["products"], before["products"])
             and not after["orders"]["v1_stock"]["data"]["date_paid"]
         )
         record("GATEWAY_LAYER_NATIVE_STOCK_REFUSED_NOT_HANDLER", events=rows)
@@ -659,11 +854,18 @@ def main():
             assert pending["pending"] > 0
             assert native("switch", target)["refused"]
             first = batch()
-            record("INTERRUPTED_BETWEEN_BATCHES_" + direction, first=first, remaining=next_batch())
+            remaining = next_batch()
+            assert (
+                remaining["pending"] > 0 and remaining["batch"]
+            ), "Interruption needs real work remaining"
+            record("INTERRUPTED_BETWEEN_BATCHES_" + direction, first=first, remaining=remaining)
             time.sleep(1.1)
             native("newer", direction + "-paused")
             newer = inspect()
             collision_control(direction)
+            assert same(newer["orders"], inspect()["orders"]) and same(
+                newer["products"], inspect()["products"]
+            )
             if direction == "cpt-to-hpos":
                 selected = next_batch()
                 assert selected["batch"]
@@ -676,6 +878,13 @@ def main():
                 assert sql("SELECT @@check_constraint_checks;").strip() == b"1"
                 before_fault = scope()
                 outcome = batch()
+                assert bad in outcome["batch"]
+                failures = [
+                    row
+                    for row in outcome["native_logs"]
+                    if "g4p_owned_check" in str(row["message"])
+                ]
+                assert failures, "Native constraint rejection attribution missing"
                 after_fault = scope()
                 assert row_pins(before_fault) == row_pins(after_fault)
                 assert next_batch()["pending"] > 0 and native("switch", target)["refused"]
@@ -683,20 +892,49 @@ def main():
                 record(
                     "NATIVE_FIRST_TABLE_CHECK_FAILURE_NO_PROMOTION",
                     batch=outcome,
+                    rejected_native_id=bad,
+                    constraint_logs=failures,
                     before=before_fault,
                     after=after_fault,
                 )
             drain(direction)
+            surviving = inspect()
+            assert same(newer["orders"], surviving["orders"]) and same(
+                newer["products"], surviving["products"]
+            ), "Synchronization changed authoritative business invariants"
             equivalence(direction)
             native("make-delete", direction)
+            expected_delete = inspect()
             drain(direction + "-pre-delete")
+            assert same(expected_delete["orders"], inspect()["orders"]) and same(
+                expected_delete["products"], inspect()["products"]
+            )
+            delete_role = "delete-" + direction
+            delete_id = int(expected_delete["orders"][delete_role]["data"]["id"])
+            item_ids = [
+                int(n)
+                for n in sql(
+                    "SELECT order_item_id FROM wp_woocommerce_order_items WHERE order_id="
+                    + str(delete_id)
+                    + ";"
+                )
+                .decode()
+                .splitlines()
+            ]
+            assert item_ids
+            unrelated_before = scope(delete_id, item_ids)
             native("delete", direction)
+            expected_delete["orders"].pop(delete_role)
             drain(direction + "-native-delete")
+            verify_deleted(direction, delete_id, item_ids, unrelated_before)
+            assert same(expected_delete["orders"], inspect()["orders"]) and same(
+                expected_delete["products"], inspect()["products"]
+            )
             equivalence(direction + "-after-delete")
             current = inspect()
-            assert (
-                current["orders"]["newer-" + direction + "-paused"]["immutable"]
-                == newer["orders"]["newer-" + direction + "-paused"]["immutable"]
+            assert same(
+                current["orders"]["newer-" + direction + "-paused"]["immutable"],
+                newer["orders"]["newer-" + direction + "-paused"]["immutable"],
             )
             assert (
                 current["orders"]["v2_pending"]["data"]["customer_note"]
@@ -709,6 +947,10 @@ def main():
             assert not switched["refused"] and switched["authority"] == target
             fresh = inspect()
             assert fresh["hpos"] == (target == "yes")
+            assert same(current["orders"], fresh["orders"]) and same(
+                current["products"], fresh["products"]
+            ), "Authority switch/rollback changed payments/history/refunds/items/stock"
+
             record("NATIVE_AUTHORITY_SWITCH_" + direction, switch=switched, snapshot=fresh)
             cold(direction)
         before = scope()
@@ -718,30 +960,19 @@ def main():
         assert row_pins(before) == row_pins(after)
         record("FRESH_EMPTY_RETRY_NOOP")
         assert all(pin(ROOT / path) == value for path, value in REPORT["source_pins"].items())
+        assert all(pin(ROOT / path) == value for path, value in RAW_PINS.items())
+        write(PRIVATE / "sql-preimages-index.json", RAW_PINS)
+        REPORT["raw_sql_index"] = {
+            "path": str((PRIVATE / "sql-preimages-index.json").relative_to(ROOT)),
+            **pin(PRIVATE / "sql-preimages-index.json"),
+            "files": len(RAW_PINS),
+        }
         complete = True
     except BaseException as error:
         REPORT["failure"] = {"type": type(error).__name__, "message": str(error)[:1500]}
         raise
     finally:
-        if base.PROCESSES:
-            try:
-                live = [p for p in base.PROCESSES if p.poll() is None]
-                if live:
-                    base.stop(SOCKET)
-                for p in base.PROCESSES:
-                    p.wait(timeout=20)
-            except BaseException as error:
-                cleanup.append({"step": "stop-owned", "error": type(error).__name__})
-            for child in base.PROCESSES:
-                if child.poll() is None:
-                    child.terminate()
-                    try:
-                        child.wait(timeout=10)
-                    except subprocess.TimeoutExpired:
-                        child.kill()
-                        child.wait(timeout=10)
-        if any(p.poll() is None for p in base.PROCESSES):
-            cleanup.append({"step": "owned-child-survived"})
+        cleanup.extend(cleanup_owned())
         try:
             assert protected == {name: base.inventory(ORIGINAL / name) for name in protected}
             assert original_pins == base.inventory(original_cold)
@@ -750,6 +981,7 @@ def main():
             cleanup.append({"step": "protected-inventories", "error": type(error).__name__})
         REPORT["cleanup_errors"] = cleanup
         REPORT["owned_services_stopped"] = not cleanup
+        REPORT["status"] = "FAIL_CLEANUP" if cleanup else "FAIL_EXECUTION"
         if complete and not cleanup:
             REPORT["status"] = (
                 "PASS_PRIVATE_POPULATED_SYNC_AND_HISTORICAL_PAYMENTS_WITH_EXPLICIT_STOCK_PATH_LIMIT"
