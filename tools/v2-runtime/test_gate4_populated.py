@@ -853,7 +853,12 @@ def main():
             pending = next_batch()
             assert pending["pending"] > 0
             assert native("switch", target)["refused"]
+            before_first = inspect()
             first = batch()
+            after_first = inspect()
+            assert same(before_first["orders"], after_first["orders"]) and same(
+                before_first["products"], after_first["products"]
+            ), "First native batch changed authoritative business invariants"
             remaining = next_batch()
             assert (
                 remaining["pending"] > 0 and remaining["batch"]
