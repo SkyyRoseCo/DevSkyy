@@ -68,3 +68,7 @@ assets/products/manifest.json
 wordpress-theme/skyyrose-flagship/data/v7-cards.json
 wordpress-theme/skyyrose-flagship/data/site-guide.json
 wordpress-theme/skyyrose-flagship/data/product-embeddings.json
+# Standalone coding-architect agent package with its own double-quote style. The root
+# lint-staged prettier pass rewrote all of dev/src/index.ts (quotes, line joins) on a
+# 7-line fix; founder chose to exclude dev/ rather than adopt root style (2026-10-18).
+dev/

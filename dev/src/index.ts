@@ -119,8 +119,13 @@ export function createCodingArchitectAgent(userConfig: AgentConfig = {}) {
             break;
 
           case "assistant":
-            if (agentConfig.verbose && typeof message.message.content === "string") {
-              console.log(`[Assistant] ${message.message.content.slice(0, 100)}...`);
+            if (agentConfig.verbose) {
+              const text = message.message.content
+                .flatMap((block) => (block.type === "text" ? [block.text] : []))
+                .join("");
+              if (text) {
+                console.log(`[Assistant] ${text.slice(0, 100)}...`);
+              }
             }
             break;
 
