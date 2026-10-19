@@ -26,6 +26,16 @@ KEYS = [
     "_order_total",
     "_order_version",
 ]
+TABLES = {
+    "wp_posts.txt",
+    "wp_postmeta.txt",
+    "wp_wc_orders.txt",
+    "wp_wc_order_addresses.txt",
+    "wp_wc_order_operational_data.txt",
+    "wp_wc_orders_meta.txt",
+    "wp_woocommerce_order_items.txt",
+    "wp_woocommerce_order_itemmeta.txt",
+}
 TAIL = [("backfill_post_record", HPOS, DATA_FILE), ("__call", "WC_Data_Store", SYNC_FILE)]
 DELETE = [
     ("delete_post_meta", None, CPT_FILE),
@@ -88,7 +98,7 @@ def validate(before, after, native_before, native_after, receipt, site):
         "parent_id": 38,
     }
     assert audit["before_snapshot"] == native_before
-    assert set(before) == set(after) and len(before) == 8
+    assert set(before) == set(after) == TABLES
     for table in before:
         if table != "wp_postmeta.txt":
             assert before[table] == after[table], table
@@ -206,7 +216,7 @@ def main():
     snapshots = []
     for number in [46, 47]:
         folder = PRIVATE / "sql-preimages" / f"snapshot-{number:06}"
-        assert len(list(folder.iterdir())) == 8
+        assert {p.name for p in folder.iterdir()} == TABLES
         snapshots.append(
             {p.name: p.read_bytes().splitlines(keepends=True) for p in folder.iterdir()}
         )
@@ -223,6 +233,8 @@ def main():
         "changed-native-field",
         "duplicate-new-meta-id",
         "null-to-empty-string",
+        "missing-required-table",
+        "replaced-required-table",
     ]:
         old, new = copy.deepcopy(snapshots)
         nb, na, value = (
@@ -230,7 +242,11 @@ def main():
             copy.deepcopy(after_native),
             copy.deepcopy(receipt),
         )
-        if mutation == "other-table":
+        if mutation == "missing-required-table":
+            new.pop("wp_wc_orders.txt")
+        elif mutation == "replaced-required-table":
+            new["wp_other_table.txt"] = new.pop("wp_wc_orders.txt")
+        elif mutation == "other-table":
             new["wp_wc_orders.txt"].append(b"unexpected")
         elif mutation == "changed-value":
             new["wp_postmeta.txt"] = [
@@ -303,6 +319,12 @@ def main():
             "All other raw rows/tables, values/types/multiplicity, dates, native order/payment/refund/item/product/stock data remain exact",
         ],
     }
+    if output.exists():
+        retained = output.with_name(
+            "forced-replay-observation-" + pin(output)["sha256"][:12] + ".json"
+        )
+        assert not retained.exists()
+        output.rename(retained)
     with output.open("x") as f:
         f.write(json.dumps(result, indent=2) + "\n")
     print(result["status"], len(lineage), len(controls), pin(output))
