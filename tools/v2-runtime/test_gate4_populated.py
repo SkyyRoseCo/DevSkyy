@@ -11,9 +11,9 @@ import subprocess
 import time
 import datetime
 import math
-import re
 import sys
 import gate4_restore_local as base
+from gate4_refund_attribution import validate_attribution, validate_controls
 
 if not __debug__:
     raise RuntimeError("Assertions required")
@@ -354,33 +354,12 @@ def validate_refund_audit(before, after, value):
     stamp = datetime.datetime.fromisoformat(new_date).timestamp()
     assert old_date < new_date and math.floor(start) <= stamp <= math.ceil(end)
 
-    def frames(row):
-        return {frame.get("function") for frame in row["stack"]}
-
-    required = {
-        "backfill_post_record",
-        "update_order_meta_from_object",
-        "update_order_meta",
-        "update_meta",
-        "after_meta_change",
-        "save",
-    }
-    queries = [
-        row
-        for row in audit["queries"]
-        if re.search(r"^\s*UPDATE\s+`?wp_wc_orders`?\s", row["sql"], re.I)
-        and "date_updated_gmt" in row["sql"]
-        and re.search(r"WHERE\s+`?id`?\s*=\s*['\"]?" + str(order_id) + r"\b", row["sql"], re.I)
-        and required <= frames(row)
-    ]
-    assert queries and all(start <= row["epoch"] <= end for row in queries)
-    assert audit["refund_saves"] and all(
-        row["id"] == order_id
-        and row["modified"] == new_date
-        and start <= row["epoch"] <= end
-        and required <= frames(row)
-        for row in audit["refund_saves"]
+    attribution = validate_attribution(
+        audit,
+        PRIVATE / "wordpress",
+        json.loads((PRIVATE / "site-at-start.json").read_text()),
     )
+    assert all(row["modified"] == new_date for row in audit["refund_saves"])
     assert audit["source_row_before"]["date_updated_gmt"] == datetime.datetime.fromisoformat(
         old_date
     ).strftime("%Y-%m-%d %H:%M:%S")
@@ -399,7 +378,14 @@ def validate_refund_audit(before, after, value):
     expected = json.loads(canonical(before["orders"]))
     expected[role]["data"]["date_modified"] = new_date
     assert same_orders(expected, after["orders"]) and same(before["products"], after["products"])
-    return {"role": role, "id": order_id, "before": old_date, "after": new_date, "proof": audit}
+    return {
+        "role": role,
+        "id": order_id,
+        "before": old_date,
+        "after": new_date,
+        "proof": audit,
+        "attribution": attribution,
+    }
 
 
 def preserved_orders(left, right):
@@ -463,6 +449,11 @@ def batch():
         record(
             "NATIVE_HPOS_REFUND_FIRST_BACKFILL_AUDIT_TRANSITION",
             transition=transition,
+            attribution_negatives=validate_controls(
+                value["audit"],
+                PRIVATE / "wordpress",
+                json.loads((PRIVATE / "site-at-start.json").read_text()),
+            ),
             validator_negatives=[
                 "other-order",
                 "other-field",
@@ -887,6 +878,7 @@ def main():
         ROOT / "tools/v2-runtime/gate4-populated-fixture.php",
         ROOT / "tools/v2-runtime/variation-migration-core-populated.php",
         Path(base.__file__),
+        ROOT / "tools/v2-runtime/gate4_refund_attribution.py",
         ROOT / "logo-registry.json",
         ROOT / "skyyrose/core/product.py",
         ROOT / ".artifacts/release-gates-20261019/gate4-populated/historical-producer-blob.php",
