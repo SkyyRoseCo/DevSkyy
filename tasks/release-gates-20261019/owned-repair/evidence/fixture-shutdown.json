@@ -1,0 +1,11 @@
+{
+  "observed_utc": "2026-10-19T11:03:41.396783+00:00",
+  "owned_private_db_pid": 32124,
+  "identity_verified_before_stop": true,
+  "stopped": true,
+  "http_restarted": false,
+  "fixture_data_preserved": true,
+  "production_touched": false,
+  "db_log_path": ".artifacts/release-gates-20261019/runtime-official/owned-repair-mysql.log",
+  "db_log_sha256": "27b46ea97046db99859bc6511253beaef9c46cfdd856e639459c606b33e095c6"
+}

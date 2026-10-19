@@ -1,0 +1,27 @@
+{
+  "status": "PASS_PROSPECTIVE_PRIVATE_FIXTURE_ONLY_GATE4_OPEN",
+  "delivered_runtime_source": "d953e51ee9e01448fe6b04960d5958d8ac424954",
+  "delivered_evidence": "aa0652dc4269e3c79b86d939e7b630783a63a148",
+  "delivered_zip_sha256": "d9f24f5e35728ab693675727c7da009406979f468aa7dd54a09122e6ccd84dd6",
+  "sole_writer": "Integration",
+  "private_database_exec_session": null,
+  "http_service": "STOPPED_NOT_RESTARTED",
+  "current_driver_session": null,
+  "source_files": [
+    "tools/v2-runtime/fixture-owned-child-repair.php",
+    "tools/v2-runtime/phase3b-browser/test-release-owned-child-repair.cjs"
+  ],
+  "constraints": [
+    "New prospectively instrumented synthetic operations only; original unreceipted orphan stays refused",
+    "Explicit receipt/current-preimage envelopes are simulated operator review inputs",
+    "Separate CAS repair journal, native lock/reconnect fencing, guard remains FAILED through repair",
+    "Separately inspected and approved core resume; no automatic repair-to-resume",
+    "No deletion, no live/production/staging operation, no change to frozen core/theme/package",
+    "Do not mark gate4 overall complete"
+  ],
+  "review_state": "PASS: independent final source, native32 execution evidence and bounded manifest review",
+  "next": [],
+  "qualification_source_commit": "7c2fe093ab988b1b52429d3e76628361d3af7940",
+  "services_stopped": true,
+  "completion": "Local prospective fixture qualification complete; gate4 overall and historical/live recovery remain open"
+}

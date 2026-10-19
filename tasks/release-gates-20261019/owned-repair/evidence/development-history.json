@@ -1,0 +1,25 @@
+{
+  "classification": "RETAINED_DEVELOPMENT_HISTORY_NOT_FINAL_QUALIFICATION",
+  "runs": [
+    {
+      "file": "results-initial-baseline-failure.json",
+      "status": "FAILED_TEST_BASELINE",
+      "reason": "New in-memory order total formatting differed from native persisted reload; baseline now captured after native reload"
+    },
+    {
+      "file": "results-pre-deferred-sync-failure.json",
+      "status": "FAILED_STRICT_AFTERIMAGE_READBACK",
+      "reason": "Woo deferred native parent synchronization ran at shutdown outside recorded afterimage; rehearsal now settles native parent inside fence"
+    },
+    {
+      "file": "results-pre-completion-sync-review.json",
+      "status": "FAILED_DRIVER_NATIVE_EXIT_EXPECTATION_AND_SUPERSEDED_SOURCE",
+      "reason": "Native wpdb connection loss exited1 rather than3; accepted range now1or3 with actual stale-writer no-mutation proof. Reviewer also required sync before COMPLETE"
+    },
+    {
+      "file": "results-pre-final-native-boundaries.json",
+      "status": "HISTORICAL_24_CASE_PASS_SUPERSEDED_BY_FINAL_SOURCE_REVIEW",
+      "reason": "Reviewer required final save/deprecated sync queue barriers; final32 cases supersede this24-case source"
+    }
+  ]
+}

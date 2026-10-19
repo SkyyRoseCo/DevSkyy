@@ -27,9 +27,11 @@ does not manufacture an ownership receipt for it, adopt it, delete it or close
 gate 4 overall.
 
 For a real historical orphan, the missing input is authenticated creation/audit
-evidence tying the exact native child ID to the operation, or a separately
-reviewed owner-authorized resolution contract. No such evidence or authority is
-provided by these synthetic cases. No live repair procedure is enabled here.
+evidence tying the exact native child ID to the operation. Owner approval does
+not substitute for that evidence or waive the adoption proof. Any future
+owner-authorized resolution contract would be a separately scoped decision,
+not implemented here and not evidence of insertion ownership. These synthetic
+cases provide no historical ownership or live repair authority.
 
 ## Explicit procedure exercised locally
 

@@ -1,0 +1,146 @@
+{
+  "classification": "REPRODUCED_PROSPECTIVE_PRIVATE_FIXTURE_REPAIR_ONLY",
+  "authentication": "NOT_APPLICABLE",
+  "delivered_runtime_source": "d953e51ee9e01448fe6b04960d5958d8ac424954",
+  "delivered_evidence": "aa0652dc4269e3c79b86d939e7b630783a63a148",
+  "source_pins": {
+    "tools/v2-runtime/fixture-owned-child-repair.php": "f65512caea9c197eb62d3bb082f949d325f3f74b1071c1ad4dc8c04a62b13799",
+    "tools/v2-runtime/phase3b-browser/test-release-owned-child-repair.cjs": "08287796e983eee394aba0fff5842fd03088cbe458301b4221907fe6afcf8c8c",
+    "tools/v2-runtime/variation-migration-core.php": "c6ab47e6de26ea972aa19a6f3246dea715534963796a1c78186ff29418dd47b7",
+    "wordpress-theme/skyyrose-flagship-2/inc/woocommerce-compat.php": "3262d65f35d4e08b017a9b6be9105701813e37dc8b31212cfd8e725bcacd226e"
+  },
+  "cases": [
+    {
+      "label": "unreceipted orphan stays refused",
+      "status": "PASS_REFUSED_WITHOUT_MUTATION",
+      "reason": "Explicit reviewed insertion receipt required."
+    },
+    {
+      "label": "unacknowledged receipt readback failure",
+      "status": "PASS_REFUSED_WITHOUT_MUTATION",
+      "reason": "Explicit reviewed insertion receipt required."
+    },
+    {
+      "label": "exclusive receipt persistence failure",
+      "status": "PASS_REFUSED_WITHOUT_MUTATION",
+      "reason": "Explicit reviewed insertion receipt required."
+    },
+    {
+      "label": "forged-update-flag",
+      "status": "PASS_REFUSED_WITHOUT_MUTATION",
+      "reason": "Prospective insertion ownership proof invalid."
+    },
+    {
+      "label": "wrong-parent",
+      "status": "PASS_REFUSED_WITHOUT_MUTATION",
+      "reason": "Prospective insertion ownership proof invalid."
+    },
+    {
+      "label": "wrong-child-id",
+      "status": "PASS_REFUSED_WITHOUT_MUTATION",
+      "reason": "Migration journal or complete child inventory differs."
+    },
+    {
+      "label": "wrong approved receipt digest",
+      "status": "PASS_REFUSED_WITHOUT_MUTATION",
+      "reason": "Explicit reviewed insertion receipt required."
+    },
+    {
+      "label": "stale reviewed native preimage",
+      "status": "PASS_REFUSED_WITHOUT_MUTATION",
+      "reason": "Reviewed current raw preimage changed."
+    },
+    {
+      "label": "fresh approval cannot legitimize unexplained child drift",
+      "status": "PASS_REFUSED_WITHOUT_MUTATION",
+      "reason": "Child changed outside recorded insertion/repair afterimage; manual investigation required."
+    },
+    {
+      "label": "migration journal drift with unchanged product rows",
+      "status": "PASS_REFUSED_WITHOUT_MUTATION",
+      "reason": "Migration journal or complete child inventory differs."
+    },
+    {
+      "label": "unexpected second orphan",
+      "status": "PASS_REFUSED_WITHOUT_MUTATION",
+      "reason": "Migration journal or complete child inventory differs."
+    },
+    {
+      "label": "raw-only parent metadata drift",
+      "status": "PASS_REFUSED_WITHOUT_MUTATION",
+      "reason": "Child changed outside recorded insertion/repair afterimage; manual investigation required."
+    },
+    {
+      "label": "raw-only product lookup drift",
+      "status": "PASS_REFUSED_WITHOUT_MUTATION",
+      "reason": "Child changed outside recorded insertion/repair afterimage; manual investigation required."
+    },
+    {
+      "label": "reviewed owned child completion",
+      "status": "PASS_EXPLICIT_REPAIR_REVIEW_SEPARATE_RESUME",
+      "children": 6,
+      "original_child_retained": true,
+      "order_identity_money_unchanged": true
+    },
+    {
+      "label": "resume lock-time review rejects intervening repair-journal drift",
+      "status": "PASS_REFUSED_WITHOUT_MUTATION"
+    },
+    {
+      "label": "resume lock-time review rejects intervening raw-lookup drift",
+      "status": "PASS_REFUSED_WITHOUT_MUTATION"
+    },
+    {
+      "label": "reentrant foreign parent queue refused before foreign product mutation",
+      "status": "PASS",
+      "foreign_native_rows_unchanged": true
+    },
+    {
+      "label": "native sync failure occurs before COMPLETE and retains migration guard",
+      "status": "PASS"
+    },
+    {
+      "label": "fresh reviewed core resume after native sync failure",
+      "status": "PASS_EXPLICIT_REPAIR_REVIEW_SEPARATE_RESUME",
+      "children": 6,
+      "original_child_retained": true,
+      "order_identity_money_unchanged": true
+    },
+    {
+      "label": "ordinary repair retry cannot take over incomplete claim",
+      "status": "PASS_REFUSED_WITHOUT_MUTATION",
+      "reason": "Separate incomplete repair requires fresh explicit review."
+    },
+    {
+      "label": "durable repaired afterimage requires fresh review before resume",
+      "status": "PASS_EXPLICIT_REPAIR_REVIEW_SEPARATE_RESUME",
+      "children": 6,
+      "original_child_retained": true,
+      "order_identity_money_unchanged": true
+    },
+    {
+      "label": "competing repair executor denied",
+      "status": "PASS_REFUSED_WITHOUT_MUTATION",
+      "reason": "Another parent/repair executor owns the lock."
+    },
+    {
+      "label": "lost connection stale repair executor cannot mutate after reviewed takeover",
+      "status": "PASS"
+    },
+    {
+      "label": "separate reviewed resume after repair connection loss",
+      "status": "PASS_EXPLICIT_REPAIR_REVIEW_SEPARATE_RESUME",
+      "children": 6,
+      "original_child_retained": true,
+      "order_identity_money_unchanged": true
+    }
+  ],
+  "limits": [
+    "Prospective instrumented synthetic operation only; old unreceipted orphan never repaired",
+    "No general production/staging recovery implementation or conversion authority",
+    "Unexplained native drift or unrecorded partial repair remains manual investigation",
+    "No child deletion, order rewrite or automatic repair-to-resume transition",
+    "Driver supplies simulated explicit review approval envelopes; not independent human approval of each receipt"
+  ],
+  "status": "PASS_PROSPECTIVE_FIXTURE_ONLY"
+}

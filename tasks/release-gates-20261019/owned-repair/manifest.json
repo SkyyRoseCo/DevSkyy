@@ -1,0 +1,124 @@
+{
+  "schema": "skyyrose.prospective-owned-child-rehearsal.v1",
+  "observed_utc": "2026-10-19T11:04:36.944368+00:00",
+  "disposition": "PASS_PROSPECTIVE_PRIVATE_FIXTURE_ONLY_GATE4_OPEN",
+  "qualification_source_commit": "7c2fe093ab988b1b52429d3e76628361d3af7940",
+  "delivered_runtime_source": "d953e51ee9e01448fe6b04960d5958d8ac424954",
+  "delivered_evidence_commit": "aa0652dc4269e3c79b86d939e7b630783a63a148",
+  "delivered_theme_tree": "de9e7c379ec675dcf6e7ffdb47f33bacdd3a3ca8",
+  "delivered_zip_sha256": "d9f24f5e35728ab693675727c7da009406979f468aa7dd54a09122e6ccd84dd6",
+  "delivered_zip_bytes": 293655342,
+  "delivered_packet_and_runtime_unchanged": true,
+  "source_pins": {
+    "tools/v2-runtime/fixture-owned-child-repair.php": "df5ad48fcfe1fbd8b9038592c77eb5b3bab9e259ddeddbdd8590999879755f8c",
+    "tools/v2-runtime/phase3b-browser/test-release-owned-child-repair.cjs": "2283d1b9bed19f68813718d588805a3b268584c539585b7959f7970917f26f26",
+    "tools/v2-runtime/variation-migration-core.php": "c6ab47e6de26ea972aa19a6f3246dea715534963796a1c78186ff29418dd47b7",
+    "wordpress-theme/skyyrose-flagship-2/inc/woocommerce-compat.php": "3262d65f35d4e08b017a9b6be9105701813e37dc8b31212cfd8e725bcacd226e"
+  },
+  "results": {
+    "path": "evidence/results.json",
+    "sha256": "d5caca3889dc4073da97b1889507be38cd4f4f24898509470e1adee1e4e1590b",
+    "status": "PASS_PROSPECTIVE_FIXTURE_ONLY",
+    "cases": 32,
+    "status_counts": {
+      "PASS_REFUSED_WITHOUT_MUTATION": 17,
+      "PASS_EXPLICIT_REPAIR_REVIEW_SEPARATE_RESUME": 8,
+      "PASS": 3,
+      "PASS_REFUSED_GUARD_RETAINED": 4
+    },
+    "positive_complete_readbacks": 8
+  },
+  "review_provenance": "Independent read-only source and final execution/manifest reviews PASS; test driver supplies simulated explicit approval envelopes, not independent human approval of individual receipts",
+  "historical_orphan": "Retained native snapshot/child IDs/writer token unchanged; FAILED/payment blocked; never adopted or deleted",
+  "acceptance_closed": [
+    "New operation-bound insertion proof and explicit repair/review/separate core resume on private fixture",
+    "Controlled successful interruption/connection-loss recovery and guarded refusals",
+    "Final native same/foreign-parent queue failures before COMPLETE; foreign native rows unchanged"
+  ],
+  "acceptance_open": [
+    "Missing authenticated insertion ownership evidence for historical unproven orphan",
+    "Unexplained drift/unrecorded partial repair still manual investigation",
+    "General or installed plugin/runtime parity and live migration/recovery qualification",
+    "All31 canonical products/nativeIDs/preimages not batch-converted by this rehearsal",
+    "In-flight commerce quiescence and separately authorized live conversion/recovery",
+    "Complete recoverable backup/isolated restore/new-order-preserving rollback and release/publication authority"
+  ],
+  "production_or_staging_execution_supported": false,
+  "automatic_repair_to_resume": false,
+  "child_deletion_supported": false,
+  "data_and_authority_changes": "Only synthetic fixture products/orders and private repair receipts; no product registry/media/grant or delivered runtime changes",
+  "raw_receipts": "Privately retained/ignored and hash-indexed, not an upload bundle",
+  "evidence_files": {
+    ".gitignore": {
+      "sha256": "d915fad8065efbd1aad5ebbe085aea41eb6d9acae14e55b851d18a32f7564210",
+      "bytes": 105
+    },
+    "README.md": {
+      "sha256": "e4596d73d2474ebf7278126b909f6017857be1994b3e72a46741b0b6a9a13d09",
+      "bytes": 6109
+    },
+    "STATE.json": {
+      "sha256": "a75d758562f40457c404bf7c79a0c92dbd1a85b5b29deca56c9efbc543358a15",
+      "bytes": 1504
+    },
+    "evidence/completed-readback-checks.json": {
+      "sha256": "a35ce3f086473a23d549272ba637dcae664a6bb74e40b326b2a6fd40948767d1",
+      "bytes": 3323
+    },
+    "evidence/development-history.json": {
+      "sha256": "32dbbb5ff14608b89fbbfa38b46d0ef1283452b6e9c1a4668e21ed9c72702550",
+      "bytes": 1214
+    },
+    "evidence/final-independent-review.json": {
+      "sha256": "18f232bddbc3f412dac2ab1a82bc4b5e7fd4106c5620167891c346fde7233acb",
+      "bytes": 1276
+    },
+    "evidence/fixture-shutdown.json": {
+      "sha256": "0805b24fff26250ef95f1e3f59b99dfac44ab8e301475eb7b1d3370cd0066890",
+      "bytes": 423
+    },
+    "evidence/historical-unreceipted-preserved.json": {
+      "sha256": "156e629d8e00566327c6c0b46bc5278132415938e0fc72ee5e3a4eb4c849ca7a",
+      "bytes": 702
+    },
+    "evidence/independent-review.json": {
+      "sha256": "d59249f48476a8ae06d423fb4dc4208ee3cf0e013ebb175e1bd7031ec06c6b24",
+      "bytes": 846
+    },
+    "evidence/native-environment.json": {
+      "sha256": "cd739dcc8dd7b8ae122c99c2d0711b9118ddef86fd6e311076075a242635dc17",
+      "bytes": 319
+    },
+    "evidence/raw-local-receipt-index.json": {
+      "sha256": "10476bc9403b0dac5fa2b81c3771607ff40f0492e6baafedf307fc60faba42bb",
+      "bytes": 119391
+    },
+    "evidence/results-initial-baseline-failure.json": {
+      "sha256": "8cbae13f0fecb73b51cfacc5566b64605b80c04ef043de47d8faa04d1cec4767",
+      "bytes": 1191
+    },
+    "evidence/results-pre-completion-sync-review.json": {
+      "sha256": "ebe27931a41cb6673e261bb248d8729f05b8c57cc8122411d325b7e4b54ce6df",
+      "bytes": 4920
+    },
+    "evidence/results-pre-deferred-sync-failure.json": {
+      "sha256": "e7e416c0e7c429bcfae8215e5c41f70d409687b70469585e6f9715437d961073",
+      "bytes": 4480
+    },
+    "evidence/results-pre-final-native-boundaries.json": {
+      "sha256": "cebdb1b312dc1c25b4d024aa05d63ae38148f18f2324a4f57b8715cb0722c7f2",
+      "bytes": 5895
+    },
+    "evidence/results.json": {
+      "sha256": "d5caca3889dc4073da97b1889507be38cd4f4f24898509470e1adee1e4e1590b",
+      "bytes": 7734
+    }
+  },
+  "execution_provenance": "Native run launched before qualification source commit; exact recorded helper/driver/core/compatibility pins match committed7c2fe sources. This is retrospective source correspondence, not a clean-commit launch claim.",
+  "historical_ownership_approval_boundary": "Owner approval/resolution contract cannot substitute for exact insertion ownership or waive adoption proof. No historical recovery or separate resolution implemented.",
+  "final_review": {
+    "path": "evidence/final-independent-review.json",
+    "reviewed_prior_manifest_sha256": "11010f781a810e28f19feb8205424f9fcbcde0c2e5fdcbaea1c78f75aca31112",
+    "verdict": "PASS_BOUNDED_EXECUTION_AND_MANIFEST"
+  }
+}

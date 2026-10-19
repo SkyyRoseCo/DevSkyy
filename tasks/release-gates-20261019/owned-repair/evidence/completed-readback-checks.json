@@ -1,0 +1,69 @@
+{
+  "classification": "SOURCE_BOUND_READBACK_OF_COMPLETED_NATIVE_RUN",
+  "cases": [
+    {
+      "resume_log": "1792407690348-repair-interruption.json-191-core-resume.txt",
+      "readback_log": "1792407690348-repair-interruption.json-192-inspect.txt",
+      "receipt_sha256": "e01d5e13eeecfa34e89d0863e20e59ef6cb545bdcb56134903d4ad4ff939b703",
+      "state": "COMPLETE",
+      "payment_guard_released_only_after_complete": true,
+      "persisted_order_identity_money_unchanged": true
+    },
+    {
+      "resume_log": "1792407667100-final-save-foreign.json-154-core-resume.txt",
+      "readback_log": "1792407667100-final-save-foreign.json-155-inspect.txt",
+      "receipt_sha256": "e6ce5b27c8ce6d37190a39cf961ccc01fd782b99299f108cfcd3822f61e2fb83",
+      "state": "COMPLETE",
+      "payment_guard_released_only_after_complete": true,
+      "persisted_order_identity_money_unchanged": true
+    },
+    {
+      "resume_log": "1792407682633-final-legacy-foreign.json-176-core-resume.txt",
+      "readback_log": "1792407682633-final-legacy-foreign.json-177-inspect.txt",
+      "receipt_sha256": "3e8f58b10ee8bc43d1e3187fff6bf609440917da2005543502f879ad08b12229",
+      "state": "COMPLETE",
+      "payment_guard_released_only_after_complete": true,
+      "persisted_order_identity_money_unchanged": true
+    },
+    {
+      "resume_log": "1792407699108-competing-connection.json-206-core-resume.txt",
+      "readback_log": "1792407699108-competing-connection.json-207-inspect.txt",
+      "receipt_sha256": "62970b0c6dd5bee1cd351d3f0e39e5759588bb05bccbdc3038892615d6e4105e",
+      "state": "COMPLETE",
+      "payment_guard_released_only_after_complete": true,
+      "persisted_order_identity_money_unchanged": true
+    },
+    {
+      "resume_log": "1792407630226-explicit-success.json-97-core-resume.txt",
+      "readback_log": "1792407630226-explicit-success.json-98-inspect.txt",
+      "receipt_sha256": "7da56db8ece34e00333942f55fa6effb7010f268553ab9f69a068694011e4d93",
+      "state": "COMPLETE",
+      "payment_guard_released_only_after_complete": true,
+      "persisted_order_identity_money_unchanged": true
+    },
+    {
+      "resume_log": "1792407659371-final-save-same.json-143-core-resume.txt",
+      "readback_log": "1792407659371-final-save-same.json-144-inspect.txt",
+      "receipt_sha256": "dadaa3851c43836a2e1458a0b314c8330662d5a6fe808ffd7f193da0b788816f",
+      "state": "COMPLETE",
+      "payment_guard_released_only_after_complete": true,
+      "persisted_order_identity_money_unchanged": true
+    },
+    {
+      "resume_log": "1792407652704-core-sync-failure.json-132-core-resume.txt",
+      "readback_log": "1792407652704-core-sync-failure.json-133-inspect.txt",
+      "receipt_sha256": "f493885821da6c6cb99eae77d81f2c2d1b80d63e213b2d230e86785b946926d8",
+      "state": "COMPLETE",
+      "payment_guard_released_only_after_complete": true,
+      "persisted_order_identity_money_unchanged": true
+    },
+    {
+      "resume_log": "1792407674821-final-legacy-same.json-165-core-resume.txt",
+      "readback_log": "1792407674821-final-legacy-same.json-166-inspect.txt",
+      "receipt_sha256": "d0c53849b0e579896276dc3c157b4c5ac2488c3d8b54f4e3a3fe18a92ea8388f",
+      "state": "COMPLETE",
+      "payment_guard_released_only_after_complete": true,
+      "persisted_order_identity_money_unchanged": true
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "classification": "REPRODUCED_PROSPECTIVE_PRIVATE_FIXTURE_REPAIR_ONLY",
+  "authentication": "NOT_APPLICABLE",
+  "delivered_runtime_source": "d953e51ee9e01448fe6b04960d5958d8ac424954",
+  "delivered_evidence": "aa0652dc4269e3c79b86d939e7b630783a63a148",
+  "source_pins": {
+    "tools/v2-runtime/fixture-owned-child-repair.php": "955cfa7abbed586bfcf39c4fa2892d548641a85952e6834e5706d551d2368db0",
+    "tools/v2-runtime/phase3b-browser/test-release-owned-child-repair.cjs": "2b035427b7eeb93e93d29990976adf4837e3743ec913279d2942834a7600fb44",
+    "tools/v2-runtime/variation-migration-core.php": "c6ab47e6de26ea972aa19a6f3246dea715534963796a1c78186ff29418dd47b7",
+    "wordpress-theme/skyyrose-flagship-2/inc/woocommerce-compat.php": "3262d65f35d4e08b017a9b6be9105701813e37dc8b31212cfd8e725bcacd226e"
+  },
+  "cases": [],
+  "limits": [
+    "Prospective instrumented synthetic operation only; old unreceipted orphan never repaired",
+    "No general production/staging recovery implementation or conversion authority",
+    "Unexplained native drift or unrecorded partial repair remains manual investigation",
+    "No child deletion, order rewrite or automatic repair-to-resume transition"
+  ]
+}

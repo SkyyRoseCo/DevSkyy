@@ -1,0 +1,13 @@
+{
+  "classification": "READ_ONLY_NATIVE_RECONCILIATION_OF_RETAINED_UNPROVEN_ORPHAN",
+  "source_receipt": "tasks/release-gates-20261019/evidence/process-recovery-woo-11.2.1/1792403363423-inside-child-save.json-probe.txt",
+  "source_sha256": "4eecd740e1dd3e66f12c70dbfe8f14df88508936b9a09c01b8df6b88ed392a31",
+  "current_raw_receipt": "tasks/release-gates-20261019/owned-repair/evidence/historical-unreceipted-probe.txt",
+  "current_raw_sha256": "4eecd740e1dd3e66f12c70dbfe8f14df88508936b9a09c01b8df6b88ed392a31",
+  "native_snapshot_unchanged": true,
+  "child_ids_unchanged": true,
+  "journal_writer_token_unchanged": true,
+  "state": "FAILED",
+  "payment_blocked": true,
+  "adopted_or_deleted": false
+}
