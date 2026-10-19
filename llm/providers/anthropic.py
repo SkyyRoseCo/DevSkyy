@@ -130,6 +130,32 @@ class AnthropicClient(BaseLLMClient):
             }
         ]
 
+    @staticmethod
+    def _cache_diagnostics_metadata(diagnostics: dict[str, Any] | None) -> dict[str, Any]:
+        """Turn the API's `diagnostics` field into metadata and log cache misses.
+
+        `null` means no divergence (or a first turn with nothing to compare),
+        `{"cache_miss_reason": null}` means the comparison was still running,
+        and a non-null reason names the first divergence. `*_changed` reasons
+        are caller bugs that break the prompt cache, so they log a warning;
+        `previous_message_not_found` and `unavailable` produced no comparison.
+        """
+        if diagnostics is None:
+            return {"cache_diagnostics_status": "no_divergence", "cache_miss_reason": None}
+        reason = diagnostics.get("cache_miss_reason")
+        if reason is None:
+            return {"cache_diagnostics_status": "pending", "cache_miss_reason": None}
+        reason_type = reason.get("type", "")
+        if reason_type.endswith("_changed"):
+            logger.warning(
+                "Prompt cache miss: %s (~%s input tokens after the divergence)",
+                reason_type,
+                reason.get("cache_missed_input_tokens", "unknown"),
+            )
+        else:
+            logger.info("Cache diagnostics produced no comparison: %s", reason_type)
+        return {"cache_diagnostics_status": "reported", "cache_miss_reason": reason}
+
     async def complete(
         self,
         messages: list[Message],
@@ -139,6 +165,8 @@ class AnthropicClient(BaseLLMClient):
         tools: list[dict[str, Any]] | None = None,
         container_id: str | None = None,  # For container reuse
         cache_system: bool = True,
+        cache_diagnostics: bool = False,
+        previous_message_id: str | None = None,
         **kwargs: Any,
     ) -> CompletionResponse:
         """
@@ -157,6 +185,12 @@ class AnthropicClient(BaseLLMClient):
                 agents) hit the prompt cache. Anthropic ignores caching
                 for prompts under the minimum size, so this is a safe
                 default.
+            cache_diagnostics: Opt in to Anthropic cache diagnostics on a
+                first turn (nothing to compare yet). Implied when
+                `previous_message_id` is given.
+            previous_message_id: `metadata["message_id"]` of the previous
+                turn. Anthropic compares the two requests and reports where
+                the cached prefix diverged in `metadata["cache_miss_reason"]`.
             **kwargs: Additional arguments
 
         Returns:
@@ -184,6 +218,10 @@ class AnthropicClient(BaseLLMClient):
         if tools:
             # Pass tools as-is (already in Anthropic format from ToolSpec or direct dict)
             data["tools"] = tools
+
+        diagnostics_requested = cache_diagnostics or previous_message_id is not None
+        if diagnostics_requested:
+            data["diagnostics"] = {"previous_message_id": previous_message_id}
 
         response = await self._make_request(
             "POST",
@@ -242,9 +280,12 @@ class AnthropicClient(BaseLLMClient):
         # cache_creation_input_tokens (first call that wrote the cache) and
         # cache_read_input_tokens (subsequent calls that hit the cache).
         cache_metadata = {
+            "message_id": result.get("id"),
             "cache_creation_input_tokens": usage.get("cache_creation_input_tokens", 0),
             "cache_read_input_tokens": usage.get("cache_read_input_tokens", 0),
         }
+        if diagnostics_requested:
+            cache_metadata.update(self._cache_diagnostics_metadata(result.get("diagnostics")))
 
         return CompletionResponse(
             content=content,
