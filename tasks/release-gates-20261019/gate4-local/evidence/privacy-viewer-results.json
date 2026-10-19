@@ -1,0 +1,25 @@
+{
+  "attempt": "1792423906567",
+  "results": [
+    {
+      "mode": "clean",
+      "replayed_redacted_snapshot": true,
+      "actions": 7,
+      "resources": 2,
+      "status": "OPENED_IN_PINNED_LOCAL_VIEWER",
+      "context_response": 200,
+      "errors": 0,
+      "body_action_label": true
+    },
+    {
+      "mode": "tainted",
+      "replayed_redacted_snapshot": true,
+      "actions": 9,
+      "resources": 2,
+      "status": "OPENED_IN_PINNED_LOCAL_VIEWER",
+      "context_response": 200,
+      "errors": 0,
+      "body_action_label": true
+    }
+  ]
+}

@@ -1,0 +1,84 @@
+{
+  "schema": "skyyrose.local-privacy-qualification.v1",
+  "status": "PASS_SYNTHETIC_PRIVACY_COLLECTOR_ONLY",
+  "run": "1792423897645074000",
+  "authentication": "NOT_APPLICABLE",
+  "live_attempts": 0,
+  "original_collector_repaired": false,
+  "original_live_status": "FAIL",
+  "original_unsupported_rows": "8 UNKNOWN",
+  "commands": [
+    {
+      "receipt": "capture-command.txt",
+      "exit_code": 0,
+      "sha256": "2d22236ad77ce9dfa9418f5560014f48ccc9a5b2b27f2d1bf1f93f1ce088c80d",
+      "bytes": 343
+    },
+    {
+      "receipt": "clean-seal-command.txt",
+      "exit_code": 0,
+      "sha256": "65c4ab8c314e71ca90519a32ede4d9abe12bf8d1b4257aa32c13cea4f053e582",
+      "bytes": 1851
+    },
+    {
+      "receipt": "tainted-seal-command.txt",
+      "exit_code": 0,
+      "sha256": "b04cda4bc4c1721cdecedfbf2744fecfb184905bc49dc35cf080d129b63dc1e7",
+      "bytes": 1859
+    },
+    {
+      "receipt": "network-controls-command.txt",
+      "exit_code": 0,
+      "sha256": "d96afe4d6ea3890aff529b8ece0c75f5082939e90ae8b24b8684af14e263c866",
+      "bytes": 196
+    },
+    {
+      "receipt": "artifact-controls-command.txt",
+      "exit_code": 0,
+      "sha256": "b7398a4a71460704acb0692164f6b56b2b471bc37fdb3cc48b79c7b4fc3c6fd5",
+      "bytes": 199
+    },
+    {
+      "receipt": "viewer-command.txt",
+      "exit_code": 0,
+      "sha256": "a78edb637060f1f886bc445729a89b03ab4ee569d26df76ae0d761d613e44d0d",
+      "bytes": 164
+    }
+  ],
+  "source_pins": {
+    "collector.cjs": "af1f2e848ac9b911c12834ca531421f3f6c7220b74f617b080c5d552ae171af5",
+    "qualify.py": "da900def3b856ccf522c5202539d77bc6a845e94aa187cc38849e79c37a9ed3e",
+    "run.cjs": "f94f7fb43ce6bce3bab576e74f5d7dcf1177e7786f9be7b990d2e7364213bfc4",
+    "sanitize.py": "66c29fd9c9d14032fee5de71cd65edb8f6b0ccee19097ff4afab087d2d17cbc5",
+    "test-network.cjs": "4c2a48f4d3b314d499500a4fd2d6606b68cfa1e5021cfb9cda7677ea15803f8b",
+    "test_artifacts.py": "1530261c24c4b45d924935181e3323b4b21fb8be72f825a8515ccf5b3f276779",
+    "viewer.cjs": "e6c6f54a9b36dca144ab809f5b093118578b66a383bd285801441cdfda68d2a7"
+  },
+  "network_controls": 24,
+  "artifact_controls": 35,
+  "viewer": {
+    "attempt": "1792423906567",
+    "results": [
+      {
+        "mode": "clean",
+        "replayed_redacted_snapshot": true,
+        "actions": 7,
+        "resources": 2,
+        "status": "OPENED_IN_PINNED_LOCAL_VIEWER",
+        "context_response": 200,
+        "errors": 0,
+        "body_action_label": true
+      },
+      {
+        "mode": "tainted",
+        "replayed_redacted_snapshot": true,
+        "actions": 9,
+        "resources": 2,
+        "status": "OPENED_IN_PINNED_LOCAL_VIEWER",
+        "context_response": 200,
+        "errors": 0,
+        "body_action_label": true
+      }
+    ]
+  }
+}

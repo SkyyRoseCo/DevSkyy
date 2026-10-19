@@ -1,0 +1,102 @@
+{
+  "schema": "skyyrose.privacy-network-controls.v1",
+  "status": "PASS",
+  "controls": [
+    {
+      "name": "observed clean request cookies absent",
+      "status": "PASS"
+    },
+    {
+      "name": "observed forbidden request and response cookies present",
+      "status": "PASS"
+    },
+    {
+      "name": "actual unfinished request at context close UNKNOWN",
+      "status": "PASS"
+    },
+    {
+      "name": "complete trailing request group omitted",
+      "status": "PASS_FAIL_CLOSED"
+    },
+    {
+      "name": "omitted request-extra event without sequence gap",
+      "status": "PASS_FAIL_CLOSED"
+    },
+    {
+      "name": "omitted event sequence gap",
+      "status": "PASS_FAIL_CLOSED"
+    },
+    {
+      "name": "duplicate terminal event",
+      "status": "PASS_FAIL_CLOSED"
+    },
+    {
+      "name": "orphan extra-info",
+      "status": "PASS_FAIL_CLOSED"
+    },
+    {
+      "name": "late event after trace end",
+      "status": "PASS_FAIL_CLOSED"
+    },
+    {
+      "name": "truncated capture",
+      "status": "PASS_FAIL_CLOSED"
+    },
+    {
+      "name": "missing context closure",
+      "status": "PASS_FAIL_CLOSED"
+    },
+    {
+      "name": "unexpected worker/page target",
+      "status": "PASS_FAIL_CLOSED"
+    },
+    {
+      "name": "missing response metadata",
+      "status": "PASS_FAIL_CLOSED"
+    },
+    {
+      "name": "array response headers",
+      "status": "PASS_FAIL_CLOSED"
+    },
+    {
+      "name": "non-string response header",
+      "status": "PASS_FAIL_CLOSED"
+    },
+    {
+      "name": "ambiguous cookie header casing",
+      "status": "PASS_FAIL_CLOSED"
+    },
+    {
+      "name": "ambiguous response cookie casing",
+      "status": "PASS_FAIL_CLOSED"
+    },
+    {
+      "name": "empty response cookie is not absence",
+      "status": "PASS_FAIL_CLOSED"
+    },
+    {
+      "name": "missing terminal event",
+      "status": "PASS_FAIL_CLOSED"
+    },
+    {
+      "name": "unsupported redirect",
+      "status": "PASS_FAIL_CLOSED"
+    },
+    {
+      "name": "cache response unsupported",
+      "status": "PASS_FAIL_CLOSED"
+    },
+    {
+      "name": "service worker response unsupported",
+      "status": "PASS_FAIL_CLOSED"
+    },
+    {
+      "name": "reordered observed extra-info events still correlate by session/request ID",
+      "status": "PASS"
+    },
+    {
+      "name": "late console marker and session/local/cookie storage actually observed",
+      "status": "PASS"
+    }
+  ]
+}

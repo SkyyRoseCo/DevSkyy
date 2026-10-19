@@ -1,0 +1,97 @@
+{
+  "schema": "skyyrose.privacy-toolchain.v1",
+  "authentication": "NOT_APPLICABLE",
+  "node": {
+    "version": "v22.23.2",
+    "path": ".artifacts/release-gates-20261019/toolchain/node-v22.23.2-darwin-arm64/bin/node",
+    "sha256": "18e387c90ab8a8400183e8bdd396376e1e875b91b4c874b894dcade7b35bf572",
+    "bytes": 112937728
+  },
+  "python": {
+    "version": "3.12.12 (main, Feb 12 2026, 00:42:34) [Clang 21.1.4 ]",
+    "executable": "/Users/theceo/.local/share/uv/python/cpython-3.12.12-macos-aarch64-none/bin/python3.12",
+    "sha256": "3874a935f7242b660e652d35c25a1b87415fcfea3ee191ff262fcca5c50102c5",
+    "bytes": 49968,
+    "loaded_libpython": {
+      "sha256": "a7a67dd58757ad5864d7bd4cc03580b17c0c92c86b29c34bd8ed3d18b76f6345",
+      "bytes": 17865200,
+      "path": "/Users/theceo/.local/share/uv/python/cpython-3.12.12-macos-aarch64-none/lib/libpython3.12.dylib",
+      "native_linkage": [
+        "\t/Users/theceo/.local/share/uv/python/cpython-3.12.12-macos-aarch64-none/lib/libpython3.12.dylib (compatibility version 3.12.0, current version 3.12.0)",
+        "\t/usr/lib/libSystem.B.dylib (compatibility version 1.0.0, current version 1351.0.0)",
+        "\t/usr/lib/libncurses.5.4.dylib (compatibility version 5.4.0, current version 5.4.0)",
+        "\t/usr/lib/libpanel.5.4.dylib (compatibility version 5.4.0, current version 5.4.0)",
+        "\t/System/Library/Frameworks/CoreFoundation.framework/Versions/A/CoreFoundation (compatibility version 150.0.0, current version 3502.1.255)",
+        "\t/System/Library/Frameworks/SystemConfiguration.framework/Versions/A/SystemConfiguration (compatibility version 1.0.0, current version 1351.120.3)",
+        "\t/usr/lib/libedit.3.dylib (compatibility version 2.0.0, current version 3.0.0)",
+        "\t/usr/lib/libz.1.dylib (compatibility version 1.0.0, current version 1.2.12)"
+      ]
+    }
+  },
+  "playwright": {
+    "version": "1.58.2",
+    "core_version": "1.58.2",
+    "tree_files": 546
+  },
+  "chromium": {
+    "actual_version": "153.0.8010.12",
+    "executable": "/Users/theceo/Library/Caches/ms-playwright/chromium_headless_shell-1243/chrome-headless-shell-mac-arm64/chrome-headless-shell",
+    "sha256": "a0bfe7b4da4787b66058477d696cd1d09065d25f06a548947722b9af77ee8282",
+    "bytes": 169253248,
+    "tree_files": 18,
+    "limit": "Explicit existing Chromium1243 used; not package-recommended Chromium1208, no stock-browser parity claim"
+  },
+  "pillow": {
+    "version": "12.3.0",
+    "tree_files": 132
+  },
+  "zlib": {
+    "compile_version": "1.2.12",
+    "runtime_version": "1.2.12",
+    "origin": "built-in",
+    "binary_coverage": "Actual loaded libpython pinned; zlib-specific implementation location not established by launcher hash; system/shared-cache linkage excluded from full byte coverage",
+    "observed_separate_loaded_libraries": [
+      {
+        "path": "/usr/lib/libz.1.dylib",
+        "sha256": null,
+        "status": "OS_SHARED_CACHE_NOT_FILE_HASHED"
+      }
+    ]
+  },
+  "stdlib": {
+    "zipfile": {
+      "sha256": "94c53aedba0b0f7d6f71bf8ec34973e666ee0c0e56e6800ff4c26d2e3951987a",
+      "bytes": 88998,
+      "path": "/Users/theceo/.local/share/uv/python/cpython-3.12.12-macos-aarch64-none/lib/python3.12/zipfile/__init__.py"
+    },
+    "json": {
+      "sha256": "d5d41e2c29049515d295d81a6d40b4890fbec8d8482cfb401630f8ef2f77e4d5",
+      "bytes": 14020,
+      "path": "/Users/theceo/.local/share/uv/python/cpython-3.12.12-macos-aarch64-none/lib/python3.12/json/__init__.py"
+    },
+    "hashlib": {
+      "sha256": "6dbdebf270868b391080e21dc9687eddfaf321c965ad979f68d3f5c423c613ab",
+      "bytes": 9349,
+      "path": "/Users/theceo/.local/share/uv/python/cpython-3.12.12-macos-aarch64-none/lib/python3.12/hashlib.py"
+    },
+    "struct": {
+      "sha256": "9c231f9497caf513a22dee8f790b07f969b0e45854a0bdd6dd84b492e08c2856",
+      "bytes": 257,
+      "path": "/Users/theceo/.local/share/uv/python/cpython-3.12.12-macos-aarch64-none/lib/python3.12/struct.py"
+    }
+  },
+  "file_index": {
+    "path": "tasks/release-gates-20261019/gate4-local/evidence/privacy-dependency-file-index.json",
+    "sha256": "4de339afb58d9baf4cf0fe6a9b64e51c5980f82b1e6a01cfafc97aa6621f4237",
+    "bytes": 113824
+  },
+  "dependency_roots": {
+    "playwright-and-nested-core": "/Users/theceo/.codex/worktrees/release-gates-20261019/DevSkyy/tools/v2-runtime/phase3b-browser/node_modules/playwright",
+    "chromium-runtime": "/Users/theceo/Library/Caches/ms-playwright/chromium_headless_shell-1243/chrome-headless-shell-mac-arm64",
+    "pillow": "/Users/theceo/.codex/worktrees/release-gates-20261019/DevSkyy/.venv-release/lib/python3.12/site-packages/PIL"
+  },
+  "coverage_limits": [
+    "Hashes pin recorded application/runtime files; macOS shared-cache/framework and all transitive native dependency bytes are not fully qualified",
+    "Dependency index roots explicitly identify recorded trees; native Chromium153 differs from package recommended1208"
+  ]
+}

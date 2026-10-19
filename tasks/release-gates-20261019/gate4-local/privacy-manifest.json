@@ -1,0 +1,123 @@
+{
+  "schema": "skyyrose.private-privacy-successor.v1",
+  "status": "PASS_PINNED_LOCAL_COLLECTOR_ONLY",
+  "authentication": "NOT_APPLICABLE",
+  "source_commit": "7b2998f601ed0c537a3d56393cd653330a7eba67",
+  "launch_head": "7b2998f601ed0c537a3d56393cd653330a7eba67",
+  "run": "1792423897645074000",
+  "source_pins": {
+    "collector.cjs": "af1f2e848ac9b911c12834ca531421f3f6c7220b74f617b080c5d552ae171af5",
+    "qualify.py": "da900def3b856ccf522c5202539d77bc6a845e94aa187cc38849e79c37a9ed3e",
+    "run.cjs": "f94f7fb43ce6bce3bab576e74f5d7dcf1177e7786f9be7b990d2e7364213bfc4",
+    "sanitize.py": "66c29fd9c9d14032fee5de71cd65edb8f6b0ccee19097ff4afab087d2d17cbc5",
+    "test-network.cjs": "4c2a48f4d3b314d499500a4fd2d6606b68cfa1e5021cfb9cda7677ea15803f8b",
+    "test_artifacts.py": "1530261c24c4b45d924935181e3323b4b21fb8be72f825a8515ccf5b3f276779",
+    "viewer.cjs": "e6c6f54a9b36dca144ab809f5b093118578b66a383bd285801441cdfda68d2a7"
+  },
+  "evidence": {
+    "tasks/release-gates-20261019/gate4-local/evidence/privacy-artifact-controls.json": {
+      "sha256": "b638a9eb1b37eebdab73626632bad4db26bf455756a7f9fdc2bc4928b4782daf",
+      "bytes": 2627
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/privacy-dependency-file-index.json": {
+      "sha256": "4de339afb58d9baf4cf0fe6a9b64e51c5980f82b1e6a01cfafc97aa6621f4237",
+      "bytes": 113824
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/privacy-network-controls.json": {
+      "sha256": "b6ff9ee24bacb6597673ce69062ef52631343d23c5db22fc229e120625d541d3",
+      "bytes": 2427
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/privacy-raw-local-index.json": {
+      "sha256": "fda98b3257d6c1e8e507cedd0da662a15da073fd940012ef9109190839991ed1",
+      "bytes": 31945
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/privacy-results.json": {
+      "sha256": "8dafd816cd00399f6093f338ed2208784c4ca8f147e1e9c8ad71e82aa26cf9ef",
+      "bytes": 2746
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/privacy-toolchain.json": {
+      "sha256": "c4bb666643a6a2a2d42182da5f121fe4c39edadad3d922e59a12968cbf869b34",
+      "bytes": 4928
+    },
+    "tasks/release-gates-20261019/gate4-local/evidence/privacy-viewer-results.json": {
+      "sha256": "1365bc9c49f4a19535bda130cca4eba0263e9c62dfbc63d0ccd41de22063c618",
+      "bytes": 555
+    },
+    "tasks/release-gates-20261019/gate4-local/privacy/clean/capture.json": {
+      "sha256": "2a040804cbd6e62ab7a925c34c1340b5c8dfc5bdcdf95164a483c88e54ed98f9",
+      "bytes": 816
+    },
+    "tasks/release-gates-20261019/gate4-local/privacy/clean/log.json": {
+      "sha256": "e0f7998ef32a4bed7a5988582077296e2ee5eeb4b77068876d2f2ddcbbae394c",
+      "bytes": 67
+    },
+    "tasks/release-gates-20261019/gate4-local/privacy/clean/manifest.json": {
+      "sha256": "b72da26f13c720072fe99ee4e74bb68520231fd7cf9c4961a1479a2819ff7cd2",
+      "bytes": 1782
+    },
+    "tasks/release-gates-20261019/gate4-local/privacy/clean/network.json": {
+      "sha256": "a3c5957de7eb2d6b63d71b7617bf9fe3ac8d10e48a2b9014dc19d2b344002ad1",
+      "bytes": 583
+    },
+    "tasks/release-gates-20261019/gate4-local/privacy/clean/screenshot.png": {
+      "sha256": "6716041931b4f1a1ee19242f1bd2e9aaeb1f09b535266f9b02f5441aa922a0d2",
+      "bytes": 2787
+    },
+    "tasks/release-gates-20261019/gate4-local/privacy/clean/storage.json": {
+      "sha256": "6d73c1d5e0fbb1f27c1c6d2920f19e08c36fd2697218da41a825cfe423ba580c",
+      "bytes": 236
+    },
+    "tasks/release-gates-20261019/gate4-local/privacy/clean/trace.zip": {
+      "sha256": "c78b6d2fcc0aefa548da669d41c4d339d9c9b1587071698e6f8b3dda6bd4f9fe",
+      "bytes": 2360
+    },
+    "tasks/release-gates-20261019/gate4-local/privacy/tainted/capture.json": {
+      "sha256": "b696f3e2b8bcb0986a0e3e22845cd3ae14bf9282a58883b00ebccccf2d82b7ca",
+      "bytes": 818
+    },
+    "tasks/release-gates-20261019/gate4-local/privacy/tainted/log.json": {
+      "sha256": "c9c07126fdda7ecdeecda4c6f191bda8764f333c4aaa5f7e26edf620ebf542ad",
+      "bytes": 224
+    },
+    "tasks/release-gates-20261019/gate4-local/privacy/tainted/manifest.json": {
+      "sha256": "c0d43ad68a25b50fe5b56de7bb2a89f92d4a15719e00191d3249a5f94166454d",
+      "bytes": 1790
+    },
+    "tasks/release-gates-20261019/gate4-local/privacy/tainted/network.json": {
+      "sha256": "375f64c5dbeefe09f8e4e12a0779deb3736430624ae1946fa1ce156a56d5a6dc",
+      "bytes": 593
+    },
+    "tasks/release-gates-20261019/gate4-local/privacy/tainted/screenshot.png": {
+      "sha256": "6716041931b4f1a1ee19242f1bd2e9aaeb1f09b535266f9b02f5441aa922a0d2",
+      "bytes": 2787
+    },
+    "tasks/release-gates-20261019/gate4-local/privacy/tainted/storage.json": {
+      "sha256": "b86d56bb90c91c5b75cf7fdbfaa575a44fdea59c492ddf110b8ff173aca7e209",
+      "bytes": 236
+    },
+    "tasks/release-gates-20261019/gate4-local/privacy/tainted/trace.zip": {
+      "sha256": "f6ec6360ba2dcd860965bb7bab3bac6b1ab201e5b50a7f25fe4bbad9a8d82639",
+      "bytes": 2560
+    }
+  },
+  "independent_reviews": [
+    "Architect and Python approved base packet24+32controls; boundedAstra approved final35artifactcontrols including exact-reason independentinventoryrefusal",
+    "Fresh assurance verifies finalcommittedmanifest/dependencies/rawindex separately"
+  ],
+  "boundaries": {
+    "production_touched": false,
+    "live_attempts": 0,
+    "original_live_status": "FAIL",
+    "retained_unsupported_rows": "8 UNKNOWN",
+    "tainted_policy": "FAIL_FORBIDDEN_COOKIES",
+    "cancelled_policy": "UNKNOWN",
+    "original_collector_repaired": false
+  },
+  "limits": [
+    "Single-page/single-origin syntheticscope only; redirects/cache/serviceworkers/unexpectedtargets failclosed",
+    "Storage covers cookies/localStorage/sessionStorage; IndexedDB/cache storage excluded",
+    "All content replaced; replay demonstrates redactedstructure, no originalpage/visualfidelity or storefront acceptance",
+    "Chromium153 explicit existingbinary; not package-recommended1208 or installedbrowserparity",
+    "Private rawtrace/log/network/storage/screenshots retainedoutsideacceptedpacket, syntheticdataonly"
+  ]
+}
