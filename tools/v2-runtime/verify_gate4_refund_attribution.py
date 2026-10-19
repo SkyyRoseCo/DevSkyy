@@ -78,13 +78,16 @@ def main():
             receipt = raw / meta["receipt"]
             value = decode(receipt)
             if value.get("audit") is not None:
+                assert pin(receipt) == {k: meta[k] for k in ["sha256", "bytes"]}
                 captured.append((meta_path, receipt, value))
         assert len(captured) == 1
         meta_path, receipt, value = captured[0]
         number = int(meta_path.stem.split("-")[-1])
         after_meta = raw / (f"command-{number + 1:05}.json")
         after_receipt = raw / (f"command-{number + 1:05}.txt")
-        assert json.loads(after_meta.read_text())["argv"][-1] == "inspect"
+        after_metadata = json.loads(after_meta.read_text())
+        assert after_metadata["argv"][-1] == "inspect"
+        assert pin(after_receipt) == {k: after_metadata[k] for k in ["sha256", "bytes"]}
         after = decode(after_receipt)["snapshot"]
         body = subprocess.check_output(
             ["git", "show", NATIVE_SOURCE + ":tools/v2-runtime/test_gate4_populated.py"], cwd=ROOT
@@ -114,6 +117,7 @@ def main():
         assert namespace["same"](transition, rows[0]["transition"])
         site = private / "wordpress"
         site_manifest = private / "site-at-start.json"
+        assert pin(site_manifest) == report["site_code_at_start"]
         inventory = json.loads(site_manifest.read_text())
         attribution = validate_attribution(value["audit"], site, inventory)
         controls = []
