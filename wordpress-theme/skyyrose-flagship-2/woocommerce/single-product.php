@@ -64,21 +64,28 @@ elseif ( $is_jersey ) :
 		</section>
 		<?php if ( $active_collection ) : ?>
 			<?php $world_number = (int) array_search( $active_slug, array_keys( $collections ), true ) + 1; ?>
-			<?php $world_presentation = skyyrose2_collection_presentation( $active_slug ); ?>
+			<?php
+			$world_presentation = skyyrose2_collection_presentation( $active_slug );
+			$world_hero_uri = skyyrose2_sot_asset_uri( $active_collection['hero'] );
+			$world_mobile_uri = ! empty( $active_collection['hero_mobile'] ) ? skyyrose2_sot_asset_uri( $active_collection['hero_mobile'] ) : '';
+			$world_tablet_uri = ! empty( $active_collection['hero_tablet'] ) ? skyyrose2_sot_asset_uri( $active_collection['hero_tablet'] ) : '';
+			?>
 			<section class="sr2-chapter sr2-product-world sr2-product-world--editorial" data-collection="<?php echo esc_attr( $active_slug ); ?>" aria-labelledby="sr2-product-world-title">
+				<?php if ( $world_hero_uri ) : ?>
 				<figure class="sr2-chapter__scene" style="--sr2-focal-desktop: <?php echo esc_attr( $world_presentation['focal'] ?? '50% 50%' ); ?>; --sr2-focal-mobile: <?php echo esc_attr( $world_presentation['focal_mobile'] ?? $world_presentation['focal'] ?? '50% 50%' ); ?>;">
 					<picture>
 						<?php
-						if ( ! empty( $active_collection['hero_mobile'] ) ) :
+						if ( $world_mobile_uri ) :
 							?>
-							<source media="(max-width: 47.99em)" srcset="<?php echo esc_url( skyyrose2_sot_asset_uri( $active_collection['hero_mobile'] ) ); ?>"><?php endif; ?>
+							<source media="(max-width: 47.99em)" srcset="<?php echo esc_url( $world_mobile_uri ); ?>"><?php endif; ?>
 						<?php
-						if ( ! empty( $active_collection['hero_tablet'] ) ) :
+						if ( $world_tablet_uri ) :
 							?>
-							<source media="(max-width: 74.99em)" srcset="<?php echo esc_url( skyyrose2_sot_asset_uri( $active_collection['hero_tablet'] ) ); ?>"><?php endif; ?>
-						<img src="<?php echo esc_url( skyyrose2_sot_asset_uri( $active_collection['hero'] ) ); ?>" alt="" width="1440" height="810" loading="lazy" decoding="async">
+							<source media="(max-width: 74.99em)" srcset="<?php echo esc_url( $world_tablet_uri ); ?>"><?php endif; ?>
+						<img src="<?php echo esc_url( $world_hero_uri ); ?>" alt="" width="1440" height="810" loading="lazy" decoding="async">
 					</picture>
 				</figure>
+				<?php endif; ?>
 				<div class="sr2-chapter__band">
 					<div class="sr2-chapter__copy">
 						<p class="sr2-chapter__index sr2-eyebrow sr2-eyebrow--engraved"><?php echo esc_html( sprintf( '%02d / %s', $world_number, $active_collection['name'] ) ); ?></p>
