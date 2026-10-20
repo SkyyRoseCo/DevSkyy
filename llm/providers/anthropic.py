@@ -131,17 +131,21 @@ class AnthropicClient(BaseLLMClient):
         ]
 
     @staticmethod
-    def _cache_diagnostics_metadata(diagnostics: dict[str, Any] | None) -> dict[str, Any]:
+    def _cache_diagnostics_metadata(
+        diagnostics: dict[str, Any] | None, compared: bool
+    ) -> dict[str, Any]:
         """Turn the API's `diagnostics` field into metadata and log cache misses.
 
-        `null` means no divergence (or a first turn with nothing to compare),
-        `{"cache_miss_reason": null}` means the comparison was still running,
-        and a non-null reason names the first divergence. `*_changed` reasons
-        are caller bugs that break the prompt cache, so they log a warning;
+        `null` means no divergence when `compared` (a previous message id was
+        sent), and nothing compared on a first turn. `{"cache_miss_reason":
+        null}` means the comparison was still running, and a non-null reason
+        names the first divergence. `*_changed` reasons are caller bugs that
+        break the prompt cache, so they log a warning;
         `previous_message_not_found` and `unavailable` produced no comparison.
         """
         if diagnostics is None:
-            return {"cache_diagnostics_status": "no_divergence", "cache_miss_reason": None}
+            status = "no_divergence" if compared else "not_compared"
+            return {"cache_diagnostics_status": status, "cache_miss_reason": None}
         reason = diagnostics.get("cache_miss_reason")
         if reason is None:
             return {"cache_diagnostics_status": "pending", "cache_miss_reason": None}
@@ -285,7 +289,11 @@ class AnthropicClient(BaseLLMClient):
             "cache_read_input_tokens": usage.get("cache_read_input_tokens", 0),
         }
         if diagnostics_requested:
-            cache_metadata.update(self._cache_diagnostics_metadata(result.get("diagnostics")))
+            cache_metadata.update(
+                self._cache_diagnostics_metadata(
+                    result.get("diagnostics"), compared=previous_message_id is not None
+                )
+            )
 
         return CompletionResponse(
             content=content,

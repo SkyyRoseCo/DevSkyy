@@ -84,6 +84,12 @@ class TestResponseParsing:
         assert response.metadata["cache_diagnostics_status"] == "no_divergence"
         assert response.metadata["cache_miss_reason"] is None
 
+    async def test_null_on_first_turn_means_not_compared(self, monkeypatch):
+        _, response = await _complete(monkeypatch, _api_result(None), cache_diagnostics=True)
+
+        assert response.metadata["cache_diagnostics_status"] == "not_compared"
+        assert response.metadata["cache_miss_reason"] is None
+
     async def test_null_reason_means_pending(self, monkeypatch):
         _, response = await _complete(
             monkeypatch, _api_result({"cache_miss_reason": None}), previous_message_id="msg_01Prev"
