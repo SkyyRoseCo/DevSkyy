@@ -1,0 +1,785 @@
+{
+  "schema": "skyyrose.fresh-private-preview-index.v1",
+  "files": [
+    {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261019/combined-package-preview-frozen/run-census.json",
+      "sha256": "fe4cbcc222327bc02c4f52d18a7f9740a9859a8d55233eaaecad47d8a9f5d3bd",
+      "bytes": 3750588
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261019/combined-package-preview/run-1792457266130595000/command-0003.json",
+      "sha256": "ac2cd29a13c10e84739ccded6833ca39c56afb979151c407d6245054b4fb24df",
+      "bytes": 397
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261019/combined-package-preview/run-1792457266130595000/command-0002.json",
+      "sha256": "cd445c491b5bf9e44597ceb6ac8af0af8453a02c35c88740ea1643db1ad37e49",
+      "bytes": 441
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261019/combined-package-preview/run-1792457266130595000/command-0001.txt",
+      "sha256": "6167e9e339abae5fafd6841c1d148463ee4df77c62f1800b2a3c4175552ec43d",
+      "bytes": 1856
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261019/combined-package-preview/run-1792457266130595000/capture-config.json",
+      "sha256": "f8bc93511cc51dd7794f0413b947d2a7f6e9b20a86e3837daabb3a7dadc419c4",
+      "bytes": 101516
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261019/combined-package-preview/run-1792457266130595000/command-0005.json",
+      "sha256": "081b55570a77db0420d7676796dbf77b4e96689699d1f0af6fcd64ef31dd6e2d",
+      "bytes": 1020
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261019/combined-package-preview/run-1792457266130595000/command-0002.txt",
+      "sha256": "0dbfd91616c57b432f28f4deb244833a5ba1a7ad9cd36a04b25b9dfc690aad11",
+      "bytes": 219
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261019/combined-package-preview/run-1792457266130595000/results.json",
+      "sha256": "77b4b1d65810d74fe00ef19bcee4e085a58a00f36a036d39cd8978128689738e",
+      "bytes": 3306317
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261019/combined-package-preview/run-1792457266130595000/command-0009.json",
+      "sha256": "3fb3139b7513edbda37026438a4987f05b7507255ba4290c18606efd9f4268b7",
+      "bytes": 939
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261019/combined-package-preview/run-1792457266130595000/db.log",
+      "sha256": "b26111ff041cd7d1411be125151fc4cbe3c827430c7a970fcb19e2ed95ff0a70",
+      "bytes": 3007
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261019/combined-package-preview/run-1792457266130595000/command-0003.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261019/combined-package-preview/run-1792457266130595000/http-server.log",
+      "sha256": "3ec90b66543aa173321c7900980ac9e9dfcd5711cccb98466d638c17b0feec5f",
+      "bytes": 92244
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261019/combined-package-preview/run-1792457266130595000/command-0007.txt",
+      "sha256": "ad59b4847c021269e63a831ceeec1b5b11359b732b6b8e21d7ad52bc7fc2d5e7",
+      "bytes": 67
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261019/combined-package-preview/run-1792457266130595000/command-0008.json",
+      "sha256": "bdc2e317c2c39ec037012588fa00505e13596da369e7a20dcbe65a89460e5f98",
+      "bytes": 878
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261019/combined-package-preview/run-1792457266130595000/command-0006.txt",
+      "sha256": "214766dad5e8ab5d249999b7ac72cbe9dc287889fa11d1e5e7be0a2792a59111",
+      "bytes": 50
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261019/combined-package-preview/run-1792457266130595000/command-0010.txt",
+      "sha256": "6c6fc39158a8e24bf9b234a6d67727b678d483273d705cf104bc7cf32a028412",
+      "bytes": 30
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261019/combined-package-preview/run-1792457266130595000/command-0004.txt",
+      "sha256": "58ea03a28e26fa5bca9f005daf06f6f1ad3115500f21af5c867cd339233c5e25",
+      "bytes": 43
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261019/combined-package-preview/run-1792457266130595000/command-0004.json",
+      "sha256": "4e111f3a5ab8b307771a5a80a0711dbc7cde2988bb045d53af745a675367dc1c",
+      "bytes": 1047
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261019/combined-package-preview/run-1792457266130595000/command-0005.txt",
+      "sha256": "27f721573d105932303292e2566447b9ed1b3726617ef6e0561ba4a17c4d91ee",
+      "bytes": 332
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261019/combined-package-preview/run-1792457266130595000/command-0011.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261019/combined-package-preview/run-1792457266130595000/command-0011.json",
+      "sha256": "fca8ad634b1f84afc4cba443c77399a54dbcaa3a42c3db12fecfdeff06cfa76a",
+      "bytes": 727
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261019/combined-package-preview/run-1792457266130595000/command-0008.txt",
+      "sha256": "5cf995ca642f5cab8c882c68bb96fe6b5b572544623218b1da5ac4e23e9d70a6",
+      "bytes": 77
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261019/combined-package-preview/run-1792457266130595000/command-0007.json",
+      "sha256": "56d5a656845fbad47d68181afe68a7bec525ed6624edece39f75d1f9fbd29e39",
+      "bytes": 869
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261019/combined-package-preview/run-1792457266130595000/command-0009.txt",
+      "sha256": "2e63f000422b35c6213f253fe6683c52698b022bdfec63f49c2d149b5d1708cf",
+      "bytes": 5850
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261019/combined-package-preview/run-1792457266130595000/cli.yml",
+      "sha256": "ca3d163bab055381827226140568f3bef7eaac187cebd76878e0b63e9e442356",
+      "bytes": 3
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261019/combined-package-preview/run-1792457266130595000/command-0006.json",
+      "sha256": "ddb760fe1314af90e337fbbd338df3c06bc60543446963c828e11c02c90ac871",
+      "bytes": 839
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261019/combined-package-preview/run-1792457266130595000/command-0010.json",
+      "sha256": "f7dbdc1de4ea9a67b01612974153a86646c8e4784bee912ecf75f386312af8f0",
+      "bytes": 1888
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261019/combined-package-preview/run-1792457266130595000/browser-ownership.jsonl",
+      "sha256": "8161ce9abcd0d56f80de6cc1420221ffbc774507c1ac8335e6fb8c3e83f62dfc",
+      "bytes": 2784
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261019/combined-package-preview/run-1792457266130595000/command-0001.json",
+      "sha256": "bd09dedc07a6434ea79e9e29cd76204b74f259691de48575a9c599d4ab5c6ee2",
+      "bytes": 706
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261019/combined-package-preview/run-1792457266130595000/seed.json",
+      "sha256": "8c84715f5c9a1ee6dfe7ebe0f18ea5842241d5f08f02a6ae87af1c4026c67cb4",
+      "bytes": 10701
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261019/combined-package-preview/run-1792457266130595000/browser/kids-1440.html",
+      "sha256": "fda42d6a470c9aae79a0e9212d25372bbd4ec414c4fa149ab515ebf31e412334",
+      "bytes": 99290
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261019/combined-package-preview/run-1792457266130595000/browser/kids-1440.png",
+      "sha256": "ff4d88cbe9a8bbf20144e3a2bb38cb957f67c1cb6cc4ad2bde83bf0d12443fba",
+      "bytes": 554950
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261019/combined-package-preview/run-1792457266130595000/browser/kids-390.html",
+      "sha256": "fda42d6a470c9aae79a0e9212d25372bbd4ec414c4fa149ab515ebf31e412334",
+      "bytes": 99290
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261019/combined-package-preview/run-1792457266130595000/browser/kids-390.png",
+      "sha256": "609cf29772784f757f9938068fbef99bbdd1cc79cb49e60144289b3e624c32ab",
+      "bytes": 200469
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261019/combined-package-preview/run-1792457266130595000/browser/kids-fallback-1440.html",
+      "sha256": "9720e0901cd1f55e09627f0c76efe153d04ef5597d90ebdf008257931fbf3a8f",
+      "bytes": 97715
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261019/combined-package-preview/run-1792457266130595000/browser/kids-fallback-1440.png",
+      "sha256": "c8e728ba67eb2c226ec4414639122940f001811d61674ccebd43ac6c103045fc",
+      "bytes": 94350
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261019/combined-package-preview/run-1792457266130595000/browser/kids-fallback-390.html",
+      "sha256": "9720e0901cd1f55e09627f0c76efe153d04ef5597d90ebdf008257931fbf3a8f",
+      "bytes": 97715
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261019/combined-package-preview/run-1792457266130595000/browser/kids-fallback-390.png",
+      "sha256": "8a0fe9bf6ce5b7028dd3f057a17065ecabaffcd1972705302246b53f8ab500a1",
+      "bytes": 58911
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261019/combined-package-preview/run-1792457266130595000/browser/pdp-1440.html",
+      "sha256": "9cb3c34713c1711a5f4e90f430211917e0d5f76afd72dc59691f8cf58308cb76",
+      "bytes": 112710
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261019/combined-package-preview/run-1792457266130595000/browser/pdp-1440.png",
+      "sha256": "3ccf7f6288742b4207face2c01b70fc8eead9441ce1499232222f23038fc9275",
+      "bytes": 421003
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261019/combined-package-preview/run-1792457266130595000/browser/pdp-390.html",
+      "sha256": "6acf600e61286dfaf9934c9d82c7cdca2b1e5bf3e84da7e3a8cf37d9d643c6d1",
+      "bytes": 112694
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261019/combined-package-preview/run-1792457266130595000/browser/pdp-390.png",
+      "sha256": "b8810763cd12e80b84ab26d447a124433640de99644443eb851717b8ed447199",
+      "bytes": 224539
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261019/combined-package-preview/run-1792457266130595000/browser/results.json",
+      "sha256": "591a8b175e8b8d3ac017557fe068da43a3af87fc122ed287f7470e440e57ab0f",
+      "bytes": 125107
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261019/combined-package-preview/run-1792457266130595000/browser/shop-1440.html",
+      "sha256": "79dc72e7c0fd99b502f8aeff2d8ae28e8f7a18836c90e44012d1cfab63f609bc",
+      "bytes": 99503
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261019/combined-package-preview/run-1792457266130595000/browser/shop-1440.png",
+      "sha256": "a5f0a7ec8b4e53584cf0abf7aba9f4bb46cc2e8055eff132100b89c7d5c81c6b",
+      "bytes": 47296
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261019/combined-package-preview/run-1792457266130595000/browser/shop-390.html",
+      "sha256": "a6701a8f9f07dbccb5cefe8a7473528c4d232a5682398f177bb5cb4024d18e74",
+      "bytes": 99506
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261019/combined-package-preview/run-1792457266130595000/browser/shop-390.png",
+      "sha256": "b97840eee2dfba99b434adfc563f343128a5d4caacad61c215bedcec838a7fc5",
+      "bytes": 30787
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261019/combined-package-preview/run-1792457266130595000/browser/taxonomy-1440.html",
+      "sha256": "8d5987bf032a0f69af4573a05d3b1083d441b54b98ceabbcde32611e840dc9dd",
+      "bytes": 96234
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261019/combined-package-preview/run-1792457266130595000/browser/taxonomy-1440.png",
+      "sha256": "1f5653254642a2a79503cfdad0736be314081df147cb4bfa9a8d692b83fdae78",
+      "bytes": 82045
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261019/combined-package-preview/run-1792457266130595000/browser/taxonomy-390.html",
+      "sha256": "e26f62ad63145ee6a04d936b94ebe647bee90cb6258ba4a18fa0bafc1954b66e",
+      "bytes": 96231
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261019/combined-package-preview/run-1792457266130595000/browser/taxonomy-390.png",
+      "sha256": "b9cc2c53f7e2803bc35f5b4650255a1f92553e785edca0f15ef9c48325eea9ce",
+      "bytes": 53733
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261019/combined-preview-driver-r3/boundaries.cjs",
+      "sha256": "9941cf44c063b203d81ee2b8001075ce24739e4d7512e7ceb04780d41324907a",
+      "bytes": 2022
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261019/combined-preview-driver-r3/capture.cjs",
+      "sha256": "e8be1f5bc182aecdfc7e558dfde0b3b09cc18e3f29d466de662edaac4a5b4e3d",
+      "bytes": 11449
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261019/combined-preview-driver-r3/close-boundary.cjs",
+      "sha256": "3871fbbb171e75893442fa28556221bcccffa4d2c1256bebcc70caeb1ecc6cc3",
+      "bytes": 239
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261019/combined-preview-driver-r3/delivery.cjs",
+      "sha256": "0497b4250d6859024791cde65a1bc7ca432e6b8e87f459fdd4dc1a5cfccdddb0",
+      "bytes": 821
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261019/combined-preview-driver-r3/run.py",
+      "sha256": "d5d75528d4fdfc3eb4f85b8c35302b8d270fe5c62c0a2bcac62a9adc758b7d6b",
+      "bytes": 9256
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261019/combined-preview-boundary-controls/command-0001.json",
+      "sha256": "0aa9a1a5ef7ee2756c9e66a219e6da237de18d105f3d11e4d33198e1620dd1df",
+      "bytes": 717
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261019/combined-preview-boundary-controls/command-0001.txt",
+      "sha256": "2ac297ba89663cdd7117ad7ab99f3adeaa47ca01409e58be4640dc7413403f8b",
+      "bytes": 55
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261019/combined-preview-boundary-controls/command-0002.json",
+      "sha256": "e3d19662a3bcbff9c2bb0d5e935c5b89aa4e068b115ea840c8696617958800e1",
+      "bytes": 715
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261019/combined-preview-boundary-controls/command-0002.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261019/combined-preview-boundary-controls/command-0003.json",
+      "sha256": "b7c0b440db95038c37cfbc69b751020f42bcd82dd7aa1ba4d66d55ebfd0cf670",
+      "bytes": 730
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261019/combined-preview-boundary-controls/command-0003.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261019/combined-preview-boundary-controls/crash-ownership.jsonl",
+      "sha256": "5bad0de281c50f89cf1e047317137d2ebd4262e5e5b0883e1fe5ce8d4bc27586",
+      "bytes": 744
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261019/combined-preview-boundary-controls/crash.json",
+      "sha256": "f0fe294dd988ce93fd59248260e6428a227afe5b836f7ba558156e3696081231",
+      "bytes": 197
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261019/combined-preview-boundary-controls/results.json",
+      "sha256": "c5cd6cc804a4cbe696270e193208902af97704c51b5850c4c42b6f4612c264a9",
+      "bytes": 5307
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261019/combined-preview-boundary-controls/success-ownership.jsonl",
+      "sha256": "c5f5aef7cce830352af3e1385dcb566f8d19cac89f7876e028ab23ae0aa8876c",
+      "bytes": 746
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261019/combined-preview-boundary-controls/success.json",
+      "sha256": "42c832c02a46e35fb425f1f9e3284d2fc327e0a517d06670fd3fc209fe2982dd",
+      "bytes": 201
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261019/combined-preview-boundary-controls/timeout-ownership.jsonl",
+      "sha256": "4e94e8868c8c2aab05892afa49cd670468acffdd1e0b6bb745724a0bcb448572",
+      "bytes": 746
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261019/combined-preview-boundary-controls/timeout.json",
+      "sha256": "e841193338a1fa5fe2cb603a630c9bc95176d1f3cd0b5590a0dfe07a285243d3",
+      "bytes": 201
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261019/combined-preview-close-failure-control/command-0001.json",
+      "sha256": "c9fca8df3cfdecf702958f10498fa5367517b087de9be8360e120ee5cef71105",
+      "bytes": 725
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261019/combined-preview-close-failure-control/command-0001.txt",
+      "sha256": "5a7f0427e21bd54d7a268dedf39a0cf89bd6f0b761df2c1f08467e758c87ab55",
+      "bytes": 48
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261019/combined-preview-close-failure-control/config.json",
+      "sha256": "6ff04df190b7503bdbd855701b5b30b5e0c128dc7bba83396bfba83aefe0ccd7",
+      "bytes": 176
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261019/combined-preview-close-failure-control/late-css-control.stdout",
+      "sha256": "4a6e23ffe32cde486b8c382b00c14f84028f78004a55639cf4303e03c3049d06",
+      "bytes": 71
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261019/combined-preview-close-failure-control/ownership.jsonl",
+      "sha256": "e99da9bfd91a23f539901d1872dc4d782cbf2b1d7c8ce39a2c52eba80efce099",
+      "bytes": 753
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261019/combined-preview-close-failure-control/results.json",
+      "sha256": "d6ffc73ca2f55164b248be75de3ef06a3b389a7517087840dfcd36ad1357e2f3",
+      "bytes": 3286
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261019/combined-kids-size-review-r3/index.html",
+      "sha256": "5b311352df143fca746d54036d2d169eb73b486f4372b507a20092f4216fca42",
+      "bytes": 4284
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261019/combined-kids-size-review-r3/kids-1440.png",
+      "sha256": "ff4d88cbe9a8bbf20144e3a2bb38cb957f67c1cb6cc4ad2bde83bf0d12443fba",
+      "bytes": 554950
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261019/combined-kids-size-review-r3/kids-390.png",
+      "sha256": "609cf29772784f757f9938068fbef99bbdd1cc79cb49e60144289b3e624c32ab",
+      "bytes": 200469
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261019/combined-kids-size-review-r3/kids-fallback-1440.png",
+      "sha256": "c8e728ba67eb2c226ec4414639122940f001811d61674ccebd43ac6c103045fc",
+      "bytes": 94350
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261019/combined-kids-size-review-r3/kids-fallback-390.png",
+      "sha256": "8a0fe9bf6ce5b7028dd3f057a17065ecabaffcd1972705302246b53f8ab500a1",
+      "bytes": 58911
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261019/combined-kids-size-review-r3/pdp-1440.png",
+      "sha256": "3ccf7f6288742b4207face2c01b70fc8eead9441ce1499232222f23038fc9275",
+      "bytes": 421003
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261019/combined-kids-size-review-r3/pdp-390.png",
+      "sha256": "b8810763cd12e80b84ab26d447a124433640de99644443eb851717b8ed447199",
+      "bytes": 224539
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261019/combined-kids-size-review-r3/shop-1440.png",
+      "sha256": "a5f0a7ec8b4e53584cf0abf7aba9f4bb46cc2e8055eff132100b89c7d5c81c6b",
+      "bytes": 47296
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261019/combined-kids-size-review-r3/shop-390.png",
+      "sha256": "b97840eee2dfba99b434adfc563f343128a5d4caacad61c215bedcec838a7fc5",
+      "bytes": 30787
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261019/combined-kids-size-review-r3/taxonomy-1440.png",
+      "sha256": "1f5653254642a2a79503cfdad0736be314081df147cb4bfa9a8d692b83fdae78",
+      "bytes": 82045
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261019/combined-kids-size-review-r3/taxonomy-390.png",
+      "sha256": "b9cc2c53f7e2803bc35f5b4650255a1f92553e785edca0f15ef9c48325eea9ce",
+      "bytes": 53733
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/tools/v2-runtime/run_simple_size_native.py",
+      "sha256": "48f335943799340601902bad8059233470be5a5f0d89921cb21ef0ef6f5195a4",
+      "bytes": 56098
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/tools/v2-runtime/simple-size-native-fixture.php",
+      "sha256": "88560da25ec9cea4456ee7ac33bc6fcfb63d7bbbec360a6bbd9e5a519b2d4b29",
+      "bytes": 8044
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/tools/v2-runtime/simple-size-native-controls.php",
+      "sha256": "7ebe080c91b19a19c773cb73dd89319a2def8126391d054e96213fadf1052a68",
+      "bytes": 16669
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/tools/v2-runtime/fixtures/historical-preorder-producer.php",
+      "sha256": "b7dd7bc02c3167803f986d05e13975e40e064cd4ddeb23ea6081b4192e34a42a",
+      "bytes": 827
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/tools/v2-runtime/fixtures/historical-preorder-producer-provenance.json",
+      "sha256": "a417425899f5b4870b615f18788470f592346870158657fa6b47804404433384",
+      "bytes": 713
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261019/package-usage-successor-r2/source-theme/dist/release-manifest.json",
+      "sha256": "014f77e38d64db3222214d62d5be488b67fbe4e4643b1247e41cd6a457684abd",
+      "bytes": 110679
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261019/package-usage-successor-r2/source-theme/dist/skyyrose-flagship-2.zip",
+      "sha256": "9a828dd18585bc3dbb47373e60526142279a75cb99a4ba95773bed8bc98f9833",
+      "bytes": 293740897
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/release-gates-20261019/DevSkyy/tools/v2-runtime/phase3b-browser/node_modules/playwright-core/package.json",
+      "sha256": "f061c58427e47e843e26d201f0a57076c734e57c734ecbbd87d4a23b7a20db9b",
+      "bytes": 876
+    },
+    {
+      "path": "/opt/homebrew/Cellar/php/8.5.6/bin/php",
+      "sha256": "f43e04e1d2b994542c30cc5d2dad0b3de03a2865e19e260d82ac47aea2b9c92f",
+      "bytes": 23817136
+    },
+    {
+      "path": "/opt/homebrew/Cellar/wp-cli/2.12.0/bin/wp",
+      "sha256": "ce34ddd838f7351d6759068d09793f26755463b4a4610a5a5c0a97b68220d85c",
+      "bytes": 7142777
+    },
+    {
+      "path": "/opt/homebrew/Cellar/mariadb/13.0.2_1/bin/mariadb",
+      "sha256": "4773715a4595859bfefab646d31dc6f796bcfe3d2f2d97fd871ed5a739ba8eac",
+      "bytes": 5012000
+    },
+    {
+      "path": "/opt/homebrew/Cellar/mariadb/13.0.2_1/scripts/mariadb-install-db",
+      "sha256": "1cd865dd7e82e355a54e4986a7130a28cc2b8aa2388582617608ac7ab01249bb",
+      "bytes": 22867
+    },
+    {
+      "path": "/opt/homebrew/Cellar/mariadb/13.0.2_1/bin/mariadbd",
+      "sha256": "8eee893db73f2b9f1f633a3a45e2c94917b9d5fe9931f8b2b0867b0df6a36b31",
+      "bytes": 22331152
+    },
+    {
+      "path": "/usr/bin/git",
+      "sha256": "5f593b5dfc0e9e583d326d25a27e1a268419d4ae9440866da0bd94096a58b76d",
+      "bytes": 200560
+    },
+    {
+      "path": "/usr/bin/sandbox-exec",
+      "sha256": "e1d5238a706d66a29cc91e70e9bdf2cfd3c5a729017012205ec2f27de79f9b46",
+      "bytes": 135136
+    },
+    {
+      "path": "/opt/homebrew/Cellar/python@3.14/3.14.7/Frameworks/Python.framework/Versions/3.14/bin/python3.14",
+      "sha256": "87d4df53fd91304be5bac391fb204643c36b7df2023c04a0953bcbc7d4fdf634",
+      "bytes": 34640
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/release-gates-20261019/DevSkyy/.artifacts/release-gates-20261019/toolchain/node-v22.23.2-darwin-arm64/bin/node",
+      "sha256": "18e387c90ab8a8400183e8bdd396376e1e875b91b4c874b894dcade7b35bf572",
+      "bytes": 112937728
+    },
+    {
+      "path": "/Users/theceo/Library/Caches/ms-playwright/chromium_headless_shell-1243/chrome-headless-shell-mac-arm64/chrome-headless-shell",
+      "sha256": "a0bfe7b4da4787b66058477d696cd1d09065d25f06a548947722b9af77ee8282",
+      "bytes": 169253248
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/tasks/release-gates-20261019/combined-kids-size-final/continuation-manifest.json",
+      "sha256": "413d9bb7b5ffcf05fda615b6525b0e388e5e6164de716f73abea688b6abadb55",
+      "bytes": 623
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/tasks/release-gates-20261019/simple-size-native/packet-a70616692/continuation-manifest.json",
+      "sha256": "a1504ddd6b6fecd8fc80cb5858bf406ca9f57cb0022031075e696af970e169ee",
+      "bytes": 476
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261019/package-usage-counterexample/admission-r2.php",
+      "sha256": "31dffcee0c21dbf5e3f2bd3e29a79f38501a3966c89e0983b23898c31b933861",
+      "bytes": 1275
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261019/package-usage-counterexample/admission-r3.php",
+      "sha256": "94c5648e102bcf737f1a85ad81403284a172cf242965c6c77db468c07458b92c",
+      "bytes": 1308
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261019/package-usage-counterexample/admission.php",
+      "sha256": "05fe6ab59099847355b00fce00ab5f87f8fd6b2de22f00169a88d07248296f6c",
+      "bytes": 1166
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261019/package-usage-counterexample/attempt-1-failure.json",
+      "sha256": "6bd4a6902e54262e0b3448ddf87bde4af6f67337b9033c792a1757593552b2cc",
+      "bytes": 1064
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261019/package-usage-counterexample/attempt-2-failure.json",
+      "sha256": "d7e69aaaefa94c411680bcfa3261908bfd509452221db3b3a9f9919c3cae2530",
+      "bytes": 965
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261019/package-usage-counterexample/exact_package-r3.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261019/package-usage-counterexample/exact_package-r3.stdout",
+      "sha256": "b47fc418af85a9fb4cbfe9788ca38870a4a071f644b34fd29b2314e3a65ddf70",
+      "bytes": 980
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261019/package-usage-counterexample/results.json",
+      "sha256": "c1129234ddda7c764590d9c13727b03b7a1f0a66a8185379757e4d6c9416bd09",
+      "bytes": 5092
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261019/package-usage-counterexample/source_superset-r2.stderr",
+      "sha256": "5546aed60e88f966b4d27ceb533b60aefdbb60486426c7dd73b1337a654d0a25",
+      "bytes": 562
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261019/package-usage-counterexample/source_superset-r2.stdout",
+      "sha256": "c5a307f50f5d73ba841a01d7b6d5cdf163a8f5752c20dc7d361c44f00400d5d9",
+      "bytes": 558
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261019/package-usage-counterexample/source_superset-r3.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261019/package-usage-counterexample/source_superset-r3.stdout",
+      "sha256": "0ad04028bb57a65e71cefef6f5b9d9485a61bb39e171bb642ef99098dbdd0248",
+      "bytes": 1085
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261019/package-usage-counterexample/source_superset.stderr",
+      "sha256": "3b667e7896314d52104c2d5503acbbe80c6075747ddaa298b797d777f75f0498",
+      "bytes": 559
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261019/package-usage-counterexample/source_superset.stdout",
+      "sha256": "f95fdde0ce7c37c6a78af06aa9a6769a7da0cdcb29528ab559dc7219aab0fad7",
+      "bytes": 555
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261019/package-usage-successor/attempt-failure.json",
+      "sha256": "6626ca3f5c3f36566dc8edf33538c1ad4d44012887a806ee0e07737f0f4118ed",
+      "bytes": 1152
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261019/package-usage-successor/dependency-closure-before-package.json",
+      "sha256": "12137bd8796403e5a162ecb230986ee79e71d64ce4859b88a6a7b32bf9336d46",
+      "bytes": 4230
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261019/package-usage-successor/integrity.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261019/package-usage-successor/integrity.stdout",
+      "sha256": "a6b785fde8d0b5bb9813d7b0ad1188c44095b420dfcd34a13e55403d67474446",
+      "bytes": 81
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261019/package-usage-successor/package-private.py",
+      "sha256": "bf9a2f255e99b40ccba1d1c5ad2e13962732254720da3c9a89b9f1d8586e2c90",
+      "bytes": 3317
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261019/package-usage-successor/package.stderr",
+      "sha256": "8997387f6c9651572b6c69dfc8eb92dfedf38c9235e7cb711c42db1e5bbebdfc",
+      "bytes": 425
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261019/package-usage-successor/package.stdout",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261019/package-usage-successor-r2/admission-all.php",
+      "sha256": "576189464804c78d489076fe3d10788bfe15c5db7034e1250096a4eae553200e",
+      "bytes": 927
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261019/package-usage-successor-r2/admission-all.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261019/package-usage-successor-r2/admission-all.stdout",
+      "sha256": "371a0a0e3d59aaa8bae8f58b42ca6c16f06b3f9a767022f789ac18d74e189bc0",
+      "bytes": 5876
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261019/package-usage-successor-r2/admission-pair.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261019/package-usage-successor-r2/admission-pair.stdout",
+      "sha256": "0ad04028bb57a65e71cefef6f5b9d9485a61bb39e171bb642ef99098dbdd0248",
+      "bytes": 1085
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261019/package-usage-successor-r2/package-closure-verification.json",
+      "sha256": "970b7687aa80b5119a996d18aecc254802b1de82aaf64e8e424783147e4acfef",
+      "bytes": 9431
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261019/package-usage-successor-r2/package-private.py",
+      "sha256": "614f3e5db09fa9b716c8e976555b5f7641e91dfca10105012fe2827540d38180",
+      "bytes": 3320
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261019/package-usage-successor-r2/package.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261019/package-usage-successor-r2/package.stdout",
+      "sha256": "c0c9858b9628dc91501cf5bf3ad11b585aa5bf9d617ca357def1f82d81254a00",
+      "bytes": 255
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261019/package-usage-successor-r2/results.json",
+      "sha256": "ff18b316b9a6f1010c01aab67e0c570e3ba618d22571788995fab846ef9a8a71",
+      "bytes": 2942
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261019/package-usage-successor-r2/source-clone-census.json",
+      "sha256": "473a7352e4b9abd5575fe77266fca6b3a879c1924b99d7a8bb64fb9058ca90f1",
+      "bytes": 330360
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261019/combined-native-preview-draft-r2/README.md",
+      "sha256": "e368b35613602b4ecd33dd26b4de1c31a1cf549a4ebce61343ec14d1947a7dcb",
+      "bytes": 2845
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261019/combined-native-preview-draft-r2/continuation-manifest.json",
+      "sha256": "8ff40a585e4db9454edbcf85cfb9f556eca796cfe90022bdb4084378850453b5",
+      "bytes": 762
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261019/combined-native-preview-draft-r2/evidence-index.json",
+      "sha256": "b385cbbfbb986b4e1dcb103026af00b3dc79c3d5afdad4632f35db7fd62b7a82",
+      "bytes": 31320
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261019/combined-native-preview-draft-r2/rendered-media-census.json",
+      "sha256": "3eba83bf2b61c8349cd3cb686fa8e95d13269156e9b3b0c4f603d079c8898ce8",
+      "bytes": 78744
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261019/combined-native-preview-draft-r2/summary.json",
+      "sha256": "735ffb65441396a19597418b82e4d8dead75d98738de3d0c6fa7464859712fa8",
+      "bytes": 4462
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261019/combined-native-preview-draft-r2/visual-review.json",
+      "sha256": "aaa4812aff88f60b4bea655e791e9a603c0578eabadfbbedf046e476a369aa70",
+      "bytes": 7217
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261019/combined-preview-driver-r2/boundaries.cjs",
+      "sha256": "9941cf44c063b203d81ee2b8001075ce24739e4d7512e7ceb04780d41324907a",
+      "bytes": 2022
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261019/combined-preview-driver-r2/boundary-controls.cjs",
+      "sha256": "8a511a7a46a709ee23d9b0e146d42998f1229263237c9bf3739c47d1ae957ce0",
+      "bytes": 1109
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261019/combined-preview-driver-r2/capture.cjs",
+      "sha256": "b53b7ca2d612db7512c52aa261f8ffb6acf2fd5d74d6e28e71c31e17a8c72b1d",
+      "bytes": 11410
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261019/combined-preview-driver-r2/close-boundary.cjs",
+      "sha256": "3871fbbb171e75893442fa28556221bcccffa4d2c1256bebcc70caeb1ecc6cc3",
+      "bytes": 239
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261019/combined-preview-driver-r2/close-failure-control.cjs",
+      "sha256": "0e714e9aeca3b799bb0c5e138cb5772509aeeb5ed6e0da7d114ed43e68f490ab",
+      "bytes": 639
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261019/combined-preview-driver-r2/delivery.cjs",
+      "sha256": "0497b4250d6859024791cde65a1bc7ca432e6b8e87f459fdd4dc1a5cfccdddb0",
+      "bytes": 821
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261019/combined-preview-driver-r2/late-css-control.cjs",
+      "sha256": "7e26205d8e1091f4acef318c56538bd4134e005a0ba25bf17dacf47e8b6eefbb",
+      "bytes": 704
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261019/combined-preview-driver-r2/run.py",
+      "sha256": "bcb56e1bb82c8fa878ba649e291883c1a665bc647b922b7e7a569a41e098b53e",
+      "bytes": 8071
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261019/combined-native-preview-frozen/run-census.json",
+      "sha256": "33431022f2b8588b2afc06e4caf8358e683f38a3cb75dd7eb186b1340d2c160d",
+      "bytes": 3780504
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261019/combined-native-preview/run-1792456712236207000/results.json",
+      "sha256": "166948ac11ebd9f512b01d9abfb935ea130c2c2315dc843ad809cb80af9cecbe",
+      "bytes": 3325131
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261019/combined-native-preview/run-1792456712236207000/browser/results.json",
+      "sha256": "374f53de53c786ae9aa5c84e60df1c6423dd37ba991cc41c6ff016ec9baff7a7",
+      "bytes": 124982
+    }
+  ],
+  "private_run_census_entries": 15037,
+  "protected_source_entries": 13855,
+  "protected_theme_entries": 801,
+  "protected_qa_entries": 114,
+  "cloned_package_members": 801
+}

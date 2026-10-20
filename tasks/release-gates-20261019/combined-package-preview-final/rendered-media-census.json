@@ -1,0 +1,1739 @@
+{
+  "schema": "skyyrose.observed-native-media-census.v1",
+  "run": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261019/combined-package-preview/run-1792457266130595000",
+  "package": {
+    "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261019/package-usage-successor-r2/source-theme/dist/skyyrose-flagship-2.zip",
+    "sha256": "9a828dd18585bc3dbb47373e60526142279a75cb99a4ba95773bed8bc98f9833",
+    "source_commit": "773e2cffd70338d6fe4509d43d40186401d53eff",
+    "observed_checkout_commit": "773e2cffd70338d6fe4509d43d40186401d53eff"
+  },
+  "browser_results": {
+    "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261019/combined-package-preview/run-1792457266130595000/browser/results.json",
+    "sha256": "591a8b175e8b8d3ac017557fe068da43a3af87fc122ed287f7470e440e57ab0f",
+    "bytes": 125107
+  },
+  "interpretation": [
+    "DOM currentSrc/natural dimensions/viewport box and ancestor styles are observations, not occlusion or creative acceptance.",
+    "URI-to-member mapping is derived from verified static fixture files, not an independent HTTP-body measurement.",
+    "Only Kids arrival has separate decoded-image and independent HTTP-body SHA observations.",
+    "Registry roles/master fields and link preloads are declarations, not proof the declared role rendered.",
+    "No absent asset is classified unused."
+  ],
+  "unexercised_scopes": [
+    {
+      "scope": "Homepage",
+      "status": "CONDITIONAL_UNOBSERVED"
+    },
+    {
+      "scope": "Adult collection arrivals",
+      "status": "CONDITIONAL_UNOBSERVED"
+    },
+    {
+      "scope": "Full populated Shop and Kids taxonomy",
+      "status": "CONDITIONAL_UNOBSERVED"
+    },
+    {
+      "scope": "All other PDPs and hover/scroll/lazy states",
+      "status": "CONDITIONAL_UNOBSERVED"
+    },
+    {
+      "scope": "/pre-order/ BR-009 merchandise_scene",
+      "status": "CONDITIONAL_UNOBSERVED"
+    },
+    {
+      "scope": "/pre-order/ LH-005 merchandise_scene",
+      "status": "CONDITIONAL_UNOBSERVED"
+    },
+    {
+      "scope": "/pre-order/ SG-015 merchandise_scene",
+      "status": "CONDITIONAL_UNOBSERVED"
+    }
+  ],
+  "cases": [
+    {
+      "surface": "shop",
+      "width": 1440,
+      "reducedMotion": "reduce",
+      "contextOrdinal": 1,
+      "url": "http://127.0.0.1:18368/?post_type=product",
+      "mediaCensus": [
+        {
+          "tag": "IMG",
+          "className": "sr2-header__brand-mark",
+          "ownerMediaState": null,
+          "ownerMediaSource": null,
+          "src": "http://127.0.0.1:18368/wp-content/themes/skyyrose-flagship-2/assets/sot/brand/skyyrose-logo-still-384w.webp?v=282401d94e26451c830e91c1f231e75a50869333e9afbf88df78842003856884",
+          "currentSrc": "http://127.0.0.1:18368/wp-content/themes/skyyrose-flagship-2/assets/sot/brand/skyyrose-logo-still-384w.webp?v=282401d94e26451c830e91c1f231e75a50869333e9afbf88df78842003856884",
+          "dataSrc": null,
+          "role": null,
+          "sku": null,
+          "ownerSku": null,
+          "naturalWidth": 179,
+          "naturalHeight": 134,
+          "complete": true,
+          "viewportBoxVisible": true,
+          "visibilityMethod": "BOX_ANCESTOR_STYLES_VIEWPORT_INTERSECTION_NOT_OCCLUSION_PROOF",
+          "packagePath": "assets/sot/brand/skyyrose-logo-still-384w.webp",
+          "packageSourceSha256": "282401d94e26451c830e91c1f231e75a50869333e9afbf88df78842003856884",
+          "bindingMethod": "DOM_URI_TO_VERIFIED_NATIVE_STATIC_SOURCE; not an independent HTTP-body measurement",
+          "declaredRegistryRoles": [
+            "housemark"
+          ],
+          "declaredMasterPath": "assets/sot/brand/skyyrose-logo-still-384w.webp",
+          "declaredMasterSha256": "282401d94e26451c830e91c1f231e75a50869333e9afbf88df78842003856884"
+        },
+        {
+          "tag": "IMG",
+          "className": null,
+          "ownerMediaState": null,
+          "ownerMediaSource": null,
+          "src": null,
+          "currentSrc": null,
+          "dataSrc": null,
+          "role": null,
+          "sku": null,
+          "ownerSku": null,
+          "naturalWidth": 0,
+          "naturalHeight": 0,
+          "complete": true,
+          "viewportBoxVisible": false,
+          "visibilityMethod": "BOX_ANCESTOR_STYLES_VIEWPORT_INTERSECTION_NOT_OCCLUSION_PROOF",
+          "packagePath": null,
+          "packageSourceSha256": null,
+          "bindingMethod": "DOM_URI_TO_VERIFIED_NATIVE_STATIC_SOURCE; not an independent HTTP-body measurement",
+          "declaredRegistryRoles": [],
+          "declaredMasterPath": null,
+          "declaredMasterSha256": null
+        },
+        {
+          "tag": "IMG",
+          "className": null,
+          "ownerMediaState": null,
+          "ownerMediaSource": null,
+          "src": null,
+          "currentSrc": null,
+          "dataSrc": null,
+          "role": null,
+          "sku": null,
+          "ownerSku": null,
+          "naturalWidth": 0,
+          "naturalHeight": 0,
+          "complete": true,
+          "viewportBoxVisible": false,
+          "visibilityMethod": "BOX_ANCESTOR_STYLES_VIEWPORT_INTERSECTION_NOT_OCCLUSION_PROOF",
+          "packagePath": null,
+          "packageSourceSha256": null,
+          "bindingMethod": "DOM_URI_TO_VERIFIED_NATIVE_STATIC_SOURCE; not an independent HTTP-body measurement",
+          "declaredRegistryRoles": [],
+          "declaredMasterPath": null,
+          "declaredMasterSha256": null
+        },
+        {
+          "tag": "IMG",
+          "className": null,
+          "ownerMediaState": null,
+          "ownerMediaSource": null,
+          "src": "http://127.0.0.1:18368/wp-content/themes/skyyrose-flagship-2/assets/sot/brand/skyyrose-logo-still-384w.webp?v=282401d94e26451c830e91c1f231e75a50869333e9afbf88df78842003856884",
+          "currentSrc": "http://127.0.0.1:18368/wp-content/themes/skyyrose-flagship-2/assets/sot/brand/skyyrose-logo-still-384w.webp?v=282401d94e26451c830e91c1f231e75a50869333e9afbf88df78842003856884",
+          "dataSrc": null,
+          "role": null,
+          "sku": null,
+          "ownerSku": null,
+          "naturalWidth": 179,
+          "naturalHeight": 134,
+          "complete": true,
+          "viewportBoxVisible": false,
+          "visibilityMethod": "BOX_ANCESTOR_STYLES_VIEWPORT_INTERSECTION_NOT_OCCLUSION_PROOF",
+          "packagePath": "assets/sot/brand/skyyrose-logo-still-384w.webp",
+          "packageSourceSha256": "282401d94e26451c830e91c1f231e75a50869333e9afbf88df78842003856884",
+          "bindingMethod": "DOM_URI_TO_VERIFIED_NATIVE_STATIC_SOURCE; not an independent HTTP-body measurement",
+          "declaredRegistryRoles": [
+            "housemark"
+          ],
+          "declaredMasterPath": "assets/sot/brand/skyyrose-logo-still-384w.webp",
+          "declaredMasterSha256": "282401d94e26451c830e91c1f231e75a50869333e9afbf88df78842003856884"
+        }
+      ],
+      "preloads": []
+    },
+    {
+      "surface": "shop",
+      "width": 390,
+      "reducedMotion": "reduce",
+      "contextOrdinal": 2,
+      "url": "http://127.0.0.1:18368/?post_type=product",
+      "mediaCensus": [
+        {
+          "tag": "IMG",
+          "className": "sr2-header__brand-mark",
+          "ownerMediaState": null,
+          "ownerMediaSource": null,
+          "src": "http://127.0.0.1:18368/wp-content/themes/skyyrose-flagship-2/assets/sot/brand/skyyrose-logo-still-384w.webp?v=282401d94e26451c830e91c1f231e75a50869333e9afbf88df78842003856884",
+          "currentSrc": "http://127.0.0.1:18368/wp-content/themes/skyyrose-flagship-2/assets/sot/brand/skyyrose-logo-still-384w.webp?v=282401d94e26451c830e91c1f231e75a50869333e9afbf88df78842003856884",
+          "dataSrc": null,
+          "role": null,
+          "sku": null,
+          "ownerSku": null,
+          "naturalWidth": 179,
+          "naturalHeight": 134,
+          "complete": true,
+          "viewportBoxVisible": true,
+          "visibilityMethod": "BOX_ANCESTOR_STYLES_VIEWPORT_INTERSECTION_NOT_OCCLUSION_PROOF",
+          "packagePath": "assets/sot/brand/skyyrose-logo-still-384w.webp",
+          "packageSourceSha256": "282401d94e26451c830e91c1f231e75a50869333e9afbf88df78842003856884",
+          "bindingMethod": "DOM_URI_TO_VERIFIED_NATIVE_STATIC_SOURCE; not an independent HTTP-body measurement",
+          "declaredRegistryRoles": [
+            "housemark"
+          ],
+          "declaredMasterPath": "assets/sot/brand/skyyrose-logo-still-384w.webp",
+          "declaredMasterSha256": "282401d94e26451c830e91c1f231e75a50869333e9afbf88df78842003856884"
+        },
+        {
+          "tag": "IMG",
+          "className": null,
+          "ownerMediaState": null,
+          "ownerMediaSource": null,
+          "src": null,
+          "currentSrc": null,
+          "dataSrc": null,
+          "role": null,
+          "sku": null,
+          "ownerSku": null,
+          "naturalWidth": 0,
+          "naturalHeight": 0,
+          "complete": true,
+          "viewportBoxVisible": false,
+          "visibilityMethod": "BOX_ANCESTOR_STYLES_VIEWPORT_INTERSECTION_NOT_OCCLUSION_PROOF",
+          "packagePath": null,
+          "packageSourceSha256": null,
+          "bindingMethod": "DOM_URI_TO_VERIFIED_NATIVE_STATIC_SOURCE; not an independent HTTP-body measurement",
+          "declaredRegistryRoles": [],
+          "declaredMasterPath": null,
+          "declaredMasterSha256": null
+        },
+        {
+          "tag": "IMG",
+          "className": null,
+          "ownerMediaState": null,
+          "ownerMediaSource": null,
+          "src": null,
+          "currentSrc": null,
+          "dataSrc": null,
+          "role": null,
+          "sku": null,
+          "ownerSku": null,
+          "naturalWidth": 0,
+          "naturalHeight": 0,
+          "complete": true,
+          "viewportBoxVisible": false,
+          "visibilityMethod": "BOX_ANCESTOR_STYLES_VIEWPORT_INTERSECTION_NOT_OCCLUSION_PROOF",
+          "packagePath": null,
+          "packageSourceSha256": null,
+          "bindingMethod": "DOM_URI_TO_VERIFIED_NATIVE_STATIC_SOURCE; not an independent HTTP-body measurement",
+          "declaredRegistryRoles": [],
+          "declaredMasterPath": null,
+          "declaredMasterSha256": null
+        },
+        {
+          "tag": "IMG",
+          "className": null,
+          "ownerMediaState": null,
+          "ownerMediaSource": null,
+          "src": "http://127.0.0.1:18368/wp-content/themes/skyyrose-flagship-2/assets/sot/brand/skyyrose-logo-still-384w.webp?v=282401d94e26451c830e91c1f231e75a50869333e9afbf88df78842003856884",
+          "currentSrc": "http://127.0.0.1:18368/wp-content/themes/skyyrose-flagship-2/assets/sot/brand/skyyrose-logo-still-384w.webp?v=282401d94e26451c830e91c1f231e75a50869333e9afbf88df78842003856884",
+          "dataSrc": null,
+          "role": null,
+          "sku": null,
+          "ownerSku": null,
+          "naturalWidth": 179,
+          "naturalHeight": 134,
+          "complete": true,
+          "viewportBoxVisible": false,
+          "visibilityMethod": "BOX_ANCESTOR_STYLES_VIEWPORT_INTERSECTION_NOT_OCCLUSION_PROOF",
+          "packagePath": "assets/sot/brand/skyyrose-logo-still-384w.webp",
+          "packageSourceSha256": "282401d94e26451c830e91c1f231e75a50869333e9afbf88df78842003856884",
+          "bindingMethod": "DOM_URI_TO_VERIFIED_NATIVE_STATIC_SOURCE; not an independent HTTP-body measurement",
+          "declaredRegistryRoles": [
+            "housemark"
+          ],
+          "declaredMasterPath": "assets/sot/brand/skyyrose-logo-still-384w.webp",
+          "declaredMasterSha256": "282401d94e26451c830e91c1f231e75a50869333e9afbf88df78842003856884"
+        }
+      ],
+      "preloads": []
+    },
+    {
+      "surface": "taxonomy",
+      "width": 1440,
+      "reducedMotion": "reduce",
+      "contextOrdinal": 3,
+      "url": "http://127.0.0.1:18368/?product_cat=kids-capsule",
+      "mediaCensus": [
+        {
+          "tag": "IMG",
+          "className": "sr2-header__brand-mark",
+          "ownerMediaState": null,
+          "ownerMediaSource": null,
+          "src": "http://127.0.0.1:18368/wp-content/themes/skyyrose-flagship-2/assets/sot/brand/skyyrose-logo-still-384w.webp?v=282401d94e26451c830e91c1f231e75a50869333e9afbf88df78842003856884",
+          "currentSrc": "http://127.0.0.1:18368/wp-content/themes/skyyrose-flagship-2/assets/sot/brand/skyyrose-logo-still-384w.webp?v=282401d94e26451c830e91c1f231e75a50869333e9afbf88df78842003856884",
+          "dataSrc": null,
+          "role": null,
+          "sku": null,
+          "ownerSku": null,
+          "naturalWidth": 179,
+          "naturalHeight": 134,
+          "complete": true,
+          "viewportBoxVisible": true,
+          "visibilityMethod": "BOX_ANCESTOR_STYLES_VIEWPORT_INTERSECTION_NOT_OCCLUSION_PROOF",
+          "packagePath": "assets/sot/brand/skyyrose-logo-still-384w.webp",
+          "packageSourceSha256": "282401d94e26451c830e91c1f231e75a50869333e9afbf88df78842003856884",
+          "bindingMethod": "DOM_URI_TO_VERIFIED_NATIVE_STATIC_SOURCE; not an independent HTTP-body measurement",
+          "declaredRegistryRoles": [
+            "housemark"
+          ],
+          "declaredMasterPath": "assets/sot/brand/skyyrose-logo-still-384w.webp",
+          "declaredMasterSha256": "282401d94e26451c830e91c1f231e75a50869333e9afbf88df78842003856884"
+        },
+        {
+          "tag": "IMG",
+          "className": null,
+          "ownerMediaState": null,
+          "ownerMediaSource": null,
+          "src": null,
+          "currentSrc": null,
+          "dataSrc": null,
+          "role": null,
+          "sku": null,
+          "ownerSku": null,
+          "naturalWidth": 0,
+          "naturalHeight": 0,
+          "complete": true,
+          "viewportBoxVisible": false,
+          "visibilityMethod": "BOX_ANCESTOR_STYLES_VIEWPORT_INTERSECTION_NOT_OCCLUSION_PROOF",
+          "packagePath": null,
+          "packageSourceSha256": null,
+          "bindingMethod": "DOM_URI_TO_VERIFIED_NATIVE_STATIC_SOURCE; not an independent HTTP-body measurement",
+          "declaredRegistryRoles": [],
+          "declaredMasterPath": null,
+          "declaredMasterSha256": null
+        },
+        {
+          "tag": "IMG",
+          "className": null,
+          "ownerMediaState": null,
+          "ownerMediaSource": null,
+          "src": null,
+          "currentSrc": null,
+          "dataSrc": null,
+          "role": null,
+          "sku": null,
+          "ownerSku": null,
+          "naturalWidth": 0,
+          "naturalHeight": 0,
+          "complete": true,
+          "viewportBoxVisible": false,
+          "visibilityMethod": "BOX_ANCESTOR_STYLES_VIEWPORT_INTERSECTION_NOT_OCCLUSION_PROOF",
+          "packagePath": null,
+          "packageSourceSha256": null,
+          "bindingMethod": "DOM_URI_TO_VERIFIED_NATIVE_STATIC_SOURCE; not an independent HTTP-body measurement",
+          "declaredRegistryRoles": [],
+          "declaredMasterPath": null,
+          "declaredMasterSha256": null
+        },
+        {
+          "tag": "IMG",
+          "className": null,
+          "ownerMediaState": null,
+          "ownerMediaSource": null,
+          "src": "http://127.0.0.1:18368/wp-content/themes/skyyrose-flagship-2/assets/sot/brand/skyyrose-logo-still-384w.webp?v=282401d94e26451c830e91c1f231e75a50869333e9afbf88df78842003856884",
+          "currentSrc": "http://127.0.0.1:18368/wp-content/themes/skyyrose-flagship-2/assets/sot/brand/skyyrose-logo-still-384w.webp?v=282401d94e26451c830e91c1f231e75a50869333e9afbf88df78842003856884",
+          "dataSrc": null,
+          "role": null,
+          "sku": null,
+          "ownerSku": null,
+          "naturalWidth": 179,
+          "naturalHeight": 134,
+          "complete": true,
+          "viewportBoxVisible": false,
+          "visibilityMethod": "BOX_ANCESTOR_STYLES_VIEWPORT_INTERSECTION_NOT_OCCLUSION_PROOF",
+          "packagePath": "assets/sot/brand/skyyrose-logo-still-384w.webp",
+          "packageSourceSha256": "282401d94e26451c830e91c1f231e75a50869333e9afbf88df78842003856884",
+          "bindingMethod": "DOM_URI_TO_VERIFIED_NATIVE_STATIC_SOURCE; not an independent HTTP-body measurement",
+          "declaredRegistryRoles": [
+            "housemark"
+          ],
+          "declaredMasterPath": "assets/sot/brand/skyyrose-logo-still-384w.webp",
+          "declaredMasterSha256": "282401d94e26451c830e91c1f231e75a50869333e9afbf88df78842003856884"
+        }
+      ],
+      "preloads": []
+    },
+    {
+      "surface": "taxonomy",
+      "width": 390,
+      "reducedMotion": "reduce",
+      "contextOrdinal": 4,
+      "url": "http://127.0.0.1:18368/?product_cat=kids-capsule",
+      "mediaCensus": [
+        {
+          "tag": "IMG",
+          "className": "sr2-header__brand-mark",
+          "ownerMediaState": null,
+          "ownerMediaSource": null,
+          "src": "http://127.0.0.1:18368/wp-content/themes/skyyrose-flagship-2/assets/sot/brand/skyyrose-logo-still-384w.webp?v=282401d94e26451c830e91c1f231e75a50869333e9afbf88df78842003856884",
+          "currentSrc": "http://127.0.0.1:18368/wp-content/themes/skyyrose-flagship-2/assets/sot/brand/skyyrose-logo-still-384w.webp?v=282401d94e26451c830e91c1f231e75a50869333e9afbf88df78842003856884",
+          "dataSrc": null,
+          "role": null,
+          "sku": null,
+          "ownerSku": null,
+          "naturalWidth": 179,
+          "naturalHeight": 134,
+          "complete": true,
+          "viewportBoxVisible": true,
+          "visibilityMethod": "BOX_ANCESTOR_STYLES_VIEWPORT_INTERSECTION_NOT_OCCLUSION_PROOF",
+          "packagePath": "assets/sot/brand/skyyrose-logo-still-384w.webp",
+          "packageSourceSha256": "282401d94e26451c830e91c1f231e75a50869333e9afbf88df78842003856884",
+          "bindingMethod": "DOM_URI_TO_VERIFIED_NATIVE_STATIC_SOURCE; not an independent HTTP-body measurement",
+          "declaredRegistryRoles": [
+            "housemark"
+          ],
+          "declaredMasterPath": "assets/sot/brand/skyyrose-logo-still-384w.webp",
+          "declaredMasterSha256": "282401d94e26451c830e91c1f231e75a50869333e9afbf88df78842003856884"
+        },
+        {
+          "tag": "IMG",
+          "className": null,
+          "ownerMediaState": null,
+          "ownerMediaSource": null,
+          "src": null,
+          "currentSrc": null,
+          "dataSrc": null,
+          "role": null,
+          "sku": null,
+          "ownerSku": null,
+          "naturalWidth": 0,
+          "naturalHeight": 0,
+          "complete": true,
+          "viewportBoxVisible": false,
+          "visibilityMethod": "BOX_ANCESTOR_STYLES_VIEWPORT_INTERSECTION_NOT_OCCLUSION_PROOF",
+          "packagePath": null,
+          "packageSourceSha256": null,
+          "bindingMethod": "DOM_URI_TO_VERIFIED_NATIVE_STATIC_SOURCE; not an independent HTTP-body measurement",
+          "declaredRegistryRoles": [],
+          "declaredMasterPath": null,
+          "declaredMasterSha256": null
+        },
+        {
+          "tag": "IMG",
+          "className": null,
+          "ownerMediaState": null,
+          "ownerMediaSource": null,
+          "src": null,
+          "currentSrc": null,
+          "dataSrc": null,
+          "role": null,
+          "sku": null,
+          "ownerSku": null,
+          "naturalWidth": 0,
+          "naturalHeight": 0,
+          "complete": true,
+          "viewportBoxVisible": false,
+          "visibilityMethod": "BOX_ANCESTOR_STYLES_VIEWPORT_INTERSECTION_NOT_OCCLUSION_PROOF",
+          "packagePath": null,
+          "packageSourceSha256": null,
+          "bindingMethod": "DOM_URI_TO_VERIFIED_NATIVE_STATIC_SOURCE; not an independent HTTP-body measurement",
+          "declaredRegistryRoles": [],
+          "declaredMasterPath": null,
+          "declaredMasterSha256": null
+        },
+        {
+          "tag": "IMG",
+          "className": null,
+          "ownerMediaState": null,
+          "ownerMediaSource": null,
+          "src": "http://127.0.0.1:18368/wp-content/themes/skyyrose-flagship-2/assets/sot/brand/skyyrose-logo-still-384w.webp?v=282401d94e26451c830e91c1f231e75a50869333e9afbf88df78842003856884",
+          "currentSrc": "http://127.0.0.1:18368/wp-content/themes/skyyrose-flagship-2/assets/sot/brand/skyyrose-logo-still-384w.webp?v=282401d94e26451c830e91c1f231e75a50869333e9afbf88df78842003856884",
+          "dataSrc": null,
+          "role": null,
+          "sku": null,
+          "ownerSku": null,
+          "naturalWidth": 179,
+          "naturalHeight": 134,
+          "complete": true,
+          "viewportBoxVisible": false,
+          "visibilityMethod": "BOX_ANCESTOR_STYLES_VIEWPORT_INTERSECTION_NOT_OCCLUSION_PROOF",
+          "packagePath": "assets/sot/brand/skyyrose-logo-still-384w.webp",
+          "packageSourceSha256": "282401d94e26451c830e91c1f231e75a50869333e9afbf88df78842003856884",
+          "bindingMethod": "DOM_URI_TO_VERIFIED_NATIVE_STATIC_SOURCE; not an independent HTTP-body measurement",
+          "declaredRegistryRoles": [
+            "housemark"
+          ],
+          "declaredMasterPath": "assets/sot/brand/skyyrose-logo-still-384w.webp",
+          "declaredMasterSha256": "282401d94e26451c830e91c1f231e75a50869333e9afbf88df78842003856884"
+        }
+      ],
+      "preloads": []
+    },
+    {
+      "surface": "kids",
+      "width": 1440,
+      "reducedMotion": "reduce",
+      "contextOrdinal": 5,
+      "url": "http://127.0.0.1:18368/?page_id=22",
+      "mediaCensus": [
+        {
+          "tag": "IMG",
+          "className": "sr2-header__brand-mark",
+          "ownerMediaState": null,
+          "ownerMediaSource": null,
+          "src": "http://127.0.0.1:18368/wp-content/themes/skyyrose-flagship-2/assets/sot/brand/skyyrose-logo-still-384w.webp?v=282401d94e26451c830e91c1f231e75a50869333e9afbf88df78842003856884",
+          "currentSrc": "http://127.0.0.1:18368/wp-content/themes/skyyrose-flagship-2/assets/sot/brand/skyyrose-logo-still-384w.webp?v=282401d94e26451c830e91c1f231e75a50869333e9afbf88df78842003856884",
+          "dataSrc": null,
+          "role": null,
+          "sku": null,
+          "ownerSku": null,
+          "naturalWidth": 179,
+          "naturalHeight": 134,
+          "complete": true,
+          "viewportBoxVisible": true,
+          "visibilityMethod": "BOX_ANCESTOR_STYLES_VIEWPORT_INTERSECTION_NOT_OCCLUSION_PROOF",
+          "packagePath": "assets/sot/brand/skyyrose-logo-still-384w.webp",
+          "packageSourceSha256": "282401d94e26451c830e91c1f231e75a50869333e9afbf88df78842003856884",
+          "bindingMethod": "DOM_URI_TO_VERIFIED_NATIVE_STATIC_SOURCE; not an independent HTTP-body measurement",
+          "declaredRegistryRoles": [
+            "housemark"
+          ],
+          "declaredMasterPath": "assets/sot/brand/skyyrose-logo-still-384w.webp",
+          "declaredMasterSha256": "282401d94e26451c830e91c1f231e75a50869333e9afbf88df78842003856884"
+        },
+        {
+          "tag": "IMG",
+          "className": null,
+          "ownerMediaState": null,
+          "ownerMediaSource": null,
+          "src": null,
+          "currentSrc": null,
+          "dataSrc": null,
+          "role": null,
+          "sku": null,
+          "ownerSku": null,
+          "naturalWidth": 0,
+          "naturalHeight": 0,
+          "complete": true,
+          "viewportBoxVisible": false,
+          "visibilityMethod": "BOX_ANCESTOR_STYLES_VIEWPORT_INTERSECTION_NOT_OCCLUSION_PROOF",
+          "packagePath": null,
+          "packageSourceSha256": null,
+          "bindingMethod": "DOM_URI_TO_VERIFIED_NATIVE_STATIC_SOURCE; not an independent HTTP-body measurement",
+          "declaredRegistryRoles": [],
+          "declaredMasterPath": null,
+          "declaredMasterSha256": null
+        },
+        {
+          "tag": "IMG",
+          "className": null,
+          "ownerMediaState": "admitted",
+          "ownerMediaSource": null,
+          "src": "http://127.0.0.1:18368/wp-content/themes/skyyrose-flagship-2/assets/derived/card-fronts/kids-002-768w.webp?v=d01a75645e901914ef8a27fa9c5cf79a8f2a2197213cb4f5af29e9f3c1d40769",
+          "currentSrc": "http://127.0.0.1:18368/wp-content/themes/skyyrose-flagship-2/assets/derived/card-fronts/kids-002-768w.webp?v=d01a75645e901914ef8a27fa9c5cf79a8f2a2197213cb4f5af29e9f3c1d40769",
+          "dataSrc": null,
+          "role": "collection_hero",
+          "sku": "kids-002",
+          "ownerSku": null,
+          "naturalWidth": 576,
+          "naturalHeight": 720,
+          "complete": true,
+          "viewportBoxVisible": true,
+          "visibilityMethod": "BOX_ANCESTOR_STYLES_VIEWPORT_INTERSECTION_NOT_OCCLUSION_PROOF",
+          "packagePath": "assets/derived/card-fronts/kids-002-768w.webp",
+          "packageSourceSha256": "d01a75645e901914ef8a27fa9c5cf79a8f2a2197213cb4f5af29e9f3c1d40769",
+          "bindingMethod": "DOM_URI_TO_VERIFIED_NATIVE_STATIC_SOURCE; not an independent HTTP-body measurement",
+          "declaredRegistryRoles": [
+            "card_front"
+          ],
+          "declaredMasterPath": "assets/v2-original/products/kids-002.png",
+          "declaredMasterSha256": "d9a0ea0e8bfd7044714f22f04c12a92f7f2fb70ba05c3011d048a7b48e3339f0"
+        },
+        {
+          "tag": "IMG",
+          "className": null,
+          "ownerMediaState": null,
+          "ownerMediaSource": null,
+          "src": "http://127.0.0.1:18368/wp-content/themes/skyyrose-flagship-2/assets/derived/card-fronts/kids-001-768w.webp?v=169506e7d992f42fdf6f699366557a1290e43c69d0fae9abd81b0e372977aa7d",
+          "currentSrc": "http://127.0.0.1:18368/wp-content/themes/skyyrose-flagship-2/assets/derived/card-fronts/kids-001-768w.webp?v=169506e7d992f42fdf6f699366557a1290e43c69d0fae9abd81b0e372977aa7d",
+          "dataSrc": null,
+          "role": "collection_story",
+          "sku": "kids-001",
+          "ownerSku": null,
+          "naturalWidth": 560,
+          "naturalHeight": 839,
+          "complete": true,
+          "viewportBoxVisible": false,
+          "visibilityMethod": "BOX_ANCESTOR_STYLES_VIEWPORT_INTERSECTION_NOT_OCCLUSION_PROOF",
+          "packagePath": "assets/derived/card-fronts/kids-001-768w.webp",
+          "packageSourceSha256": "169506e7d992f42fdf6f699366557a1290e43c69d0fae9abd81b0e372977aa7d",
+          "bindingMethod": "DOM_URI_TO_VERIFIED_NATIVE_STATIC_SOURCE; not an independent HTTP-body measurement",
+          "declaredRegistryRoles": [
+            "card_front",
+            "pdp_on_model_front"
+          ],
+          "declaredMasterPath": "assets/v2-original/products/kids-001.png",
+          "declaredMasterSha256": "0da7f1158e80c738b457b42f132a5ab723c7cee739d588ca9dcea00b404c0f29"
+        },
+        {
+          "tag": "IMG",
+          "className": null,
+          "ownerMediaState": null,
+          "ownerMediaSource": null,
+          "src": null,
+          "currentSrc": null,
+          "dataSrc": null,
+          "role": null,
+          "sku": null,
+          "ownerSku": null,
+          "naturalWidth": 0,
+          "naturalHeight": 0,
+          "complete": true,
+          "viewportBoxVisible": false,
+          "visibilityMethod": "BOX_ANCESTOR_STYLES_VIEWPORT_INTERSECTION_NOT_OCCLUSION_PROOF",
+          "packagePath": null,
+          "packageSourceSha256": null,
+          "bindingMethod": "DOM_URI_TO_VERIFIED_NATIVE_STATIC_SOURCE; not an independent HTTP-body measurement",
+          "declaredRegistryRoles": [],
+          "declaredMasterPath": null,
+          "declaredMasterSha256": null
+        },
+        {
+          "tag": "IMG",
+          "className": null,
+          "ownerMediaState": null,
+          "ownerMediaSource": null,
+          "src": "http://127.0.0.1:18368/wp-content/themes/skyyrose-flagship-2/assets/sot/brand/skyyrose-logo-still-384w.webp?v=282401d94e26451c830e91c1f231e75a50869333e9afbf88df78842003856884",
+          "currentSrc": "http://127.0.0.1:18368/wp-content/themes/skyyrose-flagship-2/assets/sot/brand/skyyrose-logo-still-384w.webp?v=282401d94e26451c830e91c1f231e75a50869333e9afbf88df78842003856884",
+          "dataSrc": null,
+          "role": null,
+          "sku": null,
+          "ownerSku": null,
+          "naturalWidth": 179,
+          "naturalHeight": 134,
+          "complete": true,
+          "viewportBoxVisible": false,
+          "visibilityMethod": "BOX_ANCESTOR_STYLES_VIEWPORT_INTERSECTION_NOT_OCCLUSION_PROOF",
+          "packagePath": "assets/sot/brand/skyyrose-logo-still-384w.webp",
+          "packageSourceSha256": "282401d94e26451c830e91c1f231e75a50869333e9afbf88df78842003856884",
+          "bindingMethod": "DOM_URI_TO_VERIFIED_NATIVE_STATIC_SOURCE; not an independent HTTP-body measurement",
+          "declaredRegistryRoles": [
+            "housemark"
+          ],
+          "declaredMasterPath": "assets/sot/brand/skyyrose-logo-still-384w.webp",
+          "declaredMasterSha256": "282401d94e26451c830e91c1f231e75a50869333e9afbf88df78842003856884"
+        }
+      ],
+      "preloads": [
+        {
+          "href": "http://127.0.0.1:18368/wp-content/themes/skyyrose-flagship-2/assets/derived/card-fronts/kids-002-768w.webp?v=d01a75645e901914ef8a27fa9c5cf79a8f2a2197213cb4f5af29e9f3c1d40769",
+          "as": "image",
+          "media": null,
+          "imagesrcset": "http://127.0.0.1:18368/wp-content/themes/skyyrose-flagship-2/assets/derived/card-fronts/kids-002-160w.webp?v=7b4d2dd23a74b5bbd49ad8382acc84cb0baac3006e46490df1e0e8e08cf16a72 160w, http://127.0.0.1:18368/wp-content/themes/skyyrose-flagship-2/assets/derived/card-fronts/kids-002-320w.webp?v=5c2851eb79062c12d91508f01a13343dc6075a2742450f998c124078e31b130e 320w, http://127.0.0.1:18368/wp-content/themes/skyyrose-flagship-2/assets/derived/card-fronts/kids-002-480w.webp?v=20b0d5e61d0d611a6261dd562588c44221bc0f30da6bae213ef6e8e88be975cb 480w, http://127.0.0.1:18368/wp-content/themes/skyyrose-flagship-2/assets/derived/card-fronts/kids-002-768w.webp?v=d01a75645e901914ef8a27fa9c5cf79a8f2a2197213cb4f5af29e9f3c1d40769 768w, http://127.0.0.1:18368/wp-content/themes/skyyrose-flagship-2/assets/derived/card-fronts/kids-002-1024w.webp?v=5f1343d00517daa68d3f5864b3a72fa6b818459383314dd783b4993517661205 1024w, http://127.0.0.1:18368/wp-content/themes/skyyrose-flagship-2/assets/derived/card-fronts/kids-002-1280w.webp?v=fd61340b74f7a87ea3a61e6ad698e463abbb84c4896ec62c381a69fad30b8bb5 1280w, http://127.0.0.1:18368/wp-content/themes/skyyrose-flagship-2/assets/derived/card-fronts/kids-002-1536w.webp?v=5b3e78d937a0e6a497259c214752fe8f966f87b8d8548f412740bb63c76d0dce 1536w, http://127.0.0.1:18368/wp-content/themes/skyyrose-flagship-2/assets/derived/card-fronts/kids-002-1792w.webp?v=08fef35fdb64e418ea051e8b986c1fe7e71499556ed17218a38c63b608f5f3fd 1792w",
+          "scope": "DECLARED_PRELOAD_ONLY_NOT_RENDERED_USAGE"
+        }
+      ],
+      "kids_arrival_independent_body_observation": {
+        "src": "http://127.0.0.1:18368/wp-content/themes/skyyrose-flagship-2/assets/derived/card-fronts/kids-002-768w.webp?v=d01a75645e901914ef8a27fa9c5cf79a8f2a2197213cb4f5af29e9f3c1d40769",
+        "width": 576,
+        "height": 720,
+        "fit": "contain",
+        "rect": {
+          "width": 512,
+          "height": 630
+        },
+        "packageSha256": "d01a75645e901914ef8a27fa9c5cf79a8f2a2197213cb4f5af29e9f3c1d40769",
+        "observedSha256": "d01a75645e901914ef8a27fa9c5cf79a8f2a2197213cb4f5af29e9f3c1d40769"
+      }
+    },
+    {
+      "surface": "kids",
+      "width": 390,
+      "reducedMotion": "reduce",
+      "contextOrdinal": 6,
+      "url": "http://127.0.0.1:18368/?page_id=22",
+      "mediaCensus": [
+        {
+          "tag": "IMG",
+          "className": "sr2-header__brand-mark",
+          "ownerMediaState": null,
+          "ownerMediaSource": null,
+          "src": "http://127.0.0.1:18368/wp-content/themes/skyyrose-flagship-2/assets/sot/brand/skyyrose-logo-still-384w.webp?v=282401d94e26451c830e91c1f231e75a50869333e9afbf88df78842003856884",
+          "currentSrc": "http://127.0.0.1:18368/wp-content/themes/skyyrose-flagship-2/assets/sot/brand/skyyrose-logo-still-384w.webp?v=282401d94e26451c830e91c1f231e75a50869333e9afbf88df78842003856884",
+          "dataSrc": null,
+          "role": null,
+          "sku": null,
+          "ownerSku": null,
+          "naturalWidth": 179,
+          "naturalHeight": 134,
+          "complete": true,
+          "viewportBoxVisible": true,
+          "visibilityMethod": "BOX_ANCESTOR_STYLES_VIEWPORT_INTERSECTION_NOT_OCCLUSION_PROOF",
+          "packagePath": "assets/sot/brand/skyyrose-logo-still-384w.webp",
+          "packageSourceSha256": "282401d94e26451c830e91c1f231e75a50869333e9afbf88df78842003856884",
+          "bindingMethod": "DOM_URI_TO_VERIFIED_NATIVE_STATIC_SOURCE; not an independent HTTP-body measurement",
+          "declaredRegistryRoles": [
+            "housemark"
+          ],
+          "declaredMasterPath": "assets/sot/brand/skyyrose-logo-still-384w.webp",
+          "declaredMasterSha256": "282401d94e26451c830e91c1f231e75a50869333e9afbf88df78842003856884"
+        },
+        {
+          "tag": "IMG",
+          "className": null,
+          "ownerMediaState": null,
+          "ownerMediaSource": null,
+          "src": null,
+          "currentSrc": null,
+          "dataSrc": null,
+          "role": null,
+          "sku": null,
+          "ownerSku": null,
+          "naturalWidth": 0,
+          "naturalHeight": 0,
+          "complete": true,
+          "viewportBoxVisible": false,
+          "visibilityMethod": "BOX_ANCESTOR_STYLES_VIEWPORT_INTERSECTION_NOT_OCCLUSION_PROOF",
+          "packagePath": null,
+          "packageSourceSha256": null,
+          "bindingMethod": "DOM_URI_TO_VERIFIED_NATIVE_STATIC_SOURCE; not an independent HTTP-body measurement",
+          "declaredRegistryRoles": [],
+          "declaredMasterPath": null,
+          "declaredMasterSha256": null
+        },
+        {
+          "tag": "IMG",
+          "className": null,
+          "ownerMediaState": "admitted",
+          "ownerMediaSource": null,
+          "src": "http://127.0.0.1:18368/wp-content/themes/skyyrose-flagship-2/assets/derived/card-fronts/kids-002-768w.webp?v=d01a75645e901914ef8a27fa9c5cf79a8f2a2197213cb4f5af29e9f3c1d40769",
+          "currentSrc": "http://127.0.0.1:18368/wp-content/themes/skyyrose-flagship-2/assets/derived/card-fronts/kids-002-480w.webp?v=20b0d5e61d0d611a6261dd562588c44221bc0f30da6bae213ef6e8e88be975cb",
+          "dataSrc": null,
+          "role": "collection_hero",
+          "sku": "kids-002",
+          "ownerSku": null,
+          "naturalWidth": 358,
+          "naturalHeight": 447,
+          "complete": true,
+          "viewportBoxVisible": true,
+          "visibilityMethod": "BOX_ANCESTOR_STYLES_VIEWPORT_INTERSECTION_NOT_OCCLUSION_PROOF",
+          "packagePath": "assets/derived/card-fronts/kids-002-480w.webp",
+          "packageSourceSha256": "20b0d5e61d0d611a6261dd562588c44221bc0f30da6bae213ef6e8e88be975cb",
+          "bindingMethod": "DOM_URI_TO_VERIFIED_NATIVE_STATIC_SOURCE; not an independent HTTP-body measurement",
+          "declaredRegistryRoles": [
+            "card_front"
+          ],
+          "declaredMasterPath": "assets/v2-original/products/kids-002.png",
+          "declaredMasterSha256": "d9a0ea0e8bfd7044714f22f04c12a92f7f2fb70ba05c3011d048a7b48e3339f0"
+        },
+        {
+          "tag": "IMG",
+          "className": null,
+          "ownerMediaState": null,
+          "ownerMediaSource": null,
+          "src": "http://127.0.0.1:18368/wp-content/themes/skyyrose-flagship-2/assets/derived/card-fronts/kids-001-768w.webp?v=169506e7d992f42fdf6f699366557a1290e43c69d0fae9abd81b0e372977aa7d",
+          "currentSrc": "http://127.0.0.1:18368/wp-content/themes/skyyrose-flagship-2/assets/derived/card-fronts/kids-001-480w.webp?v=58dda702ab9f2740466ec8144d5bc296cf26334f55803108de1bd33126e4b794",
+          "dataSrc": null,
+          "role": "collection_story",
+          "sku": "kids-001",
+          "ownerSku": null,
+          "naturalWidth": 358,
+          "naturalHeight": 537,
+          "complete": true,
+          "viewportBoxVisible": false,
+          "visibilityMethod": "BOX_ANCESTOR_STYLES_VIEWPORT_INTERSECTION_NOT_OCCLUSION_PROOF",
+          "packagePath": "assets/derived/card-fronts/kids-001-480w.webp",
+          "packageSourceSha256": "58dda702ab9f2740466ec8144d5bc296cf26334f55803108de1bd33126e4b794",
+          "bindingMethod": "DOM_URI_TO_VERIFIED_NATIVE_STATIC_SOURCE; not an independent HTTP-body measurement",
+          "declaredRegistryRoles": [
+            "card_front",
+            "pdp_on_model_front"
+          ],
+          "declaredMasterPath": "assets/v2-original/products/kids-001.png",
+          "declaredMasterSha256": "0da7f1158e80c738b457b42f132a5ab723c7cee739d588ca9dcea00b404c0f29"
+        },
+        {
+          "tag": "IMG",
+          "className": null,
+          "ownerMediaState": null,
+          "ownerMediaSource": null,
+          "src": null,
+          "currentSrc": null,
+          "dataSrc": null,
+          "role": null,
+          "sku": null,
+          "ownerSku": null,
+          "naturalWidth": 0,
+          "naturalHeight": 0,
+          "complete": true,
+          "viewportBoxVisible": false,
+          "visibilityMethod": "BOX_ANCESTOR_STYLES_VIEWPORT_INTERSECTION_NOT_OCCLUSION_PROOF",
+          "packagePath": null,
+          "packageSourceSha256": null,
+          "bindingMethod": "DOM_URI_TO_VERIFIED_NATIVE_STATIC_SOURCE; not an independent HTTP-body measurement",
+          "declaredRegistryRoles": [],
+          "declaredMasterPath": null,
+          "declaredMasterSha256": null
+        },
+        {
+          "tag": "IMG",
+          "className": null,
+          "ownerMediaState": null,
+          "ownerMediaSource": null,
+          "src": "http://127.0.0.1:18368/wp-content/themes/skyyrose-flagship-2/assets/sot/brand/skyyrose-logo-still-384w.webp?v=282401d94e26451c830e91c1f231e75a50869333e9afbf88df78842003856884",
+          "currentSrc": "http://127.0.0.1:18368/wp-content/themes/skyyrose-flagship-2/assets/sot/brand/skyyrose-logo-still-384w.webp?v=282401d94e26451c830e91c1f231e75a50869333e9afbf88df78842003856884",
+          "dataSrc": null,
+          "role": null,
+          "sku": null,
+          "ownerSku": null,
+          "naturalWidth": 179,
+          "naturalHeight": 134,
+          "complete": true,
+          "viewportBoxVisible": false,
+          "visibilityMethod": "BOX_ANCESTOR_STYLES_VIEWPORT_INTERSECTION_NOT_OCCLUSION_PROOF",
+          "packagePath": "assets/sot/brand/skyyrose-logo-still-384w.webp",
+          "packageSourceSha256": "282401d94e26451c830e91c1f231e75a50869333e9afbf88df78842003856884",
+          "bindingMethod": "DOM_URI_TO_VERIFIED_NATIVE_STATIC_SOURCE; not an independent HTTP-body measurement",
+          "declaredRegistryRoles": [
+            "housemark"
+          ],
+          "declaredMasterPath": "assets/sot/brand/skyyrose-logo-still-384w.webp",
+          "declaredMasterSha256": "282401d94e26451c830e91c1f231e75a50869333e9afbf88df78842003856884"
+        }
+      ],
+      "preloads": [
+        {
+          "href": "http://127.0.0.1:18368/wp-content/themes/skyyrose-flagship-2/assets/derived/card-fronts/kids-002-768w.webp?v=d01a75645e901914ef8a27fa9c5cf79a8f2a2197213cb4f5af29e9f3c1d40769",
+          "as": "image",
+          "media": null,
+          "imagesrcset": "http://127.0.0.1:18368/wp-content/themes/skyyrose-flagship-2/assets/derived/card-fronts/kids-002-160w.webp?v=7b4d2dd23a74b5bbd49ad8382acc84cb0baac3006e46490df1e0e8e08cf16a72 160w, http://127.0.0.1:18368/wp-content/themes/skyyrose-flagship-2/assets/derived/card-fronts/kids-002-320w.webp?v=5c2851eb79062c12d91508f01a13343dc6075a2742450f998c124078e31b130e 320w, http://127.0.0.1:18368/wp-content/themes/skyyrose-flagship-2/assets/derived/card-fronts/kids-002-480w.webp?v=20b0d5e61d0d611a6261dd562588c44221bc0f30da6bae213ef6e8e88be975cb 480w, http://127.0.0.1:18368/wp-content/themes/skyyrose-flagship-2/assets/derived/card-fronts/kids-002-768w.webp?v=d01a75645e901914ef8a27fa9c5cf79a8f2a2197213cb4f5af29e9f3c1d40769 768w, http://127.0.0.1:18368/wp-content/themes/skyyrose-flagship-2/assets/derived/card-fronts/kids-002-1024w.webp?v=5f1343d00517daa68d3f5864b3a72fa6b818459383314dd783b4993517661205 1024w, http://127.0.0.1:18368/wp-content/themes/skyyrose-flagship-2/assets/derived/card-fronts/kids-002-1280w.webp?v=fd61340b74f7a87ea3a61e6ad698e463abbb84c4896ec62c381a69fad30b8bb5 1280w, http://127.0.0.1:18368/wp-content/themes/skyyrose-flagship-2/assets/derived/card-fronts/kids-002-1536w.webp?v=5b3e78d937a0e6a497259c214752fe8f966f87b8d8548f412740bb63c76d0dce 1536w, http://127.0.0.1:18368/wp-content/themes/skyyrose-flagship-2/assets/derived/card-fronts/kids-002-1792w.webp?v=08fef35fdb64e418ea051e8b986c1fe7e71499556ed17218a38c63b608f5f3fd 1792w",
+          "scope": "DECLARED_PRELOAD_ONLY_NOT_RENDERED_USAGE"
+        }
+      ],
+      "kids_arrival_independent_body_observation": {
+        "src": "http://127.0.0.1:18368/wp-content/themes/skyyrose-flagship-2/assets/derived/card-fronts/kids-002-480w.webp?v=20b0d5e61d0d611a6261dd562588c44221bc0f30da6bae213ef6e8e88be975cb",
+        "width": 358,
+        "height": 447,
+        "fit": "contain",
+        "rect": {
+          "width": 358,
+          "height": 438.875
+        },
+        "packageSha256": "20b0d5e61d0d611a6261dd562588c44221bc0f30da6bae213ef6e8e88be975cb",
+        "observedSha256": "20b0d5e61d0d611a6261dd562588c44221bc0f30da6bae213ef6e8e88be975cb"
+      }
+    },
+    {
+      "surface": "pdp",
+      "width": 1440,
+      "reducedMotion": "reduce",
+      "contextOrdinal": 7,
+      "url": "http://127.0.0.1:18368/?post_type=product&p=13",
+      "mediaCensus": [
+        {
+          "tag": "IMG",
+          "className": "sr2-header__brand-mark",
+          "ownerMediaState": null,
+          "ownerMediaSource": null,
+          "src": "http://127.0.0.1:18368/wp-content/themes/skyyrose-flagship-2/assets/sot/brand/skyyrose-logo-still-384w.webp?v=282401d94e26451c830e91c1f231e75a50869333e9afbf88df78842003856884",
+          "currentSrc": "http://127.0.0.1:18368/wp-content/themes/skyyrose-flagship-2/assets/sot/brand/skyyrose-logo-still-384w.webp?v=282401d94e26451c830e91c1f231e75a50869333e9afbf88df78842003856884",
+          "dataSrc": null,
+          "role": null,
+          "sku": null,
+          "ownerSku": null,
+          "naturalWidth": 179,
+          "naturalHeight": 134,
+          "complete": true,
+          "viewportBoxVisible": true,
+          "visibilityMethod": "BOX_ANCESTOR_STYLES_VIEWPORT_INTERSECTION_NOT_OCCLUSION_PROOF",
+          "packagePath": "assets/sot/brand/skyyrose-logo-still-384w.webp",
+          "packageSourceSha256": "282401d94e26451c830e91c1f231e75a50869333e9afbf88df78842003856884",
+          "bindingMethod": "DOM_URI_TO_VERIFIED_NATIVE_STATIC_SOURCE; not an independent HTTP-body measurement",
+          "declaredRegistryRoles": [
+            "housemark"
+          ],
+          "declaredMasterPath": "assets/sot/brand/skyyrose-logo-still-384w.webp",
+          "declaredMasterSha256": "282401d94e26451c830e91c1f231e75a50869333e9afbf88df78842003856884"
+        },
+        {
+          "tag": "IMG",
+          "className": null,
+          "ownerMediaState": null,
+          "ownerMediaSource": null,
+          "src": null,
+          "currentSrc": null,
+          "dataSrc": null,
+          "role": null,
+          "sku": null,
+          "ownerSku": null,
+          "naturalWidth": 0,
+          "naturalHeight": 0,
+          "complete": true,
+          "viewportBoxVisible": false,
+          "visibilityMethod": "BOX_ANCESTOR_STYLES_VIEWPORT_INTERSECTION_NOT_OCCLUSION_PROOF",
+          "packagePath": null,
+          "packageSourceSha256": null,
+          "bindingMethod": "DOM_URI_TO_VERIFIED_NATIVE_STATIC_SOURCE; not an independent HTTP-body measurement",
+          "declaredRegistryRoles": [],
+          "declaredMasterPath": null,
+          "declaredMasterSha256": null
+        },
+        {
+          "tag": "IMG",
+          "className": "wp-post-image",
+          "ownerMediaState": "v2-original",
+          "ownerMediaSource": null,
+          "src": "http://127.0.0.1:18368/wp-content/themes/skyyrose-flagship-2/assets/derived/card-fronts/br-001-768w.webp?v=3029deeabd79840b15534297227a146fb8bc82e4847900396031e79301e62003",
+          "currentSrc": "http://127.0.0.1:18368/wp-content/themes/skyyrose-flagship-2/assets/derived/card-fronts/br-001-480w.webp?v=d4c205f0fa4ed9216e71ba556ccbf69851a52a496bcf2990da25d507ad5adb39",
+          "dataSrc": "http://127.0.0.1:18368/wp-content/themes/skyyrose-flagship-2/assets/v2-original/products/br-001.png?v=ba299cdac93d656ae08dba9c9d67f3c9b86e3abd4c8494a098ddfdf107a24f60",
+          "role": null,
+          "sku": null,
+          "ownerSku": null,
+          "naturalWidth": 384,
+          "naturalHeight": 576,
+          "complete": true,
+          "viewportBoxVisible": true,
+          "visibilityMethod": "BOX_ANCESTOR_STYLES_VIEWPORT_INTERSECTION_NOT_OCCLUSION_PROOF",
+          "packagePath": "assets/derived/card-fronts/br-001-480w.webp",
+          "packageSourceSha256": "d4c205f0fa4ed9216e71ba556ccbf69851a52a496bcf2990da25d507ad5adb39",
+          "bindingMethod": "DOM_URI_TO_VERIFIED_NATIVE_STATIC_SOURCE; not an independent HTTP-body measurement",
+          "declaredRegistryRoles": [
+            "card_front",
+            "pdp_on_model_front"
+          ],
+          "declaredMasterPath": "assets/v2-original/products/br-001.png",
+          "declaredMasterSha256": "ba299cdac93d656ae08dba9c9d67f3c9b86e3abd4c8494a098ddfdf107a24f60"
+        },
+        {
+          "tag": "SOURCE",
+          "className": null,
+          "ownerMediaState": null,
+          "ownerMediaSource": null,
+          "src": null,
+          "currentSrc": null,
+          "dataSrc": null,
+          "role": null,
+          "sku": null,
+          "ownerSku": null,
+          "naturalWidth": 0,
+          "naturalHeight": 0,
+          "complete": false,
+          "viewportBoxVisible": false,
+          "visibilityMethod": "BOX_ANCESTOR_STYLES_VIEWPORT_INTERSECTION_NOT_OCCLUSION_PROOF",
+          "packagePath": null,
+          "packageSourceSha256": null,
+          "bindingMethod": "DOM_URI_TO_VERIFIED_NATIVE_STATIC_SOURCE; not an independent HTTP-body measurement",
+          "declaredRegistryRoles": [],
+          "declaredMasterPath": null,
+          "declaredMasterSha256": null
+        },
+        {
+          "tag": "SOURCE",
+          "className": null,
+          "ownerMediaState": null,
+          "ownerMediaSource": null,
+          "src": null,
+          "currentSrc": null,
+          "dataSrc": null,
+          "role": null,
+          "sku": null,
+          "ownerSku": null,
+          "naturalWidth": 0,
+          "naturalHeight": 0,
+          "complete": false,
+          "viewportBoxVisible": false,
+          "visibilityMethod": "BOX_ANCESTOR_STYLES_VIEWPORT_INTERSECTION_NOT_OCCLUSION_PROOF",
+          "packagePath": null,
+          "packageSourceSha256": null,
+          "bindingMethod": "DOM_URI_TO_VERIFIED_NATIVE_STATIC_SOURCE; not an independent HTTP-body measurement",
+          "declaredRegistryRoles": [],
+          "declaredMasterPath": null,
+          "declaredMasterSha256": null
+        },
+        {
+          "tag": "IMG",
+          "className": null,
+          "ownerMediaState": null,
+          "ownerMediaSource": null,
+          "src": null,
+          "currentSrc": null,
+          "dataSrc": null,
+          "role": null,
+          "sku": null,
+          "ownerSku": null,
+          "naturalWidth": 0,
+          "naturalHeight": 0,
+          "complete": true,
+          "viewportBoxVisible": false,
+          "visibilityMethod": "BOX_ANCESTOR_STYLES_VIEWPORT_INTERSECTION_NOT_OCCLUSION_PROOF",
+          "packagePath": null,
+          "packageSourceSha256": null,
+          "bindingMethod": "DOM_URI_TO_VERIFIED_NATIVE_STATIC_SOURCE; not an independent HTTP-body measurement",
+          "declaredRegistryRoles": [],
+          "declaredMasterPath": null,
+          "declaredMasterSha256": null
+        },
+        {
+          "tag": "IMG",
+          "className": null,
+          "ownerMediaState": null,
+          "ownerMediaSource": null,
+          "src": "http://127.0.0.1:18368/wp-content/themes/skyyrose-flagship-2/assets/sot/brand/skyyrose-logo-still-384w.webp?v=282401d94e26451c830e91c1f231e75a50869333e9afbf88df78842003856884",
+          "currentSrc": "http://127.0.0.1:18368/wp-content/themes/skyyrose-flagship-2/assets/sot/brand/skyyrose-logo-still-384w.webp?v=282401d94e26451c830e91c1f231e75a50869333e9afbf88df78842003856884",
+          "dataSrc": null,
+          "role": null,
+          "sku": null,
+          "ownerSku": null,
+          "naturalWidth": 179,
+          "naturalHeight": 134,
+          "complete": true,
+          "viewportBoxVisible": false,
+          "visibilityMethod": "BOX_ANCESTOR_STYLES_VIEWPORT_INTERSECTION_NOT_OCCLUSION_PROOF",
+          "packagePath": "assets/sot/brand/skyyrose-logo-still-384w.webp",
+          "packageSourceSha256": "282401d94e26451c830e91c1f231e75a50869333e9afbf88df78842003856884",
+          "bindingMethod": "DOM_URI_TO_VERIFIED_NATIVE_STATIC_SOURCE; not an independent HTTP-body measurement",
+          "declaredRegistryRoles": [
+            "housemark"
+          ],
+          "declaredMasterPath": "assets/sot/brand/skyyrose-logo-still-384w.webp",
+          "declaredMasterSha256": "282401d94e26451c830e91c1f231e75a50869333e9afbf88df78842003856884"
+        }
+      ],
+      "preloads": [
+        {
+          "href": "http://127.0.0.1:18368/wp-content/themes/skyyrose-flagship-2/assets/derived/card-fronts/br-001-768w.webp?v=3029deeabd79840b15534297227a146fb8bc82e4847900396031e79301e62003",
+          "as": "image",
+          "media": null,
+          "imagesrcset": "http://127.0.0.1:18368/wp-content/themes/skyyrose-flagship-2/assets/derived/card-fronts/br-001-160w.webp?v=ecffbf712e3216138fa4926a887874c2d484c1dc483dc1a355acc70cd9b4f202 160w, http://127.0.0.1:18368/wp-content/themes/skyyrose-flagship-2/assets/derived/card-fronts/br-001-320w.webp?v=a334e05ce1e17dc7a049b6dd6fb647f2dcb8da79ee4bd3658b06f615a9d8e697 320w, http://127.0.0.1:18368/wp-content/themes/skyyrose-flagship-2/assets/derived/card-fronts/br-001-480w.webp?v=d4c205f0fa4ed9216e71ba556ccbf69851a52a496bcf2990da25d507ad5adb39 480w, http://127.0.0.1:18368/wp-content/themes/skyyrose-flagship-2/assets/derived/card-fronts/br-001-768w.webp?v=3029deeabd79840b15534297227a146fb8bc82e4847900396031e79301e62003 768w, http://127.0.0.1:18368/wp-content/themes/skyyrose-flagship-2/assets/derived/card-fronts/br-001-1024w.webp?v=08ebb2c97b4b93d3e8234aa07e30ea9df77deca7be2eeef2908d84b9a48e4433 1024w",
+          "scope": "DECLARED_PRELOAD_ONLY_NOT_RENDERED_USAGE"
+        }
+      ]
+    },
+    {
+      "surface": "pdp",
+      "width": 390,
+      "reducedMotion": "reduce",
+      "contextOrdinal": 8,
+      "url": "http://127.0.0.1:18368/?post_type=product&p=13",
+      "mediaCensus": [
+        {
+          "tag": "IMG",
+          "className": "sr2-header__brand-mark",
+          "ownerMediaState": null,
+          "ownerMediaSource": null,
+          "src": "http://127.0.0.1:18368/wp-content/themes/skyyrose-flagship-2/assets/sot/brand/skyyrose-logo-still-384w.webp?v=282401d94e26451c830e91c1f231e75a50869333e9afbf88df78842003856884",
+          "currentSrc": "http://127.0.0.1:18368/wp-content/themes/skyyrose-flagship-2/assets/sot/brand/skyyrose-logo-still-384w.webp?v=282401d94e26451c830e91c1f231e75a50869333e9afbf88df78842003856884",
+          "dataSrc": null,
+          "role": null,
+          "sku": null,
+          "ownerSku": null,
+          "naturalWidth": 179,
+          "naturalHeight": 134,
+          "complete": true,
+          "viewportBoxVisible": true,
+          "visibilityMethod": "BOX_ANCESTOR_STYLES_VIEWPORT_INTERSECTION_NOT_OCCLUSION_PROOF",
+          "packagePath": "assets/sot/brand/skyyrose-logo-still-384w.webp",
+          "packageSourceSha256": "282401d94e26451c830e91c1f231e75a50869333e9afbf88df78842003856884",
+          "bindingMethod": "DOM_URI_TO_VERIFIED_NATIVE_STATIC_SOURCE; not an independent HTTP-body measurement",
+          "declaredRegistryRoles": [
+            "housemark"
+          ],
+          "declaredMasterPath": "assets/sot/brand/skyyrose-logo-still-384w.webp",
+          "declaredMasterSha256": "282401d94e26451c830e91c1f231e75a50869333e9afbf88df78842003856884"
+        },
+        {
+          "tag": "IMG",
+          "className": null,
+          "ownerMediaState": null,
+          "ownerMediaSource": null,
+          "src": null,
+          "currentSrc": null,
+          "dataSrc": null,
+          "role": null,
+          "sku": null,
+          "ownerSku": null,
+          "naturalWidth": 0,
+          "naturalHeight": 0,
+          "complete": true,
+          "viewportBoxVisible": false,
+          "visibilityMethod": "BOX_ANCESTOR_STYLES_VIEWPORT_INTERSECTION_NOT_OCCLUSION_PROOF",
+          "packagePath": null,
+          "packageSourceSha256": null,
+          "bindingMethod": "DOM_URI_TO_VERIFIED_NATIVE_STATIC_SOURCE; not an independent HTTP-body measurement",
+          "declaredRegistryRoles": [],
+          "declaredMasterPath": null,
+          "declaredMasterSha256": null
+        },
+        {
+          "tag": "IMG",
+          "className": "wp-post-image",
+          "ownerMediaState": "v2-original",
+          "ownerMediaSource": null,
+          "src": "http://127.0.0.1:18368/wp-content/themes/skyyrose-flagship-2/assets/derived/card-fronts/br-001-768w.webp?v=3029deeabd79840b15534297227a146fb8bc82e4847900396031e79301e62003",
+          "currentSrc": "http://127.0.0.1:18368/wp-content/themes/skyyrose-flagship-2/assets/derived/card-fronts/br-001-320w.webp?v=a334e05ce1e17dc7a049b6dd6fb647f2dcb8da79ee4bd3658b06f615a9d8e697",
+          "dataSrc": "http://127.0.0.1:18368/wp-content/themes/skyyrose-flagship-2/assets/v2-original/products/br-001.png?v=ba299cdac93d656ae08dba9c9d67f3c9b86e3abd4c8494a098ddfdf107a24f60",
+          "role": null,
+          "sku": null,
+          "ownerSku": null,
+          "naturalWidth": 292,
+          "naturalHeight": 438,
+          "complete": true,
+          "viewportBoxVisible": true,
+          "visibilityMethod": "BOX_ANCESTOR_STYLES_VIEWPORT_INTERSECTION_NOT_OCCLUSION_PROOF",
+          "packagePath": "assets/derived/card-fronts/br-001-320w.webp",
+          "packageSourceSha256": "a334e05ce1e17dc7a049b6dd6fb647f2dcb8da79ee4bd3658b06f615a9d8e697",
+          "bindingMethod": "DOM_URI_TO_VERIFIED_NATIVE_STATIC_SOURCE; not an independent HTTP-body measurement",
+          "declaredRegistryRoles": [
+            "card_front",
+            "pdp_on_model_front"
+          ],
+          "declaredMasterPath": "assets/v2-original/products/br-001.png",
+          "declaredMasterSha256": "ba299cdac93d656ae08dba9c9d67f3c9b86e3abd4c8494a098ddfdf107a24f60"
+        },
+        {
+          "tag": "SOURCE",
+          "className": null,
+          "ownerMediaState": null,
+          "ownerMediaSource": null,
+          "src": null,
+          "currentSrc": null,
+          "dataSrc": null,
+          "role": null,
+          "sku": null,
+          "ownerSku": null,
+          "naturalWidth": 0,
+          "naturalHeight": 0,
+          "complete": false,
+          "viewportBoxVisible": false,
+          "visibilityMethod": "BOX_ANCESTOR_STYLES_VIEWPORT_INTERSECTION_NOT_OCCLUSION_PROOF",
+          "packagePath": null,
+          "packageSourceSha256": null,
+          "bindingMethod": "DOM_URI_TO_VERIFIED_NATIVE_STATIC_SOURCE; not an independent HTTP-body measurement",
+          "declaredRegistryRoles": [],
+          "declaredMasterPath": null,
+          "declaredMasterSha256": null
+        },
+        {
+          "tag": "SOURCE",
+          "className": null,
+          "ownerMediaState": null,
+          "ownerMediaSource": null,
+          "src": null,
+          "currentSrc": null,
+          "dataSrc": null,
+          "role": null,
+          "sku": null,
+          "ownerSku": null,
+          "naturalWidth": 0,
+          "naturalHeight": 0,
+          "complete": false,
+          "viewportBoxVisible": false,
+          "visibilityMethod": "BOX_ANCESTOR_STYLES_VIEWPORT_INTERSECTION_NOT_OCCLUSION_PROOF",
+          "packagePath": null,
+          "packageSourceSha256": null,
+          "bindingMethod": "DOM_URI_TO_VERIFIED_NATIVE_STATIC_SOURCE; not an independent HTTP-body measurement",
+          "declaredRegistryRoles": [],
+          "declaredMasterPath": null,
+          "declaredMasterSha256": null
+        },
+        {
+          "tag": "IMG",
+          "className": null,
+          "ownerMediaState": null,
+          "ownerMediaSource": null,
+          "src": null,
+          "currentSrc": null,
+          "dataSrc": null,
+          "role": null,
+          "sku": null,
+          "ownerSku": null,
+          "naturalWidth": 0,
+          "naturalHeight": 0,
+          "complete": true,
+          "viewportBoxVisible": false,
+          "visibilityMethod": "BOX_ANCESTOR_STYLES_VIEWPORT_INTERSECTION_NOT_OCCLUSION_PROOF",
+          "packagePath": null,
+          "packageSourceSha256": null,
+          "bindingMethod": "DOM_URI_TO_VERIFIED_NATIVE_STATIC_SOURCE; not an independent HTTP-body measurement",
+          "declaredRegistryRoles": [],
+          "declaredMasterPath": null,
+          "declaredMasterSha256": null
+        },
+        {
+          "tag": "IMG",
+          "className": null,
+          "ownerMediaState": null,
+          "ownerMediaSource": null,
+          "src": "http://127.0.0.1:18368/wp-content/themes/skyyrose-flagship-2/assets/sot/brand/skyyrose-logo-still-384w.webp?v=282401d94e26451c830e91c1f231e75a50869333e9afbf88df78842003856884",
+          "currentSrc": "http://127.0.0.1:18368/wp-content/themes/skyyrose-flagship-2/assets/sot/brand/skyyrose-logo-still-384w.webp?v=282401d94e26451c830e91c1f231e75a50869333e9afbf88df78842003856884",
+          "dataSrc": null,
+          "role": null,
+          "sku": null,
+          "ownerSku": null,
+          "naturalWidth": 179,
+          "naturalHeight": 134,
+          "complete": true,
+          "viewportBoxVisible": false,
+          "visibilityMethod": "BOX_ANCESTOR_STYLES_VIEWPORT_INTERSECTION_NOT_OCCLUSION_PROOF",
+          "packagePath": "assets/sot/brand/skyyrose-logo-still-384w.webp",
+          "packageSourceSha256": "282401d94e26451c830e91c1f231e75a50869333e9afbf88df78842003856884",
+          "bindingMethod": "DOM_URI_TO_VERIFIED_NATIVE_STATIC_SOURCE; not an independent HTTP-body measurement",
+          "declaredRegistryRoles": [
+            "housemark"
+          ],
+          "declaredMasterPath": "assets/sot/brand/skyyrose-logo-still-384w.webp",
+          "declaredMasterSha256": "282401d94e26451c830e91c1f231e75a50869333e9afbf88df78842003856884"
+        }
+      ],
+      "preloads": [
+        {
+          "href": "http://127.0.0.1:18368/wp-content/themes/skyyrose-flagship-2/assets/derived/card-fronts/br-001-768w.webp?v=3029deeabd79840b15534297227a146fb8bc82e4847900396031e79301e62003",
+          "as": "image",
+          "media": null,
+          "imagesrcset": "http://127.0.0.1:18368/wp-content/themes/skyyrose-flagship-2/assets/derived/card-fronts/br-001-160w.webp?v=ecffbf712e3216138fa4926a887874c2d484c1dc483dc1a355acc70cd9b4f202 160w, http://127.0.0.1:18368/wp-content/themes/skyyrose-flagship-2/assets/derived/card-fronts/br-001-320w.webp?v=a334e05ce1e17dc7a049b6dd6fb647f2dcb8da79ee4bd3658b06f615a9d8e697 320w, http://127.0.0.1:18368/wp-content/themes/skyyrose-flagship-2/assets/derived/card-fronts/br-001-480w.webp?v=d4c205f0fa4ed9216e71ba556ccbf69851a52a496bcf2990da25d507ad5adb39 480w, http://127.0.0.1:18368/wp-content/themes/skyyrose-flagship-2/assets/derived/card-fronts/br-001-768w.webp?v=3029deeabd79840b15534297227a146fb8bc82e4847900396031e79301e62003 768w, http://127.0.0.1:18368/wp-content/themes/skyyrose-flagship-2/assets/derived/card-fronts/br-001-1024w.webp?v=08ebb2c97b4b93d3e8234aa07e30ea9df77deca7be2eeef2908d84b9a48e4433 1024w",
+          "scope": "DECLARED_PRELOAD_ONLY_NOT_RENDERED_USAGE"
+        }
+      ]
+    },
+    {
+      "surface": "kids-fallback",
+      "width": 1440,
+      "reducedMotion": "reduce",
+      "contextOrdinal": 9,
+      "url": "http://127.0.0.1:18368/?page_id=22",
+      "mediaCensus": [
+        {
+          "tag": "IMG",
+          "className": "sr2-header__brand-mark",
+          "ownerMediaState": null,
+          "ownerMediaSource": null,
+          "src": "http://127.0.0.1:18368/wp-content/themes/skyyrose-flagship-2/assets/sot/brand/skyyrose-logo-still-384w.webp?v=282401d94e26451c830e91c1f231e75a50869333e9afbf88df78842003856884",
+          "currentSrc": "http://127.0.0.1:18368/wp-content/themes/skyyrose-flagship-2/assets/sot/brand/skyyrose-logo-still-384w.webp?v=282401d94e26451c830e91c1f231e75a50869333e9afbf88df78842003856884",
+          "dataSrc": null,
+          "role": null,
+          "sku": null,
+          "ownerSku": null,
+          "naturalWidth": 179,
+          "naturalHeight": 134,
+          "complete": true,
+          "viewportBoxVisible": true,
+          "visibilityMethod": "BOX_ANCESTOR_STYLES_VIEWPORT_INTERSECTION_NOT_OCCLUSION_PROOF",
+          "packagePath": "assets/sot/brand/skyyrose-logo-still-384w.webp",
+          "packageSourceSha256": "282401d94e26451c830e91c1f231e75a50869333e9afbf88df78842003856884",
+          "bindingMethod": "DOM_URI_TO_VERIFIED_NATIVE_STATIC_SOURCE; not an independent HTTP-body measurement",
+          "declaredRegistryRoles": [
+            "housemark"
+          ],
+          "declaredMasterPath": "assets/sot/brand/skyyrose-logo-still-384w.webp",
+          "declaredMasterSha256": "282401d94e26451c830e91c1f231e75a50869333e9afbf88df78842003856884"
+        },
+        {
+          "tag": "IMG",
+          "className": null,
+          "ownerMediaState": null,
+          "ownerMediaSource": null,
+          "src": null,
+          "currentSrc": null,
+          "dataSrc": null,
+          "role": null,
+          "sku": null,
+          "ownerSku": null,
+          "naturalWidth": 0,
+          "naturalHeight": 0,
+          "complete": true,
+          "viewportBoxVisible": false,
+          "visibilityMethod": "BOX_ANCESTOR_STYLES_VIEWPORT_INTERSECTION_NOT_OCCLUSION_PROOF",
+          "packagePath": null,
+          "packageSourceSha256": null,
+          "bindingMethod": "DOM_URI_TO_VERIFIED_NATIVE_STATIC_SOURCE; not an independent HTTP-body measurement",
+          "declaredRegistryRoles": [],
+          "declaredMasterPath": null,
+          "declaredMasterSha256": null
+        },
+        {
+          "tag": "IMG",
+          "className": null,
+          "ownerMediaState": "unavailable",
+          "ownerMediaSource": null,
+          "src": "/synthetic-preview-missing.webp",
+          "currentSrc": "http://127.0.0.1:18368/synthetic-preview-missing.webp",
+          "dataSrc": null,
+          "role": "collection_hero",
+          "sku": "kids-002",
+          "ownerSku": null,
+          "naturalWidth": 0,
+          "naturalHeight": 0,
+          "complete": true,
+          "viewportBoxVisible": false,
+          "visibilityMethod": "BOX_ANCESTOR_STYLES_VIEWPORT_INTERSECTION_NOT_OCCLUSION_PROOF",
+          "packagePath": null,
+          "packageSourceSha256": null,
+          "bindingMethod": "DOM_URI_TO_VERIFIED_NATIVE_STATIC_SOURCE; not an independent HTTP-body measurement",
+          "declaredRegistryRoles": [],
+          "declaredMasterPath": null,
+          "declaredMasterSha256": null
+        },
+        {
+          "tag": "IMG",
+          "className": null,
+          "ownerMediaState": null,
+          "ownerMediaSource": null,
+          "src": "http://127.0.0.1:18368/wp-content/themes/skyyrose-flagship-2/assets/derived/card-fronts/kids-001-768w.webp?v=169506e7d992f42fdf6f699366557a1290e43c69d0fae9abd81b0e372977aa7d",
+          "currentSrc": "http://127.0.0.1:18368/wp-content/themes/skyyrose-flagship-2/assets/derived/card-fronts/kids-001-768w.webp?v=169506e7d992f42fdf6f699366557a1290e43c69d0fae9abd81b0e372977aa7d",
+          "dataSrc": null,
+          "role": "collection_story",
+          "sku": "kids-001",
+          "ownerSku": null,
+          "naturalWidth": 560,
+          "naturalHeight": 839,
+          "complete": true,
+          "viewportBoxVisible": false,
+          "visibilityMethod": "BOX_ANCESTOR_STYLES_VIEWPORT_INTERSECTION_NOT_OCCLUSION_PROOF",
+          "packagePath": "assets/derived/card-fronts/kids-001-768w.webp",
+          "packageSourceSha256": "169506e7d992f42fdf6f699366557a1290e43c69d0fae9abd81b0e372977aa7d",
+          "bindingMethod": "DOM_URI_TO_VERIFIED_NATIVE_STATIC_SOURCE; not an independent HTTP-body measurement",
+          "declaredRegistryRoles": [
+            "card_front",
+            "pdp_on_model_front"
+          ],
+          "declaredMasterPath": "assets/v2-original/products/kids-001.png",
+          "declaredMasterSha256": "0da7f1158e80c738b457b42f132a5ab723c7cee739d588ca9dcea00b404c0f29"
+        },
+        {
+          "tag": "IMG",
+          "className": null,
+          "ownerMediaState": null,
+          "ownerMediaSource": null,
+          "src": null,
+          "currentSrc": null,
+          "dataSrc": null,
+          "role": null,
+          "sku": null,
+          "ownerSku": null,
+          "naturalWidth": 0,
+          "naturalHeight": 0,
+          "complete": true,
+          "viewportBoxVisible": false,
+          "visibilityMethod": "BOX_ANCESTOR_STYLES_VIEWPORT_INTERSECTION_NOT_OCCLUSION_PROOF",
+          "packagePath": null,
+          "packageSourceSha256": null,
+          "bindingMethod": "DOM_URI_TO_VERIFIED_NATIVE_STATIC_SOURCE; not an independent HTTP-body measurement",
+          "declaredRegistryRoles": [],
+          "declaredMasterPath": null,
+          "declaredMasterSha256": null
+        },
+        {
+          "tag": "IMG",
+          "className": null,
+          "ownerMediaState": null,
+          "ownerMediaSource": null,
+          "src": "http://127.0.0.1:18368/wp-content/themes/skyyrose-flagship-2/assets/sot/brand/skyyrose-logo-still-384w.webp?v=282401d94e26451c830e91c1f231e75a50869333e9afbf88df78842003856884",
+          "currentSrc": "http://127.0.0.1:18368/wp-content/themes/skyyrose-flagship-2/assets/sot/brand/skyyrose-logo-still-384w.webp?v=282401d94e26451c830e91c1f231e75a50869333e9afbf88df78842003856884",
+          "dataSrc": null,
+          "role": null,
+          "sku": null,
+          "ownerSku": null,
+          "naturalWidth": 179,
+          "naturalHeight": 134,
+          "complete": true,
+          "viewportBoxVisible": false,
+          "visibilityMethod": "BOX_ANCESTOR_STYLES_VIEWPORT_INTERSECTION_NOT_OCCLUSION_PROOF",
+          "packagePath": "assets/sot/brand/skyyrose-logo-still-384w.webp",
+          "packageSourceSha256": "282401d94e26451c830e91c1f231e75a50869333e9afbf88df78842003856884",
+          "bindingMethod": "DOM_URI_TO_VERIFIED_NATIVE_STATIC_SOURCE; not an independent HTTP-body measurement",
+          "declaredRegistryRoles": [
+            "housemark"
+          ],
+          "declaredMasterPath": "assets/sot/brand/skyyrose-logo-still-384w.webp",
+          "declaredMasterSha256": "282401d94e26451c830e91c1f231e75a50869333e9afbf88df78842003856884"
+        }
+      ],
+      "preloads": [
+        {
+          "href": "http://127.0.0.1:18368/wp-content/themes/skyyrose-flagship-2/assets/derived/card-fronts/kids-002-768w.webp?v=d01a75645e901914ef8a27fa9c5cf79a8f2a2197213cb4f5af29e9f3c1d40769",
+          "as": "image",
+          "media": null,
+          "imagesrcset": "http://127.0.0.1:18368/wp-content/themes/skyyrose-flagship-2/assets/derived/card-fronts/kids-002-160w.webp?v=7b4d2dd23a74b5bbd49ad8382acc84cb0baac3006e46490df1e0e8e08cf16a72 160w, http://127.0.0.1:18368/wp-content/themes/skyyrose-flagship-2/assets/derived/card-fronts/kids-002-320w.webp?v=5c2851eb79062c12d91508f01a13343dc6075a2742450f998c124078e31b130e 320w, http://127.0.0.1:18368/wp-content/themes/skyyrose-flagship-2/assets/derived/card-fronts/kids-002-480w.webp?v=20b0d5e61d0d611a6261dd562588c44221bc0f30da6bae213ef6e8e88be975cb 480w, http://127.0.0.1:18368/wp-content/themes/skyyrose-flagship-2/assets/derived/card-fronts/kids-002-768w.webp?v=d01a75645e901914ef8a27fa9c5cf79a8f2a2197213cb4f5af29e9f3c1d40769 768w, http://127.0.0.1:18368/wp-content/themes/skyyrose-flagship-2/assets/derived/card-fronts/kids-002-1024w.webp?v=5f1343d00517daa68d3f5864b3a72fa6b818459383314dd783b4993517661205 1024w, http://127.0.0.1:18368/wp-content/themes/skyyrose-flagship-2/assets/derived/card-fronts/kids-002-1280w.webp?v=fd61340b74f7a87ea3a61e6ad698e463abbb84c4896ec62c381a69fad30b8bb5 1280w, http://127.0.0.1:18368/wp-content/themes/skyyrose-flagship-2/assets/derived/card-fronts/kids-002-1536w.webp?v=5b3e78d937a0e6a497259c214752fe8f966f87b8d8548f412740bb63c76d0dce 1536w, http://127.0.0.1:18368/wp-content/themes/skyyrose-flagship-2/assets/derived/card-fronts/kids-002-1792w.webp?v=08fef35fdb64e418ea051e8b986c1fe7e71499556ed17218a38c63b608f5f3fd 1792w",
+          "scope": "DECLARED_PRELOAD_ONLY_NOT_RENDERED_USAGE"
+        }
+      ],
+      "kids_arrival_independent_body_observation": {
+        "src": "http://127.0.0.1:18368/wp-content/themes/skyyrose-flagship-2/assets/derived/card-fronts/kids-002-768w.webp?v=d01a75645e901914ef8a27fa9c5cf79a8f2a2197213cb4f5af29e9f3c1d40769",
+        "width": 576,
+        "height": 720,
+        "fit": "contain",
+        "rect": {
+          "width": 512,
+          "height": 630
+        },
+        "packageSha256": "d01a75645e901914ef8a27fa9c5cf79a8f2a2197213cb4f5af29e9f3c1d40769",
+        "observedSha256": "d01a75645e901914ef8a27fa9c5cf79a8f2a2197213cb4f5af29e9f3c1d40769",
+        "observationPhase": "BEFORE_EXPLICIT_FAILURE_CONTROL"
+      }
+    },
+    {
+      "surface": "kids-fallback",
+      "width": 390,
+      "reducedMotion": "reduce",
+      "contextOrdinal": 10,
+      "url": "http://127.0.0.1:18368/?page_id=22",
+      "mediaCensus": [
+        {
+          "tag": "IMG",
+          "className": "sr2-header__brand-mark",
+          "ownerMediaState": null,
+          "ownerMediaSource": null,
+          "src": "http://127.0.0.1:18368/wp-content/themes/skyyrose-flagship-2/assets/sot/brand/skyyrose-logo-still-384w.webp?v=282401d94e26451c830e91c1f231e75a50869333e9afbf88df78842003856884",
+          "currentSrc": "http://127.0.0.1:18368/wp-content/themes/skyyrose-flagship-2/assets/sot/brand/skyyrose-logo-still-384w.webp?v=282401d94e26451c830e91c1f231e75a50869333e9afbf88df78842003856884",
+          "dataSrc": null,
+          "role": null,
+          "sku": null,
+          "ownerSku": null,
+          "naturalWidth": 179,
+          "naturalHeight": 134,
+          "complete": true,
+          "viewportBoxVisible": true,
+          "visibilityMethod": "BOX_ANCESTOR_STYLES_VIEWPORT_INTERSECTION_NOT_OCCLUSION_PROOF",
+          "packagePath": "assets/sot/brand/skyyrose-logo-still-384w.webp",
+          "packageSourceSha256": "282401d94e26451c830e91c1f231e75a50869333e9afbf88df78842003856884",
+          "bindingMethod": "DOM_URI_TO_VERIFIED_NATIVE_STATIC_SOURCE; not an independent HTTP-body measurement",
+          "declaredRegistryRoles": [
+            "housemark"
+          ],
+          "declaredMasterPath": "assets/sot/brand/skyyrose-logo-still-384w.webp",
+          "declaredMasterSha256": "282401d94e26451c830e91c1f231e75a50869333e9afbf88df78842003856884"
+        },
+        {
+          "tag": "IMG",
+          "className": null,
+          "ownerMediaState": null,
+          "ownerMediaSource": null,
+          "src": null,
+          "currentSrc": null,
+          "dataSrc": null,
+          "role": null,
+          "sku": null,
+          "ownerSku": null,
+          "naturalWidth": 0,
+          "naturalHeight": 0,
+          "complete": true,
+          "viewportBoxVisible": false,
+          "visibilityMethod": "BOX_ANCESTOR_STYLES_VIEWPORT_INTERSECTION_NOT_OCCLUSION_PROOF",
+          "packagePath": null,
+          "packageSourceSha256": null,
+          "bindingMethod": "DOM_URI_TO_VERIFIED_NATIVE_STATIC_SOURCE; not an independent HTTP-body measurement",
+          "declaredRegistryRoles": [],
+          "declaredMasterPath": null,
+          "declaredMasterSha256": null
+        },
+        {
+          "tag": "IMG",
+          "className": null,
+          "ownerMediaState": "unavailable",
+          "ownerMediaSource": null,
+          "src": "/synthetic-preview-missing.webp",
+          "currentSrc": "http://127.0.0.1:18368/synthetic-preview-missing.webp",
+          "dataSrc": null,
+          "role": "collection_hero",
+          "sku": "kids-002",
+          "ownerSku": null,
+          "naturalWidth": 0,
+          "naturalHeight": 0,
+          "complete": true,
+          "viewportBoxVisible": false,
+          "visibilityMethod": "BOX_ANCESTOR_STYLES_VIEWPORT_INTERSECTION_NOT_OCCLUSION_PROOF",
+          "packagePath": null,
+          "packageSourceSha256": null,
+          "bindingMethod": "DOM_URI_TO_VERIFIED_NATIVE_STATIC_SOURCE; not an independent HTTP-body measurement",
+          "declaredRegistryRoles": [],
+          "declaredMasterPath": null,
+          "declaredMasterSha256": null
+        },
+        {
+          "tag": "IMG",
+          "className": null,
+          "ownerMediaState": null,
+          "ownerMediaSource": null,
+          "src": "http://127.0.0.1:18368/wp-content/themes/skyyrose-flagship-2/assets/derived/card-fronts/kids-001-768w.webp?v=169506e7d992f42fdf6f699366557a1290e43c69d0fae9abd81b0e372977aa7d",
+          "currentSrc": "http://127.0.0.1:18368/wp-content/themes/skyyrose-flagship-2/assets/derived/card-fronts/kids-001-480w.webp?v=58dda702ab9f2740466ec8144d5bc296cf26334f55803108de1bd33126e4b794",
+          "dataSrc": null,
+          "role": "collection_story",
+          "sku": "kids-001",
+          "ownerSku": null,
+          "naturalWidth": 358,
+          "naturalHeight": 537,
+          "complete": true,
+          "viewportBoxVisible": false,
+          "visibilityMethod": "BOX_ANCESTOR_STYLES_VIEWPORT_INTERSECTION_NOT_OCCLUSION_PROOF",
+          "packagePath": "assets/derived/card-fronts/kids-001-480w.webp",
+          "packageSourceSha256": "58dda702ab9f2740466ec8144d5bc296cf26334f55803108de1bd33126e4b794",
+          "bindingMethod": "DOM_URI_TO_VERIFIED_NATIVE_STATIC_SOURCE; not an independent HTTP-body measurement",
+          "declaredRegistryRoles": [
+            "card_front",
+            "pdp_on_model_front"
+          ],
+          "declaredMasterPath": "assets/v2-original/products/kids-001.png",
+          "declaredMasterSha256": "0da7f1158e80c738b457b42f132a5ab723c7cee739d588ca9dcea00b404c0f29"
+        },
+        {
+          "tag": "IMG",
+          "className": null,
+          "ownerMediaState": null,
+          "ownerMediaSource": null,
+          "src": null,
+          "currentSrc": null,
+          "dataSrc": null,
+          "role": null,
+          "sku": null,
+          "ownerSku": null,
+          "naturalWidth": 0,
+          "naturalHeight": 0,
+          "complete": true,
+          "viewportBoxVisible": false,
+          "visibilityMethod": "BOX_ANCESTOR_STYLES_VIEWPORT_INTERSECTION_NOT_OCCLUSION_PROOF",
+          "packagePath": null,
+          "packageSourceSha256": null,
+          "bindingMethod": "DOM_URI_TO_VERIFIED_NATIVE_STATIC_SOURCE; not an independent HTTP-body measurement",
+          "declaredRegistryRoles": [],
+          "declaredMasterPath": null,
+          "declaredMasterSha256": null
+        },
+        {
+          "tag": "IMG",
+          "className": null,
+          "ownerMediaState": null,
+          "ownerMediaSource": null,
+          "src": "http://127.0.0.1:18368/wp-content/themes/skyyrose-flagship-2/assets/sot/brand/skyyrose-logo-still-384w.webp?v=282401d94e26451c830e91c1f231e75a50869333e9afbf88df78842003856884",
+          "currentSrc": "http://127.0.0.1:18368/wp-content/themes/skyyrose-flagship-2/assets/sot/brand/skyyrose-logo-still-384w.webp?v=282401d94e26451c830e91c1f231e75a50869333e9afbf88df78842003856884",
+          "dataSrc": null,
+          "role": null,
+          "sku": null,
+          "ownerSku": null,
+          "naturalWidth": 179,
+          "naturalHeight": 134,
+          "complete": true,
+          "viewportBoxVisible": false,
+          "visibilityMethod": "BOX_ANCESTOR_STYLES_VIEWPORT_INTERSECTION_NOT_OCCLUSION_PROOF",
+          "packagePath": "assets/sot/brand/skyyrose-logo-still-384w.webp",
+          "packageSourceSha256": "282401d94e26451c830e91c1f231e75a50869333e9afbf88df78842003856884",
+          "bindingMethod": "DOM_URI_TO_VERIFIED_NATIVE_STATIC_SOURCE; not an independent HTTP-body measurement",
+          "declaredRegistryRoles": [
+            "housemark"
+          ],
+          "declaredMasterPath": "assets/sot/brand/skyyrose-logo-still-384w.webp",
+          "declaredMasterSha256": "282401d94e26451c830e91c1f231e75a50869333e9afbf88df78842003856884"
+        }
+      ],
+      "preloads": [
+        {
+          "href": "http://127.0.0.1:18368/wp-content/themes/skyyrose-flagship-2/assets/derived/card-fronts/kids-002-768w.webp?v=d01a75645e901914ef8a27fa9c5cf79a8f2a2197213cb4f5af29e9f3c1d40769",
+          "as": "image",
+          "media": null,
+          "imagesrcset": "http://127.0.0.1:18368/wp-content/themes/skyyrose-flagship-2/assets/derived/card-fronts/kids-002-160w.webp?v=7b4d2dd23a74b5bbd49ad8382acc84cb0baac3006e46490df1e0e8e08cf16a72 160w, http://127.0.0.1:18368/wp-content/themes/skyyrose-flagship-2/assets/derived/card-fronts/kids-002-320w.webp?v=5c2851eb79062c12d91508f01a13343dc6075a2742450f998c124078e31b130e 320w, http://127.0.0.1:18368/wp-content/themes/skyyrose-flagship-2/assets/derived/card-fronts/kids-002-480w.webp?v=20b0d5e61d0d611a6261dd562588c44221bc0f30da6bae213ef6e8e88be975cb 480w, http://127.0.0.1:18368/wp-content/themes/skyyrose-flagship-2/assets/derived/card-fronts/kids-002-768w.webp?v=d01a75645e901914ef8a27fa9c5cf79a8f2a2197213cb4f5af29e9f3c1d40769 768w, http://127.0.0.1:18368/wp-content/themes/skyyrose-flagship-2/assets/derived/card-fronts/kids-002-1024w.webp?v=5f1343d00517daa68d3f5864b3a72fa6b818459383314dd783b4993517661205 1024w, http://127.0.0.1:18368/wp-content/themes/skyyrose-flagship-2/assets/derived/card-fronts/kids-002-1280w.webp?v=fd61340b74f7a87ea3a61e6ad698e463abbb84c4896ec62c381a69fad30b8bb5 1280w, http://127.0.0.1:18368/wp-content/themes/skyyrose-flagship-2/assets/derived/card-fronts/kids-002-1536w.webp?v=5b3e78d937a0e6a497259c214752fe8f966f87b8d8548f412740bb63c76d0dce 1536w, http://127.0.0.1:18368/wp-content/themes/skyyrose-flagship-2/assets/derived/card-fronts/kids-002-1792w.webp?v=08fef35fdb64e418ea051e8b986c1fe7e71499556ed17218a38c63b608f5f3fd 1792w",
+          "scope": "DECLARED_PRELOAD_ONLY_NOT_RENDERED_USAGE"
+        }
+      ],
+      "kids_arrival_independent_body_observation": {
+        "src": "http://127.0.0.1:18368/wp-content/themes/skyyrose-flagship-2/assets/derived/card-fronts/kids-002-480w.webp?v=20b0d5e61d0d611a6261dd562588c44221bc0f30da6bae213ef6e8e88be975cb",
+        "width": 358,
+        "height": 447,
+        "fit": "contain",
+        "rect": {
+          "width": 358,
+          "height": 438.875
+        },
+        "packageSha256": "20b0d5e61d0d611a6261dd562588c44221bc0f30da6bae213ef6e8e88be975cb",
+        "observedSha256": "20b0d5e61d0d611a6261dd562588c44221bc0f30da6bae213ef6e8e88be975cb",
+        "observationPhase": "BEFORE_EXPLICIT_FAILURE_CONTROL"
+      }
+    }
+  ],
+  "declared_staging_usage_dependency_receipts": {
+    "assets/v2-original/products/br-001.png": {
+      "grant_exists": true,
+      "authority_exists": true,
+      "roles": {
+        "collection_hero": true
+      },
+      "target": "https://staging-7e48-skyyrose.wpcomstaging.com"
+    },
+    "assets/v2-original/products/br-003.png": {
+      "grant_exists": true,
+      "authority_exists": true,
+      "roles": {
+        "pdp_on_model_front": true
+      },
+      "target": "https://staging-7e48-skyyrose.wpcomstaging.com"
+    },
+    "assets/v2-original/products/br-004.png": {
+      "grant_exists": true,
+      "authority_exists": true,
+      "roles": {
+        "collection_story": true
+      },
+      "target": "https://staging-7e48-skyyrose.wpcomstaging.com"
+    },
+    "assets/v2-original/products/br-006.png": {
+      "grant_exists": true,
+      "authority_exists": true,
+      "roles": {
+        "pdp_on_model_front": true
+      },
+      "target": "https://staging-7e48-skyyrose.wpcomstaging.com"
+    },
+    "assets/v2-original/products/br-008.png": {
+      "grant_exists": true,
+      "authority_exists": true,
+      "roles": {
+        "pdp_on_model_front": true
+      },
+      "target": "https://staging-7e48-skyyrose.wpcomstaging.com"
+    },
+    "assets/v2-original/products/br-009.png": {
+      "grant_exists": true,
+      "authority_exists": true,
+      "roles": {
+        "pdp_on_model_front": true,
+        "merchandise_scene": true
+      },
+      "target": "https://staging-7e48-skyyrose.wpcomstaging.com"
+    },
+    "assets/v2-original/products/br-010.png": {
+      "grant_exists": true,
+      "authority_exists": true,
+      "roles": {
+        "pdp_on_model_front": true
+      },
+      "target": "https://staging-7e48-skyyrose.wpcomstaging.com"
+    },
+    "assets/v2-original/products/br-011.png": {
+      "grant_exists": true,
+      "authority_exists": true,
+      "roles": {
+        "pdp_on_model_front": true
+      },
+      "target": "https://staging-7e48-skyyrose.wpcomstaging.com"
+    },
+    "assets/v2-original/products/br-012.png": {
+      "grant_exists": true,
+      "authority_exists": true,
+      "roles": {
+        "pdp_on_model_front": true
+      },
+      "target": "https://staging-7e48-skyyrose.wpcomstaging.com"
+    },
+    "assets/v2-original/products/br-014.png": {
+      "grant_exists": true,
+      "authority_exists": true,
+      "roles": {
+        "pdp_on_model_front": true
+      },
+      "target": "https://staging-7e48-skyyrose.wpcomstaging.com"
+    },
+    "assets/v2-original/products/br-015.png": {
+      "grant_exists": true,
+      "authority_exists": true,
+      "roles": {
+        "pdp_on_model_front": true
+      },
+      "target": "https://staging-7e48-skyyrose.wpcomstaging.com"
+    },
+    "assets/v2-original/products/kids-001.png": {
+      "grant_exists": true,
+      "authority_exists": true,
+      "roles": {
+        "collection_story": true
+      },
+      "target": "https://staging-7e48-skyyrose.wpcomstaging.com"
+    },
+    "assets/v2-original/products/kids-002.png": {
+      "grant_exists": true,
+      "authority_exists": true,
+      "roles": {
+        "pdp_on_model_front": true,
+        "collection_hero": true
+      },
+      "target": "https://staging-7e48-skyyrose.wpcomstaging.com"
+    },
+    "assets/v2-original/products/lh-002.png": {
+      "grant_exists": true,
+      "authority_exists": true,
+      "roles": {
+        "pdp_on_model_front": true
+      },
+      "target": "https://staging-7e48-skyyrose.wpcomstaging.com"
+    },
+    "assets/v2-original/products/lh-004.png": {
+      "grant_exists": true,
+      "authority_exists": true,
+      "roles": {
+        "collection_hero": true
+      },
+      "target": "https://staging-7e48-skyyrose.wpcomstaging.com"
+    },
+    "assets/v2-original/products/lh-005.png": {
+      "grant_exists": true,
+      "authority_exists": true,
+      "roles": {
+        "pdp_on_model_front": true,
+        "merchandise_scene": true
+      },
+      "target": "https://staging-7e48-skyyrose.wpcomstaging.com"
+    },
+    "assets/v2-original/products/sg-001.png": {
+      "grant_exists": true,
+      "authority_exists": true,
+      "roles": {
+        "pdp_on_model_front": true
+      },
+      "target": "https://staging-7e48-skyyrose.wpcomstaging.com"
+    },
+    "assets/v2-original/products/sg-002.png": {
+      "grant_exists": true,
+      "authority_exists": true,
+      "roles": {
+        "pdp_on_model_front": true
+      },
+      "target": "https://staging-7e48-skyyrose.wpcomstaging.com"
+    },
+    "assets/v2-original/products/sg-009.png": {
+      "grant_exists": true,
+      "authority_exists": true,
+      "roles": {
+        "collection_hero": true
+      },
+      "target": "https://staging-7e48-skyyrose.wpcomstaging.com"
+    },
+    "assets/v2-original/products/sg-013.png": {
+      "grant_exists": true,
+      "authority_exists": true,
+      "roles": {
+        "collection_story": true
+      },
+      "target": "https://staging-7e48-skyyrose.wpcomstaging.com"
+    },
+    "assets/v2-original/products/sg-015.png": {
+      "grant_exists": true,
+      "authority_exists": true,
+      "roles": {
+        "pdp_on_model_front": true,
+        "merchandise_scene": true
+      },
+      "target": "https://staging-7e48-skyyrose.wpcomstaging.com"
+    },
+    "assets/v2-original/scenes/lh-004-back-hood-l2.webp": {
+      "grant_exists": true,
+      "authority_exists": true,
+      "roles": {
+        "collection_story": true
+      },
+      "target": "https://staging-7e48-skyyrose.wpcomstaging.com"
+    }
+  },
+  "declared_staging_usage_dependency_scope": "Isolated PHP admission observations and packaged grant declarations; not rendered usage or production authority"
+}

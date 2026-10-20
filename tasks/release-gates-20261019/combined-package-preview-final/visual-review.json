@@ -1,0 +1,132 @@
+{
+  "schema": "skyyrose.bounded-preview-visual-review.v1",
+  "status": "PASS_BOUNDED_LAYOUT_WITH_EXPLICIT_LIMITS",
+  "not_qualified": [
+    "Full populated Shop/taxonomy merchandising",
+    "Mobile PDP control pixels below captured viewport",
+    "Production creative acceptance or media-use rights",
+    "Physical devices, full-page/scroll/hover/consent states, all catalog roles"
+  ],
+  "cases": [
+    {
+      "surface": "shop",
+      "width": 1440,
+      "screenshot": {
+        "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261019/combined-package-preview/run-1792457266130595000/browser/shop-1440.png",
+        "sha256": "a5f0a7ec8b4e53584cf0abf7aba9f4bb46cc2e8055eff132100b89c7d5c81c6b",
+        "bytes": 47296
+      },
+      "inspected": "ROOT_EYES_ON_ACTUAL_CAPTURE",
+      "disposition": "PASS_BOUNDED_LAYOUT_WITH_EXPLICIT_LIMITS",
+      "observation": "Synthetic variable product with intentional unavailable image; archive layout and stylesheet delivery only, not populated product merchandising acceptance."
+    },
+    {
+      "surface": "shop",
+      "width": 390,
+      "screenshot": {
+        "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261019/combined-package-preview/run-1792457266130595000/browser/shop-390.png",
+        "sha256": "b97840eee2dfba99b434adfc563f343128a5d4caacad61c215bedcec838a7fc5",
+        "bytes": 30787
+      },
+      "inspected": "ROOT_EYES_ON_ACTUAL_CAPTURE",
+      "disposition": "PASS_BOUNDED_LAYOUT_WITH_EXPLICIT_LIMITS",
+      "observation": "Synthetic variable product with intentional unavailable image; archive layout and stylesheet delivery only, not populated product merchandising acceptance."
+    },
+    {
+      "surface": "taxonomy",
+      "width": 1440,
+      "screenshot": {
+        "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261019/combined-package-preview/run-1792457266130595000/browser/taxonomy-1440.png",
+        "sha256": "1f5653254642a2a79503cfdad0736be314081df147cb4bfa9a8d692b83fdae78",
+        "bytes": 82045
+      },
+      "inspected": "ROOT_EYES_ON_ACTUAL_CAPTURE",
+      "disposition": "PASS_BOUNDED_LAYOUT_WITH_EXPLICIT_LIMITS",
+      "observation": "Empty synthetic Kids result set; archive layout, empty state and stylesheet delivery only, not populated category/product acceptance."
+    },
+    {
+      "surface": "taxonomy",
+      "width": 390,
+      "screenshot": {
+        "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261019/combined-package-preview/run-1792457266130595000/browser/taxonomy-390.png",
+        "sha256": "b9cc2c53f7e2803bc35f5b4650255a1f92553e785edca0f15ef9c48325eea9ce",
+        "bytes": 53733
+      },
+      "inspected": "ROOT_EYES_ON_ACTUAL_CAPTURE",
+      "disposition": "PASS_BOUNDED_LAYOUT_WITH_EXPLICIT_LIMITS",
+      "observation": "Empty synthetic Kids result set; archive layout, empty state and stylesheet delivery only, not populated category/product acceptance."
+    },
+    {
+      "surface": "kids",
+      "width": 1440,
+      "screenshot": {
+        "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261019/combined-package-preview/run-1792457266130595000/browser/kids-1440.png",
+        "sha256": "ff4d88cbe9a8bbf20144e3a2bb38cb957f67c1cb6cc4ad2bde83bf0d12443fba",
+        "bytes": 554950
+      },
+      "inspected": "ROOT_EYES_ON_ACTUAL_CAPTURE",
+      "disposition": "PASS_BOUNDED_LAYOUT_WITH_EXPLICIT_LIMITS",
+      "observation": "Heading and both CTA links readable; admitted portrait remains contained. Mobile portrait continues below viewport and cookie notice overlays the lower edge."
+    },
+    {
+      "surface": "kids",
+      "width": 390,
+      "screenshot": {
+        "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261019/combined-package-preview/run-1792457266130595000/browser/kids-390.png",
+        "sha256": "609cf29772784f757f9938068fbef99bbdd1cc79cb49e60144289b3e624c32ab",
+        "bytes": 200469
+      },
+      "inspected": "ROOT_EYES_ON_ACTUAL_CAPTURE",
+      "disposition": "PASS_BOUNDED_LAYOUT_WITH_EXPLICIT_LIMITS",
+      "observation": "Heading and both CTA links readable; admitted portrait remains contained. Mobile portrait continues below viewport and cookie notice overlays the lower edge."
+    },
+    {
+      "surface": "pdp",
+      "width": 1440,
+      "screenshot": {
+        "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261019/combined-package-preview/run-1792457266130595000/browser/pdp-1440.png",
+        "sha256": "3ccf7f6288742b4207face2c01b70fc8eead9441ce1499232222f23038fc9275",
+        "bytes": 421003
+      },
+      "inspected": "ROOT_EYES_ON_ACTUAL_CAPTURE",
+      "disposition": "PASS_BOUNDED_LAYOUT_WITH_EXPLICIT_LIMITS",
+      "observation": "Synthetic identity/price/stock only. Desktop viewport shows selected S. Mobile DOM size selection passed, but control is below captured viewport/cookie overlay; mobile control pixels are not qualified."
+    },
+    {
+      "surface": "pdp",
+      "width": 390,
+      "screenshot": {
+        "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261019/combined-package-preview/run-1792457266130595000/browser/pdp-390.png",
+        "sha256": "b8810763cd12e80b84ab26d447a124433640de99644443eb851717b8ed447199",
+        "bytes": 224539
+      },
+      "inspected": "ROOT_EYES_ON_ACTUAL_CAPTURE",
+      "disposition": "PASS_BOUNDED_LAYOUT_WITH_EXPLICIT_LIMITS",
+      "observation": "Synthetic identity/price/stock only. Desktop viewport shows selected S. Mobile DOM size selection passed, but control is below captured viewport/cookie overlay; mobile control pixels are not qualified."
+    },
+    {
+      "surface": "kids-fallback",
+      "width": 1440,
+      "screenshot": {
+        "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261019/combined-package-preview/run-1792457266130595000/browser/kids-fallback-1440.png",
+        "sha256": "c8e728ba67eb2c226ec4414639122940f001811d61674ccebd43ac6c103045fc",
+        "bytes": 94350
+      },
+      "inspected": "ROOT_EYES_ON_ACTUAL_CAPTURE",
+      "disposition": "PASS_BOUNDED_LAYOUT_WITH_EXPLICIT_LIMITS",
+      "observation": "Explicit failed-image control hides portrait; heading and both CTA links remain readable."
+    },
+    {
+      "surface": "kids-fallback",
+      "width": 390,
+      "screenshot": {
+        "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261019/combined-package-preview/run-1792457266130595000/browser/kids-fallback-390.png",
+        "sha256": "8a0fe9bf6ce5b7028dd3f057a17065ecabaffcd1972705302246b53f8ab500a1",
+        "bytes": 58911
+      },
+      "inspected": "ROOT_EYES_ON_ACTUAL_CAPTURE",
+      "disposition": "PASS_BOUNDED_LAYOUT_WITH_EXPLICIT_LIMITS",
+      "observation": "Explicit failed-image control hides portrait; heading and both CTA links remain readable."
+    }
+  ]
+}

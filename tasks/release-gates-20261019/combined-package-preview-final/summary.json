@@ -1,0 +1,133 @@
+{
+  "schema": "skyyrose.combined-native-preview-final.v1",
+  "status": "PASS_BOUNDED_EXACT_PACKAGE_SYNTHETIC_NATIVE_PREVIEW",
+  "authentication": "NOT_APPLICABLE_SYNTHETIC_LOCAL",
+  "package": {
+    "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261019/package-usage-successor-r2/source-theme/dist/skyyrose-flagship-2.zip",
+    "sha256": "9a828dd18585bc3dbb47373e60526142279a75cb99a4ba95773bed8bc98f9833",
+    "source_commit": "773e2cffd70338d6fe4509d43d40186401d53eff",
+    "observed_checkout_commit": "773e2cffd70338d6fe4509d43d40186401d53eff"
+  },
+  "package_bytes": 293740897,
+  "package_members": 801,
+  "prior_aggregate_commit": "fb3ca0bb5638de4f539f8ff0f89b5438033ae34e",
+  "native_size_packet": "909dba51f58679ff75c9aa1330ea462c5b08680b",
+  "new_build_id": "845fc4bf79f37a62b9f36005041f5596dd2cc452cb8707e375c5860bc7a94571",
+  "exact_theme_members_before_bootstrap_and_after_shutdown": true,
+  "browser_cases": 10,
+  "browser_run": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261019/combined-package-preview/run-1792457266130595000",
+  "qualification": {
+    "component": "Prior Kids component acceptance retained",
+    "native_size": "32 HPOS and32 CPT separately syncOFF, prior accepted packet unchanged",
+    "native_browser": "10 actual synthetic loopback cases, bounded layout reviewed; see visual-review limits",
+    "installed_stack": "OPEN four plugin bodies, managed MU/cache/config/service bindings, exact runtime and isolated restore",
+    "historical_orphan_ownership": "NOT_ESTABLISHED parent1290/child1292; size UNKNOWN",
+    "live": "HOLD"
+  },
+  "cleanup": {
+    "deleted_files": 0,
+    "reclaimed_bytes": 0,
+    "native_owned_services_retired": [
+      {
+        "pid": 47180,
+        "terminal": true,
+        "group_absent": true,
+        "exit": -15
+      },
+      {
+        "pid": 47170,
+        "terminal": true,
+        "group_absent": true,
+        "exit": 0
+      },
+      {
+        "owned_socket_absent": true
+      },
+      {
+        "owned_listener_absent": true
+      }
+    ],
+    "browser_owned_group_absent": true,
+    "browser_graceful_closes": [
+      {
+        "label": "context:shop:1440",
+        "status": "PASS"
+      },
+      {
+        "label": "context:shop:390",
+        "status": "PASS"
+      },
+      {
+        "label": "context:taxonomy:1440",
+        "status": "PASS"
+      },
+      {
+        "label": "context:taxonomy:390",
+        "status": "PASS"
+      },
+      {
+        "label": "context:kids:1440",
+        "status": "PASS"
+      },
+      {
+        "label": "context:kids:390",
+        "status": "PASS"
+      },
+      {
+        "label": "context:pdp:1440",
+        "status": "PASS"
+      },
+      {
+        "label": "context:pdp:390",
+        "status": "PASS"
+      },
+      {
+        "label": "context:kids-fallback:1440",
+        "status": "PASS"
+      },
+      {
+        "label": "context:kids-fallback:390",
+        "status": "PASS"
+      },
+      {
+        "label": "browser-connection",
+        "status": "PASS"
+      },
+      {
+        "label": "browser-server",
+        "status": "PASS"
+      },
+      {
+        "label": "owned-browser-terminal",
+        "status": "PASS"
+      }
+    ]
+  },
+  "preservation": "PASS_INPUTS_PACKAGE_ORIGINALS_THEME_HEAD_DEPENDENCIES",
+  "capacity": {
+    "preflight_free_bytes": 33062027264,
+    "after_run_free_bytes": 32877379584,
+    "floor_bytes": 1073741824,
+    "one_run_required_bytes": 2415919104,
+    "sequential_plus_package_required_bytes": 2650800128
+  },
+  "preview": {
+    "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261019/combined-kids-size-review-r3/index.html",
+    "sha256": "5b311352df143fca746d54036d2d169eb73b486f4372b507a20092f4216fca42",
+    "bytes": 4284
+  },
+  "limits": [
+    "Shop uses synthetic variable item with unavailable image; taxonomy is empty synthetic state. No full populated merchandise acceptance.",
+    "Mobile PDP selected S in DOM, but control below viewport/cookie overlay; no mobile-control pixel acceptance.",
+    "Viewport emulation/reduced motion/query routes only, no real devices or all-interaction/full-page coverage.",
+    "Loopback interception is not process-wide network or privacy qualification.",
+    "Only two certification JSON files changed:23 existing runtime receipts included plus boundary hash. Full theme tree/build assets unchanged. Prior full verify remains at f67; targeted new integrity/closure/package/native preview qualify773e. No repeat native matrix, backup, privacy collector, provider, live conversion or deployment."
+  ],
+  "holds": [
+    "Separate backup acquisition",
+    "Production creative acceptance and media-use grants",
+    "Fresh live privacy attempt",
+    "Live conversion",
+    "Deployment"
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "schema": "skyyrose.preview-supersession.v1",
+  "old_package": {
+    "source": "f67a90353570324feda897c1255b3f075c51c067",
+    "sha256": "0196771d755d74784df6037a4c1db2c5d9b4fe2dad22dec4253b459343ceeafa",
+    "integrity": "PASS",
+    "collection_placement": "FAIL_MISSING_23_RUNTIME_USAGE_DEPENDENCIES"
+  },
+  "old_browser_run": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261019/combined-native-preview/run-1792456712236207000",
+  "old_browser_basis": "SOURCE_CHECKOUT_SUPERSET_917_NOT_EXACT_778_PACKAGE",
+  "superseded_claims": [
+    "Old r2 draft PASS_BOUNDED_SYNTHETIC_NATIVE_PREVIEW is source-only, not old ZIP placement acceptance",
+    "Old r2 draft README/HTML package-alignment wording is superseded by this exact-membership correction"
+  ],
+  "prior_immutable_aggregate": "fb3ca0bb5638de4f539f8ff0f89b5438033ae34e",
+  "prior_aggregate_scope": "Earlier honest NOT_EXECUTED preview state plus retained package integrity; later dependency discovery limits runtime placement",
+  "successor_source": "773e2cffd70338d6fe4509d43d40186401d53eff",
+  "successor_zip_sha256": "9a828dd18585bc3dbb47373e60526142279a75cb99a4ba95773bed8bc98f9833",
+  "new_authority": "NONE; existing staging receipts unchanged; production held",
+  "failures_retained": [
+    "Offline attempt1 missing add_action stub, no media assertions",
+    "Offline attempt2 missing add_filter stub, no media assertions",
+    "Private clone count assumption917 vs916 failed before packager invocation"
+  ]
+}
