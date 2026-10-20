@@ -1,0 +1,121 @@
+{
+  "target": "https://skyyrose.co",
+  "internal_blog_id": 1,
+  "wpcom_site_id": 238510894,
+  "stylesheet": "skyyrose-flagship-2",
+  "utc": "2026-10-20T16:33:27+00:00",
+  "scope": "EXACT_ALLOWLIST_THEME_SOURCE_ONLY_NO_MUTATIONS",
+  "files": [
+    {
+      "path": "inc/simple-product-sizes.php",
+      "exists": false,
+      "is_regular": false,
+      "readable": false,
+      "symlink": false,
+      "candidate_sha256": "be88d02b572d3e59cf606da0b46b4f5803ac3106dec7274329f571ae07b51ebf",
+      "matches_candidate": false
+    },
+    {
+      "path": "data/simple-product-sizes.json",
+      "exists": false,
+      "is_regular": false,
+      "readable": false,
+      "symlink": false,
+      "candidate_sha256": "0e5bddcd16835112006da9099838ea45a6a2062a3e09baaabca19f5491dc18a0",
+      "matches_candidate": false
+    },
+    {
+      "path": "template-parts/collections/arrival.php",
+      "exists": true,
+      "is_regular": true,
+      "readable": true,
+      "symlink": false,
+      "bytes": 5359,
+      "sha256": "f3cdbf10230590006d03910ea9b65d8f469625ca47d75dc0f00c8b09897d7cc2",
+      "candidate_sha256": "449378de92dae1478e5665fc73f4eaa43427cfcce98e9ab5a46a62af082ab5b3",
+      "matches_candidate": false
+    },
+    {
+      "path": "template-parts/collections/arrival-product.php",
+      "exists": false,
+      "is_regular": false,
+      "readable": false,
+      "symlink": false,
+      "candidate_sha256": "ceed0e819dfcd4e3e33256eaf5a6fcda8f1ac24eda2acf6726dba6f20e6fe5b7",
+      "matches_candidate": false
+    },
+    {
+      "path": "data/product-presentation-registry.json",
+      "exists": true,
+      "is_regular": true,
+      "readable": true,
+      "symlink": false,
+      "bytes": 171058,
+      "sha256": "64b95e64008088939bf304a22de6784957edeb8375e67228db36931a39a81449",
+      "candidate_sha256": "1f979dcaf236e1b108db75b4c7fedae4b8e76ef198e94a954aed1faacbfbf0aa",
+      "matches_candidate": false
+    },
+    {
+      "path": "functions.php",
+      "exists": true,
+      "is_regular": true,
+      "readable": true,
+      "symlink": false,
+      "bytes": 95728,
+      "sha256": "24d5f58ac4515c0bf44bf6ca2f8a35b65e3fb34f9e38e4d3b04955967cf4faba",
+      "candidate_sha256": "acea1955dd4748e71dfd7c418bc13816cf95676a08043099bd5129ebb52d9d29",
+      "matches_candidate": false
+    },
+    {
+      "path": "inc/v2-media-eligibility.php",
+      "exists": true,
+      "is_regular": true,
+      "readable": true,
+      "symlink": false,
+      "bytes": 34200,
+      "sha256": "f82fb4f17ef77be47a484a8f01b12ebd085c1f0d6ece26655ea24827eb558a36",
+      "candidate_sha256": "d13b9050a46b1809abebdbc1956da76e2fa59a8002ac49b5a31dbdb00ec6787b",
+      "matches_candidate": false
+    },
+    {
+      "path": "inc/production-media.php",
+      "exists": false,
+      "is_regular": false,
+      "readable": false,
+      "symlink": false,
+      "candidate_sha256": "63e880d03ce0f4095d063c2f11db5671c14ea83dc823038b0c93744a42009ced",
+      "matches_candidate": false
+    },
+    {
+      "path": "data/v2-media-reviews/production-authority-20261020.json",
+      "exists": false,
+      "is_regular": false,
+      "readable": false,
+      "symlink": false,
+      "candidate_sha256": "b2902f635427f0087e6e2dd96ede75b03ad33acaca3465198609719274fd207b",
+      "matches_candidate": false
+    }
+  ],
+  "started_utc": "2026-10-20T16:33:19.986158+00:00",
+  "ssh_exit": 0,
+  "authentication": "EXISTING_SSH_BATCHMODE_KNOWN_HOST; home, Jetpack WordPress.com site ID, active stylesheet verified",
+  "reader_sha256": "ba1f7d3345a1a76251cabb3fc1ff72c596f527839256ff8faff45f6e02516d3c",
+  "source_commit": "278e8ef152acfb5394f80c091492a30fcd5af7f7",
+  "live_mutations": false,
+  "archive_generated_or_downloaded": false,
+  "disposition": {
+    "status": "EXACT_INSTALLED_THEME_DIFFERS_FROM_LOCAL_CANDIDATE",
+    "critical_missing_theme_members": [
+      "inc/simple-product-sizes.php",
+      "data/simple-product-sizes.json",
+      "template-parts/collections/arrival-product.php"
+    ],
+    "new_production_permission_not_yet_installed": [
+      "inc/production-media.php",
+      "data/v2-media-reviews/production-authority-20261020.json"
+    ],
+    "comparison_scope": "9 exact theme PHP/data paths only; no installed full-tree/plugin/config/runtime/restore qualification",
+    "source_permission": "Authorized non-mutating deployed-code comparison using existing authenticated connection",
+    "no_expanded_plugin_archive_or_private_configuration_read": true
+  }
+}

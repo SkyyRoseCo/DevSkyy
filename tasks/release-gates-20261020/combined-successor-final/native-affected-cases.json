@@ -1,0 +1,1829 @@
+{
+  "scope": "New visual CSS qualification on exact805member ZIP;12fresh cases only",
+  "cases": [
+    {
+      "key": "pdp-br-004-320-reduce",
+      "status": "PASS_POPULATED_NATIVE_OBSERVATIONS_VISUAL_REVIEW_PENDING",
+      "controlPolish": {
+        "select": {
+          "x": 16,
+          "y": 430.125,
+          "width": 196,
+          "height": 48,
+          "right": 212,
+          "bottom": 478.125,
+          "fontSize": "16px"
+        },
+        "quantity": {
+          "x": 224,
+          "y": 430.125,
+          "width": 80,
+          "height": 48,
+          "right": 304,
+          "bottom": 478.125,
+          "fontSize": "16px"
+        },
+        "button": {
+          "x": 16,
+          "y": 494.125,
+          "width": 288,
+          "height": 48.390625,
+          "right": 304,
+          "bottom": 542.515625,
+          "fontSize": "16px"
+        },
+        "form": {
+          "x": 16,
+          "y": 382.53125,
+          "width": 288,
+          "height": 179.984375,
+          "right": 304,
+          "bottom": 562.515625,
+          "fontSize": "16px"
+        },
+        "required": true,
+        "ariaRequired": "true"
+      },
+      "nativeFocus": {
+        "active": true,
+        "outlineStyle": "solid",
+        "outlineWidth": "3px"
+      },
+      "canonicalOptions": [
+        "",
+        "S",
+        "M",
+        "L",
+        "XL",
+        "2XL",
+        "3XL"
+      ],
+      "geometry_samples": 9,
+      "css": [
+        {
+          "path": "assets/css/theme.min.css",
+          "status": 200,
+          "bytes": 57015,
+          "sha256": "cdadadb58aee9a9fa7bbbd38d36f0c38020f254c918c1975123e2f6b02192ab5"
+        },
+        {
+          "path": "assets/css/product-page.min.css",
+          "status": 200,
+          "bytes": 20985,
+          "sha256": "ea2720e4e3ece50376198565a4c5593de32112d93ab5134499d65d102735ab0b"
+        },
+        {
+          "path": "assets/css/visual-polish.min.css",
+          "status": 200,
+          "bytes": 2289,
+          "sha256": "2a9cca458c0fd1f66b74f7ddd4bf37ca8777364bb2a81317fce71121ee3aea37"
+        },
+        {
+          "path": "assets/css/global-shell.min.css",
+          "status": 200,
+          "bytes": 24819,
+          "sha256": "e397eecebe1c93b16b6f308d39ea77e159d1d2e83ab2b5d330a686d19860698b"
+        },
+        {
+          "path": "assets/css/search-preview.min.css",
+          "status": 200,
+          "bytes": 1222,
+          "sha256": "b17834580431f049d2ec7a312d39d594d2ef5a5d068cc7b2c1a042c3393dbcac"
+        },
+        {
+          "path": "assets/css/premium-commerce.min.css",
+          "status": 200,
+          "bytes": 11720,
+          "sha256": "78ad9b620f19eb76147ffcb9a7b4546fabdbe67f4bbe2f4305bb9feb0e395b15"
+        },
+        {
+          "path": "assets/css/quick-view-commerce.min.css",
+          "status": 200,
+          "bytes": 6394,
+          "sha256": "23e4ef6feec0295ba02ac55742feddfb285604fbf389aebce6e8ae649d53d8db"
+        },
+        {
+          "path": "assets/css/cookie-consent.min.css",
+          "status": 200,
+          "bytes": 2701,
+          "sha256": "9d239d0307e4cf850390bce1baa1611ca0610ce5ffb101fd94d58c7df1e8f8c9"
+        }
+      ],
+      "screenshots": [
+        {
+          "label": "gallery-position-viewport",
+          "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261020/visual-native-media/run-1792514281250287000/browser/pdp-br-004-320-reduce-gallery-position-viewport.png",
+          "sha256": "1bd4085f7d096f868b7ce3b4c96b4304e653cd6b171080d8e2ab5843ec06d6d7",
+          "bytes": 192824
+        },
+        {
+          "label": "full-garment",
+          "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261020/visual-native-media/run-1792514281250287000/browser/pdp-br-004-320-reduce-full-garment.png",
+          "sha256": "0f801d17fcee84cb5ea7a1e8825b5524e6ee20259a7b17d47831fc8e529c8922",
+          "bytes": 167210
+        },
+        {
+          "label": "scroll202-viewport",
+          "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261020/visual-native-media/run-1792514281250287000/browser/pdp-br-004-320-reduce-scroll202-viewport.png",
+          "sha256": "0d21f2473240860522f37595a1981af59ec786427da06ef1dd7e77fc866acb93",
+          "bytes": 126310
+        },
+        {
+          "label": "size-control-viewport",
+          "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261020/visual-native-media/run-1792514281250287000/browser/pdp-br-004-320-reduce-size-control-viewport.png",
+          "sha256": "c993c840a9dba8579d8e565c90000fd83e60f6fb008d8df30692bf4faa2e1e33",
+          "bytes": 94029
+        },
+        {
+          "label": "cart-controls",
+          "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261020/visual-native-media/run-1792514281250287000/browser/pdp-br-004-320-reduce-cart-controls.png",
+          "sha256": "3e23e0aae8a301f9a6a9708727435869037a65e002478634e6cc7aca1302212e",
+          "bytes": 3607
+        },
+        {
+          "label": "full-page",
+          "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261020/visual-native-media/run-1792514281250287000/browser/pdp-br-004-320-reduce-full-page.png",
+          "sha256": "e2c2d01eaedc886fa1cceaaf1d2caa1e1d545859feb0d8b3dfa5d4a512e991ce",
+          "bytes": 263092
+        }
+      ],
+      "html": {
+        "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261020/visual-native-media/run-1792514281250287000/browser/pdp-br-004-320-reduce.html",
+        "sha256": "3c86fba30c01eae726199eb4df6e2bf4285b45f0a77e19a6e950105b3ca88b06",
+        "bytes": 113115
+      }
+    },
+    {
+      "key": "pdp-br-004-390-reduce",
+      "status": "PASS_POPULATED_NATIVE_OBSERVATIONS_VISUAL_REVIEW_PENDING",
+      "controlPolish": {
+        "select": {
+          "x": 16,
+          "y": 430.125,
+          "width": 266,
+          "height": 48,
+          "right": 282,
+          "bottom": 478.125,
+          "fontSize": "16px"
+        },
+        "quantity": {
+          "x": 294,
+          "y": 430.125,
+          "width": 80,
+          "height": 48,
+          "right": 374,
+          "bottom": 478.125,
+          "fontSize": "16px"
+        },
+        "button": {
+          "x": 16,
+          "y": 494.125,
+          "width": 358,
+          "height": 48.390625,
+          "right": 374,
+          "bottom": 542.515625,
+          "fontSize": "16px"
+        },
+        "form": {
+          "x": 16,
+          "y": 382.53125,
+          "width": 358,
+          "height": 179.984375,
+          "right": 374,
+          "bottom": 562.515625,
+          "fontSize": "16px"
+        },
+        "required": true,
+        "ariaRequired": "true"
+      },
+      "nativeFocus": {
+        "active": true,
+        "outlineStyle": "solid",
+        "outlineWidth": "3px"
+      },
+      "canonicalOptions": [
+        "",
+        "S",
+        "M",
+        "L",
+        "XL",
+        "2XL",
+        "3XL"
+      ],
+      "geometry_samples": 9,
+      "css": [
+        {
+          "path": "assets/css/theme.min.css",
+          "status": 200,
+          "bytes": 57015,
+          "sha256": "cdadadb58aee9a9fa7bbbd38d36f0c38020f254c918c1975123e2f6b02192ab5"
+        },
+        {
+          "path": "assets/css/product-page.min.css",
+          "status": 200,
+          "bytes": 20985,
+          "sha256": "ea2720e4e3ece50376198565a4c5593de32112d93ab5134499d65d102735ab0b"
+        },
+        {
+          "path": "assets/css/visual-polish.min.css",
+          "status": 200,
+          "bytes": 2289,
+          "sha256": "2a9cca458c0fd1f66b74f7ddd4bf37ca8777364bb2a81317fce71121ee3aea37"
+        },
+        {
+          "path": "assets/css/global-shell.min.css",
+          "status": 200,
+          "bytes": 24819,
+          "sha256": "e397eecebe1c93b16b6f308d39ea77e159d1d2e83ab2b5d330a686d19860698b"
+        },
+        {
+          "path": "assets/css/search-preview.min.css",
+          "status": 200,
+          "bytes": 1222,
+          "sha256": "b17834580431f049d2ec7a312d39d594d2ef5a5d068cc7b2c1a042c3393dbcac"
+        },
+        {
+          "path": "assets/css/premium-commerce.min.css",
+          "status": 200,
+          "bytes": 11720,
+          "sha256": "78ad9b620f19eb76147ffcb9a7b4546fabdbe67f4bbe2f4305bb9feb0e395b15"
+        },
+        {
+          "path": "assets/css/quick-view-commerce.min.css",
+          "status": 200,
+          "bytes": 6394,
+          "sha256": "23e4ef6feec0295ba02ac55742feddfb285604fbf389aebce6e8ae649d53d8db"
+        },
+        {
+          "path": "assets/css/cookie-consent.min.css",
+          "status": 200,
+          "bytes": 2701,
+          "sha256": "9d239d0307e4cf850390bce1baa1611ca0610ce5ffb101fd94d58c7df1e8f8c9"
+        }
+      ],
+      "screenshots": [
+        {
+          "label": "gallery-position-viewport",
+          "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261020/visual-native-media/run-1792514281250287000/browser/pdp-br-004-390-reduce-gallery-position-viewport.png",
+          "sha256": "4c5fed9938b199a8b8942de82a296ef2e23b48cd70d6266ab1cdc485ad3455db",
+          "bytes": 199499
+        },
+        {
+          "label": "full-garment",
+          "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261020/visual-native-media/run-1792514281250287000/browser/pdp-br-004-390-reduce-full-garment.png",
+          "sha256": "008d2a63ab3dec82d50e3bb4be7c40245e8e0c4096e76b4666d1e2e50117afab",
+          "bytes": 174746
+        },
+        {
+          "label": "scroll202-viewport",
+          "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261020/visual-native-media/run-1792514281250287000/browser/pdp-br-004-390-reduce-scroll202-viewport.png",
+          "sha256": "107d4755880a2d01445dd15ce56a2f1e7831957f860c995c6928650fc98a2e62",
+          "bytes": 133476
+        },
+        {
+          "label": "size-control-viewport",
+          "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261020/visual-native-media/run-1792514281250287000/browser/pdp-br-004-390-reduce-size-control-viewport.png",
+          "sha256": "7e0a9fb9c11052abd0ca52e6dac90a5f0ad97b56301e0862e74e8d186647fdda",
+          "bytes": 98924
+        },
+        {
+          "label": "cart-controls",
+          "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261020/visual-native-media/run-1792514281250287000/browser/pdp-br-004-390-reduce-cart-controls.png",
+          "sha256": "4d7598f0e94e9b1cef6f9a53fe5c79e4c164567a8127432abb71f4378d83dd91",
+          "bytes": 3707
+        },
+        {
+          "label": "full-page",
+          "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261020/visual-native-media/run-1792514281250287000/browser/pdp-br-004-390-reduce-full-page.png",
+          "sha256": "61ae7882c6271179ba2d5b68b8a6d524b974c401724620ba1b6b60720c46968d",
+          "bytes": 269171
+        }
+      ],
+      "html": {
+        "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261020/visual-native-media/run-1792514281250287000/browser/pdp-br-004-390-reduce.html",
+        "sha256": "5a84253bf96c432ebad275fee612d3b36abda48c3f31d9cef87f5f6b58fac17f",
+        "bytes": 113115
+      }
+    },
+    {
+      "key": "pdp-br-004-768-reduce",
+      "status": "PASS_POPULATED_NATIVE_OBSERVATIONS_VISUAL_REVIEW_PENDING",
+      "controlPolish": {
+        "select": {
+          "x": 30.71875,
+          "y": 430.390625,
+          "width": 614.5625,
+          "height": 48,
+          "right": 645.28125,
+          "bottom": 478.390625,
+          "fontSize": "16px"
+        },
+        "quantity": {
+          "x": 657.28125,
+          "y": 430.390625,
+          "width": 80,
+          "height": 48,
+          "right": 737.28125,
+          "bottom": 478.390625,
+          "fontSize": "16px"
+        },
+        "button": {
+          "x": 30.71875,
+          "y": 494.390625,
+          "width": 706.5625,
+          "height": 48.390625,
+          "right": 737.28125,
+          "bottom": 542.78125,
+          "fontSize": "16px"
+        },
+        "form": {
+          "x": 30.71875,
+          "y": 382.796875,
+          "width": 706.5625,
+          "height": 179.984375,
+          "right": 737.28125,
+          "bottom": 562.78125,
+          "fontSize": "16px"
+        },
+        "required": true,
+        "ariaRequired": "true"
+      },
+      "nativeFocus": {
+        "active": true,
+        "outlineStyle": "solid",
+        "outlineWidth": "3px"
+      },
+      "canonicalOptions": [
+        "",
+        "S",
+        "M",
+        "L",
+        "XL",
+        "2XL",
+        "3XL"
+      ],
+      "geometry_samples": 9,
+      "css": [
+        {
+          "path": "assets/css/theme.min.css",
+          "status": 200,
+          "bytes": 57015,
+          "sha256": "cdadadb58aee9a9fa7bbbd38d36f0c38020f254c918c1975123e2f6b02192ab5"
+        },
+        {
+          "path": "assets/css/product-page.min.css",
+          "status": 200,
+          "bytes": 20985,
+          "sha256": "ea2720e4e3ece50376198565a4c5593de32112d93ab5134499d65d102735ab0b"
+        },
+        {
+          "path": "assets/css/visual-polish.min.css",
+          "status": 200,
+          "bytes": 2289,
+          "sha256": "2a9cca458c0fd1f66b74f7ddd4bf37ca8777364bb2a81317fce71121ee3aea37"
+        },
+        {
+          "path": "assets/css/global-shell.min.css",
+          "status": 200,
+          "bytes": 24819,
+          "sha256": "e397eecebe1c93b16b6f308d39ea77e159d1d2e83ab2b5d330a686d19860698b"
+        },
+        {
+          "path": "assets/css/search-preview.min.css",
+          "status": 200,
+          "bytes": 1222,
+          "sha256": "b17834580431f049d2ec7a312d39d594d2ef5a5d068cc7b2c1a042c3393dbcac"
+        },
+        {
+          "path": "assets/css/premium-commerce.min.css",
+          "status": 200,
+          "bytes": 11720,
+          "sha256": "78ad9b620f19eb76147ffcb9a7b4546fabdbe67f4bbe2f4305bb9feb0e395b15"
+        },
+        {
+          "path": "assets/css/quick-view-commerce.min.css",
+          "status": 200,
+          "bytes": 6394,
+          "sha256": "23e4ef6feec0295ba02ac55742feddfb285604fbf389aebce6e8ae649d53d8db"
+        },
+        {
+          "path": "assets/css/cookie-consent.min.css",
+          "status": 200,
+          "bytes": 2701,
+          "sha256": "9d239d0307e4cf850390bce1baa1611ca0610ce5ffb101fd94d58c7df1e8f8c9"
+        }
+      ],
+      "screenshots": [
+        {
+          "label": "gallery-position-viewport",
+          "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261020/visual-native-media/run-1792514281250287000/browser/pdp-br-004-768-reduce-gallery-position-viewport.png",
+          "sha256": "6ed6b35c8cb14ee392db2e6308fd95ec5be2e90d92bce7ef0b5c3505a1e86b64",
+          "bytes": 290051
+        },
+        {
+          "label": "full-garment",
+          "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261020/visual-native-media/run-1792514281250287000/browser/pdp-br-004-768-reduce-full-garment.png",
+          "sha256": "2b465dfbe1b66109836dcef40d45b85c07b937338e2493cb1706164eae4e7ce1",
+          "bytes": 267517
+        },
+        {
+          "label": "scroll202-viewport",
+          "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261020/visual-native-media/run-1792514281250287000/browser/pdp-br-004-768-reduce-scroll202-viewport.png",
+          "sha256": "2b3d884cb054dd7360a0e413d0664d136304dab2054f55619660d0e7aa6d6130",
+          "bytes": 209289
+        },
+        {
+          "label": "size-control-viewport",
+          "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261020/visual-native-media/run-1792514281250287000/browser/pdp-br-004-768-reduce-size-control-viewport.png",
+          "sha256": "66000524a9dfd1d73882b592b3bb35cdc5937a4a9b05bcaf88562b5fca44ef56",
+          "bytes": 115033
+        },
+        {
+          "label": "cart-controls",
+          "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261020/visual-native-media/run-1792514281250287000/browser/pdp-br-004-768-reduce-cart-controls.png",
+          "sha256": "4b70e1f51c826da05be4980baea511714206f8b1eb22ec67284072c03123f65f",
+          "bytes": 4146
+        },
+        {
+          "label": "full-page",
+          "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261020/visual-native-media/run-1792514281250287000/browser/pdp-br-004-768-reduce-full-page.png",
+          "sha256": "b5c0e4c39ac89b5347a0e7f76ab1287e135a7397a13f65ecfecfbc69f71be967",
+          "bytes": 372598
+        }
+      ],
+      "html": {
+        "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261020/visual-native-media/run-1792514281250287000/browser/pdp-br-004-768-reduce.html",
+        "sha256": "480d7102de0de10435ef0bdc5f631cceb743dde019d94fbe0822a8004bfbcce3",
+        "bytes": 113115
+      }
+    },
+    {
+      "key": "pdp-br-004-1440-reduce",
+      "status": "PASS_POPULATED_NATIVE_OBSERVATIONS_VISUAL_REVIEW_PENDING",
+      "controlPolish": {
+        "select": {
+          "x": 847.1875,
+          "y": 311.484375,
+          "width": 443.21875,
+          "height": 48,
+          "right": 1290.40625,
+          "bottom": 359.484375,
+          "fontSize": "16px"
+        },
+        "quantity": {
+          "x": 1302.40625,
+          "y": 311.484375,
+          "width": 80,
+          "height": 48,
+          "right": 1382.40625,
+          "bottom": 359.484375,
+          "fontSize": "16px"
+        },
+        "button": {
+          "x": 847.1875,
+          "y": 375.484375,
+          "width": 535.21875,
+          "height": 48.390625,
+          "right": 1382.40625,
+          "bottom": 423.875,
+          "fontSize": "16px"
+        },
+        "form": {
+          "x": 847.1875,
+          "y": 263.890625,
+          "width": 535.21875,
+          "height": 179.984375,
+          "right": 1382.40625,
+          "bottom": 443.875,
+          "fontSize": "16px"
+        },
+        "required": true,
+        "ariaRequired": "true"
+      },
+      "nativeFocus": {
+        "active": true,
+        "outlineStyle": "solid",
+        "outlineWidth": "3px"
+      },
+      "canonicalOptions": [
+        "",
+        "S",
+        "M",
+        "L",
+        "XL",
+        "2XL",
+        "3XL"
+      ],
+      "geometry_samples": 9,
+      "css": [
+        {
+          "path": "assets/css/theme.min.css",
+          "status": 200,
+          "bytes": 57015,
+          "sha256": "cdadadb58aee9a9fa7bbbd38d36f0c38020f254c918c1975123e2f6b02192ab5"
+        },
+        {
+          "path": "assets/css/product-page.min.css",
+          "status": 200,
+          "bytes": 20985,
+          "sha256": "ea2720e4e3ece50376198565a4c5593de32112d93ab5134499d65d102735ab0b"
+        },
+        {
+          "path": "assets/css/visual-polish.min.css",
+          "status": 200,
+          "bytes": 2289,
+          "sha256": "2a9cca458c0fd1f66b74f7ddd4bf37ca8777364bb2a81317fce71121ee3aea37"
+        },
+        {
+          "path": "assets/css/global-shell.min.css",
+          "status": 200,
+          "bytes": 24819,
+          "sha256": "e397eecebe1c93b16b6f308d39ea77e159d1d2e83ab2b5d330a686d19860698b"
+        },
+        {
+          "path": "assets/css/search-preview.min.css",
+          "status": 200,
+          "bytes": 1222,
+          "sha256": "b17834580431f049d2ec7a312d39d594d2ef5a5d068cc7b2c1a042c3393dbcac"
+        },
+        {
+          "path": "assets/css/premium-commerce.min.css",
+          "status": 200,
+          "bytes": 11720,
+          "sha256": "78ad9b620f19eb76147ffcb9a7b4546fabdbe67f4bbe2f4305bb9feb0e395b15"
+        },
+        {
+          "path": "assets/css/quick-view-commerce.min.css",
+          "status": 200,
+          "bytes": 6394,
+          "sha256": "23e4ef6feec0295ba02ac55742feddfb285604fbf389aebce6e8ae649d53d8db"
+        },
+        {
+          "path": "assets/css/cookie-consent.min.css",
+          "status": 200,
+          "bytes": 2701,
+          "sha256": "9d239d0307e4cf850390bce1baa1611ca0610ce5ffb101fd94d58c7df1e8f8c9"
+        }
+      ],
+      "screenshots": [
+        {
+          "label": "gallery-position-viewport",
+          "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261020/visual-native-media/run-1792514281250287000/browser/pdp-br-004-1440-reduce-gallery-position-viewport.png",
+          "sha256": "5bba23756dad71c36e9be274aa4911e7e2e367193aa06971a8407573748e5036",
+          "bytes": 368915
+        },
+        {
+          "label": "full-garment",
+          "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261020/visual-native-media/run-1792514281250287000/browser/pdp-br-004-1440-reduce-full-garment.png",
+          "sha256": "b2451930bc1d11a2bd25ffe53e51113bbb49ad7490e0afaf45c5fdfe802f6920",
+          "bytes": 297026
+        },
+        {
+          "label": "scroll202-viewport",
+          "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261020/visual-native-media/run-1792514281250287000/browser/pdp-br-004-1440-reduce-scroll202-viewport.png",
+          "sha256": "d53b26a748a32d73f1ee0a0cf12a6cb039272e508687310f2716ee5590ab338d",
+          "bytes": 278145
+        },
+        {
+          "label": "size-control-viewport",
+          "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261020/visual-native-media/run-1792514281250287000/browser/pdp-br-004-1440-reduce-size-control-viewport.png",
+          "sha256": "58717f845fcfb5cc3fccaaf68f4147450f38f87977de10046cdfc125cb69bbd2",
+          "bytes": 367544
+        },
+        {
+          "label": "cart-controls",
+          "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261020/visual-native-media/run-1792514281250287000/browser/pdp-br-004-1440-reduce-cart-controls.png",
+          "sha256": "09950ef8236a4e4580ccb0066ac2edfff286c5846b42d183db826dd6f6b66d0a",
+          "bytes": 3869
+        },
+        {
+          "label": "full-page",
+          "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261020/visual-native-media/run-1792514281250287000/browser/pdp-br-004-1440-reduce-full-page.png",
+          "sha256": "82703464b5c4bc71f48779caddb1f0181717c809bef075eda5d65ad03da04422",
+          "bytes": 441973
+        }
+      ],
+      "html": {
+        "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261020/visual-native-media/run-1792514281250287000/browser/pdp-br-004-1440-reduce.html",
+        "sha256": "6839894d0bed456e3c9f105ca7698026b07009d927f72efab3ce64df48c3e2c6",
+        "bytes": 113115
+      }
+    },
+    {
+      "key": "pdp-kids-001-320-reduce",
+      "status": "PASS_POPULATED_NATIVE_OBSERVATIONS_VISUAL_REVIEW_PENDING",
+      "controlPolish": {
+        "select": {
+          "x": 16,
+          "y": 429.796875,
+          "width": 196,
+          "height": 48,
+          "right": 212,
+          "bottom": 477.796875,
+          "fontSize": "16px"
+        },
+        "quantity": {
+          "x": 224,
+          "y": 429.796875,
+          "width": 80,
+          "height": 48,
+          "right": 304,
+          "bottom": 477.796875,
+          "fontSize": "16px"
+        },
+        "button": {
+          "x": 16,
+          "y": 493.796875,
+          "width": 288,
+          "height": 48.390625,
+          "right": 304,
+          "bottom": 542.1875,
+          "fontSize": "16px"
+        },
+        "form": {
+          "x": 16,
+          "y": 382.203125,
+          "width": 288,
+          "height": 179.984375,
+          "right": 304,
+          "bottom": 562.1875,
+          "fontSize": "16px"
+        },
+        "required": true,
+        "ariaRequired": "true"
+      },
+      "nativeFocus": {
+        "active": true,
+        "outlineStyle": "solid",
+        "outlineWidth": "3px"
+      },
+      "canonicalOptions": [
+        "",
+        "2T",
+        "3T",
+        "4T",
+        "5",
+        "6",
+        "7"
+      ],
+      "geometry_samples": 9,
+      "css": [
+        {
+          "path": "assets/css/theme.min.css",
+          "status": 200,
+          "bytes": 57015,
+          "sha256": "cdadadb58aee9a9fa7bbbd38d36f0c38020f254c918c1975123e2f6b02192ab5"
+        },
+        {
+          "path": "assets/css/product-page.min.css",
+          "status": 200,
+          "bytes": 20985,
+          "sha256": "ea2720e4e3ece50376198565a4c5593de32112d93ab5134499d65d102735ab0b"
+        },
+        {
+          "path": "assets/css/visual-polish.min.css",
+          "status": 200,
+          "bytes": 2289,
+          "sha256": "2a9cca458c0fd1f66b74f7ddd4bf37ca8777364bb2a81317fce71121ee3aea37"
+        },
+        {
+          "path": "assets/css/global-shell.min.css",
+          "status": 200,
+          "bytes": 24819,
+          "sha256": "e397eecebe1c93b16b6f308d39ea77e159d1d2e83ab2b5d330a686d19860698b"
+        },
+        {
+          "path": "assets/css/search-preview.min.css",
+          "status": 200,
+          "bytes": 1222,
+          "sha256": "b17834580431f049d2ec7a312d39d594d2ef5a5d068cc7b2c1a042c3393dbcac"
+        },
+        {
+          "path": "assets/css/premium-commerce.min.css",
+          "status": 200,
+          "bytes": 11720,
+          "sha256": "78ad9b620f19eb76147ffcb9a7b4546fabdbe67f4bbe2f4305bb9feb0e395b15"
+        },
+        {
+          "path": "assets/css/quick-view-commerce.min.css",
+          "status": 200,
+          "bytes": 6394,
+          "sha256": "23e4ef6feec0295ba02ac55742feddfb285604fbf389aebce6e8ae649d53d8db"
+        },
+        {
+          "path": "assets/css/cookie-consent.min.css",
+          "status": 200,
+          "bytes": 2701,
+          "sha256": "9d239d0307e4cf850390bce1baa1611ca0610ce5ffb101fd94d58c7df1e8f8c9"
+        }
+      ],
+      "screenshots": [
+        {
+          "label": "gallery-position-viewport",
+          "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261020/visual-native-media/run-1792514281250287000/browser/pdp-kids-001-320-reduce-gallery-position-viewport.png",
+          "sha256": "8cbcdffd21504bf5f73a1c9a62a2a862b524eae0b122156b6679b5ea4df01598",
+          "bytes": 222545
+        },
+        {
+          "label": "full-garment",
+          "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261020/visual-native-media/run-1792514281250287000/browser/pdp-kids-001-320-reduce-full-garment.png",
+          "sha256": "298e495c22a3ab0a27c894c46f404dfc24be532f8f3f8bb68ae0508706779936",
+          "bytes": 194113
+        },
+        {
+          "label": "scroll202-viewport",
+          "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261020/visual-native-media/run-1792514281250287000/browser/pdp-kids-001-320-reduce-scroll202-viewport.png",
+          "sha256": "a959efeb4e6dba20ba55d7d32164cbd653869195dbb2738291a54e30c520849f",
+          "bytes": 168151
+        },
+        {
+          "label": "size-control-viewport",
+          "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261020/visual-native-media/run-1792514281250287000/browser/pdp-kids-001-320-reduce-size-control-viewport.png",
+          "sha256": "814d21b35e6f0ddb11c82bfe5df72a3972a8ebe6b230db1420d683922cb73b91",
+          "bytes": 106469
+        },
+        {
+          "label": "cart-controls",
+          "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261020/visual-native-media/run-1792514281250287000/browser/pdp-kids-001-320-reduce-cart-controls.png",
+          "sha256": "f3e4748dbfc984d04fe4d883c8b8ca11b8318918d38662a680ddd3c7b50bc96b",
+          "bytes": 3382
+        },
+        {
+          "label": "full-page",
+          "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261020/visual-native-media/run-1792514281250287000/browser/pdp-kids-001-320-reduce-full-page.png",
+          "sha256": "4f7e34a119b5623b9e85918bfe7eed9f82c045ddcfe685a22418381513a584e7",
+          "bytes": 294630
+        }
+      ],
+      "html": {
+        "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261020/visual-native-media/run-1792514281250287000/browser/pdp-kids-001-320-reduce.html",
+        "sha256": "48d54834504d652cbae30d3ab6803d4adbe659d078df12879558f6b45df6cf49",
+        "bytes": 113431
+      }
+    },
+    {
+      "key": "pdp-kids-001-390-reduce",
+      "status": "PASS_POPULATED_NATIVE_OBSERVATIONS_VISUAL_REVIEW_PENDING",
+      "controlPolish": {
+        "select": {
+          "x": 16,
+          "y": 429.796875,
+          "width": 266,
+          "height": 48,
+          "right": 282,
+          "bottom": 477.796875,
+          "fontSize": "16px"
+        },
+        "quantity": {
+          "x": 294,
+          "y": 429.796875,
+          "width": 80,
+          "height": 48,
+          "right": 374,
+          "bottom": 477.796875,
+          "fontSize": "16px"
+        },
+        "button": {
+          "x": 16,
+          "y": 493.796875,
+          "width": 358,
+          "height": 48.390625,
+          "right": 374,
+          "bottom": 542.1875,
+          "fontSize": "16px"
+        },
+        "form": {
+          "x": 16,
+          "y": 382.203125,
+          "width": 358,
+          "height": 179.984375,
+          "right": 374,
+          "bottom": 562.1875,
+          "fontSize": "16px"
+        },
+        "required": true,
+        "ariaRequired": "true"
+      },
+      "nativeFocus": {
+        "active": true,
+        "outlineStyle": "solid",
+        "outlineWidth": "3px"
+      },
+      "canonicalOptions": [
+        "",
+        "2T",
+        "3T",
+        "4T",
+        "5",
+        "6",
+        "7"
+      ],
+      "geometry_samples": 9,
+      "css": [
+        {
+          "path": "assets/css/theme.min.css",
+          "status": 200,
+          "bytes": 57015,
+          "sha256": "cdadadb58aee9a9fa7bbbd38d36f0c38020f254c918c1975123e2f6b02192ab5"
+        },
+        {
+          "path": "assets/css/product-page.min.css",
+          "status": 200,
+          "bytes": 20985,
+          "sha256": "ea2720e4e3ece50376198565a4c5593de32112d93ab5134499d65d102735ab0b"
+        },
+        {
+          "path": "assets/css/visual-polish.min.css",
+          "status": 200,
+          "bytes": 2289,
+          "sha256": "2a9cca458c0fd1f66b74f7ddd4bf37ca8777364bb2a81317fce71121ee3aea37"
+        },
+        {
+          "path": "assets/css/global-shell.min.css",
+          "status": 200,
+          "bytes": 24819,
+          "sha256": "e397eecebe1c93b16b6f308d39ea77e159d1d2e83ab2b5d330a686d19860698b"
+        },
+        {
+          "path": "assets/css/search-preview.min.css",
+          "status": 200,
+          "bytes": 1222,
+          "sha256": "b17834580431f049d2ec7a312d39d594d2ef5a5d068cc7b2c1a042c3393dbcac"
+        },
+        {
+          "path": "assets/css/premium-commerce.min.css",
+          "status": 200,
+          "bytes": 11720,
+          "sha256": "78ad9b620f19eb76147ffcb9a7b4546fabdbe67f4bbe2f4305bb9feb0e395b15"
+        },
+        {
+          "path": "assets/css/quick-view-commerce.min.css",
+          "status": 200,
+          "bytes": 6394,
+          "sha256": "23e4ef6feec0295ba02ac55742feddfb285604fbf389aebce6e8ae649d53d8db"
+        },
+        {
+          "path": "assets/css/cookie-consent.min.css",
+          "status": 200,
+          "bytes": 2701,
+          "sha256": "9d239d0307e4cf850390bce1baa1611ca0610ce5ffb101fd94d58c7df1e8f8c9"
+        }
+      ],
+      "screenshots": [
+        {
+          "label": "gallery-position-viewport",
+          "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261020/visual-native-media/run-1792514281250287000/browser/pdp-kids-001-390-reduce-gallery-position-viewport.png",
+          "sha256": "c5ec042493fe0dd5c5217d45bfe2626313a9a20d9b3a9e90dc7ba77d762ecfb4",
+          "bytes": 230141
+        },
+        {
+          "label": "full-garment",
+          "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261020/visual-native-media/run-1792514281250287000/browser/pdp-kids-001-390-reduce-full-garment.png",
+          "sha256": "eb822abf71030b806f17b543c1b8faa1ab1924526b9373369d5f49c3263c509a",
+          "bytes": 202894
+        },
+        {
+          "label": "scroll202-viewport",
+          "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261020/visual-native-media/run-1792514281250287000/browser/pdp-kids-001-390-reduce-scroll202-viewport.png",
+          "sha256": "e002d7f36dcf65825a3f6babf6913dd5adea04e91920b4a66162546f4bca5459",
+          "bytes": 173731
+        },
+        {
+          "label": "size-control-viewport",
+          "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261020/visual-native-media/run-1792514281250287000/browser/pdp-kids-001-390-reduce-size-control-viewport.png",
+          "sha256": "6f6b5f20a983b1b5a7e57cdb5784f1d0f493b7e800d60eb522192c66b2c29933",
+          "bytes": 110594
+        },
+        {
+          "label": "cart-controls",
+          "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261020/visual-native-media/run-1792514281250287000/browser/pdp-kids-001-390-reduce-cart-controls.png",
+          "sha256": "8de4d686129e0a5d818179391a9951303f9fbd3055adc766e3ac3535aaa74ec6",
+          "bytes": 3469
+        },
+        {
+          "label": "full-page",
+          "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261020/visual-native-media/run-1792514281250287000/browser/pdp-kids-001-390-reduce-full-page.png",
+          "sha256": "50d52edd9048ddbc4650152fb9cb604c6dba489ce7cc0ea6d4dcaff592189c36",
+          "bytes": 300268
+        }
+      ],
+      "html": {
+        "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261020/visual-native-media/run-1792514281250287000/browser/pdp-kids-001-390-reduce.html",
+        "sha256": "9b994be99540b6790ba3c0e20f688459fb230af49933f8fe85d46df8259483b7",
+        "bytes": 113431
+      }
+    },
+    {
+      "key": "pdp-kids-001-768-reduce",
+      "status": "PASS_POPULATED_NATIVE_OBSERVATIONS_VISUAL_REVIEW_PENDING",
+      "controlPolish": {
+        "select": {
+          "x": 30.71875,
+          "y": 430.390625,
+          "width": 614.5625,
+          "height": 48,
+          "right": 645.28125,
+          "bottom": 478.390625,
+          "fontSize": "16px"
+        },
+        "quantity": {
+          "x": 657.28125,
+          "y": 430.390625,
+          "width": 80,
+          "height": 48,
+          "right": 737.28125,
+          "bottom": 478.390625,
+          "fontSize": "16px"
+        },
+        "button": {
+          "x": 30.71875,
+          "y": 494.390625,
+          "width": 706.5625,
+          "height": 48.390625,
+          "right": 737.28125,
+          "bottom": 542.78125,
+          "fontSize": "16px"
+        },
+        "form": {
+          "x": 30.71875,
+          "y": 382.796875,
+          "width": 706.5625,
+          "height": 179.984375,
+          "right": 737.28125,
+          "bottom": 562.78125,
+          "fontSize": "16px"
+        },
+        "required": true,
+        "ariaRequired": "true"
+      },
+      "nativeFocus": {
+        "active": true,
+        "outlineStyle": "solid",
+        "outlineWidth": "3px"
+      },
+      "canonicalOptions": [
+        "",
+        "2T",
+        "3T",
+        "4T",
+        "5",
+        "6",
+        "7"
+      ],
+      "geometry_samples": 9,
+      "css": [
+        {
+          "path": "assets/css/theme.min.css",
+          "status": 200,
+          "bytes": 57015,
+          "sha256": "cdadadb58aee9a9fa7bbbd38d36f0c38020f254c918c1975123e2f6b02192ab5"
+        },
+        {
+          "path": "assets/css/product-page.min.css",
+          "status": 200,
+          "bytes": 20985,
+          "sha256": "ea2720e4e3ece50376198565a4c5593de32112d93ab5134499d65d102735ab0b"
+        },
+        {
+          "path": "assets/css/visual-polish.min.css",
+          "status": 200,
+          "bytes": 2289,
+          "sha256": "2a9cca458c0fd1f66b74f7ddd4bf37ca8777364bb2a81317fce71121ee3aea37"
+        },
+        {
+          "path": "assets/css/global-shell.min.css",
+          "status": 200,
+          "bytes": 24819,
+          "sha256": "e397eecebe1c93b16b6f308d39ea77e159d1d2e83ab2b5d330a686d19860698b"
+        },
+        {
+          "path": "assets/css/search-preview.min.css",
+          "status": 200,
+          "bytes": 1222,
+          "sha256": "b17834580431f049d2ec7a312d39d594d2ef5a5d068cc7b2c1a042c3393dbcac"
+        },
+        {
+          "path": "assets/css/premium-commerce.min.css",
+          "status": 200,
+          "bytes": 11720,
+          "sha256": "78ad9b620f19eb76147ffcb9a7b4546fabdbe67f4bbe2f4305bb9feb0e395b15"
+        },
+        {
+          "path": "assets/css/quick-view-commerce.min.css",
+          "status": 200,
+          "bytes": 6394,
+          "sha256": "23e4ef6feec0295ba02ac55742feddfb285604fbf389aebce6e8ae649d53d8db"
+        },
+        {
+          "path": "assets/css/cookie-consent.min.css",
+          "status": 200,
+          "bytes": 2701,
+          "sha256": "9d239d0307e4cf850390bce1baa1611ca0610ce5ffb101fd94d58c7df1e8f8c9"
+        }
+      ],
+      "screenshots": [
+        {
+          "label": "gallery-position-viewport",
+          "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261020/visual-native-media/run-1792514281250287000/browser/pdp-kids-001-768-reduce-gallery-position-viewport.png",
+          "sha256": "31e2ef914c910b3d536832fc240fe67e1c69e6e85ff87f8ea3b3942dfbdafb33",
+          "bytes": 335813
+        },
+        {
+          "label": "full-garment",
+          "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261020/visual-native-media/run-1792514281250287000/browser/pdp-kids-001-768-reduce-full-garment.png",
+          "sha256": "ea71cb8acd91c697f3e376ab9af4bdc92dd8860c16fb9a05da6ee29ac2634422",
+          "bytes": 308908
+        },
+        {
+          "label": "scroll202-viewport",
+          "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261020/visual-native-media/run-1792514281250287000/browser/pdp-kids-001-768-reduce-scroll202-viewport.png",
+          "sha256": "f4f427ba52bdbf4643186e865dee1599fe59755458dc2f8c778823c0635b53e1",
+          "bytes": 260336
+        },
+        {
+          "label": "size-control-viewport",
+          "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261020/visual-native-media/run-1792514281250287000/browser/pdp-kids-001-768-reduce-size-control-viewport.png",
+          "sha256": "d37d7b6999c9a6345be141ea044187ecc159d9f0826b81a069460a3ce69824fd",
+          "bytes": 148509
+        },
+        {
+          "label": "cart-controls",
+          "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261020/visual-native-media/run-1792514281250287000/browser/pdp-kids-001-768-reduce-cart-controls.png",
+          "sha256": "d491059c434b004fe32c4775ab1b8856628844bbe21aa97549dfefc0d590ec1e",
+          "bytes": 3801
+        },
+        {
+          "label": "full-page",
+          "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261020/visual-native-media/run-1792514281250287000/browser/pdp-kids-001-768-reduce-full-page.png",
+          "sha256": "9076e6c6b21427889d1557a010232c0a989da19681016171fa66c07d85fb2447",
+          "bytes": 416372
+        }
+      ],
+      "html": {
+        "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261020/visual-native-media/run-1792514281250287000/browser/pdp-kids-001-768-reduce.html",
+        "sha256": "0c7fff7767edf3429ce215e061ae256fef229db2de7a88c794c4a80e6da615be",
+        "bytes": 113431
+      }
+    },
+    {
+      "key": "pdp-kids-001-1440-reduce",
+      "status": "PASS_POPULATED_NATIVE_OBSERVATIONS_VISUAL_REVIEW_PENDING",
+      "controlPolish": {
+        "select": {
+          "x": 847.1875,
+          "y": 350.1875,
+          "width": 443.21875,
+          "height": 48,
+          "right": 1290.40625,
+          "bottom": 398.1875,
+          "fontSize": "16px"
+        },
+        "quantity": {
+          "x": 1302.40625,
+          "y": 350.1875,
+          "width": 80,
+          "height": 48,
+          "right": 1382.40625,
+          "bottom": 398.1875,
+          "fontSize": "16px"
+        },
+        "button": {
+          "x": 847.1875,
+          "y": 414.1875,
+          "width": 535.21875,
+          "height": 48.390625,
+          "right": 1382.40625,
+          "bottom": 462.578125,
+          "fontSize": "16px"
+        },
+        "form": {
+          "x": 847.1875,
+          "y": 302.59375,
+          "width": 535.21875,
+          "height": 179.984375,
+          "right": 1382.40625,
+          "bottom": 482.578125,
+          "fontSize": "16px"
+        },
+        "required": true,
+        "ariaRequired": "true"
+      },
+      "nativeFocus": {
+        "active": true,
+        "outlineStyle": "solid",
+        "outlineWidth": "3px"
+      },
+      "canonicalOptions": [
+        "",
+        "2T",
+        "3T",
+        "4T",
+        "5",
+        "6",
+        "7"
+      ],
+      "geometry_samples": 9,
+      "css": [
+        {
+          "path": "assets/css/theme.min.css",
+          "status": 200,
+          "bytes": 57015,
+          "sha256": "cdadadb58aee9a9fa7bbbd38d36f0c38020f254c918c1975123e2f6b02192ab5"
+        },
+        {
+          "path": "assets/css/product-page.min.css",
+          "status": 200,
+          "bytes": 20985,
+          "sha256": "ea2720e4e3ece50376198565a4c5593de32112d93ab5134499d65d102735ab0b"
+        },
+        {
+          "path": "assets/css/visual-polish.min.css",
+          "status": 200,
+          "bytes": 2289,
+          "sha256": "2a9cca458c0fd1f66b74f7ddd4bf37ca8777364bb2a81317fce71121ee3aea37"
+        },
+        {
+          "path": "assets/css/global-shell.min.css",
+          "status": 200,
+          "bytes": 24819,
+          "sha256": "e397eecebe1c93b16b6f308d39ea77e159d1d2e83ab2b5d330a686d19860698b"
+        },
+        {
+          "path": "assets/css/search-preview.min.css",
+          "status": 200,
+          "bytes": 1222,
+          "sha256": "b17834580431f049d2ec7a312d39d594d2ef5a5d068cc7b2c1a042c3393dbcac"
+        },
+        {
+          "path": "assets/css/premium-commerce.min.css",
+          "status": 200,
+          "bytes": 11720,
+          "sha256": "78ad9b620f19eb76147ffcb9a7b4546fabdbe67f4bbe2f4305bb9feb0e395b15"
+        },
+        {
+          "path": "assets/css/quick-view-commerce.min.css",
+          "status": 200,
+          "bytes": 6394,
+          "sha256": "23e4ef6feec0295ba02ac55742feddfb285604fbf389aebce6e8ae649d53d8db"
+        },
+        {
+          "path": "assets/css/cookie-consent.min.css",
+          "status": 200,
+          "bytes": 2701,
+          "sha256": "9d239d0307e4cf850390bce1baa1611ca0610ce5ffb101fd94d58c7df1e8f8c9"
+        }
+      ],
+      "screenshots": [
+        {
+          "label": "gallery-position-viewport",
+          "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261020/visual-native-media/run-1792514281250287000/browser/pdp-kids-001-1440-reduce-gallery-position-viewport.png",
+          "sha256": "6b85ad0f4c60992808d58e2d02ecccf2773ffe6f4655cc0a973366b6092d04a9",
+          "bytes": 420091
+        },
+        {
+          "label": "full-garment",
+          "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261020/visual-native-media/run-1792514281250287000/browser/pdp-kids-001-1440-reduce-full-garment.png",
+          "sha256": "95e4acfac756f0f2d367b654f4794e1d3fadfcb2e7de1d2686d8400c50b50e6c",
+          "bytes": 344313
+        },
+        {
+          "label": "scroll202-viewport",
+          "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261020/visual-native-media/run-1792514281250287000/browser/pdp-kids-001-1440-reduce-scroll202-viewport.png",
+          "sha256": "07a81049c24bd3cd857af2e1ea393d9f7e17e434ccbab6173a5407dadd80e57a",
+          "bytes": 354722
+        },
+        {
+          "label": "size-control-viewport",
+          "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261020/visual-native-media/run-1792514281250287000/browser/pdp-kids-001-1440-reduce-size-control-viewport.png",
+          "sha256": "ef9ee086fd5decad0d4ba0b7dfb07e1d75640b62d54628140d9d2c8012c17d4a",
+          "bytes": 418067
+        },
+        {
+          "label": "cart-controls",
+          "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261020/visual-native-media/run-1792514281250287000/browser/pdp-kids-001-1440-reduce-cart-controls.png",
+          "sha256": "571825dc7047ebc4c65e7e462e116e5feb2676293e21cd1ba612bcd2e8f25c38",
+          "bytes": 3556
+        },
+        {
+          "label": "full-page",
+          "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261020/visual-native-media/run-1792514281250287000/browser/pdp-kids-001-1440-reduce-full-page.png",
+          "sha256": "99f68743de9e827f9563d7a21baabfd1071cd2a8cf9dfbaa781284147a5518d3",
+          "bytes": 494445
+        }
+      ],
+      "html": {
+        "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261020/visual-native-media/run-1792514281250287000/browser/pdp-kids-001-1440-reduce.html",
+        "sha256": "6355f03c1ce09c01bd666a07732a80ebb2c3bb83f029a728fda098c408a5a3ba",
+        "bytes": 113431
+      }
+    },
+    {
+      "key": "pdp-sg-013-320-reduce",
+      "status": "PASS_POPULATED_NATIVE_OBSERVATIONS_VISUAL_REVIEW_PENDING",
+      "controlPolish": {
+        "select": {
+          "x": 16,
+          "y": 430.125,
+          "width": 196,
+          "height": 48,
+          "right": 212,
+          "bottom": 478.125,
+          "fontSize": "16px"
+        },
+        "quantity": {
+          "x": 224,
+          "y": 430.125,
+          "width": 80,
+          "height": 48,
+          "right": 304,
+          "bottom": 478.125,
+          "fontSize": "16px"
+        },
+        "button": {
+          "x": 16,
+          "y": 494.125,
+          "width": 288,
+          "height": 48.390625,
+          "right": 304,
+          "bottom": 542.515625,
+          "fontSize": "16px"
+        },
+        "form": {
+          "x": 16,
+          "y": 382.53125,
+          "width": 288,
+          "height": 179.984375,
+          "right": 304,
+          "bottom": 562.515625,
+          "fontSize": "16px"
+        },
+        "required": true,
+        "ariaRequired": "true"
+      },
+      "nativeFocus": {
+        "active": true,
+        "outlineStyle": "solid",
+        "outlineWidth": "3px"
+      },
+      "canonicalOptions": [
+        "",
+        "S",
+        "M",
+        "L",
+        "XL",
+        "2XL",
+        "3XL"
+      ],
+      "geometry_samples": 9,
+      "css": [
+        {
+          "path": "assets/css/theme.min.css",
+          "status": 200,
+          "bytes": 57015,
+          "sha256": "cdadadb58aee9a9fa7bbbd38d36f0c38020f254c918c1975123e2f6b02192ab5"
+        },
+        {
+          "path": "assets/css/product-page.min.css",
+          "status": 200,
+          "bytes": 20985,
+          "sha256": "ea2720e4e3ece50376198565a4c5593de32112d93ab5134499d65d102735ab0b"
+        },
+        {
+          "path": "assets/css/visual-polish.min.css",
+          "status": 200,
+          "bytes": 2289,
+          "sha256": "2a9cca458c0fd1f66b74f7ddd4bf37ca8777364bb2a81317fce71121ee3aea37"
+        },
+        {
+          "path": "assets/css/premium-commerce.min.css",
+          "status": 200,
+          "bytes": 11720,
+          "sha256": "78ad9b620f19eb76147ffcb9a7b4546fabdbe67f4bbe2f4305bb9feb0e395b15"
+        },
+        {
+          "path": "assets/css/global-shell.min.css",
+          "status": 200,
+          "bytes": 24819,
+          "sha256": "e397eecebe1c93b16b6f308d39ea77e159d1d2e83ab2b5d330a686d19860698b"
+        },
+        {
+          "path": "assets/css/search-preview.min.css",
+          "status": 200,
+          "bytes": 1222,
+          "sha256": "b17834580431f049d2ec7a312d39d594d2ef5a5d068cc7b2c1a042c3393dbcac"
+        },
+        {
+          "path": "assets/css/quick-view-commerce.min.css",
+          "status": 200,
+          "bytes": 6394,
+          "sha256": "23e4ef6feec0295ba02ac55742feddfb285604fbf389aebce6e8ae649d53d8db"
+        },
+        {
+          "path": "assets/css/cookie-consent.min.css",
+          "status": 200,
+          "bytes": 2701,
+          "sha256": "9d239d0307e4cf850390bce1baa1611ca0610ce5ffb101fd94d58c7df1e8f8c9"
+        }
+      ],
+      "screenshots": [
+        {
+          "label": "gallery-position-viewport",
+          "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261020/visual-native-media/run-1792514281250287000/browser/pdp-sg-013-320-reduce-gallery-position-viewport.png",
+          "sha256": "dd1ae43025598a5c7980871cc80070c2f7acab62b5d4cf95f99fc861675c66ac",
+          "bytes": 212059
+        },
+        {
+          "label": "full-garment",
+          "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261020/visual-native-media/run-1792514281250287000/browser/pdp-sg-013-320-reduce-full-garment.png",
+          "sha256": "d4f15993b2693174b8489ffea5eaba8dae01899b990ddedd698cb733b0bdf5a6",
+          "bytes": 186825
+        },
+        {
+          "label": "scroll202-viewport",
+          "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261020/visual-native-media/run-1792514281250287000/browser/pdp-sg-013-320-reduce-scroll202-viewport.png",
+          "sha256": "665092d9c5e274935a32aa235d9eede2ef8822399ff52bc1cb375660e930c7dd",
+          "bytes": 149967
+        },
+        {
+          "label": "size-control-viewport",
+          "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261020/visual-native-media/run-1792514281250287000/browser/pdp-sg-013-320-reduce-size-control-viewport.png",
+          "sha256": "9274d37f8c58f7edac417ad87d7ba24e6221011d1ddb41cce863f1f45dd388a8",
+          "bytes": 108375
+        },
+        {
+          "label": "cart-controls",
+          "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261020/visual-native-media/run-1792514281250287000/browser/pdp-sg-013-320-reduce-cart-controls.png",
+          "sha256": "8a141fe049916d2469f1ef98dc8c011fb4caaf448f28c4e941e736c12419034f",
+          "bytes": 3836
+        },
+        {
+          "label": "full-page",
+          "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261020/visual-native-media/run-1792514281250287000/browser/pdp-sg-013-320-reduce-full-page.png",
+          "sha256": "9d2cca67f6c83b1874264e5295d1e0746aaf29fe7f43f280a748b83bff33b48c",
+          "bytes": 280260
+        }
+      ],
+      "html": {
+        "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261020/visual-native-media/run-1792514281250287000/browser/pdp-sg-013-320-reduce.html",
+        "sha256": "667543d96f1b9a2aaac98cd06592ead22d845a5a5b871131e0785f0ee0a71e10",
+        "bytes": 113225
+      }
+    },
+    {
+      "key": "pdp-sg-013-390-reduce",
+      "status": "PASS_POPULATED_NATIVE_OBSERVATIONS_VISUAL_REVIEW_PENDING",
+      "controlPolish": {
+        "select": {
+          "x": 16,
+          "y": 430.125,
+          "width": 266,
+          "height": 48,
+          "right": 282,
+          "bottom": 478.125,
+          "fontSize": "16px"
+        },
+        "quantity": {
+          "x": 294,
+          "y": 430.125,
+          "width": 80,
+          "height": 48,
+          "right": 374,
+          "bottom": 478.125,
+          "fontSize": "16px"
+        },
+        "button": {
+          "x": 16,
+          "y": 494.125,
+          "width": 358,
+          "height": 48.390625,
+          "right": 374,
+          "bottom": 542.515625,
+          "fontSize": "16px"
+        },
+        "form": {
+          "x": 16,
+          "y": 382.53125,
+          "width": 358,
+          "height": 179.984375,
+          "right": 374,
+          "bottom": 562.515625,
+          "fontSize": "16px"
+        },
+        "required": true,
+        "ariaRequired": "true"
+      },
+      "nativeFocus": {
+        "active": true,
+        "outlineStyle": "solid",
+        "outlineWidth": "3px"
+      },
+      "canonicalOptions": [
+        "",
+        "S",
+        "M",
+        "L",
+        "XL",
+        "2XL",
+        "3XL"
+      ],
+      "geometry_samples": 9,
+      "css": [
+        {
+          "path": "assets/css/theme.min.css",
+          "status": 200,
+          "bytes": 57015,
+          "sha256": "cdadadb58aee9a9fa7bbbd38d36f0c38020f254c918c1975123e2f6b02192ab5"
+        },
+        {
+          "path": "assets/css/product-page.min.css",
+          "status": 200,
+          "bytes": 20985,
+          "sha256": "ea2720e4e3ece50376198565a4c5593de32112d93ab5134499d65d102735ab0b"
+        },
+        {
+          "path": "assets/css/visual-polish.min.css",
+          "status": 200,
+          "bytes": 2289,
+          "sha256": "2a9cca458c0fd1f66b74f7ddd4bf37ca8777364bb2a81317fce71121ee3aea37"
+        },
+        {
+          "path": "assets/css/global-shell.min.css",
+          "status": 200,
+          "bytes": 24819,
+          "sha256": "e397eecebe1c93b16b6f308d39ea77e159d1d2e83ab2b5d330a686d19860698b"
+        },
+        {
+          "path": "assets/css/search-preview.min.css",
+          "status": 200,
+          "bytes": 1222,
+          "sha256": "b17834580431f049d2ec7a312d39d594d2ef5a5d068cc7b2c1a042c3393dbcac"
+        },
+        {
+          "path": "assets/css/premium-commerce.min.css",
+          "status": 200,
+          "bytes": 11720,
+          "sha256": "78ad9b620f19eb76147ffcb9a7b4546fabdbe67f4bbe2f4305bb9feb0e395b15"
+        },
+        {
+          "path": "assets/css/quick-view-commerce.min.css",
+          "status": 200,
+          "bytes": 6394,
+          "sha256": "23e4ef6feec0295ba02ac55742feddfb285604fbf389aebce6e8ae649d53d8db"
+        },
+        {
+          "path": "assets/css/cookie-consent.min.css",
+          "status": 200,
+          "bytes": 2701,
+          "sha256": "9d239d0307e4cf850390bce1baa1611ca0610ce5ffb101fd94d58c7df1e8f8c9"
+        }
+      ],
+      "screenshots": [
+        {
+          "label": "gallery-position-viewport",
+          "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261020/visual-native-media/run-1792514281250287000/browser/pdp-sg-013-390-reduce-gallery-position-viewport.png",
+          "sha256": "e1b5710e5683ec9197ad82984e1e01a798c9cc2c93052a6ceaef3c1d61e22049",
+          "bytes": 219856
+        },
+        {
+          "label": "full-garment",
+          "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261020/visual-native-media/run-1792514281250287000/browser/pdp-sg-013-390-reduce-full-garment.png",
+          "sha256": "692f34c1d360a1fd58a6e4e7ab2b0d52714b866eb66ed5ea59070d6dcc4e2ebd",
+          "bytes": 195144
+        },
+        {
+          "label": "scroll202-viewport",
+          "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261020/visual-native-media/run-1792514281250287000/browser/pdp-sg-013-390-reduce-scroll202-viewport.png",
+          "sha256": "cd915b18aa78c02d694c84b339aa9a5d8b69b3a1733bb1f01ca6c1c01238722f",
+          "bytes": 156638
+        },
+        {
+          "label": "size-control-viewport",
+          "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261020/visual-native-media/run-1792514281250287000/browser/pdp-sg-013-390-reduce-size-control-viewport.png",
+          "sha256": "1e504e1364b920d80e4baaf09e6eab7686aa9ba186f6c3d0f6e49390d967dc33",
+          "bytes": 112188
+        },
+        {
+          "label": "cart-controls",
+          "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261020/visual-native-media/run-1792514281250287000/browser/pdp-sg-013-390-reduce-cart-controls.png",
+          "sha256": "afb904c92b04e23ceb58f7cbcb05f2a16c07e12821e1579ae54d87b3ea16f2b6",
+          "bytes": 3927
+        },
+        {
+          "label": "full-page",
+          "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261020/visual-native-media/run-1792514281250287000/browser/pdp-sg-013-390-reduce-full-page.png",
+          "sha256": "9c7d562f3b8b1cd91a5f7ff7122d4c0417cf277aa1e59e537c81892948544051",
+          "bytes": 286556
+        }
+      ],
+      "html": {
+        "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261020/visual-native-media/run-1792514281250287000/browser/pdp-sg-013-390-reduce.html",
+        "sha256": "e374c16481bb57d51689c58e602eef571df2f2e81d337624b47108948efe68d7",
+        "bytes": 113225
+      }
+    },
+    {
+      "key": "pdp-sg-013-768-reduce",
+      "status": "PASS_POPULATED_NATIVE_OBSERVATIONS_VISUAL_REVIEW_PENDING",
+      "controlPolish": {
+        "select": {
+          "x": 30.71875,
+          "y": 430.390625,
+          "width": 614.5625,
+          "height": 48,
+          "right": 645.28125,
+          "bottom": 478.390625,
+          "fontSize": "16px"
+        },
+        "quantity": {
+          "x": 657.28125,
+          "y": 430.390625,
+          "width": 80,
+          "height": 48,
+          "right": 737.28125,
+          "bottom": 478.390625,
+          "fontSize": "16px"
+        },
+        "button": {
+          "x": 30.71875,
+          "y": 494.390625,
+          "width": 706.5625,
+          "height": 48.390625,
+          "right": 737.28125,
+          "bottom": 542.78125,
+          "fontSize": "16px"
+        },
+        "form": {
+          "x": 30.71875,
+          "y": 382.796875,
+          "width": 706.5625,
+          "height": 179.984375,
+          "right": 737.28125,
+          "bottom": 562.78125,
+          "fontSize": "16px"
+        },
+        "required": true,
+        "ariaRequired": "true"
+      },
+      "nativeFocus": {
+        "active": true,
+        "outlineStyle": "solid",
+        "outlineWidth": "3px"
+      },
+      "canonicalOptions": [
+        "",
+        "S",
+        "M",
+        "L",
+        "XL",
+        "2XL",
+        "3XL"
+      ],
+      "geometry_samples": 9,
+      "css": [
+        {
+          "path": "assets/css/theme.min.css",
+          "status": 200,
+          "bytes": 57015,
+          "sha256": "cdadadb58aee9a9fa7bbbd38d36f0c38020f254c918c1975123e2f6b02192ab5"
+        },
+        {
+          "path": "assets/css/product-page.min.css",
+          "status": 200,
+          "bytes": 20985,
+          "sha256": "ea2720e4e3ece50376198565a4c5593de32112d93ab5134499d65d102735ab0b"
+        },
+        {
+          "path": "assets/css/visual-polish.min.css",
+          "status": 200,
+          "bytes": 2289,
+          "sha256": "2a9cca458c0fd1f66b74f7ddd4bf37ca8777364bb2a81317fce71121ee3aea37"
+        },
+        {
+          "path": "assets/css/global-shell.min.css",
+          "status": 200,
+          "bytes": 24819,
+          "sha256": "e397eecebe1c93b16b6f308d39ea77e159d1d2e83ab2b5d330a686d19860698b"
+        },
+        {
+          "path": "assets/css/search-preview.min.css",
+          "status": 200,
+          "bytes": 1222,
+          "sha256": "b17834580431f049d2ec7a312d39d594d2ef5a5d068cc7b2c1a042c3393dbcac"
+        },
+        {
+          "path": "assets/css/premium-commerce.min.css",
+          "status": 200,
+          "bytes": 11720,
+          "sha256": "78ad9b620f19eb76147ffcb9a7b4546fabdbe67f4bbe2f4305bb9feb0e395b15"
+        },
+        {
+          "path": "assets/css/quick-view-commerce.min.css",
+          "status": 200,
+          "bytes": 6394,
+          "sha256": "23e4ef6feec0295ba02ac55742feddfb285604fbf389aebce6e8ae649d53d8db"
+        },
+        {
+          "path": "assets/css/cookie-consent.min.css",
+          "status": 200,
+          "bytes": 2701,
+          "sha256": "9d239d0307e4cf850390bce1baa1611ca0610ce5ffb101fd94d58c7df1e8f8c9"
+        }
+      ],
+      "screenshots": [
+        {
+          "label": "gallery-position-viewport",
+          "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261020/visual-native-media/run-1792514281250287000/browser/pdp-sg-013-768-reduce-gallery-position-viewport.png",
+          "sha256": "7d39e79a3a9e490a175c53bf9304ddd2f2203b430dabf64c1b3c25818fe01d98",
+          "bytes": 320333
+        },
+        {
+          "label": "full-garment",
+          "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261020/visual-native-media/run-1792514281250287000/browser/pdp-sg-013-768-reduce-full-garment.png",
+          "sha256": "0d3fe464d725d3cef260d39ca4789c9c91b8c006eda6a56f6fe180839ad992c7",
+          "bytes": 297446
+        },
+        {
+          "label": "scroll202-viewport",
+          "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261020/visual-native-media/run-1792514281250287000/browser/pdp-sg-013-768-reduce-scroll202-viewport.png",
+          "sha256": "76f467f42250177a7b9e3d8e181a9b7dd1d6dba352d1539a69e2bfa02f8f355e",
+          "bytes": 246475
+        },
+        {
+          "label": "size-control-viewport",
+          "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261020/visual-native-media/run-1792514281250287000/browser/pdp-sg-013-768-reduce-size-control-viewport.png",
+          "sha256": "c5d7229939113c8c0641ac99cf7190b0fb7fdc26c4f992666fbd5c950483f5aa",
+          "bytes": 127287
+        },
+        {
+          "label": "cart-controls",
+          "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261020/visual-native-media/run-1792514281250287000/browser/pdp-sg-013-768-reduce-cart-controls.png",
+          "sha256": "3b41e70cd1cfb033b73a4b79ce96777fca054d769de662355498a1f3bddf9fa5",
+          "bytes": 4334
+        },
+        {
+          "label": "full-page",
+          "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261020/visual-native-media/run-1792514281250287000/browser/pdp-sg-013-768-reduce-full-page.png",
+          "sha256": "c47866c748191e9e83bd186c4422adea2545b1ac3c4e3967ef47c7c0fc6f937e",
+          "bytes": 400445
+        }
+      ],
+      "html": {
+        "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261020/visual-native-media/run-1792514281250287000/browser/pdp-sg-013-768-reduce.html",
+        "sha256": "b951114ca5c801b403b6caf6bd06c7aa4f9d6c904b56834df789cf9b988cadb5",
+        "bytes": 113225
+      }
+    },
+    {
+      "key": "pdp-sg-013-1440-reduce",
+      "status": "PASS_POPULATED_NATIVE_OBSERVATIONS_VISUAL_REVIEW_PENDING",
+      "controlPolish": {
+        "select": {
+          "x": 847.1875,
+          "y": 311.484375,
+          "width": 443.21875,
+          "height": 48,
+          "right": 1290.40625,
+          "bottom": 359.484375,
+          "fontSize": "16px"
+        },
+        "quantity": {
+          "x": 1302.40625,
+          "y": 311.484375,
+          "width": 80,
+          "height": 48,
+          "right": 1382.40625,
+          "bottom": 359.484375,
+          "fontSize": "16px"
+        },
+        "button": {
+          "x": 847.1875,
+          "y": 375.484375,
+          "width": 535.21875,
+          "height": 48.390625,
+          "right": 1382.40625,
+          "bottom": 423.875,
+          "fontSize": "16px"
+        },
+        "form": {
+          "x": 847.1875,
+          "y": 263.890625,
+          "width": 535.21875,
+          "height": 179.984375,
+          "right": 1382.40625,
+          "bottom": 443.875,
+          "fontSize": "16px"
+        },
+        "required": true,
+        "ariaRequired": "true"
+      },
+      "nativeFocus": {
+        "active": true,
+        "outlineStyle": "solid",
+        "outlineWidth": "3px"
+      },
+      "canonicalOptions": [
+        "",
+        "S",
+        "M",
+        "L",
+        "XL",
+        "2XL",
+        "3XL"
+      ],
+      "geometry_samples": 9,
+      "css": [
+        {
+          "path": "assets/css/theme.min.css",
+          "status": 200,
+          "bytes": 57015,
+          "sha256": "cdadadb58aee9a9fa7bbbd38d36f0c38020f254c918c1975123e2f6b02192ab5"
+        },
+        {
+          "path": "assets/css/product-page.min.css",
+          "status": 200,
+          "bytes": 20985,
+          "sha256": "ea2720e4e3ece50376198565a4c5593de32112d93ab5134499d65d102735ab0b"
+        },
+        {
+          "path": "assets/css/visual-polish.min.css",
+          "status": 200,
+          "bytes": 2289,
+          "sha256": "2a9cca458c0fd1f66b74f7ddd4bf37ca8777364bb2a81317fce71121ee3aea37"
+        },
+        {
+          "path": "assets/css/global-shell.min.css",
+          "status": 200,
+          "bytes": 24819,
+          "sha256": "e397eecebe1c93b16b6f308d39ea77e159d1d2e83ab2b5d330a686d19860698b"
+        },
+        {
+          "path": "assets/css/search-preview.min.css",
+          "status": 200,
+          "bytes": 1222,
+          "sha256": "b17834580431f049d2ec7a312d39d594d2ef5a5d068cc7b2c1a042c3393dbcac"
+        },
+        {
+          "path": "assets/css/premium-commerce.min.css",
+          "status": 200,
+          "bytes": 11720,
+          "sha256": "78ad9b620f19eb76147ffcb9a7b4546fabdbe67f4bbe2f4305bb9feb0e395b15"
+        },
+        {
+          "path": "assets/css/quick-view-commerce.min.css",
+          "status": 200,
+          "bytes": 6394,
+          "sha256": "23e4ef6feec0295ba02ac55742feddfb285604fbf389aebce6e8ae649d53d8db"
+        },
+        {
+          "path": "assets/css/cookie-consent.min.css",
+          "status": 200,
+          "bytes": 2701,
+          "sha256": "9d239d0307e4cf850390bce1baa1611ca0610ce5ffb101fd94d58c7df1e8f8c9"
+        }
+      ],
+      "screenshots": [
+        {
+          "label": "gallery-position-viewport",
+          "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261020/visual-native-media/run-1792514281250287000/browser/pdp-sg-013-1440-reduce-gallery-position-viewport.png",
+          "sha256": "2aa0eb185bb580b4178470dd448762068897040955e15fc74440c550c39ba8bc",
+          "bytes": 401521
+        },
+        {
+          "label": "full-garment",
+          "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261020/visual-native-media/run-1792514281250287000/browser/pdp-sg-013-1440-reduce-full-garment.png",
+          "sha256": "cfab9076c8c02db1e1aacedbf8ed814fd4f3121602da83eac4967b485ff794b9",
+          "bytes": 330617
+        },
+        {
+          "label": "scroll202-viewport",
+          "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261020/visual-native-media/run-1792514281250287000/browser/pdp-sg-013-1440-reduce-scroll202-viewport.png",
+          "sha256": "182854d5553a5d0df3325ef11c84416fa2fd2deae02bac1b136f87bd95216ecf",
+          "bytes": 313267
+        },
+        {
+          "label": "size-control-viewport",
+          "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261020/visual-native-media/run-1792514281250287000/browser/pdp-sg-013-1440-reduce-size-control-viewport.png",
+          "sha256": "34a900ae32f112c836c282ffda16e25191f007e80fc985ce899dad6abb57dc34",
+          "bytes": 399989
+        },
+        {
+          "label": "cart-controls",
+          "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261020/visual-native-media/run-1792514281250287000/browser/pdp-sg-013-1440-reduce-cart-controls.png",
+          "sha256": "2990ea93e3a89c409b37ad92db9e3527caefc1bb1c0c417e5e13f105e1d05324",
+          "bytes": 4065
+        },
+        {
+          "label": "full-page",
+          "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261020/visual-native-media/run-1792514281250287000/browser/pdp-sg-013-1440-reduce-full-page.png",
+          "sha256": "e8c0ed618168dfc69291906d514ca47837073fe28cd81591e5d3ac88666846ac",
+          "bytes": 476480
+        }
+      ],
+      "html": {
+        "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261020/visual-native-media/run-1792514281250287000/browser/pdp-sg-013-1440-reduce.html",
+        "sha256": "a43d3668a2aaf0753d9a52b96e9e3cda00f72d667b49d11915946ef9739da9c9",
+        "bytes": 113225
+      }
+    }
+  ]
+}
