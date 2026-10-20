@@ -701,7 +701,10 @@ def qualify_normal_install(seed):
     destination.rename(PRIVATE / "pre-install-theme-retained")
 
     def admin_landing(path):
+        seen = set()
         for _ in range(4):
+            assert path not in seen, "Native admin redirect cycle"
+            seen.add(path)
             response = admin.request(path)
             if response["status"] == 200:
                 return response
