@@ -335,3 +335,15 @@ use `+main:`), and pip-audit exits 1 for both findings and a crash, so a PyPI
 connection reset read as "FIXABLE vulnerabilities". Distinguish by the report:
 only findings write `--output`; retry a report-less run once and fail it as a
 tool error, never pass it.
+
+**Markdown comment markers need blank lines around them (2026-10-20, bug-407).**
+`<!-- prettier-ignore-start -->` directly above another `<!-- … -->` line merges
+into one HTML node, and a comment directly under a list folds into the last item
+as lazy continuation. Either way prettier no longer sees the ignore range and
+reformats what it was meant to protect. In `CLAUDE.md` that made prettier and
+`scripts/wolf_recurring_sync.py` rewrite the recurring-bug block back and forth,
+leaving the tree dirty after every Stop hook. Give each marker its own block
+(blank line before and after). When testing prettier output, pass
+`--stdin-filepath <repo path>`: overrides such as `*.md` (80 columns,
+`proseWrap: always`) only match paths under the config's directory, so a temp
+file outside the repo is checked with defaults and passes vacuously.

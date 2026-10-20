@@ -7304,5 +7304,23 @@
     ],
     "occurrences": 1,
     "last_seen": "2026-10-14T00:00:00+00:00"
+  },
+  {
+    "id": "bug-407",
+    "timestamp": "2026-10-20T00:15:46.641048+00:00",
+    "error_message": "Stop hook leaves CLAUDE.md dirty after every turn: scripts/wolf_recurring_sync.py deletes the blank line prettier put after <!-- wolf:recurring:start -->, and the git-check Stop hook then demands a commit",
+    "file": "scripts/wolf_recurring_sync.py",
+    "root_cause": "The prettier-ignore-start/end comments sat directly against the wolf:recurring markers with no blank lines. Markdown merged the start comments into one HTML node and folded the end comments into the last list item as lazy continuation, so prettier ignored the ignore range and reformatted the block (blank line after the marker, 80-col rewrap). The sync script wrote its own unseparated layout back on every Stop-hook run, so the two rewrote each other.",
+    "fix": "render_block now emits blank lines after START, after the heading and before END; CLAUDE.md puts a blank line between each ignore marker and its wolf marker, so the ignore range holds. Result: resync is a no-op and prettier --check passes on CLAUDE.md. tests/scripts/test_wolf_recurring_sync.py (6 tests) guards the block shape, the marker layout, layout stability under sync, and prettier stability via --stdin-filepath (the *.md override only applies to paths under the repo root; skips without node_modules).",
+    "tags": [
+      "prettier",
+      "markdown",
+      "stop-hook",
+      "claude-md",
+      "openwolf"
+    ],
+    "related_bugs": [],
+    "occurrences": 1,
+    "last_seen": "2026-10-20T00:15:46.641048+00:00"
   }
 ]

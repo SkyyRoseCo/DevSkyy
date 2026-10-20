@@ -46,15 +46,17 @@ def one_liner(bug: dict) -> str:
 
 
 def render_block(bugs: list[dict]) -> str:
+    # Blank lines keep each marker its own markdown block. Without them the
+    # parser merges START into the prettier-ignore-start comment and folds END
+    # into the last list item, prettier stops honouring the ignore range, and
+    # it and this script rewrite the block back and forth on every run.
     header = (
-        f"{START}\n"
+        f"{START}\n\n"
         "### Recurring issues (synced from `.wolf/buglog.json` — regenerate via "
-        "`python scripts/wolf_recurring_sync.py`, do not hand-edit)\n"
+        "`python scripts/wolf_recurring_sync.py`, do not hand-edit)\n\n"
     )
-    if not bugs:
-        return header + "- none on record\n" + END
-    body = "\n".join(one_liner(b) for b in bugs)
-    return f"{header}{body}\n{END}"
+    body = "\n".join(one_liner(b) for b in bugs) if bugs else "- none on record"
+    return f"{header}{body}\n\n{END}"
 
 
 def main() -> int:

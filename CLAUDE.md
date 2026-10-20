@@ -622,9 +622,11 @@ Grep before re-deriving a fix. Engineering → **`docs/engineering-learnings.md`
 - `/efficient-production` discipline: terse, no padding, verifiable.
 
 <!-- prettier-ignore-start -->
+
 <!-- wolf:recurring:start -->
 
 ### Recurring issues (synced from `.wolf/buglog.json` — regenerate via `python scripts/wolf_recurring_sync.py`, do not hand-edit)
+
 - **bug-096** (×30, 2026-05-08): Tripo generate_multiview_image hallucinated brand canon on 30 SKUs (120 renders… → fix: scripts/tripo_dispatch.py — added classify_skus() function that blocks at the d…
 - **bug-172** (×24, 2026-06-30): OpenAI gpt-image-2 images.edit() call returns 400 'The model gpt-image-2 does n… → fix: FIXED 2026-06-30: config.py defines INPUT_FIDELITY_SUPPORTED_MODELS = {gpt-imag…
 - **bug-263** (×8, 2026-07-31): SIGSEGV (EXC_BAD_ACCESS) 'crashed on child side of fork pre-exec' — 12+ Python… → fix: conftest.py + scripts/ci-local.sh: on darwin set no_proxy='*'/NO_PROXY='*' (set…
@@ -640,5 +642,7 @@ Grep before re-deriving a fix. Engineering → **`docs/engineering-learnings.md`
 - **bug-377** (×2, 2026-10-14): Review of new llm/decisions layer: NaN/inf/bool/positive logprobs accepted as p… → fix: _checked_logprob rejects non-finite, bool and >0 logprobs (DecisionBackendError…
 - **bug-387** (×2, 2026-10-12): Stop-gate: tests/test_ml_optional.py::test_main_enterprise_imports_without_ml_l… → fix: NOT FIXED. Candidate: per-test @pytest.mark.timeout(30) on the subprocess-impor…
 - **bug-388** (×2, 2026-10-15): tests/scripts/test_build_web_glbs.py leaves an untracked ready.glb (1.2K glTF)… → fix: NOT FIXED: logged during the main-into-single-product-entry-point merge (2026-1…
+
 <!-- wolf:recurring:end -->
+
 <!-- prettier-ignore-end -->

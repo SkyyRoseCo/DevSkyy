@@ -9264,6 +9264,7 @@
 
 - `test_api_usage_report.py` — httpx.MockTransport tests for scripts/api_usage_report.py: cost allocation, request encoding, key prefixes, fail-closed exits. (~3200 tok)
 - `test_asset_sot_census.py` — tmp_path repo tests for scripts/asset_sot_census.py: reference kinds, byte copies, scope reasons, fail-closed ledgers, exit codes. (~1500 tok)
+- `test_wolf_recurring_sync.py` — CLAUDE.md recurring-bug block: blank-line shape, marker layout, resync no-op, prettier stability via --stdin-filepath (skips without node_modules) (bug-407). (~1100 tok)
 
 ## tests/mcp_servers/
 
