@@ -15,10 +15,17 @@ function skyyrose2_collection_presentation() { return array( 'composition' => 'f
 function skyyrose2_collection_commerce_scenes( $slug ) { return 'kids-capsule' === $slug ? array() : array( array( 'fixture' => true ) ); }
 function skyyrose2_collection_hero_motion() { return array(); }
 function skyyrose2_collection_cinema() { return array(); }
+// Explicit illustrative media denial for this composition-only fixture. Real
+// role admission and pixels are checked by the separate imagery/Kids suites.
+function skyyrose2_collection_media( $slug, $role ) {
+	if ( 'kids-capsule' !== $slug || 'collection_hero' !== $role ) { throw new Exception( 'Unexpected media binding requested by composition fixture' ); }
+	$GLOBALS['denied_media'][] = array( $slug, $role ); return array();
+}
+function skyyrose2_collection_media_markup() { return ''; }
 function skyyrose2_sot_asset_uri( $path ) { return '/theme/assets/sot/' . $path; }
 function get_template_part( $path, $name = null, $args = array() ) {
 	$GLOBALS['called'][] = $path;
-	if ( str_ends_with( $path, '/arrival' ) ) { include SKYYROSE2_DIR . '/' . $path . '.php'; }
+	if ( in_array( $path, array( 'template-parts/collections/arrival', 'template-parts/collections/arrival-product' ), true ) ) { include SKYYROSE2_DIR . '/' . $path . '.php'; }
 	if ( str_ends_with( $path, '/editorial' ) ) { echo '<section id="world" data-merchandise-editorial></section>'; }
 	if ( str_ends_with( $path, '/chapters' ) ) { echo '<section id="world" data-atmosphere-chapters></section>'; }
 	if ( str_ends_with( $path, '/scroll-world' ) && 'kids-capsule' !== $args['slug'] ) { echo '<section data-shopping-scenes></section>'; }
@@ -30,6 +37,7 @@ if ( false === $start || false === $end ) { throw new Exception( 'Missing canoni
 eval( substr( $functions, $start, $end - $start ) );
 foreach ( skyyrose2_collections() as $slug => $collection ) {
 	$GLOBALS['called'] = array();
+	$GLOBALS['denied_media'] = array();
 	$args = array( 'slug' => $slug, 'collection' => $collection, 'collections' => skyyrose2_collections() );
 	ob_start();
 	include SKYYROSE2_DIR . '/template-parts/collections/world.php';
@@ -39,6 +47,7 @@ foreach ( skyyrose2_collections() as $slug => $collection ) {
 	if ( str_contains( $html, 'data-atmosphere-chapters' ) ) { throw new Exception( 'Non-product chapters rendered: ' . $slug ); }
 	if ( $adult && ( ! str_contains( $html, 'data-shopping-scenes' ) || ! str_contains( $html, 'data-merchandise-editorial' ) || ! str_contains( $html, 'href="#world">Explore the pieces' ) ) ) { throw new Exception( 'Adult non-product chapters rendered: ' . $slug ); }
 	if ( ! $adult && ( str_contains( $html, 'data-shopping-scenes' ) || str_contains( $html, 'data-merchandise-editorial' ) || ! str_contains( $html, 'href="#shop">Explore the pieces' ) ) ) { throw new Exception( 'Kids composition unexpectedly changed' ); }
+	if ( ! $adult && ( array( array( 'kids-capsule', 'collection_hero' ) ) !== $GLOBALS['denied_media'] || ! in_array( 'template-parts/collections/arrival-product', $GLOBALS['called'], true ) || ! str_contains( $html, 'data-product-arrival' ) || ! str_contains( $html, 'data-media-state="unavailable"' ) || ! str_contains( $html, esc_html( $collection['name'] ) . '</h1>' ) ) ) { throw new Exception( 'Kids product arrival/title/denied-media fallback lost' ); }
 	// Assets remain available as background inspiration; removing rendering never deletes them.
 	foreach ( $collection['world'] as $scene ) {
 		$file = SKYYROSE2_DIR . '/assets/' . ( 'scroll-world' === ( $scene['source'] ?? '' ) ? 'scroll-world/' : 'sot/' ) . $scene['image'];
@@ -59,3 +68,4 @@ foreach ( array( 'template-parts/home/kids-capsule-reveal.php', 'template-parts/
 }
 echo "PASS actual four collection compositions: zero atmosphere chapters; adult editorial/shopping/edit preserved; Kids shop anchor/no invented editorial or rail; source assets retained\n";
 echo "PASS Kids and immersive source consumers: exact-SKU approved fronts, zero assigned-media fallback\n";
+echo "Scope: composition-only explicit illustrative media denial; governed admission and pixels remain separately qualified.\n";

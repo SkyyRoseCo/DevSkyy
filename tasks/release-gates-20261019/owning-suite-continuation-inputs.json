@@ -1,0 +1,26 @@
+{
+  "schema": "skyyrose.owning-suite-continuation-inputs.v1",
+  "built_source_commit": "31b5b227feda1aa7275acfa42f1812689d8b8b51",
+  "built_theme_tree": "f76979c90418892d7b35facd27e1fd462e9669cd",
+  "test_harness": {
+    "path": "tools/v2-runtime/test-collection-image-preservation.php",
+    "previous_sha256": "6c2a8a07f24c7ed1ed8bcb5fa394a286f9b906f8775cb595951a7a6287287712",
+    "current_sha256": "0dc7e28eeb9bc1d1d300c2b8b3971cc56ee73722c00ec7ba64b3cd1a508ae393",
+    "change": "Execute exact arrival-product delegation with explicit illustrative denial; keep adult/source-asset assertions; assert Kids role/title/fallback/anchor."
+  },
+  "fixtures": {
+    "V2_NATIVE_JS_FIXTURE": {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261019/native-js-qualified",
+      "receipt_sha256": "dd65e650d8131986cf0c45a3b047795e5ccf27e49244116aea51dc4ee9155ea4"
+    },
+    "V2_WP_FIXTURE": {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261019/native-template-fixture-qualified",
+      "receipt_sha256": "eee04509f3a799c22c8c35e9d8b67eb624724c1119a140c3276173e16da054ec"
+    }
+  },
+  "retained_failures": [
+    "combined-kids-size-package-qualified (outdated composition dispatch)",
+    "combined-verify-harness-repair (missing external native PHP fixture)"
+  ],
+  "continuation": "Complete entire verify on final committed test source with both exact external fixture bindings, then package against clean identical theme/build-tool trees; no runtime or asset builder body change."
+}
