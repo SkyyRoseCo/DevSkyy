@@ -1,0 +1,14 @@
+{
+  "status": "ACCEPT_BOUNDED_LOCAL_CORRECTIVE_CANDIDATE_WITH_LIMITS",
+  "reviewer": "existing cleanup_architect; no new reviewer",
+  "runtime_source_commit": "4bed5b6595aa0a024d5077f13170307eef2a57bb",
+  "archive_sha256": "52c1e4a1953a821357e9cf7ab4f43ca2d23373bc97ae027fc864a6baa5a1ee94",
+  "reviewed_index_sha256": "7f127ad95f7a63e8b21654f6cc319e5211037209735c13be8a9b3a167f3b7550",
+  "final_index_sha256": "d2d78d501876bdaeb1b10055bfe92ab8732324d217a74fb1d13330a2e4c54497",
+  "post_review_change": "README spacing/readability only; exact paths, source/package/test counts and qualifications preserved;100refs rehashed",
+  "references": 100,
+  "runtime_members": 805,
+  "native_cases": 12,
+  "native_gallery_checks": 96,
+  "deployment_authorized": false
+}
