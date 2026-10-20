@@ -227,7 +227,7 @@ Copy `.env.example` to `.env` and fill in values (root/API). Copy `.env.wordpres
 | `KLAVIYO_PRIVATE_KEY` / `KLAVIYO_PUBLIC_KEY` / `KLAVIYO_LIST_ID` | Optional | Klaviyo email marketing |
 | `PROMETHEUS_ENABLED` | Optional | Toggles the Prometheus scrape target in `prometheus.yml` — note `main_enterprise.py` does not currently expose a `/metrics` route (see `docs/RUNBOOK.md` Health Endpoints) |
 | `SENTRY_DSN` | Optional | Error monitoring |
-| `RATE_LIMIT_REQUESTS` / `RATE_LIMIT_WINDOW_SECONDS` | Optional | Rate limiting (default 100/60s) |
+| `RATE_LIMIT_{IP,USER,API_KEY}_{PER_MINUTE,PER_HOUR,BURST}` | Optional | Default API rate limits (`security/rate_limiting.py`; per-IP default 100/min). A set but invalid value fails startup |
 | `EMBEDDING_CACHE_SIZE` / `RESPONSE_CACHE_TTL` / `VECTOR_SEARCH_CACHE_TTL` / `RERANKING_CACHE_TTL` / `MAX_PARALLEL_INGESTION` | Optional | Performance/cache tuning |
 | `GEMINI_API_KEY` | Optional | Antigravity SDK |
 

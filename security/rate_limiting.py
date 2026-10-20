@@ -15,6 +15,7 @@ from __future__ import annotations
 
 import asyncio
 import logging
+import os
 import time
 from enum import StrEnum
 
@@ -123,6 +124,49 @@ RATE_LIMIT_TIERS: dict[str, RateLimitTier] = {
 }
 
 
+# Default (non-endpoint) rule per scope: (env prefix, requests per minute).
+# Each scope reads RATE_LIMIT_<PREFIX>_PER_MINUTE, RATE_LIMIT_<PREFIX>_PER_HOUR and
+# RATE_LIMIT_<PREFIX>_BURST. Per-hour and burst default to 60x and 2x the effective
+# per-minute value, so raising only the per-minute limit keeps them proportional.
+DEFAULT_RULE_LIMITS: dict[RateLimitType, tuple[str, int]] = {
+    RateLimitType.IP_BASED: ("IP", 100),
+    RateLimitType.USER_BASED: ("USER", 200),
+    RateLimitType.API_KEY_BASED: ("API_KEY", 1000),
+}
+
+
+def _positive_int_env(name: str, default: int) -> int:
+    """Read a positive integer from the environment.
+
+    Unset or blank means ``default``. A value that is set but is not a positive
+    integer raises instead of falling back: a typo in a limit must stop startup,
+    not silently run the API on a limit nobody chose (bug-230).
+    """
+    raw = os.environ.get(name, "").strip()
+    if not raw:
+        return default
+    try:
+        value = int(raw)
+    except ValueError:
+        raise ValueError(f"{name} must be a positive integer, got {raw!r}") from None
+    if value <= 0:
+        raise ValueError(f"{name} must be a positive integer, got {value}")
+    return value
+
+
+def default_rule(limit_type: RateLimitType) -> RateLimitRule:
+    """Build the default rule for ``limit_type`` from the environment."""
+    prefix, default_per_minute = DEFAULT_RULE_LIMITS[limit_type]
+    per_minute = _positive_int_env(f"RATE_LIMIT_{prefix}_PER_MINUTE", default_per_minute)
+    return RateLimitRule(
+        name=f"default_{limit_type.value}",
+        limit_type=limit_type,
+        requests_per_minute=per_minute,
+        requests_per_hour=_positive_int_env(f"RATE_LIMIT_{prefix}_PER_HOUR", per_minute * 60),
+        burst_limit=_positive_int_env(f"RATE_LIMIT_{prefix}_BURST", per_minute * 2),
+    )
+
+
 class TokenBucket:
     """Token bucket for rate limiting"""
 
@@ -213,29 +257,9 @@ class AdvancedRateLimiter:
         # IP blacklist (blocked IPs)
         self.ip_blacklist: set = set()
 
-        # Default rate limit rules
+        # Default rate limit rules, env-overridable per deployment (DEFAULT_RULE_LIMITS)
         self.default_rules = {
-            RateLimitType.IP_BASED: RateLimitRule(
-                name="default_ip",
-                limit_type=RateLimitType.IP_BASED,
-                requests_per_minute=100,
-                requests_per_hour=6000,
-                burst_limit=200,
-            ),
-            RateLimitType.USER_BASED: RateLimitRule(
-                name="default_user",
-                limit_type=RateLimitType.USER_BASED,
-                requests_per_minute=200,
-                requests_per_hour=12000,
-                burst_limit=400,
-            ),
-            RateLimitType.API_KEY_BASED: RateLimitRule(
-                name="default_api_key",
-                limit_type=RateLimitType.API_KEY_BASED,
-                requests_per_minute=1000,
-                requests_per_hour=60000,
-                burst_limit=2000,
-            ),
+            limit_type: default_rule(limit_type) for limit_type in DEFAULT_RULE_LIMITS
         }
 
         # Endpoint-specific rules
