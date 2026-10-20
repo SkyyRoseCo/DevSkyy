@@ -1,0 +1,54 @@
+{
+  "schema": "skyyrose.server-local-provenance-inventory.v1",
+  "recorded_utc": "2026-10-20T17:21:37.913828+00:00",
+  "result": {
+    "utc": "2026-10-20T17:20:54+00:00",
+    "status": "BOUNDED_SERVER_LOCAL_PROVENANCE_INVENTORY_COMPLETE_PROPOSAL_ONLY",
+    "target_guard_pass": true,
+    "read_only_transaction_verified": true,
+    "repeatable_read_snapshot": true,
+    "classification_counts": {
+      "shop_orders_seen": 1,
+      "generation_marked_orders": 0,
+      "unmarked_simple_legacy_candidates": 1,
+      "unmarked_variable_only_orders": 0,
+      "incomplete_no_line_orders": 0,
+      "malformed_orders": 0,
+      "line_items_seen": 1,
+      "standalone_source_fingerprints_computed": 1
+    },
+    "unresolved_count": 0,
+    "proposed_state_bytes": 213,
+    "proposed_state_sha256": "e20d90615a3b4d15b447b406ec6d6d3ff015f0024790e9c5d5e079b1b0405484",
+    "current_history_rows_present": 0,
+    "installed_runtime_fingerprint_parity_qualified": false,
+    "initialization_or_installable_state_authorized": false,
+    "snapshot_not_cutover_inventory": true,
+    "configuration_executed": false,
+    "wordpress_plugin_mu_bootstrap": false,
+    "external_writes_performed": false,
+    "identifiers_keys_maps_customer_fields_exported": false,
+    "transport_exit": 0,
+    "reader_sha256": "5a1d9b0b65bc485099d81eeb9481fa7b0af2cbd6ab0f5728a4a78695ecad2a3e"
+  },
+  "source_commit": "4bed5b6595aa0a024d5077f13170307eef2a57bb",
+  "theme_tree": "02026eda8676ede43111f102ae97601cdd7141d5",
+  "package_sha256": "52c1e4a1953a821357e9cf7ab4f43ca2d23373bc97ae027fc864a6baa5a1ee94",
+  "scope_clarification": {
+    "source": "Trusted parent clarification delivered through existing delegated task, not an inferred new user grant",
+    "parent_relay_thread": "01a15346-b11c-744f-acdd-0c745ccfb03e",
+    "scope": "Immediate bounded read-only server-side provenance inventory is within current verification request; no external writes; only classification counts, state byte length and digest exported. No initialization, identifiers/maps/raw-key export, rollback acquisition, deployment or new agents. Establish no state-changing bootstrap/hooks; stop at any access/user denial.",
+    "prior_permission_question": "Superseded for this exact bounded read only; all separate live/acquisition holds retained."
+  },
+  "earlier_unexecuted_reader": "253d9ae7cff603bed7f5428c498a9828ddf5e9aecf782290540db2a92e1b3e25",
+  "executed_reader": "5a1d9b0b65bc485099d81eeb9481fa7b0af2cbd6ab0f5728a4a78695ecad2a3e",
+  "next_boundary": "Effective installed fingerprint/runtime parity, approved rollback and controlled checkout/order-writer boundary plus absent-only initialization/readback and exact deployment approval. Current state digest is only a snapshot proposal.",
+  "holds": [
+    "No initialization or live writes",
+    "No archive or rollback acquisition",
+    "No fresh privacy or conversion/deployment",
+    "No broader verification task or new agents"
+  ],
+  "cleanup": "No additional deletion",
+  "accepted_native_suites": "Not rerun"
+}
