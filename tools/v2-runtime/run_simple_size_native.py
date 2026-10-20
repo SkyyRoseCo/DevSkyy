@@ -700,6 +700,19 @@ def qualify_normal_install(seed):
     wp("eval", "update_option('template','synthetic-uninstalled');update_option('stylesheet','synthetic-uninstalled');delete_option('skyyrose2_simple_size_history_v1');delete_option('skyyrose2_simple_size_upgrade_v1');")
     destination.rename(PRIVATE / "pre-install-theme-retained")
 
+    def admin_landing(path):
+        for _ in range(4):
+            response = admin.request(path)
+            if response["status"] == 200:
+                return response
+            assert response["status"] in (301, 302, 303, 307, 308)
+            location = urllib.parse.urlsplit(response["headers"].get("Location", ""))
+            assert location.scheme in ("", "http")
+            assert not location.netloc or location.netloc == "127.0.0.1:" + str(PORT)
+            assert location.path.startswith("/wp-admin/")
+            path = location.path + ("?" + location.query if location.query else "")
+        raise AssertionError("Native admin redirect bound exceeded")
+
     def upload():
         page = admin.request("/wp-admin/theme-install.php?tab=upload")
         assert page["status"] == 200
@@ -722,6 +735,9 @@ def qualify_normal_install(seed):
     assert wp("option", "get", "stylesheet").strip() == b"skyyrose-flagship-2"
     assert native("order", seed["legacy"]["id"]) == before
     record("NORMAL_WP_ADMIN_MULTIPART_UPLOAD_INSTALL_AND_ACTIVATION", archive=pin(INSTALL_ZIP), automatic_history_on_first_frontend_bootstrap=True, local_php_upload_limit="512M (configured fixture limit, not a production claim)")
+    # Complete WordPress's ordinary activation landing, including the theme's
+    # one-time welcome redirect, before opening the upload form again.
+    admin_landing("/wp-admin/themes.php?activated=true")
     # Synthetic older-version metadata selects WordPress's normal upgrade UI;
     # this is not relabelled as execution of a historical source release.
     style = destination / "style.css"
