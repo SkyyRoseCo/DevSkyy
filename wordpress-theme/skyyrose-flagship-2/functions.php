@@ -446,6 +446,10 @@ function skyyrose2_assets() {
 		$asset = '/assets/css/' . $page_style . $suffix . '.css';
 		wp_enqueue_style( 'skyyrose2-' . $page_style, SKYYROSE2_URI . $asset, array( 'skyyrose2-theme' ), skyyrose2_asset_version( $asset ) );
 	}
+	if ( function_exists( 'is_product' ) && is_product() ) {
+		$asset = '/assets/css/visual-polish' . $suffix . '.css';
+		wp_enqueue_style( 'skyyrose2-visual-polish', SKYYROSE2_URI . $asset, array( 'skyyrose2-product-page' ), skyyrose2_asset_version( $asset ) );
+	}
 	foreach ( array( 'controls', 'global-shell' ) as $component ) {
 		$asset = '/assets/css/' . $component . $suffix . '.css';
 		wp_enqueue_style( 'skyyrose2-' . $component, SKYYROSE2_URI . $asset, array( 'skyyrose2-theme' ), skyyrose2_asset_version( $asset ) );

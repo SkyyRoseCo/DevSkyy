@@ -191,6 +191,14 @@
     "tool": "clean-css 5.3.3",
     "tracked": true
   },
+  "assets/css/visual-polish.min.css": {
+    "generator": "scripts/build-assets.mjs",
+    "normalization": "No trailing newline; pinned minifier settings",
+    "released": true,
+    "source": "assets/css/visual-polish.css",
+    "tool": "clean-css 5.3.3",
+    "tracked": true
+  },
   "assets/css/visual-recovery.min.css": {
     "generator": "scripts/build-assets.mjs",
     "normalization": "No trailing newline; pinned minifier settings",

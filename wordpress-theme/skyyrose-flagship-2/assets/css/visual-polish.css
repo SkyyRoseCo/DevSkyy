@@ -1,0 +1,90 @@
+/**
+ * PDP purchase-panel rhythm. Optional, page-scoped visual layer.
+ * Load after product-page.css. Existing tokens and native DOM remain authoritative.
+ * No gallery, media, visibility, commerce state or global shell rules.
+ */
+
+/* Match the established editorial scale; long product names wrap naturally. */
+.woocommerce div.product.sr2-pdp-product--editorial .summary > .product_title {
+	max-width: none;
+	font-size: var(--sr2-type-editorial);
+	line-height: var(--sr2-leading-editorial);
+	text-wrap: pretty;
+}
+
+.woocommerce div.product.sr2-pdp-product--editorial .summary > .price {
+	padding-block-start: var(--sr2-space-1);
+	color: var(--sr2-ink);
+}
+
+/*
+ * Target only native simple-size forms. Variable, grouped and extension-owned
+ * forms retain their layouts. A wrapping flex row respects DOM/tab order.
+ */
+.woocommerce div.product.sr2-pdp-product--editorial .summary > form.cart:has(> .skyyrose2-simple-size) {
+	align-items: end;
+	column-gap: var(--sr2-space-3);
+	row-gap: var(--sr2-space-4);
+	margin-block-start: var(--sr2-space-5);
+	padding-block: var(--sr2-space-5);
+}
+
+/* Woo's float clearfix becomes two phantom flex items, consuming row gaps. */
+.woocommerce div.product.sr2-pdp-product--editorial .summary > form.cart:has(> .skyyrose2-simple-size)::before,
+.woocommerce div.product.sr2-pdp-product--editorial .summary > form.cart:has(> .skyyrose2-simple-size)::after {
+	display: none;
+	content: none;
+}
+
+.woocommerce div.product.sr2-pdp-product--editorial form.cart > .skyyrose2-simple-size {
+	flex: 1 1 12rem;
+	min-width: 0;
+	margin: 0;
+	padding: 0;
+}
+
+.woocommerce div.product.sr2-pdp-product--editorial form.cart > .skyyrose2-simple-size label {
+	margin-block-end: var(--sr2-space-2);
+	color: var(--sr2-muted);
+	font: 500 var(--sr2-type-utility)/var(--sr2-leading-utility) var(--sr2-font-body);
+}
+
+.woocommerce div.product.sr2-pdp-product--editorial form.cart > .skyyrose2-simple-size select {
+	display: block;
+	box-sizing: border-box;
+	width: 100%;
+	height: var(--sr2-control-size);
+	margin: 0;
+	padding-block: var(--sr2-space-2);
+}
+
+.woocommerce div.product.sr2-pdp-product--editorial form.cart:has(> .skyyrose2-simple-size) > .quantity {
+	align-self: end;
+}
+
+.woocommerce div.product.sr2-pdp-product--editorial form.cart:has(> .skyyrose2-simple-size) > .quantity input {
+	box-sizing: border-box;
+	height: var(--sr2-control-size);
+	padding-block: var(--sr2-space-2);
+}
+
+/* One full-width primary action below size and quantity, at every breakpoint. */
+.woocommerce div.product.sr2-pdp-product--editorial form.cart:has(> .skyyrose2-simple-size) > .single_add_to_cart_button {
+	flex-basis: 100%;
+	width: 100%;
+	font-size: var(--sr2-type-body);
+	font-weight: 600;
+	letter-spacing: normal;
+	text-transform: none;
+}
+
+.sr2-pdp-product--editorial .summary > .product_meta {
+	margin-block-start: var(--sr2-space-1);
+}
+
+/* Color-only feedback never moves the purchase target or image. */
+@media (prefers-reduced-motion: no-preference) {
+	.woocommerce div.product.sr2-pdp-product--editorial form.cart > .single_add_to_cart_button {
+		transition: color var(--sr2-fast) var(--sr2-ease), background-color var(--sr2-fast) var(--sr2-ease), border-color var(--sr2-fast) var(--sr2-ease);
+	}
+}

@@ -17,7 +17,7 @@ function skyyrose2_collection_world_enabled( $slug ) { return 'black-rose' === $
 function skyyrose2_hero_bootstrap_inline() { return false; }
 function skyyrose2_mascot_enabled() { return false; }
 function is_front_page() { return false; }
-function is_product() { return false; }
+function is_product() { return ! empty( $GLOBALS['route']['product'] ); }
 function is_shop() { return false; }
 function is_product_taxonomy() { return false; }
 function is_cart() { return false; }
@@ -64,4 +64,15 @@ $GLOBALS['enqueued_styles'] = array();
 skyyrose2_assets();
 assert_commerce_page_assets( 'Pre-order page' );
 
-echo "PASS: custom collection and pre-order enqueue WooCommerce card actions outside is_woocommerce().\n";
+if ( isset( $GLOBALS['enqueued_styles']['skyyrose2-visual-polish'] ) ) {
+    throw new RuntimeException( 'PDP polish leaked onto the pre-order route.' );
+}
+$GLOBALS['route'] = array( 'product' => true );
+$GLOBALS['enqueued_scripts'] = array();
+$GLOBALS['enqueued_styles'] = array();
+skyyrose2_assets();
+$polish = $GLOBALS['enqueued_styles']['skyyrose2-visual-polish'] ?? null;
+if ( ! $polish || 'https://theme.invalid/assets/css/visual-polish.css' !== $polish[0] || array( 'skyyrose2-product-page' ) !== $polish[1] ) {
+    throw new RuntimeException( 'PDP polish lacks its exact product-page dependency.' );
+}
+echo "PASS: custom commerce actions and product-only polish with explicit product-page dependency (component only).\n";

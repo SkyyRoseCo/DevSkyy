@@ -61,7 +61,7 @@ function fixture_render_card( $args ) {
 	finally { while ( ob_get_level() > $level ) { ob_end_clean(); } }
 }
 $actual_inventory = json_decode( file_get_contents( $theme . '/data/v2-media-eligibility.json' ), true );
-$GLOBALS['inventory'] = array( 'assets' => array(), 'disallowed_legacy_sha256' => $actual_inventory['disallowed_legacy_sha256'] );
+$GLOBALS['inventory'] = $actual_inventory;
 $GLOBALS['presentation'] = json_decode( file_get_contents( $theme . '/data/product-presentation-registry.json' ), true );
 $manifest_path = 'assets/derived/card-fronts/manifest.json';
 fixture_copy( $manifest_path );
@@ -88,8 +88,18 @@ foreach ( $manifest['products'] as $sku => $entry ) {
 		$derivatives[ $rendition['src'] ] = $record;
 	}
 }
+// Use the real production authority and exact approved source bodies. This
+// fixture verifies permission and delivery without inventing a synthetic grant.
+$production = $actual_inventory['production_media_authority'];
+fixture_copy( $production['path'] );
+$approval = json_decode( file_get_contents( $fixture . '/' . $production['path'] ), true );
+foreach ( $approval['masters'] as $path => $entry ) {
+    fixture_copy( $path ); fixture_copy( $entry['review']['path'] );
+    foreach ( $entry['delivery_files'] as $delivery ) { fixture_copy( $delivery['path'] ); }
+}
+require $theme . '/inc/production-media.php';
 $source = file_get_contents( $theme . '/inc/v2-media-eligibility.php' );
-$start = strpos( $source, '/** Validate immutable bytes' );
+$start = strpos( $source, '/** Production uses intersect' );
 $end = strpos( $source, 'function skyyrose2_media_start_buffer()', $start );
 eval( substr( $source, $start, $end - $start ) );
 require $theme . '/inc/approved-card-fronts.php';
