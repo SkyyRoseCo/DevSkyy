@@ -1,0 +1,926 @@
+{
+  "approval_receipt_sha256": "9b0f55aa5cfb61f222602a7908436c28be688b4fdc504f542567a4e1011e1717",
+  "authority": "FOUNDER_CONFIRMED",
+  "decision_text": "all of them are approved",
+  "deployment_authorized": false,
+  "excluded_roles": [
+    {
+      "asset": "assets/v2-original/scenes/lh-004-back-hood-l2.webp",
+      "role": "collection_scene_back"
+    }
+  ],
+  "expected_site_id": "238510894",
+  "masters": {
+    "assets/v2-original/products/br-001.png": {
+      "collections": [
+        "black-rose"
+      ],
+      "creative_treatment": "APPROVED_AS_PRESENTED_IN_22_IMAGE_SAFARI_GALLERY",
+      "delivery_files": [
+        {
+          "path": "assets/derived/card-fronts/br-001-160w.webp",
+          "sha256": "ecffbf712e3216138fa4926a887874c2d484c1dc483dc1a355acc70cd9b4f202"
+        },
+        {
+          "path": "assets/derived/card-fronts/br-001-320w.webp",
+          "sha256": "a334e05ce1e17dc7a049b6dd6fb647f2dcb8da79ee4bd3658b06f615a9d8e697"
+        },
+        {
+          "path": "assets/derived/card-fronts/br-001-480w.webp",
+          "sha256": "d4c205f0fa4ed9216e71ba556ccbf69851a52a496bcf2990da25d507ad5adb39"
+        },
+        {
+          "path": "assets/derived/card-fronts/br-001-768w.webp",
+          "sha256": "3029deeabd79840b15534297227a146fb8bc82e4847900396031e79301e62003"
+        },
+        {
+          "path": "assets/derived/card-fronts/br-001-1024w.webp",
+          "sha256": "08ebb2c97b4b93d3e8234aa07e30ea9df77deca7be2eeef2908d84b9a48e4433"
+        }
+      ],
+      "review": {
+        "path": "data/v2-media-reviews/card-br-001-20261003.json",
+        "sha256": "cfdd6a87be8b0aa6b4b3b9048940ad59260ff078dfcfabe61bb9930f47c7f3e9"
+      },
+      "roles": [
+        "card_front",
+        "collection_hero",
+        "pdp_on_model_front"
+      ],
+      "sha256": "ba299cdac93d656ae08dba9c9d67f3c9b86e3abd4c8494a098ddfdf107a24f60",
+      "skus": [
+        "br-001"
+      ]
+    },
+    "assets/v2-original/products/br-003.png": {
+      "collections": [
+        "black-rose"
+      ],
+      "creative_treatment": "APPROVED_AS_PRESENTED_IN_22_IMAGE_SAFARI_GALLERY",
+      "delivery_files": [
+        {
+          "path": "assets/derived/card-fronts/br-003-160w.webp",
+          "sha256": "4e780c2dcf95084a89101a2a1eeb5da11d6213afaa30722f2f15dbab9685ff76"
+        },
+        {
+          "path": "assets/derived/card-fronts/br-003-320w.webp",
+          "sha256": "e10e8da0124dc9b880b491a2890e946e59b92ea5c6ceccd1089176ba3d376d2b"
+        },
+        {
+          "path": "assets/derived/card-fronts/br-003-480w.webp",
+          "sha256": "7b91999206ba9d31363cd5a549a1439e7b02bfe2729044869954a122fa275363"
+        },
+        {
+          "path": "assets/derived/card-fronts/br-003-768w.webp",
+          "sha256": "6fc5b07d1bde9155fff5aa8b0b206a0287110d128597838c37b4c5ca9019f54e"
+        },
+        {
+          "path": "assets/derived/card-fronts/br-003-1024w.webp",
+          "sha256": "296635011e2da4542c6a6ae77cefd21e118f06d35f7b0ec0144d1fd34b0a5ccd"
+        }
+      ],
+      "review": {
+        "path": "data/v2-media-reviews/br-003-founder-card-20261006.json",
+        "sha256": "90726ca5a88478f8f0d40349548a164f84f99bc889ab2042a5bb7e5bd2969fff"
+      },
+      "roles": [
+        "card_front",
+        "pdp_on_model_front"
+      ],
+      "sha256": "914f5fd17f85ef47f22047f24fa88f3d617fa1946231ef35094fb27b13aaf2c9",
+      "skus": [
+        "br-003"
+      ]
+    },
+    "assets/v2-original/products/br-004.png": {
+      "collections": [
+        "black-rose"
+      ],
+      "creative_treatment": "APPROVED_AS_PRESENTED_IN_22_IMAGE_SAFARI_GALLERY",
+      "delivery_files": [
+        {
+          "path": "assets/derived/card-fronts/br-004-160w.webp",
+          "sha256": "07ce0e794d29940882ee4f68e22757fd44f0fb83f744d33c57a57755bdf145fb"
+        },
+        {
+          "path": "assets/derived/card-fronts/br-004-320w.webp",
+          "sha256": "100a7eac4e9285bc20019d7f9fd2d9c34de52040fd75c90e40dd6c2c9a5193e4"
+        },
+        {
+          "path": "assets/derived/card-fronts/br-004-480w.webp",
+          "sha256": "f66afc2fa22b8726d74404ac545822c7ec51068ca8743acafbb300d69fb9e4e5"
+        },
+        {
+          "path": "assets/derived/card-fronts/br-004-768w.webp",
+          "sha256": "f75f28ebbc74d1b6a4fefc7e9d2c71b073e9a6290d314ce34c3d208400596291"
+        },
+        {
+          "path": "assets/derived/card-fronts/br-004-1024w.webp",
+          "sha256": "7afda607f6f33748dacfb18681c36445afa06585cdd12820d404a705867c2271"
+        }
+      ],
+      "review": {
+        "path": "data/v2-media-reviews/card-br-004-cuff-repair-20261003.json",
+        "sha256": "d7352e27a97134a6bf79ab885dfea006c93cbf4e549ba7d76ccf0290633ff684"
+      },
+      "roles": [
+        "card_front",
+        "collection_story",
+        "pdp_on_model_front"
+      ],
+      "sha256": "c54a5bb33a862c02211ffedc6e377c5431a624dfba54f2c70c50648631dba0ac",
+      "skus": [
+        "br-004"
+      ]
+    },
+    "assets/v2-original/products/br-006.png": {
+      "collections": [
+        "black-rose"
+      ],
+      "creative_treatment": "APPROVED_AS_PRESENTED_IN_22_IMAGE_SAFARI_GALLERY",
+      "delivery_files": [
+        {
+          "path": "assets/derived/card-fronts/br-006-160w.webp",
+          "sha256": "d6cc311f7c4694aee5eef31376e467a9b2716e3b10185a60cdbf5afac4248f23"
+        },
+        {
+          "path": "assets/derived/card-fronts/br-006-320w.webp",
+          "sha256": "41bc2cdd641dd71fb7a66410e7c09a2f927de0338b240fb34515c5ba9ccce30d"
+        },
+        {
+          "path": "assets/derived/card-fronts/br-006-480w.webp",
+          "sha256": "195d1e3320e8095564bf5ad5968f44b0e3cddd12f05adfaf927e1e0feb44dbf4"
+        },
+        {
+          "path": "assets/derived/card-fronts/br-006-768w.webp",
+          "sha256": "bca640625f3076c1370ff119fef13d3dfc0b38a6ffbe15faff2dc71b39f4ab89"
+        },
+        {
+          "path": "assets/derived/card-fronts/br-006-1024w.webp",
+          "sha256": "7c6129ce371501d2025c6174cae832ec7baf23ea26e925ee19b426cbb8842a2d"
+        }
+      ],
+      "review": {
+        "path": "data/v2-media-reviews/br-006-founder-card-20261006.json",
+        "sha256": "0b6720c7b08c90e63224f93c9c933ee0d0d626813dd39249e8748129d62f07c1"
+      },
+      "roles": [
+        "card_front",
+        "pdp_on_model_front"
+      ],
+      "sha256": "06bcb9c83369d73a676741f3ae62fd309709ee83df07ff29f8b52969e0da963b",
+      "skus": [
+        "br-006"
+      ]
+    },
+    "assets/v2-original/products/br-008.png": {
+      "collections": [
+        "black-rose"
+      ],
+      "creative_treatment": "APPROVED_AS_PRESENTED_IN_22_IMAGE_SAFARI_GALLERY",
+      "delivery_files": [
+        {
+          "path": "assets/derived/card-fronts/br-008-160w.webp",
+          "sha256": "d7bc0be5747d94cf8c48635ce43f9df97473c368c25bb529840c56d1b0ff1f5f"
+        },
+        {
+          "path": "assets/derived/card-fronts/br-008-320w.webp",
+          "sha256": "52b7dfccc70ef2da4e6e760e6c818789d82429167683a4f4ecf54cb5089e7198"
+        },
+        {
+          "path": "assets/derived/card-fronts/br-008-480w.webp",
+          "sha256": "71e90345a9965db4fa001a01a026ca758e8579657d8b3e7a05c343bb13db2150"
+        },
+        {
+          "path": "assets/derived/card-fronts/br-008-768w.webp",
+          "sha256": "078bff7bae5a2d2cba734b77e9be3ac74c9a8b241ff540d23fec143997b8686f"
+        },
+        {
+          "path": "assets/derived/card-fronts/br-008-1024w.webp",
+          "sha256": "b31365bcee768dc802804eb9d9ee1d9897679058823263ee36dfa501575514b3"
+        }
+      ],
+      "review": {
+        "path": "data/v2-media-reviews/br-008-founder-card-20261006.json",
+        "sha256": "265be2dd2178ce617de2956703efcad276c9a4dbec1acf398d058c4b7f3e0c9e"
+      },
+      "roles": [
+        "card_front",
+        "pdp_on_model_front"
+      ],
+      "sha256": "62ffb9a3521e4026d5f1c588ecab999a1ed0631ccb7c2eea34be2bc59fe93121",
+      "skus": [
+        "br-008"
+      ]
+    },
+    "assets/v2-original/products/br-009.png": {
+      "collections": [
+        "black-rose"
+      ],
+      "creative_treatment": "APPROVED_AS_PRESENTED_IN_22_IMAGE_SAFARI_GALLERY",
+      "delivery_files": [
+        {
+          "path": "assets/derived/card-fronts/br-009-160w.webp",
+          "sha256": "e79e794ec3b02d167d8bcfa358a02d738fdbdf2c784e117daa875f3e84288364"
+        },
+        {
+          "path": "assets/derived/card-fronts/br-009-320w.webp",
+          "sha256": "36c78b260b6179b60d420757362fcf5c4472c0596319c4f882405d80cfe90b03"
+        },
+        {
+          "path": "assets/derived/card-fronts/br-009-480w.webp",
+          "sha256": "5e560e4712177cd56b2ac5a0bdfe5aea941d66dc3efc342e098f5d607d77f71d"
+        },
+        {
+          "path": "assets/derived/card-fronts/br-009-768w.webp",
+          "sha256": "a7b7b256769ce9db27b7f543ab8e514b22963b4265b0a25834ddafe0bbdbbbb2"
+        },
+        {
+          "path": "assets/derived/card-fronts/br-009-1024w.webp",
+          "sha256": "e216ea08bb71c39d8814378bac824deb17c930f588542b721a27c532e88828cc"
+        },
+        {
+          "path": "assets/derived/card-fronts/br-009-1280w.webp",
+          "sha256": "04b63eaed14090f4770dad9a5b2ec4e000fbd3beddda5d7142bdc57da49a004b"
+        },
+        {
+          "path": "assets/derived/card-fronts/br-009-1360w.webp",
+          "sha256": "69e68973f258d0310f02414f249f3ae234c6afa8c4e98416636ed3c850106c7f"
+        }
+      ],
+      "review": {
+        "path": "data/v2-media-reviews/br-009-native-card-r2-20261006.json",
+        "sha256": "c4f000b0a216121b1777e78f433398562b74f57c55a7af7fe5b4aead9f9b2372"
+      },
+      "roles": [
+        "card_front",
+        "merchandise_scene",
+        "pdp_on_model_front"
+      ],
+      "sha256": "e3b7615167aa2c6b012ae959b68e82b4d239f22bd044f7c73a07d42e64cb355d",
+      "skus": [
+        "br-009"
+      ]
+    },
+    "assets/v2-original/products/br-010.png": {
+      "collections": [
+        "black-rose"
+      ],
+      "creative_treatment": "APPROVED_AS_PRESENTED_IN_22_IMAGE_SAFARI_GALLERY",
+      "delivery_files": [
+        {
+          "path": "assets/derived/card-fronts/br-010-160w.webp",
+          "sha256": "c275eb01aeea40b8940f4bb608c0992bbca33cdda780c50f4d7fd329cbf478fb"
+        },
+        {
+          "path": "assets/derived/card-fronts/br-010-320w.webp",
+          "sha256": "f60fdfaf50f96396932738645f378171beba77ea6d26b8ff53949df82375ce55"
+        },
+        {
+          "path": "assets/derived/card-fronts/br-010-480w.webp",
+          "sha256": "28ef6ba4b2840c2212cd6e8b5b3611af4990dd698597251e93c16db1c6be8b28"
+        },
+        {
+          "path": "assets/derived/card-fronts/br-010-768w.webp",
+          "sha256": "c554b6a08b4d31c2f83c2ccd7b35fe712f36d24ff781668e491aae60feba1da5"
+        },
+        {
+          "path": "assets/derived/card-fronts/br-010-1024w.webp",
+          "sha256": "bfbaa94dd3249197c19c091007ae966dae6abadebc64d0cd47b3ecf931bc1c42"
+        }
+      ],
+      "review": {
+        "path": "data/v2-media-reviews/br-010-founder-card-20261006.json",
+        "sha256": "7150ebc8e6f539363fd86bdc17ceee9d95b32a9e247e600c66b9f7dccde14ccc"
+      },
+      "roles": [
+        "card_front",
+        "pdp_on_model_front"
+      ],
+      "sha256": "e0391d5fbc4a8c0f69179218231ecf2afd256b58d662367faedca01e274a2782",
+      "skus": [
+        "br-010"
+      ]
+    },
+    "assets/v2-original/products/br-011.png": {
+      "collections": [
+        "black-rose"
+      ],
+      "creative_treatment": "APPROVED_AS_PRESENTED_IN_22_IMAGE_SAFARI_GALLERY",
+      "delivery_files": [
+        {
+          "path": "assets/derived/card-fronts/br-011-160w.webp",
+          "sha256": "c56005cc4d85e7ce74cb1d0387752c0ee54152d5dc90350f557325c80c88a2f1"
+        },
+        {
+          "path": "assets/derived/card-fronts/br-011-320w.webp",
+          "sha256": "5d2241ec84b5eb1e1b0e54a37f86ddad0c33c2f6142e4ba0da7de4fa86d71750"
+        },
+        {
+          "path": "assets/derived/card-fronts/br-011-480w.webp",
+          "sha256": "01b95ef85aa1387c3ed4ac1a68a7c107141c43948fd05774ded3af2d424b7cec"
+        },
+        {
+          "path": "assets/derived/card-fronts/br-011-768w.webp",
+          "sha256": "11c9e1a5ea451521894ad39603d7a18122b2b963f489afdfc1a47c0189ab785f"
+        },
+        {
+          "path": "assets/derived/card-fronts/br-011-1024w.webp",
+          "sha256": "3def7cf9f6272161c9f34ddaf6c0f1bf399fc1bb788bd329d7ac1187da0f048d"
+        }
+      ],
+      "review": {
+        "path": "data/v2-media-reviews/br-011-founder-card-20261006.json",
+        "sha256": "f6d81ba83495f4f6d0f3fa2e9d52ec84c9dabff849bc9595c9e4131102a6eaec"
+      },
+      "roles": [
+        "card_front",
+        "pdp_on_model_front"
+      ],
+      "sha256": "b84df3b69e7bb4bdeaee3e837d6189e3e171707f4e64b89b45739bcb04a3e580",
+      "skus": [
+        "br-011"
+      ]
+    },
+    "assets/v2-original/products/br-012.png": {
+      "collections": [
+        "black-rose"
+      ],
+      "creative_treatment": "APPROVED_AS_PRESENTED_IN_22_IMAGE_SAFARI_GALLERY",
+      "delivery_files": [
+        {
+          "path": "assets/derived/card-fronts/br-012-160w.webp",
+          "sha256": "6dbfcae715d8e38b6131d5d6a668f1105e9a8acfba0284165bcf401d90e6fed4"
+        },
+        {
+          "path": "assets/derived/card-fronts/br-012-320w.webp",
+          "sha256": "f57114d3b052f5735b0c711e4f487a25f2270c1d8ff7f2bbb872b7281bb800ce"
+        },
+        {
+          "path": "assets/derived/card-fronts/br-012-480w.webp",
+          "sha256": "04959236909f17663c24b1d05cce66009c4179d965310def81a20c3f8a008c30"
+        },
+        {
+          "path": "assets/derived/card-fronts/br-012-768w.webp",
+          "sha256": "e82f037b714d9de67d674085a20a27950e0a303ad57287f45323ca74193288b0"
+        },
+        {
+          "path": "assets/derived/card-fronts/br-012-1024w.webp",
+          "sha256": "264b03b0105568ca7dfcd6cb8339f57c830e7facd6b30ccdafff483d597de322"
+        }
+      ],
+      "review": {
+        "path": "data/v2-media-reviews/br-012-founder-card-20261006.json",
+        "sha256": "b7287f1c3df793121df1687ae98bfb5daa41a0053c833b15ec24fb9a0e0dd13c"
+      },
+      "roles": [
+        "card_front",
+        "pdp_on_model_front"
+      ],
+      "sha256": "9cba8eb23ba1359871951f585e55fc898372b2ae493848be333c72d361684f2d",
+      "skus": [
+        "br-012"
+      ]
+    },
+    "assets/v2-original/products/br-014.png": {
+      "collections": [
+        "black-rose"
+      ],
+      "creative_treatment": "APPROVED_AS_PRESENTED_IN_22_IMAGE_SAFARI_GALLERY",
+      "delivery_files": [
+        {
+          "path": "assets/derived/card-fronts/br-014-160w.webp",
+          "sha256": "453b612353ffd6cc30c67eb4967a020445eac9e1e20e8da51d1318301685035a"
+        },
+        {
+          "path": "assets/derived/card-fronts/br-014-320w.webp",
+          "sha256": "6e6ef31c7803af661c4d6fec0035dbe8a7bd84753ab89868c181d1e6044c591b"
+        },
+        {
+          "path": "assets/derived/card-fronts/br-014-480w.webp",
+          "sha256": "cd3a6d65e8ec7f47774997068e70f24049ee8c399e9b41f885fedbd69c8a8d46"
+        },
+        {
+          "path": "assets/derived/card-fronts/br-014-768w.webp",
+          "sha256": "5f891245d27af819e84a9e530f295159ac8ff027e92aff3dab889b1217f3057d"
+        },
+        {
+          "path": "assets/derived/card-fronts/br-014-1024w.webp",
+          "sha256": "0aa6a5c7822b71b42276976fa2447192487c392b4bbe283ce63019ef4b146509"
+        }
+      ],
+      "review": {
+        "path": "data/v2-media-reviews/br-014-founder-card-20261006.json",
+        "sha256": "12640b4a038f67facae4c0f29d429fb27f80100d2e6010300d713fb7408d28a1"
+      },
+      "roles": [
+        "card_front",
+        "pdp_on_model_front"
+      ],
+      "sha256": "ab871a8035a2f7e0f6fbf65c44c0e2d940a5d9f323d436a8cdfff844c278d0c8",
+      "skus": [
+        "br-014"
+      ]
+    },
+    "assets/v2-original/products/br-015.png": {
+      "collections": [
+        "black-rose"
+      ],
+      "creative_treatment": "APPROVED_AS_PRESENTED_IN_22_IMAGE_SAFARI_GALLERY",
+      "delivery_files": [
+        {
+          "path": "assets/derived/card-fronts/br-015-160w.webp",
+          "sha256": "27687c796de1e767f949b0178c8969785eff48be5182d3cbf323ade6c39bfad5"
+        },
+        {
+          "path": "assets/derived/card-fronts/br-015-320w.webp",
+          "sha256": "bb092df545253820c2e837d3c2ca520772ac3cae4b9c5b1a60ad762afcdc3988"
+        },
+        {
+          "path": "assets/derived/card-fronts/br-015-480w.webp",
+          "sha256": "0589f061797a77ea69ec7d117e83e9d2a4df916ec224e68bed340c2d4020efa5"
+        },
+        {
+          "path": "assets/derived/card-fronts/br-015-768w.webp",
+          "sha256": "d17ee209836c8b252c1aa5e5a6488fd00aed23c180ced71e3d3e300580a04777"
+        },
+        {
+          "path": "assets/derived/card-fronts/br-015-1024w.webp",
+          "sha256": "08afb78e06f60f900aac904dc8034a4460a3cb0412da8addded78384f2e73d50"
+        }
+      ],
+      "review": {
+        "path": "data/v2-media-reviews/br-015-founder-card-20261006.json",
+        "sha256": "987735f678bcbc3b59bde1d5a1ac15dec05ec82e2c509c73c833e2c7cdc21aa4"
+      },
+      "roles": [
+        "card_front",
+        "pdp_on_model_front"
+      ],
+      "sha256": "935b4e584369cad2543860824b78c2163171052adc7fe8483b29409f70e9f681",
+      "skus": [
+        "br-015"
+      ]
+    },
+    "assets/v2-original/products/kids-001.png": {
+      "collections": [
+        "kids-capsule"
+      ],
+      "creative_treatment": "APPROVED_AS_PRESENTED_IN_22_IMAGE_SAFARI_GALLERY",
+      "delivery_files": [
+        {
+          "path": "assets/derived/card-fronts/kids-001-160w.webp",
+          "sha256": "0eea5b918ef98ee82f6707240f55a5d33e1366c2a65b37117d553e6d4ab165a2"
+        },
+        {
+          "path": "assets/derived/card-fronts/kids-001-320w.webp",
+          "sha256": "f002e7e337fa4b05962934490d1bbdc327c05b21f6307baf0e71cd94ac2ef0c4"
+        },
+        {
+          "path": "assets/derived/card-fronts/kids-001-480w.webp",
+          "sha256": "58dda702ab9f2740466ec8144d5bc296cf26334f55803108de1bd33126e4b794"
+        },
+        {
+          "path": "assets/derived/card-fronts/kids-001-768w.webp",
+          "sha256": "169506e7d992f42fdf6f699366557a1290e43c69d0fae9abd81b0e372977aa7d"
+        },
+        {
+          "path": "assets/derived/card-fronts/kids-001-1024w.webp",
+          "sha256": "494939c4f005b6cb8bbc33d20ed0dc1699941796b6e2094c6cefc0d0010b22f6"
+        }
+      ],
+      "review": {
+        "path": "data/v2-media-reviews/card-kids-001-styling.json",
+        "sha256": "1931bf385b5df47306ac48dee77a58a7a686e34d92f7b48869bcdaa9fe124f4c"
+      },
+      "roles": [
+        "card_front",
+        "collection_story",
+        "pdp_on_model_front"
+      ],
+      "sha256": "0da7f1158e80c738b457b42f132a5ab723c7cee739d588ca9dcea00b404c0f29",
+      "skus": [
+        "kids-001"
+      ]
+    },
+    "assets/v2-original/products/kids-002.png": {
+      "collections": [
+        "kids-capsule"
+      ],
+      "creative_treatment": "APPROVED_AS_PRESENTED_IN_22_IMAGE_SAFARI_GALLERY",
+      "delivery_files": [
+        {
+          "path": "assets/derived/card-fronts/kids-002-160w.webp",
+          "sha256": "7b4d2dd23a74b5bbd49ad8382acc84cb0baac3006e46490df1e0e8e08cf16a72"
+        },
+        {
+          "path": "assets/derived/card-fronts/kids-002-320w.webp",
+          "sha256": "5c2851eb79062c12d91508f01a13343dc6075a2742450f998c124078e31b130e"
+        },
+        {
+          "path": "assets/derived/card-fronts/kids-002-480w.webp",
+          "sha256": "20b0d5e61d0d611a6261dd562588c44221bc0f30da6bae213ef6e8e88be975cb"
+        },
+        {
+          "path": "assets/derived/card-fronts/kids-002-768w.webp",
+          "sha256": "d01a75645e901914ef8a27fa9c5cf79a8f2a2197213cb4f5af29e9f3c1d40769"
+        },
+        {
+          "path": "assets/derived/card-fronts/kids-002-1024w.webp",
+          "sha256": "5f1343d00517daa68d3f5864b3a72fa6b818459383314dd783b4993517661205"
+        },
+        {
+          "path": "assets/derived/card-fronts/kids-002-1280w.webp",
+          "sha256": "fd61340b74f7a87ea3a61e6ad698e463abbb84c4896ec62c381a69fad30b8bb5"
+        },
+        {
+          "path": "assets/derived/card-fronts/kids-002-1536w.webp",
+          "sha256": "5b3e78d937a0e6a497259c214752fe8f966f87b8d8548f412740bb63c76d0dce"
+        },
+        {
+          "path": "assets/derived/card-fronts/kids-002-1792w.webp",
+          "sha256": "08fef35fdb64e418ea051e8b986c1fe7e71499556ed17218a38c63b608f5f3fd"
+        }
+      ],
+      "review": {
+        "path": "data/v2-media-reviews/kids-002-native-card-r2-20261006.json",
+        "sha256": "d86d0cd2ed37c1cd165d562cbeb7a6c298a327644ad12b0a1e1142022e4cd07c"
+      },
+      "roles": [
+        "card_front",
+        "collection_hero",
+        "pdp_on_model_front"
+      ],
+      "sha256": "d9a0ea0e8bfd7044714f22f04c12a92f7f2fb70ba05c3011d048a7b48e3339f0",
+      "skus": [
+        "kids-002"
+      ]
+    },
+    "assets/v2-original/products/lh-002.png": {
+      "collections": [
+        "love-hurts"
+      ],
+      "creative_treatment": "APPROVED_AS_PRESENTED_IN_22_IMAGE_SAFARI_GALLERY",
+      "delivery_files": [
+        {
+          "path": "assets/derived/card-fronts/lh-002-160w.webp",
+          "sha256": "05451d98c0547bc134bb350f61cde74429c708900d114dcb899c8c6873779372"
+        },
+        {
+          "path": "assets/derived/card-fronts/lh-002-320w.webp",
+          "sha256": "72c641ff0b85d227e25c5295deb9ee31a2b5a33db62815ccabf209615a3adfdb"
+        },
+        {
+          "path": "assets/derived/card-fronts/lh-002-480w.webp",
+          "sha256": "c4cb42af321ef03f38ab82d269885bfa47fc2681b321e824316b9752df844759"
+        },
+        {
+          "path": "assets/derived/card-fronts/lh-002-768w.webp",
+          "sha256": "b617cb047b069c1283d49b0456be2270147a0a29239b0f0b21a8c8d6e8bbe20a"
+        },
+        {
+          "path": "assets/derived/card-fronts/lh-002-1024w.webp",
+          "sha256": "e28185b8ec1508e33fba7dc463128cfc8323d757596f4166e6503bbc965cc7b5"
+        }
+      ],
+      "review": {
+        "path": "data/v2-media-reviews/lh-002-founder-card-20261006.json",
+        "sha256": "8262e349e85cd654c57c25e4867848e77098f016ed72d27329efa906e8a81347"
+      },
+      "roles": [
+        "card_front",
+        "pdp_on_model_front"
+      ],
+      "sha256": "8237df33b67dadaa443a32c06541c0d80ec8ad8dbdb6039fab2f75e1c4fa2ff4",
+      "skus": [
+        "lh-002"
+      ]
+    },
+    "assets/v2-original/products/lh-004.png": {
+      "collections": [
+        "love-hurts"
+      ],
+      "creative_treatment": "APPROVED_AS_PRESENTED_IN_22_IMAGE_SAFARI_GALLERY",
+      "delivery_files": [
+        {
+          "path": "assets/derived/card-fronts/lh-004-160w.webp",
+          "sha256": "73a7a4cc844969cd360a284badb911ff04211c84519b71980bea386b852aa66b"
+        },
+        {
+          "path": "assets/derived/card-fronts/lh-004-320w.webp",
+          "sha256": "3bc95246a82eb122bcfd190683ba887a184750b9b754e26ea67eee25b20a20cd"
+        },
+        {
+          "path": "assets/derived/card-fronts/lh-004-480w.webp",
+          "sha256": "e14a00108e70df43cec69876b70b5d91133c6998e551dfcddf7284016bead43a"
+        },
+        {
+          "path": "assets/derived/card-fronts/lh-004-768w.webp",
+          "sha256": "a334f8bcefa10d3f3a978a65c634117d4a69b3248efc9adfcd340fa4af085519"
+        },
+        {
+          "path": "assets/derived/card-fronts/lh-004-1024w.webp",
+          "sha256": "da73582f72a999e14d5cb07632d60815ac1728301bb8d35b5a81c2efacb9693a"
+        }
+      ],
+      "review": {
+        "path": "data/v2-media-reviews/card-lh-004.json",
+        "sha256": "0c89600ff02bf12c7bc49bd102863293520757290c28ba459af2dc4cb1a47cc0"
+      },
+      "roles": [
+        "card_front",
+        "collection_hero",
+        "pdp_on_model_front"
+      ],
+      "sha256": "e3b22a5fbc315f1147d51a50ddc447fdc819c6f8366d8c4c0de8263bb47685a3",
+      "skus": [
+        "lh-004"
+      ]
+    },
+    "assets/v2-original/products/lh-005.png": {
+      "collections": [
+        "love-hurts"
+      ],
+      "creative_treatment": "APPROVED_AS_PRESENTED_IN_22_IMAGE_SAFARI_GALLERY",
+      "delivery_files": [
+        {
+          "path": "assets/derived/card-fronts/lh-005-160w.webp",
+          "sha256": "9dc3aee050a6db491645b55508c31720d6257ee8126b1fc391994295ae0d89ec"
+        },
+        {
+          "path": "assets/derived/card-fronts/lh-005-320w.webp",
+          "sha256": "3a19d911c9df4620aeb797c1ddf008bb5a3600b4eeffea483f3a6a58160cfa4b"
+        },
+        {
+          "path": "assets/derived/card-fronts/lh-005-480w.webp",
+          "sha256": "d965333a1d12729acbde82c33701de6497919ef806333ddfd563018825ef3536"
+        },
+        {
+          "path": "assets/derived/card-fronts/lh-005-768w.webp",
+          "sha256": "20279ca48df1f124dce783430470192c6cdb2486a3c126a896287e14f3ac6e94"
+        },
+        {
+          "path": "assets/derived/card-fronts/lh-005-1024w.webp",
+          "sha256": "176050e85c59308bc96e60049a6c31c612319059b8425f9a2b9514acaba00b05"
+        }
+      ],
+      "review": {
+        "path": "data/v2-media-reviews/lh-005-founder-card-20261006.json",
+        "sha256": "056a4606e26aa2a8568668d1c265551f7c8f933d8de70f777b0772a9abdb8cd7"
+      },
+      "roles": [
+        "card_front",
+        "merchandise_scene",
+        "pdp_on_model_front"
+      ],
+      "sha256": "016ffe57064fd7c6f49d1df4ff9f5d59ffdb239f807ecea31d10c3362ddde752",
+      "skus": [
+        "lh-005"
+      ]
+    },
+    "assets/v2-original/products/sg-001.png": {
+      "collections": [
+        "signature"
+      ],
+      "creative_treatment": "APPROVED_AS_PRESENTED_IN_22_IMAGE_SAFARI_GALLERY",
+      "delivery_files": [
+        {
+          "path": "assets/derived/card-fronts/sg-001-160w.webp",
+          "sha256": "1c64ead272af1a24d7db3d1d96af2a508c9e693aeef3b73f979d271536c3772b"
+        },
+        {
+          "path": "assets/derived/card-fronts/sg-001-320w.webp",
+          "sha256": "8e46550022c33002a4bcb4d64a7430da28501e8cedad2bb89b844bf1cb187edf"
+        },
+        {
+          "path": "assets/derived/card-fronts/sg-001-480w.webp",
+          "sha256": "4ad97b94c7390bf2faa1c8fb6b803d36e6cf6bb2147db2407e5042b8cd0384de"
+        },
+        {
+          "path": "assets/derived/card-fronts/sg-001-768w.webp",
+          "sha256": "e58f9cd0ee5e2f9e2f0b07a9087225007729d8bddd25ab31540f41c3f927bbb2"
+        },
+        {
+          "path": "assets/derived/card-fronts/sg-001-1024w.webp",
+          "sha256": "fc7a7ace37ea74e54d2131d78083ef398110fef373f75b62291727e2d64d06cf"
+        }
+      ],
+      "review": {
+        "path": "data/v2-media-reviews/sg-001-founder-card-20261006.json",
+        "sha256": "fffe16c4cb431974d46d50841188c6b13971ed54817678709f57ef3b1b50bcfb"
+      },
+      "roles": [
+        "card_front",
+        "pdp_on_model_front"
+      ],
+      "sha256": "6a54cff3a90583c9d0e50bacf3cc6606dd70531976c19350e7799d89e105b8ba",
+      "skus": [
+        "sg-001"
+      ]
+    },
+    "assets/v2-original/products/sg-002.png": {
+      "collections": [
+        "signature"
+      ],
+      "creative_treatment": "APPROVED_AS_PRESENTED_IN_22_IMAGE_SAFARI_GALLERY",
+      "delivery_files": [
+        {
+          "path": "assets/derived/card-fronts/sg-002-160w.webp",
+          "sha256": "50d075861be5a188569deb8d23b0634959b859a876681da3fe3bd6d2563e19cc"
+        },
+        {
+          "path": "assets/derived/card-fronts/sg-002-320w.webp",
+          "sha256": "20c3c7cf2516142d60e64d5e3b22b16a546c0dd7f6926f48a91e2619df52cc94"
+        },
+        {
+          "path": "assets/derived/card-fronts/sg-002-480w.webp",
+          "sha256": "ce70ad882841f431cf25749a142d500da3de1a969a76ab8a0bb88af4f27fd015"
+        },
+        {
+          "path": "assets/derived/card-fronts/sg-002-768w.webp",
+          "sha256": "9565f6359fb478f4cab5f6ea2a1c6680ecfe0019c2ff2dfdada1039b87671dd1"
+        },
+        {
+          "path": "assets/derived/card-fronts/sg-002-1024w.webp",
+          "sha256": "7e20b9fd8f4ccbacafc5ada9cad00282e1790141892defae0e0cb05259c44c49"
+        }
+      ],
+      "review": {
+        "path": "data/v2-media-reviews/sg-002-founder-card-20261006.json",
+        "sha256": "59091420157be062bacbdebcb4afdb87214df5ed28b99fe00599a988a1beed1c"
+      },
+      "roles": [
+        "card_front",
+        "pdp_on_model_front"
+      ],
+      "sha256": "cb8b21742ce20ed778f5c8fccc44e60c08df6deade28c9cd525c61575a608931",
+      "skus": [
+        "sg-002"
+      ]
+    },
+    "assets/v2-original/products/sg-009.png": {
+      "collections": [
+        "signature"
+      ],
+      "creative_treatment": "APPROVED_AS_PRESENTED_IN_22_IMAGE_SAFARI_GALLERY",
+      "delivery_files": [
+        {
+          "path": "assets/derived/card-fronts/sg-009-160w.webp",
+          "sha256": "a0ee37dc843cd8e7cf8a6fd2ed48e610ae977389394319c814060b99d195c253"
+        },
+        {
+          "path": "assets/derived/card-fronts/sg-009-320w.webp",
+          "sha256": "293b3d02ea73b6b64941081a4ab3736ce667d26d13d6ecae738b73c738f66506"
+        },
+        {
+          "path": "assets/derived/card-fronts/sg-009-480w.webp",
+          "sha256": "e43f2b2e23a77170bdcf50f890e4d332d8a67c98c1443cf1013bb3082657d739"
+        },
+        {
+          "path": "assets/derived/card-fronts/sg-009-768w.webp",
+          "sha256": "feb08c5a37d90fca93709b0638791e42b8ae581db225d4f1d3eae0f0567e47ca"
+        },
+        {
+          "path": "assets/derived/card-fronts/sg-009-1024w.webp",
+          "sha256": "3d731e427f18ade3c005797de5066f46198b1074b7c73fbd8a497972dfc72873"
+        }
+      ],
+      "review": {
+        "path": "data/v2-media-reviews/card-sg-009-styling.json",
+        "sha256": "194f938addc29271a088779a78235a073070e142ad23b784c09161b53ab4500c"
+      },
+      "roles": [
+        "card_front",
+        "collection_hero",
+        "pdp_on_model_front"
+      ],
+      "sha256": "43f0175692b4a8d123e2aed28a6cfbcc6902521e86fb0ac4cd2cc64a9e99e005",
+      "skus": [
+        "sg-009"
+      ]
+    },
+    "assets/v2-original/products/sg-013.png": {
+      "collections": [
+        "signature"
+      ],
+      "creative_treatment": "APPROVED_AS_PRESENTED_IN_22_IMAGE_SAFARI_GALLERY",
+      "delivery_files": [
+        {
+          "path": "assets/derived/card-fronts/sg-013-160w.webp",
+          "sha256": "a0a0bb13c662d61feddd33b23da27147e7fc6300e7921e0de957011e84e6391f"
+        },
+        {
+          "path": "assets/derived/card-fronts/sg-013-320w.webp",
+          "sha256": "c53b22acdd5f1478aac915137f6345869678f4fa1a2a7811a67aded569428c6a"
+        },
+        {
+          "path": "assets/derived/card-fronts/sg-013-480w.webp",
+          "sha256": "b25cadb8e7fadcb26bf714ac9e9dd7e882a02c43120e29193c1385575e3c12d9"
+        },
+        {
+          "path": "assets/derived/card-fronts/sg-013-768w.webp",
+          "sha256": "740ff65da0f4a199ccc9212ef8c64ba5d03b0f0351bb67181b4a80a2aab605ad"
+        },
+        {
+          "path": "assets/derived/card-fronts/sg-013-1024w.webp",
+          "sha256": "2df126d6225f7abf67e10521c676599f656f9a11311b52eac326dffbe304d7ca"
+        }
+      ],
+      "review": {
+        "path": "data/v2-media-reviews/card-sg-013.json",
+        "sha256": "f040c1de9322125779e130ebf79054cc3ab5c771ee2a186c005d5d3fb8dd46d4"
+      },
+      "roles": [
+        "card_front",
+        "collection_story",
+        "pdp_on_model_front"
+      ],
+      "sha256": "12cce820da6f783537847139bf8636fd0ee0627e45e577d5315e46bdd142bda9",
+      "skus": [
+        "sg-013"
+      ]
+    },
+    "assets/v2-original/products/sg-015.png": {
+      "collections": [
+        "signature"
+      ],
+      "creative_treatment": "APPROVED_AS_PRESENTED_IN_22_IMAGE_SAFARI_GALLERY",
+      "delivery_files": [
+        {
+          "path": "assets/derived/card-fronts/sg-015-160w.webp",
+          "sha256": "e128a39f9a40a5fdb0e896a10358c61e5586b92a27f985f7c3f26692a23d01fe"
+        },
+        {
+          "path": "assets/derived/card-fronts/sg-015-320w.webp",
+          "sha256": "5a897ce58c5ff5ccb334d6c6cdbf57f575c1926e880ba37c413d9b2577a9d713"
+        },
+        {
+          "path": "assets/derived/card-fronts/sg-015-480w.webp",
+          "sha256": "db4464f954b89f469ea0ee229217d13f37fa1cb8d4b20f9e5a3714e68872aea3"
+        },
+        {
+          "path": "assets/derived/card-fronts/sg-015-768w.webp",
+          "sha256": "46ad0d97236670bf09ec8b1d77e27c89286e836cd6e815f5b22a8df836f2d9ad"
+        },
+        {
+          "path": "assets/derived/card-fronts/sg-015-1024w.webp",
+          "sha256": "beca96b072ee1a3fb84bc55c1018bb9a84039e564b1f0acf53422db54cb91caa"
+        },
+        {
+          "path": "assets/derived/card-fronts/sg-015-1280w.webp",
+          "sha256": "a9bde188679836a3a91f2bd2ab4be59065d40c9075c1907c5234ecbf1d07891d"
+        },
+        {
+          "path": "assets/derived/card-fronts/sg-015-1536w.webp",
+          "sha256": "9b2cd845b7749d295612e5e05fbd5668402aea7bb67ac3c2f360d9f662d2cc14"
+        },
+        {
+          "path": "assets/derived/card-fronts/sg-015-1792w.webp",
+          "sha256": "2f2f92126ae0c36f2a2b4c500c3225a11bd9a0ce4b412f21268cb38b66aa34d6"
+        }
+      ],
+      "review": {
+        "path": "data/v2-media-reviews/sg-015-native-card-r4-20261006.json",
+        "sha256": "cb5a467e9088c119d75dbc80b266d38f2c2d0b6bdea8c136591f6e5dc54f6abe"
+      },
+      "roles": [
+        "card_front",
+        "merchandise_scene",
+        "pdp_on_model_front"
+      ],
+      "sha256": "ffe79d1d89422990ff4a1e9fcdefeacbefbd15d21d2d3cf758ce30cd9317488d",
+      "skus": [
+        "sg-015"
+      ]
+    },
+    "assets/v2-original/scenes/lh-004-back-hood-l2.webp": {
+      "collections": [
+        "love-hurts"
+      ],
+      "creative_treatment": "APPROVED_AS_PRESENTED_IN_22_IMAGE_SAFARI_GALLERY",
+      "delivery_files": [],
+      "review": {
+        "path": "data/v2-media-reviews/lh-004-hood-l2-scene-20261006.json",
+        "sha256": "c3716902b81d50f6ff2b13c2f6161849f95515c10e5b41e117eb7e6380bca9e5"
+      },
+      "roles": [
+        "collection_story"
+      ],
+      "sha256": "c68052ec05a6408167fc96cc9050998090bd93300dec11153bdda65bce6bd457",
+      "skus": [
+        "lh-004"
+      ]
+    }
+  },
+  "media_use_authorized": true,
+  "message_id": "Sentinel_a6f502418ee48191a8bcccc21a97916d",
+  "message_time_utc": "2026-10-20T16:00:00Z",
+  "principal": "Corey",
+  "schema": "skyyrose.production-media-authority.v1",
+  "scope": {
+    "delivery_files": 113,
+    "masters": 22,
+    "role_memberships": 53
+  },
+  "target": "https://skyyrose.co"
+}

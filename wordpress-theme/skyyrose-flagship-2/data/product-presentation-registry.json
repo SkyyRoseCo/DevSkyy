@@ -206,7 +206,7 @@
   "glb_runtime": {
     "entries": [],
     "publication_authorized": false,
-    "registry_sha256": "5eb683a13285772b264dabc5f1f84665087bc39b1b89cce4371a8c0d8fcc1580",
+    "registry_sha256": "c5faab7a97909214cfe9dc85b853052ebaef3df98b660a1d151c70128bc0fce0",
     "schema": "skyyrose.accepted-glb-runtime.v1"
   },
   "kind": "skyyrose-v2-product-presentation-registry",
@@ -300,9 +300,13 @@
       "sha256": "4ea9e167d412f3fcfc7cedcfafb1a2981a6af6771aab03585cc0d5678ff3edf2"
     }
   },
-  "product_registry_sha256": "5eb683a13285772b264dabc5f1f84665087bc39b1b89cce4371a8c0d8fcc1580",
+  "product_registry_sha256": "c5faab7a97909214cfe9dc85b853052ebaef3df98b660a1d151c70128bc0fce0",
   "product_sot_scope": "historical_media_binding_only",
   "product_sot_sha256": "4ccfbe18aba2846c8406f1f0d34853158e563601051527a47f8e401a71beea12",
+  "production_media_authority": {
+    "path": "data/v2-media-reviews/production-authority-20261020.json",
+    "sha256": "b2902f635427f0087e6e2dd96ede75b03ad33acaca3465198609719274fd207b"
+  },
   "products": {
     "br-001": {
       "collection": "black-rose",

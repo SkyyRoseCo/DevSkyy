@@ -4966,149 +4966,149 @@
       ],
       "status": "INDEPENDENT_VISUAL_PASS"
     },
-    "assets/video/collection-heroes/approved/signature/cinema-20261008/hero.webm": {
-      "sha256": "9702e862b5cfe7cc6f8ff1c701d0e71ad51b433c70c3b69c6fbd13286d9d25ca",
+    "assets/video/collection-heroes/approved/black-rose/cinema-20261008/hero.mp4": {
+      "authorization": {
+        "path": "data/v2-media-reviews/black-rose-cinema-20261008.json",
+        "sha256": "96548ea9f34d9ec1381cd854861e4a0b1e2158db1339827c909e05601a32a6cb"
+      },
+      "collections": [
+        "black-rose"
+      ],
       "kind": "video",
-      "status": "FOUNDER_AUTHORIZED_COLLECTION_FILM",
       "roles": [
         "collection_hero_video"
       ],
+      "sha256": "ac0d2a9642646f7124fd9293f20c0b57f673765eb841f18cae0d9b9f8ccf345b",
       "skus": [],
-      "collections": [
-        "signature"
-      ],
-      "authorization": {
-        "path": "data/v2-media-reviews/signature-cinema-20261008.json",
-        "sha256": "f90af442d963bc86122b6560e3b92b5ce30c2bdd24aa8cf30386d3da4828b10d"
-      }
-    },
-    "assets/video/collection-heroes/approved/signature/cinema-20261008/poster.webp": {
-      "sha256": "9b16a49cf34cfd9768aa558b4ab310b25bc24e9e769eadaa8cc7a99887e6b492",
-      "kind": "photograph",
-      "status": "FOUNDER_AUTHORIZED_COLLECTION_FILM",
-      "roles": [
-        "collection_hero_poster"
-      ],
-      "skus": [],
-      "collections": [
-        "signature"
-      ],
-      "authorization": {
-        "path": "data/v2-media-reviews/signature-cinema-20261008.json",
-        "sha256": "f90af442d963bc86122b6560e3b92b5ce30c2bdd24aa8cf30386d3da4828b10d"
-      }
-    },
-    "assets/video/collection-heroes/approved/signature/cinema-20261008/hero.mp4": {
-      "sha256": "a4c8a001185e2ea2c2d4407deca05cb72a3f0f05c28f072c5a898c2e60e0c132",
-      "kind": "video",
-      "status": "FOUNDER_AUTHORIZED_COLLECTION_FILM",
-      "roles": [
-        "collection_hero_video"
-      ],
-      "skus": [],
-      "collections": [
-        "signature"
-      ],
-      "authorization": {
-        "path": "data/v2-media-reviews/signature-cinema-20261008.json",
-        "sha256": "f90af442d963bc86122b6560e3b92b5ce30c2bdd24aa8cf30386d3da4828b10d"
-      }
+      "status": "FOUNDER_AUTHORIZED_COLLECTION_FILM"
     },
     "assets/video/collection-heroes/approved/black-rose/cinema-20261008/hero.webm": {
-      "sha256": "dbff22200027a5e4785219428a3b1eab773e9565b85f90c4881bccd344f51bd6",
-      "kind": "video",
-      "status": "FOUNDER_AUTHORIZED_COLLECTION_FILM",
-      "roles": [
-        "collection_hero_video"
-      ],
-      "skus": [],
-      "collections": [
-        "black-rose"
-      ],
       "authorization": {
         "path": "data/v2-media-reviews/black-rose-cinema-20261008.json",
         "sha256": "96548ea9f34d9ec1381cd854861e4a0b1e2158db1339827c909e05601a32a6cb"
-      }
+      },
+      "collections": [
+        "black-rose"
+      ],
+      "kind": "video",
+      "roles": [
+        "collection_hero_video"
+      ],
+      "sha256": "dbff22200027a5e4785219428a3b1eab773e9565b85f90c4881bccd344f51bd6",
+      "skus": [],
+      "status": "FOUNDER_AUTHORIZED_COLLECTION_FILM"
     },
     "assets/video/collection-heroes/approved/black-rose/cinema-20261008/poster.webp": {
+      "authorization": {
+        "path": "data/v2-media-reviews/black-rose-cinema-20261008.json",
+        "sha256": "96548ea9f34d9ec1381cd854861e4a0b1e2158db1339827c909e05601a32a6cb"
+      },
+      "collections": [
+        "black-rose"
+      ],
+      "kind": "photograph",
+      "roles": [
+        "collection_hero_poster"
+      ],
       "sha256": "92ca243f7885dfefcd2171b9c6c2ab2413f5160aa170e1c1253eeba7d556888c",
-      "kind": "photograph",
-      "status": "FOUNDER_AUTHORIZED_COLLECTION_FILM",
-      "roles": [
-        "collection_hero_poster"
-      ],
       "skus": [],
-      "collections": [
-        "black-rose"
-      ],
-      "authorization": {
-        "path": "data/v2-media-reviews/black-rose-cinema-20261008.json",
-        "sha256": "96548ea9f34d9ec1381cd854861e4a0b1e2158db1339827c909e05601a32a6cb"
-      }
-    },
-    "assets/video/collection-heroes/approved/black-rose/cinema-20261008/hero.mp4": {
-      "sha256": "ac0d2a9642646f7124fd9293f20c0b57f673765eb841f18cae0d9b9f8ccf345b",
-      "kind": "video",
-      "status": "FOUNDER_AUTHORIZED_COLLECTION_FILM",
-      "roles": [
-        "collection_hero_video"
-      ],
-      "skus": [],
-      "collections": [
-        "black-rose"
-      ],
-      "authorization": {
-        "path": "data/v2-media-reviews/black-rose-cinema-20261008.json",
-        "sha256": "96548ea9f34d9ec1381cd854861e4a0b1e2158db1339827c909e05601a32a6cb"
-      }
-    },
-    "assets/video/collection-heroes/approved/love-hurts/cinema-20261008/hero.webm": {
-      "sha256": "eb1d2c5a17ab1d2278b5a12c432a28645c676c197ccd8e4959da98a4fb646d65",
-      "kind": "video",
-      "status": "FOUNDER_AUTHORIZED_COLLECTION_FILM",
-      "roles": [
-        "collection_hero_video"
-      ],
-      "skus": [],
-      "collections": [
-        "love-hurts"
-      ],
-      "authorization": {
-        "path": "data/v2-media-reviews/love-hurts-cinema-20261008.json",
-        "sha256": "f3308df69031e5b8db779747252bc640ea14946b5f4a79aaed4abfa0c906bc18"
-      }
-    },
-    "assets/video/collection-heroes/approved/love-hurts/cinema-20261008/poster.webp": {
-      "sha256": "133a7ffd80dc8239683a681f61df8d653be777969e9fb5c40b1eb488025c02e6",
-      "kind": "photograph",
-      "status": "FOUNDER_AUTHORIZED_COLLECTION_FILM",
-      "roles": [
-        "collection_hero_poster"
-      ],
-      "skus": [],
-      "collections": [
-        "love-hurts"
-      ],
-      "authorization": {
-        "path": "data/v2-media-reviews/love-hurts-cinema-20261008.json",
-        "sha256": "f3308df69031e5b8db779747252bc640ea14946b5f4a79aaed4abfa0c906bc18"
-      }
+      "status": "FOUNDER_AUTHORIZED_COLLECTION_FILM"
     },
     "assets/video/collection-heroes/approved/love-hurts/cinema-20261008/hero.mp4": {
-      "sha256": "b7584e6018c79bb9eada07516d710a8243d096e0ff6a2ab18afe81e00ed4edc9",
-      "kind": "video",
-      "status": "FOUNDER_AUTHORIZED_COLLECTION_FILM",
-      "roles": [
-        "collection_hero_video"
-      ],
-      "skus": [],
-      "collections": [
-        "love-hurts"
-      ],
       "authorization": {
         "path": "data/v2-media-reviews/love-hurts-cinema-20261008.json",
         "sha256": "f3308df69031e5b8db779747252bc640ea14946b5f4a79aaed4abfa0c906bc18"
-      }
+      },
+      "collections": [
+        "love-hurts"
+      ],
+      "kind": "video",
+      "roles": [
+        "collection_hero_video"
+      ],
+      "sha256": "b7584e6018c79bb9eada07516d710a8243d096e0ff6a2ab18afe81e00ed4edc9",
+      "skus": [],
+      "status": "FOUNDER_AUTHORIZED_COLLECTION_FILM"
+    },
+    "assets/video/collection-heroes/approved/love-hurts/cinema-20261008/hero.webm": {
+      "authorization": {
+        "path": "data/v2-media-reviews/love-hurts-cinema-20261008.json",
+        "sha256": "f3308df69031e5b8db779747252bc640ea14946b5f4a79aaed4abfa0c906bc18"
+      },
+      "collections": [
+        "love-hurts"
+      ],
+      "kind": "video",
+      "roles": [
+        "collection_hero_video"
+      ],
+      "sha256": "eb1d2c5a17ab1d2278b5a12c432a28645c676c197ccd8e4959da98a4fb646d65",
+      "skus": [],
+      "status": "FOUNDER_AUTHORIZED_COLLECTION_FILM"
+    },
+    "assets/video/collection-heroes/approved/love-hurts/cinema-20261008/poster.webp": {
+      "authorization": {
+        "path": "data/v2-media-reviews/love-hurts-cinema-20261008.json",
+        "sha256": "f3308df69031e5b8db779747252bc640ea14946b5f4a79aaed4abfa0c906bc18"
+      },
+      "collections": [
+        "love-hurts"
+      ],
+      "kind": "photograph",
+      "roles": [
+        "collection_hero_poster"
+      ],
+      "sha256": "133a7ffd80dc8239683a681f61df8d653be777969e9fb5c40b1eb488025c02e6",
+      "skus": [],
+      "status": "FOUNDER_AUTHORIZED_COLLECTION_FILM"
+    },
+    "assets/video/collection-heroes/approved/signature/cinema-20261008/hero.mp4": {
+      "authorization": {
+        "path": "data/v2-media-reviews/signature-cinema-20261008.json",
+        "sha256": "f90af442d963bc86122b6560e3b92b5ce30c2bdd24aa8cf30386d3da4828b10d"
+      },
+      "collections": [
+        "signature"
+      ],
+      "kind": "video",
+      "roles": [
+        "collection_hero_video"
+      ],
+      "sha256": "a4c8a001185e2ea2c2d4407deca05cb72a3f0f05c28f072c5a898c2e60e0c132",
+      "skus": [],
+      "status": "FOUNDER_AUTHORIZED_COLLECTION_FILM"
+    },
+    "assets/video/collection-heroes/approved/signature/cinema-20261008/hero.webm": {
+      "authorization": {
+        "path": "data/v2-media-reviews/signature-cinema-20261008.json",
+        "sha256": "f90af442d963bc86122b6560e3b92b5ce30c2bdd24aa8cf30386d3da4828b10d"
+      },
+      "collections": [
+        "signature"
+      ],
+      "kind": "video",
+      "roles": [
+        "collection_hero_video"
+      ],
+      "sha256": "9702e862b5cfe7cc6f8ff1c701d0e71ad51b433c70c3b69c6fbd13286d9d25ca",
+      "skus": [],
+      "status": "FOUNDER_AUTHORIZED_COLLECTION_FILM"
+    },
+    "assets/video/collection-heroes/approved/signature/cinema-20261008/poster.webp": {
+      "authorization": {
+        "path": "data/v2-media-reviews/signature-cinema-20261008.json",
+        "sha256": "f90af442d963bc86122b6560e3b92b5ce30c2bdd24aa8cf30386d3da4828b10d"
+      },
+      "collections": [
+        "signature"
+      ],
+      "kind": "photograph",
+      "roles": [
+        "collection_hero_poster"
+      ],
+      "sha256": "9b16a49cf34cfd9768aa558b4ab310b25bc24e9e769eadaa8cc7a99887e6b492",
+      "skus": [],
+      "status": "FOUNDER_AUTHORIZED_COLLECTION_FILM"
     }
   },
   "coverage_status": "PARTIAL_CARD_ROLE_RECONCILIATION_IN_PROGRESS",
@@ -5516,6 +5516,10 @@
     "fe92f8838cb20f911e95afc2f1ab75ad1bc94601d3a00b0db7bf9c9165abd1a4",
     "ffd8e905dbf999cc03a3fb0be64db76fb4f5c4b657149bad31186e3a51326bf2"
   ],
+  "production_media_authority": {
+    "path": "data/v2-media-reviews/production-authority-20261020.json",
+    "sha256": "b2902f635427f0087e6e2dd96ede75b03ad33acaca3465198609719274fd207b"
+  },
   "schema": "skyyrose.v2.media-eligibility.v1",
   "scope": "DISALLOWED_V2_DISPLAY supersedes retained photographic approvals; generation does not grant display",
   "usage_adoptions": {

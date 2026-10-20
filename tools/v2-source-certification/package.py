@@ -15,6 +15,12 @@ from inputs import ROOT, all_skus, get_product
 from PIL import Image, features
 
 from skyyrose.core.media_usage import STAGING_TARGET, bound_document, validated_usage_roles
+from skyyrose.core.production_media import (
+    production_roles,
+    validate_scope,
+    TARGET as PRODUCTION_TARGET,
+    SITE_ID as PRODUCTION_SITE_ID,
+)
 
 HERE = Path(__file__).resolve().parent
 THEME = ROOT / "wordpress-theme/skyyrose-flagship-2"
@@ -165,7 +171,7 @@ def house_art_restored(relative, record, digest):
     )
 
 
-def eligible_media(relative, inventory):
+def eligible_media_original(relative, inventory):
     """Packaging never promotes a candidate, old photograph or unbound derivative."""
     record = inventory.get("assets", {}).get(relative, {})
     path = THEME / relative
@@ -332,11 +338,28 @@ def _founder_decision_bound(evidence):
         return False
 
 
+def eligible_media(relative, inventory):
+    if not eligible_media_original(relative, inventory):
+        return False
+    record = inventory["assets"][relative]
+    if record.get("kind") != "photograph" and record.get("status") != "DELIVERY_DERIVATIVE":
+        return True
+    roles = production_roles(relative, record, inventory, THEME)
+    return roles is None or bool(roles)
+
+
 def effective_media_roles(relative, inventory):
     """Preserve the original review roles and add only validated reuse grants."""
     if not eligible_media(relative, inventory):
         return []
     record = inventory["assets"][relative]
+    approved = (
+        production_roles(relative, record, inventory, THEME)
+        if record.get("kind") == "photograph" or record.get("status") == "DELIVERY_DERIVATIVE"
+        else None
+    )
+    if approved is not None:
+        return approved
     if record.get("status") == "DELIVERY_DERIVATIVE":
         return effective_media_roles(record["source_path"], inventory)
     return list(
@@ -416,6 +439,21 @@ def missing_media_roles(inventory, selected):
     return missing
 
 
+def validate_production_package(production_inventory, selected):
+    """Refuse incomplete authority or provenance before creating a release ZIP."""
+    production = validate_scope(production_inventory, THEME)
+    approved_members = set(production["masters"])
+    for entry in production["masters"].values():
+        approved_members.update(item["path"] for item in entry["delivery_files"])
+    for member in sorted(approved_members):
+        if not eligible_media_original(member, production_inventory):
+            raise ValueError("Original production member provenance refused: " + member)
+    authority_binding = production_inventory["production_media_authority"]
+    if not (approved_members | {authority_binding["path"]}) <= set(selected):
+        raise ValueError("Approved production scope omitted from package")
+    return production
+
+
 def main():
     boundary = json.loads((HERE / "package-boundary.json").read_text())["files"]
     expected = set(boundary)
@@ -434,6 +472,9 @@ def main():
     out.mkdir(exist_ok=True)
     archive = out / "skyyrose-flagship-2.zip"
     selected = [p for p in sorted(boundary) if boundary[p]["release"]]
+    production_inventory = json.loads((THEME / "data/v2-media-eligibility.json").read_text())
+    production = validate_production_package(production_inventory, selected)
+    authority_binding = production_inventory["production_media_authority"]
     # Stored ZIP avoids platform-specific compressor bytes; media is precompressed.
     with zipfile.ZipFile(archive, "w", compression=zipfile.ZIP_STORED) as bundle:
         for relative in selected:
@@ -482,6 +523,13 @@ def main():
         "source_tree": source_tree,
         "source_clean": clean,
         "deployment_authorized": False,
+        "production_media": {
+            "authority": authority_binding,
+            "intended_target": PRODUCTION_TARGET,
+            "expected_site_id": PRODUCTION_SITE_ID,
+            "scope": production["scope"],
+            "installed_identity_qualified": False,
+        },
         "build_id": sha(HERE / "build-inputs.json"),
         "artifact_sha256": sha(archive),
         "theme_slug": "skyyrose-flagship-2",

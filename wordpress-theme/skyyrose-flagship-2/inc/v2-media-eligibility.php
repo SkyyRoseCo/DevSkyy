@@ -1,6 +1,7 @@
 <?php
 /** Current V2 media identity gate. Generation and historical approval never imply display approval. */
 defined( 'ABSPATH' ) || exit;
+require_once __DIR__ . '/production-media.php';
 
 function skyyrose2_media_inventory() {
 	static $inventory = null;
@@ -12,8 +13,18 @@ function skyyrose2_media_inventory() {
 	return $inventory;
 }
 
-/** Validate immutable bytes, exact binding and independently recorded review. */
+/** Production uses intersect the exact approval; historical provenance stays immutable. */
 function skyyrose2_media_record_allowed( $relative, $record, $role = '', $sku = '' ) {
+	if ( ! skyyrose2_media_source_allowed( $relative, $record, '', $sku ) ) { return false; }
+	if ( 'photograph' === ( $record['kind'] ?? '' ) || 'DELIVERY_DERIVATIVE' === ( $record['status'] ?? '' ) ) {
+		$roles = skyyrose2_production_media_roles( $relative, $record, skyyrose2_media_inventory() );
+		if ( null !== $roles ) { return ! empty( $roles ) && ( ! $role || in_array( $role, $roles, true ) ); }
+	}
+	return skyyrose2_media_source_allowed( $relative, $record, $role, $sku );
+}
+
+/** Validate immutable bytes, exact binding and independently recorded review. */
+function skyyrose2_media_source_allowed( $relative, $record, $role = '', $sku = '' ) {
 	if ( ! is_array( $record ) || ! preg_match( '#^(?:assets|images|data)/[A-Za-z0-9_./-]+$#D', $relative ) || false !== strpos( $relative, '..' ) ) { return false; }
 	$file = realpath( SKYYROSE2_DIR . '/' . $relative );
 	$root = realpath( SKYYROSE2_DIR );
@@ -190,6 +201,10 @@ function skyyrose2_media_usage_roles( $relative, $record ) {
 function skyyrose2_media_effective_roles( $relative, $record = null ) {
 	$record = $record ?? ( skyyrose2_media_inventory()['assets'][ $relative ] ?? null );
 	if ( ! is_array( $record ) || ! skyyrose2_media_record_allowed( $relative, $record ) ) { return array(); }
+	if ( 'photograph' === ( $record['kind'] ?? '' ) || 'DELIVERY_DERIVATIVE' === ( $record['status'] ?? '' ) ) {
+		$production = skyyrose2_production_media_roles( $relative, $record, skyyrose2_media_inventory() );
+		if ( null !== $production ) { return $production; }
+	}
 	if ( 'DELIVERY_DERIVATIVE' === ( $record['status'] ?? '' ) ) { return skyyrose2_media_effective_roles( $record['source_path'] ); }
 	return array_values( array_unique( array_merge( $record['roles'], skyyrose2_media_usage_roles( $relative, $record ) ) ) );
 }

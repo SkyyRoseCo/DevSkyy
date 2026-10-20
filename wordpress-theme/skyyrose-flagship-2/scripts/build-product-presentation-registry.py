@@ -30,7 +30,9 @@ from inputs import garment_types, load_product_sot  # noqa: E402
 
 from skyyrose.core.card_annotations import validate_annotation  # noqa: E402
 from skyyrose.core.media_usage import validated_usage_roles  # noqa: E402
+from skyyrose.core.production_media import validate_scope  # noqa: E402
 from skyyrose.core.product import all_skus, get_product  # noqa: E402
+from skyyrose.core.product_registry import load_registry  # noqa: E402
 
 OUTPUT = Path(__file__).resolve().parents[1] / "data/product-presentation-registry.json"
 ALLOWED_COLLECTIONS = {"black-rose", "kids-capsule", "love-hurts", "signature"}
@@ -214,7 +216,10 @@ def build_locked_registry(registry_bytes: bytes) -> dict[str, object]:
         record = inventory.get("assets", {}).get(relative, {})
         if not validated_usage_roles(relative, record, adoptions, theme):
             raise ValueError("Invalid current canonical media usage grant: " + relative)
+    production_binding = authority.get("production_media_authority")
+    validate_scope({**inventory, "production_media_authority": production_binding}, theme)
     return {
+        "production_media_authority": production_binding,
         "glb_runtime": {
             "schema": "skyyrose.accepted-glb-runtime.v1",
             "registry_sha256": registry_digest,
@@ -236,11 +241,40 @@ def build_locked_registry(registry_bytes: bytes) -> dict[str, object]:
 
 
 def main_locked() -> int:
+    """Stage the canonical approval projection before consumers validate media.
+
+    Read-only freshness checks never stage writes. Failed builds restore the
+    prior eligibility bytes, including when another projection refuses.
+    """
+    inventory_path = OUTPUT.parent / "v2-media-eligibility.json"
+    before = inventory_path.read_bytes()
+    inventory = json.loads(before)
+    binding = load_registry().get("production_media_authority")
+    staged = inventory.get("production_media_authority") != binding
+    if staged:
+        if "--check" in sys.argv:
+            print("Canonical production media projection is stale.", file=sys.stderr)
+            return 1
+        inventory["production_media_authority"] = binding
+        validate_scope(inventory, OUTPUT.parent.parent)
+        replace_bytes(inventory_path, (json.dumps(inventory, indent=2, sort_keys=True) + "\n").encode())
+    try:
+        result = _main_projection_locked()
+        if staged and result:
+            replace_bytes(inventory_path, before)
+        return result
+    except BaseException:
+        if staged:
+            replace_bytes(inventory_path, before)
+        raise
+
+
+def _main_projection_locked() -> int:
     artifact = build_registry()
     rendered = json.dumps(artifact, indent=2, sort_keys=True) + "\n"
     inventory_path = OUTPUT.parent / "v2-media-eligibility.json"
     inventory = json.loads(inventory_path.read_text())
-    usages_current = inventory.get("usage_adoptions", {}) == artifact["media_usage_adoptions"]
+    usages_current = inventory.get("usage_adoptions", {}) == artifact["media_usage_adoptions"] and inventory.get("production_media_authority") == artifact["production_media_authority"]
     if "--check" in sys.argv:
         if (
             not OUTPUT.is_file()
@@ -268,6 +302,7 @@ def main_locked() -> int:
     previous_inventory = inventory_path.read_bytes()
     if not usages_current:
         inventory["usage_adoptions"] = artifact["media_usage_adoptions"]
+        inventory["production_media_authority"] = artifact["production_media_authority"]
     encoded_inventory = (json.dumps(inventory, indent=2, sort_keys=True) + "\n").encode()
     for sku in EDITORIAL_REVIEW_SKUS:
         front = artifact["products"][sku]["editorial_front"]

@@ -18,6 +18,14 @@ function wp_get_attachment_url( $id ) { return $GLOBALS['attachments'][ $id ] ??
 function get_attached_file( $id, $unfiltered ) { check( true === $unfiltered, 'Local attachment identity uses raw path' ); return $GLOBALS['files'][ $id ] ?? false; }
 function wc_get_product( $id ) { return $GLOBALS['products'][ $id ] ?? null; }
 function skyyrose2_media_inventory() { return $GLOBALS['inventory']; }
+// This synthetic-pixel unit isolates original source/delivery behavior. It is
+// deliberately outside the production-authority layer; real bound permissions
+// are verified independently against all 135 actual approved bodies.
+function skyyrose2_media_record_allowed( $relative, $record, $role = '', $sku = '' ) {
+    return skyyrose2_media_source_allowed( $relative, $record, $role, $sku );
+}
+function skyyrose2_production_media_roles( ...$args ) { return null; }
+
 function skyyrose2_product_presentation( $product ) { return $GLOBALS['presentation']['products'][ strtolower( $product->get_sku( 'edit' ) ) ] ?? array(); }
 class WC_Product {
     public function __construct( public $id, public $sku, public $ids = array( 901, 902 ) ) {}
@@ -161,7 +169,7 @@ try {
     skyyrose2_store_api_v2_images( $response, null, new ContractRequest( '/wc/v3/products' ) );
     check( array( 'unrelated' ) === $response->get_data()['images'], 'Unrelated REST response untouched' );
     if ( in_array( '--native-json', $argv, true ) ) { echo json_encode( $native ); }
-    else { echo "PASS all 33 card/PDP/thumbnail SKU bindings, exact-role review, duplicates, variations, schema and Store API isolation (offline contract only)\n"; }
+    else { echo "PASS all 33 card/PDP/thumbnail SKU bindings, exact-role review, duplicates, variations, schema and Store API isolation (offline source/delivery unit only; production authority verified separately)\n"; }
 } finally {
     $iterator = new RecursiveIteratorIterator( new RecursiveDirectoryIterator( $fixture, FilesystemIterator::SKIP_DOTS ), RecursiveIteratorIterator::CHILD_FIRST );
     foreach ( $iterator as $entry ) { $entry->isDir() ? rmdir( $entry->getPathname() ) : unlink( $entry->getPathname() ); }

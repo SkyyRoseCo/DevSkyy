@@ -1623,3 +1623,95 @@ def _main(argv: list[str] | None = None) -> int:
 
 if __name__ == "__main__":
     raise SystemExit(_main())
+
+
+def update_production_media_authority(
+    binding: dict[str, str],
+    approval_path: Path,
+    *,
+    path: Path | None = None,
+    theme_root: Path | None = None,
+) -> list[str]:
+    """Adopt only the exact current human receipt through the canonical registry.
+
+    No product facts or historical acceptance documents are rewritten. The
+    external approval is an input dependency, never a packaged workstation path.
+    """
+    from jsonschema import Draft202012Validator
+    from skyyrose.core.production_media import APPROVAL_SHA, normalize_approval, validate_scope
+
+    root = Path(__file__).resolve().parents[2]
+    theme = theme_root or root / "wordpress-theme/skyyrose-flagship-2"
+    target = _registry_target(path)
+    if (
+        target == _CANONICAL_REGISTRY
+        and theme.resolve() != (root / "wordpress-theme/skyyrose-flagship-2").resolve()
+    ):
+        raise ValueError("Canonical production approval requires this checkout's V2 theme")
+    with target.with_suffix(".json.lock").open("a") as lock:
+        fcntl.flock(lock.fileno(), fcntl.LOCK_EX)
+        dependencies: dict = {}
+        old = _snapshot_dependency(dependencies, target).decode("utf-8")
+        raw = json.loads(old)
+        approval = json.loads(_snapshot_dependency(dependencies, approval_path, APPROVAL_SHA))
+        inventory = json.loads(
+            _snapshot_dependency(dependencies, theme / "data/v2-media-eligibility.json")
+        )
+        normalized = normalize_approval(approval, inventory)
+        document_path = _bound_review_file(theme, binding)
+        actual = json.loads(_snapshot_dependency(dependencies, document_path, binding["sha256"]))
+        if actual != normalized:
+            raise ValueError("Normalized production authority differs from exact human approval")
+        candidate = {**inventory, "production_media_authority": binding}
+        validate_scope(candidate, theme)
+        for relative, entry in normalized["masters"].items():
+            for member, digest in [
+                (relative, entry["sha256"]),
+                *[(d["path"], d["sha256"]) for d in entry["delivery_files"]],
+            ]:
+                _snapshot_dependency(dependencies, theme / member, digest)
+            review = _bound_review_file(theme, entry["review"])
+            original = json.loads(
+                _snapshot_dependency(dependencies, review, entry["review"]["sha256"])
+            )
+            if inventory["assets"][relative]["status"] == "FOUNDER_ACCEPTED":
+                owner_binding = original["decision_source"]
+                _snapshot_dependency(
+                    dependencies, _bound_review_file(theme, owner_binding), owner_binding["sha256"]
+                )
+            sku = entry["skus"][0]
+            if raw["products"][sku]["catalog"]["collection"] != entry["collections"][0]:
+                raise ValueError("Production approval differs from canonical collection")
+        if raw.get("production_media_authority") == binding:
+            _revalidate_dependencies(dependencies)
+            return []
+        raw["production_media_authority"] = copy.deepcopy(binding)
+        schema = json.loads(
+            _snapshot_dependency(
+                dependencies, _CANONICAL_REGISTRY.with_name("logo-registry.schema.json")
+            )
+        )
+        Draft202012Validator(schema).validate(raw)
+        outputs = _compatibility_outputs(raw, target)
+        outputs[target] = json.dumps(raw, ensure_ascii=False, indent=2) + "\n"
+        previous = {p: p.read_text() if p.exists() else None for p in outputs}
+        touched = []
+        try:
+            for destination, content in outputs.items():
+                _revalidate_dependencies(
+                    {p: row for p, row in dependencies.items() if p not in touched}
+                )
+                if previous[destination] != content:
+                    touched.append(destination)
+                    _atomic_write(destination, content)
+            _revalidate_dependencies(
+                {p: row for p, row in dependencies.items() if p not in touched}
+            )
+        except BaseException:
+            for destination in reversed(touched):
+                if previous[destination] is None:
+                    destination.unlink(missing_ok=True)
+                else:
+                    _atomic_write(destination, previous[destination])
+            raise
+        return ["production_media_authority"]

@@ -53,6 +53,15 @@
       }
     },
 
+    "production_media_authority": {
+      "type": "object",
+      "required": ["path", "sha256"],
+      "properties": {
+        "path": {"type": "string", "pattern": "^data/v2-media-reviews/[A-Za-z0-9_.-]+\\.json$"},
+        "sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"}
+      },
+      "additionalProperties": false
+    },
     "media_usage_adoptions": {
       "type": "object",
       "description": "Exact additional-use receipts for unchanged accepted V2 originals. Original source decisions remain immutable.",

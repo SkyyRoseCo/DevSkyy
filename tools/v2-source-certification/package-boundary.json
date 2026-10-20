@@ -3611,6 +3611,11 @@
       "reason": "Founder authorized cinematic hero delivery",
       "release": true
     },
+    "data/v2-media-reviews/production-authority-20261020.json": {
+      "category": "RUNTIME SOURCE",
+      "reason": "Normalized hash-bound Corey approval for 22 masters, 113 exact derivatives and 53 production uses; excludes hood-back scene and deployment",
+      "release": true
+    },
     "data/v2-media-reviews/sg-001-founder-card-20261006.json": {
       "category": "RUNTIME SOURCE",
       "reason": "Founder authorized cinematic hero delivery",
@@ -3879,6 +3884,11 @@
     "inc/product-glb.php": {
       "category": "RUNTIME SOURCE",
       "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "inc/production-media.php": {
+      "category": "RUNTIME SOURCE",
+      "reason": "Exact production media authority and source/body/role gate; deployment remains unauthorized",
       "release": true
     },
     "inc/quick-view-commerce.php": {
