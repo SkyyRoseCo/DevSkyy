@@ -1,5 +1,10 @@
 # Changelog
 
+## 2.5.6
+
+- Standard installable theme ZIP with compressed production files and a compact approved-media display policy; source review evidence stays outside the archive.
+- Automatic bounded size-history setup on activation and same-theme upgrades; valid new marked purchases no longer depend on historical payment state. Unknown or damaged saved orders remain protected.
+
 All notable changes to SkyyRose Flagship 2 are documented here.
 
 ## 2.5.5 — Homepage journal band no longer links to unpublished pages — 2026-10-14

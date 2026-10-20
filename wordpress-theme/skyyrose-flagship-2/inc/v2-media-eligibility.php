@@ -6,6 +6,14 @@ require_once __DIR__ . '/production-media.php';
 function skyyrose2_media_inventory() {
 	static $inventory = null;
 	if ( null === $inventory ) {
+		$runtime = SKYYROSE2_DIR . '/data/runtime-media.json';
+		if ( ! defined( 'SKYYROSE2_MEDIA_AUTHORING' ) && file_exists( $runtime ) ) {
+			// Built from verified source approvals; private review documents stay out
+			// of installable themes. A changed manifest fails closed, never falls back.
+			$data = ! is_link( $runtime ) && is_file( $runtime ) && hash_equals( 'bd2b9c9e89ded1200171da289024f4040b33be69832dc78b4bd9ff07f31886dc', hash_file( 'sha256', $runtime ) ) ? json_decode( file_get_contents( $runtime ), true ) : null;
+			$inventory = is_array( $data ) && 'skyyrose.v2.runtime-media.v1' === ( $data['schema'] ?? '' ) ? $data : array();
+			return $inventory;
+		}
 		$file = SKYYROSE2_DIR . '/data/v2-media-eligibility.json';
 		$data = is_readable( $file ) ? json_decode( file_get_contents( $file ), true ) : null;
 		$inventory = is_array( $data ) && 'skyyrose.v2.media-eligibility.v1' === ( $data['schema'] ?? '' ) ? $data : array();
@@ -13,8 +21,21 @@ function skyyrose2_media_inventory() {
 	return $inventory;
 }
 
+/** Compact, exact display policy; never grants a role from an untrusted caller. */
+function skyyrose2_runtime_media_allowed( $relative, $record, $role = '', $sku = '' ) {
+	$inventory = skyyrose2_media_inventory();
+	if ( 'skyyrose.v2.runtime-media.v1' !== ( $inventory['schema'] ?? '' ) || ! is_array( $record ) || ( $inventory['assets'][ $relative ] ?? null ) !== $record || ! is_array( $record['effective_roles'] ?? null ) || ! $record['effective_roles'] || ( $role && ! in_array( $role, $record['effective_roles'], true ) ) || ( $sku && ! in_array( $sku, $record['skus'] ?? array(), true ) ) ) { return false; }
+	if ( ! skyyrose2_production_media_file( $relative, $record['sha256'] ?? '' ) ) { return false; }
+	if ( 'DELIVERY_DERIVATIVE' === ( $record['status'] ?? '' ) ) {
+		$master = $inventory['assets'][ $record['source_path'] ?? '' ] ?? null;
+		if ( ! is_array( $master ) || ( $master['sha256'] ?? null ) !== ( $record['source_sha256'] ?? null ) || ! skyyrose2_production_media_file( $record['source_path'], $master['sha256'] ) ) { return false; }
+	}
+	return true;
+}
+
 /** Production uses intersect the exact approval; historical provenance stays immutable. */
 function skyyrose2_media_record_allowed( $relative, $record, $role = '', $sku = '' ) {
+	if ( 'skyyrose.v2.runtime-media.v1' === ( skyyrose2_media_inventory()['schema'] ?? '' ) ) { return skyyrose2_runtime_media_allowed( $relative, $record, $role, $sku ); }
 	if ( ! skyyrose2_media_source_allowed( $relative, $record, '', $sku ) ) { return false; }
 	if ( 'photograph' === ( $record['kind'] ?? '' ) || 'DELIVERY_DERIVATIVE' === ( $record['status'] ?? '' ) ) {
 		$roles = skyyrose2_production_media_roles( $relative, $record, skyyrose2_media_inventory() );
@@ -25,6 +46,7 @@ function skyyrose2_media_record_allowed( $relative, $record, $role = '', $sku = 
 
 /** Validate immutable bytes, exact binding and independently recorded review. */
 function skyyrose2_media_source_allowed( $relative, $record, $role = '', $sku = '' ) {
+	if ( 'skyyrose.v2.runtime-media.v1' === ( skyyrose2_media_inventory()['schema'] ?? '' ) ) { return skyyrose2_runtime_media_allowed( $relative, $record, $role, $sku ); }
 	if ( ! is_array( $record ) || ! preg_match( '#^(?:assets|images|data)/[A-Za-z0-9_./-]+$#D', $relative ) || false !== strpos( $relative, '..' ) ) { return false; }
 	$file = realpath( SKYYROSE2_DIR . '/' . $relative );
 	$root = realpath( SKYYROSE2_DIR );
@@ -201,6 +223,7 @@ function skyyrose2_media_usage_roles( $relative, $record ) {
 function skyyrose2_media_effective_roles( $relative, $record = null ) {
 	$record = $record ?? ( skyyrose2_media_inventory()['assets'][ $relative ] ?? null );
 	if ( ! is_array( $record ) || ! skyyrose2_media_record_allowed( $relative, $record ) ) { return array(); }
+	if ( 'skyyrose.v2.runtime-media.v1' === ( skyyrose2_media_inventory()['schema'] ?? '' ) ) { return $record['effective_roles']; }
 	if ( 'photograph' === ( $record['kind'] ?? '' ) || 'DELIVERY_DERIVATIVE' === ( $record['status'] ?? '' ) ) {
 		$production = skyyrose2_production_media_roles( $relative, $record, skyyrose2_media_inventory() );
 		if ( null !== $production ) { return $production; }
@@ -373,6 +396,7 @@ add_filter( 'post_thumbnail_html', 'skyyrose2_media_filter_html', PHP_INT_MAX );
 
 /** Current founder film authorization, exact delivery bytes, no product-role reuse. */
 function skyyrose2_founder_film_allowed( $relative, $record, $role = '', $sku = '' ) {
+ if ( 'skyyrose.v2.runtime-media.v1' === ( skyyrose2_media_inventory()['schema'] ?? '' ) ) { return skyyrose2_runtime_media_allowed( $relative, $record, $role, $sku ); }
  $collections = $record['collections'] ?? array();
  if ( $sku || array() !== ( $record['skus'] ?? null ) || ! is_array( $collections ) || ! array_is_list( $collections ) || 1 !== count( $collections ) || ! in_array( $collections[0], array( 'signature', 'black-rose', 'love-hurts' ), true ) ) { return false; }
  $expected_role = 'video' === ( $record['kind'] ?? '' ) ? 'collection_hero_video' : 'collection_hero_poster';

@@ -6,9 +6,9 @@
       "release": true
     },
     "CHANGELOG.md": {
-      "category": "RUNTIME SOURCE",
-      "reason": "Runtime theme file or preserved asset fallback",
-      "release": true
+      "category": "AUTHORING ONLY",
+      "reason": "Private/source approval evidence compiled into runtime-media.json",
+      "release": false
     },
     "CLAUDE.md": {
       "category": "AUTHORING ONLY",
@@ -26,9 +26,9 @@
       "release": true
     },
     "README.md": {
-      "category": "RUNTIME SOURCE",
-      "reason": "Runtime theme file or preserved asset fallback",
-      "release": true
+      "category": "AUTHORING ONLY",
+      "reason": "Private/source approval evidence compiled into runtime-media.json",
+      "release": false
     },
     "archive.php": {
       "category": "RUNTIME SOURCE",
@@ -3407,359 +3407,359 @@
       "release": true
     },
     "data/v2-canonical-media.json": {
-      "category": "RUNTIME SOURCE",
-      "reason": "Present in the live skyyrose.co deployment captured 2026-10-10 (3d19bd48f); runtime reads it, so it ships.",
-      "release": true
+      "category": "AUTHORING ONLY",
+      "reason": "Private/source approval evidence compiled into runtime-media.json",
+      "release": false
     },
     "data/v2-media-eligibility.json": {
-      "category": "RUNTIME SOURCE",
-      "reason": "Present in the live skyyrose.co deployment captured 2026-10-10 (3d19bd48f); runtime reads it, so it ships.",
-      "release": true
+      "category": "AUTHORING ONLY",
+      "reason": "Private/source approval evidence compiled into runtime-media.json",
+      "release": false
     },
     "data/v2-media-reviews/black-rose-cinema-20261008.json": {
-      "category": "RUNTIME SOURCE",
-      "reason": "Founder authorized cinematic hero delivery",
-      "release": true
+      "category": "AUTHORING ONLY",
+      "reason": "Private/source approval evidence compiled into runtime-media.json",
+      "release": false
     },
     "data/v2-media-reviews/br-003-founder-card-20261006.json": {
-      "category": "RUNTIME SOURCE",
-      "reason": "Founder authorized cinematic hero delivery",
-      "release": true
+      "category": "AUTHORING ONLY",
+      "reason": "Private/source approval evidence compiled into runtime-media.json",
+      "release": false
     },
     "data/v2-media-reviews/br-006-founder-card-20261006.json": {
-      "category": "RUNTIME SOURCE",
-      "reason": "Founder authorized cinematic hero delivery",
-      "release": true
+      "category": "AUTHORING ONLY",
+      "reason": "Private/source approval evidence compiled into runtime-media.json",
+      "release": false
     },
     "data/v2-media-reviews/br-008-founder-card-20261006.json": {
-      "category": "RUNTIME SOURCE",
-      "reason": "Founder authorized cinematic hero delivery",
-      "release": true
+      "category": "AUTHORING ONLY",
+      "reason": "Private/source approval evidence compiled into runtime-media.json",
+      "release": false
     },
     "data/v2-media-reviews/br-009-native-card-r2-20261006.json": {
-      "category": "RUNTIME SOURCE",
-      "reason": "Founder authorized cinematic hero delivery",
-      "release": true
+      "category": "AUTHORING ONLY",
+      "reason": "Private/source approval evidence compiled into runtime-media.json",
+      "release": false
     },
     "data/v2-media-reviews/br-010-founder-card-20261006.json": {
-      "category": "RUNTIME SOURCE",
-      "reason": "Founder authorized cinematic hero delivery",
-      "release": true
+      "category": "AUTHORING ONLY",
+      "reason": "Private/source approval evidence compiled into runtime-media.json",
+      "release": false
     },
     "data/v2-media-reviews/br-011-founder-card-20261006.json": {
-      "category": "RUNTIME SOURCE",
-      "reason": "Founder authorized cinematic hero delivery",
-      "release": true
+      "category": "AUTHORING ONLY",
+      "reason": "Private/source approval evidence compiled into runtime-media.json",
+      "release": false
     },
     "data/v2-media-reviews/br-012-founder-card-20261006.json": {
-      "category": "RUNTIME SOURCE",
-      "reason": "Founder authorized cinematic hero delivery",
-      "release": true
+      "category": "AUTHORING ONLY",
+      "reason": "Private/source approval evidence compiled into runtime-media.json",
+      "release": false
     },
     "data/v2-media-reviews/br-014-founder-card-20261006.json": {
-      "category": "RUNTIME SOURCE",
-      "reason": "Founder authorized cinematic hero delivery",
-      "release": true
+      "category": "AUTHORING ONLY",
+      "reason": "Private/source approval evidence compiled into runtime-media.json",
+      "release": false
     },
     "data/v2-media-reviews/br-015-founder-card-20261006.json": {
-      "category": "RUNTIME SOURCE",
-      "reason": "Founder authorized cinematic hero delivery",
-      "release": true
+      "category": "AUTHORING ONLY",
+      "reason": "Private/source approval evidence compiled into runtime-media.json",
+      "release": false
     },
     "data/v2-media-reviews/card-br-001-20261003.json": {
-      "category": "RUNTIME SOURCE",
-      "reason": "Founder authorized cinematic hero delivery",
-      "release": true
+      "category": "AUTHORING ONLY",
+      "reason": "Private/source approval evidence compiled into runtime-media.json",
+      "release": false
     },
     "data/v2-media-reviews/card-br-002-masked-garment.json": {
-      "category": "RUNTIME SOURCE",
-      "reason": "Founder authorized cinematic hero delivery",
-      "release": true
+      "category": "AUTHORING ONLY",
+      "reason": "Private/source approval evidence compiled into runtime-media.json",
+      "release": false
     },
     "data/v2-media-reviews/card-br-004-cuff-repair-20261003.json": {
-      "category": "RUNTIME SOURCE",
-      "reason": "Founder authorized cinematic hero delivery",
-      "release": true
+      "category": "AUTHORING ONLY",
+      "reason": "Private/source approval evidence compiled into runtime-media.json",
+      "release": false
     },
     "data/v2-media-reviews/card-br-005.json": {
-      "category": "RUNTIME SOURCE",
-      "reason": "Founder authorized cinematic hero delivery",
-      "release": true
+      "category": "AUTHORING ONLY",
+      "reason": "Private/source approval evidence compiled into runtime-media.json",
+      "release": false
     },
     "data/v2-media-reviews/card-br-006-r2.json": {
-      "category": "RUNTIME SOURCE",
-      "reason": "Founder authorized cinematic hero delivery",
-      "release": true
+      "category": "AUTHORING ONLY",
+      "reason": "Private/source approval evidence compiled into runtime-media.json",
+      "release": false
     },
     "data/v2-media-reviews/card-br-007-method.json": {
-      "category": "RUNTIME SOURCE",
-      "reason": "Founder authorized cinematic hero delivery",
-      "release": true
+      "category": "AUTHORING ONLY",
+      "reason": "Private/source approval evidence compiled into runtime-media.json",
+      "release": false
     },
     "data/v2-media-reviews/card-br-009-targeted.json": {
-      "category": "RUNTIME SOURCE",
-      "reason": "Founder authorized cinematic hero delivery",
-      "release": true
+      "category": "AUTHORING ONLY",
+      "reason": "Private/source approval evidence compiled into runtime-media.json",
+      "release": false
     },
     "data/v2-media-reviews/card-kids-001-styling.json": {
-      "category": "RUNTIME SOURCE",
-      "reason": "Founder authorized cinematic hero delivery",
-      "release": true
+      "category": "AUTHORING ONLY",
+      "reason": "Private/source approval evidence compiled into runtime-media.json",
+      "release": false
     },
     "data/v2-media-reviews/card-lh-003.json": {
-      "category": "RUNTIME SOURCE",
-      "reason": "Founder authorized cinematic hero delivery",
-      "release": true
+      "category": "AUTHORING ONLY",
+      "reason": "Private/source approval evidence compiled into runtime-media.json",
+      "release": false
     },
     "data/v2-media-reviews/card-lh-004.json": {
-      "category": "RUNTIME SOURCE",
-      "reason": "Founder authorized cinematic hero delivery",
-      "release": true
+      "category": "AUTHORING ONLY",
+      "reason": "Private/source approval evidence compiled into runtime-media.json",
+      "release": false
     },
     "data/v2-media-reviews/card-lh-006-styling.json": {
-      "category": "RUNTIME SOURCE",
-      "reason": "Founder authorized cinematic hero delivery",
-      "release": true
+      "category": "AUTHORING ONLY",
+      "reason": "Private/source approval evidence compiled into runtime-media.json",
+      "release": false
     },
     "data/v2-media-reviews/card-sg-001-targeted.json": {
-      "category": "RUNTIME SOURCE",
-      "reason": "Founder authorized cinematic hero delivery",
-      "release": true
+      "category": "AUTHORING ONLY",
+      "reason": "Private/source approval evidence compiled into runtime-media.json",
+      "release": false
     },
     "data/v2-media-reviews/card-sg-002-targeted.json": {
-      "category": "RUNTIME SOURCE",
-      "reason": "Founder authorized cinematic hero delivery",
-      "release": true
+      "category": "AUTHORING ONLY",
+      "reason": "Private/source approval evidence compiled into runtime-media.json",
+      "release": false
     },
     "data/v2-media-reviews/card-sg-003.json": {
-      "category": "RUNTIME SOURCE",
-      "reason": "Founder authorized cinematic hero delivery",
-      "release": true
+      "category": "AUTHORING ONLY",
+      "reason": "Private/source approval evidence compiled into runtime-media.json",
+      "release": false
     },
     "data/v2-media-reviews/card-sg-005.json": {
-      "category": "RUNTIME SOURCE",
-      "reason": "Founder authorized cinematic hero delivery",
-      "release": true
+      "category": "AUTHORING ONLY",
+      "reason": "Private/source approval evidence compiled into runtime-media.json",
+      "release": false
     },
     "data/v2-media-reviews/card-sg-006.json": {
-      "category": "RUNTIME SOURCE",
-      "reason": "Founder authorized cinematic hero delivery",
-      "release": true
+      "category": "AUTHORING ONLY",
+      "reason": "Private/source approval evidence compiled into runtime-media.json",
+      "release": false
     },
     "data/v2-media-reviews/card-sg-007-20261003.json": {
-      "category": "RUNTIME SOURCE",
-      "reason": "Founder authorized cinematic hero delivery",
-      "release": true
+      "category": "AUTHORING ONLY",
+      "reason": "Private/source approval evidence compiled into runtime-media.json",
+      "release": false
     },
     "data/v2-media-reviews/card-sg-009-styling.json": {
-      "category": "RUNTIME SOURCE",
-      "reason": "Founder authorized cinematic hero delivery",
-      "release": true
+      "category": "AUTHORING ONLY",
+      "reason": "Private/source approval evidence compiled into runtime-media.json",
+      "release": false
     },
     "data/v2-media-reviews/card-sg-011.json": {
-      "category": "RUNTIME SOURCE",
-      "reason": "Founder authorized cinematic hero delivery",
-      "release": true
+      "category": "AUTHORING ONLY",
+      "reason": "Private/source approval evidence compiled into runtime-media.json",
+      "release": false
     },
     "data/v2-media-reviews/card-sg-012.json": {
-      "category": "RUNTIME SOURCE",
-      "reason": "Founder authorized cinematic hero delivery",
-      "release": true
+      "category": "AUTHORING ONLY",
+      "reason": "Private/source approval evidence compiled into runtime-media.json",
+      "release": false
     },
     "data/v2-media-reviews/card-sg-013.json": {
-      "category": "RUNTIME SOURCE",
-      "reason": "Founder authorized cinematic hero delivery",
-      "release": true
+      "category": "AUTHORING ONLY",
+      "reason": "Private/source approval evidence compiled into runtime-media.json",
+      "release": false
     },
     "data/v2-media-reviews/card-sg-014-styling.json": {
-      "category": "RUNTIME SOURCE",
-      "reason": "Founder authorized cinematic hero delivery",
-      "release": true
+      "category": "AUTHORING ONLY",
+      "reason": "Private/source approval evidence compiled into runtime-media.json",
+      "release": false
     },
     "data/v2-media-reviews/homepage-art-restoration-20261006.json": {
-      "category": "RUNTIME SOURCE",
-      "reason": "Hash-bound restoration receipt the media gate reads to admit the unchanged homepage hero",
-      "release": true
+      "category": "AUTHORING ONLY",
+      "reason": "Private/source approval evidence compiled into runtime-media.json",
+      "release": false
     },
     "data/v2-media-reviews/kids-002-native-card-r2-20261006.json": {
-      "category": "RUNTIME SOURCE",
-      "reason": "Founder authorized cinematic hero delivery",
-      "release": true
+      "category": "AUTHORING ONLY",
+      "reason": "Private/source approval evidence compiled into runtime-media.json",
+      "release": false
     },
     "data/v2-media-reviews/lh-002-founder-card-20261006.json": {
-      "category": "RUNTIME SOURCE",
-      "reason": "Founder authorized cinematic hero delivery",
-      "release": true
+      "category": "AUTHORING ONLY",
+      "reason": "Private/source approval evidence compiled into runtime-media.json",
+      "release": false
     },
     "data/v2-media-reviews/lh-004-hood-l2-scene-20261006.json": {
-      "category": "RUNTIME SOURCE",
-      "reason": "Founder authorized cinematic hero delivery",
-      "release": true
+      "category": "AUTHORING ONLY",
+      "reason": "Private/source approval evidence compiled into runtime-media.json",
+      "release": false
     },
     "data/v2-media-reviews/lh-005-founder-card-20261006.json": {
-      "category": "RUNTIME SOURCE",
-      "reason": "Founder authorized cinematic hero delivery",
-      "release": true
+      "category": "AUTHORING ONLY",
+      "reason": "Private/source approval evidence compiled into runtime-media.json",
+      "release": false
     },
     "data/v2-media-reviews/love-hurts-cinema-20261008.json": {
-      "category": "RUNTIME SOURCE",
-      "reason": "Founder authorized cinematic hero delivery",
-      "release": true
+      "category": "AUTHORING ONLY",
+      "reason": "Private/source approval evidence compiled into runtime-media.json",
+      "release": false
     },
     "data/v2-media-reviews/owner-fannie-r3-20261006.json": {
-      "category": "RUNTIME SOURCE",
-      "reason": "Founder authorized cinematic hero delivery",
-      "release": true
+      "category": "AUTHORING ONLY",
+      "reason": "Private/source approval evidence compiled into runtime-media.json",
+      "release": false
     },
     "data/v2-media-reviews/owner-gallery-20261006.json": {
-      "category": "RUNTIME SOURCE",
-      "reason": "Founder authorized cinematic hero delivery",
-      "release": true
+      "category": "AUTHORING ONLY",
+      "reason": "Private/source approval evidence compiled into runtime-media.json",
+      "release": false
     },
     "data/v2-media-reviews/owner-lh002-r2-20261006.json": {
-      "category": "RUNTIME SOURCE",
-      "reason": "Founder authorized cinematic hero delivery",
-      "release": true
+      "category": "AUTHORING ONLY",
+      "reason": "Private/source approval evidence compiled into runtime-media.json",
+      "release": false
     },
     "data/v2-media-reviews/production-authority-20261020.json": {
-      "category": "RUNTIME SOURCE",
-      "reason": "Normalized hash-bound Corey approval for 22 masters, 113 exact derivatives and 53 production uses; excludes hood-back scene and deployment",
-      "release": true
+      "category": "AUTHORING ONLY",
+      "reason": "Private/source approval evidence compiled into runtime-media.json",
+      "release": false
     },
     "data/v2-media-reviews/sg-001-founder-card-20261006.json": {
-      "category": "RUNTIME SOURCE",
-      "reason": "Founder authorized cinematic hero delivery",
-      "release": true
+      "category": "AUTHORING ONLY",
+      "reason": "Private/source approval evidence compiled into runtime-media.json",
+      "release": false
     },
     "data/v2-media-reviews/sg-002-founder-card-20261006.json": {
-      "category": "RUNTIME SOURCE",
-      "reason": "Founder authorized cinematic hero delivery",
-      "release": true
+      "category": "AUTHORING ONLY",
+      "reason": "Private/source approval evidence compiled into runtime-media.json",
+      "release": false
     },
     "data/v2-media-reviews/sg-015-native-card-r4-20261006.json": {
-      "category": "RUNTIME SOURCE",
-      "reason": "Founder authorized cinematic hero delivery",
-      "release": true
+      "category": "AUTHORING ONLY",
+      "reason": "Private/source approval evidence compiled into runtime-media.json",
+      "release": false
     },
     "data/v2-media-reviews/signature-cinema-20261008.json": {
-      "category": "RUNTIME SOURCE",
-      "reason": "Founder authorized cinematic hero delivery",
-      "release": true
+      "category": "AUTHORING ONLY",
+      "reason": "Private/source approval evidence compiled into runtime-media.json",
+      "release": false
     },
     "data/v2-media-reviews/usage-01-20261006.json": {
-      "category": "RUNTIME SOURCE",
-      "reason": "Hash-bound staging reuse dependency read by PHP media eligibility; preserves existing target and role authority",
-      "release": true
+      "category": "AUTHORING ONLY",
+      "reason": "Private/source approval evidence compiled into runtime-media.json",
+      "release": false
     },
     "data/v2-media-reviews/usage-02-20261006.json": {
-      "category": "RUNTIME SOURCE",
-      "reason": "Hash-bound staging reuse dependency read by PHP media eligibility; preserves existing target and role authority",
-      "release": true
+      "category": "AUTHORING ONLY",
+      "reason": "Private/source approval evidence compiled into runtime-media.json",
+      "release": false
     },
     "data/v2-media-reviews/usage-03-20261006.json": {
-      "category": "RUNTIME SOURCE",
-      "reason": "Hash-bound staging reuse dependency read by PHP media eligibility; preserves existing target and role authority",
-      "release": true
+      "category": "AUTHORING ONLY",
+      "reason": "Private/source approval evidence compiled into runtime-media.json",
+      "release": false
     },
     "data/v2-media-reviews/usage-04-20261006.json": {
-      "category": "RUNTIME SOURCE",
-      "reason": "Hash-bound staging reuse dependency read by PHP media eligibility; preserves existing target and role authority",
-      "release": true
+      "category": "AUTHORING ONLY",
+      "reason": "Private/source approval evidence compiled into runtime-media.json",
+      "release": false
     },
     "data/v2-media-reviews/usage-05-20261006.json": {
-      "category": "RUNTIME SOURCE",
-      "reason": "Hash-bound staging reuse dependency read by PHP media eligibility; preserves existing target and role authority",
-      "release": true
+      "category": "AUTHORING ONLY",
+      "reason": "Private/source approval evidence compiled into runtime-media.json",
+      "release": false
     },
     "data/v2-media-reviews/usage-06-20261006.json": {
-      "category": "RUNTIME SOURCE",
-      "reason": "Hash-bound staging reuse dependency read by PHP media eligibility; preserves existing target and role authority",
-      "release": true
+      "category": "AUTHORING ONLY",
+      "reason": "Private/source approval evidence compiled into runtime-media.json",
+      "release": false
     },
     "data/v2-media-reviews/usage-07-20261006.json": {
-      "category": "RUNTIME SOURCE",
-      "reason": "Hash-bound staging reuse dependency read by PHP media eligibility; preserves existing target and role authority",
-      "release": true
+      "category": "AUTHORING ONLY",
+      "reason": "Private/source approval evidence compiled into runtime-media.json",
+      "release": false
     },
     "data/v2-media-reviews/usage-08-20261006.json": {
-      "category": "RUNTIME SOURCE",
-      "reason": "Hash-bound staging reuse dependency read by PHP media eligibility; preserves existing target and role authority",
-      "release": true
+      "category": "AUTHORING ONLY",
+      "reason": "Private/source approval evidence compiled into runtime-media.json",
+      "release": false
     },
     "data/v2-media-reviews/usage-09-20261006.json": {
-      "category": "RUNTIME SOURCE",
-      "reason": "Hash-bound staging reuse dependency read by PHP media eligibility; preserves existing target and role authority",
-      "release": true
+      "category": "AUTHORING ONLY",
+      "reason": "Private/source approval evidence compiled into runtime-media.json",
+      "release": false
     },
     "data/v2-media-reviews/usage-10-20261006.json": {
-      "category": "RUNTIME SOURCE",
-      "reason": "Hash-bound staging reuse dependency read by PHP media eligibility; preserves existing target and role authority",
-      "release": true
+      "category": "AUTHORING ONLY",
+      "reason": "Private/source approval evidence compiled into runtime-media.json",
+      "release": false
     },
     "data/v2-media-reviews/usage-11-20261006.json": {
-      "category": "RUNTIME SOURCE",
-      "reason": "Hash-bound staging reuse dependency read by PHP media eligibility; preserves existing target and role authority",
-      "release": true
+      "category": "AUTHORING ONLY",
+      "reason": "Private/source approval evidence compiled into runtime-media.json",
+      "release": false
     },
     "data/v2-media-reviews/usage-12-20261006.json": {
-      "category": "RUNTIME SOURCE",
-      "reason": "Hash-bound staging reuse dependency read by PHP media eligibility; preserves existing target and role authority",
-      "release": true
+      "category": "AUTHORING ONLY",
+      "reason": "Private/source approval evidence compiled into runtime-media.json",
+      "release": false
     },
     "data/v2-media-reviews/usage-13-20261006.json": {
-      "category": "RUNTIME SOURCE",
-      "reason": "Hash-bound staging reuse dependency read by PHP media eligibility; preserves existing target and role authority",
-      "release": true
+      "category": "AUTHORING ONLY",
+      "reason": "Private/source approval evidence compiled into runtime-media.json",
+      "release": false
     },
     "data/v2-media-reviews/usage-14-20261006.json": {
-      "category": "RUNTIME SOURCE",
-      "reason": "Hash-bound staging reuse dependency read by PHP media eligibility; preserves existing target and role authority",
-      "release": true
+      "category": "AUTHORING ONLY",
+      "reason": "Private/source approval evidence compiled into runtime-media.json",
+      "release": false
     },
     "data/v2-media-reviews/usage-15-20261006.json": {
-      "category": "RUNTIME SOURCE",
-      "reason": "Hash-bound staging reuse dependency read by PHP media eligibility; preserves existing target and role authority",
-      "release": true
+      "category": "AUTHORING ONLY",
+      "reason": "Private/source approval evidence compiled into runtime-media.json",
+      "release": false
     },
     "data/v2-media-reviews/usage-16-20261006.json": {
-      "category": "RUNTIME SOURCE",
-      "reason": "Hash-bound staging reuse dependency read by PHP media eligibility; preserves existing target and role authority",
-      "release": true
+      "category": "AUTHORING ONLY",
+      "reason": "Private/source approval evidence compiled into runtime-media.json",
+      "release": false
     },
     "data/v2-media-reviews/usage-17-20261006.json": {
-      "category": "RUNTIME SOURCE",
-      "reason": "Hash-bound staging reuse dependency read by PHP media eligibility; preserves existing target and role authority",
-      "release": true
+      "category": "AUTHORING ONLY",
+      "reason": "Private/source approval evidence compiled into runtime-media.json",
+      "release": false
     },
     "data/v2-media-reviews/usage-18-20261006.json": {
-      "category": "RUNTIME SOURCE",
-      "reason": "Hash-bound staging reuse dependency read by PHP media eligibility; preserves existing target and role authority",
-      "release": true
+      "category": "AUTHORING ONLY",
+      "reason": "Private/source approval evidence compiled into runtime-media.json",
+      "release": false
     },
     "data/v2-media-reviews/usage-19-20261006.json": {
-      "category": "RUNTIME SOURCE",
-      "reason": "Hash-bound staging reuse dependency read by PHP media eligibility; preserves existing target and role authority",
-      "release": true
+      "category": "AUTHORING ONLY",
+      "reason": "Private/source approval evidence compiled into runtime-media.json",
+      "release": false
     },
     "data/v2-media-reviews/usage-20-20261006.json": {
-      "category": "RUNTIME SOURCE",
-      "reason": "Hash-bound staging reuse dependency read by PHP media eligibility; preserves existing target and role authority",
-      "release": true
+      "category": "AUTHORING ONLY",
+      "reason": "Private/source approval evidence compiled into runtime-media.json",
+      "release": false
     },
     "data/v2-media-reviews/usage-21-20261006.json": {
-      "category": "RUNTIME SOURCE",
-      "reason": "Hash-bound staging reuse dependency read by PHP media eligibility; preserves existing target and role authority",
-      "release": true
+      "category": "AUTHORING ONLY",
+      "reason": "Private/source approval evidence compiled into runtime-media.json",
+      "release": false
     },
     "data/v2-media-reviews/usage-22-20261006.json": {
-      "category": "RUNTIME SOURCE",
-      "reason": "Hash-bound staging reuse dependency read by PHP media eligibility; preserves existing target and role authority",
-      "release": true
+      "category": "AUTHORING ONLY",
+      "reason": "Private/source approval evidence compiled into runtime-media.json",
+      "release": false
     },
     "data/v2-media-reviews/usage-authority-20261006.json": {
-      "category": "RUNTIME SOURCE",
-      "reason": "Hash-bound staging reuse dependency read by PHP media eligibility; preserves existing target and role authority",
-      "release": true
+      "category": "AUTHORING ONLY",
+      "reason": "Private/source approval evidence compiled into runtime-media.json",
+      "release": false
     },
     "data/v2-product-media-index.json": {
       "category": "RUNTIME SOURCE",
@@ -3767,9 +3767,9 @@
       "release": true
     },
     "data/v2-required-media-roles.json": {
-      "category": "RUNTIME SOURCE",
-      "reason": "Present in the live skyyrose.co deployment captured 2026-10-10 (3d19bd48f); runtime reads it, so it ships.",
-      "release": true
+      "category": "AUTHORING ONLY",
+      "reason": "Private/source approval evidence compiled into runtime-media.json",
+      "release": false
     },
     "editor-style.css": {
       "category": "RUNTIME SOURCE",
@@ -4600,6 +4600,11 @@
       "category": "RUNTIME SOURCE",
       "reason": "Phase3B reviewed page implementation",
       "release": true
+    },
+    "data/runtime-media.json": {
+      "release": true,
+      "category": "RUNTIME SOURCE",
+      "reason": "Compact hash-bound approved media display policy"
     }
   },
   "schema": "skyyrose.v2.package-boundary.v1"

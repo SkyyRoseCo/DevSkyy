@@ -25,6 +25,7 @@ import time
 import urllib.error
 import urllib.parse
 import urllib.request
+import zipfile
 
 ROOT = Path(__file__).resolve().parents[2]
 ORIGINAL = Path("/Users/theceo/.codex/worktrees/release-gates-20261019/DevSkyy")
@@ -75,6 +76,7 @@ CHILDREN: list[subprocess.Popen] = []
 COMMAND_CHILDREN: list[subprocess.Popen] = []
 SEQ = 0
 STORAGE = "hpos"
+INSTALL_ZIP = None
 TASK_ENV = {
     "PATH": "/opt/homebrew/bin:/usr/bin:/bin",
     "TMPDIR": str(PRIVATE / "tmp"),
@@ -402,6 +404,31 @@ class Client:
         result = self.request("/?rest_route=/wc/store/v1/" + route, payload, method, True)
         return result["status"], json.loads(result["body"])
 
+    def upload_theme(self, archive, nonce):
+        boundary = "SyntheticThemeUpload" + RUN
+        prefix = (
+            f'--{boundary}\r\nContent-Disposition: form-data; name="_wpnonce"\r\n\r\n{nonce}\r\n'
+            f'--{boundary}\r\nContent-Disposition: form-data; name="themezip"; filename="skyyrose-flagship-2.zip"\r\n'
+            'Content-Type: application/zip\r\n\r\n'
+        ).encode()
+        body = prefix + archive.read_bytes() + f"\r\n--{boundary}--\r\n".encode()
+        request = urllib.request.Request(
+            URL + "/wp-admin/update.php?action=upload-theme", body,
+            {"Content-Type": "multipart/form-data; boundary=" + boundary}, method="POST",
+        )
+        try:
+            response = self.opener.open(request, timeout=180)
+        except urllib.error.HTTPError as error:
+            response = error
+        with response:
+            raw = response.read(4 * 1024 * 1024 + 1)
+            assert len(raw) <= 4 * 1024 * 1024
+            result = {"status": response.status, "headers": dict(response.headers), "body": raw.decode("utf-8", "replace")}
+        global SEQ
+        SEQ += 1
+        write(PRIVATE / f"http-upload-{SEQ:04}.json", result)
+        return result
+
 
 def events():
     p = PRIVATE / "events.jsonl"
@@ -631,6 +658,12 @@ def setup():
                 "memory_limit=1024M",
                 "-d",
                 "error_reporting=24575",
+                "-d",
+                "upload_max_filesize=512M",
+                "-d",
+                "post_max_size=512M",
+                "-d",
+                "max_execution_time=180",
                 "-S",
                 "127.0.0.1:" + str(PORT),
                 "-t",
@@ -652,6 +685,61 @@ def setup():
             time.sleep(0.1)
     record("FRESH_CONTAINED_NATIVE_FIXTURE", runtime=seed["runtime"], capacity_bytes=capacity())
     return seed
+
+
+def qualify_normal_install(seed):
+    """Actual wp-admin multipart upload, activation and ordinary replacement flow."""
+    if INSTALL_ZIP is None:
+        return
+    admin = Client()
+    admin.control("login")
+    before = native("order", seed["legacy"]["id"])
+    destination = SITE / "wp-content/themes/skyyrose-flagship-2"
+    # Fixture preparation only: retain its source-copy outside the theme directory
+    # so WordPress itself must install the uploaded ZIP into an absent destination.
+    wp("eval", "update_option('template','synthetic-uninstalled');update_option('stylesheet','synthetic-uninstalled');delete_option('skyyrose2_simple_size_history_v1');delete_option('skyyrose2_simple_size_upgrade_v1');")
+    destination.rename(PRIVATE / "pre-install-theme-retained")
+
+    def upload():
+        page = admin.request("/wp-admin/theme-install.php?tab=upload")
+        assert page["status"] == 200
+        match = re.search(r'name="_wpnonce" value="([^"]+)"', page["body"])
+        assert match, "Native theme-upload nonce missing"
+        response = admin.upload_theme(INSTALL_ZIP, html.unescape(match[1]))
+        assert response["status"] == 200, response["status"]
+        return response["body"]
+
+    body = upload()
+    assert "Theme installed successfully" in body
+    links = re.findall(r'href=["\']([^"\']+)["\']', body)
+    activate = next(html.unescape(x) for x in links if "action=activate" in x and "stylesheet=skyyrose-flagship-2" in x)
+    path = urllib.parse.urlsplit(activate)
+    assert not path.netloc or path.netloc == "127.0.0.1:" + str(PORT)
+    response = admin.request((path.path if path.path.startswith("/") else "/wp-admin/" + path.path) + "?" + path.query)
+    assert response["status"] in (200, 302)
+    # First ordinary frontend bootstrap must initialize its own native baseline.
+    assert admin.control("upgrade-status") == {"boundary_ready": True, "legacy_matches_native": True, "history_count": 1}
+    assert wp("option", "get", "stylesheet").strip() == b"skyyrose-flagship-2"
+    assert native("order", seed["legacy"]["id"]) == before
+    record("NORMAL_WP_ADMIN_MULTIPART_UPLOAD_INSTALL_AND_ACTIVATION", archive=pin(INSTALL_ZIP), automatic_history_on_first_frontend_bootstrap=True, local_php_upload_limit="512M (configured fixture limit, not a production claim)")
+    # Synthetic older-version metadata selects WordPress's normal upgrade UI;
+    # this is not relabelled as execution of a historical source release.
+    style = destination / "style.css"
+    style.write_text(style.read_text().replace("Version: 2.5.6", "Version: 2.5.5", 1))
+    body = upload()
+    assert "This theme is already installed" in body
+    links = re.findall(r'href=["\']([^"\']+)["\']', body)
+    replace = next(html.unescape(x) for x in links if "overwrite=update-theme" in x)
+    path = urllib.parse.urlsplit(replace)
+    assert not path.netloc or path.netloc == "127.0.0.1:" + str(PORT)
+    response = admin.request((path.path if path.path.startswith("/") else "/wp-admin/" + path.path) + "?" + path.query)
+    assert response["status"] == 200 and ("Theme updated successfully" in response["body"] or "Theme installed successfully" in response["body"])
+    with zipfile.ZipFile(INSTALL_ZIP) as bundle:
+        expected = {x.filename.split("/", 1)[1]: hashlib.sha256(bundle.read(x)).hexdigest() for x in bundle.infolist() if not x.is_dir()}
+    actual = {str(p.relative_to(destination)): pin(p)["sha256"] for p in destination.rglob("*") if p.is_file()}
+    assert actual == expected
+    assert native("order", seed["legacy"]["id"]) == before
+    record("NORMAL_WP_ADMIN_REPLACE_INSTALLED_WITH_UPLOADED_EXACT_MEMBER_HASHES", members=len(expected), legacy_order_unchanged=True)
 
 
 def qualify(seed):
@@ -783,6 +871,30 @@ def qualify(seed):
         "Final successor build/package/preview adoption",
     ]
     return paired
+
+
+def qualify_upgrade_failure(seed):
+    native("upgrade-boundary", "fail")
+    try:
+        before = {row["id"] for row in native("orders")}
+        entries = processor_count()
+        client = Client()
+        client.control("empty")
+        classic_add(client, seed["products"]["br-001"], "S")
+        assert client.control("inspect")["cart"]
+        response = classic_checkout(client)
+        assert json.loads(response["body"])["result"] == "failure"
+        api = Client()
+        api.control("empty")
+        assert api.api("cart")[0] == 200
+        assert api.api("cart/add-item", {"id": seed["products"]["br-001"], "quantity": 1, "extensions": {"skyyrose-simple-size": {"size": "S"}}})[0] == 201
+        status, body = api.api("checkout")
+        assert status == 503 and body["code"] == "skyyrose_simple_size_setup"
+        assert {row["id"] for row in native("orders")} == before
+        assert processor_count() == entries
+    finally:
+        assert native("upgrade-boundary", "restore")["preimages_restored"]
+    record("FAILED_INITIAL_SETUP_REFUSES_BEFORE_CLASSIC_AND_STORE_API_ORDER_CREATION")
 
 
 def pay_order(order_id):
@@ -999,16 +1111,19 @@ def qualify_saved_orders(seed, paired):
                     "extensions": {"skyyrose-simple-size": {"size": "S"}},
                 },
             )[0]
-            == 400
+            == 201
         )
         entries = processor_count()
-        assert "skyyrose_simple_size_order" in native("payment-check", paired["id"])["errors"]
+        assert not native("payment-check", paired["id"])["errors"]
         pay_order(paired["id"])
-        assert processor_count() == entries
+        assert processor_count() == entries + 1
+        assert "skyyrose_simple_size_order" in native("payment-check", seed["legacy"]["id"])["errors"]
+        _, new_order = fresh_classic(seed, ("S",))
+        assert new_order["generation"] and not native("payment-check", new_order["id"])["errors"]
     finally:
         restored = native("history", "restore")
         assert restored["preimage_sha256"] == history["preimage_sha256"]
-    record("MISSING_TRUSTED_HISTORY_REFUSES_AND_EXACT_PREIMAGE_RESTORED")
+    record("MISSING_HISTORY_PRESERVES_NEW_COMMERCE_AND_MARKED_PAYMENT_HOLDS_ONLY_LEGACY")
     _, order = fresh_classic(seed, ("S", "M"))
     native("pool", "1")
     try:
@@ -1368,10 +1483,16 @@ def qualify_readback(seed, paid):
 
 
 def main():
-    global STORAGE
+    global STORAGE, INSTALL_ZIP
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--storage", choices=("hpos", "cpt"), default="hpos")
-    STORAGE = parser.parse_args().storage
+    parser.add_argument("--install-zip", type=Path)
+    args = parser.parse_args()
+    STORAGE = args.storage
+    if args.install_zip:
+        INSTALL_ZIP = args.install_zip.resolve(strict=True)
+        guard(INSTALL_ZIP)
+        assert INSTALL_ZIP.suffix == ".zip" and INSTALL_ZIP.stat().st_size <= 512 * 1024**2
     REPORT["storage"] = STORAGE
     REPORT["limits"][0] = (
         "Fresh synthetic WP7.1.3/Woo11.2.1/seven-plugin "
@@ -1394,6 +1515,7 @@ def main():
         Path(__file__),
         ROOT / "tools/v2-runtime/simple-size-native-fixture.php",
         ROOT / "tools/v2-runtime/simple-size-native-controls.php",
+        ROOT / "tools/v2-runtime/simple-size-upgrade-controls.php",
         ROOT / "tools/v2-runtime/fixtures/historical-preorder-producer.php",
         ROOT / "tools/v2-runtime/fixtures/historical-preorder-producer-provenance.json",
         THEME / "inc/simple-product-sizes.php",
@@ -1402,6 +1524,8 @@ def main():
         THEME / "data/product-presentation-registry.json",
         ROOT / "wordpress-theme/skyyrose-flagship/data/logo-registry.json",
     ]
+    if INSTALL_ZIP:
+        sources.append(INSTALL_ZIP)
     binaries = [
         Path(value).resolve()
         for value in [
@@ -1419,6 +1543,9 @@ def main():
     write(PRIVATE / "results.json", REPORT)
     try:
         seed = setup()
+        record("AUTOMATIC_NATIVE_UPGRADE_AND_FAILURE_LAB", result=native("upgrade-lab"))
+        qualify_normal_install(seed)
+        qualify_upgrade_failure(seed)
         paired = qualify(seed)
         paid = qualify_saved_orders(seed, paired)
         qualify_store_checkout(seed)

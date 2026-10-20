@@ -12,6 +12,14 @@ function ss_assert_identity( $native = false ) {
 	}
 }
 ss_assert_identity();
+// Seed an actual old order before the theme's automatic first-upgrade snapshot.
+// This exception exists only in this guarded synthetic fixture, never the ZIP.
+add_action( 'after_setup_theme', static function() {
+	if ( ! get_option( 'ss_products' ) ) { remove_action( 'after_switch_theme', 'skyyrose2_simple_size_upgrade', 30 ); }
+} );
+add_action( 'wp_loaded', static function() {
+	if ( ! get_option( 'ss_products' ) ) { remove_action( 'wp_loaded', 'skyyrose2_simple_size_upgrade', 30 ); }
+}, 29 );
 add_filter( 'pre_http_request', static fn() => new WP_Error( 'synthetic_offline', 'Outbound HTTP prohibited.' ), PHP_INT_MAX );
 add_filter( 'pre_wp_mail', '__return_true', PHP_INT_MAX );
 add_filter( 'woocommerce_webhook_should_deliver', '__return_false', PHP_INT_MAX );
@@ -59,6 +67,9 @@ add_filter( 'query', static function( $sql ) {
 	return $sql;
 }, PHP_INT_MAX );
 add_action( 'init', static function() { $GLOBALS['ss_drop_mode'] = get_option( 'ss_drop_mode', '' ); }, 1 );
+add_action( 'init', static function() {
+	if ( 'quantity' === get_option( 'ss_upgrade_failure' ) ) { add_filter( 'woocommerce_stock_amount', static fn( $value ) => $value, 999 ); }
+}, 1 );
 add_action( 'init', static function() { if ( class_exists( 'WC_Data_Store' ) && get_option( 'ss_products' ) ) { ss_assert_identity( true ); } }, 99 );
 
 /** Private controls for a loopback-only disposable server. All identities synthetic. */
@@ -69,6 +80,10 @@ add_action( 'template_redirect', static function() {
 	WC()->initialize_session(); WC()->initialize_cart();
 	WC()->session->set_customer_session_cookie( true );
 	$mode = $_GET['ss_control'];
+	if ( 'upgrade-status' === $mode ) {
+		$state = skyyrose2_simple_size_history_state(); $id = (int) get_option( 'ss_legacy_id' );
+		wp_send_json( array( 'boundary_ready' => (bool) skyyrose2_simple_size_upgrade_boundary(), 'legacy_matches_native' => ( $state['legacy_orders'][ $id ] ?? null ) === skyyrose2_simple_size_legacy_fingerprint( new WC_Order( $id ) ), 'history_count' => count( $state['legacy_orders'] ) ) );
+	}
 	if ( 'inspect' === $mode ) {
 		$cart = array(); foreach ( WC()->cart->get_cart() as $key => $value ) { $cart[] = array( 'key' => $key, 'id' => $value['product_id'], 'variation_id' => $value['variation_id'], 'quantity' => $value['quantity'], 'size' => $value['skyyrose_simple_size'] ?? null, 'promise' => $value['skyyrose_preorder_snapshot'] ?? null ); }
 		wp_send_json( array( 'cart' => $cart, 'nonce' => wp_create_nonce( 'woocommerce-process_checkout' ), 'store_nonce' => wp_create_nonce( 'wc_store_api' ), 'rest_nonce' => wp_create_nonce( 'wp_rest' ), 'order_item_nonce' => wp_create_nonce( 'order-item' ), 'user_id' => get_current_user_id(), 'roles' => wp_get_current_user()->roles, 'notices' => wc_get_notices(), 'session_id' => WC()->session->get_customer_id(), 'draft' => WC()->session->get( 'store_api_draft_order', 0 ) ) );

@@ -448,10 +448,31 @@ def validate_production_package(production_inventory, selected):
     for member in sorted(approved_members):
         if not eligible_media_original(member, production_inventory):
             raise ValueError("Original production member provenance refused: " + member)
-    authority_binding = production_inventory["production_media_authority"]
-    if not (approved_members | {authority_binding["path"]}) <= set(selected):
+    if not (approved_members | {"data/runtime-media.json"}) <= set(selected):
         raise ValueError("Approved production scope omitted from package")
     return production
+
+
+def runtime_media_policy(inventory):
+    """Use the delivered PHP source policy, including its approved film branch."""
+    allowed = json.loads(subprocess.check_output([
+        "/usr/bin/sandbox-exec", "-p", "(version 1)(allow default)(deny network*)",
+        "/opt/homebrew/Cellar/php/8.5.6/bin/php", str(HERE / "compile-runtime-media.php"),
+        str(THEME),
+    ], text=True, timeout=120))
+    fields = (
+        "sha256", "kind", "status", "roles", "skus", "collections", "width", "height",
+        "source_path", "source_sha256", "review",
+    )
+    assets = {}
+    for relative, roles in sorted(allowed.items()):
+        record = inventory["assets"][relative]
+        assets[relative] = {k: record[k] for k in fields if k in record}
+        assets[relative]["effective_roles"] = roles
+    return {
+        "schema": "skyyrose.v2.runtime-media.v1", "assets": assets,
+        "usage_adoptions": inventory.get("usage_adoptions", {}),
+    }
 
 
 def main():
@@ -474,9 +495,15 @@ def main():
     selected = [p for p in sorted(boundary) if boundary[p]["release"]]
     production_inventory = json.loads((THEME / "data/v2-media-eligibility.json").read_text())
     production = validate_production_package(production_inventory, selected)
+    policy_path = THEME / "data/runtime-media.json"
+    if json.loads(policy_path.read_text()) != runtime_media_policy(production_inventory):
+        raise ValueError("Runtime display policy differs from verified source decisions")
+    gate = (THEME / "inc/v2-media-eligibility.php").read_text()
+    if f"hash_equals( '{sha(policy_path)}', hash_file( 'sha256', $runtime ) )" not in gate:
+        raise ValueError("Runtime display policy binding is stale")
     authority_binding = production_inventory["production_media_authority"]
-    # Stored ZIP avoids platform-specific compressor bytes; media is precompressed.
-    with zipfile.ZipFile(archive, "w", compression=zipfile.ZIP_STORED) as bundle:
+    # Standard DEFLATE compresses code/data while retaining every original pixel.
+    with zipfile.ZipFile(archive, "w", compression=zipfile.ZIP_DEFLATED, compresslevel=6) as bundle:
         for relative in selected:
             if any(
                 part in {".DS_Store", "__MACOSX"} or part.startswith("._")
@@ -494,6 +521,7 @@ def main():
                 if re.search(rb"""(?:["'\s])/(?:Users|home)/""", content):
                     raise ValueError(f"Workstation path in package: {relative}")
             entry = zipfile.ZipInfo("skyyrose-flagship-2/" + relative, (1980, 1, 1, 0, 0, 0))
+            entry.compress_type = zipfile.ZIP_DEFLATED
             entry.create_system = 3
             entry.external_attr = 0o100644 << 16
             bundle.writestr(entry, content)
@@ -539,7 +567,7 @@ def main():
             "npm": subprocess.check_output(["npm", "--version"], text=True).strip(),
             "python": platform.python_version(),
             "zlib": zlib.ZLIB_VERSION,
-            "zip_compression": "STORED",
+            "zip_compression": "DEFLATED",
         },
         "historical_catalog_sha256": inputs["catalog_sha256"],
         "current_registry_sha256": inputs["current_registry_sha256"],

@@ -31,7 +31,7 @@ function skyyrose2_simple_size_projection() {
 	}
 }
 
-/** Explicit trusted inventory only. Never initialize or extend this state from a purchase request. */
+/** Read the immutable legacy inventory; missing metadata never implies historical provenance. */
 function skyyrose2_simple_size_history_state() {
 	global $wpdb;
 	$raw = $wpdb->get_var( $wpdb->prepare( "SELECT option_value FROM {$wpdb->options} WHERE option_name=%s", 'skyyrose2_simple_size_history_v1' ) );
@@ -47,10 +47,162 @@ function skyyrose2_simple_size_history_state() {
 	return $state;
 }
 
+/** Read persisted upgrade authority directly; missing history never starts another baseline. */
+function skyyrose2_simple_size_upgrade_boundary() {
+	global $wpdb;
+	$raw = $wpdb->get_var( $wpdb->prepare( "SELECT option_value FROM {$wpdb->options} WHERE option_name=%s", 'skyyrose2_simple_size_upgrade_v1' ) );
+	$state = is_string( $raw ) && strlen( $raw ) <= 4096 && ! $wpdb->last_error ? json_decode( $raw, true ) : null;
+	return is_array( $state ) && 'skyyrose.simple-size-upgrade.v1' === ( $state['schema'] ?? null ) && untrailingslashit( get_option( 'home' ) ) === ( $state['site'] ?? null ) && is_string( $state['history_sha256'] ?? null ) && preg_match( '/^[a-f0-9]{64}$/D', $state['history_sha256'] );
+}
+
+/** Immutable SQL-snapshot adapters: no shared order/object cache is touched. */
+final class SkyyRose2_Size_History_Line {
+	public function __construct( private int $id, private int $product, private int $variation, private int $quantity ) {}
+	public function get_id() { return $this->id; }
+	public function get_product_id( $context ) { return $this->product; }
+	public function get_variation_id( $context ) { return $this->variation; }
+	public function get_quantity( $context ) { return $this->quantity; }
+}
+final class SkyyRose2_Size_History_Order {
+	public function __construct( private int $id, private string $key, private DateTimeImmutable $created, private array $lines ) {}
+	public function get_id() { return $this->id; }
+	public function get_order_key( $context ) { return $this->key; }
+	public function get_date_created( $context ) { return $this->created; }
+	public function get_items( $type ) { return $this->lines; }
+}
+
+/** Only the qualified native interpretation may create an automatic legacy baseline. */
+function skyyrose2_simple_size_history_profile( $hpos ) {
+	global $wp_filter;
+	$expected = $hpos ? 'Automattic\\WooCommerce\\Internal\\DataStores\\Orders\\OrdersTableDataStore' : 'WC_Order_Data_Store_CPT';
+	if ( WC_Data_Store::load( 'order' )->get_current_class_name() !== $expected || WC_Data_Store::load( 'order-item-product' )->get_current_class_name() !== 'WC_Order_Item_Product_Data_Store' || 'yes' === get_option( 'woocommerce_custom_orders_table_data_sync_enabled' ) ) { throw new RuntimeException( 'Custom order interpretation requires review.' ); }
+	foreach ( array( 'woocommerce_order_get_items', 'woocommerce_get_order_item_classname', 'get_order_item_metadata', 'get_post_metadata', 'woocommerce_order_loaded', 'woocommerce_order_object_read', 'woocommerce_order_item_read' ) as $hook ) {
+		if ( has_filter( $hook ) ) { throw new RuntimeException( 'Custom order hydration requires review.' ); }
+	}
+	$callbacks = $wp_filter['woocommerce_stock_amount']->callbacks ?? array();
+	if ( array( 10 ) !== array_keys( $callbacks ) || array( 'intval' ) !== array_keys( $callbacks[10] ) || 'intval' !== ( $callbacks[10]['intval']['function'] ?? null ) || 1 !== ( $callbacks[10]['intval']['accepted_args'] ?? null ) ) { throw new RuntimeException( 'Custom quantity interpretation requires review.' ); }
+}
+
+/** Fixed bounded joins, all saved statuses; source-exact fingerprint, no customer fields. */
+function skyyrose2_simple_size_snapshot( $hpos ) {
+	global $wpdb;
+	skyyrose2_simple_size_history_profile( $hpos );
+	$read = static function( $sql, $maximum ) use ( $wpdb ) {
+		$rows = $wpdb->get_results( $sql, ARRAY_A );
+		if ( $wpdb->last_error || ! is_array( $rows ) || count( $rows ) > $maximum ) { throw new RuntimeException( 'Bounded snapshot unavailable.' ); }
+		return $rows;
+	};
+	$table = $hpos ? $wpdb->prefix . 'wc_orders' : $wpdb->posts;
+	$id_column = $hpos ? 'id' : 'ID'; $type_column = $hpos ? 'type' : 'post_type'; $date_column = $hpos ? 'date_created_gmt' : 'post_date_gmt';
+	$meta_table = $hpos ? $wpdb->prefix . 'wc_orders_meta' : $wpdb->postmeta; $meta_id = $hpos ? 'order_id' : 'post_id';
+	$from = "FROM {$table} o WHERE o.{$type_column}='shop_order'";
+	$orders = $read( "SELECT o.{$id_column} AS id,o.{$date_column} AS created {$from} ORDER BY o.{$id_column} LIMIT 1001", 1000 );
+	$join = "INNER JOIN {$table} o ON o.{$id_column}=i.order_id WHERE o.{$type_column}='shop_order' AND i.order_item_type='line_item'";
+	$marked = $read( "SELECT m.{$meta_id} AS id FROM {$meta_table} m INNER JOIN {$table} o ON o.{$id_column}=m.{$meta_id} WHERE o.{$type_column}='shop_order' AND m.meta_key='_skyyrose_simple_size_generation_v1' LIMIT 1", 1 );
+	$selected = $read( "SELECT m.order_item_id FROM {$wpdb->prefix}woocommerce_order_itemmeta m INNER JOIN {$wpdb->prefix}woocommerce_order_items i ON i.order_item_id=m.order_item_id {$join} AND m.meta_key='_skyyrose_simple_size_v1' LIMIT 1", 1 );
+	if ( $marked || $selected ) { throw new RuntimeException( 'Previous size generation without history.' ); }
+	$keys = $hpos ? $read( "SELECT d.order_id AS id,d.order_key AS value FROM {$wpdb->prefix}wc_order_operational_data d INNER JOIN {$table} o ON o.{$id_column}=d.order_id WHERE o.{$type_column}='shop_order' LIMIT 2001", 2000 ) : $read( "SELECT m.{$meta_id} AS id,m.meta_value AS value FROM {$meta_table} m INNER JOIN {$table} o ON o.{$id_column}=m.{$meta_id} WHERE o.{$type_column}='shop_order' AND m.meta_key='_order_key' LIMIT 2001", 2000 );
+	$by_order = array(); foreach ( $keys as $row ) { $by_order[ (int) $row['id'] ][] = $row['value']; }
+	$items = $read( "SELECT i.order_id,i.order_item_id FROM {$wpdb->prefix}woocommerce_order_items i {$join} ORDER BY i.order_id,i.order_item_id LIMIT 10001", 10000 );
+	$by_item = array(); foreach ( $items as $row ) { $by_item[ (int) $row['order_id'] ][] = (int) $row['order_item_id']; }
+	$rows = $read( "SELECT m.order_item_id,m.meta_key,LEFT(m.meta_value,64) AS value,OCTET_LENGTH(m.meta_value) AS bytes FROM {$wpdb->prefix}woocommerce_order_itemmeta m INNER JOIN {$wpdb->prefix}woocommerce_order_items i ON i.order_item_id=m.order_item_id {$join} AND m.meta_key IN ('_product_id','_variation_id','_qty') ORDER BY m.meta_id LIMIT 40001", 40000 );
+	$meta = array(); foreach ( $rows as $row ) { if ( (int) $row['bytes'] > 64 ) { throw new RuntimeException( 'Ambiguous saved metadata.' ); } $meta[ (int) $row['order_item_id'] ][ $row['meta_key'] ][] = $row['value']; }
+	$rows = $read( "SELECT DISTINCT p.ID,p.post_type FROM {$wpdb->posts} p INNER JOIN {$wpdb->prefix}woocommerce_order_itemmeta m ON p.ID=CAST(m.meta_value AS UNSIGNED) INNER JOIN {$wpdb->prefix}woocommerce_order_items i ON i.order_item_id=m.order_item_id {$join} AND m.meta_key IN ('_product_id','_variation_id') LIMIT 20001", 20000 );
+	$types = array(); foreach ( $rows as $row ) { $types[ (int) $row['ID'] ] = $row['post_type']; }
+	$legacy = array();
+	foreach ( $orders as $row ) {
+		$id = (int) $row['id']; $keys = $by_order[ $id ] ?? array(); $items = $by_item[ $id ] ?? array();
+		if ( ! $items ) { continue; } // Preserve incomplete old drafts, never bless them.
+		$date = DateTimeImmutable::createFromFormat( '!Y-m-d H:i:s', (string) $row['created'], new DateTimeZone( 'UTC' ) );
+		if ( count( $items ) > 1000 || ! $date || $date->format( 'Y-m-d H:i:s' ) !== $row['created'] || $date->getTimestamp() <= 0 || count( $keys ) !== 1 || ! is_string( $keys[0] ) || '' === $keys[0] || strlen( $keys[0] ) > 22 ) { throw new RuntimeException( 'Ambiguous saved order.' ); }
+		$lines = array(); $simple = false;
+		foreach ( $items as $item_id ) {
+			$m = $meta[ $item_id ] ?? array();
+			if ( count( $m ) !== 3 || count( $m['_product_id'] ?? array() ) !== 1 || count( $m['_variation_id'] ?? array() ) !== 1 || count( $m['_qty'] ?? array() ) !== 1 || ! preg_match( '/^[1-9][0-9]{0,17}$/D', $m['_product_id'][0] ) || ! preg_match( '/^(?:0|[1-9][0-9]{0,17})$/D', $m['_variation_id'][0] ) || ! preg_match( '/^[1-9][0-9]{0,8}$/D', $m['_qty'][0] ) ) { throw new RuntimeException( 'Ambiguous saved line.' ); }
+			$product = (int) $m['_product_id'][0]; $variation = (int) $m['_variation_id'][0];
+			if ( ( $types[ $product ] ?? null ) !== 'product' || ( $variation && ( $types[ $variation ] ?? null ) !== 'product_variation' ) ) { throw new RuntimeException( 'Saved native product unavailable.' ); }
+			$simple = $simple || 0 === $variation;
+			$lines[] = new SkyyRose2_Size_History_Line( $item_id, $product, $variation, (int) $m['_qty'][0] );
+		}
+		if ( $simple ) { $legacy[ $id ] = skyyrose2_simple_size_legacy_fingerprint( new SkyyRose2_Size_History_Order( $id, $keys[0], $date, $lines ) ); }
+	}
+	ksort( $legacy, SORT_NUMERIC );
+	return $legacy;
+}
+
+/**
+ * Ordinary activation and same-theme upgrades prepare their own bounded history.
+ * One atomic transaction publishes the complete native snapshot and permanent
+ * boundary together. No order, line, payment or stock record is rewritten.
+ * Old requests completing after the snapshot remain unknown; never widen it.
+ */
+function skyyrose2_simple_size_upgrade() {
+	global $wpdb;
+	if ( skyyrose2_simple_size_upgrade_boundary() ) { return true; }
+	static $running = false;
+	if ( $running || ! function_exists( 'wc_get_orders' ) || ! did_action( 'woocommerce_init' ) ) { return false; }
+	$running = true;
+	$transaction = false;
+	$suppressed = $wpdb->suppress_errors( true );
+	try {
+		$marker = $wpdb->get_var( $wpdb->prepare( "SELECT option_value FROM {$wpdb->options} WHERE option_name=%s", 'skyyrose2_simple_size_upgrade_v1' ) );
+		if ( $wpdb->last_error || null !== $marker ) { throw new RuntimeException( 'Upgrade boundary requires review.' ); }
+		$raw = $wpdb->get_var( $wpdb->prepare( "SELECT option_value FROM {$wpdb->options} WHERE option_name=%s", 'skyyrose2_simple_size_history_v1' ) );
+		if ( $wpdb->last_error ) { throw new RuntimeException( 'History unavailable.' ); }
+		if ( null !== $raw ) {
+			// Preserve even corrupt pre-existing state verbatim. It still holds only
+			// affected legacy payment paths; independent new generations remain safe.
+			$boundary = wp_json_encode( array( 'schema' => 'skyyrose.simple-size-upgrade.v1', 'site' => untrailingslashit( get_option( 'home' ) ), 'history_sha256' => hash( 'sha256', $raw ) ) );
+			add_option( 'skyyrose2_simple_size_upgrade_v1', $boundary, '', false );
+			return (bool) skyyrose2_simple_size_upgrade_boundary();
+		}
+		if ( '0' !== (string) $wpdb->get_var( 'SELECT @@session.in_transaction' ) || $wpdb->last_error ) { throw new RuntimeException( 'Existing transaction.' ); }
+		$hpos = \Automattic\WooCommerce\Utilities\OrderUtil::custom_orders_table_usage_is_enabled();
+		$tables = array( $wpdb->options, $wpdb->posts, $wpdb->prefix . 'woocommerce_order_items', $wpdb->prefix . 'woocommerce_order_itemmeta' );
+		$tables = array_merge( $tables, $hpos ? array( $wpdb->prefix . 'wc_orders', $wpdb->prefix . 'wc_order_operational_data', $wpdb->prefix . 'wc_orders_meta', $wpdb->prefix . 'wc_order_addresses' ) : array( $wpdb->posts, $wpdb->postmeta ) );
+		foreach ( $tables as $table ) {
+			$engine = $wpdb->get_var( $wpdb->prepare( 'SELECT ENGINE FROM information_schema.TABLES WHERE TABLE_SCHEMA=DATABASE() AND TABLE_NAME=%s', $table ) );
+			if ( $wpdb->last_error || 'INNODB' !== strtoupper( (string) $engine ) ) { throw new RuntimeException( 'Transactional storage required.' ); }
+		}
+		if ( false === $wpdb->query( 'SET TRANSACTION ISOLATION LEVEL REPEATABLE READ' ) || false === $wpdb->query( 'START TRANSACTION WITH CONSISTENT SNAPSHOT' ) ) { throw new RuntimeException( 'Snapshot unavailable.' ); }
+		$transaction = true;
+		$legacy = skyyrose2_simple_size_snapshot( $hpos );
+		$raw = wp_json_encode( array( 'schema' => 'skyyrose.simple-size-history.v1', 'site' => untrailingslashit( get_option( 'home' ) ), 'generation' => 'skyyrose.simple-size-order.v1', 'legacy_orders' => $legacy ) );
+		if ( ! is_string( $raw ) || strlen( $raw ) > 1048576 || $wpdb->last_error ) { throw new RuntimeException( 'History payload unavailable.' ); }
+		$boundary = wp_json_encode( array( 'schema' => 'skyyrose.simple-size-upgrade.v1', 'site' => untrailingslashit( get_option( 'home' ) ), 'history_sha256' => hash( 'sha256', $raw ) ) );
+		// Unique option names choose one complete winner. No overwrite or expanding retry.
+		$sql = $wpdb->prepare( "INSERT INTO {$wpdb->options} (option_name,option_value,autoload) VALUES (%s,%s,'off'),(%s,%s,'off')", 'skyyrose2_simple_size_history_v1', $raw, 'skyyrose2_simple_size_upgrade_v1', $boundary );
+		if ( 2 !== $wpdb->query( $sql ) ) { throw new RuntimeException( 'Concurrent upgrade or state change.' ); }
+		if ( false === $wpdb->query( 'COMMIT' ) ) { throw new RuntimeException( 'Upgrade commit unavailable.' ); }
+		$transaction = false;
+		wp_cache_delete( 'alloptions', 'options' );
+		wp_cache_delete( 'notoptions', 'options' );
+		return (bool) skyyrose2_simple_size_upgrade_boundary();
+	} catch ( Throwable $error ) {
+		if ( $transaction ) { $wpdb->query( 'ROLLBACK' ); }
+		return (bool) skyyrose2_simple_size_upgrade_boundary();
+	} finally { $wpdb->suppress_errors( $suppressed ); $running = false; }
+}
+add_action( 'after_switch_theme', 'skyyrose2_simple_size_upgrade', 30 );
+add_action( 'wp_loaded', 'skyyrose2_simple_size_upgrade', 30 );
+
+/** Refuse before native checkout creates an unmarked order, never baseline it later. */
+function skyyrose2_simple_size_cart_needs_setup() {
+	if ( ! WC()->cart ) { wc_load_cart(); }
+	if ( ! WC()->cart ) { return true; }
+	foreach ( WC()->cart->get_cart() as $values ) {
+		if ( isset( $values['data'] ) && $values['data'] instanceof WC_Product && $values['data']->is_type( 'simple' ) ) { return true; }
+	}
+	return false;
+}
+function skyyrose2_simple_size_checkout_setup( $posted, $errors ) {
+	if ( ! skyyrose2_simple_size_upgrade_boundary() && skyyrose2_simple_size_cart_needs_setup() ) { $errors->add( 'skyyrose_simple_size_setup', __( 'Checkout setup is finishing. Please try again shortly.', 'skyyrose-flagship-2' ) ); }
+}
+add_action( 'woocommerce_after_checkout_validation', 'skyyrose2_simple_size_checkout_setup', 1, 2 );
+
 /** Derive identity from the native product, never a client SKU or an inherited CSV. */
 function skyyrose2_simple_size_choices( $product ) {
 	if ( ! $product || ! $product->is_type( 'simple' ) ) { return null; }
-	skyyrose2_simple_size_history_state();
 	$projection = skyyrose2_simple_size_projection();
 	$sku = $product->get_sku();
 	if ( ! is_string( $sku ) || ! isset( $projection['products'][ $sku ] ) || $product->get_id() <= 0 ) {
@@ -127,8 +279,8 @@ function skyyrose2_simple_size_validate_saved_order( $order ) {
 	foreach ( $lines as $item ) { $has_simple = $has_simple || ! $item->get_variation_id( 'edit' ); }
 	$generations = skyyrose2_simple_size_meta_values( $order, '_skyyrose_simple_size_generation_v1' );
 	if ( ! $has_simple && ! $generations ) { return; }
-	$state = skyyrose2_simple_size_history_state();
 	if ( ! $generations ) {
+		$state = skyyrose2_simple_size_history_state();
 		// Absence of both fields is never historical provenance.
 		$expected = $state['legacy_orders'][ $order->get_id() ] ?? null;
 		if ( ! is_string( $expected ) || ! hash_equals( $expected, skyyrose2_simple_size_legacy_fingerprint( $order ) ) ) { throw new Exception( __( 'This order needs its saved size reviewed before payment.', 'skyyrose-flagship-2' ) ); }
@@ -272,7 +424,9 @@ function skyyrose2_simple_size_stamp_new_order( $order ) {
 	$has_simple = false;
 	foreach ( $lines as $line ) { $has_simple = $has_simple || ! $line['variation_id']; }
 	if ( ! $has_simple ) { return; }
-	skyyrose2_simple_size_history_state();
+	// Establish the immutable upgrade boundary before admitting a new generation.
+	// Historical validation does not govern a correctly marked new purchase.
+	if ( ! skyyrose2_simple_size_upgrade_boundary() ) { throw new Exception( __( 'Checkout setup is finishing. Please try again shortly.', 'skyyrose-flagship-2' ) ); }
 	if ( $order->meta_exists( '_skyyrose_simple_size_generation_v1' ) ) { throw new Exception( __( 'Review the saved size before checkout.', 'skyyrose-flagship-2' ) ); }
 	$order->add_meta_data( '_skyyrose_simple_size_generation_v1', array( 'schema' => 'skyyrose.simple-size-order.v1', 'lines' => $lines ), true );
 }
@@ -359,7 +513,7 @@ function skyyrose2_simple_size_native_output_hash() {
 function skyyrose2_simple_size_guard_api_draft( $hash ) {
 	if ( ! WC()->is_store_api_request() || ! WC()->session ) { return $hash; }
 	// Native headers and cookies only read the hash, including at shutdown after
-	// JSON output. Every functional hash call still checks saved history.
+	// JSON output. Functional hash calls still validate the saved draft/order.
 	if ( skyyrose2_simple_size_native_output_hash() ) { return $hash; }
 	$id = WC()->session->get( 'store_api_draft_order', 0 );
 	if ( ! $id ) { return $hash; }
@@ -403,7 +557,8 @@ function skyyrose2_simple_size_store_route_boundary( $endpoints ) {
 			if ( ! isset( $native[ $declaring ] ) ) { continue; }
 			$source = realpath( WC_ABSPATH . 'src/StoreApi/Routes/V1/' . $native[ $declaring ] );
 			if ( ! $source || realpath( $method->getFileName() ) !== $source ) { continue; }
-			$handler['callback'] = static function( $request ) use ( $callback ) {
+			$handler['callback'] = static function( $request ) use ( $callback, $route ) {
+				if ( preg_match( '#^/wc/store/v[0-9]+/checkout(?:/|$)#', $route ) && ! skyyrose2_simple_size_upgrade_boundary() && skyyrose2_simple_size_cart_needs_setup() ) { return new WP_Error( 'skyyrose_simple_size_setup', __( 'Checkout setup is finishing. Please try again shortly.', 'skyyrose-flagship-2' ), array( 'status' => 503 ) ); }
 				try { return call_user_func( $callback, $request ); }
 				catch ( \Automattic\WooCommerce\StoreApi\Exceptions\RouteException $error ) {
 					if ( 'skyyrose_simple_size_saved_order' !== $error->getErrorCode() || 409 !== $error->getCode() ) { throw $error; }

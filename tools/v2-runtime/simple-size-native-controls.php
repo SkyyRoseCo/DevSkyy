@@ -60,9 +60,30 @@ if ( 'init' === $mode ) {
 	$item = new WC_Order_Item_Product(); $item->set_product( wc_get_product( $products['br-001'] ) ); $item->set_quantity( 1 ); $item->set_total( 80 ); $item->set_subtotal( 80 );
 	$item->add_meta_data( '_skyyrose_preorder_snapshot', $promise, true );
 	$item->add_meta_data( 'Synthetic custom history', 'preserve exactly', false ); $item->add_meta_data( '_ss_typed_history', array( 'boolean' => true, 'fractional' => 1.0, 'integer' => 1 ), true ); $order->add_item( $item ); $order->calculate_totals(); $order->save(); update_option( 'ss_legacy_id', $order->get_id() );
-	$state = array( 'schema' => 'skyyrose.simple-size-history.v1', 'site' => untrailingslashit( get_option( 'home' ) ), 'generation' => 'skyyrose.simple-size-order.v1', 'legacy_orders' => array( $order->get_id() => skyyrose2_simple_size_legacy_fingerprint( $order ) ) );
-	add_option( 'skyyrose2_simple_size_history_v1', wp_json_encode( $state ), '', false );
+	$legacy_before = ss_order_data( $order );
+	if ( ! skyyrose2_simple_size_upgrade() ) { throw new RuntimeException( 'Automatic native first upgrade failed.' ); }
+	$state = skyyrose2_simple_size_history_state();
+	if ( ( $state['legacy_orders'][ $order->get_id() ] ?? null ) !== skyyrose2_simple_size_legacy_fingerprint( $order ) || ss_order_data( new WC_Order( $order->get_id() ) ) !== $legacy_before ) { throw new RuntimeException( 'Automatic upgrade changed or lost native history.' ); }
+	$raw = get_option( 'skyyrose2_simple_size_history_v1' );
+	if ( ! skyyrose2_simple_size_upgrade() || get_option( 'skyyrose2_simple_size_history_v1' ) !== $raw ) { throw new RuntimeException( 'Upgrade is not idempotent.' ); }
 	$result = array( 'products' => $products, 'legacy' => ss_order_data( $order ), 'historical_producer' => array( 'wrapper_sha256' => hash( 'sha256', $producer_bytes ), 'function_sha256' => hash( 'sha256', substr( $producer_bytes, 6, -1 ) ), 'old_hooks_loaded' => false, 'promise' => $promise ), 'runtime' => array( 'php' => PHP_VERSION, 'wp' => get_bloginfo( 'version' ), 'woo' => WC_VERSION, 'database' => $GLOBALS['wpdb']->get_var( 'SELECT VERSION()' ), 'socket' => $GLOBALS['wpdb']->get_var( 'SELECT @@socket' ), 'plugins' => get_option( 'active_plugins' ) ), 'sizes' => skyyrose2_simple_size_projection()['products'] );
+} elseif ( 'upgrade-lab' === $mode ) {
+	require __DIR__ . '/simple-size-upgrade-controls.php';
+	$result = ss_upgrade_lab();
+} elseif ( 'upgrade-boundary' === $mode ) {
+	$names = array( 'skyyrose2_simple_size_history_v1', 'skyyrose2_simple_size_upgrade_v1' );
+	$path = SR_SIMPLE_SIZE_FIXTURE_ROOT . '/upgrade-preimage.json';
+	if ( 'fail' === ( $args[1] ?? '' ) && ! file_exists( $path ) ) {
+		$values = array_map( static fn( $name ) => get_option( $name ), $names );
+		if ( ! is_string( $values[0] ) || ! is_string( $values[1] ) ) { throw new RuntimeException( 'Exact upgrade preimages required.' ); }
+		file_put_contents( $path, wp_json_encode( $values ), LOCK_EX ); chmod( $path, 0600 );
+		foreach ( $names as $name ) { delete_option( $name ); } update_option( 'ss_upgrade_failure', 'quantity' );
+		$result = array( 'failure_enabled' => true );
+	} elseif ( 'restore' === ( $args[1] ?? '' ) && is_file( $path ) ) {
+		$values = json_decode( file_get_contents( $path ), true, 16, JSON_THROW_ON_ERROR );
+		foreach ( $names as $i => $name ) { if ( false !== get_option( $name ) ) { throw new RuntimeException( 'Failed setup published unexpected state.' ); } add_option( $name, $values[ $i ], '', false ); }
+		delete_option( 'ss_upgrade_failure' ); $result = array( 'preimages_restored' => true );
+	} else { throw new RuntimeException( 'One bounded upgrade control required.' ); }
 } elseif ( 'orders' === $mode ) {
 	foreach ( wc_get_orders( array( 'limit' => -1, 'orderby' => 'ID', 'order' => 'ASC', 'status' => array_keys( wc_get_order_statuses() ) ) ) as $order ) { if ( $order->get_meta( '_ss_owner' ) === basename( SR_SIMPLE_SIZE_FIXTURE_ROOT ) ) { $result[] = ss_order_data( $order ); } }
 } elseif ( 'order' === $mode ) {
