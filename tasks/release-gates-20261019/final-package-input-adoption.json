@@ -1,0 +1,20 @@
+{
+  "schema": "skyyrose.final-package-input-adoption.v1",
+  "native_js_fixture_receipt": {
+    "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261019/native-js-qualified/adoption.json",
+    "sha256": "dd65e650d8131986cf0c45a3b047795e5ccf27e49244116aea51dc4ee9155ea4",
+    "bytes": 1297
+  },
+  "pot": {
+    "path": "wordpress-theme/skyyrose-flagship-2/languages/skyyrose-flagship-2.pot",
+    "previous_sha256": "c35560aebc6ea7a4abf19db1dd914ffb0e533ab2172dab1d175cdd7748eb545b",
+    "current_sha256": "fe430076b75b7d584e01251985744b6fa26ea5e71aea3e211d7acca1c3563387",
+    "change": "Three source-line references only; all other lines identical."
+  },
+  "prior_build_attempts": [
+    "combined-kids-size-build",
+    "combined-kids-size-build-qualified",
+    "combined-kids-size-build-final"
+  ],
+  "qualification": "Retain all FAIL attempts; fresh full package run required with explicit exact fixture binding."
+}
