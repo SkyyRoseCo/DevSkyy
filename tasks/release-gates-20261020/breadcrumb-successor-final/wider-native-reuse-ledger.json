@@ -1,0 +1,37 @@
+{
+  "scope": "6_WIDER_NATIVE_CASES_INHERITED_NOT_FRESH_FINAL_SOURCE_EXECUTION",
+  "previous_source": "c604b9b11e39fd6568f1a0b6df86a1c0ba9506d6",
+  "previous_package": {
+    "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261020/package-combined-successor/source-theme/dist/skyyrose-flagship-2.zip",
+    "sha256": "3bd0446ac59b87e8121fe79d816f3e46998f65c4d775cd7febb1a263f2ee0249",
+    "bytes": 293788433,
+    "mode": 420
+  },
+  "previous_browser": {
+    "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261020/visual-native-media/run-1792514281250287000/browser/results.json",
+    "sha256": "51e4e8721cc390983a02134b84ad9457c08adb8ad39beb61fa72e8e73a20306e",
+    "bytes": 1857685
+  },
+  "new_source": "7d7ca7d889ed639b79f4aba8c4527e3327c654a7",
+  "new_package": {
+    "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261020/package-breadcrumb-successor/source-theme/dist/skyyrose-flagship-2.zip",
+    "sha256": "e9ceaf64f8ce71a9a28978f4913e232e44e64a43cc95aae88237de0ce6899cb6",
+    "bytes": 293788822,
+    "mode": 420
+  },
+  "unchanged_members": 803,
+  "changed_members": [
+    "assets/css/product-page.css",
+    "assets/css/product-page.min.css"
+  ],
+  "proof": "Owned sourceCSS only appended max-width480 current-page breadcrumb flex-basis. New min reproduces exact old min byte-prefix plus one max-width480 block. Both approved visual-polish bodies, all PHP/JS/data/media/receipt bodies unchanged. At768/1440 new conditional does not match. No new wider HTTP/browser measurement is claimed.",
+  "exact_new_min_tail": "@media (max-width:480px){.sr2-product-page--editorial .sr2-product-crumb [aria-current=page]{flex-basis:100%}}",
+  "inherited_keys": [
+    "pdp-br-004-768-reduce",
+    "pdp-br-004-1440-reduce",
+    "pdp-kids-001-768-reduce",
+    "pdp-kids-001-1440-reduce",
+    "pdp-sg-013-768-reduce",
+    "pdp-sg-013-1440-reduce"
+  ]
+}

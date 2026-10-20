@@ -1,0 +1,320 @@
+{
+  "schema": "skyyrose.bounded-taste-and-cls-disposition.v1",
+  "status": "PHONE_CLS_REPAIR_PROVED; FULL_PAGE_TASTE_GATE_NOT_ACCEPTED",
+  "scope": "Bounded product purchase controls and phone breadcrumb repair; no whole-page design acceptance",
+  "raw_inspector": {
+    "path": "/Users/theceo/Documents/Codex/2026-10-20/task-2/taste-inspect-v3/report.json",
+    "sha256": "922ccf1b32bf55a446f70536e632117bccdf690251b058fec213ee1cd7a7c8b9",
+    "fails": 15,
+    "warnings": 11,
+    "no_allowances_or_suppression": true
+  },
+  "skill": {
+    "path": "/Users/theceo/.agents/skills/design-taste-frontend/SKILL.md",
+    "sha256": "d955dae4ba8ab2d994f4bb06b4bf412a1d9875433a8597939c391f4bae91dd7a",
+    "component_rule_line": 493,
+    "full_page_zero_fail_gate_lines": [
+      319,
+      359
+    ],
+    "interpretation": "Component case permits matching the existing direction; it still requires inspection. The raw whole-page inspector did not meet0FAIL, so no full-page skill acceptance is claimed. User-directed bounded urgent commerce remediation does not authorize an unrelated page redesign or new media acquisition."
+  },
+  "confirmed_defect": {
+    "id": "phone-breadcrumb-font-swap",
+    "severity": "P2_LOCAL_LAYOUT_STABILITY_DEFECT",
+    "observed_before_cls": 0.14674753611303568,
+    "observed_displacement_px": 24.796875,
+    "cause": "Current breadcrumb product label crosses from first to second flex row when Hanken replaces fallback font at390px",
+    "repair": "Current-page breadcrumb item gets flex-basis100% atmax480px; no font, text, DOM, media or commerce changes",
+    "controlled_reproduction": {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261020/breadcrumb-diagnostic/results.json",
+      "sha256": "f0a6fff723def6517bcd87647d9aa6d71b2274b44ccad5bf511872de1f234b53"
+    },
+    "scope_limit": "Six measured phonecases at320/390. No universal zeroCLS or field CWV claim. Older805 package/native12 and original failed taste reports preserved."
+  },
+  "findings": [
+    {
+      "level": "FAIL",
+      "id": "eyebrow",
+      "width": 1440,
+      "message": "3 eyebrow/kicker label(s) above headings: \"Black Rose\" above \"BLACK Rose Hoodie\"; \"Description\" above \"Description\"; \"02 / Black Rose\" above \"Bloom under a Bay Bridge moon.\"",
+      "fix": "Delete them. If the label carried real information, fold it into the headline or the supporting sentence.",
+      "alsoAt": [
+        768,
+        390
+      ],
+      "product_severity": "P3_DESIGN_OR_SECONDARY_READABILITY_FOLLOWUP",
+      "release_disposition": "Observed or heuristic taste-rule finding outside the bounded purchase-panel repair. These remain unresolved under the full-page skill gate. No recorded commerce gate requires picture/video counts, number of brand typefaces, or removal of existing labels/dividers. Do not add unapproved media, rewrite product names or broaden the page redesign for a count-based rule."
+    },
+    {
+      "level": "FAIL",
+      "id": "numbering",
+      "width": 1440,
+      "message": "Decorative index numbers: \"02 / Black Rose\"",
+      "fix": "Remove them. If order truly matters, write it into the words (\"First, \u2026\") or use a real <ol>.",
+      "alsoAt": [
+        768,
+        390
+      ],
+      "product_severity": "P3_DESIGN_OR_SECONDARY_READABILITY_FOLLOWUP",
+      "release_disposition": "Observed or heuristic taste-rule finding outside the bounded purchase-panel repair. These remain unresolved under the full-page skill gate. No recorded commerce gate requires picture/video counts, number of brand typefaces, or removal of existing labels/dividers. Do not add unapproved media, rewrite product names or broaden the page redesign for a count-based rule."
+    },
+    {
+      "level": "WARN",
+      "id": "palette-cream",
+      "width": 1440,
+      "message": "Yellow-cream background (text #f5f5f0).",
+      "fix": "Use the drawn palette. If you want warmth, take a low-chroma stone or bone, not a yellow cream.",
+      "alsoAt": [
+        768,
+        390
+      ],
+      "product_severity": "P3_DESIGN_OR_SECONDARY_READABILITY_FOLLOWUP",
+      "release_disposition": "Observed or heuristic taste-rule finding outside the bounded purchase-panel repair. These remain unresolved under the full-page skill gate. No recorded commerce gate requires picture/video counts, number of brand typefaces, or removal of existing labels/dividers. Do not add unapproved media, rewrite product names or broaden the page redesign for a count-based rule."
+    },
+    {
+      "level": "WARN",
+      "id": "font-count",
+      "width": 1440,
+      "message": "3 typefaces in use (Hanken Grotesk, Archivo, Arial).",
+      "fix": "Two at most.",
+      "alsoAt": [
+        768
+      ],
+      "product_severity": "P3_DESIGN_OR_SECONDARY_READABILITY_FOLLOWUP",
+      "release_disposition": "Observed or heuristic taste-rule finding outside the bounded purchase-panel repair. These remain unresolved under the full-page skill gate. No recorded commerce gate requires picture/video counts, number of brand typefaces, or removal of existing labels/dividers. Do not add unapproved media, rewrite product names or broaden the page redesign for a count-based rule."
+    },
+    {
+      "level": "WARN",
+      "id": "body-size",
+      "width": 1440,
+      "message": "Body text is 15.9px.",
+      "fix": "Body copy 16\u201320px.",
+      "product_severity": "UNQUALIFIED_HARNESS_OBSERVATION",
+      "release_disposition": "Do not promote partiallyunstyled replay output to a product defect. CSSOM/header/nav-qualified replacements and native12 on exact805 package contradict these observations; native initial visible images all decoded and no overflow occurred. Raw inspector FAIL/WARN stays retained, not relabelled PASS."
+    },
+    {
+      "level": "WARN",
+      "id": "first-action",
+      "width": 1440,
+      "message": "No visible button in the first screen.",
+      "fix": "Give the one primary action a real button in the first screen (a filled or solid-bordered control, 44px or taller), not only a link in the navigation.",
+      "alsoAt": [
+        768
+      ],
+      "product_severity": "UNQUALIFIED_HARNESS_OBSERVATION",
+      "release_disposition": "Do not promote partiallyunstyled replay output to a product defect. CSSOM/header/nav-qualified replacements and native12 on exact805 package contradict these observations; native initial visible images all decoded and no overflow occurred. Raw inspector FAIL/WARN stays retained, not relabelled PASS."
+    },
+    {
+      "level": "FAIL",
+      "id": "few-pictures",
+      "width": 1440,
+      "message": "Only 3 picture(s) on the page (3 photographs, footage or raster images, 0 interface fragments). Drawings in SVG do not count.",
+      "fix": "Find real pictures of the subject's world with scripts/assets.mjs (photographs, archival images, maps, engravings, footage), download them to assets/ and give them room: a hero picture, one per section that has a subject, a full-width band. At least four, usually six to twelve.",
+      "product_severity": "P3_DESIGN_OR_SECONDARY_READABILITY_FOLLOWUP",
+      "release_disposition": "Observed or heuristic taste-rule finding outside the bounded purchase-panel repair. These remain unresolved under the full-page skill gate. No recorded commerce gate requires picture/video counts, number of brand typefaces, or removal of existing labels/dividers. Do not add unapproved media, rewrite product names or broaden the page redesign for a count-based rule."
+    },
+    {
+      "level": "WARN",
+      "id": "no-footage",
+      "width": 1440,
+      "message": "No video anywhere on the page.",
+      "fix": "Look for one honest clip with scripts/assets.mjs --video (the place, the material, the process) and use it as a muted loop with a poster frame. Defend its absence only if no clip fits the subject.",
+      "product_severity": "P3_DESIGN_OR_SECONDARY_READABILITY_FOLLOWUP",
+      "release_disposition": "Observed or heuristic taste-rule finding outside the bounded purchase-panel repair. These remain unresolved under the full-page skill gate. No recorded commerce gate requires picture/video counts, number of brand typefaces, or removal of existing labels/dividers. Do not add unapproved media, rewrite product names or broaden the page redesign for a count-based rule."
+    },
+    {
+      "level": "WARN",
+      "id": "measure",
+      "width": 1440,
+      "message": "Longest paragraph runs about 181 characters per line.",
+      "fix": "Cap paragraphs at 45\u201375 characters (max-width: 60ch).",
+      "alsoAt": [
+        768
+      ],
+      "product_severity": "UNQUALIFIED_HARNESS_OBSERVATION",
+      "release_disposition": "Do not promote partiallyunstyled replay output to a product defect. CSSOM/header/nav-qualified replacements and native12 on exact805 package contradict these observations; native initial visible images all decoded and no overflow occurred. Raw inspector FAIL/WARN stays retained, not relabelled PASS."
+    },
+    {
+      "level": "FAIL",
+      "id": "focal-point",
+      "width": 1440,
+      "message": "The first screen has no dominant element: the largest type is 34.6px (2.4vw) and no single picture holds a third of the viewport.",
+      "fix": "Make one thing lead: the headline at display size, or one large picture. A grid of many small pictures is not one thing; in blind tests jurors marked a first screen without a headline down every time. On the strongest studied sites the largest type has a median of 8.4vw.",
+      "alsoAt": [
+        768
+      ],
+      "product_severity": "UNQUALIFIED_HARNESS_OBSERVATION",
+      "release_disposition": "Do not promote partiallyunstyled replay output to a product defect. CSSOM/header/nav-qualified replacements and native12 on exact805 package contradict these observations; native initial visible images all decoded and no overflow occurred. Raw inspector FAIL/WARN stays retained, not relabelled PASS."
+    },
+    {
+      "level": "WARN",
+      "id": "off-centre",
+      "width": 1440,
+      "message": "The margins differ: 0px on the left, 18px on the right, at 1440px.",
+      "fix": "Put the navigation and the content on one pair of margins; check for padding on one side only, a scrollbar gutter, or a header on another inset than the page.",
+      "product_severity": "UNQUALIFIED_HARNESS_OBSERVATION",
+      "release_disposition": "Do not promote partiallyunstyled replay output to a product defect. CSSOM/header/nav-qualified replacements and native12 on exact805 package contradict these observations; native initial visible images all decoded and no overflow occurred. Raw inspector FAIL/WARN stays retained, not relabelled PASS."
+    },
+    {
+      "level": "FAIL",
+      "id": "no-title",
+      "width": 1440,
+      "message": "The h1 (\"BLACK Rose Hoodie\") is not on the first screen (it starts 1080px down).",
+      "fix": "The title belongs on the first screen, where a visitor decides whether to stay.",
+      "alsoAt": [
+        768
+      ],
+      "product_severity": "UNQUALIFIED_HARNESS_OBSERVATION",
+      "release_disposition": "Do not promote partiallyunstyled replay output to a product defect. CSSOM/header/nav-qualified replacements and native12 on exact805 package contradict these observations; native initial visible images all decoded and no overflow occurred. Raw inspector FAIL/WARN stays retained, not relabelled PASS."
+    },
+    {
+      "level": "WARN",
+      "id": "hero-void",
+      "width": 1440,
+      "message": "61% of the first screen is one empty block (1020\u00d7780px at 420,120).",
+      "fix": "Place the void on purpose or fill it: move the picture, the film or one fact into it, grow the headline to meet it, or shrink the screen to its content. A void reads as placed only when something closes it on the far side and it is the screen's one rest.",
+      "product_severity": "UNQUALIFIED_HARNESS_OBSERVATION",
+      "release_disposition": "Do not promote partiallyunstyled replay output to a product defect. CSSOM/header/nav-qualified replacements and native12 on exact805 package contradict these observations; native initial visible images all decoded and no overflow occurred. Raw inspector FAIL/WARN stays retained, not relabelled PASS."
+    },
+    {
+      "level": "FAIL",
+      "id": "edge-text",
+      "width": 1440,
+      "message": "8 text block(s) sit within 16px of the screen edge: \"Skip to content\" (0px from the left); \"SkyyRose / House directory\" (0px from the left); \"Search\" (0px from the left); \"Four worlds. One house.\" (0px from the left)",
+      "fix": "Keep text inside the page margin (16\u201332px or more). Only display type deliberately bled past the edge may touch it.",
+      "alsoAt": [
+        768
+      ],
+      "product_severity": "UNQUALIFIED_HARNESS_OBSERVATION",
+      "release_disposition": "Do not promote partiallyunstyled replay output to a product defect. CSSOM/header/nav-qualified replacements and native12 on exact805 package contradict these observations; native initial visible images all decoded and no overflow occurred. Raw inspector FAIL/WARN stays retained, not relabelled PASS."
+    },
+    {
+      "level": "FAIL",
+      "id": "still-page",
+      "width": 1440,
+      "message": "Only 0 element(s) moved while the page loaded and scrolled.",
+      "fix": "Build the motion layer (SKILL.md step 9, references/motion.md): the signature move, an entrance for the parts of every section, feedback on every control, and one moving picture. Transform and opacity only, with a reduced-motion fallback.",
+      "product_severity": "UNTESTED_FULL_MOTION",
+      "release_disposition": "Replay intentionally strips scripts and uses restrictive CSP; zero scripted motion does not prove a live/native motion defect. Full motion/styling runtime remains separately unqualified. Do not add motion merely to increase a detector count in this commerce repair."
+    },
+    {
+      "level": "FAIL",
+      "id": "empty-screens",
+      "width": 1440,
+      "message": "2 of 4 desktop screens are almost empty ground (under 20% of the screen holds text, a picture or a colour field): screens 1, 4.",
+      "fix": "An empty screen is a rest only once per page. Elsewhere it means the section is underbuilt: set its content larger, give it the full information, put it on a colour field, or cut it.",
+      "product_severity": "UNQUALIFIED_HARNESS_OBSERVATION",
+      "release_disposition": "Do not promote partiallyunstyled replay output to a product defect. CSSOM/header/nav-qualified replacements and native12 on exact805 package contradict these observations; native initial visible images all decoded and no overflow occurred. Raw inspector FAIL/WARN stays retained, not relabelled PASS."
+    },
+    {
+      "level": "FAIL",
+      "id": "body-size",
+      "width": 768,
+      "message": "Body text is 14.8px (the size most of the running text is set in).",
+      "fix": "Body copy 16\u201320px. Map small sizes from blueprints onto your body step.",
+      "product_severity": "UNQUALIFIED_HARNESS_OBSERVATION",
+      "release_disposition": "Do not promote partiallyunstyled replay output to a product defect. CSSOM/header/nav-qualified replacements and native12 on exact805 package contradict these observations; native initial visible images all decoded and no overflow occurred. Raw inspector FAIL/WARN stays retained, not relabelled PASS."
+    },
+    {
+      "level": "FAIL",
+      "id": "broken-image",
+      "width": 768,
+      "message": "Broken image(s): http://127.0.0.1:18766/wp-content/themes/skyyrose-flagship-2/assets/sot/brand/skyyrose-logo-still-384w.webp?v=282401d94e",
+      "fix": "Fix the URL or replace the asset.",
+      "product_severity": "UNQUALIFIED_HARNESS_OBSERVATION",
+      "release_disposition": "Do not promote partiallyunstyled replay output to a product defect. CSSOM/header/nav-qualified replacements and native12 on exact805 package contradict these observations; native initial visible images all decoded and no overflow occurred. Raw inspector FAIL/WARN stays retained, not relabelled PASS."
+    },
+    {
+      "level": "FAIL",
+      "id": "off-centre",
+      "width": 768,
+      "message": "The page sits off-centre: its content comes to 0px from the left edge but only to 192px from the right, at 768px.",
+      "fix": "Give the page one pair of equal margins. Check the wrapper for a max-width without margin-inline: auto, a grid with an empty last column, or padding on one side only. If one side is meant to hold air, it must still be closed by something that reaches the margin (a picture, the navigation's last item, a figure).",
+      "product_severity": "UNQUALIFIED_HARNESS_OBSERVATION",
+      "release_disposition": "Do not promote partiallyunstyled replay output to a product defect. CSSOM/header/nav-qualified replacements and native12 on exact805 package contradict these observations; native initial visible images all decoded and no overflow occurred. Raw inspector FAIL/WARN stays retained, not relabelled PASS."
+    },
+    {
+      "level": "FAIL",
+      "id": "micro-label",
+      "width": 390,
+      "message": "9 tiny uppercase letter-spaced labels (e.g. \"Black Rose\", \"SKU:\", \"br-004\", \"Category:\").",
+      "fix": "Use sentence-case text at a readable size, or delete the label.",
+      "product_severity": "P3_DESIGN_OR_SECONDARY_READABILITY_FOLLOWUP",
+      "release_disposition": "Observed or heuristic taste-rule finding outside the bounded purchase-panel repair. These remain unresolved under the full-page skill gate. No recorded commerce gate requires picture/video counts, number of brand typefaces, or removal of existing labels/dividers. Do not add unapproved media, rewrite product names or broaden the page redesign for a count-based rule."
+    },
+    {
+      "level": "FAIL",
+      "id": "hairline",
+      "width": 390,
+      "message": "7 thin rule(s)/divider line(s): header.sr2-header.sr2-house-header 390px | div.sr2-pdp-support 358px | div#sr2-product-details.sr2-pdp-product__after-summary 358px | ul.tabs.wc-tabs 358px",
+      "fix": "Delete. Separate with space, a tone change, or scale. Lines are only for real tables and form fields.",
+      "product_severity": "P3_DESIGN_OR_SECONDARY_READABILITY_FOLLOWUP",
+      "release_disposition": "Observed or heuristic taste-rule finding outside the bounded purchase-panel repair. These remain unresolved under the full-page skill gate. No recorded commerce gate requires picture/video counts, number of brand typefaces, or removal of existing labels/dividers. Do not add unapproved media, rewrite product names or broaden the page redesign for a count-based rule."
+    },
+    {
+      "level": "WARN",
+      "id": "glass",
+      "width": 390,
+      "message": "2 backdrop-blur surfaces.",
+      "fix": "One blurred sticky bar at most; glass cards are a tell.",
+      "product_severity": "P3_DESIGN_OR_SECONDARY_READABILITY_FOLLOWUP",
+      "release_disposition": "Observed or heuristic taste-rule finding outside the bounded purchase-panel repair. These remain unresolved under the full-page skill gate. No recorded commerce gate requires picture/video counts, number of brand typefaces, or removal of existing labels/dividers. Do not add unapproved media, rewrite product names or broaden the page redesign for a count-based rule."
+    },
+    {
+      "level": "FAIL",
+      "id": "font-count",
+      "width": 390,
+      "message": "5 typefaces in use (Hanken Grotesk, Inter, Archivo, Anton, Cinzel).",
+      "fix": "Two at most: one display, one text. Often one is enough.",
+      "product_severity": "P3_DESIGN_OR_SECONDARY_READABILITY_FOLLOWUP",
+      "release_disposition": "Observed or heuristic taste-rule finding outside the bounded purchase-panel repair. These remain unresolved under the full-page skill gate. No recorded commerce gate requires picture/video counts, number of brand typefaces, or removal of existing labels/dividers. Do not add unapproved media, rewrite product names or broaden the page redesign for a count-based rule."
+    },
+    {
+      "level": "FAIL",
+      "id": "small-text",
+      "width": 390,
+      "message": "14 text blocks under 13px.",
+      "fix": "Nothing meant to be read goes below 13px.",
+      "product_severity": "P3_DESIGN_OR_SECONDARY_READABILITY_FOLLOWUP",
+      "release_disposition": "Observed or heuristic taste-rule finding outside the bounded purchase-panel repair. These remain unresolved under the full-page skill gate. No recorded commerce gate requires picture/video counts, number of brand typefaces, or removal of existing labels/dividers. Do not add unapproved media, rewrite product names or broaden the page redesign for a count-based rule."
+    },
+    {
+      "level": "WARN",
+      "id": "small-title",
+      "width": 390,
+      "message": "The h1 is 24px (\"BLACK Rose Hoodie\").",
+      "fix": "Set the title at display size, or make the large text of the first screen the h1.",
+      "product_severity": "P3_DESIGN_OR_SECONDARY_READABILITY_FOLLOWUP",
+      "release_disposition": "Observed or heuristic taste-rule finding outside the bounded purchase-panel repair. These remain unresolved under the full-page skill gate. No recorded commerce gate requires picture/video counts, number of brand typefaces, or removal of existing labels/dividers. Do not add unapproved media, rewrite product names or broaden the page redesign for a count-based rule."
+    },
+    {
+      "level": "WARN",
+      "id": "name-only-title",
+      "width": 390,
+      "message": "The h1 is a bare name (\"BLACK Rose Hoodie\") and nothing else on the first screen says what this is.",
+      "fix": "Keep the name if it leads, and give the line under it (18px or more) the plain words: what it is, for whom, where or when. In the study of 97 Sites of the Day, first screens that named nothing lost usability and content points.",
+      "product_severity": "P3_DESIGN_OR_SECONDARY_READABILITY_FOLLOWUP",
+      "release_disposition": "Observed or heuristic taste-rule finding outside the bounded purchase-panel repair. These remain unresolved under the full-page skill gate. No recorded commerce gate requires picture/video counts, number of brand typefaces, or removal of existing labels/dividers. Do not add unapproved media, rewrite product names or broaden the page redesign for a count-based rule."
+    }
+  ],
+  "verified_examples": {
+    "coverage": "VERIFIED_FOR_THIS_BOUNDED_ADOPTION_ONLY; skill library completeness NOT_AUDITED",
+    "authentication": "NOT_APPLICABLE_OFFLINE",
+    "correct": {
+      "classification": "REPRODUCED_LOCAL",
+      "example": "Preserve exact approved product and media content; compare qualified native controls; reproduce the inherited font-wrap shift with delayed fonts, then repair only the phone breadcrumb. Retain failed inspector output with its harness limitations.",
+      "evidence": [
+        "media-permission-checks-r2/results.json",
+        "visual-native-media/run-1792514281250287000/browser/results.json",
+        "breadcrumb-diagnostic/results.json"
+      ]
+    },
+    "incorrect": {
+      "classification": "ILLUSTRATIVE_UNEXECUTED",
+      "example": "Treat partiallyunstyled replay no-title/broken-logo output as authenticated production evidence, add new stock imagery to meet a picture count, and call the whole-page skill gate passed.",
+      "correction": "Use delivery-qualified current source/render evidence, preserve approved media scope, and report the failed full-page taste gate independently.",
+      "reason": "Source/style delivery, production authority and skill acceptance are separate evidence boundaries."
+    }
+  }
+}

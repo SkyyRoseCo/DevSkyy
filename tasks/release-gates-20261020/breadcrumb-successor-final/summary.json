@@ -1,0 +1,170 @@
+{
+  "schema": "skyyrose.breadcrumb-combined-successor.v1",
+  "status": "LOCAL_BOUNDED_PHONE_CLS_AND_COMMERCE_VISUAL_PASS_RELEASE_HELD",
+  "runtime_source_commit": "7d7ca7d889ed639b79f4aba8c4527e3327c654a7",
+  "runtime_theme_tree": "bb21f1e8b2adb6467f1cf8b82de1cda273fa1597",
+  "package": {
+    "status": "PASS_CLEAN_STANDALONE_COMBINED_PACKAGE",
+    "source_commit": "7d7ca7d889ed639b79f4aba8c4527e3327c654a7",
+    "theme_tree": "bb21f1e8b2adb6467f1cf8b82de1cda273fa1597",
+    "authentication": "NOT_APPLICABLE_OFFLINE",
+    "source_clone_entries": 920,
+    "members": 805,
+    "archive": {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261020/package-breadcrumb-successor/source-theme/dist/skyyrose-flagship-2.zip",
+      "sha256": "e9ceaf64f8ce71a9a28978f4913e232e44e64a43cc95aae88237de0ce6899cb6",
+      "bytes": 293788822,
+      "mode": 420
+    },
+    "manifest": {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261020/package-breadcrumb-successor/source-theme/dist/release-manifest.json",
+      "sha256": "d0e93d41d1eba54895ecf8c9840f219067f5084d029fc3fa558f9b77250b667f",
+      "bytes": 111693,
+      "mode": 420
+    },
+    "build_id": "4fae6406b130b2f51330d5cfe71299e888c9aa158e95c3204173ba62d99816a5",
+    "production_media": {
+      "authority": {
+        "path": "data/v2-media-reviews/production-authority-20261020.json",
+        "sha256": "b2902f635427f0087e6e2dd96ede75b03ad33acaca3465198609719274fd207b"
+      },
+      "expected_site_id": "238510894",
+      "installed_identity_qualified": false,
+      "intended_target": "https://skyyrose.co",
+      "scope": {
+        "delivery_files": 113,
+        "masters": 22,
+        "role_memberships": 53
+      }
+    },
+    "previous_qualified_package": {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261020/package-combined-successor/source-theme/dist/skyyrose-flagship-2.zip",
+      "sha256": "3bd0446ac59b87e8121fe79d816f3e46998f65c4d775cd7febb1a263f2ee0249",
+      "bytes": 293788433,
+      "mode": 420
+    },
+    "previous_package_preserved": true,
+    "changed_existing_members": {
+      "assets/css/product-page.css": {
+        "old": "0b91a7a0401caadfe070811aadc4b9046c5ba0edf987d585d32cd45f3269d047",
+        "new": "b71fa92ab6eab60885d35bc89a3be74a586e23a5482bd42c7e8be650ff28e135"
+      },
+      "assets/css/product-page.min.css": {
+        "old": "ea2720e4e3ece50376198565a4c5593de32112d93ab5134499d65d102735ab0b",
+        "new": "8d0908d27216cd603e6631f7d9751633b799a6d16773b074efdf4f2b49b9e909"
+      }
+    },
+    "added_members": {},
+    "removed_members": [],
+    "unchanged_members": 803,
+    "original_frozen_dist_preserved": {
+      "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/wordpress-theme/skyyrose-flagship-2/dist/skyyrose-flagship-2.zip": {
+        "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/wordpress-theme/skyyrose-flagship-2/dist/skyyrose-flagship-2.zip",
+        "sha256": "0196771d755d74784df6037a4c1db2c5d9b4fe2dad22dec4253b459343ceeafa",
+        "bytes": 293700319,
+        "mode": 420
+      },
+      "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/wordpress-theme/skyyrose-flagship-2/dist/release-manifest.json": {
+        "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/wordpress-theme/skyyrose-flagship-2/dist/release-manifest.json",
+        "sha256": "308301a64ae0bab9e27138a4df50d06be9de005b5984a5acd8ee728861a0a8a0",
+        "bytes": 105145,
+        "mode": 420
+      },
+      "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261020/package-combined-successor/source-theme/dist/release-manifest.json": {
+        "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261020/package-combined-successor/source-theme/dist/release-manifest.json",
+        "sha256": "8802ce6dd6b6fa9581b20d7233f13b79b5733779a904ae0ddc4a98a2ded0a685",
+        "bytes": 111693,
+        "mode": 420
+      },
+      "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261020/package-combined-successor/source-theme/dist/skyyrose-flagship-2.zip": {
+        "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261020/package-combined-successor/source-theme/dist/skyyrose-flagship-2.zip",
+        "sha256": "3bd0446ac59b87e8121fe79d816f3e46998f65c4d775cd7febb1a263f2ee0249",
+        "bytes": 293788433,
+        "mode": 420
+      }
+    },
+    "source_and_clone_bodies_preserved": true,
+    "deployment_authorized": false,
+    "native_verification": "6fresh phonePASS +6inherited wider native, described in additive final packet; frozen initial package receipt remains unchanged"
+  },
+  "package_delta_from_frozen805": {
+    "unchanged_members": 803,
+    "changed_members": [
+      "assets/css/product-page.css",
+      "assets/css/product-page.min.css"
+    ],
+    "added_members": [],
+    "removed_members": []
+  },
+  "fresh_native_phone": {
+    "root": {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261020/breadcrumb-native-media/run-1792514666140154000/results.json",
+      "sha256": "7b8669031f2cd3309b328be067d65c88201e010e74fd0018bf7dec890b27f0b0",
+      "bytes": 3327161
+    },
+    "browser": {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261020/breadcrumb-native-media/run-1792514666140154000/browser/results.json",
+      "sha256": "1cc7d91fa38c8f99e7041b8fda81f1a251035ae56785a5a1f5c6ac15a809a131",
+      "bytes": 925028
+    },
+    "config": {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261020/breadcrumb-native-media/run-1792514666140154000/capture-config.json",
+      "sha256": "9bca5977fe3da35228492ac3edc02388c44b83aaede20764bea3be4638280731",
+      "bytes": 122786
+    },
+    "cases": 6,
+    "widths": [
+      320,
+      390
+    ],
+    "skus": [
+      "br-004",
+      "kids-001",
+      "sg-013"
+    ],
+    "font_control": "300ms font request delay in native loopback browser",
+    "observed_cls": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "geometry_samples": 54,
+    "pngs": 36,
+    "htmls": 6,
+    "scope": "Synthetic WP7.1.3/Woo11.2.1/7plugins/PHP8.5.6/MariaDB13 syncOFF. No cart/order/payment submit; not installed parity.",
+    "preservation": "PASS_INPUTS_PACKAGE_ORIGINALS_THEME_HEAD_DEPENDENCIES",
+    "owned_groups_socket_listener_absent": true,
+    "final_free_bytes": 22348259328
+  },
+  "combined_visual_coverage": "6 fresh final-source phone cases +6 explicitly inherited c604 wider cases, not12fresh final-source cases",
+  "wider_reuse": {
+    "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/tasks/release-gates-20261020/breadcrumb-successor-final/wider-native-reuse-ledger.json",
+    "sha256": "8467e6b4acdc67121cc41cdb70419e2782e152b3ca66631247c8f4a0bc1a1883",
+    "bytes": 2012
+  },
+  "prior_805_native12_frozen_packet": "8601391cf",
+  "prior_64_size": "32HPOS+32CPT syncOFF packet909dba51f58679ff75c9aa1330ea462c5b08680b unchanged; not rerun or installed/live",
+  "controlled_cause_proof": {
+    "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261020/breadcrumb-diagnostic/results.json",
+    "sha256": "f0a6fff723def6517bcd87647d9aa6d71b2274b44ccad5bf511872de1f234b53",
+    "bytes": 12163
+  },
+  "taste_disposition": {
+    "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261020/taste-and-cls-disposition.json",
+    "sha256": "c8f4ab3afd17f1966b9add0d153d156564489f2b9dfb29aefa25c16afe16d1ec",
+    "bytes": 23628
+  },
+  "installed9path_comparison": {
+    "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261020/installed-exact-read/disposition.json",
+    "sha256": "d06412a2f409f8130ceb41221de22e11e7b469ec20e3a52c35ba06353feae6f8",
+    "bytes": 4434
+  },
+  "production_permission": "22masters/113exactdelivery/53roles; hood-back scene excluded; production grant distinct from deployment",
+  "deployed": false,
+  "deployment_authorized": false,
+  "archive_or_privacy_attempt": false,
+  "preview": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261020/breadcrumb-successor-review/index.html"
+}
