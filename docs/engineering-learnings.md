@@ -335,3 +335,25 @@ use `+main:`), and pip-audit exits 1 for both findings and a crash, so a PyPI
 connection reset read as "FIXABLE vulnerabilities". Distinguish by the report:
 only findings write `--output`; retry a report-less run once and fail it as a
 tool error, never pass it.
+
+## CI service images come from this repo's GHCR copy (2026-10-20, bug-408)
+
+**Symptom:** 🐍 Python Tests failed on every PR and on main's own push run before
+any test ran: the Redis service container's pull of
+`public.ecr.aws/docker/library/redis:7-alpine` returned `toomanyrequests: Data
+limit exceeded` on all three retries. Branch protection requires that check.
+
+**Root cause:** anonymous pulls from a public registry draw on a quota shared by
+every job on the same hosted-runner IPs. #1018 moved off Docker Hub for exactly
+this; ECR Public then hit its own limit; #1114 moved to `mirror.gcr.io`, still an
+anonymous public pull. Swapping one anonymous registry for another only moves the
+failure.
+
+**Fix (pinned by `tests/ci/test_ci_workflow_contract.py`):** the `ci-images` job
+copies Redis to `ghcr.io/skyyroseco/devskyy/redis:7-alpine` only when the copy is
+missing (`mirror.gcr.io`, then ECR Public, then Docker Hub; the weekly scheduled
+run re-copies for patch releases). Both Redis service containers pull that copy
+with `credentials` from the job's `GITHUB_TOKEN` (`packages: read`).
+`python-tests` runs on `!cancelled()`, so a failed copy turns the required check
+red instead of skipping it into a pass. `docker buildx imagetools create` cannot
+do the copy: its sources must already be in the target registry.
