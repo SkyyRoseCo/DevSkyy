@@ -1,0 +1,80 @@
+{
+  "schema": "skyyrose.corrective-theme-readiness.v1",
+  "recorded_utc": "2026-10-20T17:08:15.496795+00:00",
+  "status": "TECHNICAL_ADDENDUM_DEPLOYMENT_HELD",
+  "source_commit": "4bed5b6595aa0a024d5077f13170307eef2a57bb",
+  "theme_tree": "02026eda8676ede43111f102ae97601cdd7141d5",
+  "package": {
+    "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261020/package-world-guard-successor/source-theme/dist/skyyrose-flagship-2.zip",
+    "sha256": "52c1e4a1953a821357e9cf7ab4f43ca2d23373bc97ae027fc864a6baa5a1ee94",
+    "bytes": 293789058,
+    "members": 805
+  },
+  "plugin_source": {
+    "status": "EXACT_INSTALLED_PLUGIN_SOURCE_BODIES_VERIFIED_STABLE_NOT_EXECUTED",
+    "files": 1734,
+    "bytes": 21051309,
+    "remote_census_stable_except_utc": true,
+    "versions": [
+      {
+        "plugin": "commercegurus-commercekit",
+        "file": "commercegurus-commercekit.php",
+        "name": "CommerceGurus CommerceKit",
+        "version": "2.4.3"
+      },
+      {
+        "plugin": "elementor-pro",
+        "file": "elementor-pro.php",
+        "name": "Elementor Pro",
+        "version": "4.3.2"
+      },
+      {
+        "plugin": "layout-grid",
+        "file": "index.php",
+        "name": "Layout Grid",
+        "version": "1.8.5"
+      },
+      {
+        "plugin": "big-sky",
+        "file": "big-sky.php",
+        "name": "WordPress Agent",
+        "version": "7.9.23"
+      }
+    ],
+    "available_bytes": 21788196864
+  },
+  "target_php_static": {
+    "php": "8.4.26",
+    "sapi": "cli",
+    "files_pass": 88,
+    "execution": false,
+    "limits": "AuthenticatedhostCLIstaticparseronly; notwebFPMconfiguration,fullinstalledruntime,livebehaviororrestorequalification"
+  },
+  "target_size_readiness": {
+    "utc": "2026-10-20T16:59:40+00:00",
+    "target": "https://skyyrose.co",
+    "wpcom_site_id": 238510894,
+    "stylesheet": "skyyrose-flagship-2",
+    "option_name": "skyyrose2_simple_size_history_v1",
+    "present": false,
+    "raw_type": "NULL",
+    "bytes": null,
+    "sha256": null,
+    "schema_site_generation_and_map_valid": false,
+    "legacy_order_count": null,
+    "order_ids_hashes_customer_fields_exported": false,
+    "hpos_enabled": "yes",
+    "sync_enabled": false
+  },
+  "visual_approval": "Exact current source/package approval retained; all nine reference pins verified. No deployment grant.",
+  "scope": "Additive evidence and plan only. No source/package changes, new test suite, plugin execution, order inventory, live write, archive generation, deployment, conversion or additional cleanup.",
+  "remaining_required_input": "Separate narrowly scoped server-side existing-order provenance inventory permission; initialization/rollback/profile acquisition/live release remain separate.",
+  "historical_orphan": "Synthetic parent1290/child1292 ownership remains NOT_ESTABLISHED; no live orphan inferred.",
+  "qualification_layers": [
+    "Component checks retain their source qualification",
+    "64 original synthetic HPOS/CPT size checks, sync OFF, not rerun",
+    "12 final-package synthetic native cases/96 gallery checks, not installed stack",
+    "Actual target PHP CLI static syntax pass, not runtime",
+    "Installed stack/real commerce/recovery and live release unqualified"
+  ]
+}

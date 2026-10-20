@@ -1,0 +1,132 @@
+{
+  "schema": "skyyrose.bound-evidence.v1",
+  "references": [
+    {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/tasks/release-gates-20261020/theme-only-readiness/README.md",
+      "bytes": 10255,
+      "sha256": "0834b88a8dee3542bbb352a1f4b8521f140778e85e571b32558bf100395d7ff0"
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/tasks/release-gates-20261020/theme-only-readiness/summary.json",
+      "bytes": 3272,
+      "sha256": "99f9e053bbe7ff9ab1184f5054e581fef6c5fded18e535623659f22549943237"
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261020/plugin-source-inspection/reader.php.txt",
+      "bytes": 2355,
+      "sha256": "ad18f9a09f062c559c3241ce7430567e0695ee609c23b73bfbfcda11254362d5"
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261020/plugin-source-inspection/census-before.json",
+      "bytes": 351814,
+      "sha256": "6c9efb43cdc6d254007e2e29f5a1fd839b0bf76db9e6b65c3c0b6b08ea8d76eb"
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261020/plugin-source-inspection/census-after.json",
+      "bytes": 351814,
+      "sha256": "02fc5739dd92a6dfb5d30cb65407bf4f3ac379af969fbe13cc3b792f3abb4db0"
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261020/plugin-source-inspection/transfer-receipt.json",
+      "bytes": 2198,
+      "sha256": "0df1f05221ea9b492b1708c7c3219550507d561163e7791de0af0bc7e98d5418"
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261020/plugin-source-inspection/elementor-bounded-resume/receipt.json",
+      "bytes": 1014,
+      "sha256": "23cb0c92dc7dcf2c6440c7b6104f4cd71713235642dbdde0790ae07120ce0edc"
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261020/plugin-source-inspection/possession-receipt.json",
+      "bytes": 580129,
+      "sha256": "aec1628c82cd08c2b7ce9f88514af218ab9bc12d6ba6c2d0fb62d7e9daa2680d"
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261020/visual-approval-reference-verification.json",
+      "bytes": 1611,
+      "sha256": "a4d60512aa352c9adc7abbcdb301b5caebe51c398a47271df9688ba3e00b7da0"
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261020/target-php-static-check/results.json",
+      "bytes": 16031,
+      "sha256": "4a2e9bc4b281b96f02566fded95248d14b7d0b6219ae2e6e1bea5c00aaade0c0"
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261020/target-php-static-check/reader.php.txt",
+      "bytes": 925,
+      "sha256": "35da828fe32521153b8d20fed44d25505cdef7bd5328e8d80b2ab339118e71e5"
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261020/size-release-readiness/response.stdout",
+      "bytes": 402,
+      "sha256": "9f9010ac04d2c7a338c2842fddd58a171dce0919b6ee3eec54fd5c026e9fa1da"
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261020/size-release-readiness/reader.php.txt",
+      "bytes": 1459,
+      "sha256": "fdf7882d715b46af0bfabffb8b32024b98c88b9d364e1c2f2c6bd64ee83ee0a3"
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261020/size-release-readiness/attempt.json",
+      "bytes": 760,
+      "sha256": "7964ef2e2eee0114f7795890f0eb172f567c524866c9386b68ddbbb1b30d897e"
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261020/backup-status-readonly.json",
+      "bytes": 1660,
+      "sha256": "5cf08fe9150df791ad4aa7718eaa64e773baed8fca59708bcbf39d993f2685b6"
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261020/installed-exact-read/comparison.json",
+      "bytes": 3688,
+      "sha256": "031dd9ad1999c25bdfaefd135140a28fcb3727e4efada07fe8ba3841d6178219"
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261020/installed-exact-read/disposition.json",
+      "bytes": 4434,
+      "sha256": "d06412a2f409f8130ceb41221de22e11e7b469ec20e3a52c35ba06353feae6f8"
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261020/public-readonly-1792512311297715000/authenticated-target-plugin-metadata.json",
+      "bytes": 6822,
+      "sha256": "fc7ce5f5ecb808e0158eabd964e54fcb31171f8a38f6fc18dcfa931696df8410"
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/tasks/release-gates-20261020/world-guard-successor-final/evidence-index.json",
+      "bytes": 33168,
+      "sha256": "d2d78d501876bdaeb1b10055bfe92ab8732324d217a74fb1d13330a2e4c54497"
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/tasks/release-gates-20261020/world-guard-successor-acceptance.json",
+      "bytes": 759,
+      "sha256": "1cd9ddff0511200551acbdb62b515e0cc3bbdaf84d2baf6beca46a806e41bd82"
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261019/approved-export-cleanup-followup/cleanup-receipt.json",
+      "bytes": 2374,
+      "sha256": "323f51322a4390ad1a470531a10e31d456f03f7e670700ae440c59dc3efd1b5b"
+    },
+    {
+      "path": "/Users/theceo/Documents/Codex/2026-10-19/task/media-review-22/visual-enhancement-approval-20261020.json",
+      "bytes": 5516,
+      "sha256": "759e3823670045a09e2553748e2896aa6c3d5da559f26a7200c409d80935396c"
+    },
+    {
+      "path": "/Users/theceo/Documents/Codex/2026-10-19/task/media-review-22/production-media-approval-20261020.json",
+      "bytes": 34842,
+      "sha256": "9b0f55aa5cfb61f222602a7908436c28be688b4fdc504f542567a4e1011e1717"
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261020/plugin-source-inspection/bodies/commercegurus-commercekit/class-commercegurus-gallery.php",
+      "bytes": 7368,
+      "sha256": "3c44474b8be139f9a719aecee64c714c8591880f6cedc78973b984db46e3f996"
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261020/plugin-source-inspection/bodies-r2/elementor-pro/modules/woocommerce/module.php",
+      "bytes": 60085,
+      "sha256": "9fb1338f74e47c348ce99a8bf802292ff5bb46228865ce85108574f5c8602052"
+    }
+  ],
+  "private_source_bodies": "References only; proprietary source not committed",
+  "package_sha256": "52c1e4a1953a821357e9cf7ab4f43ca2d23373bc97ae027fc864a6baa5a1ee94"
+}
