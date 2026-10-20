@@ -9295,6 +9295,10 @@
 - `contact.php` — Contact page composition on the shared band primitives (Agent D, 2.5.0) (~500 tok)
 - `journal-entry.php` — Single journal entry composition on the shared band primitives (Agent D, 2.5.0) (~500 tok)
 
+## tests/ (anthropic cache diagnostics)
+
+- `test_anthropic_cache_diagnostics.py` — opt-in Anthropic cache diagnostics on AnthropicClient.complete(): request payload (diagnostics.previous_message_id), message_id + cache_miss_reason metadata, warning on *_changed. (~1400 tok)
+
 ## tests/ (rate limiting)
 
 - `test_rate_limit_env.py` — env-configurable default rate limits in security/rate_limiting.py (RATE_LIMIT_{IP,USER,API_KEY}_*), incl. real-HTTP enforcement via TestClient. (~1300 tok)
