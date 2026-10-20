@@ -1,0 +1,21 @@
+{
+  "schema": "skyyrose.continuation-manifest.v1",
+  "members": {
+    "README.md": {
+      "sha256": "6670fa3c09bcdd63cc034caad29772f470919def7127060c8592ff044d9238d1",
+      "bytes": 2024
+    },
+    "evidence-index.json": {
+      "sha256": "19a1c79d127c7e85ab93f01613013f6a1320ce87dcde3c74f88a1f139a705130",
+      "bytes": 235196
+    },
+    "fresh-preview-blocker.json": {
+      "sha256": "da101bb016892e0ccf374f5859e73f8bb5847aa8bf79592a6a2fef10e4252053",
+      "bytes": 1154
+    },
+    "summary.json": {
+      "sha256": "2c7a8e29fd1c5a205024218a538a437ced3ee24994ef7d243d0f4b9c148867df",
+      "bytes": 7509
+    }
+  }
+}

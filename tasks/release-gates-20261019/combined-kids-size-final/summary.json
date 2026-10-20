@@ -1,0 +1,125 @@
+{
+  "schema": "skyyrose.combined-kids-size-final.v1",
+  "status": "LOCAL_PACKAGE_VERIFIED_FRESH_COMBINED_BROWSER_PREVIEW_HELD",
+  "source_commit": "f67a90353570324feda897c1255b3f075c51c067",
+  "source_tree": "ec169a4ae68d252294cada875cf8af9e8df2fa9d",
+  "source_clean": true,
+  "artifact": {
+    "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/wordpress-theme/skyyrose-flagship-2/dist/skyyrose-flagship-2.zip",
+    "sha256": "0196771d755d74784df6037a4c1db2c5d9b4fe2dad22dec4253b459343ceeafa",
+    "bytes": 293700319
+  },
+  "release_manifest": {
+    "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/wordpress-theme/skyyrose-flagship-2/dist/release-manifest.json",
+    "sha256": "308301a64ae0bab9e27138a4df50d06be9de005b5984a5acd8ee728861a0a8a0",
+    "bytes": 105145
+  },
+  "runtime_members": 778,
+  "build_disposition": "Retained completed build at31b5; its whole package command remains FAIL. Exact final theme/certification Git-tree identity established. Fresh full verify and clean standalone packager each exited0.",
+  "verification": {
+    "fresh_full_verify_exit": 0,
+    "clean_package_exit": 0,
+    "node_tests": 147,
+    "native_hpos_checks": 32,
+    "native_cpt_checks": 32,
+    "native_source": "a706166925c83e99b9e1f122c5da72612a23496a",
+    "native_packet_commit": "909dba51f58679ff75c9aa1330ea462c5b08680b",
+    "native_packet_manifest_sha256": "a1504ddd6b6fecd8fc80cb5858bf406ca9f57cb0022031075e696af970e169ee",
+    "native_sync": "OFF_SEPARATELY_AUTHORITATIVE_MODES",
+    "registry_projection_check": "PASS_FINAL",
+    "shop_inline_bytes": 99059,
+    "shop_inline_limit_bytes": 100000
+  },
+  "dependencies": {
+    "npm_preserved_entries": 2294,
+    "qualified_python_cow_files": 635,
+    "native_js_files": 2,
+    "native_php_files": 7,
+    "original_zip_preserved": true,
+    "fixtures_preserved": true,
+    "dependencies_preserved": true,
+    "owned_temporary_link_removed": true
+  },
+  "preview": {
+    "schema": "skyyrose.combined-private-review-preview.v1",
+    "status": "UPDATED_EVIDENCE_REVIEW_FRESH_NATIVE_BROWSER_CAPTURE_BLOCKED",
+    "authentication": "NOT_APPLICABLE_OFFLINE",
+    "package_source_commit": "f67a90353570324feda897c1255b3f075c51c067",
+    "package_sha256": "0196771d755d74784df6037a4c1db2c5d9b4fe2dad22dec4253b459343ceeafa",
+    "images": [
+      {
+        "source": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261019/kids-arrival/run-85a1bda20/admitted-1440-no-preference.png",
+        "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261019/combined-kids-size-review/admitted-1440-no-preference.png",
+        "sha256": "0b28aa5f2f5bd9784ff843125b39758cf8043f73284c21a895e22ae5ce36bbb6",
+        "bytes": 532852
+      },
+      {
+        "source": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261019/kids-arrival/run-85a1bda20/admitted-390-no-preference.png",
+        "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261019/combined-kids-size-review/admitted-390-no-preference.png",
+        "sha256": "aa9565e69212cb31867827b16ed0e4de085172ee0ff0e7626be17b9e987a3be6",
+        "bytes": 270763
+      },
+      {
+        "source": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261019/kids-arrival/run-85a1bda20/withheld-1440-no-preference.png",
+        "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261019/combined-kids-size-review/withheld-1440-no-preference.png",
+        "sha256": "59a28d1de9af2892518718ff069f2b9d7cf4570e430028024675366d594fb896",
+        "bytes": 33867
+      },
+      {
+        "source": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261019/kids-arrival/run-85a1bda20/withheld-390-no-preference.png",
+        "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261019/combined-kids-size-review/withheld-390-no-preference.png",
+        "sha256": "25793fd77b9fa444bedf13c383ee89332d433e3856f6818649e5044b20e2c6fa",
+        "bytes": 21007
+      }
+    ],
+    "html": {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261019/combined-kids-size-review/index.html",
+      "sha256": "71787d27c40aee47ef0d1b6c826a1ba3a84289e66a590c57c4a2ddf3dac6ac2e",
+      "bytes": 4886
+    },
+    "fresh_preview_execution": "NOT_STARTED_NO_NEW_SERVICES_OR_BROWSER",
+    "blockers": [
+      "The draft browser driver does not yet supervise the detached Chromium process group across Node failure or timeout.",
+      "Asynchronous stylesheet-response failures need immediate handling and guaranteed cleanup.",
+      "The driver must require archive projection delivery on Shop/taxonomy and fail on unexpected page errors."
+    ],
+    "draft_drivers": [
+      {
+        "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261019/combined-preview-driver/capture.cjs",
+        "sha256": "9ac69d2a76860f6bd5a1961168ff342a5122e53200de14ffb2f71bfef8a7a433",
+        "bytes": 8658
+      },
+      {
+        "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261019/combined-preview-driver/run.py",
+        "sha256": "757d3385301a81bb84a68fe0fe88773605650d6b9c49997aa0426e7b2eb997f9",
+        "bytes": 6836
+      }
+    ],
+    "limits": [
+      "Retained16-case Kids component acceptance and64 native size checks remain separate",
+      "No new combined native browser, installed-stack, real gateway, creative or live qualification"
+    ]
+  },
+  "cleanup": {
+    "deleted_files": 0,
+    "reclaimed_bytes_by_cleanup": 0,
+    "disposition": "DEFERRED_ASSESSMENT_COUNTS_INCLUDE_SYMLINKS_AND_ZIP_CONFLICTS; capacity independently sufficient"
+  },
+  "capacity": {
+    "actual_free_bytes": 35025686528,
+    "floor_bytes": 1073741824,
+    "sequential_native_and_package_planning_minimum": 2650800128
+  },
+  "remaining_blockers": [
+    "Fresh combined native browser preview: detached Chromium group ownership/retirement across Node failure or timeout, immediate CSS async failure handling, strict archive/pageerror assertions. Drivers not executed.",
+    "Four installed plugin bodies:CommerceKit,Elementor Pro,Layout Grid,Big Sky; effective managed configuration/MU-cache dependencies; exact PHP8.4.26/MariaDB11.8.9 runtime and full isolated restore.",
+    "Historical synthetic orphan1290/1292 insertion ownership NOT_ESTABLISHED; no live orphan or size inference.",
+    "Separate backup acquisition, production creative/media use grants, live privacy attempt and deployment remain unresolved."
+  ],
+  "limits": [
+    "Accepted Kids16component cases/four pixelgroups are historical component evidence with exact template/CSS identity, not a new combined storefront capture.",
+    "Native64checks use WP7.1.3/Woo11.2.1/PHP8.5.6/MariaDB13 synthetic fixtures/fake processor/syncOFF. Email rendering is not delivery; synthetic admin cookies are not real-account authentication.",
+    "Offline gallery/variation fixtures pin WP7.1/Woo11.1 and are separate from native11.2.1 and installed stacks.",
+    "No production conversion/synchronization/configuration/payments/backups/restores/acquisition/publication/provider actions."
+  ]
+}

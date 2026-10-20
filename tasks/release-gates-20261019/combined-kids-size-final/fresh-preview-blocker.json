@@ -1,0 +1,22 @@
+{
+  "schema": "skyyrose.fresh-preview-blocker.v1",
+  "status": "NOT_EXECUTED_REVIEW_BLOCKERS",
+  "blockers": [
+    "The draft browser driver does not yet supervise the detached Chromium process group across Node failure or timeout.",
+    "Asynchronous stylesheet-response failures need immediate handling and guaranteed cleanup.",
+    "The driver must require archive projection delivery on Shop/taxonomy and fail on unexpected page errors."
+  ],
+  "drivers": [
+    {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261019/combined-preview-driver/capture.cjs",
+      "sha256": "9ac69d2a76860f6bd5a1961168ff342a5122e53200de14ffb2f71bfef8a7a433",
+      "bytes": 8658
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261019/combined-preview-driver/run.py",
+      "sha256": "757d3385301a81bb84a68fe0fe88773605650d6b9c49997aa0426e7b2eb997f9",
+      "bytes": 6836
+    }
+  ],
+  "disposition": "Finish-only pass: retain draft source and findings; no new browser, services, repair loop or inherited capture qualification."
+}
