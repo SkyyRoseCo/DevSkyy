@@ -8649,6 +8649,7 @@
 ## scripts/
 
 - `__init__.py` (~0 tok)
+- `api_usage_report.py` — per-API-key usage + cost for one UTC day from Anthropic/OpenAI admin reporting APIs (free, read-only; needs ANTHROPIC_ADMIN_KEY / OPENAI_ADMIN_KEY). Anthropic per-key $ is a token-proportional estimate. (~4500 tok)
 - `3D_GENERATION_STATUS.md` — 3D Generation Status - READY (API Key Required) (~1003 tok)
 - `add_love_hurts_and_logos_to_lora.py` — luxury_post_process, upscale_with_lanczos, detect_garment_type, generate_training_caption + 2 more (~4004 tok)
   - fn `luxury_post_process` L75-94 (~178 tok)
@@ -9261,6 +9262,7 @@
 
 ## tests/scripts/ (census)
 
+- `test_api_usage_report.py` — httpx.MockTransport tests for scripts/api_usage_report.py: cost allocation, request encoding, key prefixes, fail-closed exits. (~3200 tok)
 - `test_asset_sot_census.py` — tmp_path repo tests for scripts/asset_sot_census.py: reference kinds, byte copies, scope reasons, fail-closed ledgers, exit codes. (~1500 tok)
 
 ## tests/mcp_servers/
@@ -9295,3 +9297,7 @@
 ## tests/ (anthropic cache diagnostics)
 
 - `test_anthropic_cache_diagnostics.py` — opt-in Anthropic cache diagnostics on AnthropicClient.complete(): request payload (diagnostics.previous_message_id), message_id + cache_miss_reason metadata, warning on *_changed. (~1400 tok)
+
+## tests/ (rate limiting)
+
+- `test_rate_limit_env.py` — env-configurable default rate limits in security/rate_limiting.py (RATE_LIMIT_{IP,USER,API_KEY}_*), incl. real-HTTP enforcement via TestClient. (~1300 tok)
