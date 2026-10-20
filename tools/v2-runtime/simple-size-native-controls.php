@@ -24,7 +24,7 @@ function ss_upgrade_raw_order( $id ) {
 }
 function ss_normalize( $value ) {
 	if ( $value instanceof DateTimeInterface ) { return $value->format( 'c' ); }
-	if ( $value instanceof WC_Meta_Data ) { $value = $value->get_data(); }
+	if ( $value instanceof WC_Meta_Data || $value instanceof WC_Order_Item ) { $value = $value->get_data(); }
 	return is_array( $value ) ? array_map( 'ss_normalize', $value ) : $value;
 }
 function ss_order_data( $order ) {
