@@ -18,7 +18,9 @@
 .sr2-pdp-product--editorial .sr2-pdp-product__media { min-width: 0; padding: 0; border: 0; }
 @media (min-width: 64em) {
 	.woocommerce .sr2-product-shell--editorial div.product.sr2-pdp-product--editorial { grid-template-columns: repeat(12, minmax(0, 1fr)); }
-	.sr2-pdp-product--editorial .sr2-pdp-product__media { position: sticky; top: calc(var(--sr2-header) + var(--sr2-space-4)); grid-column: 1 / span 7; }
+	/* The outer grid cell bounds sticky travel to the image/buy row, before tabs. */
+	.sr2-pdp-product--editorial .sr2-pdp-product__media { position: relative; align-self: stretch; grid-column: 1 / span 7; }
+	.woocommerce div.product.sr2-pdp-product--editorial .sr2-pdp-product__media > :is(.woocommerce-product-gallery, .sr2-pdp-styling-view) { position: sticky; top: calc(var(--sr2-header) + var(--sr2-space-4)); }
 	.sr2-pdp-product--editorial .sr2-pdp-product__summary { grid-column: 8 / -1; }
 	.sr2-pdp-product--editorial .sr2-pdp-product__after-summary { grid-column: 1 / -1; }
 }
