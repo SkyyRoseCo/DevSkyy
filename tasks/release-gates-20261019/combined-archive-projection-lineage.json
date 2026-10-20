@@ -1,0 +1,152 @@
+{
+  "schema": "skyyrose.kids-archive-projection-lineage.v1",
+  "problem": "Nine new Kids-owned rules fell through the existing Shop route-owner classifier, exceeding unchanged 100000 B budget by69B.",
+  "correction": "Add exact sr2-product-arrival owner family and sole arrival-product.php consumer. No PHP or CSS body change.",
+  "build_input_changes": {
+    "tools/v2-runtime/build-archive-style-bundle.cjs": {
+      "before": "220c3528f2fd97670b43d51cc8594e3f742ea8f382264101adff1f1f5c1398d2",
+      "after": "d70b86ae73e7c661ca2e13514a49437815d72d13dddd87a380f954f71027ba01"
+    },
+    "tools/v2-runtime/test-archive-style-bundle.cjs": {
+      "before": "6d313a51847638f5bd17560e1477bc650ea3af32dad381e3d2adba5250dd92a6",
+      "after": "4c856d6648243389d1c512c40148b7a4810ca4485457e3fc4532d4fb68e39af2"
+    }
+  },
+  "regression_receipt": {
+    "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261019/combined-archive-ownership-r2/results.json",
+    "sha256": "088fc7f40f1c8bb64fcfd5ee94f3c58863ec6141847e428bc8dacd2d996a96e9",
+    "bytes": 3980
+  },
+  "result": {
+    "schema": "skyyrose.kids-archive-ownership-regression.v1",
+    "status": "PASS_EXACT_KIDS_SOURCE_AND_SHOP_CSS_PRESERVATION",
+    "authentication": "NOT_APPLICABLE_OFFLINE",
+    "executions": [
+      {
+        "name": "rebuild",
+        "exit": 0
+      },
+      {
+        "name": "tests",
+        "exit": 0
+      }
+    ],
+    "full_theme_before": {
+      "theme.css": "642788a3a72b6fc8e440d9e51acf03c681eab6d526959cd1e71016eb6e24e751",
+      "theme.min.css": "cdadadb58aee9a9fa7bbbd38d36f0c38020f254c918c1975123e2f6b02192ab5"
+    },
+    "full_theme_after": {
+      "theme.css": "642788a3a72b6fc8e440d9e51acf03c681eab6d526959cd1e71016eb6e24e751",
+      "theme.min.css": "cdadadb58aee9a9fa7bbbd38d36f0c38020f254c918c1975123e2f6b02192ab5"
+    },
+    "full_theme_reference_commit": "85a1bda20f82c9d70f4ccfc7b0b0be94d84a8786",
+    "shop_css_reference_commit": "d953e51ee9e01448fe6b04960d5958d8ac424954",
+    "shop_css_sha256": "ec28606ccd4c448c69997e9ac1ca91aea2b9681e30c0a0100e2ebe56b1f5953a",
+    "shop_css_bytes": 26637,
+    "shop_inline_bytes": 99059,
+    "inline_limit_bytes": 100000,
+    "excluded_kids_rules": [
+      {
+        "index": 63,
+        "selector": ".sr2-product-arrival",
+        "wrappers": [],
+        "ruleSha256": "b526f481d76be48ce10c00de07df1e12ac4d5e694a70419f3648ab8334c95bcd",
+        "disposition": "EXCLUDE_FROM_NATIVE_ARCHIVE",
+        "owners": [
+          "editorialWorlds"
+        ]
+      },
+      {
+        "index": 64,
+        "selector": ".sr2-product-arrival__copy",
+        "wrappers": [],
+        "ruleSha256": "7abdde14e56433b55d29b91e33e31d274c67059cbcc3e0517ab68d4c9039f5f7",
+        "disposition": "EXCLUDE_FROM_NATIVE_ARCHIVE",
+        "owners": [
+          "editorialWorlds"
+        ]
+      },
+      {
+        "index": 65,
+        "selector": ".sr2-product-arrival .sr2-title-display",
+        "wrappers": [],
+        "ruleSha256": "304db8ed19f80afdcc7e83385f166d05e892d50efc72b7ed912906998bd274b9",
+        "disposition": "EXCLUDE_FROM_NATIVE_ARCHIVE",
+        "owners": [
+          "editorialWorlds"
+        ]
+      },
+      {
+        "index": 66,
+        "selector": ".sr2-product-arrival__media",
+        "wrappers": [],
+        "ruleSha256": "ae912e15347487a2ffa56222ba5e15ec9b7f48bd9b5406f81ac625c9c6cd7e3b",
+        "disposition": "EXCLUDE_FROM_NATIVE_ARCHIVE",
+        "owners": [
+          "editorialWorlds"
+        ]
+      },
+      {
+        "index": 67,
+        "selector": ".sr2-product-arrival__media img",
+        "wrappers": [],
+        "ruleSha256": "957aca8d87658e89c40b34f28cc29a13f9086bf08d5436e9126231e95fc2b23e",
+        "disposition": "EXCLUDE_FROM_NATIVE_ARCHIVE",
+        "owners": [
+          "editorialWorlds"
+        ]
+      },
+      {
+        "index": 68,
+        "selector": ".sr2-product-arrival__media[hidden]",
+        "wrappers": [],
+        "ruleSha256": "444709a0dc5b9ffe7a640a90273b8df4def8cb738d3ea15ee1bced6d07129cee",
+        "disposition": "EXCLUDE_FROM_NATIVE_ARCHIVE",
+        "owners": [
+          "editorialWorlds"
+        ]
+      },
+      {
+        "index": 69,
+        "selector": ".sr2-product-arrival[data-media-state=\"unavailable\"]",
+        "wrappers": [],
+        "ruleSha256": "26c7cdbc3fcb46abc815bb04beb83e9f9bcbe9475a1e4aa8fd25544834f980ab",
+        "disposition": "EXCLUDE_FROM_NATIVE_ARCHIVE",
+        "owners": [
+          "editorialWorlds"
+        ]
+      },
+      {
+        "index": 70,
+        "selector": ".sr2-product-arrival",
+        "wrappers": [
+          "@media (max-width: 47.99em)"
+        ],
+        "ruleSha256": "a7b5f1a42b4899a0d879aeda17619f58ac868858677dfb8995df4f1f5d278835",
+        "disposition": "EXCLUDE_FROM_NATIVE_ARCHIVE",
+        "owners": [
+          "editorialWorlds"
+        ]
+      },
+      {
+        "index": 71,
+        "selector": ".sr2-product-arrival__media",
+        "wrappers": [
+          "@media (max-width: 47.99em)"
+        ],
+        "ruleSha256": "e94948a67d5aa57192109137b2b9819dec4658e048235552b6e22541d05ffa55",
+        "disposition": "EXCLUDE_FROM_NATIVE_ARCHIVE",
+        "owners": [
+          "editorialWorlds"
+        ]
+      }
+    ],
+    "limits": "Byte identity preserves prior pixels for these exact stylesheet bodies; no new combined storefront browser capture."
+  },
+  "retained_failures": [
+    ".artifacts/release-gates-20261019/combined-kids-size-build/ (missing isolated Pydantic)",
+    ".artifacts/release-gates-20261019/combined-kids-size-build-qualified/ (Shop100069B)",
+    ".artifacts/release-gates-20261019/combined-archive-ownership/tests.stdout (count-regex7/9 corrected; 9/10 tests)"
+  ],
+  "limits": "Byte identity preserves accepted component stylesheet bodies and old Shop projection; no new complete storefront capture, installed or live qualification."
+}

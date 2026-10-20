@@ -110,3 +110,18 @@ test('every theme.css class the Shop templates render survives in the committed 
   // The probe can fail: a world-only primitive is styled by theme.css and absent from the projection.
   assert.ok(/\.sr2-chapter(?![\w-])/.test(theme) && !/\.sr2-chapter(?![\w-])/.test(projection));
 });
+
+// The real Kids component must stay in the full theme and out of Shop's projection.
+test('Kids arrival owner projection preserves shared, negative and lookalike selectors', () => {
+  const source = fs.readFileSync(path.join(THEME, 'assets/css/theme.css'), 'utf8');
+  const result = project(source);
+  const kids = result.classification.filter(row => /^\.sr2-product-arrival(?:$|__|\s|\[|\.|:)/.test(row.selector));
+  assert.equal(kids.length, 9, 'All nine actual Kids rules, including hidden/unavailable/mobile, must be classified');
+  assert.ok(kids.every(row => row.disposition === 'EXCLUDE_FROM_NATIVE_ARCHIVE' && row.owners.includes('editorialWorlds')));
+  assert.ok(kids.some(row => row.selector.includes('[hidden]')) && kids.some(row => row.selector.includes('unavailable')));
+  assert.ok(kids.some(row => row.wrappers.some(wrapper => wrapper.includes('max-width'))));
+  assert.ok(!result.css.includes('.sr2-product-arrival'));
+  const shared = ':not(.sr2-product-arrival){color:red}body:has(.sr2-product-arrival){color:blue}.page .sr2-product-arrival{color:green}.sr2-product-arrival-extra{color:gold}.sr2-product-arrival,.shared{color:white}';
+  assert.ok(project(shared).classification.every(row => row.disposition === 'PRESERVE'));
+  assert.ok(project(shared).css.includes('sr2-product-arrival-extra'));
+});

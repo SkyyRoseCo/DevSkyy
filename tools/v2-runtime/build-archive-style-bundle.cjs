@@ -13,14 +13,14 @@ const GROUPS = {
   legacyWorlds: ['sr-home', 'sr2-black-rose-scene', 'sr2-scene-hotspot', 'sr2-scene-card'],
   // 2026-09-22 whole-site primitives owned by world/home/PDP chapters. The Shop archive composes
   // sr2-band / sr2-title-display / sr2-lede / sr2-editorial-link only, so those stay unowned.
-  editorialWorlds: ['sr2-arrival', 'sr2-chapter', 'sr2-title-chapter'],
+  editorialWorlds: ['sr2-product-arrival', 'sr2-arrival', 'sr2-chapter', 'sr2-title-chapter'],
   product: ['sr2-c-variation', 'sr2-c-option-list', 'sr2-c-option', 'woocommerce-product-details__short-description', 'variations_form'],
 };
 const CONSUMERS = {
   content: ['page.php', 'index.php', 'home.php', 'archive.php', 'single.php', 'search.php', '404.php', 'template-parts/v2-commerce-preview.php', 'template-parts/journal-press-fallback.php', 'page-wishlist.php', 'page-lookbook.php', 'template-parts/v2-about.php', 'template-parts/v2-preorder.php', 'template-parts/pages/contact.php', 'template-parts/pages/service.php', 'template-parts/pages/journal-entry.php'],
   transactions: ['woocommerce/cart/cart.php', 'woocommerce/checkout/form-checkout.php', 'woocommerce/checkout/thankyou.php', 'page.php', 'template-parts/v2-commerce-preview.php'],
   legacyWorlds: ['assets/css/legacy-world-components.css', 'preserved non-archive legacy component contract'],
-  editorialWorlds: ['front-page.php', '404.php', 'template-parts/home/editorial-hero.php', 'template-parts/home/editorial-collection.php', 'template-parts/collections/arrival.php', 'template-parts/collections/chapters.php', 'template-parts/collections/story.php', 'template-parts/collections/index.php', 'template-parts/collections/next-world.php', 'template-parts/immersive/world.php', 'template-parts/commerce/town-line.php', 'woocommerce/single-product.php', 'template-parts/v2-preorder.php'],
+  editorialWorlds: ['template-parts/collections/arrival-product.php', 'front-page.php', '404.php', 'template-parts/home/editorial-hero.php', 'template-parts/home/editorial-collection.php', 'template-parts/collections/arrival.php', 'template-parts/collections/chapters.php', 'template-parts/collections/story.php', 'template-parts/collections/index.php', 'template-parts/collections/next-world.php', 'template-parts/immersive/world.php', 'template-parts/commerce/town-line.php', 'woocommerce/single-product.php', 'template-parts/v2-preorder.php'],
   product: ['woocommerce/single-product.php', 'template-parts/commerce/product-hero.php'],
 };
 const INPUTS = ['design-tokens', 'shop-page', 'controls', 'global-shell', 'visual-recovery', 'mascot'];
