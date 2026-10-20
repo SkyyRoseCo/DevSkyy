@@ -1,0 +1,27 @@
+{
+  "status": "PASS_EXACT_801_MEMBERS_ONLY_TWO_CSS_BODIES_CHANGED",
+  "old_manifest": {
+    "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261019/package-usage-successor-r2/source-theme/dist/release-manifest.json",
+    "sha256": "014f77e38d64db3222214d62d5be488b67fbe4e4643b1247e41cd6a457684abd",
+    "bytes": 110679,
+    "mode": 420
+  },
+  "old_source": "773e2cffd70338d6fe4509d43d40186401d53eff",
+  "new_source": "01934090389193dfa7b444c006dd1be8482815c0",
+  "old_zip_sha256": "9a828dd18585bc3dbb47373e60526142279a75cb99a4ba95773bed8bc98f9833",
+  "new_zip_sha256": "43514b3a3cd83d0a9efe1285494a7e49d732863377042fd9847953911d9f918b",
+  "unchanged_members": 799,
+  "changed_members": {
+    "assets/css/product-page.css": {
+      "old": "81071fab3523fcfc283afbb6565e94928f2548692a7cde611e8b7cc8fc144bb4",
+      "new": "0b91a7a0401caadfe070811aadc4b9046c5ba0edf987d585d32cd45f3269d047"
+    },
+    "assets/css/product-page.min.css": {
+      "old": "6a4fd7f46d304fba6b0ca781071d924dfddbc67aa7bd0c06ea7347b91d84150d",
+      "new": "ea2720e4e3ece50376198565a4c5593de32112d93ab5134499d65d102735ab0b"
+    }
+  },
+  "build_id_scope": "Unchanged build-inputs/tool identity, never used as artifact identity",
+  "build_id": "845fc4bf79f37a62b9f36005041f5596dd2cc452cb8707e375c5860bc7a94571",
+  "no_added_or_dropped_members": true
+}

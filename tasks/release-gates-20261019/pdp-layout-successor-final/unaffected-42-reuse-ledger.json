@@ -1,0 +1,1698 @@
+{
+  "scope": "EXPLICIT_DEPENDENCY_REUSE_NOT_FRESH_SUCCESSOR_EXECUTION",
+  "package_comparison": {
+    "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261019/package-pdp-layout-successor/package-impact-comparison.json",
+    "sha256": "5f77f5559bd69ad64aebcae4d3e945d465a3df6d465a92808b6fd10a5399cb2e",
+    "bytes": 1377
+  },
+  "inherited": [
+    {
+      "case": "home-1440-reduce",
+      "original_run": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261019/populated-native-media/run-1792459392724930000",
+      "original_source": "773e2cffd70338d6fe4509d43d40186401d53eff",
+      "original_zip": "9a828dd18585bc3dbb47373e60526142279a75cb99a4ba95773bed8bc98f9833",
+      "basis": "Not freshly executed on successor. All799 unchanged members include PHP/JS/data/image families and every CSS delivered to this context; two changed PDP CSS members absent from its recorded CSS delivery. Frozen canonical33 and unchanged seed bind the same input semantics.",
+      "delivered_css": [
+        {
+          "path": "assets/css/theme.min.css",
+          "sha256": "cdadadb58aee9a9fa7bbbd38d36f0c38020f254c918c1975123e2f6b02192ab5"
+        },
+        {
+          "path": "assets/css/home-page.min.css",
+          "sha256": "c0d71b674a04b3db161e696c6e73439bb0fb900c761cff5b18dc197beff73cd4"
+        },
+        {
+          "path": "assets/css/home-experience.min.css",
+          "sha256": "79c2c386597fe9493ca66e2bc4e2c34911293b190a2e1540935eacefb8c8c5d9"
+        },
+        {
+          "path": "assets/css/home-art-direction.min.css",
+          "sha256": "be80f8d4162f624f2b083b7eb8c6b12a80d77d143d1fdb0c974dfd0032a33aa6"
+        },
+        {
+          "path": "assets/css/controls.min.css",
+          "sha256": "0aef4a7333cd9f3c7d6dcd30d032ce41870439cf052c1a7a8741f0c72203a4ae"
+        },
+        {
+          "path": "assets/css/global-shell.min.css",
+          "sha256": "e397eecebe1c93b16b6f308d39ea77e159d1d2e83ab2b5d330a686d19860698b"
+        },
+        {
+          "path": "assets/css/search-preview.min.css",
+          "sha256": "b17834580431f049d2ec7a312d39d594d2ef5a5d068cc7b2c1a042c3393dbcac"
+        },
+        {
+          "path": "assets/css/premium-commerce.min.css",
+          "sha256": "78ad9b620f19eb76147ffcb9a7b4546fabdbe67f4bbe2f4305bb9feb0e395b15"
+        },
+        {
+          "path": "assets/css/quick-view-commerce.min.css",
+          "sha256": "23e4ef6feec0295ba02ac55742feddfb285604fbf389aebce6e8ae649d53d8db"
+        },
+        {
+          "path": "assets/css/cookie-consent.min.css",
+          "sha256": "9d239d0307e4cf850390bce1baa1611ca0610ce5ffb101fd94d58c7df1e8f8c9"
+        }
+      ]
+    },
+    {
+      "case": "home-1440-no-preference",
+      "original_run": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261019/populated-native-media/run-1792459392724930000",
+      "original_source": "773e2cffd70338d6fe4509d43d40186401d53eff",
+      "original_zip": "9a828dd18585bc3dbb47373e60526142279a75cb99a4ba95773bed8bc98f9833",
+      "basis": "Not freshly executed on successor. All799 unchanged members include PHP/JS/data/image families and every CSS delivered to this context; two changed PDP CSS members absent from its recorded CSS delivery. Frozen canonical33 and unchanged seed bind the same input semantics.",
+      "delivered_css": [
+        {
+          "path": "assets/css/theme.min.css",
+          "sha256": "cdadadb58aee9a9fa7bbbd38d36f0c38020f254c918c1975123e2f6b02192ab5"
+        },
+        {
+          "path": "assets/css/home-page.min.css",
+          "sha256": "c0d71b674a04b3db161e696c6e73439bb0fb900c761cff5b18dc197beff73cd4"
+        },
+        {
+          "path": "assets/css/home-experience.min.css",
+          "sha256": "79c2c386597fe9493ca66e2bc4e2c34911293b190a2e1540935eacefb8c8c5d9"
+        },
+        {
+          "path": "assets/css/home-art-direction.min.css",
+          "sha256": "be80f8d4162f624f2b083b7eb8c6b12a80d77d143d1fdb0c974dfd0032a33aa6"
+        },
+        {
+          "path": "assets/css/controls.min.css",
+          "sha256": "0aef4a7333cd9f3c7d6dcd30d032ce41870439cf052c1a7a8741f0c72203a4ae"
+        },
+        {
+          "path": "assets/css/global-shell.min.css",
+          "sha256": "e397eecebe1c93b16b6f308d39ea77e159d1d2e83ab2b5d330a686d19860698b"
+        },
+        {
+          "path": "assets/css/search-preview.min.css",
+          "sha256": "b17834580431f049d2ec7a312d39d594d2ef5a5d068cc7b2c1a042c3393dbcac"
+        },
+        {
+          "path": "assets/css/premium-commerce.min.css",
+          "sha256": "78ad9b620f19eb76147ffcb9a7b4546fabdbe67f4bbe2f4305bb9feb0e395b15"
+        },
+        {
+          "path": "assets/css/quick-view-commerce.min.css",
+          "sha256": "23e4ef6feec0295ba02ac55742feddfb285604fbf389aebce6e8ae649d53d8db"
+        },
+        {
+          "path": "assets/css/cookie-consent.min.css",
+          "sha256": "9d239d0307e4cf850390bce1baa1611ca0610ce5ffb101fd94d58c7df1e8f8c9"
+        }
+      ]
+    },
+    {
+      "case": "home-390-reduce",
+      "original_run": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261019/populated-native-media/run-1792459392724930000",
+      "original_source": "773e2cffd70338d6fe4509d43d40186401d53eff",
+      "original_zip": "9a828dd18585bc3dbb47373e60526142279a75cb99a4ba95773bed8bc98f9833",
+      "basis": "Not freshly executed on successor. All799 unchanged members include PHP/JS/data/image families and every CSS delivered to this context; two changed PDP CSS members absent from its recorded CSS delivery. Frozen canonical33 and unchanged seed bind the same input semantics.",
+      "delivered_css": [
+        {
+          "path": "assets/css/theme.min.css",
+          "sha256": "cdadadb58aee9a9fa7bbbd38d36f0c38020f254c918c1975123e2f6b02192ab5"
+        },
+        {
+          "path": "assets/css/home-page.min.css",
+          "sha256": "c0d71b674a04b3db161e696c6e73439bb0fb900c761cff5b18dc197beff73cd4"
+        },
+        {
+          "path": "assets/css/home-experience.min.css",
+          "sha256": "79c2c386597fe9493ca66e2bc4e2c34911293b190a2e1540935eacefb8c8c5d9"
+        },
+        {
+          "path": "assets/css/home-art-direction.min.css",
+          "sha256": "be80f8d4162f624f2b083b7eb8c6b12a80d77d143d1fdb0c974dfd0032a33aa6"
+        },
+        {
+          "path": "assets/css/controls.min.css",
+          "sha256": "0aef4a7333cd9f3c7d6dcd30d032ce41870439cf052c1a7a8741f0c72203a4ae"
+        },
+        {
+          "path": "assets/css/global-shell.min.css",
+          "sha256": "e397eecebe1c93b16b6f308d39ea77e159d1d2e83ab2b5d330a686d19860698b"
+        },
+        {
+          "path": "assets/css/search-preview.min.css",
+          "sha256": "b17834580431f049d2ec7a312d39d594d2ef5a5d068cc7b2c1a042c3393dbcac"
+        },
+        {
+          "path": "assets/css/premium-commerce.min.css",
+          "sha256": "78ad9b620f19eb76147ffcb9a7b4546fabdbe67f4bbe2f4305bb9feb0e395b15"
+        },
+        {
+          "path": "assets/css/quick-view-commerce.min.css",
+          "sha256": "23e4ef6feec0295ba02ac55742feddfb285604fbf389aebce6e8ae649d53d8db"
+        },
+        {
+          "path": "assets/css/cookie-consent.min.css",
+          "sha256": "9d239d0307e4cf850390bce1baa1611ca0610ce5ffb101fd94d58c7df1e8f8c9"
+        }
+      ]
+    },
+    {
+      "case": "home-390-no-preference",
+      "original_run": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261019/populated-native-media/run-1792459392724930000",
+      "original_source": "773e2cffd70338d6fe4509d43d40186401d53eff",
+      "original_zip": "9a828dd18585bc3dbb47373e60526142279a75cb99a4ba95773bed8bc98f9833",
+      "basis": "Not freshly executed on successor. All799 unchanged members include PHP/JS/data/image families and every CSS delivered to this context; two changed PDP CSS members absent from its recorded CSS delivery. Frozen canonical33 and unchanged seed bind the same input semantics.",
+      "delivered_css": [
+        {
+          "path": "assets/css/theme.min.css",
+          "sha256": "cdadadb58aee9a9fa7bbbd38d36f0c38020f254c918c1975123e2f6b02192ab5"
+        },
+        {
+          "path": "assets/css/home-page.min.css",
+          "sha256": "c0d71b674a04b3db161e696c6e73439bb0fb900c761cff5b18dc197beff73cd4"
+        },
+        {
+          "path": "assets/css/home-experience.min.css",
+          "sha256": "79c2c386597fe9493ca66e2bc4e2c34911293b190a2e1540935eacefb8c8c5d9"
+        },
+        {
+          "path": "assets/css/home-art-direction.min.css",
+          "sha256": "be80f8d4162f624f2b083b7eb8c6b12a80d77d143d1fdb0c974dfd0032a33aa6"
+        },
+        {
+          "path": "assets/css/controls.min.css",
+          "sha256": "0aef4a7333cd9f3c7d6dcd30d032ce41870439cf052c1a7a8741f0c72203a4ae"
+        },
+        {
+          "path": "assets/css/global-shell.min.css",
+          "sha256": "e397eecebe1c93b16b6f308d39ea77e159d1d2e83ab2b5d330a686d19860698b"
+        },
+        {
+          "path": "assets/css/search-preview.min.css",
+          "sha256": "b17834580431f049d2ec7a312d39d594d2ef5a5d068cc7b2c1a042c3393dbcac"
+        },
+        {
+          "path": "assets/css/premium-commerce.min.css",
+          "sha256": "78ad9b620f19eb76147ffcb9a7b4546fabdbe67f4bbe2f4305bb9feb0e395b15"
+        },
+        {
+          "path": "assets/css/quick-view-commerce.min.css",
+          "sha256": "23e4ef6feec0295ba02ac55742feddfb285604fbf389aebce6e8ae649d53d8db"
+        },
+        {
+          "path": "assets/css/cookie-consent.min.css",
+          "sha256": "9d239d0307e4cf850390bce1baa1611ca0610ce5ffb101fd94d58c7df1e8f8c9"
+        }
+      ]
+    },
+    {
+      "case": "shop-1440-reduce",
+      "original_run": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261019/populated-native-media/run-1792459392724930000",
+      "original_source": "773e2cffd70338d6fe4509d43d40186401d53eff",
+      "original_zip": "9a828dd18585bc3dbb47373e60526142279a75cb99a4ba95773bed8bc98f9833",
+      "basis": "Not freshly executed on successor. All799 unchanged members include PHP/JS/data/image families and every CSS delivered to this context; two changed PDP CSS members absent from its recorded CSS delivery. Frozen canonical33 and unchanged seed bind the same input semantics.",
+      "delivered_css": [
+        {
+          "path": "assets/css/archive-theme.min.css",
+          "sha256": "ec28606ccd4c448c69997e9ac1ca91aea2b9681e30c0a0100e2ebe56b1f5953a"
+        },
+        {
+          "path": "assets/css/global-shell.min.css",
+          "sha256": "e397eecebe1c93b16b6f308d39ea77e159d1d2e83ab2b5d330a686d19860698b"
+        },
+        {
+          "path": "assets/css/search-preview.min.css",
+          "sha256": "b17834580431f049d2ec7a312d39d594d2ef5a5d068cc7b2c1a042c3393dbcac"
+        },
+        {
+          "path": "assets/css/premium-commerce.min.css",
+          "sha256": "78ad9b620f19eb76147ffcb9a7b4546fabdbe67f4bbe2f4305bb9feb0e395b15"
+        },
+        {
+          "path": "assets/css/quick-view-commerce.min.css",
+          "sha256": "23e4ef6feec0295ba02ac55742feddfb285604fbf389aebce6e8ae649d53d8db"
+        },
+        {
+          "path": "assets/css/cookie-consent.min.css",
+          "sha256": "9d239d0307e4cf850390bce1baa1611ca0610ce5ffb101fd94d58c7df1e8f8c9"
+        }
+      ]
+    },
+    {
+      "case": "shop-390-reduce",
+      "original_run": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261019/populated-native-media/run-1792459392724930000",
+      "original_source": "773e2cffd70338d6fe4509d43d40186401d53eff",
+      "original_zip": "9a828dd18585bc3dbb47373e60526142279a75cb99a4ba95773bed8bc98f9833",
+      "basis": "Not freshly executed on successor. All799 unchanged members include PHP/JS/data/image families and every CSS delivered to this context; two changed PDP CSS members absent from its recorded CSS delivery. Frozen canonical33 and unchanged seed bind the same input semantics.",
+      "delivered_css": [
+        {
+          "path": "assets/css/archive-theme.min.css",
+          "sha256": "ec28606ccd4c448c69997e9ac1ca91aea2b9681e30c0a0100e2ebe56b1f5953a"
+        },
+        {
+          "path": "assets/css/global-shell.min.css",
+          "sha256": "e397eecebe1c93b16b6f308d39ea77e159d1d2e83ab2b5d330a686d19860698b"
+        },
+        {
+          "path": "assets/css/search-preview.min.css",
+          "sha256": "b17834580431f049d2ec7a312d39d594d2ef5a5d068cc7b2c1a042c3393dbcac"
+        },
+        {
+          "path": "assets/css/premium-commerce.min.css",
+          "sha256": "78ad9b620f19eb76147ffcb9a7b4546fabdbe67f4bbe2f4305bb9feb0e395b15"
+        },
+        {
+          "path": "assets/css/quick-view-commerce.min.css",
+          "sha256": "23e4ef6feec0295ba02ac55742feddfb285604fbf389aebce6e8ae649d53d8db"
+        },
+        {
+          "path": "assets/css/cookie-consent.min.css",
+          "sha256": "9d239d0307e4cf850390bce1baa1611ca0610ce5ffb101fd94d58c7df1e8f8c9"
+        }
+      ]
+    },
+    {
+      "case": "shop-page2-1440-reduce",
+      "original_run": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261019/populated-native-media/run-1792459392724930000",
+      "original_source": "773e2cffd70338d6fe4509d43d40186401d53eff",
+      "original_zip": "9a828dd18585bc3dbb47373e60526142279a75cb99a4ba95773bed8bc98f9833",
+      "basis": "Not freshly executed on successor. All799 unchanged members include PHP/JS/data/image families and every CSS delivered to this context; two changed PDP CSS members absent from its recorded CSS delivery. Frozen canonical33 and unchanged seed bind the same input semantics.",
+      "delivered_css": [
+        {
+          "path": "assets/css/archive-theme.min.css",
+          "sha256": "ec28606ccd4c448c69997e9ac1ca91aea2b9681e30c0a0100e2ebe56b1f5953a"
+        },
+        {
+          "path": "assets/css/global-shell.min.css",
+          "sha256": "e397eecebe1c93b16b6f308d39ea77e159d1d2e83ab2b5d330a686d19860698b"
+        },
+        {
+          "path": "assets/css/search-preview.min.css",
+          "sha256": "b17834580431f049d2ec7a312d39d594d2ef5a5d068cc7b2c1a042c3393dbcac"
+        },
+        {
+          "path": "assets/css/premium-commerce.min.css",
+          "sha256": "78ad9b620f19eb76147ffcb9a7b4546fabdbe67f4bbe2f4305bb9feb0e395b15"
+        },
+        {
+          "path": "assets/css/quick-view-commerce.min.css",
+          "sha256": "23e4ef6feec0295ba02ac55742feddfb285604fbf389aebce6e8ae649d53d8db"
+        },
+        {
+          "path": "assets/css/cookie-consent.min.css",
+          "sha256": "9d239d0307e4cf850390bce1baa1611ca0610ce5ffb101fd94d58c7df1e8f8c9"
+        }
+      ]
+    },
+    {
+      "case": "shop-page2-390-reduce",
+      "original_run": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261019/populated-native-media/run-1792459392724930000",
+      "original_source": "773e2cffd70338d6fe4509d43d40186401d53eff",
+      "original_zip": "9a828dd18585bc3dbb47373e60526142279a75cb99a4ba95773bed8bc98f9833",
+      "basis": "Not freshly executed on successor. All799 unchanged members include PHP/JS/data/image families and every CSS delivered to this context; two changed PDP CSS members absent from its recorded CSS delivery. Frozen canonical33 and unchanged seed bind the same input semantics.",
+      "delivered_css": [
+        {
+          "path": "assets/css/archive-theme.min.css",
+          "sha256": "ec28606ccd4c448c69997e9ac1ca91aea2b9681e30c0a0100e2ebe56b1f5953a"
+        },
+        {
+          "path": "assets/css/global-shell.min.css",
+          "sha256": "e397eecebe1c93b16b6f308d39ea77e159d1d2e83ab2b5d330a686d19860698b"
+        },
+        {
+          "path": "assets/css/search-preview.min.css",
+          "sha256": "b17834580431f049d2ec7a312d39d594d2ef5a5d068cc7b2c1a042c3393dbcac"
+        },
+        {
+          "path": "assets/css/premium-commerce.min.css",
+          "sha256": "78ad9b620f19eb76147ffcb9a7b4546fabdbe67f4bbe2f4305bb9feb0e395b15"
+        },
+        {
+          "path": "assets/css/quick-view-commerce.min.css",
+          "sha256": "23e4ef6feec0295ba02ac55742feddfb285604fbf389aebce6e8ae649d53d8db"
+        },
+        {
+          "path": "assets/css/cookie-consent.min.css",
+          "sha256": "9d239d0307e4cf850390bce1baa1611ca0610ce5ffb101fd94d58c7df1e8f8c9"
+        }
+      ]
+    },
+    {
+      "case": "preorder-1440-reduce",
+      "original_run": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261019/populated-native-media/run-1792459392724930000",
+      "original_source": "773e2cffd70338d6fe4509d43d40186401d53eff",
+      "original_zip": "9a828dd18585bc3dbb47373e60526142279a75cb99a4ba95773bed8bc98f9833",
+      "basis": "Not freshly executed on successor. All799 unchanged members include PHP/JS/data/image families and every CSS delivered to this context; two changed PDP CSS members absent from its recorded CSS delivery. Frozen canonical33 and unchanged seed bind the same input semantics.",
+      "delivered_css": [
+        {
+          "path": "assets/css/theme.min.css",
+          "sha256": "cdadadb58aee9a9fa7bbbd38d36f0c38020f254c918c1975123e2f6b02192ab5"
+        },
+        {
+          "path": "assets/css/legacy-world-components.min.css",
+          "sha256": "410ace7f1cebec1f4e3cbd1ad0d9f6247d39259cb43faa0c539d49d35ae7e302"
+        },
+        {
+          "path": "assets/css/content-page.min.css",
+          "sha256": "8ac8a7a7eefd603774196b5f5e4501c2e985cb2ab7969c2a24279574a802a45d"
+        },
+        {
+          "path": "assets/css/global-shell.min.css",
+          "sha256": "e397eecebe1c93b16b6f308d39ea77e159d1d2e83ab2b5d330a686d19860698b"
+        },
+        {
+          "path": "assets/css/search-preview.min.css",
+          "sha256": "b17834580431f049d2ec7a312d39d594d2ef5a5d068cc7b2c1a042c3393dbcac"
+        },
+        {
+          "path": "assets/css/premium-commerce.min.css",
+          "sha256": "78ad9b620f19eb76147ffcb9a7b4546fabdbe67f4bbe2f4305bb9feb0e395b15"
+        },
+        {
+          "path": "assets/css/quick-view-commerce.min.css",
+          "sha256": "23e4ef6feec0295ba02ac55742feddfb285604fbf389aebce6e8ae649d53d8db"
+        },
+        {
+          "path": "assets/css/cookie-consent.min.css",
+          "sha256": "9d239d0307e4cf850390bce1baa1611ca0610ce5ffb101fd94d58c7df1e8f8c9"
+        }
+      ]
+    },
+    {
+      "case": "preorder-390-reduce",
+      "original_run": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261019/populated-native-media/run-1792459392724930000",
+      "original_source": "773e2cffd70338d6fe4509d43d40186401d53eff",
+      "original_zip": "9a828dd18585bc3dbb47373e60526142279a75cb99a4ba95773bed8bc98f9833",
+      "basis": "Not freshly executed on successor. All799 unchanged members include PHP/JS/data/image families and every CSS delivered to this context; two changed PDP CSS members absent from its recorded CSS delivery. Frozen canonical33 and unchanged seed bind the same input semantics.",
+      "delivered_css": [
+        {
+          "path": "assets/css/theme.min.css",
+          "sha256": "cdadadb58aee9a9fa7bbbd38d36f0c38020f254c918c1975123e2f6b02192ab5"
+        },
+        {
+          "path": "assets/css/legacy-world-components.min.css",
+          "sha256": "410ace7f1cebec1f4e3cbd1ad0d9f6247d39259cb43faa0c539d49d35ae7e302"
+        },
+        {
+          "path": "assets/css/content-page.min.css",
+          "sha256": "8ac8a7a7eefd603774196b5f5e4501c2e985cb2ab7969c2a24279574a802a45d"
+        },
+        {
+          "path": "assets/css/global-shell.min.css",
+          "sha256": "e397eecebe1c93b16b6f308d39ea77e159d1d2e83ab2b5d330a686d19860698b"
+        },
+        {
+          "path": "assets/css/search-preview.min.css",
+          "sha256": "b17834580431f049d2ec7a312d39d594d2ef5a5d068cc7b2c1a042c3393dbcac"
+        },
+        {
+          "path": "assets/css/premium-commerce.min.css",
+          "sha256": "78ad9b620f19eb76147ffcb9a7b4546fabdbe67f4bbe2f4305bb9feb0e395b15"
+        },
+        {
+          "path": "assets/css/quick-view-commerce.min.css",
+          "sha256": "23e4ef6feec0295ba02ac55742feddfb285604fbf389aebce6e8ae649d53d8db"
+        },
+        {
+          "path": "assets/css/cookie-consent.min.css",
+          "sha256": "9d239d0307e4cf850390bce1baa1611ca0610ce5ffb101fd94d58c7df1e8f8c9"
+        }
+      ]
+    },
+    {
+      "case": "collection-index-1440-reduce",
+      "original_run": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261019/populated-native-media/run-1792459392724930000",
+      "original_source": "773e2cffd70338d6fe4509d43d40186401d53eff",
+      "original_zip": "9a828dd18585bc3dbb47373e60526142279a75cb99a4ba95773bed8bc98f9833",
+      "basis": "Not freshly executed on successor. All799 unchanged members include PHP/JS/data/image families and every CSS delivered to this context; two changed PDP CSS members absent from its recorded CSS delivery. Frozen canonical33 and unchanged seed bind the same input semantics.",
+      "delivered_css": [
+        {
+          "path": "assets/css/theme.min.css",
+          "sha256": "cdadadb58aee9a9fa7bbbd38d36f0c38020f254c918c1975123e2f6b02192ab5"
+        },
+        {
+          "path": "assets/css/legacy-world-components.min.css",
+          "sha256": "410ace7f1cebec1f4e3cbd1ad0d9f6247d39259cb43faa0c539d49d35ae7e302"
+        },
+        {
+          "path": "assets/css/content-page.min.css",
+          "sha256": "8ac8a7a7eefd603774196b5f5e4501c2e985cb2ab7969c2a24279574a802a45d"
+        },
+        {
+          "path": "assets/css/global-shell.min.css",
+          "sha256": "e397eecebe1c93b16b6f308d39ea77e159d1d2e83ab2b5d330a686d19860698b"
+        },
+        {
+          "path": "assets/css/search-preview.min.css",
+          "sha256": "b17834580431f049d2ec7a312d39d594d2ef5a5d068cc7b2c1a042c3393dbcac"
+        },
+        {
+          "path": "assets/css/premium-commerce.min.css",
+          "sha256": "78ad9b620f19eb76147ffcb9a7b4546fabdbe67f4bbe2f4305bb9feb0e395b15"
+        },
+        {
+          "path": "assets/css/quick-view-commerce.min.css",
+          "sha256": "23e4ef6feec0295ba02ac55742feddfb285604fbf389aebce6e8ae649d53d8db"
+        },
+        {
+          "path": "assets/css/cookie-consent.min.css",
+          "sha256": "9d239d0307e4cf850390bce1baa1611ca0610ce5ffb101fd94d58c7df1e8f8c9"
+        }
+      ]
+    },
+    {
+      "case": "collection-index-390-reduce",
+      "original_run": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261019/populated-native-media/run-1792459392724930000",
+      "original_source": "773e2cffd70338d6fe4509d43d40186401d53eff",
+      "original_zip": "9a828dd18585bc3dbb47373e60526142279a75cb99a4ba95773bed8bc98f9833",
+      "basis": "Not freshly executed on successor. All799 unchanged members include PHP/JS/data/image families and every CSS delivered to this context; two changed PDP CSS members absent from its recorded CSS delivery. Frozen canonical33 and unchanged seed bind the same input semantics.",
+      "delivered_css": [
+        {
+          "path": "assets/css/theme.min.css",
+          "sha256": "cdadadb58aee9a9fa7bbbd38d36f0c38020f254c918c1975123e2f6b02192ab5"
+        },
+        {
+          "path": "assets/css/legacy-world-components.min.css",
+          "sha256": "410ace7f1cebec1f4e3cbd1ad0d9f6247d39259cb43faa0c539d49d35ae7e302"
+        },
+        {
+          "path": "assets/css/content-page.min.css",
+          "sha256": "8ac8a7a7eefd603774196b5f5e4501c2e985cb2ab7969c2a24279574a802a45d"
+        },
+        {
+          "path": "assets/css/global-shell.min.css",
+          "sha256": "e397eecebe1c93b16b6f308d39ea77e159d1d2e83ab2b5d330a686d19860698b"
+        },
+        {
+          "path": "assets/css/search-preview.min.css",
+          "sha256": "b17834580431f049d2ec7a312d39d594d2ef5a5d068cc7b2c1a042c3393dbcac"
+        },
+        {
+          "path": "assets/css/premium-commerce.min.css",
+          "sha256": "78ad9b620f19eb76147ffcb9a7b4546fabdbe67f4bbe2f4305bb9feb0e395b15"
+        },
+        {
+          "path": "assets/css/quick-view-commerce.min.css",
+          "sha256": "23e4ef6feec0295ba02ac55742feddfb285604fbf389aebce6e8ae649d53d8db"
+        },
+        {
+          "path": "assets/css/cookie-consent.min.css",
+          "sha256": "9d239d0307e4cf850390bce1baa1611ca0610ce5ffb101fd94d58c7df1e8f8c9"
+        }
+      ]
+    },
+    {
+      "case": "collection-signature-1440-reduce",
+      "original_run": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261019/populated-native-media/run-1792459392724930000",
+      "original_source": "773e2cffd70338d6fe4509d43d40186401d53eff",
+      "original_zip": "9a828dd18585bc3dbb47373e60526142279a75cb99a4ba95773bed8bc98f9833",
+      "basis": "Not freshly executed on successor. All799 unchanged members include PHP/JS/data/image families and every CSS delivered to this context; two changed PDP CSS members absent from its recorded CSS delivery. Frozen canonical33 and unchanged seed bind the same input semantics.",
+      "delivered_css": [
+        {
+          "path": "assets/css/theme.min.css",
+          "sha256": "cdadadb58aee9a9fa7bbbd38d36f0c38020f254c918c1975123e2f6b02192ab5"
+        },
+        {
+          "path": "assets/css/controls.min.css",
+          "sha256": "0aef4a7333cd9f3c7d6dcd30d032ce41870439cf052c1a7a8741f0c72203a4ae"
+        },
+        {
+          "path": "assets/css/global-shell.min.css",
+          "sha256": "e397eecebe1c93b16b6f308d39ea77e159d1d2e83ab2b5d330a686d19860698b"
+        },
+        {
+          "path": "assets/css/scene-handoff.min.css",
+          "sha256": "4fe7b5b9f304a46d289afd7e1483e0535e7a2796c715af68f652560648503255"
+        },
+        {
+          "path": "assets/css/search-preview.min.css",
+          "sha256": "b17834580431f049d2ec7a312d39d594d2ef5a5d068cc7b2c1a042c3393dbcac"
+        },
+        {
+          "path": "assets/css/premium-commerce.min.css",
+          "sha256": "78ad9b620f19eb76147ffcb9a7b4546fabdbe67f4bbe2f4305bb9feb0e395b15"
+        },
+        {
+          "path": "assets/css/quick-view-commerce.min.css",
+          "sha256": "23e4ef6feec0295ba02ac55742feddfb285604fbf389aebce6e8ae649d53d8db"
+        },
+        {
+          "path": "assets/css/cookie-consent.min.css",
+          "sha256": "9d239d0307e4cf850390bce1baa1611ca0610ce5ffb101fd94d58c7df1e8f8c9"
+        }
+      ]
+    },
+    {
+      "case": "collection-signature-1440-no-preference",
+      "original_run": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261019/populated-native-media/run-1792459392724930000",
+      "original_source": "773e2cffd70338d6fe4509d43d40186401d53eff",
+      "original_zip": "9a828dd18585bc3dbb47373e60526142279a75cb99a4ba95773bed8bc98f9833",
+      "basis": "Not freshly executed on successor. All799 unchanged members include PHP/JS/data/image families and every CSS delivered to this context; two changed PDP CSS members absent from its recorded CSS delivery. Frozen canonical33 and unchanged seed bind the same input semantics.",
+      "delivered_css": [
+        {
+          "path": "assets/css/theme.min.css",
+          "sha256": "cdadadb58aee9a9fa7bbbd38d36f0c38020f254c918c1975123e2f6b02192ab5"
+        },
+        {
+          "path": "assets/css/controls.min.css",
+          "sha256": "0aef4a7333cd9f3c7d6dcd30d032ce41870439cf052c1a7a8741f0c72203a4ae"
+        },
+        {
+          "path": "assets/css/global-shell.min.css",
+          "sha256": "e397eecebe1c93b16b6f308d39ea77e159d1d2e83ab2b5d330a686d19860698b"
+        },
+        {
+          "path": "assets/css/scene-handoff.min.css",
+          "sha256": "4fe7b5b9f304a46d289afd7e1483e0535e7a2796c715af68f652560648503255"
+        },
+        {
+          "path": "assets/css/search-preview.min.css",
+          "sha256": "b17834580431f049d2ec7a312d39d594d2ef5a5d068cc7b2c1a042c3393dbcac"
+        },
+        {
+          "path": "assets/css/premium-commerce.min.css",
+          "sha256": "78ad9b620f19eb76147ffcb9a7b4546fabdbe67f4bbe2f4305bb9feb0e395b15"
+        },
+        {
+          "path": "assets/css/quick-view-commerce.min.css",
+          "sha256": "23e4ef6feec0295ba02ac55742feddfb285604fbf389aebce6e8ae649d53d8db"
+        },
+        {
+          "path": "assets/css/cookie-consent.min.css",
+          "sha256": "9d239d0307e4cf850390bce1baa1611ca0610ce5ffb101fd94d58c7df1e8f8c9"
+        }
+      ]
+    },
+    {
+      "case": "collection-signature-390-reduce",
+      "original_run": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261019/populated-native-media/run-1792459392724930000",
+      "original_source": "773e2cffd70338d6fe4509d43d40186401d53eff",
+      "original_zip": "9a828dd18585bc3dbb47373e60526142279a75cb99a4ba95773bed8bc98f9833",
+      "basis": "Not freshly executed on successor. All799 unchanged members include PHP/JS/data/image families and every CSS delivered to this context; two changed PDP CSS members absent from its recorded CSS delivery. Frozen canonical33 and unchanged seed bind the same input semantics.",
+      "delivered_css": [
+        {
+          "path": "assets/css/theme.min.css",
+          "sha256": "cdadadb58aee9a9fa7bbbd38d36f0c38020f254c918c1975123e2f6b02192ab5"
+        },
+        {
+          "path": "assets/css/controls.min.css",
+          "sha256": "0aef4a7333cd9f3c7d6dcd30d032ce41870439cf052c1a7a8741f0c72203a4ae"
+        },
+        {
+          "path": "assets/css/global-shell.min.css",
+          "sha256": "e397eecebe1c93b16b6f308d39ea77e159d1d2e83ab2b5d330a686d19860698b"
+        },
+        {
+          "path": "assets/css/scene-handoff.min.css",
+          "sha256": "4fe7b5b9f304a46d289afd7e1483e0535e7a2796c715af68f652560648503255"
+        },
+        {
+          "path": "assets/css/search-preview.min.css",
+          "sha256": "b17834580431f049d2ec7a312d39d594d2ef5a5d068cc7b2c1a042c3393dbcac"
+        },
+        {
+          "path": "assets/css/premium-commerce.min.css",
+          "sha256": "78ad9b620f19eb76147ffcb9a7b4546fabdbe67f4bbe2f4305bb9feb0e395b15"
+        },
+        {
+          "path": "assets/css/quick-view-commerce.min.css",
+          "sha256": "23e4ef6feec0295ba02ac55742feddfb285604fbf389aebce6e8ae649d53d8db"
+        },
+        {
+          "path": "assets/css/cookie-consent.min.css",
+          "sha256": "9d239d0307e4cf850390bce1baa1611ca0610ce5ffb101fd94d58c7df1e8f8c9"
+        }
+      ]
+    },
+    {
+      "case": "collection-signature-390-no-preference",
+      "original_run": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261019/populated-native-media/run-1792459392724930000",
+      "original_source": "773e2cffd70338d6fe4509d43d40186401d53eff",
+      "original_zip": "9a828dd18585bc3dbb47373e60526142279a75cb99a4ba95773bed8bc98f9833",
+      "basis": "Not freshly executed on successor. All799 unchanged members include PHP/JS/data/image families and every CSS delivered to this context; two changed PDP CSS members absent from its recorded CSS delivery. Frozen canonical33 and unchanged seed bind the same input semantics.",
+      "delivered_css": [
+        {
+          "path": "assets/css/theme.min.css",
+          "sha256": "cdadadb58aee9a9fa7bbbd38d36f0c38020f254c918c1975123e2f6b02192ab5"
+        },
+        {
+          "path": "assets/css/controls.min.css",
+          "sha256": "0aef4a7333cd9f3c7d6dcd30d032ce41870439cf052c1a7a8741f0c72203a4ae"
+        },
+        {
+          "path": "assets/css/global-shell.min.css",
+          "sha256": "e397eecebe1c93b16b6f308d39ea77e159d1d2e83ab2b5d330a686d19860698b"
+        },
+        {
+          "path": "assets/css/scene-handoff.min.css",
+          "sha256": "4fe7b5b9f304a46d289afd7e1483e0535e7a2796c715af68f652560648503255"
+        },
+        {
+          "path": "assets/css/search-preview.min.css",
+          "sha256": "b17834580431f049d2ec7a312d39d594d2ef5a5d068cc7b2c1a042c3393dbcac"
+        },
+        {
+          "path": "assets/css/premium-commerce.min.css",
+          "sha256": "78ad9b620f19eb76147ffcb9a7b4546fabdbe67f4bbe2f4305bb9feb0e395b15"
+        },
+        {
+          "path": "assets/css/quick-view-commerce.min.css",
+          "sha256": "23e4ef6feec0295ba02ac55742feddfb285604fbf389aebce6e8ae649d53d8db"
+        },
+        {
+          "path": "assets/css/cookie-consent.min.css",
+          "sha256": "9d239d0307e4cf850390bce1baa1611ca0610ce5ffb101fd94d58c7df1e8f8c9"
+        }
+      ]
+    },
+    {
+      "case": "video-fallback-signature-1440-no-preference",
+      "original_run": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261019/populated-native-media/run-1792459392724930000",
+      "original_source": "773e2cffd70338d6fe4509d43d40186401d53eff",
+      "original_zip": "9a828dd18585bc3dbb47373e60526142279a75cb99a4ba95773bed8bc98f9833",
+      "basis": "Not freshly executed on successor. All799 unchanged members include PHP/JS/data/image families and every CSS delivered to this context; two changed PDP CSS members absent from its recorded CSS delivery. Frozen canonical33 and unchanged seed bind the same input semantics.",
+      "delivered_css": [
+        {
+          "path": "assets/css/theme.min.css",
+          "sha256": "cdadadb58aee9a9fa7bbbd38d36f0c38020f254c918c1975123e2f6b02192ab5"
+        },
+        {
+          "path": "assets/css/controls.min.css",
+          "sha256": "0aef4a7333cd9f3c7d6dcd30d032ce41870439cf052c1a7a8741f0c72203a4ae"
+        },
+        {
+          "path": "assets/css/global-shell.min.css",
+          "sha256": "e397eecebe1c93b16b6f308d39ea77e159d1d2e83ab2b5d330a686d19860698b"
+        },
+        {
+          "path": "assets/css/scene-handoff.min.css",
+          "sha256": "4fe7b5b9f304a46d289afd7e1483e0535e7a2796c715af68f652560648503255"
+        },
+        {
+          "path": "assets/css/search-preview.min.css",
+          "sha256": "b17834580431f049d2ec7a312d39d594d2ef5a5d068cc7b2c1a042c3393dbcac"
+        },
+        {
+          "path": "assets/css/premium-commerce.min.css",
+          "sha256": "78ad9b620f19eb76147ffcb9a7b4546fabdbe67f4bbe2f4305bb9feb0e395b15"
+        },
+        {
+          "path": "assets/css/quick-view-commerce.min.css",
+          "sha256": "23e4ef6feec0295ba02ac55742feddfb285604fbf389aebce6e8ae649d53d8db"
+        },
+        {
+          "path": "assets/css/cookie-consent.min.css",
+          "sha256": "9d239d0307e4cf850390bce1baa1611ca0610ce5ffb101fd94d58c7df1e8f8c9"
+        }
+      ]
+    },
+    {
+      "case": "video-fallback-signature-390-no-preference",
+      "original_run": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261019/populated-native-media/run-1792459392724930000",
+      "original_source": "773e2cffd70338d6fe4509d43d40186401d53eff",
+      "original_zip": "9a828dd18585bc3dbb47373e60526142279a75cb99a4ba95773bed8bc98f9833",
+      "basis": "Not freshly executed on successor. All799 unchanged members include PHP/JS/data/image families and every CSS delivered to this context; two changed PDP CSS members absent from its recorded CSS delivery. Frozen canonical33 and unchanged seed bind the same input semantics.",
+      "delivered_css": [
+        {
+          "path": "assets/css/theme.min.css",
+          "sha256": "cdadadb58aee9a9fa7bbbd38d36f0c38020f254c918c1975123e2f6b02192ab5"
+        },
+        {
+          "path": "assets/css/controls.min.css",
+          "sha256": "0aef4a7333cd9f3c7d6dcd30d032ce41870439cf052c1a7a8741f0c72203a4ae"
+        },
+        {
+          "path": "assets/css/global-shell.min.css",
+          "sha256": "e397eecebe1c93b16b6f308d39ea77e159d1d2e83ab2b5d330a686d19860698b"
+        },
+        {
+          "path": "assets/css/scene-handoff.min.css",
+          "sha256": "4fe7b5b9f304a46d289afd7e1483e0535e7a2796c715af68f652560648503255"
+        },
+        {
+          "path": "assets/css/search-preview.min.css",
+          "sha256": "b17834580431f049d2ec7a312d39d594d2ef5a5d068cc7b2c1a042c3393dbcac"
+        },
+        {
+          "path": "assets/css/premium-commerce.min.css",
+          "sha256": "78ad9b620f19eb76147ffcb9a7b4546fabdbe67f4bbe2f4305bb9feb0e395b15"
+        },
+        {
+          "path": "assets/css/quick-view-commerce.min.css",
+          "sha256": "23e4ef6feec0295ba02ac55742feddfb285604fbf389aebce6e8ae649d53d8db"
+        },
+        {
+          "path": "assets/css/cookie-consent.min.css",
+          "sha256": "9d239d0307e4cf850390bce1baa1611ca0610ce5ffb101fd94d58c7df1e8f8c9"
+        }
+      ]
+    },
+    {
+      "case": "taxonomy-signature-1440-reduce",
+      "original_run": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261019/populated-native-media/run-1792459392724930000",
+      "original_source": "773e2cffd70338d6fe4509d43d40186401d53eff",
+      "original_zip": "9a828dd18585bc3dbb47373e60526142279a75cb99a4ba95773bed8bc98f9833",
+      "basis": "Not freshly executed on successor. All799 unchanged members include PHP/JS/data/image families and every CSS delivered to this context; two changed PDP CSS members absent from its recorded CSS delivery. Frozen canonical33 and unchanged seed bind the same input semantics.",
+      "delivered_css": [
+        {
+          "path": "assets/css/archive-theme.min.css",
+          "sha256": "ec28606ccd4c448c69997e9ac1ca91aea2b9681e30c0a0100e2ebe56b1f5953a"
+        },
+        {
+          "path": "assets/css/global-shell.min.css",
+          "sha256": "e397eecebe1c93b16b6f308d39ea77e159d1d2e83ab2b5d330a686d19860698b"
+        },
+        {
+          "path": "assets/css/search-preview.min.css",
+          "sha256": "b17834580431f049d2ec7a312d39d594d2ef5a5d068cc7b2c1a042c3393dbcac"
+        },
+        {
+          "path": "assets/css/premium-commerce.min.css",
+          "sha256": "78ad9b620f19eb76147ffcb9a7b4546fabdbe67f4bbe2f4305bb9feb0e395b15"
+        },
+        {
+          "path": "assets/css/quick-view-commerce.min.css",
+          "sha256": "23e4ef6feec0295ba02ac55742feddfb285604fbf389aebce6e8ae649d53d8db"
+        },
+        {
+          "path": "assets/css/cookie-consent.min.css",
+          "sha256": "9d239d0307e4cf850390bce1baa1611ca0610ce5ffb101fd94d58c7df1e8f8c9"
+        }
+      ]
+    },
+    {
+      "case": "taxonomy-signature-390-reduce",
+      "original_run": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261019/populated-native-media/run-1792459392724930000",
+      "original_source": "773e2cffd70338d6fe4509d43d40186401d53eff",
+      "original_zip": "9a828dd18585bc3dbb47373e60526142279a75cb99a4ba95773bed8bc98f9833",
+      "basis": "Not freshly executed on successor. All799 unchanged members include PHP/JS/data/image families and every CSS delivered to this context; two changed PDP CSS members absent from its recorded CSS delivery. Frozen canonical33 and unchanged seed bind the same input semantics.",
+      "delivered_css": [
+        {
+          "path": "assets/css/archive-theme.min.css",
+          "sha256": "ec28606ccd4c448c69997e9ac1ca91aea2b9681e30c0a0100e2ebe56b1f5953a"
+        },
+        {
+          "path": "assets/css/global-shell.min.css",
+          "sha256": "e397eecebe1c93b16b6f308d39ea77e159d1d2e83ab2b5d330a686d19860698b"
+        },
+        {
+          "path": "assets/css/search-preview.min.css",
+          "sha256": "b17834580431f049d2ec7a312d39d594d2ef5a5d068cc7b2c1a042c3393dbcac"
+        },
+        {
+          "path": "assets/css/premium-commerce.min.css",
+          "sha256": "78ad9b620f19eb76147ffcb9a7b4546fabdbe67f4bbe2f4305bb9feb0e395b15"
+        },
+        {
+          "path": "assets/css/quick-view-commerce.min.css",
+          "sha256": "23e4ef6feec0295ba02ac55742feddfb285604fbf389aebce6e8ae649d53d8db"
+        },
+        {
+          "path": "assets/css/cookie-consent.min.css",
+          "sha256": "9d239d0307e4cf850390bce1baa1611ca0610ce5ffb101fd94d58c7df1e8f8c9"
+        }
+      ]
+    },
+    {
+      "case": "collection-black-rose-1440-reduce",
+      "original_run": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261019/populated-native-media/run-1792459392724930000",
+      "original_source": "773e2cffd70338d6fe4509d43d40186401d53eff",
+      "original_zip": "9a828dd18585bc3dbb47373e60526142279a75cb99a4ba95773bed8bc98f9833",
+      "basis": "Not freshly executed on successor. All799 unchanged members include PHP/JS/data/image families and every CSS delivered to this context; two changed PDP CSS members absent from its recorded CSS delivery. Frozen canonical33 and unchanged seed bind the same input semantics.",
+      "delivered_css": [
+        {
+          "path": "assets/css/theme.min.css",
+          "sha256": "cdadadb58aee9a9fa7bbbd38d36f0c38020f254c918c1975123e2f6b02192ab5"
+        },
+        {
+          "path": "assets/css/controls.min.css",
+          "sha256": "0aef4a7333cd9f3c7d6dcd30d032ce41870439cf052c1a7a8741f0c72203a4ae"
+        },
+        {
+          "path": "assets/css/global-shell.min.css",
+          "sha256": "e397eecebe1c93b16b6f308d39ea77e159d1d2e83ab2b5d330a686d19860698b"
+        },
+        {
+          "path": "assets/css/scene-handoff.min.css",
+          "sha256": "4fe7b5b9f304a46d289afd7e1483e0535e7a2796c715af68f652560648503255"
+        },
+        {
+          "path": "assets/css/search-preview.min.css",
+          "sha256": "b17834580431f049d2ec7a312d39d594d2ef5a5d068cc7b2c1a042c3393dbcac"
+        },
+        {
+          "path": "assets/css/premium-commerce.min.css",
+          "sha256": "78ad9b620f19eb76147ffcb9a7b4546fabdbe67f4bbe2f4305bb9feb0e395b15"
+        },
+        {
+          "path": "assets/css/quick-view-commerce.min.css",
+          "sha256": "23e4ef6feec0295ba02ac55742feddfb285604fbf389aebce6e8ae649d53d8db"
+        },
+        {
+          "path": "assets/css/cookie-consent.min.css",
+          "sha256": "9d239d0307e4cf850390bce1baa1611ca0610ce5ffb101fd94d58c7df1e8f8c9"
+        }
+      ]
+    },
+    {
+      "case": "collection-black-rose-1440-no-preference",
+      "original_run": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261019/populated-native-media/run-1792459392724930000",
+      "original_source": "773e2cffd70338d6fe4509d43d40186401d53eff",
+      "original_zip": "9a828dd18585bc3dbb47373e60526142279a75cb99a4ba95773bed8bc98f9833",
+      "basis": "Not freshly executed on successor. All799 unchanged members include PHP/JS/data/image families and every CSS delivered to this context; two changed PDP CSS members absent from its recorded CSS delivery. Frozen canonical33 and unchanged seed bind the same input semantics.",
+      "delivered_css": [
+        {
+          "path": "assets/css/theme.min.css",
+          "sha256": "cdadadb58aee9a9fa7bbbd38d36f0c38020f254c918c1975123e2f6b02192ab5"
+        },
+        {
+          "path": "assets/css/controls.min.css",
+          "sha256": "0aef4a7333cd9f3c7d6dcd30d032ce41870439cf052c1a7a8741f0c72203a4ae"
+        },
+        {
+          "path": "assets/css/global-shell.min.css",
+          "sha256": "e397eecebe1c93b16b6f308d39ea77e159d1d2e83ab2b5d330a686d19860698b"
+        },
+        {
+          "path": "assets/css/scene-handoff.min.css",
+          "sha256": "4fe7b5b9f304a46d289afd7e1483e0535e7a2796c715af68f652560648503255"
+        },
+        {
+          "path": "assets/css/search-preview.min.css",
+          "sha256": "b17834580431f049d2ec7a312d39d594d2ef5a5d068cc7b2c1a042c3393dbcac"
+        },
+        {
+          "path": "assets/css/premium-commerce.min.css",
+          "sha256": "78ad9b620f19eb76147ffcb9a7b4546fabdbe67f4bbe2f4305bb9feb0e395b15"
+        },
+        {
+          "path": "assets/css/quick-view-commerce.min.css",
+          "sha256": "23e4ef6feec0295ba02ac55742feddfb285604fbf389aebce6e8ae649d53d8db"
+        },
+        {
+          "path": "assets/css/cookie-consent.min.css",
+          "sha256": "9d239d0307e4cf850390bce1baa1611ca0610ce5ffb101fd94d58c7df1e8f8c9"
+        }
+      ]
+    },
+    {
+      "case": "collection-black-rose-390-reduce",
+      "original_run": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261019/populated-native-media/run-1792459392724930000",
+      "original_source": "773e2cffd70338d6fe4509d43d40186401d53eff",
+      "original_zip": "9a828dd18585bc3dbb47373e60526142279a75cb99a4ba95773bed8bc98f9833",
+      "basis": "Not freshly executed on successor. All799 unchanged members include PHP/JS/data/image families and every CSS delivered to this context; two changed PDP CSS members absent from its recorded CSS delivery. Frozen canonical33 and unchanged seed bind the same input semantics.",
+      "delivered_css": [
+        {
+          "path": "assets/css/theme.min.css",
+          "sha256": "cdadadb58aee9a9fa7bbbd38d36f0c38020f254c918c1975123e2f6b02192ab5"
+        },
+        {
+          "path": "assets/css/controls.min.css",
+          "sha256": "0aef4a7333cd9f3c7d6dcd30d032ce41870439cf052c1a7a8741f0c72203a4ae"
+        },
+        {
+          "path": "assets/css/global-shell.min.css",
+          "sha256": "e397eecebe1c93b16b6f308d39ea77e159d1d2e83ab2b5d330a686d19860698b"
+        },
+        {
+          "path": "assets/css/scene-handoff.min.css",
+          "sha256": "4fe7b5b9f304a46d289afd7e1483e0535e7a2796c715af68f652560648503255"
+        },
+        {
+          "path": "assets/css/search-preview.min.css",
+          "sha256": "b17834580431f049d2ec7a312d39d594d2ef5a5d068cc7b2c1a042c3393dbcac"
+        },
+        {
+          "path": "assets/css/premium-commerce.min.css",
+          "sha256": "78ad9b620f19eb76147ffcb9a7b4546fabdbe67f4bbe2f4305bb9feb0e395b15"
+        },
+        {
+          "path": "assets/css/quick-view-commerce.min.css",
+          "sha256": "23e4ef6feec0295ba02ac55742feddfb285604fbf389aebce6e8ae649d53d8db"
+        },
+        {
+          "path": "assets/css/cookie-consent.min.css",
+          "sha256": "9d239d0307e4cf850390bce1baa1611ca0610ce5ffb101fd94d58c7df1e8f8c9"
+        }
+      ]
+    },
+    {
+      "case": "collection-black-rose-390-no-preference",
+      "original_run": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261019/populated-native-media/run-1792459392724930000",
+      "original_source": "773e2cffd70338d6fe4509d43d40186401d53eff",
+      "original_zip": "9a828dd18585bc3dbb47373e60526142279a75cb99a4ba95773bed8bc98f9833",
+      "basis": "Not freshly executed on successor. All799 unchanged members include PHP/JS/data/image families and every CSS delivered to this context; two changed PDP CSS members absent from its recorded CSS delivery. Frozen canonical33 and unchanged seed bind the same input semantics.",
+      "delivered_css": [
+        {
+          "path": "assets/css/theme.min.css",
+          "sha256": "cdadadb58aee9a9fa7bbbd38d36f0c38020f254c918c1975123e2f6b02192ab5"
+        },
+        {
+          "path": "assets/css/controls.min.css",
+          "sha256": "0aef4a7333cd9f3c7d6dcd30d032ce41870439cf052c1a7a8741f0c72203a4ae"
+        },
+        {
+          "path": "assets/css/global-shell.min.css",
+          "sha256": "e397eecebe1c93b16b6f308d39ea77e159d1d2e83ab2b5d330a686d19860698b"
+        },
+        {
+          "path": "assets/css/scene-handoff.min.css",
+          "sha256": "4fe7b5b9f304a46d289afd7e1483e0535e7a2796c715af68f652560648503255"
+        },
+        {
+          "path": "assets/css/search-preview.min.css",
+          "sha256": "b17834580431f049d2ec7a312d39d594d2ef5a5d068cc7b2c1a042c3393dbcac"
+        },
+        {
+          "path": "assets/css/premium-commerce.min.css",
+          "sha256": "78ad9b620f19eb76147ffcb9a7b4546fabdbe67f4bbe2f4305bb9feb0e395b15"
+        },
+        {
+          "path": "assets/css/quick-view-commerce.min.css",
+          "sha256": "23e4ef6feec0295ba02ac55742feddfb285604fbf389aebce6e8ae649d53d8db"
+        },
+        {
+          "path": "assets/css/cookie-consent.min.css",
+          "sha256": "9d239d0307e4cf850390bce1baa1611ca0610ce5ffb101fd94d58c7df1e8f8c9"
+        }
+      ]
+    },
+    {
+      "case": "video-fallback-black-rose-1440-no-preference",
+      "original_run": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261019/populated-native-media/run-1792459392724930000",
+      "original_source": "773e2cffd70338d6fe4509d43d40186401d53eff",
+      "original_zip": "9a828dd18585bc3dbb47373e60526142279a75cb99a4ba95773bed8bc98f9833",
+      "basis": "Not freshly executed on successor. All799 unchanged members include PHP/JS/data/image families and every CSS delivered to this context; two changed PDP CSS members absent from its recorded CSS delivery. Frozen canonical33 and unchanged seed bind the same input semantics.",
+      "delivered_css": [
+        {
+          "path": "assets/css/theme.min.css",
+          "sha256": "cdadadb58aee9a9fa7bbbd38d36f0c38020f254c918c1975123e2f6b02192ab5"
+        },
+        {
+          "path": "assets/css/controls.min.css",
+          "sha256": "0aef4a7333cd9f3c7d6dcd30d032ce41870439cf052c1a7a8741f0c72203a4ae"
+        },
+        {
+          "path": "assets/css/global-shell.min.css",
+          "sha256": "e397eecebe1c93b16b6f308d39ea77e159d1d2e83ab2b5d330a686d19860698b"
+        },
+        {
+          "path": "assets/css/scene-handoff.min.css",
+          "sha256": "4fe7b5b9f304a46d289afd7e1483e0535e7a2796c715af68f652560648503255"
+        },
+        {
+          "path": "assets/css/search-preview.min.css",
+          "sha256": "b17834580431f049d2ec7a312d39d594d2ef5a5d068cc7b2c1a042c3393dbcac"
+        },
+        {
+          "path": "assets/css/premium-commerce.min.css",
+          "sha256": "78ad9b620f19eb76147ffcb9a7b4546fabdbe67f4bbe2f4305bb9feb0e395b15"
+        },
+        {
+          "path": "assets/css/quick-view-commerce.min.css",
+          "sha256": "23e4ef6feec0295ba02ac55742feddfb285604fbf389aebce6e8ae649d53d8db"
+        },
+        {
+          "path": "assets/css/cookie-consent.min.css",
+          "sha256": "9d239d0307e4cf850390bce1baa1611ca0610ce5ffb101fd94d58c7df1e8f8c9"
+        }
+      ]
+    },
+    {
+      "case": "video-fallback-black-rose-390-no-preference",
+      "original_run": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261019/populated-native-media/run-1792459392724930000",
+      "original_source": "773e2cffd70338d6fe4509d43d40186401d53eff",
+      "original_zip": "9a828dd18585bc3dbb47373e60526142279a75cb99a4ba95773bed8bc98f9833",
+      "basis": "Not freshly executed on successor. All799 unchanged members include PHP/JS/data/image families and every CSS delivered to this context; two changed PDP CSS members absent from its recorded CSS delivery. Frozen canonical33 and unchanged seed bind the same input semantics.",
+      "delivered_css": [
+        {
+          "path": "assets/css/theme.min.css",
+          "sha256": "cdadadb58aee9a9fa7bbbd38d36f0c38020f254c918c1975123e2f6b02192ab5"
+        },
+        {
+          "path": "assets/css/controls.min.css",
+          "sha256": "0aef4a7333cd9f3c7d6dcd30d032ce41870439cf052c1a7a8741f0c72203a4ae"
+        },
+        {
+          "path": "assets/css/global-shell.min.css",
+          "sha256": "e397eecebe1c93b16b6f308d39ea77e159d1d2e83ab2b5d330a686d19860698b"
+        },
+        {
+          "path": "assets/css/scene-handoff.min.css",
+          "sha256": "4fe7b5b9f304a46d289afd7e1483e0535e7a2796c715af68f652560648503255"
+        },
+        {
+          "path": "assets/css/search-preview.min.css",
+          "sha256": "b17834580431f049d2ec7a312d39d594d2ef5a5d068cc7b2c1a042c3393dbcac"
+        },
+        {
+          "path": "assets/css/premium-commerce.min.css",
+          "sha256": "78ad9b620f19eb76147ffcb9a7b4546fabdbe67f4bbe2f4305bb9feb0e395b15"
+        },
+        {
+          "path": "assets/css/quick-view-commerce.min.css",
+          "sha256": "23e4ef6feec0295ba02ac55742feddfb285604fbf389aebce6e8ae649d53d8db"
+        },
+        {
+          "path": "assets/css/cookie-consent.min.css",
+          "sha256": "9d239d0307e4cf850390bce1baa1611ca0610ce5ffb101fd94d58c7df1e8f8c9"
+        }
+      ]
+    },
+    {
+      "case": "taxonomy-black-rose-1440-reduce",
+      "original_run": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261019/populated-native-media/run-1792459392724930000",
+      "original_source": "773e2cffd70338d6fe4509d43d40186401d53eff",
+      "original_zip": "9a828dd18585bc3dbb47373e60526142279a75cb99a4ba95773bed8bc98f9833",
+      "basis": "Not freshly executed on successor. All799 unchanged members include PHP/JS/data/image families and every CSS delivered to this context; two changed PDP CSS members absent from its recorded CSS delivery. Frozen canonical33 and unchanged seed bind the same input semantics.",
+      "delivered_css": [
+        {
+          "path": "assets/css/archive-theme.min.css",
+          "sha256": "ec28606ccd4c448c69997e9ac1ca91aea2b9681e30c0a0100e2ebe56b1f5953a"
+        },
+        {
+          "path": "assets/css/global-shell.min.css",
+          "sha256": "e397eecebe1c93b16b6f308d39ea77e159d1d2e83ab2b5d330a686d19860698b"
+        },
+        {
+          "path": "assets/css/search-preview.min.css",
+          "sha256": "b17834580431f049d2ec7a312d39d594d2ef5a5d068cc7b2c1a042c3393dbcac"
+        },
+        {
+          "path": "assets/css/premium-commerce.min.css",
+          "sha256": "78ad9b620f19eb76147ffcb9a7b4546fabdbe67f4bbe2f4305bb9feb0e395b15"
+        },
+        {
+          "path": "assets/css/quick-view-commerce.min.css",
+          "sha256": "23e4ef6feec0295ba02ac55742feddfb285604fbf389aebce6e8ae649d53d8db"
+        },
+        {
+          "path": "assets/css/cookie-consent.min.css",
+          "sha256": "9d239d0307e4cf850390bce1baa1611ca0610ce5ffb101fd94d58c7df1e8f8c9"
+        }
+      ]
+    },
+    {
+      "case": "taxonomy-black-rose-390-reduce",
+      "original_run": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261019/populated-native-media/run-1792459392724930000",
+      "original_source": "773e2cffd70338d6fe4509d43d40186401d53eff",
+      "original_zip": "9a828dd18585bc3dbb47373e60526142279a75cb99a4ba95773bed8bc98f9833",
+      "basis": "Not freshly executed on successor. All799 unchanged members include PHP/JS/data/image families and every CSS delivered to this context; two changed PDP CSS members absent from its recorded CSS delivery. Frozen canonical33 and unchanged seed bind the same input semantics.",
+      "delivered_css": [
+        {
+          "path": "assets/css/archive-theme.min.css",
+          "sha256": "ec28606ccd4c448c69997e9ac1ca91aea2b9681e30c0a0100e2ebe56b1f5953a"
+        },
+        {
+          "path": "assets/css/global-shell.min.css",
+          "sha256": "e397eecebe1c93b16b6f308d39ea77e159d1d2e83ab2b5d330a686d19860698b"
+        },
+        {
+          "path": "assets/css/search-preview.min.css",
+          "sha256": "b17834580431f049d2ec7a312d39d594d2ef5a5d068cc7b2c1a042c3393dbcac"
+        },
+        {
+          "path": "assets/css/premium-commerce.min.css",
+          "sha256": "78ad9b620f19eb76147ffcb9a7b4546fabdbe67f4bbe2f4305bb9feb0e395b15"
+        },
+        {
+          "path": "assets/css/quick-view-commerce.min.css",
+          "sha256": "23e4ef6feec0295ba02ac55742feddfb285604fbf389aebce6e8ae649d53d8db"
+        },
+        {
+          "path": "assets/css/cookie-consent.min.css",
+          "sha256": "9d239d0307e4cf850390bce1baa1611ca0610ce5ffb101fd94d58c7df1e8f8c9"
+        }
+      ]
+    },
+    {
+      "case": "collection-love-hurts-1440-reduce",
+      "original_run": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261019/populated-native-media/run-1792459392724930000",
+      "original_source": "773e2cffd70338d6fe4509d43d40186401d53eff",
+      "original_zip": "9a828dd18585bc3dbb47373e60526142279a75cb99a4ba95773bed8bc98f9833",
+      "basis": "Not freshly executed on successor. All799 unchanged members include PHP/JS/data/image families and every CSS delivered to this context; two changed PDP CSS members absent from its recorded CSS delivery. Frozen canonical33 and unchanged seed bind the same input semantics.",
+      "delivered_css": [
+        {
+          "path": "assets/css/theme.min.css",
+          "sha256": "cdadadb58aee9a9fa7bbbd38d36f0c38020f254c918c1975123e2f6b02192ab5"
+        },
+        {
+          "path": "assets/css/controls.min.css",
+          "sha256": "0aef4a7333cd9f3c7d6dcd30d032ce41870439cf052c1a7a8741f0c72203a4ae"
+        },
+        {
+          "path": "assets/css/global-shell.min.css",
+          "sha256": "e397eecebe1c93b16b6f308d39ea77e159d1d2e83ab2b5d330a686d19860698b"
+        },
+        {
+          "path": "assets/css/scene-handoff.min.css",
+          "sha256": "4fe7b5b9f304a46d289afd7e1483e0535e7a2796c715af68f652560648503255"
+        },
+        {
+          "path": "assets/css/search-preview.min.css",
+          "sha256": "b17834580431f049d2ec7a312d39d594d2ef5a5d068cc7b2c1a042c3393dbcac"
+        },
+        {
+          "path": "assets/css/premium-commerce.min.css",
+          "sha256": "78ad9b620f19eb76147ffcb9a7b4546fabdbe67f4bbe2f4305bb9feb0e395b15"
+        },
+        {
+          "path": "assets/css/quick-view-commerce.min.css",
+          "sha256": "23e4ef6feec0295ba02ac55742feddfb285604fbf389aebce6e8ae649d53d8db"
+        },
+        {
+          "path": "assets/css/cookie-consent.min.css",
+          "sha256": "9d239d0307e4cf850390bce1baa1611ca0610ce5ffb101fd94d58c7df1e8f8c9"
+        }
+      ]
+    },
+    {
+      "case": "collection-love-hurts-1440-no-preference",
+      "original_run": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261019/populated-native-media/run-1792459392724930000",
+      "original_source": "773e2cffd70338d6fe4509d43d40186401d53eff",
+      "original_zip": "9a828dd18585bc3dbb47373e60526142279a75cb99a4ba95773bed8bc98f9833",
+      "basis": "Not freshly executed on successor. All799 unchanged members include PHP/JS/data/image families and every CSS delivered to this context; two changed PDP CSS members absent from its recorded CSS delivery. Frozen canonical33 and unchanged seed bind the same input semantics.",
+      "delivered_css": [
+        {
+          "path": "assets/css/theme.min.css",
+          "sha256": "cdadadb58aee9a9fa7bbbd38d36f0c38020f254c918c1975123e2f6b02192ab5"
+        },
+        {
+          "path": "assets/css/controls.min.css",
+          "sha256": "0aef4a7333cd9f3c7d6dcd30d032ce41870439cf052c1a7a8741f0c72203a4ae"
+        },
+        {
+          "path": "assets/css/global-shell.min.css",
+          "sha256": "e397eecebe1c93b16b6f308d39ea77e159d1d2e83ab2b5d330a686d19860698b"
+        },
+        {
+          "path": "assets/css/scene-handoff.min.css",
+          "sha256": "4fe7b5b9f304a46d289afd7e1483e0535e7a2796c715af68f652560648503255"
+        },
+        {
+          "path": "assets/css/search-preview.min.css",
+          "sha256": "b17834580431f049d2ec7a312d39d594d2ef5a5d068cc7b2c1a042c3393dbcac"
+        },
+        {
+          "path": "assets/css/premium-commerce.min.css",
+          "sha256": "78ad9b620f19eb76147ffcb9a7b4546fabdbe67f4bbe2f4305bb9feb0e395b15"
+        },
+        {
+          "path": "assets/css/quick-view-commerce.min.css",
+          "sha256": "23e4ef6feec0295ba02ac55742feddfb285604fbf389aebce6e8ae649d53d8db"
+        },
+        {
+          "path": "assets/css/cookie-consent.min.css",
+          "sha256": "9d239d0307e4cf850390bce1baa1611ca0610ce5ffb101fd94d58c7df1e8f8c9"
+        }
+      ]
+    },
+    {
+      "case": "collection-love-hurts-390-reduce",
+      "original_run": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261019/populated-native-media/run-1792459392724930000",
+      "original_source": "773e2cffd70338d6fe4509d43d40186401d53eff",
+      "original_zip": "9a828dd18585bc3dbb47373e60526142279a75cb99a4ba95773bed8bc98f9833",
+      "basis": "Not freshly executed on successor. All799 unchanged members include PHP/JS/data/image families and every CSS delivered to this context; two changed PDP CSS members absent from its recorded CSS delivery. Frozen canonical33 and unchanged seed bind the same input semantics.",
+      "delivered_css": [
+        {
+          "path": "assets/css/theme.min.css",
+          "sha256": "cdadadb58aee9a9fa7bbbd38d36f0c38020f254c918c1975123e2f6b02192ab5"
+        },
+        {
+          "path": "assets/css/controls.min.css",
+          "sha256": "0aef4a7333cd9f3c7d6dcd30d032ce41870439cf052c1a7a8741f0c72203a4ae"
+        },
+        {
+          "path": "assets/css/global-shell.min.css",
+          "sha256": "e397eecebe1c93b16b6f308d39ea77e159d1d2e83ab2b5d330a686d19860698b"
+        },
+        {
+          "path": "assets/css/scene-handoff.min.css",
+          "sha256": "4fe7b5b9f304a46d289afd7e1483e0535e7a2796c715af68f652560648503255"
+        },
+        {
+          "path": "assets/css/search-preview.min.css",
+          "sha256": "b17834580431f049d2ec7a312d39d594d2ef5a5d068cc7b2c1a042c3393dbcac"
+        },
+        {
+          "path": "assets/css/premium-commerce.min.css",
+          "sha256": "78ad9b620f19eb76147ffcb9a7b4546fabdbe67f4bbe2f4305bb9feb0e395b15"
+        },
+        {
+          "path": "assets/css/quick-view-commerce.min.css",
+          "sha256": "23e4ef6feec0295ba02ac55742feddfb285604fbf389aebce6e8ae649d53d8db"
+        },
+        {
+          "path": "assets/css/cookie-consent.min.css",
+          "sha256": "9d239d0307e4cf850390bce1baa1611ca0610ce5ffb101fd94d58c7df1e8f8c9"
+        }
+      ]
+    },
+    {
+      "case": "collection-love-hurts-390-no-preference",
+      "original_run": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261019/populated-native-media/run-1792459392724930000",
+      "original_source": "773e2cffd70338d6fe4509d43d40186401d53eff",
+      "original_zip": "9a828dd18585bc3dbb47373e60526142279a75cb99a4ba95773bed8bc98f9833",
+      "basis": "Not freshly executed on successor. All799 unchanged members include PHP/JS/data/image families and every CSS delivered to this context; two changed PDP CSS members absent from its recorded CSS delivery. Frozen canonical33 and unchanged seed bind the same input semantics.",
+      "delivered_css": [
+        {
+          "path": "assets/css/theme.min.css",
+          "sha256": "cdadadb58aee9a9fa7bbbd38d36f0c38020f254c918c1975123e2f6b02192ab5"
+        },
+        {
+          "path": "assets/css/controls.min.css",
+          "sha256": "0aef4a7333cd9f3c7d6dcd30d032ce41870439cf052c1a7a8741f0c72203a4ae"
+        },
+        {
+          "path": "assets/css/global-shell.min.css",
+          "sha256": "e397eecebe1c93b16b6f308d39ea77e159d1d2e83ab2b5d330a686d19860698b"
+        },
+        {
+          "path": "assets/css/scene-handoff.min.css",
+          "sha256": "4fe7b5b9f304a46d289afd7e1483e0535e7a2796c715af68f652560648503255"
+        },
+        {
+          "path": "assets/css/search-preview.min.css",
+          "sha256": "b17834580431f049d2ec7a312d39d594d2ef5a5d068cc7b2c1a042c3393dbcac"
+        },
+        {
+          "path": "assets/css/premium-commerce.min.css",
+          "sha256": "78ad9b620f19eb76147ffcb9a7b4546fabdbe67f4bbe2f4305bb9feb0e395b15"
+        },
+        {
+          "path": "assets/css/quick-view-commerce.min.css",
+          "sha256": "23e4ef6feec0295ba02ac55742feddfb285604fbf389aebce6e8ae649d53d8db"
+        },
+        {
+          "path": "assets/css/cookie-consent.min.css",
+          "sha256": "9d239d0307e4cf850390bce1baa1611ca0610ce5ffb101fd94d58c7df1e8f8c9"
+        }
+      ]
+    },
+    {
+      "case": "video-fallback-love-hurts-1440-no-preference",
+      "original_run": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261019/populated-native-media/run-1792459392724930000",
+      "original_source": "773e2cffd70338d6fe4509d43d40186401d53eff",
+      "original_zip": "9a828dd18585bc3dbb47373e60526142279a75cb99a4ba95773bed8bc98f9833",
+      "basis": "Not freshly executed on successor. All799 unchanged members include PHP/JS/data/image families and every CSS delivered to this context; two changed PDP CSS members absent from its recorded CSS delivery. Frozen canonical33 and unchanged seed bind the same input semantics.",
+      "delivered_css": [
+        {
+          "path": "assets/css/theme.min.css",
+          "sha256": "cdadadb58aee9a9fa7bbbd38d36f0c38020f254c918c1975123e2f6b02192ab5"
+        },
+        {
+          "path": "assets/css/controls.min.css",
+          "sha256": "0aef4a7333cd9f3c7d6dcd30d032ce41870439cf052c1a7a8741f0c72203a4ae"
+        },
+        {
+          "path": "assets/css/global-shell.min.css",
+          "sha256": "e397eecebe1c93b16b6f308d39ea77e159d1d2e83ab2b5d330a686d19860698b"
+        },
+        {
+          "path": "assets/css/scene-handoff.min.css",
+          "sha256": "4fe7b5b9f304a46d289afd7e1483e0535e7a2796c715af68f652560648503255"
+        },
+        {
+          "path": "assets/css/search-preview.min.css",
+          "sha256": "b17834580431f049d2ec7a312d39d594d2ef5a5d068cc7b2c1a042c3393dbcac"
+        },
+        {
+          "path": "assets/css/premium-commerce.min.css",
+          "sha256": "78ad9b620f19eb76147ffcb9a7b4546fabdbe67f4bbe2f4305bb9feb0e395b15"
+        },
+        {
+          "path": "assets/css/quick-view-commerce.min.css",
+          "sha256": "23e4ef6feec0295ba02ac55742feddfb285604fbf389aebce6e8ae649d53d8db"
+        },
+        {
+          "path": "assets/css/cookie-consent.min.css",
+          "sha256": "9d239d0307e4cf850390bce1baa1611ca0610ce5ffb101fd94d58c7df1e8f8c9"
+        }
+      ]
+    },
+    {
+      "case": "video-fallback-love-hurts-390-no-preference",
+      "original_run": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261019/populated-native-media/run-1792459392724930000",
+      "original_source": "773e2cffd70338d6fe4509d43d40186401d53eff",
+      "original_zip": "9a828dd18585bc3dbb47373e60526142279a75cb99a4ba95773bed8bc98f9833",
+      "basis": "Not freshly executed on successor. All799 unchanged members include PHP/JS/data/image families and every CSS delivered to this context; two changed PDP CSS members absent from its recorded CSS delivery. Frozen canonical33 and unchanged seed bind the same input semantics.",
+      "delivered_css": [
+        {
+          "path": "assets/css/theme.min.css",
+          "sha256": "cdadadb58aee9a9fa7bbbd38d36f0c38020f254c918c1975123e2f6b02192ab5"
+        },
+        {
+          "path": "assets/css/controls.min.css",
+          "sha256": "0aef4a7333cd9f3c7d6dcd30d032ce41870439cf052c1a7a8741f0c72203a4ae"
+        },
+        {
+          "path": "assets/css/global-shell.min.css",
+          "sha256": "e397eecebe1c93b16b6f308d39ea77e159d1d2e83ab2b5d330a686d19860698b"
+        },
+        {
+          "path": "assets/css/scene-handoff.min.css",
+          "sha256": "4fe7b5b9f304a46d289afd7e1483e0535e7a2796c715af68f652560648503255"
+        },
+        {
+          "path": "assets/css/search-preview.min.css",
+          "sha256": "b17834580431f049d2ec7a312d39d594d2ef5a5d068cc7b2c1a042c3393dbcac"
+        },
+        {
+          "path": "assets/css/premium-commerce.min.css",
+          "sha256": "78ad9b620f19eb76147ffcb9a7b4546fabdbe67f4bbe2f4305bb9feb0e395b15"
+        },
+        {
+          "path": "assets/css/quick-view-commerce.min.css",
+          "sha256": "23e4ef6feec0295ba02ac55742feddfb285604fbf389aebce6e8ae649d53d8db"
+        },
+        {
+          "path": "assets/css/cookie-consent.min.css",
+          "sha256": "9d239d0307e4cf850390bce1baa1611ca0610ce5ffb101fd94d58c7df1e8f8c9"
+        }
+      ]
+    },
+    {
+      "case": "taxonomy-love-hurts-1440-reduce",
+      "original_run": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261019/populated-native-media/run-1792459392724930000",
+      "original_source": "773e2cffd70338d6fe4509d43d40186401d53eff",
+      "original_zip": "9a828dd18585bc3dbb47373e60526142279a75cb99a4ba95773bed8bc98f9833",
+      "basis": "Not freshly executed on successor. All799 unchanged members include PHP/JS/data/image families and every CSS delivered to this context; two changed PDP CSS members absent from its recorded CSS delivery. Frozen canonical33 and unchanged seed bind the same input semantics.",
+      "delivered_css": [
+        {
+          "path": "assets/css/archive-theme.min.css",
+          "sha256": "ec28606ccd4c448c69997e9ac1ca91aea2b9681e30c0a0100e2ebe56b1f5953a"
+        },
+        {
+          "path": "assets/css/global-shell.min.css",
+          "sha256": "e397eecebe1c93b16b6f308d39ea77e159d1d2e83ab2b5d330a686d19860698b"
+        },
+        {
+          "path": "assets/css/search-preview.min.css",
+          "sha256": "b17834580431f049d2ec7a312d39d594d2ef5a5d068cc7b2c1a042c3393dbcac"
+        },
+        {
+          "path": "assets/css/premium-commerce.min.css",
+          "sha256": "78ad9b620f19eb76147ffcb9a7b4546fabdbe67f4bbe2f4305bb9feb0e395b15"
+        },
+        {
+          "path": "assets/css/quick-view-commerce.min.css",
+          "sha256": "23e4ef6feec0295ba02ac55742feddfb285604fbf389aebce6e8ae649d53d8db"
+        },
+        {
+          "path": "assets/css/cookie-consent.min.css",
+          "sha256": "9d239d0307e4cf850390bce1baa1611ca0610ce5ffb101fd94d58c7df1e8f8c9"
+        }
+      ]
+    },
+    {
+      "case": "taxonomy-love-hurts-390-reduce",
+      "original_run": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261019/populated-native-media/run-1792459392724930000",
+      "original_source": "773e2cffd70338d6fe4509d43d40186401d53eff",
+      "original_zip": "9a828dd18585bc3dbb47373e60526142279a75cb99a4ba95773bed8bc98f9833",
+      "basis": "Not freshly executed on successor. All799 unchanged members include PHP/JS/data/image families and every CSS delivered to this context; two changed PDP CSS members absent from its recorded CSS delivery. Frozen canonical33 and unchanged seed bind the same input semantics.",
+      "delivered_css": [
+        {
+          "path": "assets/css/archive-theme.min.css",
+          "sha256": "ec28606ccd4c448c69997e9ac1ca91aea2b9681e30c0a0100e2ebe56b1f5953a"
+        },
+        {
+          "path": "assets/css/global-shell.min.css",
+          "sha256": "e397eecebe1c93b16b6f308d39ea77e159d1d2e83ab2b5d330a686d19860698b"
+        },
+        {
+          "path": "assets/css/search-preview.min.css",
+          "sha256": "b17834580431f049d2ec7a312d39d594d2ef5a5d068cc7b2c1a042c3393dbcac"
+        },
+        {
+          "path": "assets/css/premium-commerce.min.css",
+          "sha256": "78ad9b620f19eb76147ffcb9a7b4546fabdbe67f4bbe2f4305bb9feb0e395b15"
+        },
+        {
+          "path": "assets/css/quick-view-commerce.min.css",
+          "sha256": "23e4ef6feec0295ba02ac55742feddfb285604fbf389aebce6e8ae649d53d8db"
+        },
+        {
+          "path": "assets/css/cookie-consent.min.css",
+          "sha256": "9d239d0307e4cf850390bce1baa1611ca0610ce5ffb101fd94d58c7df1e8f8c9"
+        }
+      ]
+    },
+    {
+      "case": "collection-kids-capsule-1440-reduce",
+      "original_run": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261019/populated-native-media/run-1792459392724930000",
+      "original_source": "773e2cffd70338d6fe4509d43d40186401d53eff",
+      "original_zip": "9a828dd18585bc3dbb47373e60526142279a75cb99a4ba95773bed8bc98f9833",
+      "basis": "Not freshly executed on successor. All799 unchanged members include PHP/JS/data/image families and every CSS delivered to this context; two changed PDP CSS members absent from its recorded CSS delivery. Frozen canonical33 and unchanged seed bind the same input semantics.",
+      "delivered_css": [
+        {
+          "path": "assets/css/theme.min.css",
+          "sha256": "cdadadb58aee9a9fa7bbbd38d36f0c38020f254c918c1975123e2f6b02192ab5"
+        },
+        {
+          "path": "assets/css/controls.min.css",
+          "sha256": "0aef4a7333cd9f3c7d6dcd30d032ce41870439cf052c1a7a8741f0c72203a4ae"
+        },
+        {
+          "path": "assets/css/global-shell.min.css",
+          "sha256": "e397eecebe1c93b16b6f308d39ea77e159d1d2e83ab2b5d330a686d19860698b"
+        },
+        {
+          "path": "assets/css/search-preview.min.css",
+          "sha256": "b17834580431f049d2ec7a312d39d594d2ef5a5d068cc7b2c1a042c3393dbcac"
+        },
+        {
+          "path": "assets/css/premium-commerce.min.css",
+          "sha256": "78ad9b620f19eb76147ffcb9a7b4546fabdbe67f4bbe2f4305bb9feb0e395b15"
+        },
+        {
+          "path": "assets/css/quick-view-commerce.min.css",
+          "sha256": "23e4ef6feec0295ba02ac55742feddfb285604fbf389aebce6e8ae649d53d8db"
+        },
+        {
+          "path": "assets/css/cookie-consent.min.css",
+          "sha256": "9d239d0307e4cf850390bce1baa1611ca0610ce5ffb101fd94d58c7df1e8f8c9"
+        }
+      ]
+    },
+    {
+      "case": "collection-kids-capsule-390-reduce",
+      "original_run": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261019/populated-native-media/run-1792459392724930000",
+      "original_source": "773e2cffd70338d6fe4509d43d40186401d53eff",
+      "original_zip": "9a828dd18585bc3dbb47373e60526142279a75cb99a4ba95773bed8bc98f9833",
+      "basis": "Not freshly executed on successor. All799 unchanged members include PHP/JS/data/image families and every CSS delivered to this context; two changed PDP CSS members absent from its recorded CSS delivery. Frozen canonical33 and unchanged seed bind the same input semantics.",
+      "delivered_css": [
+        {
+          "path": "assets/css/theme.min.css",
+          "sha256": "cdadadb58aee9a9fa7bbbd38d36f0c38020f254c918c1975123e2f6b02192ab5"
+        },
+        {
+          "path": "assets/css/controls.min.css",
+          "sha256": "0aef4a7333cd9f3c7d6dcd30d032ce41870439cf052c1a7a8741f0c72203a4ae"
+        },
+        {
+          "path": "assets/css/global-shell.min.css",
+          "sha256": "e397eecebe1c93b16b6f308d39ea77e159d1d2e83ab2b5d330a686d19860698b"
+        },
+        {
+          "path": "assets/css/search-preview.min.css",
+          "sha256": "b17834580431f049d2ec7a312d39d594d2ef5a5d068cc7b2c1a042c3393dbcac"
+        },
+        {
+          "path": "assets/css/premium-commerce.min.css",
+          "sha256": "78ad9b620f19eb76147ffcb9a7b4546fabdbe67f4bbe2f4305bb9feb0e395b15"
+        },
+        {
+          "path": "assets/css/quick-view-commerce.min.css",
+          "sha256": "23e4ef6feec0295ba02ac55742feddfb285604fbf389aebce6e8ae649d53d8db"
+        },
+        {
+          "path": "assets/css/cookie-consent.min.css",
+          "sha256": "9d239d0307e4cf850390bce1baa1611ca0610ce5ffb101fd94d58c7df1e8f8c9"
+        }
+      ]
+    },
+    {
+      "case": "taxonomy-kids-capsule-1440-reduce",
+      "original_run": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261019/populated-native-media/run-1792459392724930000",
+      "original_source": "773e2cffd70338d6fe4509d43d40186401d53eff",
+      "original_zip": "9a828dd18585bc3dbb47373e60526142279a75cb99a4ba95773bed8bc98f9833",
+      "basis": "Not freshly executed on successor. All799 unchanged members include PHP/JS/data/image families and every CSS delivered to this context; two changed PDP CSS members absent from its recorded CSS delivery. Frozen canonical33 and unchanged seed bind the same input semantics.",
+      "delivered_css": [
+        {
+          "path": "assets/css/archive-theme.min.css",
+          "sha256": "ec28606ccd4c448c69997e9ac1ca91aea2b9681e30c0a0100e2ebe56b1f5953a"
+        },
+        {
+          "path": "assets/css/global-shell.min.css",
+          "sha256": "e397eecebe1c93b16b6f308d39ea77e159d1d2e83ab2b5d330a686d19860698b"
+        },
+        {
+          "path": "assets/css/search-preview.min.css",
+          "sha256": "b17834580431f049d2ec7a312d39d594d2ef5a5d068cc7b2c1a042c3393dbcac"
+        },
+        {
+          "path": "assets/css/premium-commerce.min.css",
+          "sha256": "78ad9b620f19eb76147ffcb9a7b4546fabdbe67f4bbe2f4305bb9feb0e395b15"
+        },
+        {
+          "path": "assets/css/quick-view-commerce.min.css",
+          "sha256": "23e4ef6feec0295ba02ac55742feddfb285604fbf389aebce6e8ae649d53d8db"
+        },
+        {
+          "path": "assets/css/cookie-consent.min.css",
+          "sha256": "9d239d0307e4cf850390bce1baa1611ca0610ce5ffb101fd94d58c7df1e8f8c9"
+        }
+      ]
+    },
+    {
+      "case": "taxonomy-kids-capsule-390-reduce",
+      "original_run": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261019/populated-native-media/run-1792459392724930000",
+      "original_source": "773e2cffd70338d6fe4509d43d40186401d53eff",
+      "original_zip": "9a828dd18585bc3dbb47373e60526142279a75cb99a4ba95773bed8bc98f9833",
+      "basis": "Not freshly executed on successor. All799 unchanged members include PHP/JS/data/image families and every CSS delivered to this context; two changed PDP CSS members absent from its recorded CSS delivery. Frozen canonical33 and unchanged seed bind the same input semantics.",
+      "delivered_css": [
+        {
+          "path": "assets/css/archive-theme.min.css",
+          "sha256": "ec28606ccd4c448c69997e9ac1ca91aea2b9681e30c0a0100e2ebe56b1f5953a"
+        },
+        {
+          "path": "assets/css/global-shell.min.css",
+          "sha256": "e397eecebe1c93b16b6f308d39ea77e159d1d2e83ab2b5d330a686d19860698b"
+        },
+        {
+          "path": "assets/css/search-preview.min.css",
+          "sha256": "b17834580431f049d2ec7a312d39d594d2ef5a5d068cc7b2c1a042c3393dbcac"
+        },
+        {
+          "path": "assets/css/premium-commerce.min.css",
+          "sha256": "78ad9b620f19eb76147ffcb9a7b4546fabdbe67f4bbe2f4305bb9feb0e395b15"
+        },
+        {
+          "path": "assets/css/quick-view-commerce.min.css",
+          "sha256": "23e4ef6feec0295ba02ac55742feddfb285604fbf389aebce6e8ae649d53d8db"
+        },
+        {
+          "path": "assets/css/cookie-consent.min.css",
+          "sha256": "9d239d0307e4cf850390bce1baa1611ca0610ce5ffb101fd94d58c7df1e8f8c9"
+        }
+      ]
+    },
+    {
+      "case": "kids-image-fallback-1440-reduce",
+      "original_run": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261019/populated-native-media/run-1792459792479416000",
+      "original_source": "773e2cffd70338d6fe4509d43d40186401d53eff",
+      "original_zip": "9a828dd18585bc3dbb47373e60526142279a75cb99a4ba95773bed8bc98f9833",
+      "basis": "Not freshly executed on successor. All799 unchanged members include PHP/JS/data/image families and every CSS delivered to this context; two changed PDP CSS members absent from its recorded CSS delivery. Frozen canonical33 and unchanged seed bind the same input semantics.",
+      "delivered_css": [
+        {
+          "path": "assets/css/theme.min.css",
+          "sha256": "cdadadb58aee9a9fa7bbbd38d36f0c38020f254c918c1975123e2f6b02192ab5"
+        },
+        {
+          "path": "assets/css/controls.min.css",
+          "sha256": "0aef4a7333cd9f3c7d6dcd30d032ce41870439cf052c1a7a8741f0c72203a4ae"
+        },
+        {
+          "path": "assets/css/global-shell.min.css",
+          "sha256": "e397eecebe1c93b16b6f308d39ea77e159d1d2e83ab2b5d330a686d19860698b"
+        },
+        {
+          "path": "assets/css/search-preview.min.css",
+          "sha256": "b17834580431f049d2ec7a312d39d594d2ef5a5d068cc7b2c1a042c3393dbcac"
+        },
+        {
+          "path": "assets/css/premium-commerce.min.css",
+          "sha256": "78ad9b620f19eb76147ffcb9a7b4546fabdbe67f4bbe2f4305bb9feb0e395b15"
+        },
+        {
+          "path": "assets/css/quick-view-commerce.min.css",
+          "sha256": "23e4ef6feec0295ba02ac55742feddfb285604fbf389aebce6e8ae649d53d8db"
+        },
+        {
+          "path": "assets/css/cookie-consent.min.css",
+          "sha256": "9d239d0307e4cf850390bce1baa1611ca0610ce5ffb101fd94d58c7df1e8f8c9"
+        }
+      ]
+    },
+    {
+      "case": "kids-image-fallback-390-reduce",
+      "original_run": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261019/populated-native-media/run-1792459792479416000",
+      "original_source": "773e2cffd70338d6fe4509d43d40186401d53eff",
+      "original_zip": "9a828dd18585bc3dbb47373e60526142279a75cb99a4ba95773bed8bc98f9833",
+      "basis": "Not freshly executed on successor. All799 unchanged members include PHP/JS/data/image families and every CSS delivered to this context; two changed PDP CSS members absent from its recorded CSS delivery. Frozen canonical33 and unchanged seed bind the same input semantics.",
+      "delivered_css": [
+        {
+          "path": "assets/css/theme.min.css",
+          "sha256": "cdadadb58aee9a9fa7bbbd38d36f0c38020f254c918c1975123e2f6b02192ab5"
+        },
+        {
+          "path": "assets/css/controls.min.css",
+          "sha256": "0aef4a7333cd9f3c7d6dcd30d032ce41870439cf052c1a7a8741f0c72203a4ae"
+        },
+        {
+          "path": "assets/css/global-shell.min.css",
+          "sha256": "e397eecebe1c93b16b6f308d39ea77e159d1d2e83ab2b5d330a686d19860698b"
+        },
+        {
+          "path": "assets/css/search-preview.min.css",
+          "sha256": "b17834580431f049d2ec7a312d39d594d2ef5a5d068cc7b2c1a042c3393dbcac"
+        },
+        {
+          "path": "assets/css/premium-commerce.min.css",
+          "sha256": "78ad9b620f19eb76147ffcb9a7b4546fabdbe67f4bbe2f4305bb9feb0e395b15"
+        },
+        {
+          "path": "assets/css/quick-view-commerce.min.css",
+          "sha256": "23e4ef6feec0295ba02ac55742feddfb285604fbf389aebce6e8ae649d53d8db"
+        },
+        {
+          "path": "assets/css/cookie-consent.min.css",
+          "sha256": "9d239d0307e4cf850390bce1baa1611ca0610ce5ffb101fd94d58c7df1e8f8c9"
+        }
+      ]
+    }
+  ],
+  "fresh_pdp_keys": [
+    "pdp-br-001-1440-reduce",
+    "pdp-br-001-390-reduce",
+    "pdp-br-003-1440-reduce",
+    "pdp-br-003-390-reduce",
+    "pdp-br-004-1440-reduce",
+    "pdp-br-004-390-reduce",
+    "pdp-br-006-1440-reduce",
+    "pdp-br-006-390-reduce",
+    "pdp-br-008-1440-reduce",
+    "pdp-br-008-390-reduce",
+    "pdp-br-009-1440-reduce",
+    "pdp-br-009-390-reduce",
+    "pdp-br-010-1440-reduce",
+    "pdp-br-010-390-reduce",
+    "pdp-br-011-1440-reduce",
+    "pdp-br-011-390-reduce",
+    "pdp-br-012-1440-reduce",
+    "pdp-br-012-390-reduce",
+    "pdp-br-014-1440-reduce",
+    "pdp-br-014-390-reduce",
+    "pdp-br-015-1440-reduce",
+    "pdp-br-015-390-reduce",
+    "pdp-kids-001-1440-reduce",
+    "pdp-kids-001-390-reduce",
+    "pdp-kids-002-1440-reduce",
+    "pdp-kids-002-390-reduce",
+    "pdp-lh-002-1440-reduce",
+    "pdp-lh-002-390-reduce",
+    "pdp-lh-004-1440-reduce",
+    "pdp-lh-004-390-reduce",
+    "pdp-lh-005-1440-reduce",
+    "pdp-lh-005-390-reduce",
+    "pdp-sg-001-1440-reduce",
+    "pdp-sg-001-390-reduce",
+    "pdp-sg-002-1440-reduce",
+    "pdp-sg-002-390-reduce",
+    "pdp-sg-009-1440-reduce",
+    "pdp-sg-009-390-reduce",
+    "pdp-sg-013-1440-reduce",
+    "pdp-sg-013-390-reduce",
+    "pdp-sg-015-1440-reduce",
+    "pdp-sg-015-390-reduce"
+  ],
+  "native_branch": "NATIVE_GALLERY_ONLY; styling figure not runtime qualified",
+  "geometry_samples": 378
+}

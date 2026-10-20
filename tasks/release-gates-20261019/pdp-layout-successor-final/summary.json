@@ -1,0 +1,277 @@
+{
+  "schema": "skyyrose.pdp-layout-successor-final.v1",
+  "status": "LOCAL_NATIVE_GALLERY_LAYOUT_FIXED_QUALIFICATION_LIMITS_RETAINED",
+  "runtime_source_commit": "01934090389193dfa7b444c006dd1be8482815c0",
+  "runtime_theme_tree": "339ff28abbdd445f33eac183c7354073b0376e15",
+  "package": {
+    "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261019/package-pdp-layout-successor/source-theme/dist/skyyrose-flagship-2.zip",
+    "sha256": "43514b3a3cd83d0a9efe1285494a7e49d732863377042fd9847953911d9f918b",
+    "source_commit": "01934090389193dfa7b444c006dd1be8482815c0",
+    "observed_checkout_commit": "01934090389193dfa7b444c006dd1be8482815c0"
+  },
+  "manifest": {
+    "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261019/package-pdp-layout-successor/source-theme/dist/release-manifest.json",
+    "sha256": "4ab213037f6fe1b2e22217a4eab003bcb03685fb846a332868dfe542af7723a2",
+    "bytes": 110679
+  },
+  "package_members": 801,
+  "package_delta": {
+    "status": "PASS_EXACT_801_MEMBERS_ONLY_TWO_CSS_BODIES_CHANGED",
+    "old_manifest": {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261019/package-usage-successor-r2/source-theme/dist/release-manifest.json",
+      "sha256": "014f77e38d64db3222214d62d5be488b67fbe4e4643b1247e41cd6a457684abd",
+      "bytes": 110679,
+      "mode": 420
+    },
+    "old_source": "773e2cffd70338d6fe4509d43d40186401d53eff",
+    "new_source": "01934090389193dfa7b444c006dd1be8482815c0",
+    "old_zip_sha256": "9a828dd18585bc3dbb47373e60526142279a75cb99a4ba95773bed8bc98f9833",
+    "new_zip_sha256": "43514b3a3cd83d0a9efe1285494a7e49d732863377042fd9847953911d9f918b",
+    "unchanged_members": 799,
+    "changed_members": {
+      "assets/css/product-page.css": {
+        "old": "81071fab3523fcfc283afbb6565e94928f2548692a7cde611e8b7cc8fc144bb4",
+        "new": "0b91a7a0401caadfe070811aadc4b9046c5ba0edf987d585d32cd45f3269d047"
+      },
+      "assets/css/product-page.min.css": {
+        "old": "6a4fd7f46d304fba6b0ca781071d924dfddbc67aa7bd0c06ea7347b91d84150d",
+        "new": "ea2720e4e3ece50376198565a4c5593de32112d93ab5134499d65d102735ab0b"
+      }
+    },
+    "build_id_scope": "Unchanged build-inputs/tool identity, never used as artifact identity",
+    "build_id": "845fc4bf79f37a62b9f36005041f5596dd2cc452cb8707e375c5860bc7a94571",
+    "no_added_or_dropped_members": true
+  },
+  "build_id_scope": "Unchanged build-inputs identity only; source/tree/ZIP distinguish successor",
+  "native_run": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261019/populated-native-media/run-1792461249127931000",
+  "root_results": {
+    "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261019/populated-native-media/run-1792461249127931000/results.json",
+    "sha256": "c78a51fb3dc2c8262378d0f052c1aad81d5c77619c50c74d3009f7522c68a04c",
+    "bytes": 3327051
+  },
+  "browser_results": {
+    "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261019/populated-native-media/run-1792461249127931000/browser/results.json",
+    "sha256": "cb700c00877be774497a7034313383d87dfab14002e9529f2209b4c2fee39685",
+    "bytes": 6458399
+  },
+  "capture_config": {
+    "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261019/populated-native-media/run-1792461249127931000/capture-config.json",
+    "sha256": "d1b88a4632c198bf2d9be4361b74861061664faa865ce5e463f5c4fac453918f",
+    "bytes": 123409
+  },
+  "fresh_pdp_cases": 42,
+  "new_pngs": 252,
+  "new_htmls": 42,
+  "new_geometry_samples": 378,
+  "native_branches": [
+    "NATIVE_GALLERY"
+  ],
+  "inherited_non_pdp_contexts": 42,
+  "combined_contexts": 84,
+  "combined_basis": "42 freshly executed on019340903/43514b3a plus42 explicitly reused on773e/9a828dd1. Not84 fresh successor executions.",
+  "requested_masters_observed_in_combined_evidence": 22,
+  "canonical33_browse_coverage": {
+    "canonical_fixture_records": 33,
+    "canonical_readback_records": 33,
+    "shop_expected": [
+      "br-001",
+      "br-002",
+      "br-004",
+      "br-005",
+      "br-007",
+      "kids-001",
+      "kids-002",
+      "lh-002",
+      "lh-003",
+      "lh-004",
+      "lh-006",
+      "sg-006",
+      "sg-007",
+      "sg-009",
+      "sg-011",
+      "sg-012",
+      "sg-013",
+      "sg-014"
+    ],
+    "shop_observed": [
+      "br-001",
+      "br-002",
+      "br-004",
+      "br-005",
+      "br-007",
+      "kids-001",
+      "kids-002",
+      "lh-002",
+      "lh-003",
+      "lh-004",
+      "lh-006",
+      "sg-006",
+      "sg-007",
+      "sg-009",
+      "sg-011",
+      "sg-012",
+      "sg-013",
+      "sg-014"
+    ],
+    "preorder_expected": [
+      "br-003",
+      "br-006",
+      "br-008",
+      "br-009",
+      "br-010",
+      "br-011",
+      "br-012",
+      "br-014",
+      "br-015",
+      "lh-005",
+      "sg-001",
+      "sg-002",
+      "sg-003",
+      "sg-005",
+      "sg-015"
+    ],
+    "preorder_observed": [
+      "br-003",
+      "br-006",
+      "br-008",
+      "br-009",
+      "br-010",
+      "br-011",
+      "br-012",
+      "br-014",
+      "br-015",
+      "lh-005",
+      "sg-001",
+      "sg-002",
+      "sg-003",
+      "sg-005",
+      "sg-015"
+    ],
+    "missing_shop": [],
+    "missing_preorder": [],
+    "unexpected_frontend_skus": [],
+    "all33_browse_covered": true,
+    "all_cards_other_surfaces": [
+      "br-001",
+      "br-002",
+      "br-003",
+      "br-004",
+      "br-005",
+      "br-006",
+      "br-007",
+      "br-008",
+      "br-009",
+      "br-010",
+      "br-011",
+      "br-012",
+      "br-014",
+      "br-015",
+      "kids-001",
+      "kids-002",
+      "lh-002",
+      "lh-003",
+      "lh-004",
+      "lh-005",
+      "lh-006",
+      "sg-001",
+      "sg-002",
+      "sg-003",
+      "sg-005",
+      "sg-006",
+      "sg-007",
+      "sg-009",
+      "sg-011",
+      "sg-012",
+      "sg-013",
+      "sg-014",
+      "sg-015"
+    ]
+  },
+  "canonical_option_array_scope": "All42 freshly executed PDP cases; prior assertion14-only scope remains recorded in old packet.",
+  "preservation": "PASS_INPUTS_PACKAGE_ORIGINALS_THEME_HEAD_DEPENDENCIES",
+  "cleanup": [
+    {
+      "pid": 62137,
+      "terminal": true,
+      "group_absent": true,
+      "exit": -15
+    },
+    {
+      "pid": 62124,
+      "terminal": true,
+      "group_absent": true,
+      "exit": 0
+    },
+    {
+      "owned_socket_absent": true
+    },
+    {
+      "owned_listener_absent": true
+    }
+  ],
+  "owned_browser_group_absent": true,
+  "run_final_free_bytes": 31553662976,
+  "evidence_freeze_free_bytes": 31485444096,
+  "native_fixture_scope": "WP7.1.3/Woo11.2.1/sevenplugins/PHP8.5.6/Maria13 synthetic syncOFF, canonical33 readback; no purchase/cart/payment actions in this capture",
+  "component_checks": "Four existing PDP component checks PASS. Initial gallery check refused missing fixture env; retry used exact7body pinned local WP7.1/Woo11.1 templates; separately component-only. Refusal retained.",
+  "accepted_native_size_evidence": "Prior32HPOS+32CPT syncOFF packet909dba retained; not rerun or relabelled as installed/live.",
+  "cleanup_cumulative": "8955 exact regular duplicate files deleted earlier; observed capacity delta1823293440B with shared/APFS attribution caveat; no further deletion.",
+  "pixel_review": {
+    "status": "NATIVE_GALLERY_OVERLAP_FIXED_WITHIN_EXERCISED_SCOPE",
+    "root_eyes_on_new_images": [
+      "pdp-br-001-1440-reduce-full-garment.png",
+      "pdp-br-009-1440-reduce-full-garment.png",
+      "pdp-kids-002-1440-reduce-full-garment.png",
+      "pdp-lh-005-1440-reduce-full-garment.png",
+      "pdp-sg-015-1440-reduce-full-garment.png",
+      "pdp-lh-004-1440-reduce-full-garment.png",
+      "pdp-br-001-1440-reduce-scroll202-viewport.png",
+      "pdp-br-009-1440-reduce-scroll202-viewport.png",
+      "pdp-kids-002-1440-reduce-scroll202-viewport.png",
+      "pdp-br-001-390-reduce-full-garment.png",
+      "pdp-br-001-390-reduce-size-control-viewport.png",
+      "pdp-kids-002-390-reduce-full-garment.png",
+      "pdp-kids-002-390-reduce-size-control-viewport.png",
+      "pdp-lh-005-390-reduce-full-garment.png",
+      "pdp-lh-005-390-reduce-size-control-viewport.png"
+    ],
+    "count": 15,
+    "observations": "Six desktop image-element captures show no tab text; three desktop scroll202 viewports show separated gallery/tabs; three mobile image and three control viewport captures retain native presentation/One Size and S selection. Root source crops unchanged.",
+    "native_geometry_samples": 378,
+    "fresh_cases": 42,
+    "full_gallery_after_summary_min_gap_px": 32.0,
+    "branches_observed": [
+      "NATIVE_GALLERY"
+    ],
+    "styling_figure_runtime_qualified": false,
+    "complete_creative_acceptance": false,
+    "limits": [
+      "Only native galleries were exercised; styling figure change has source/architect review but no runtime claim.",
+      "Saved-HTML diagnostic controls are not native tests; synthetic tall summary was diagnostic only.",
+      "Initial control failure preserved: lower-specificity selector lost to native Woo relative positioning.",
+      "Element filenames full-garment mean image element; source cropping/fidelity/complete garment not accepted.",
+      "Other home reserved areas and Shop Highlight item controls remain reviewable inherited observations; no complete scroll/motion/physical-device/privacy qualification.",
+      "elementsFromPoint records a sampled element stack; it is not an asserted universal occlusion PASS.",
+      "ROW_EDGE_STICKY_RELEASE on mobile is a shared instrumentation label, not mobile-sticky proof; outer media stays static and native gallery relative.",
+      "All42 newly exercised cases are the requested21 native galleries in reduced motion on a synthetic local fixture; not styling figures, all33 PDPs, physical devices or general visual acceptance.",
+      "Raw runtime status VISUAL_REVIEW_PENDING is preserved; this additive owner review closes bounded gallery containment only."
+    ],
+    "review_actor": "Integration root directly inspected15 enumerated new PNGs; existing Astra independently inspected BR001/Kids002 desktop202 and LH005 mobile control, recorded separately in coordination"
+  },
+  "remaining_gaps": [
+    "Four installed plugin bodies CommerceKit/ElementorPro/LayoutGrid/BigSky",
+    "Managed MU/cache/private effective configuration/exactPHP8.4.26/Maria11.8.9/isolatedrestore",
+    "Historical synthetic1290/1292 insertion ownership NOT_ESTABLISHED; originals untouched",
+    "Styling-figure runtime/complete creative-motion/real gateway-email/sync/networkprivacy notqualified",
+    "LH004hood collection_scene_back conditional/unobserved; collection_story literal observed in inherited context"
+  ],
+  "holds": [
+    "backup/archive acquisition",
+    "production creative/media-use grants",
+    "fresh live privacy attempt",
+    "live conversion",
+    "deployment/publication"
+  ],
+  "private_preview": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261019/pdp-layout-review-final/index.html",
+  "raw_runtime_status_preserved": "PASS_NATIVE_PREVIEW_ASSERTIONS_VISUAL_REVIEW_PENDING"
+}

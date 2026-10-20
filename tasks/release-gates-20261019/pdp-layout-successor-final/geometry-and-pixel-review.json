@@ -1,0 +1,42 @@
+{
+  "status": "NATIVE_GALLERY_OVERLAP_FIXED_WITHIN_EXERCISED_SCOPE",
+  "root_eyes_on_new_images": [
+    "pdp-br-001-1440-reduce-full-garment.png",
+    "pdp-br-009-1440-reduce-full-garment.png",
+    "pdp-kids-002-1440-reduce-full-garment.png",
+    "pdp-lh-005-1440-reduce-full-garment.png",
+    "pdp-sg-015-1440-reduce-full-garment.png",
+    "pdp-lh-004-1440-reduce-full-garment.png",
+    "pdp-br-001-1440-reduce-scroll202-viewport.png",
+    "pdp-br-009-1440-reduce-scroll202-viewport.png",
+    "pdp-kids-002-1440-reduce-scroll202-viewport.png",
+    "pdp-br-001-390-reduce-full-garment.png",
+    "pdp-br-001-390-reduce-size-control-viewport.png",
+    "pdp-kids-002-390-reduce-full-garment.png",
+    "pdp-kids-002-390-reduce-size-control-viewport.png",
+    "pdp-lh-005-390-reduce-full-garment.png",
+    "pdp-lh-005-390-reduce-size-control-viewport.png"
+  ],
+  "count": 15,
+  "observations": "Six desktop image-element captures show no tab text; three desktop scroll202 viewports show separated gallery/tabs; three mobile image and three control viewport captures retain native presentation/One Size and S selection. Root source crops unchanged.",
+  "native_geometry_samples": 378,
+  "fresh_cases": 42,
+  "full_gallery_after_summary_min_gap_px": 32.0,
+  "branches_observed": [
+    "NATIVE_GALLERY"
+  ],
+  "styling_figure_runtime_qualified": false,
+  "complete_creative_acceptance": false,
+  "limits": [
+    "Only native galleries were exercised; styling figure change has source/architect review but no runtime claim.",
+    "Saved-HTML diagnostic controls are not native tests; synthetic tall summary was diagnostic only.",
+    "Initial control failure preserved: lower-specificity selector lost to native Woo relative positioning.",
+    "Element filenames full-garment mean image element; source cropping/fidelity/complete garment not accepted.",
+    "Other home reserved areas and Shop Highlight item controls remain reviewable inherited observations; no complete scroll/motion/physical-device/privacy qualification.",
+    "elementsFromPoint records a sampled element stack; it is not an asserted universal occlusion PASS.",
+    "ROW_EDGE_STICKY_RELEASE on mobile is a shared instrumentation label, not mobile-sticky proof; outer media stays static and native gallery relative.",
+    "All42 newly exercised cases are the requested21 native galleries in reduced motion on a synthetic local fixture; not styling figures, all33 PDPs, physical devices or general visual acceptance.",
+    "Raw runtime status VISUAL_REVIEW_PENDING is preserved; this additive owner review closes bounded gallery containment only."
+  ],
+  "review_actor": "Integration root directly inspected15 enumerated new PNGs; existing Astra independently inspected BR001/Kids002 desktop202 and LH005 mobile control, recorded separately in coordination"
+}
