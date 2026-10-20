@@ -1,0 +1,41 @@
+{
+  "schema": "skyyrose.populated-media-additive-acceptance.v1",
+  "frozen_commit": "8c06df06b323b24fcbcb6c5fd9ed652a9d21ac30",
+  "manifest_sha256": "24222820ee8699ae25f7c1dd65e35ecba08c2c756ed9dd958518c4a50fb7dd3a",
+  "artifact_review": {
+    "verdict": "ACCEPT_BOUNDED_ARTIFACT_DELTA",
+    "thread_id": "01a0fc6f-5745-7342-b2a9-c2effe7bcd2b",
+    "turn_id": "01a156f8-465a-79d2-881d-e06e29c2d745",
+    "final_message_id": "msg_0dd7496c6261d35d016ad6c71c0e7087d2abc0ef7128ef0f76",
+    "direct_body_size_refs": 488,
+    "full_run_exact_entry_counts": [
+      15019,
+      15019,
+      15255,
+      15088
+    ],
+    "selected_keys": 84,
+    "cohorts": [
+      70,
+      14
+    ],
+    "pngs": 210,
+    "htmls": 84,
+    "nested_pin_checks": 761,
+    "master_event_package_same_run_http_bindings": 242,
+    "reviewer_checker_correction": "Root-vs-browser status field names differ; reviewer corrected its initial schema assumption without artifact change."
+  },
+  "architect_semantic_review": {
+    "thread_id": "01a0f769-1e1a-76e1-aa99-1c4bd2dc6149",
+    "verdict": "PASS_SCOPED_CLAIMS_WITH_OPEN_VISUAL_GAPS",
+    "scope": "70 retained plus14 continuation; original overall FAIL remains; new option assertion14 only; no creative/installed/live/release PASS"
+  },
+  "next_separate_work": "Exact scroll-state offline retained-HTML diagnosis of gallery/tab overlap; frozen773e/801/84 packet unchanged. If a genuine bounded layout defect is repaired, successor package/source and affected layout evidence are required.",
+  "holds": [
+    "archive acquisition",
+    "production media/creative grants",
+    "fresh live privacy attempt",
+    "conversion",
+    "deployment/publication"
+  ]
+}
