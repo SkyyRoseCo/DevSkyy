@@ -7304,5 +7304,23 @@
     ],
     "occurrences": 1,
     "last_seen": "2026-10-14T00:00:00+00:00"
+  },
+  {
+    "id": "bug-407",
+    "timestamp": "2026-10-20T00:00:00+00:00",
+    "error_message": "Every session ends with `M CLAUDE.md` (one-line deletion of the blank line after <!-- wolf:recurring:start -->) after the Stop hook runs scripts/wolf_recurring_sync.py; the git-check Stop hook then demands a commit",
+    "file": "scripts/wolf_recurring_sync.py",
+    "root_cause": "6fe29f0d prettier-formatted CLAUDE.md and inserted a blank line between the start marker and the '### Recurring issues' heading; render_block() emitted f'{START}\\n' straight into the heading, so its output never matched the committed file. The block is wrapped in <!-- prettier-ignore-start/end --> (6f9b41bc), so prettier 3.9.6 accepts either form and only the script fought the file",
+    "fix": "render_block() emits f'{START}\\n\\n' (no blank line before END, matching the committed file); extracted select_bugs()/sync_text(); tests/scripts/test_wolf_recurring_sync.py asserts the sync is a no-op on the committed CLAUDE.md + buglog and that the block stays inside the prettier-ignore wrapper",
+    "tags": [
+      "wolf",
+      "claude-md",
+      "prettier",
+      "stop-hook",
+      "drift"
+    ],
+    "related_bugs": [],
+    "occurrences": 1,
+    "last_seen": "2026-10-20T00:00:00+00:00"
   }
 ]

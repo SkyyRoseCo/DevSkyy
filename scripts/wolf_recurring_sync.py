@@ -46,8 +46,12 @@ def one_liner(bug: dict) -> str:
 
 
 def render_block(bugs: list[dict]) -> str:
+    # Blank line after START matches the committed, prettier-formatted CLAUDE.md
+    # (heading separated from the HTML comment). The block sits inside
+    # <!-- prettier-ignore-start/end -->, so prettier keeps it verbatim and the
+    # one-line-per-bug entries are never re-wrapped; no blank line before END.
     header = (
-        f"{START}\n"
+        f"{START}\n\n"
         "### Recurring issues (synced from `.wolf/buglog.json` — regenerate via "
         "`python scripts/wolf_recurring_sync.py`, do not hand-edit)\n"
     )
@@ -57,33 +61,43 @@ def render_block(bugs: list[dict]) -> str:
     return f"{header}{body}\n{END}"
 
 
-def main() -> int:
-    parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--include-auto", action="store_true")
-    parser.add_argument("--min-occurrences", type=int, default=2)
-    args = parser.parse_args()
+def select_bugs(
+    bugs: list[dict], min_occurrences: int = 2, include_auto: bool = False
+) -> list[dict]:
+    picked = [b for b in bugs if b.get("occurrences", 1) >= min_occurrences]
+    if not include_auto:
+        picked = [b for b in picked if "auto-detected" not in b.get("tags", [])]
+    return sorted(picked, key=lambda b: (-b.get("occurrences", 1), b["id"]))
 
-    bugs = [b for b in load_bugs() if b.get("occurrences", 1) >= args.min_occurrences]
-    if not args.include_auto:
-        bugs = [b for b in bugs if "auto-detected" not in b.get("tags", [])]
-    bugs.sort(key=lambda b: (-b.get("occurrences", 1), b["id"]))
 
-    text = CLAUDE_MD.read_text()
-    if START not in text or END not in text:
-        print(f"ERROR: markers {START} / {END} not found in {CLAUDE_MD}", file=sys.stderr)
-        return 1
-
+def sync_text(text: str, bugs: list[dict]) -> str:
     block = render_block(bugs)
     # lambda replacement: block is literal text, not a replacement template —
     # backslashes in bug messages (Windows paths, regex snippets) must not be
     # interpreted as \g<...> escapes.
-    new_text = re.sub(
+    return re.sub(
         re.escape(START) + r".*?" + re.escape(END),
         lambda _: block,
         text,
         count=1,
         flags=re.DOTALL,
     )
+
+
+def main() -> int:
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--include-auto", action="store_true")
+    parser.add_argument("--min-occurrences", type=int, default=2)
+    args = parser.parse_args()
+
+    bugs = select_bugs(load_bugs(), args.min_occurrences, args.include_auto)
+
+    text = CLAUDE_MD.read_text()
+    if START not in text or END not in text:
+        print(f"ERROR: markers {START} / {END} not found in {CLAUDE_MD}", file=sys.stderr)
+        return 1
+
+    new_text = sync_text(text, bugs)
     if new_text == text:
         print(f"CLAUDE.md up to date ({len(bugs)} recurring)")
         return 0
