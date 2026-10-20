@@ -13,6 +13,15 @@ function ss_raw_results( $sql ) {
     if ( $wpdb->last_error || ! is_array( $rows ) ) { throw new RuntimeException( 'Raw native evidence query failed.' ); }
     return $rows;
 }
+function ss_upgrade_raw_order( $id ) {
+	global $wpdb;
+	$rows = array();
+	foreach ( array( $wpdb->prefix . 'wc_orders' => 'id', $wpdb->prefix . 'wc_order_operational_data' => 'order_id', $wpdb->prefix . 'wc_order_addresses' => 'order_id', $wpdb->prefix . 'wc_orders_meta' => 'order_id', $wpdb->posts => 'ID', $wpdb->postmeta => 'post_id', $wpdb->prefix . 'woocommerce_order_items' => 'order_id' ) as $table => $column ) {
+		$rows[ $table ] = ss_raw_results( $wpdb->prepare( "SELECT * FROM {$table} WHERE {$column}=%d ORDER BY 1", $id ) );
+	}
+	$rows['itemmeta'] = ss_raw_results( $wpdb->prepare( "SELECT m.* FROM {$wpdb->prefix}woocommerce_order_itemmeta m INNER JOIN {$wpdb->prefix}woocommerce_order_items i ON i.order_item_id=m.order_item_id WHERE i.order_id=%d ORDER BY m.meta_id", $id ) );
+	return $rows;
+}
 function ss_normalize( $value ) {
 	if ( $value instanceof DateTimeInterface ) { return $value->format( 'c' ); }
 	if ( $value instanceof WC_Meta_Data ) { $value = $value->get_data(); }
@@ -62,14 +71,17 @@ if ( 'init' === $mode ) {
 	$item->add_meta_data( 'Synthetic custom history', 'preserve exactly', false ); $item->add_meta_data( '_ss_typed_history', array( 'boolean' => true, 'fractional' => 1.0, 'integer' => 1 ), true ); $order->add_item( $item ); $order->calculate_totals(); $order->save(); update_option( 'ss_legacy_id', $order->get_id() );
 	$persisted = new WC_Order( $order->get_id() );
 	$legacy_before = ss_order_data( $persisted );
+	$raw_before = ss_upgrade_raw_order( $order->get_id() );
 	$expected_fingerprint = skyyrose2_simple_size_legacy_fingerprint( $persisted );
 	if ( ! skyyrose2_simple_size_upgrade() ) { throw new RuntimeException( 'Automatic native first upgrade failed.' ); }
 	$state = skyyrose2_simple_size_history_state();
 	$legacy_after = ss_order_data( new WC_Order( $order->get_id() ) );
+	$raw_after = ss_upgrade_raw_order( $order->get_id() );
 	$observed_fingerprint = $state['legacy_orders'][ $order->get_id() ] ?? null;
-	file_put_contents( SR_SIMPLE_SIZE_FIXTURE_ROOT . '/automatic-upgrade-seed-check.json', wp_json_encode( array( 'expected_fingerprint' => $expected_fingerprint, 'observed_fingerprint' => $observed_fingerprint, 'before' => $legacy_before, 'after' => $legacy_after ), JSON_THROW_ON_ERROR | JSON_PRESERVE_ZERO_FRACTION ), LOCK_EX );
+	file_put_contents( SR_SIMPLE_SIZE_FIXTURE_ROOT . '/automatic-upgrade-seed-check.json', wp_json_encode( array( 'expected_fingerprint' => $expected_fingerprint, 'observed_fingerprint' => $observed_fingerprint, 'before' => $legacy_before, 'after' => $legacy_after, 'raw_before' => $raw_before, 'raw_after' => $raw_after ), JSON_THROW_ON_ERROR | JSON_PRESERVE_ZERO_FRACTION ), LOCK_EX );
 	if ( $observed_fingerprint !== $expected_fingerprint ) { throw new RuntimeException( 'Automatic upgrade fingerprint differs from native persisted order.' ); }
 	if ( $legacy_after !== $legacy_before ) { throw new RuntimeException( 'Automatic upgrade changed persisted native history.' ); }
+	if ( $raw_after !== $raw_before ) { throw new RuntimeException( 'Automatic upgrade changed raw stored order history.' ); }
 	$raw = get_option( 'skyyrose2_simple_size_history_v1' );
 	if ( ! skyyrose2_simple_size_upgrade() || get_option( 'skyyrose2_simple_size_history_v1' ) !== $raw ) { throw new RuntimeException( 'Upgrade is not idempotent.' ); }
 	$result = array( 'products' => $products, 'legacy' => ss_order_data( $order ), 'historical_producer' => array( 'wrapper_sha256' => hash( 'sha256', $producer_bytes ), 'function_sha256' => hash( 'sha256', substr( $producer_bytes, 6, -1 ) ), 'old_hooks_loaded' => false, 'promise' => $promise ), 'runtime' => array( 'php' => PHP_VERSION, 'wp' => get_bloginfo( 'version' ), 'woo' => WC_VERSION, 'database' => $GLOBALS['wpdb']->get_var( 'SELECT VERSION()' ), 'socket' => $GLOBALS['wpdb']->get_var( 'SELECT @@socket' ), 'plugins' => get_option( 'active_plugins' ) ), 'sizes' => skyyrose2_simple_size_projection()['products'] );
