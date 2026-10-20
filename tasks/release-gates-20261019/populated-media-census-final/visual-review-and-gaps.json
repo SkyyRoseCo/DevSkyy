@@ -1,0 +1,71 @@
+{
+  "status": "BOUNDED_PIXEL_REVIEW_WITH_OPEN_VISUAL_GAPS",
+  "reviewed_by_root_filenames": [
+    "pdp-br-001-390-reduce-full-garment.png",
+    "pdp-br-003-390-reduce-full-garment.png",
+    "pdp-br-004-390-reduce-full-garment.png",
+    "pdp-br-006-390-reduce-full-garment.png",
+    "pdp-br-008-390-reduce-full-garment.png",
+    "pdp-br-009-390-reduce-full-garment.png",
+    "pdp-br-010-390-reduce-full-garment.png",
+    "pdp-br-011-390-reduce-full-garment.png",
+    "pdp-br-012-390-reduce-full-garment.png",
+    "pdp-br-014-390-reduce-full-garment.png",
+    "pdp-br-015-390-reduce-full-garment.png",
+    "pdp-kids-001-390-reduce-full-garment.png",
+    "pdp-kids-002-390-reduce-full-garment.png",
+    "pdp-lh-002-390-reduce-full-garment.png",
+    "pdp-lh-004-390-reduce-full-garment.png",
+    "pdp-lh-005-390-reduce-full-garment.png",
+    "pdp-sg-001-390-reduce-full-garment.png",
+    "pdp-sg-002-390-reduce-full-garment.png",
+    "pdp-sg-009-390-reduce-full-garment.png",
+    "pdp-sg-013-390-reduce-full-garment.png",
+    "pdp-sg-015-390-reduce-full-garment.png",
+    "pdp-br-001-1440-reduce-full-garment.png",
+    "pdp-br-009-1440-reduce-full-garment.png",
+    "pdp-kids-002-1440-reduce-full-garment.png",
+    "pdp-br-001-390-reduce-size-control-viewport.png",
+    "pdp-br-009-390-reduce-size-control-viewport.png",
+    "pdp-kids-002-390-reduce-size-control-viewport.png",
+    "pdp-lh-005-390-reduce-size-control-viewport.png",
+    "pdp-sg-015-390-reduce-size-control-viewport.png",
+    "home-1440-reduce-full-page.png"
+  ],
+  "root_review_count": 30,
+  "all_selected_pngs_creatively_accepted": false,
+  "findings": [
+    {
+      "id": "desktop-gallery-tabs",
+      "observation": "DESCRIPTION / REVIEWS (0) and underline cross lower gallery margin/photo edge in sampled desktop BR-001, BR-009 and Kids-002 element captures. Existing Astra independently confirmed BR-001/Kids-002.",
+      "owner": "assets/css/product-page.css desktop sticky product media and after-summary grid/tabs",
+      "source_lines": [
+        15,
+        21,
+        23,
+        100,
+        104
+      ],
+      "cause_status": "SOURCE_SUPPORTED_HYPOTHESIS_NOT_COMPUTED_STYLE_CAUSAL_PROOF",
+      "hypothesis": "Sticky media shares the product grid with the after-summary; scrolling to an already-visible sticky image may leave tab content crossing its screenshot box.",
+      "disposition": "OPEN; no source/package/image edit in this fixed801 census"
+    },
+    {
+      "id": "home-reserved-sections",
+      "observation": "Long desktop home capture includes large reserved dark sections. Scroll/reveal/WebGL state and complete motion composition remain unqualified.",
+      "cause_status": "UNKNOWN"
+    },
+    {
+      "id": "shop-highlight-control",
+      "observation": "Actual Shop cards display Highlight item control/help text. Retained without cropping or restyling.",
+      "disposition": "REVIEWABLE_UI_OBSERVATION"
+    }
+  ],
+  "limits": [
+    "Full-garment filenames identify whole image-element screenshots, not whole-garment/fidelity/unobstructed acceptance.",
+    "21 mobile product image elements, 3 desktop image elements, 5 mobile selector viewport images and 1 desktop home image were inspected by root; other captures are reviewable, not asserted pixel accepted.",
+    "no-preference request with animations disabled at screenshot is not complete motion/video-quality acceptance.",
+    "Bounding-box/ancestor visibility and decoded image body are not occlusion proof.",
+    "Native product attachment relationships/legacy media were not restored."
+  ]
+}
