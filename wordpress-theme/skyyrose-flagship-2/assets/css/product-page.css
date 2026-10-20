@@ -183,3 +183,9 @@
 /* The closing world chapter crops on the collection's own focal points (inc/collection-presentation.php). */
 .sr2-product-world .sr2-chapter__scene { --sr2-focal: var(--sr2-focal-desktop, 50% 50%); }
 @media (max-width: 47.99em) { .sr2-product-world .sr2-chapter__scene { --sr2-focal: var(--sr2-focal-mobile, var(--sr2-focal-desktop, 50% 50%)); } }
+
+/* Keep the phone breadcrumb height stable while the body font swaps in.
+ * The current product owns a full row; text and navigation order stay intact. */
+@media (max-width: 480px) {
+	.sr2-product-page--editorial .sr2-product-crumb [aria-current="page"] { flex-basis: 100%; }
+}
