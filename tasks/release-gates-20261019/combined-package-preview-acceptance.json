@@ -1,0 +1,61 @@
+{
+  "schema": "skyyrose.additive-independent-acceptance.v1",
+  "recorded_at_utc": "2026-10-20T00:51:39.177463+00:00",
+  "evidence_commit": "2d00149364abc2bd4b94314b7ff4ab09623e99b1",
+  "frozen_manifest_sha256": "8792a38b2d9f4582f044c022a7764d6ebe2de25d9fb7085886eba9d9278c283a",
+  "source_commit": "773e2cffd70338d6fe4509d43d40186401d53eff",
+  "archive_sha256": "9a828dd18585bc3dbb47373e60526142279a75cb99a4ba95773bed8bc98f9833",
+  "scope": "PASS_BOUNDED_EXACT_PACKAGE_SYNTHETIC_NATIVE_PREVIEW",
+  "reviews": [
+    {
+      "source_thread": "01a0fc6f-5745-7342-b2a9-c2effe7bcd2b",
+      "verdict": "ACCEPT",
+      "kind": "Independent artifact integrity; reviewer reported actual read-only file/Git checks",
+      "reported_checks": {
+        "frozen_git_files": 7,
+        "manifest_members": 6,
+        "direct_refs": 155,
+        "exact_run_entries": 15037,
+        "classified_source_clone_pairs": 916,
+        "zip_members": 801,
+        "qa_pins": 114,
+        "command_output_pairs": 11,
+        "nested_preview_media_pins": 12
+      },
+      "limits": "Reviewer did not perform new pixel inspection; Integration visual review remains bounded."
+    },
+    {
+      "source_thread": "01a0f644-1981-7a90-ac72-8c66f8f6fd18",
+      "verdict": "PASS",
+      "kind": "Owner closing architect review plus read-only owner bindings",
+      "reported_checks": [
+        "Exactly23 existing staging receipt additions; original778 bodies unchanged",
+        "Old917 source-superset capture superseded by exact801 package capture",
+        "Prior f67 full-suite and a706 separate native storage checks reused within unchanged-runtime scope",
+        "Ownership cleanup, preservation and DOM versus independent-body distinctions",
+        "All six frozen manifest members, ZIP bytes/member count and private preview binding"
+      ],
+      "limits": "Owner inspected Kids desktop capture only; no new runtime tests."
+    }
+  ],
+  "remaining_holds": [
+    "Four installed plugin bodies; managed/private effective configuration and services; exact installed runtime/isolated restore",
+    "Historical synthetic parent1290/child1292 insertion ownership NOT_ESTABLISHED",
+    "Backup acquisition",
+    "Production creative and media-use grants",
+    "Fresh live privacy attempt",
+    "Live conversion and deployment"
+  ],
+  "coverage_limits": [
+    "Synthetic unavailable Shop variable product image and empty Kids taxonomy; populated merchandising unqualified",
+    "Mobile PDP selector DOM-only below captured viewport/cookie overlay",
+    "Mobile full portrait, unexercised roles/interactions and physical devices unqualified",
+    "No process-wide network/privacy qualification"
+  ],
+  "cleanup_deleted_files": 0,
+  "cleanup_reclaimed_bytes": 0,
+  "latest_free_bytes": 32070402048,
+  "floor_bytes": 1073741824,
+  "authentication": "NOT_APPLICABLE_LOCAL_READ_ONLY_REVIEW",
+  "frozen_packet_modified": false
+}
