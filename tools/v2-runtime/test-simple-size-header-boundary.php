@@ -4,6 +4,7 @@ define( 'ABSPATH', __DIR__ . '/' );
 $native = '/Users/theceo/.codex/worktrees/release-gates-20261019/DevSkyy/.artifacts/release-gates-20261019/gate4-populated/run-1792441452292547000/wordpress/wp-content/plugins/woocommerce/';
 define( 'WC_ABSPATH', $native );
 $pins = array(
+	'includes/class-wc-cart-session.php' => 'f704d0402be4460b63883765395165f69aae18184db4582f498137ce62f492d9',
 	'src/StoreApi/Routes/RouteInterface.php' => '39760e59879c60a51919a87107b00a34f9a322a0ae21fc5bc025de17de2770ed',
 	'src/StoreApi/Routes/V1/AbstractRoute.php' => '240bc7cf0abb3ec25b63ed5fe9c2017f16e87e58755fe9523f4fd3777a30bd28',
 	'src/StoreApi/Utilities/DraftOrderTrait.php' => '7eaf37a8566e48ac7ddc8b6e591bf15a49ff5edc3b04ce59169415dada86da81',
@@ -17,7 +18,10 @@ foreach ( $pins as $relative => $digest ) {
 }
 function add_action( ...$unused ) {}
 function add_filter( ...$unused ) {}
-function do_action( ...$unused ) {}
+function do_action( ...$args ) {
+	if ( ( $args[0] ?? '' ) === 'woocommerce_set_cart_cookies' && ! empty( $GLOBALS['ss_nested_cookie_callback'] ) ) { WC()->cart->get_cart_hash(); }
+}
+function wc_setcookie( $name, $value ) { $GLOBALS['ss_cookies'][ $name ] = $value; }
 function wp_create_nonce( $unused ) { return 'synthetic-offline'; }
 function get_current_user_id() { return 0; }
 function is_wp_error( $value ) { return $value instanceof WP_Error; }
@@ -37,9 +41,6 @@ class WC_Cart {
 		if ( self::$nested ) { self::$nested = false; $this->get_cart_hash(); }
 		return skyyrose2_simple_size_guard_api_draft( 'synthetic-hash' );
 	}
-}
-class WC_Cart_Session {
-	public static function are_updates_enabled_for_cart( $cart ) { return true; }
 }
 class WC_Order {
 	public static $reads = 0;
@@ -88,6 +89,31 @@ WC_Cart::$nested = true;
 try { $route->format(); } catch ( Automattic\WooCommerce\StoreApi\Exceptions\RouteException $error ) { $refused = true; }
 ss_expect( $refused, 'An outer header frame must not exempt a nested functional hash.' );
 
+// Execute the unchanged native private cookie method; cookie transport is illustrative.
+$cookie_session = new WC_Cart_Session( WC()->cart );
+$cookie_method = new ReflectionMethod( 'WC_Cart_Session', 'set_cart_cookies' );
+$cookie_before = WC_Order::$reads;
+$cookie_method->invoke( $cookie_session, true );
+ss_expect( ( $GLOBALS['ss_cookies']['woocommerce_cart_hash'] ?? null ) === 'synthetic-hash' && ( $GLOBALS['ss_cookies']['woocommerce_items_in_cart'] ?? null ) === '1' && WC_Order::$reads === $cookie_before, 'Native cookie output must only read the hash.' );
+$refused = false;
+try { WC()->cart->get_cart_hash(); } catch ( Automattic\WooCommerce\StoreApi\Exceptions\RouteException $error ) { $refused = true; }
+ss_expect( $refused, 'Cookie output must not latch a functional exemption.' );
+WC_Cart::$nested = true;
+$refused = false;
+try { $cookie_method->invoke( $cookie_session, true ); } catch ( Automattic\WooCommerce\StoreApi\Exceptions\RouteException $error ) { $refused = true; }
+ss_expect( $refused, 'An outer native cookie frame must not exempt a nested functional hash.' );
+$GLOBALS['ss_nested_cookie_callback'] = true;
+$refused = false;
+try { $cookie_method->invoke( $cookie_session, true ); } catch ( Automattic\WooCommerce\StoreApi\Exceptions\RouteException $error ) { $refused = true; }
+$GLOBALS['ss_nested_cookie_callback'] = false;
+ss_expect( $refused, 'An action callback beneath native cookie output must still refuse.' );
+class SS_Lookalike_Cookie_Control {
+	public function set_cart_cookies() { return WC()->cart->get_cart_hash(); }
+}
+$refused = false;
+try { ( new SS_Lookalike_Cookie_Control() )->set_cart_cookies(); } catch ( Automattic\WooCommerce\StoreApi\Exceptions\RouteException $error ) { $refused = true; }
+ss_expect( $refused, 'A lookalike cookie method must not inherit the native exemption.' );
+
 class SS_Route_Boundary_Control extends SS_Native_Header_Control {
 	public $calls = 0;
 	public $outcome;
@@ -131,4 +157,4 @@ foreach ( array( new Automattic\WooCommerce\StoreApi\Exceptions\RouteException( 
 ss_expect( 0 === $permission_calls, 'The wrapper must not execute or bypass dispatch permission checks.' );
 foreach ( $pins as $relative => $digest ) { ss_expect( hash_file( 'sha256', $native . $relative ) === $digest, 'Native source preservation failed.' ); }
 ss_expect( hash_file( 'sha256', $wp_error ) === $wp_error_sha, 'Native WP_Error source preservation failed.' );
-echo json_encode( array( 'status' => 'PASS_OFFLINE_NATIVE_HEADER_METHOD_AND_ROUTE_BOUNDARY_WITH_ILLUSTRATIVE_STUBS', 'authentication' => 'NOT_APPLICABLE_OFFLINE', 'source_pins' => $pins, 'wp_error_sha256' => $wp_error_sha, 'functional_refusals' => 4, 'override_refusal' => true, 'nested_functional_refusal' => true, 'callback_invocations' => $controller->calls, 'permission_callback_invocations' => $permission_calls, 'limits' => 'No actual REST/JSON409, native DB/order mutation, real authentication or installed-stack execution; fresh native qualification remains open.' ), JSON_THROW_ON_ERROR | JSON_PRETTY_PRINT ) . "\n";
+echo json_encode( array( 'status' => 'PASS_OFFLINE_NATIVE_OUTPUT_METHODS_AND_ROUTE_BOUNDARY_WITH_ILLUSTRATIVE_STUBS', 'authentication' => 'NOT_APPLICABLE_OFFLINE', 'source_pins' => $pins, 'wp_error_sha256' => $wp_error_sha, 'functional_refusals' => 5, 'native_cookie_output' => true, 'nested_cookie_callback_refusal' => true, 'lookalike_cookie_refusal' => true, 'override_refusal' => true, 'nested_functional_refusal' => true, 'callback_invocations' => $controller->calls, 'permission_callback_invocations' => $permission_calls, 'limits' => 'No actual REST/JSON409, native DB/order mutation, real authentication or installed-stack execution; fresh native qualification remains open.' ), JSON_THROW_ON_ERROR | JSON_PRETTY_PRINT ) . "\n";

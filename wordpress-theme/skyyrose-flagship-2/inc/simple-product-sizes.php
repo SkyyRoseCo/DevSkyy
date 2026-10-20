@@ -332,32 +332,35 @@ add_action( 'woocommerce_store_api_cart_errors', 'skyyrose2_simple_size_store_er
  * POST and cart synchronisation. Cart-errors alone runs too late on GET/PATCH.
  * Use the supplied hash so this check cannot recursively calculate a hash.
  */
-function skyyrose2_simple_size_native_header_hash() {
-	$class = 'Automattic\\WooCommerce\\StoreApi\\Routes\\V1\\AbstractCartRoute';
-	if ( ! defined( 'WC_ABSPATH' ) || ! class_exists( $class ) ) { return false; }
-	$method = new ReflectionMethod( $class, 'add_response_headers' );
-	$source = realpath( WC_ABSPATH . 'src/StoreApi/Routes/V1/AbstractCartRoute.php' );
-	if ( ! $source || $class !== $method->getDeclaringClass()->getName() || realpath( $method->getFileName() ) !== $source ) { return false; }
+function skyyrose2_simple_size_native_output_hash() {
+	if ( ! defined( 'WC_ABSPATH' ) ) { return false; }
+	$native = array(
+		'Automattic\\WooCommerce\\StoreApi\\Routes\\V1\\AbstractCartRoute' => array( 'add_response_headers', 'src/StoreApi/Routes/V1/AbstractCartRoute.php' ),
+		'WC_Cart_Session' => array( 'set_cart_cookies', 'includes/class-wc-cart-session.php' ),
+	);
 	$stack = debug_backtrace( DEBUG_BACKTRACE_IGNORE_ARGS | DEBUG_BACKTRACE_PROVIDE_OBJECT, 12 );
+	// Only the nearest hash caller is examined; an output ancestor cannot
+	// exempt a nested functional call or a cookie action callback.
 	foreach ( $stack as $index => $frame ) {
 		if ( 'get_cart_hash' !== ( $frame['function'] ?? '' ) ) { continue; }
 		$caller = $stack[ $index + 1 ] ?? array();
-		if ( 'WC_Cart' === ( $frame['class'] ?? '' ) && 'get_cart_hash' === ( $frame['function'] ?? '' )
-			&& $source === realpath( $frame['file'] ?? '' ) && ( $frame['line'] ?? 0 ) >= $method->getStartLine() && ( $frame['line'] ?? 0 ) <= $method->getEndLine()
-			&& $class === ( $caller['class'] ?? '' ) && 'add_response_headers' === ( $caller['function'] ?? '' ) && ( $caller['object'] ?? null ) instanceof $class ) {
-			return true;
-		}
-		// A native header ancestor cannot exempt a nested functional hash.
-		return false;
+		$class = $caller['class'] ?? '';
+		if ( 'WC_Cart' !== ( $frame['class'] ?? '' ) || ! isset( $native[ $class ] ) || ! ( $caller['object'] ?? null ) instanceof $class ) { return false; }
+		list( $name, $relative ) = $native[ $class ];
+		if ( $name !== ( $caller['function'] ?? '' ) || ! method_exists( $class, $name ) ) { return false; }
+		$method = new ReflectionMethod( $class, $name );
+		$source = realpath( WC_ABSPATH . $relative );
+		return $source && $class === $method->getDeclaringClass()->getName() && realpath( $method->getFileName() ) === $source
+			&& $source === realpath( $frame['file'] ?? '' ) && ( $frame['line'] ?? 0 ) >= $method->getStartLine() && ( $frame['line'] ?? 0 ) <= $method->getEndLine();
 	}
 	return false;
 }
 
 function skyyrose2_simple_size_guard_api_draft( $hash ) {
 	if ( ! WC()->is_store_api_request() || ! WC()->session ) { return $hash; }
-	// Native formatting runs outside its RouteException catch. It only reads the
-	// hash for a response header; every functional hash call still checks history.
-	if ( skyyrose2_simple_size_native_header_hash() ) { return $hash; }
+	// Native headers and cookies only read the hash, including at shutdown after
+	// JSON output. Every functional hash call still checks saved history.
+	if ( skyyrose2_simple_size_native_output_hash() ) { return $hash; }
 	$id = WC()->session->get( 'store_api_draft_order', 0 );
 	if ( ! $id ) { return $hash; }
 	try {
