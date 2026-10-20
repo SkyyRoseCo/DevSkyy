@@ -1,0 +1,32 @@
+{
+  "review": "BOUND_LOCAL_TECHNICAL_INSPECTION_NOT_CREATIVE_ACCEPTANCE",
+  "inspected_captures": [
+    "collection-kids-capsule-390-reduce-full-page.png",
+    "pdp-kids-001-390-reduce-size-control-viewport.png",
+    "kids-image-fallback-1440-reduce-full-page.png",
+    "pdp-br-004-1440-reduce-cart-controls.png",
+    "pdp-sg-013-320-reduce-size-control-viewport.png",
+    "shop-390-reduce-full-page.png"
+  ],
+  "observations": [
+    "Kids collection image, cards and chapter content render in inspected mobile capture.",
+    "Native size controls and CTA remain visible in inspected320/390/desktop captures.",
+    "Explicit Kids late image error hides the failed hero image; links and product cards remain.",
+    "Shop full-page capture is very tall and was downscaled by the viewer; automated DOM/resource assertions carry the detailed checks."
+  ],
+  "retained_failures": [
+    {
+      "run": "1792521229763562000",
+      "disposition": "Historical setup comparison failure retained; diagnostic refinement followed."
+    },
+    {
+      "run": "1792521332857661000",
+      "disposition": "Equal fingerprints/native JSON/raw rows. PHP strict comparison retained line-item object identities; test-only recursive item normalization corrected it."
+    },
+    {
+      "run": "1792521523335553000",
+      "disposition": "Native first install/activation and upgrade lab passed. Replacement test navigation stopped on expected welcome redirect; bounded local GET landing corrected it."
+    }
+  ],
+  "production_action": "None in this continuation; latest explicit holds govern."
+}

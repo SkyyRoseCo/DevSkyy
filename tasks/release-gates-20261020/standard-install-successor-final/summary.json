@@ -1,0 +1,64 @@
+{
+  "schema": "skyyrose.standard-install-successor-final.v1",
+  "status": "LOCAL_HPOS_CPT_AND_18_BROWSER_CASES_PASS_LIVE_HELD",
+  "implementation_owner": "Integration exclusively",
+  "authentication": "SYNTHETIC_LOCAL_AUTHENTICATION_NO_PRODUCTION_AUTHENTICATED_EXECUTION",
+  "source_commit": "e4cb0cc080a02291ea64d5d6230b8baa77ecb19e",
+  "observed_checkout_commit": "6471b2a812bca5877d883e55acd44ccfde4ee09a",
+  "theme_tree": "f2401ef0c7144046565bbe7ff0011d31d28eaba3",
+  "package": {
+    "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261020/standard-install-successor/package-r1/source-theme/dist/skyyrose-flagship-2.zip",
+    "bytes": 285780287,
+    "sha256": "c314eba124f07b524072adcc64c26789007ed2eb373410ca13a4cf380babc2c9"
+  },
+  "members": 732,
+  "version": "2.5.6",
+  "native": {
+    "hpos": {
+      "status": "PASS_NATIVE_SIMPLE_SIZE_HPOS_MATRIX",
+      "steps": 36,
+      "source_commit": "6471b2a812bca5877d883e55acd44ccfde4ee09a",
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261019/simple-size-native/run-1792521615600399000/results.json",
+      "preservation": "PASS_EXECUTION_INPUTS_ORIGINAL_CODE_THEME_HEAD_AND_INDEX",
+      "authentication": "SYNTHETIC_LOCAL_ADMIN_COOKIE_AND_PRIVILEGED_FIXTURE_CONTROLS_NOT_PRODUCTION"
+    },
+    "cpt": {
+      "status": "PASS_NATIVE_SIMPLE_SIZE_CPT_MATRIX",
+      "steps": 36,
+      "source_commit": "6471b2a812bca5877d883e55acd44ccfde4ee09a",
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261019/simple-size-native/run-1792521789331737000/results.json",
+      "preservation": "PASS_EXECUTION_INPUTS_ORIGINAL_CODE_THEME_HEAD_AND_INDEX",
+      "authentication": "SYNTHETIC_LOCAL_ADMIN_COOKIE_AND_PRIVILEGED_FIXTURE_CONTROLS_NOT_PRODUCTION"
+    }
+  },
+  "browser": {
+    "status": "PASS_NATIVE_BROWSER_ASSERTIONS_VISUAL_REVIEW_PENDING",
+    "fresh_cases": 18,
+    "screenshots": 78,
+    "html_captures": 18,
+    "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261020/standard-native-media/run-1792521947984631000/browser/results.json",
+    "preservation": "PASS_INPUTS_PACKAGE_ORIGINALS_THEME_HEAD_DEPENDENCIES",
+    "supervisor_status": "PASS_NATIVE_PREVIEW_ASSERTIONS_VISUAL_REVIEW_PENDING"
+  },
+  "preview": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261020/standard-install-successor/preview/index.html",
+  "component": "Focused scalar/type normalization and local-admin redirect probes PASS; registry synchronization --check PASS; actual source-PHP to compact-runtime display-policy parity226assets/500roles/9films PASS. Target PHP88-file TOKEN_PARSE is syntax-only.",
+  "cleanup": {
+    "deleted_files": 8955,
+    "before_available_bytes": 32047730688,
+    "after_available_bytes": 33871024128,
+    "observed_free_delta_bytes": 1823293440,
+    "attribution": "Observed statvfs change during cleanup; APFS/shared external activity prevents unique attribution. Deleted file logical/allocated totals are separate.",
+    "new_deletions_this_continuation": 0,
+    "current_available_bytes": 12877250560,
+    "sequential_required_bytes": 2650800128,
+    "floor_bytes": 1073741824
+  },
+  "holds": [
+    "Live conversion",
+    "Deployment",
+    "Provider backup/archive acquisition",
+    "Fresh live privacy attempt",
+    "Additional production creative acceptance/use decisions; cleanup grants none and prior exact approvals remain recorded"
+  ],
+  "media_authority_disposition": "Previously recorded exact22-master/113-delivery/53-role approvals are retained. This cleanup approval grants no additional creative acceptance/use authority; unresolved separate decisions and the latest live/deployment hold remain operative."
+}
