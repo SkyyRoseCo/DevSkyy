@@ -1,0 +1,136 @@
+{
+  "recorded_utc": "2026-10-20T17:37:54.470226+00:00",
+  "scope": "New focused component/mechanism checks only; acceptednative suites not rerun",
+  "checks": {
+    "fingerprint-method-result.json": {
+      "status": "PASS_FOUR_FOCUSED_SOURCE_COMPONENT_CASES",
+      "cases": {
+        "default_native_method_vs_standalone_fingerprint": "PASS",
+        "edit_context_ignores_view_getter_filter": "PASS",
+        "illustrative_late_stock_filter_changes_fingerprint": "REPRODUCED_COUNTEREXAMPLE",
+        "illustrative_fractional_stock_filter_refused": "PASS"
+      },
+      "authentication": "NOT_APPLICABLE_SYNTHETIC_MEMORY_ONLY",
+      "database_or_native_bootstrap": false,
+      "installed_effective_hook_profile_qualified": false,
+      "accepted_native_suites_rerun": false,
+      "php": "8.5.6",
+      "network_policy": "sandbox deny network",
+      "source_inputs": 15
+    },
+    "capture-local-lab-result.json": {
+      "status": "PASS_14_LOCAL_CAPTURE_MECHANISM_CASES",
+      "authentication": "NOT_APPLICABLE_SYNTHETIC_LOCAL_ONLY",
+      "checks": [
+        {
+          "case": "binary_safe_capture_without_source_execution",
+          "status": "PASS"
+        },
+        {
+          "case": "missing_authority",
+          "status": "PASS_EXPECTED_REFUSAL"
+        },
+        {
+          "case": "capacity_floor",
+          "status": "PASS_EXPECTED_REFUSAL"
+        },
+        {
+          "case": "existing_destination_preserved",
+          "status": "PASS_EXPECTED_REFUSAL"
+        },
+        {
+          "case": "source_symlink_refused",
+          "status": "PASS_EXPECTED_REFUSAL"
+        },
+        {
+          "case": "traversal_refused",
+          "status": "PASS_EXPECTED_REFUSAL"
+        },
+        {
+          "case": "oversize_refused",
+          "status": "PASS_EXPECTED_REFUSAL"
+        },
+        {
+          "case": "body_hash_drift_refused",
+          "status": "PASS_EXPECTED_REFUSAL"
+        },
+        {
+          "case": "secret_like_payload_refused_before_export",
+          "status": "PASS_EXPECTED_REFUSAL"
+        },
+        {
+          "case": "truncated_transport_refused",
+          "status": "PASS_EXPECTED_REFUSAL"
+        },
+        {
+          "case": "post_census_drift_preserves_partial_capture",
+          "status": "PASS_EXPECTED_REFUSAL"
+        },
+        {
+          "case": "duplicate_member_refused",
+          "status": "PASS_EXPECTED_REFUSAL"
+        },
+        {
+          "case": "mid_capture_capacity_loss_retains_completed_file",
+          "status": "PASS_EXPECTED_REFUSAL"
+        },
+        {
+          "case": "isolated_static_restore_body_identity",
+          "status": "PASS"
+        }
+      ],
+      "synthetic_source_executed": false,
+      "remote_acquisition_performed": false,
+      "native_wp_or_db_started": false,
+      "partial_failures_preserved": true,
+      "run": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261020/release-operation-preparation/capture-lab-20261020T173951836074",
+      "library_sha256": "5f4d6cbeecf5887c2bfe5afb2b045ae5be8ccd8da5e58b4984457a48a1846fe9",
+      "qualification": "Local transfer framing/read guards/restore-byte identity only. No live capture, managed transport or production restore qualification."
+    },
+    "controller-local-lab-result.json": {
+      "status": "PASS_EXACT_CONTROLLER_LOCAL_BATCH_REHEARSAL",
+      "controller_sha256": "5b257de72128d13bc9e6e429870b25c5914af25e5b3e2655afef148d88b0ac02",
+      "authentication": "NOT_APPLICABLE_LOCAL_SYNTHETIC_TRANSPORT_AND_AUTHORITY_ADAPTER",
+      "missing_real_authority_refused_before_network_or_destination_creation": true,
+      "synthetic_files": 38,
+      "body_batches": 2,
+      "pre_post_censuses": 2,
+      "capture_body_hashes_match": true,
+      "source_executed": false,
+      "actual_ssh_or_live_capture": false,
+      "run": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261020/release-operation-preparation/controller-lab-20261020T173952520634",
+      "qualification": "Exact controller function with explicit synthetic target/transport/authority substitutions; no authenticated live execution or capture approval inferred."
+    },
+    "maintenance-boundary-result.json": {
+      "status": "PASS_FIVE_MAINTENANCE_BOUNDARY_COMPONENT_CASES",
+      "ordinary_recent_file_blocks_new_default_boot": true,
+      "ten_minute_expiry_reopens": true,
+      "scrape_exception_bypasses": true,
+      "non_web_filter_bypasses": true,
+      "installing_bypasses": true,
+      "managed_global_order_writer_barrier_qualified": false,
+      "authentication": "NOT_APPLICABLE_SYNTHETIC_LOCAL",
+      "live_gate_or_setting_changed": false,
+      "source_sha256": "3efd0934bd8a454a8d7076fbbd21504ea097a753125a48e64b8a1dad380d357a",
+      "function_sha256": "76d83c1556392b1e1ad949e182be89c1535eafbf4ae71a02f3d793d4dc3f7cc0",
+      "fixture_source": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261020/world-guard-native-media/run-1792515045161170000/wordpress/wp-includes/load.php",
+      "qualification": "Actual extracted WP function with labelled local adapters. Not a live or managed-ingress/drain test."
+    },
+    "rename-local-lab-result.json": {
+      "status": "PASS_THREE_LOCAL_RENAME_ROLLBACK_CASES",
+      "cases": [
+        "confirmed-activation-and-theme-only-rollback-preserve-state-and-both-trees",
+        "known-second-rename-failure-restores-retained-old-tree",
+        "lost-acknowledgement-reconciles-read-only-without-blind-retry"
+      ],
+      "authentication": "NOT_APPLICABLE_SYNTHETIC_LOCAL",
+      "actual_host_rename_or_global_barrier_qualified": false,
+      "global_drain_or_reopen_performed": false,
+      "run": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261020/release-operation-preparation/rename-lab-20261020T173618781388",
+      "qualification": "Local same-filesystem checked renames and body identity only. A proven global writer barrier is required before this non-atomic pair on a live host; no whole-database restore or metadata deletion."
+    }
+  },
+  "authenticated_live_capture_or_gate_execution": false,
+  "approval_receipt_exists": false,
+  "prior_proof_preservation": "Original13-case result/controller result/source and capture core retained byte-identically against earlier evidence index before adding mid-capture capacity recheck."
+}

@@ -1,0 +1,79 @@
+{
+  "schema": "skyyrose.exact-static-theme-capture-envelope.v1",
+  "status": "PENDING_EXPLICIT_HUMAN_CAPTURE_APPROVAL_NOT_A_GRANT",
+  "operation": "capture_static_theme_rollback_only",
+  "target": "https://skyyrose.co",
+  "wpcom_site_id": 238510894,
+  "root": "/srv/htdocs/wp-content/themes/skyyrose-flagship-2",
+  "manifest_identity_sha256": "f4a952a261f43753871e54967688d3b30d7f2094b1b087371ea74cea98634bc3",
+  "files": 808,
+  "bytes": 395066291,
+  "destination": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261020/release-operation-preparation/rollback-capture-20261020/captured-theme",
+  "controller_path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261020/release-operation-preparation/capture-controller.py",
+  "controller_sha256": "5b257de72128d13bc9e6e429870b25c5914af25e5b3e2655afef148d88b0ac02",
+  "dependency_bundle_sha256": "bd5eeb5d84ec1ad9d0e4f4a5c72891e3ec53bc3f88433300fa8b805c7b6f998d",
+  "transport": "Existing pinned authenticated SSH account/host; standalone static PHP reads only; no configuration/WordPress/plugin/MU bootstrap",
+  "data": "Exact known regular static theme code/assets/data; no raw orders/orderIDs/fingerprint maps/keys/customerfields, hosting/WordPress credential configuration, DB dumps, backups or archives",
+  "excluded": {
+    "build_dist_files": 2,
+    "build_dist_bytes": 293638263,
+    "disposition": "Not read for capture, transferred, changed or deleted; retained on server"
+  },
+  "handling": {
+    "directories_mode": "0700 local",
+    "files_mode": "0600 local",
+    "no_git_upload_execution_publication": true,
+    "secret_like_text_screen": "Conservative high-confidence refusal before body emission; not universal detection",
+    "partial_capture": "Retain private completed files and boundedreceipt; never auto-delete/overwrite/retry"
+  },
+  "preconditions": [
+    "Explicit current human receipt binding all fields and expiry; no receipt exists now",
+    "Fresh exact remote census identity match and known authenticated target anchor",
+    "Actual free bytes at least max(2650800128,2*bytes+1073741824), unchanged1GiB floor; recheck the available-space guard before each file",
+    "New nonsymlink private destination, no overwrite",
+    "No denied operation or access/transfer restriction bypass"
+  ],
+  "limits": {
+    "max_batch_files": 32,
+    "ordinary_batch_bytes": 16777216,
+    "max_file_bytes": 67108864,
+    "transport_timeout_seconds": 45,
+    "overall_capture_seconds": 900,
+    "approved_total_files": 808,
+    "approved_total_bytes": 395066291
+  },
+  "failure_unknown_stops": [
+    "Target/file/membership/hash drift",
+    "Unexpected/symlink/special/private/secret-like source",
+    "Capacity/permission/transport failure or timeout",
+    "Receipt or acknowledgement uncertainty: stop, preserve partial, reconcile readonly, no retry/expansion"
+  ],
+  "rollback_for_capture": "None needed on server: no server mutation. No production rollback/deploy permission granted.",
+  "permissions_not_requested": [
+    "Runtime/config/settings/credentials/security/storage changes",
+    "Checkout closure or provider ingress/worker controls",
+    "Initialization or order/stock/payment/product writes",
+    "Customer-bearing backup or provider archive jobs",
+    "Live restoration, cache action, activation, deployment or reopening"
+  ],
+  "later_release_preconditions_not_yet_qualified": [
+    "Effective installed fingerprint/hook profile",
+    "Supported authenticated global ingress control and complete writer drain",
+    "Host ownership/permissions/rename and executable restoration qualification",
+    "Fresh boundary inventory/exact live initialization/deployment grants"
+  ],
+  "source_commit_unchanged": "4bed5b6595aa0a024d5077f13170307eef2a57bb",
+  "package_sha256_unchanged": "52c1e4a1953a821357e9cf7ab4f43ca2d23373bc97ae027fc864a6baa5a1ee94",
+  "actual_available_bytes_at_preparation": 21742374912,
+  "execution_command_after_grant_only": [
+    "/opt/homebrew/opt/python@3.14/bin/python3.14",
+    "-I",
+    "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261020/release-operation-preparation/capture-controller.py",
+    "--execute-approved",
+    "--approval-file",
+    "<new exact human approval receipt>"
+  ],
+  "bytes_semantics": "Raw admitted file-body bytes; protocol framing/census metadata separate. Not compressed ZIP size.",
+  "full_censused_tree_file_body_bytes": 688704554,
+  "why_needed": "Verified installed PHP/data differ from corrective candidate; exact installed runtime bytes are needed for theme rollback, not inferred from candidate or olderGitZIP."
+}

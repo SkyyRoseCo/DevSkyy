@@ -1,0 +1,230 @@
+{
+  "schema": "skyyrose.operation-preparation-evidence.v1",
+  "references": [
+    {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/tasks/release-gates-20261020/rollback-capture-approval/README.md",
+      "bytes": 11194,
+      "sha256": "2c1c2733968a5ad89a4c5f2d4ddefcc22506e24d2f522084d1af597229f38bbe"
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/tasks/release-gates-20261020/rollback-capture-approval/approval-envelope.json",
+      "bytes": 4701,
+      "sha256": "89501723c8ce0b24b549763f72cfb4487654d7ea45c1548fadc03f43f760c509"
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/tasks/release-gates-20261020/rollback-capture-approval/local-qualification.json",
+      "bytes": 6453,
+      "sha256": "48ad3a230d53d615d9d4349f42e33468dc95262c05c7caca2ca5e13647f127aa"
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261020/release-operation-preparation/theme-census-result.json",
+      "bytes": 257,
+      "sha256": "baa2ffde73bcce6319325714290734be1da8d0ddc1246c1f417b912492c8de08"
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261020/release-operation-preparation/theme-census-r2-result.json",
+      "bytes": 256,
+      "sha256": "52a23c51b125e2f9a3537ba79d04950aae831eae6a3f2138125f9f99d38527f9"
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261020/release-operation-preparation/unknown-member-metadata.json",
+      "bytes": 405,
+      "sha256": "2693a773a72c2e8c4dc53910df8975a14369af5b5a03f3ee6473d1d886861090"
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261020/release-operation-preparation/theme-runtime-census.json",
+      "bytes": 150934,
+      "sha256": "2b7a771ffb3bc786c83d05d4fe89b849848e52d6706ac6f862a0004e208888c1"
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261020/release-operation-preparation/theme-census-runtime-reader.php.txt",
+      "bytes": 2939,
+      "sha256": "b653e8173cac39e9cc96f1cac54ae74e2d112fcb2d0c45595058bed148394655"
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261020/release-operation-preparation/theme-census-allowed-paths-r2.json",
+      "bytes": 47866,
+      "sha256": "0b62235b4c8d570e7e8f1ad16335a1597d8a817cef6fbb9c3e36d263bd341a87"
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261020/release-operation-preparation/capture-controller.py",
+      "bytes": 5818,
+      "sha256": "5b257de72128d13bc9e6e429870b25c5914af25e5b3e2655afef148d88b0ac02"
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261020/release-operation-preparation/capture-mechanism.py",
+      "bytes": 2169,
+      "sha256": "b8f393e98b65e548d146c77ebf70a8dc306e448dfbdd2aac7f98153294c7ad01"
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261020/release-operation-preparation/capture-verified-file.php.txt",
+      "bytes": 2024,
+      "sha256": "5f4d6cbeecf5887c2bfe5afb2b045ae5be8ccd8da5e58b4984457a48a1846fe9"
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261020/release-operation-preparation/capture-local-lab.py",
+      "bytes": 6865,
+      "sha256": "55a5c292302277c19f7ffb8dd7d0cdd1531f66a2ff5866dc5436a8e136f6b90d"
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261020/release-operation-preparation/capture-local-lab-result.json",
+      "bytes": 2073,
+      "sha256": "ac94ffa734546075763c554379bc796991689c6d05b902a40b2d65ce703bc980"
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261020/release-operation-preparation/controller-local-lab.py",
+      "bytes": 3351,
+      "sha256": "365835f6e016759b2d649b364b4a8c5632f1080b378bdbefc9bb107604eb6e5c"
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261020/release-operation-preparation/controller-local-lab-result.json",
+      "bytes": 854,
+      "sha256": "f94092fca2080b10877f345329a2d3acaa7103955f17f2c8762bffd6f93f3f17"
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261020/release-operation-preparation/fingerprint-method-boundary.php",
+      "bytes": 7195,
+      "sha256": "6575a8a1dd075fe37bc29eece205bba61c11d434abd729cf71731a92580441c2"
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261020/release-operation-preparation/fingerprint-method-inputs.json",
+      "bytes": 6330,
+      "sha256": "c7039af8ad8a1df5df01af0340b6b20b14dc3e8681ed338e1727a05ea4b9af1b"
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261020/release-operation-preparation/fingerprint-method-result.json",
+      "bytes": 623,
+      "sha256": "da597871124462323f82d8eb4a8739beda8fcc8927bdcf49701a65302b4930cf"
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261020/release-operation-preparation/maintenance-boundary.php",
+      "bytes": 3085,
+      "sha256": "ca5a21c69406d1dec0d19b177a851ebaa633b9f79e65a8161e59f676da4e8694"
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261020/release-operation-preparation/maintenance-boundary-result.json",
+      "bytes": 919,
+      "sha256": "5168de6e0942a0cbf304a03fdad2dd5cdd5c5ce1e9a7c29d0a8595dc36cd1282"
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261020/release-operation-preparation/rename-rollback-local-lab.py",
+      "bytes": 2413,
+      "sha256": "debb32784104b9cf2787781fed2b2e9ebaa5094081936f2bac30054501f74545"
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261020/release-operation-preparation/rename-local-lab-result.json",
+      "bytes": 842,
+      "sha256": "c6eb03e0b5563a5786a02669e794e87fff041d6430fdb20b8a181c9a1b7dcfc5"
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261020/release-operation-preparation/dist-exclusion-reader.php.txt",
+      "bytes": 869,
+      "sha256": "5e6f1c97064988619212cb3888c5d43c524ca39a4ef4f368a93c2945b01a242e"
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261020/release-operation-preparation/dist-exclusion-confirmation.json",
+      "bytes": 307,
+      "sha256": "30a7f9905a73886420845bdcaa83ccf1e00da9240f35f9a503f85939d9099fa9"
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261020/release-operation-preparation/capture-local-lab-result-r1-retained.json",
+      "bytes": 1954,
+      "sha256": "8569272be1015342c33ac6388c5c0f4f2378bab4519428fd388b441f924372e5"
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261020/release-operation-preparation/controller-local-lab-result-r1-retained.json",
+      "bytes": 854,
+      "sha256": "524f82b8c50bb8c784cf5ec81654c72e6aae5e9d3deadae0eeba7b45d9decbc7"
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261020/release-operation-preparation/capture-mechanism-r1-retained.py",
+      "bytes": 1953,
+      "sha256": "686c5554a5557215eaea9018159909c977d00ef33d3b7f50d7b941fd0543fbf1"
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261020/release-operation-preparation/capture-local-lab-r1-retained.py",
+      "bytes": 6086,
+      "sha256": "64bf16cd6e751e9ac9f149907a87a81f1ff8a8e004470d3c86dec91b43744972"
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/tasks/release-gates-20261020/rollback-capture-approval/capture-outcome.md",
+      "bytes": 4367,
+      "sha256": "d5cbb735814979cde9fafdda5c73957a93f082a629329b35a69d86350d719181"
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/tasks/release-gates-20261020/rollback-capture-approval/provider-route-observation.md",
+      "bytes": 3719,
+      "sha256": "b4218accb7f40c070edb0090be8ef6711baac53876bec332012d378b47e25de1"
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261020/release-operation-preparation/human-capture-approval-20261020.json",
+      "bytes": 2243,
+      "sha256": "925f3840b67025155513b786c9f5db9da80ed7e42436a239feb8e365950db9b5"
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261020/release-operation-preparation/rollback-capture-20261020/capture-receipt.json",
+      "bytes": 480,
+      "sha256": "6879563fb5b593bdc4b338cd50d1f8ed51a83d7260637fc3abaabb06a18d7736"
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261020/release-operation-preparation/capture-private-verification.json",
+      "bytes": 1229,
+      "sha256": "ca675c59c406758615be3a6ea307f8ba616abf3548b421d5300e2b6b4a6bcef8"
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261020/release-operation-preparation/theme-post-capture-census.json",
+      "bytes": 150934,
+      "sha256": "6468ba52ec7e5537ecc03dc180976d919b2ac7a1af65cde2595f3f13f85dd2ee"
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261020/release-operation-preparation/captured-theme-hook-literals.json",
+      "bytes": 522,
+      "sha256": "ae18faea3cf5bdf7c1b3e8a9b0e56087693cf3ac36166ad19e1326e0e6fcdc23"
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261020/release-operation-preparation/managed-entrypoint-reader.php.txt",
+      "bytes": 1497,
+      "sha256": "6c2516f38c5d316f16a32cf70b3baf120ab085b9b6dd5ec5febe8d8a1eed80c7"
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261020/release-operation-preparation/managed-entrypoint-metadata.json",
+      "bytes": 2227,
+      "sha256": "9090b501a2272884f1fc9548bdf606a015a13068717eb71336dd06738eccc131"
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261020/release-operation-preparation/managed-loader-reference-reader.php.txt",
+      "bytes": 1149,
+      "sha256": "ab1e1801b7ae7757d49b651fc87d0113258b088c1c109afac3cc4262347c6a3a"
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261020/release-operation-preparation/managed-loader-reference.json",
+      "bytes": 436,
+      "sha256": "e052b0cd21ec02428799b216f8ebc72aec1fea87430b1b6fe9b3b926b09ba315"
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261020/release-operation-preparation/pre-approval-readme.md",
+      "bytes": 11000,
+      "sha256": "279a6bd7fe199d853cae41c9020a54b35469d45e23294f93eb6e505596b8cf20"
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261020/release-operation-preparation/pre-approval-evidence-index.json",
+      "bytes": 8844,
+      "sha256": "229ba93e2932a8f43e414f0d88139f6a8516d418bd2d5046ba9ddb6b44d38a85"
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261020/release-operation-preparation/managed-cli-source-reader.php.txt",
+      "bytes": 2061,
+      "sha256": "4602b0e47df66b32bc2f84028322ff951073dc96e705900ee9732f60d593efb9"
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261020/release-operation-preparation/managed-cli-source-candidates.json",
+      "bytes": 5127,
+      "sha256": "eaef17a5ec0c7c314b00b72801da5696eccd4148b0d7d00efa92ad8ec00ce8c2"
+    }
+  ],
+  "bodies_captured_from_live_theme": 808,
+  "test_source_execution": "Only explicitly labelled local extracted methods/corehook definitions and synthetic fixtures; no theme body/plugin/application bootstrap",
+  "capture_body_bytes": 395066291,
+  "captured_source_execution": false,
+  "approval_envelope_status": "Retainedpreapprovalproposal; superseded by exact humanapproval and successfulcapture receipt"
+}
