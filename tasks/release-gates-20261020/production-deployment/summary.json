@@ -1,0 +1,23 @@
+{
+  "status": "DEPLOYED_WITH_BOUNDED_VERIFICATION",
+  "finished_utc": "2026-10-21T02:21:15.972402+00:00",
+  "live_site": "https://skyyrose.co",
+  "site_id": 238510894,
+  "version": "2.5.6",
+  "zip_sha256": "e3328e6db2fcdb6d590837c526eddb9c632bf8a769c180d6bdbc4f0cdbd9c739",
+  "active_file_count": 732,
+  "retained_old_file_count": 808,
+  "preserved_dist_artifact_count": 2,
+  "synthetic_native_hpos_steps": 36,
+  "synthetic_native_cpt_steps": 36,
+  "live_public_browser_cases": 12,
+  "existing_legacy_orders_validated": 1,
+  "marked_orders_observed": 0,
+  "unknown_unmarked_orders_observed": 0,
+  "invalid_marked_orders_observed": 0,
+  "real_orders_or_payments_attempted": false,
+  "separate_privacy_and_payment_qualification": false,
+  "provider_archive_acquired": false,
+  "cleanup_expanded": false,
+  "local_available_bytes": 13370036224
+}

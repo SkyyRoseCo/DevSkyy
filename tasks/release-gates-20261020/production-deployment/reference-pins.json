@@ -1,0 +1,480 @@
+{
+  "schema": "skyyrose.release-reference-pins.v1",
+  "references": [
+    {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/tasks/release-gates-20261020/production-deployment/summary.json",
+      "bytes": 843,
+      "sha256": "e734607ebcd8c22da3ba8d8bfa7a3a6699993b66d47d03251a973ab54a1e8859"
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261020/production-resumption-20261020/operation-input.json",
+      "bytes": 192594,
+      "sha256": "6936d088d30319d3cb289b3fd090b6f7c52ca6b2bc66afabea46811cd4c39dfe"
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261020/production-resumption-20261020/operation-state.json",
+      "bytes": 1208,
+      "sha256": "f70af5a212a9663823236af2c9671ce65768f7a4f0d078138d2def3aa22f7543"
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261020/production-resumption-20261020/filesystem-rename-diagnosis.json",
+      "bytes": 1963,
+      "sha256": "519d64d492dcc0f6edee8ad90664ca6b6a37598439b4fdc002e408be76d78f10"
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261020/production-resumption-20261020/rollback-route-qualified-http.json",
+      "bytes": 6378,
+      "sha256": "083ea7c5d5c0bf042d7ae6025d04e660f9ee4c243673ee0f4c52a985c9aee0ab"
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261020/production-resumption-20261020/route-recovery-probe.json",
+      "bytes": 419,
+      "sha256": "7fc31de0e3872f5f62a1d35bd8668413fe86e994a4ff83e9ae26ce9aade425c7"
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261020/production-resumption-20261020/checked-same-filesystem-release.php.txt",
+      "bytes": 4228,
+      "sha256": "0e6f24489cdd96bc599287766d72fc771aca6d2d1c229a1f6ee1b72031a71f3e"
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261020/production-resumption-20261020/same-filesystem-attempt.json",
+      "bytes": 796,
+      "sha256": "801d1d6e2631d10ad2462c0b1e1d53964e5a85c7024ea9eccb66a3d90a966be9"
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261020/production-resumption-20261020/same-filesystem-swap.json",
+      "bytes": 439,
+      "sha256": "f0854ffaaa5ac3757685f4562db3fbf2f627ab3c08fcd672a842037437f9c7f8"
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261020/production-resumption-20261020/same-filesystem-reconciliation.json",
+      "bytes": 1321,
+      "sha256": "f418b48ac75b96571927e901eb0910417ac74a3d6adf3f6e5f041136f400fb17"
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261020/production-resumption-20261020/first-public-home.json",
+      "bytes": 452,
+      "sha256": "239d312616ad5eb4857f4f2bc1fc390785734708a03a91adf8066caacf2ce1a0"
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261020/production-resumption-20261020/post-first-public-standalone.json",
+      "bytes": 672,
+      "sha256": "adf5769332457f85013f6617d208ce33f2d65e2a1dd0f43290d043f968414c15"
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261020/production-resumption-20261020/post-native-initial.json",
+      "bytes": 1726,
+      "sha256": "7d4b267cff9323f4c542b2ee2b7fca029b03c3dec90b231dc5ab526c185bb235"
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261020/production-resumption-20261020/kids-public-response-diagnosis.json",
+      "bytes": 671,
+      "sha256": "4b8aeaec95977059eda8a8732fe3ac3f454b016b2fcde6a818e222a10473d1ee"
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261020/production-resumption-20261020/cache-flush.stdout",
+      "bytes": 32,
+      "sha256": "e32d6a279b99b8983f36e05f335b2996bb824861a60489c7ad96006998172c89"
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261020/production-resumption-20261020/kids-after-cache-flush.json",
+      "bytes": 227,
+      "sha256": "82e10acdf589778455bd347f32d1d4bd96ecff57f3830cc5ef7844316090333e"
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261020/production-resumption-20261020/frontend-tracks-source-binding.json",
+      "bytes": 155,
+      "sha256": "1f8a92f325d7692f639278196bee1ba8ccc9c241f159707d5da1523bacada5c3"
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261020/production-resumption-20261020/retained-old-http-denial.json",
+      "bytes": 849,
+      "sha256": "8188c21f605d6cd35df60d66057269ca9f4e9fb2397e637d70f6eee74fa54b52"
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261020/production-resumption-20261020/final-browser-qualification.json",
+      "bytes": 642,
+      "sha256": "43bf01f9d1bb1df5af0fc3a276b4343e45354ff208e5f5cbb86d3c2eee9dc919"
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261020/production-resumption-20261020/post-deploy-late-standalone.json",
+      "bytes": 672,
+      "sha256": "2a5b3bdd320d0b3d438ce405bb21c0bea054d967990a2a6fe54b3c4d1d1931d1"
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261020/production-resumption-20261020/post-native-final.json",
+      "bytes": 1824,
+      "sha256": "6c3c2850403063774aa4ae92233e9957aa3f796255dedabce1c7793e91d7f843"
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261020/production-resumption-20261020/final-theme-and-rollback-reconciliation.json",
+      "bytes": 1321,
+      "sha256": "c784ca0add1bd99b217b2e4b82e435cbccc61f4d3f2a9e8fcc840c3d0c32fe9a"
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261020/production-resumption-20261020/empty-commerce-read.json",
+      "bytes": 918,
+      "sha256": "36733153356ab0d2c45b662ac17120f676327eb7065d154b7b54db1a2dc1ca03"
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261020/production-resumption-20261020/final-standalone-order-and-history.json",
+      "bytes": 672,
+      "sha256": "1f98d21258a4a3d91b2f74b81674033848c26eb112dd255daf32672886017fff"
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261020/production-resumption-20261020/completion-receipt.json",
+      "bytes": 843,
+      "sha256": "e734607ebcd8c22da3ba8d8bfa7a3a6699993b66d47d03251a973ab54a1e8859"
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261020/production-resumption-20261020/package-impact.json",
+      "bytes": 231,
+      "sha256": "70783c25e57d2c46787ee646f617cf9e953cda3eefb413eeeff40962cdaf52ca"
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261020/production-resumption-20261020/fresh-pre-samefs-profile.json",
+      "bytes": 1334,
+      "sha256": "3fbdf9dec8d7b0acf9fce4e35bd4e2b34ff1fa66ab08c1bc4e0870b20b2249ac"
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261020/production-resumption-20261020/live-browser-r4.cjs",
+      "bytes": 10048,
+      "sha256": "b1b4a9c11b5d334efec163219fea744df3e9f5e9abcc0d68a4412898411c6c46"
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261020/production-resumption-20261020/run-live-browser-r4.py",
+      "bytes": 1861,
+      "sha256": "d9ede510acfb8b7109a17f9ae290227bb86f347e5b6e15a43ee5fcb159f17453"
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261020/production-resumption-20261020/live-browser-r4-supervisor.json",
+      "bytes": 125,
+      "sha256": "c1ac0f33f236cc5bc683ceb1561ab7c41f58c13c4de8aadaeaa6fd24d539e7ba"
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261020/production-resumption-20261020/live-browser-r4/results.json",
+      "bytes": 64601,
+      "sha256": "af17e3e495181501fbf17a2558ba99afc9dcf69d44f6988e51b85d58de62b43a"
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261020/production-resumption-20261020/preview/index.html",
+      "bytes": 4855,
+      "sha256": "406f9e2d442fc8cd4131b59d9d2297f0ab7e33f9020d2053eb0c45d264c870f6"
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261020/production-resumption-20261020/live-browser-results.json",
+      "bytes": 15326,
+      "sha256": "9d899242ccdf4683ae8295f63f047936a9e11dac31c756d13605953262d47c7e"
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261020/production-resumption-20261020/live-browser-supervisor.json",
+      "bytes": 125,
+      "sha256": "eaf6aae69693170a6049dec412e74eac3aca4aee70634ccc9f28675f21e70109"
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261020/production-resumption-20261020/live-browser-r2/results.json",
+      "bytes": 37902,
+      "sha256": "688aeb590c03d5a5abf40695dcdcaca79b4582e65ddd982083219ca6229d9c15"
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261020/production-resumption-20261020/live-browser-r2-supervisor.json",
+      "bytes": 125,
+      "sha256": "032ce1cfc7a702df39dac9a83980e7833579f42ade25b176904d0492ef893631"
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261020/production-resumption-20261020/live-browser-r3-diagnostic/results.json",
+      "bytes": 11665,
+      "sha256": "120ee0b83e8ad2f1d8a649a5c84134a217c185816e92927587157def28d1c839"
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261020/production-resumption-20261020/live-browser-r3-diagnostic-supervisor.json",
+      "bytes": 125,
+      "sha256": "a21051bd33ca671af5d7cd6d14dc1dcfc3e45997578be36e0f577141947bb44f"
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261019/simple-size-native/run-1792543225074487000/results.json",
+      "bytes": 3210300,
+      "sha256": "172587c68e56c12947657251dd42cb9beee28c7008555723305b9362f47eb030"
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261019/simple-size-native/run-1792543392371077000/results.json",
+      "bytes": 3210173,
+      "sha256": "7668c9058940b7c9385d1937a6a1a62968ff8dbfa40b42d0202a68f078d3dc50"
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261020/production-resumption-20261020/live-browser-r4/br-004-1440-size.png",
+      "bytes": 378280,
+      "sha256": "c76eaee0f08eee37c0b3c931a07104e1b1d977e34108008bc3f3cadf21a7091a"
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261020/production-resumption-20261020/live-browser-r4/kids-001-390-final.png",
+      "bytes": 223882,
+      "sha256": "0e1da1aa56588435ea65b099a1fc2323c0221800232b31563a55b50a1729a1ac"
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261020/production-resumption-20261020/live-browser-r4/kids-1440-final.png",
+      "bytes": 555363,
+      "sha256": "017a39dc86db68dbf5d32717653177a75695361d62e5357244446cd54ef0b250"
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261020/production-resumption-20261020/live-browser-r4/home-1440-final.png",
+      "bytes": 1490483,
+      "sha256": "0b08fe8136d356931cec49336af31ae639c5ac7eeefa9f3638a8061e2795bd5c"
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261020/production-resumption-20261020/live-browser-r4/sg-013-390.png",
+      "bytes": 221151,
+      "sha256": "38c3b122d5dfed8e804e23a225922518f10c3391574ac9ed42c45d80838a9b74"
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261020/production-resumption-20261020/live-browser-r4/kids-1440.png",
+      "bytes": 555363,
+      "sha256": "017a39dc86db68dbf5d32717653177a75695361d62e5357244446cd54ef0b250"
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261020/production-resumption-20261020/live-browser-r4/kids-001-1440.png",
+      "bytes": 433076,
+      "sha256": "b4b38de98a0da2a504c054d940b33bcc2c222fe04387b1e747c4c53c0562ae53"
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261020/production-resumption-20261020/live-browser-r4/br-004-390-final.png",
+      "bytes": 200471,
+      "sha256": "639fd369e9e7f725382c92123884a9d2d80b59b098624cb46e1949f6967c4050"
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261020/production-resumption-20261020/live-browser-r4/kids-001-1440-size.png",
+      "bytes": 433108,
+      "sha256": "00dbf83be35b29dae82f7434f035628d9dfa5b0b65b4a8c25817fb33f0e71143"
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261020/production-resumption-20261020/live-browser-r4/kids-001-390-size.png",
+      "bytes": 233302,
+      "sha256": "4ca7a11ab420b1a0de06ebe90bb29cfa80dc65813b4983f2e59dab12db8e0647"
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261020/production-resumption-20261020/live-browser-r4/kids-390.png",
+      "bytes": 198011,
+      "sha256": "e62e306a1e19dd12e2c0e4e373ed6ea3107cf662ffcd05871c16079f91587072"
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261020/production-resumption-20261020/live-browser-r4/br-004-390.png",
+      "bytes": 200895,
+      "sha256": "353d15b395f930858d3b9873aff72827b6680d77d6c4c53f3cd5145183cfe9c5"
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261020/production-resumption-20261020/live-browser-r4/br-004-1440-final.png",
+      "bytes": 378247,
+      "sha256": "5f3c6c0f1b8f8bbdd693ca4392a57f5214b245b1020e1d4b326c7d4d33d0b561"
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261020/production-resumption-20261020/live-browser-r4/sg-013-390-size.png",
+      "bytes": 221206,
+      "sha256": "0086f7e52001d3d4d2743b492207dfc1ef85c6d287b26dc7430ccc7f340b8e48"
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261020/production-resumption-20261020/live-browser-r4/kids-390-final.png",
+      "bytes": 198050,
+      "sha256": "02273f85fcb50e541c9bb69f659e1d239d695ff723629b8f3b8e97ab05ac9fd2"
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261020/production-resumption-20261020/live-browser-r4/br-004-390-size.png",
+      "bytes": 200876,
+      "sha256": "1094c47c5b4bb0db856d78c3df97691bf0b0dde78981396b21cc4a84e598a20e"
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261020/production-resumption-20261020/live-browser-r4/home-390.png",
+      "bytes": 284559,
+      "sha256": "69eef628a898651b5e6b8da2133faf1449f964964550c4c19decd33362a059d9"
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261020/production-resumption-20261020/live-browser-r4/shop-390-final.png",
+      "bytes": 154001,
+      "sha256": "0bc308e15fc0e6b3c29e53c6bb6a1e8c4f9d3ea0faf0af21549f408ecb43efb8"
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261020/production-resumption-20261020/live-browser-r4/br-004-1440.png",
+      "bytes": 378271,
+      "sha256": "3325a6e7114c74d2af15d564a315d5060a5ba5c32b466ac2396cb013189ee9b6"
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261020/production-resumption-20261020/live-browser-r4/home-1440.png",
+      "bytes": 1490451,
+      "sha256": "a80ba8d7d590f24f178c80cc8a4fa28faed4e214422437f559cf3d3fe61b6c75"
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261020/production-resumption-20261020/live-browser-r4/shop-390.png",
+      "bytes": 153965,
+      "sha256": "9ab900b8c09ccd986b6edea5f1e1c12f873eb43b8c9f9cb871bd409b043d712b"
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261020/production-resumption-20261020/live-browser-r4/kids-001-1440-final.png",
+      "bytes": 433108,
+      "sha256": "00dbf83be35b29dae82f7434f035628d9dfa5b0b65b4a8c25817fb33f0e71143"
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261020/production-resumption-20261020/live-browser-r4/sg-013-1440-size.png",
+      "bytes": 408852,
+      "sha256": "dc3ea09aee3d91fec4816c61d97bb56763cefd54f311612dae6b4a8928dbc21a"
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261020/production-resumption-20261020/live-browser-r4/shop-1440.png",
+      "bytes": 719889,
+      "sha256": "087335da3c4189d1c28556cd90712f83c68a7dcec2107f38360731c6eb85c014"
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261020/production-resumption-20261020/live-browser-r4/sg-013-1440.png",
+      "bytes": 408852,
+      "sha256": "5e170a85aef6055f358c2e3d0ecef76926fa22802e20d1823677ae970a1f77a3"
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261020/production-resumption-20261020/live-browser-r4/sg-013-390-final.png",
+      "bytes": 213620,
+      "sha256": "d306912d930ce6722fa392db04a1f47e8ca383acb203fd5dceedfad532a25131"
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261020/production-resumption-20261020/live-browser-r4/shop-1440-final.png",
+      "bytes": 719964,
+      "sha256": "1763a7b095523ece0426f8a277d070dc7f19ab8c14f0ae081f269b9ebef6c73c"
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261020/production-resumption-20261020/live-browser-r4/sg-013-1440-final.png",
+      "bytes": 408884,
+      "sha256": "ff8b203e89f0d69857540752d9f83b9a98c2f06f7401cc598b0c776c56436c2c"
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261020/production-resumption-20261020/live-browser-r4/kids-001-390.png",
+      "bytes": 233313,
+      "sha256": "7ab80e085015141a9fe8f09c1effbc07c1ef59ddf1c0fef32b268963f0e9f284"
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261020/production-resumption-20261020/live-browser-r4/home-390-final.png",
+      "bytes": 284701,
+      "sha256": "697ee735d6471146e645847056aed4a737c64e4f8d54c082ead89429272734cb"
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261020/production-resumption-20261020/live-browser-r4/br-004-1440.html",
+      "bytes": 328334,
+      "sha256": "f439de7d74bfb7ed490ee03f2d4ce08367764612cea8122eac89217c2d5c9966"
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261020/production-resumption-20261020/live-browser-r4/shop-390-final.html",
+      "bytes": 298881,
+      "sha256": "a11f05d7011dfbd2ed2c82732ac746f37b5d37ee3ca1e8e4507a094e415a767e"
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261020/production-resumption-20261020/live-browser-r4/sg-013-390-final.html",
+      "bytes": 328324,
+      "sha256": "57a90478fdd5cccbf663076a9e85e4ef28687af91150c4a6865463e48c579a40"
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261020/production-resumption-20261020/live-browser-r4/home-1440-final.html",
+      "bytes": 215866,
+      "sha256": "61445bf38eb96357bb1f3a54c2773c601c9d3f163284e4bda7d5217fc45b5ca4"
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261020/production-resumption-20261020/live-browser-r4/sg-013-390.html",
+      "bytes": 328324,
+      "sha256": "57a90478fdd5cccbf663076a9e85e4ef28687af91150c4a6865463e48c579a40"
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261020/production-resumption-20261020/live-browser-r4/shop-1440-final.html",
+      "bytes": 299214,
+      "sha256": "fe847191f906c20b4fb6ba7ca44a95914e172970ab07c88af82046f1eeb0df67"
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261020/production-resumption-20261020/live-browser-r4/shop-390.html",
+      "bytes": 298881,
+      "sha256": "a11f05d7011dfbd2ed2c82732ac746f37b5d37ee3ca1e8e4507a094e415a767e"
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261020/production-resumption-20261020/live-browser-r4/sg-013-1440.html",
+      "bytes": 328339,
+      "sha256": "eefee7eb4fac1c948f32e82025988b24aa67a524bc4204de48d1de0bca814543"
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261020/production-resumption-20261020/live-browser-r4/kids-1440.html",
+      "bytes": 226603,
+      "sha256": "169d5cfe9022f64053af971ef3f455da6f2ecdef5d258e7d8e9ae3e5901b2867"
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261020/production-resumption-20261020/live-browser-r4/home-390.html",
+      "bytes": 215854,
+      "sha256": "f867c17e3ee41a1df2ea488c0908d3c35f8e5e713012d2b20ccc332b01041222"
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261020/production-resumption-20261020/live-browser-r4/br-004-390.html",
+      "bytes": 328301,
+      "sha256": "0326fa5f6903d7f4a4237592c7842f83b039f0a0d94920d10b845fbf338fd65d"
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261020/production-resumption-20261020/live-browser-r4/kids-1440-final.html",
+      "bytes": 226603,
+      "sha256": "169d5cfe9022f64053af971ef3f455da6f2ecdef5d258e7d8e9ae3e5901b2867"
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261020/production-resumption-20261020/live-browser-r4/kids-001-390-final.html",
+      "bytes": 328752,
+      "sha256": "0905d4765b0b423003abf6655aef36acd7c9a9ae4ebe0c82e765f63bc5dd1daa"
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261020/production-resumption-20261020/live-browser-r4/br-004-1440-final.html",
+      "bytes": 328334,
+      "sha256": "f439de7d74bfb7ed490ee03f2d4ce08367764612cea8122eac89217c2d5c9966"
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261020/production-resumption-20261020/live-browser-r4/home-1440.html",
+      "bytes": 215866,
+      "sha256": "61445bf38eb96357bb1f3a54c2773c601c9d3f163284e4bda7d5217fc45b5ca4"
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261020/production-resumption-20261020/live-browser-r4/kids-001-1440-final.html",
+      "bytes": 328782,
+      "sha256": "e755906db1b9edb1c8212f0ffef49ab8e0b9cc3a66fc3f353296278a0c31afbc"
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261020/production-resumption-20261020/live-browser-r4/br-004-390-final.html",
+      "bytes": 328301,
+      "sha256": "0326fa5f6903d7f4a4237592c7842f83b039f0a0d94920d10b845fbf338fd65d"
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261020/production-resumption-20261020/live-browser-r4/kids-001-390.html",
+      "bytes": 328752,
+      "sha256": "0905d4765b0b423003abf6655aef36acd7c9a9ae4ebe0c82e765f63bc5dd1daa"
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261020/production-resumption-20261020/live-browser-r4/sg-013-1440-final.html",
+      "bytes": 328339,
+      "sha256": "eefee7eb4fac1c948f32e82025988b24aa67a524bc4204de48d1de0bca814543"
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261020/production-resumption-20261020/live-browser-r4/kids-390.html",
+      "bytes": 226625,
+      "sha256": "bcaaa467d627661e88987a590c046766a884a728a36bbfcbd79c27a6c62da194"
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261020/production-resumption-20261020/live-browser-r4/kids-390-final.html",
+      "bytes": 226625,
+      "sha256": "bcaaa467d627661e88987a590c046766a884a728a36bbfcbd79c27a6c62da194"
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261020/production-resumption-20261020/live-browser-r4/shop-1440.html",
+      "bytes": 299214,
+      "sha256": "fe847191f906c20b4fb6ba7ca44a95914e172970ab07c88af82046f1eeb0df67"
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261020/production-resumption-20261020/live-browser-r4/home-390-final.html",
+      "bytes": 215854,
+      "sha256": "f867c17e3ee41a1df2ea488c0908d3c35f8e5e713012d2b20ccc332b01041222"
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261020/production-resumption-20261020/live-browser-r4/kids-001-1440.html",
+      "bytes": 328782,
+      "sha256": "e755906db1b9edb1c8212f0ffef49ab8e0b9cc3a66fc3f353296278a0c31afbc"
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/release-gates-20261020/standard-install-successor/package-r3/source-theme/dist/skyyrose-flagship-2.zip",
+      "bytes": 285780970,
+      "sha256": "e3328e6db2fcdb6d590837c526eddb9c632bf8a769c180d6bdbc4f0cdbd9c739"
+    }
+  ]
+}
