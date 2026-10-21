@@ -1,0 +1,11 @@
+{
+  "status": "PASS_BOUNDED_HOMEPAGE_PICTURE_RESTORATION",
+  "reviewer": "existing /root/cleanup_architect",
+  "reference_pins_verified": 35,
+  "browser_picture_cases": 12,
+  "source_commit": "7cf587133bdb061fadf1138f42b1a183a5fd5300",
+  "published_template_sha256": "59b77560f14e90b58dd63f961aecd56e41f4dbe382fc7d53157ee7889fe8a4cf",
+  "successor_zip_sha256": "a637754718e9e74535ae7e60d85a41ea2efb8077fbda68cbbf6bbd5f82a20471",
+  "python_review": "PASS_WITH_EXISTING_TEST_FORMATTING_WARNING_NEW_TEST_FORMATTED",
+  "additional_motion_payment_privacy_claims": false
+}
