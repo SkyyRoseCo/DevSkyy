@@ -26,12 +26,12 @@ function ss_upgrade_lab() {
 		);
 		$had_class_hook = array_key_exists( 'woocommerce_get_order_item_classname', $wp_filter );
 		$original_class_hook = $wp_filter['woocommerce_get_order_item_classname'] ?? null;
-		if ( $had_class_hook ) { $wp_filter['woocommerce_get_order_item_classname'] = clone $original_class_hook; }
-		foreach ( $tax_callbacks as $entry ) {
-			if ( ! class_exists( $entry[0][0] ) ) { throw new RuntimeException( 'Retained native tax callback unavailable.' ); }
-			add_filter( 'woocommerce_get_order_item_classname', $entry[0], $entry[1], $entry[2] );
-		}
 		try {
+			if ( $had_class_hook ) { $wp_filter['woocommerce_get_order_item_classname'] = clone $original_class_hook; }
+			foreach ( $tax_callbacks as $entry ) {
+				if ( ! class_exists( $entry[0][0] ) ) { throw new RuntimeException( 'Retained native tax callback unavailable.' ); }
+				add_filter( 'woocommerce_get_order_item_classname', $entry[0], $entry[1], $entry[2] );
+			}
 			$clear();
 			if ( ! skyyrose2_simple_size_upgrade() || $read( $names[0] ) !== $before[0] ) { throw new RuntimeException( 'Source-qualified tax callbacks changed the product baseline.' ); }
 			$checks[] = 'EXACT_RETAINED_TAX_CALLBACK_CHAIN_PRESERVES_PRODUCT_BASELINE';
