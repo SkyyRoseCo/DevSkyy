@@ -2,7 +2,7 @@
 /** Destructive controls ONLY for the guarded, disposable native synthetic fixture. */
 ss_assert_identity( true );
 function ss_upgrade_lab() {
-	global $wpdb;
+	global $wpdb, $wp_filter;
 	$names = array( 'skyyrose2_simple_size_history_v1', 'skyyrose2_simple_size_upgrade_v1' );
 	$read = static fn( $name ) => $wpdb->get_var( $wpdb->prepare( "SELECT option_value FROM {$wpdb->options} WHERE option_name=%s", $name ) );
 	$before = array_map( $read, $names );
@@ -24,6 +24,9 @@ function ss_upgrade_lab() {
 			array( array( 'Stripe\\StripeTaxForWooCommerce\\WordPress\\Hooks', 'filter_woocommerce_get_order_item_classname' ), 5, 2 ),
 			array( array( 'Stripe\\StripeTaxForWooCommerce\\WooCommerce\\Hook_Handlers\\Order_Tax_Calculation', 'get_order_item_classname' ), 100, 4 ),
 		);
+		$had_class_hook = array_key_exists( 'woocommerce_get_order_item_classname', $wp_filter );
+		$original_class_hook = $wp_filter['woocommerce_get_order_item_classname'] ?? null;
+		if ( $had_class_hook ) { $wp_filter['woocommerce_get_order_item_classname'] = clone $original_class_hook; }
 		foreach ( $tax_callbacks as $entry ) {
 			if ( ! class_exists( $entry[0][0] ) ) { throw new RuntimeException( 'Retained native tax callback unavailable.' ); }
 			add_filter( 'woocommerce_get_order_item_classname', $entry[0], $entry[1], $entry[2] );
@@ -33,7 +36,8 @@ function ss_upgrade_lab() {
 			if ( ! skyyrose2_simple_size_upgrade() || $read( $names[0] ) !== $before[0] ) { throw new RuntimeException( 'Source-qualified tax callbacks changed the product baseline.' ); }
 			$checks[] = 'EXACT_RETAINED_TAX_CALLBACK_CHAIN_PRESERVES_PRODUCT_BASELINE';
 		} finally {
-			foreach ( $tax_callbacks as $entry ) { remove_filter( 'woocommerce_get_order_item_classname', $entry[0], $entry[1] ); }
+			if ( $had_class_hook ) { $wp_filter['woocommerce_get_order_item_classname'] = $original_class_hook; }
+			else { unset( $wp_filter['woocommerce_get_order_item_classname'] ); }
 		}
 		$clear();
 		$fail = static fn( $sql ) => str_starts_with( $sql, "INSERT INTO {$wpdb->options} (option_name,option_value,autoload) VALUES" ) ? 'SELECT 1' : $sql;
