@@ -1,0 +1,59 @@
+{
+  "status": "PASS_LIVE_LARGE_COLLECTION_PICTURES",
+  "source_commit": "bb2dee496dd3a91c9770632c9b53c14dade3b48b",
+  "published_utc": "2026-10-21T14:58:13+00:00",
+  "site": "https://skyyrose.co/",
+  "site_id": 238510894,
+  "theme_members": 732,
+  "changed_members": 19,
+  "normal_live_routes_per_width": 8,
+  "viewport_widths": [
+    390,
+    768,
+    1440
+  ],
+  "decoded_images": 72,
+  "menu_card_widths": [
+    358,
+    345,
+    419
+  ],
+  "kids_menu_heights": [
+    448,
+    432,
+    524
+  ],
+  "home_kids_image_sizes": [
+    [
+      390,
+      488
+    ],
+    [
+      768,
+      960
+    ],
+    [
+      840,
+      1050
+    ]
+  ],
+  "directory_links_checked_per_width": 8,
+  "unattributed_js_errors": 0,
+  "known_blocked_telemetry_errors": 3,
+  "zip": {
+    "status": "PASS_STANDARD_732_MEMBER_SUCCESSOR",
+    "path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/.artifacts/large-collection-pictures-20261021/skyyrose-flagship-2-2.5.6-large-collection-pictures.zip",
+    "sha256": "f23545a6f40d9689230038db41fc633a0562f9a586d67a5a8c7d245b639aed9c",
+    "bytes": 285782099,
+    "changed_members_vs_fresh_installed_baseline": 19,
+    "source_commit": "bb2dee496dd3a91c9770632c9b53c14dade3b48b",
+    "all_members_match_published_hash_map": true,
+    "available_bytes_before": 50698002432,
+    "available_bytes_after": 50412056576
+  },
+  "order_history_unchanged": true,
+  "no_live_orders_payments_or_consent_interactions": true,
+  "unrelated_dirty_files_preserved": 7,
+  "native_commerce_rerun": false,
+  "additional_full_stack_motion_payment_privacy_claims": false
+}

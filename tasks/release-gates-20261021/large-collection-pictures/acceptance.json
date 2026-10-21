@@ -1,0 +1,12 @@
+{
+  "status": "PASS_BOUNDED_LIVE_LARGE_COLLECTION_PICTURES",
+  "reviewer": "existing /root/cleanup_architect",
+  "reference_pins_verified": 62,
+  "source_commit": "bb2dee496dd3a91c9770632c9b53c14dade3b48b",
+  "successor_zip_sha256": "f23545a6f40d9689230038db41fc633a0562f9a586d67a5a8c7d245b639aed9c",
+  "review_scope": "Settled-page navigation and imagery; early-load behavior, payment, privacy and unrestricted installed plugins remain separately unqualified",
+  "unique_route_width_pairs": 24,
+  "decoded_image_observations": 72,
+  "js_source_minified_review": "PASS_ARIA_PRESSED_FIX_REPRODUCED",
+  "no_live_orders_payments_or_consent_interaction": true
+}
