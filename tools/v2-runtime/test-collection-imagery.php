@@ -87,6 +87,7 @@ foreach ( $pages as $page => $html ) {
 
 // Role-bound images: exact binding, uncropped markup, keyed srcset family.
 function imagery_roles( $html ) {
+	if ( preg_match( '#<main\b[^>]*>(.*?)</main>#s', $html, $main ) ) { $html = $main[1]; }
 	preg_match_all( '#<img\b[^>]*data-media-role="[^"]+"[^>]*>#', $html, $m );
 	return $m[0];
 }
@@ -96,10 +97,21 @@ check_imagery( $story && imagery_srcset_ok( imagery_attr( $story[0], 'srcset' ),
 check_imagery( false === strpos( $pages['black-rose'], 'Look 01' ), 'Retired lookbook caption is gone' );
 
 $index = imagery_roles( $pages['collections'] );
-$index_skus = array_map( static fn( $tag ) => imagery_attr( $tag, 'data-media-sku' ), $index );
-check_imagery( array( $expected['signature']['collection_hero'], $expected['black-rose']['collection_hero'], $expected['love-hurts']['collection_hero'], $expected['kids-capsule']['collection_hero'] ) === $index_skus, '/collections/ chapters render the four collection_hero bindings in order' );
+$index_slugs = array( 'signature', 'black-rose', 'love-hurts', 'kids-capsule' );
+$motion_manifest = json_decode( file_get_contents( $theme . '/data/collection-hero-motion.json' ), true );
+check_imagery( 4 === count( $index ), 'Index has one admitted image for each collection' );
+foreach ( $index as $number => $tag ) {
+	$slug = $index_slugs[ $number ];
+	if ( 'kids-capsule' === $slug ) {
+		check_imagery( $expected[ $slug ]['collection_hero'] === imagery_attr( $tag, 'data-media-sku' ), 'Kids index keeps its exact product-bound hero' );
+	} else {
+		$poster = $motion_manifest['collections'][ $slug ]['source']['file'];
+		check_imagery( $prefix . $poster . '?v=' . hash_file( 'sha256', $theme . '/' . $poster ) === imagery_attr( $tag, 'src' ), 'Index uses the exact current cinema poster for ' . $slug );
+	}
+}
 check_imagery( $index && 'eager' === imagery_attr( $index[0], 'loading' ) && 'high' === imagery_attr( $index[0], 'fetchpriority' ) && 3 === count( array_filter( array_slice( $index, 1 ), static fn( $tag ) => 'lazy' === imagery_attr( $tag, 'loading' ) ) ), 'Only the first index chapter is eager/high priority' );
 foreach ( $index as $tag ) {
+	if ( ! imagery_attr( $tag, 'data-media-sku' ) ) { continue; }
 	check_imagery( imagery_srcset_ok( imagery_attr( $tag, 'srcset' ), imagery_attr( $tag, 'data-media-sku' ) ), 'Index srcset family is keyed and single-SKU for ' . imagery_attr( $tag, 'data-media-sku' ) );
 }
 check_imagery( str_contains( file_get_contents( $theme . '/template-parts/collections/index.php' ), 'sr2-collections-index__lockup' ), 'Index chapter titles keep the collection lockup image (template source; the gate decides delivery)' );

@@ -111,26 +111,30 @@ function skyyrose2_header() {
 			<button class="sr2-header__menu" type="button" aria-label="<?php esc_attr_e( 'Open site menu', 'skyyrose-flagship-2' ); ?>" aria-controls="sr2-menu" aria-expanded="false" data-sr2-menu><span aria-hidden="true"></span><span><?php esc_html_e( 'Menu', 'skyyrose-flagship-2' ); ?></span></button>
 		</div>
 		<nav id="sr2-menu" class="sr2-header__nav sr2-house-nav" aria-label="<?php esc_attr_e( 'Primary navigation', 'skyyrose-flagship-2' ); ?>" data-sr2-nav>
-			<div class="sr2-house-nav__directory">
-				<p class="sr2-index"><?php esc_html_e( 'SkyyRose / House directory', 'skyyrose-flagship-2' ); ?></p>
-				<?php skyyrose2_shell_links( 'primary-v2', skyyrose2_house_links(), 'sr2-house-nav__links' ); ?>
-				<?php if ( has_nav_menu( 'primary' ) ) : ?>
-				<div class="sr2-house-nav__experiences"><h2 class="sr2-index"><?php esc_html_e( 'Experiences', 'skyyrose-flagship-2' ); ?></h2><?php skyyrose2_shell_links( 'primary', array(), 'sr2-house-nav__experience-links' ); ?></div>
-				<?php endif; ?>
-				<div class="sr2-house-nav__utility"><a href="<?php echo esc_url( home_url( '/?s=' ) ); ?>" data-search-open><?php esc_html_e( 'Search', 'skyyrose-flagship-2' ); ?></a><a href="<?php echo esc_url( $account ); ?>"><?php esc_html_e( 'Account', 'skyyrose-flagship-2' ); ?></a><a href="<?php echo esc_url( skyyrose2_marketplace_page_url( 'wishlist' ) ); ?>"><?php esc_html_e( 'Saved pieces', 'skyyrose-flagship-2' ); ?></a><?php if ( skyyrose2_published_page_permalink( 'lookbook' ) ) : ?><a href="<?php echo esc_url( skyyrose2_published_page_permalink( 'lookbook' ) ); ?>"><?php esc_html_e( 'Lookbook', 'skyyrose-flagship-2' ); ?></a><?php endif; ?></div>
-			</div>
 			<div class="sr2-house-nav__collections">
 				<p class="sr2-index"><?php esc_html_e( 'Four worlds. One house.', 'skyyrose-flagship-2' ); ?></p>
 				<h2 data-sr2-type-motion="mask"><?php esc_html_e( 'Choose your chapter.', 'skyyrose-flagship-2' ); ?></h2>
 				<div class="sr2-house-nav__previews">
 				<?php foreach ( skyyrose2_collections() as $slug => $collection ) : ?>
-					<div class="sr2-house-nav__preview-entry">
-						<a data-collection="<?php echo esc_attr( $slug ); ?>" href="<?php echo esc_url( skyyrose2_collection_url( $slug ) ); ?>"><img src="<?php echo esc_url( skyyrose2_sot_asset_uri( $collection['hero_tablet'] ?? $collection['hero'] ) ); ?>" width="1024" height="576" loading="lazy" decoding="async" fetchpriority="low" alt=""><span><?php echo esc_html( $collection['name'] ); ?></span><span aria-hidden="true">↗</span></a>
+					<?php
+					$preview_cinema = skyyrose2_collection_cinema( $slug );
+					$preview_portrait = empty( $preview_cinema['poster'] );
+					$preview_markup = $preview_portrait
+						? skyyrose2_collection_media_markup( skyyrose2_collection_media( $slug, 'collection_hero' ), 'lazy', '(max-width: 47.99em) calc(100vw - 2.5rem), (max-width: 74.99em) 45vw, 34vw' )
+						: '<img src="' . esc_url( $preview_cinema['poster'] ) . '" width="1440" height="810" loading="lazy" decoding="async" alt="">';
+					?>
+					<div class="sr2-house-nav__preview-entry<?php echo $preview_portrait ? ' sr2-house-nav__preview-entry--portrait' : ''; ?>">
+						<a data-collection="<?php echo esc_attr( $slug ); ?>" href="<?php echo esc_url( skyyrose2_collection_url( $slug ) ); ?>" aria-label="<?php echo esc_attr( $collection['name'] ); ?>"><?php echo $preview_markup; // Escaped output from the governed image resolvers. ?><span><?php echo esc_html( $collection['name'] ); ?></span><span aria-hidden="true">↗</span></a>
 						<button type="button" data-nav-preview-toggle aria-controls="sr2-nav-preview-stage" aria-pressed="false" aria-label="<?php echo esc_attr( sprintf( __( 'Preview %s', 'skyyrose-flagship-2' ), $collection['name'] ) ); ?>" hidden><?php esc_html_e( 'Preview', 'skyyrose-flagship-2' ); ?></button>
 					</div>
 				<?php endforeach; ?>
 				</div>
 				<p class="sr2-house-nav__origin"><?php esc_html_e( 'Oakland, California', 'skyyrose-flagship-2' ); ?><br><?php esc_html_e( 'Independent luxury fashion.', 'skyyrose-flagship-2' ); ?></p>
+			</div>
+			<div class="sr2-house-nav__directory">
+				<p class="sr2-index"><?php esc_html_e( 'SkyyRose / House directory', 'skyyrose-flagship-2' ); ?></p>
+				<?php skyyrose2_shell_links( 'primary-v2', skyyrose2_house_links(), 'sr2-house-nav__links' ); ?>
+				<div class="sr2-house-nav__utility"><a href="<?php echo esc_url( home_url( '/?s=' ) ); ?>" data-search-open><?php esc_html_e( 'Search', 'skyyrose-flagship-2' ); ?></a><a href="<?php echo esc_url( $account ); ?>"><?php esc_html_e( 'Account', 'skyyrose-flagship-2' ); ?></a><a href="<?php echo esc_url( skyyrose2_marketplace_page_url( 'wishlist' ) ); ?>"><?php esc_html_e( 'Saved pieces', 'skyyrose-flagship-2' ); ?></a><?php if ( skyyrose2_published_page_permalink( 'lookbook' ) ) : ?><a href="<?php echo esc_url( skyyrose2_published_page_permalink( 'lookbook' ) ); ?>"><?php esc_html_e( 'Lookbook', 'skyyrose-flagship-2' ); ?></a><?php endif; ?></div>
 			</div>
 		</nav>
 	</header>

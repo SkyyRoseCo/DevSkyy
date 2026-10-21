@@ -45,7 +45,11 @@ $index_number      = 0;
 <?php foreach ( $index_collections as $index_slug => $index_collection ) : ?>
 	<?php
 	++$index_number;
+	$index_cinema   = skyyrose2_collection_cinema( $index_slug );
 	$index_image    = skyyrose2_collection_media( $index_slug, 'collection_hero' );
+	$index_markup   = ! empty( $index_cinema['poster'] )
+		? '<img data-media-role="collection_hero_poster" src="' . esc_url( $index_cinema['poster'] ) . '" width="1440" height="810" alt="" ' . ( 1 === $index_number ? 'loading="eager" fetchpriority="high"' : 'loading="lazy"' ) . ' decoding="async">'
+		: skyyrose2_collection_media_markup( $index_image, 1 === $index_number ? 'eager' : 'lazy', '(max-width: 52.5em) 100vw, 840px' );
 	$index_title_id = 'sr2-collections-index-' . $index_slug . '-title';
 	$index_lockup   = $index_lockups[ $index_slug ] ?? array(
 		'width'  => 1600,
@@ -53,9 +57,9 @@ $index_number      = 0;
 	);
 	?>
 	<section class="sr2-chapter sr2-collections-index__chapter<?php echo 0 === $index_number % 2 ? ' sr2-chapter--flip' : ''; ?>" data-collection="<?php echo esc_attr( $index_slug ); ?>" aria-labelledby="<?php echo esc_attr( $index_title_id ); ?>">
-		<?php if ( $index_image ) : ?>
-		<figure class="sr2-chapter__scene sr2-chapter__scene--fashion" data-media-role="collection_hero">
-			<?php echo skyyrose2_collection_media_markup( $index_image, 1 === $index_number ? 'eager' : 'lazy' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- skyyrose2_collection_media_markup() escapes every attribute. ?>
+		<?php if ( $index_markup ) : ?>
+		<figure class="sr2-chapter__scene <?php echo empty( $index_cinema['poster'] ) ? 'sr2-chapter__scene--fashion' : 'sr2-chapter__scene--cinema'; ?>" data-media-role="collection_hero">
+			<?php echo $index_markup; // Escaped output from the governed image resolvers. ?>
 		</figure>
 		<?php endif; ?>
 		<div class="sr2-chapter__band">

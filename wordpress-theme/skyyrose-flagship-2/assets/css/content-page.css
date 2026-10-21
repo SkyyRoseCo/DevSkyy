@@ -485,5 +485,8 @@
   }
 }
 /* Founder-approved collection_hero photography: whole garment, never cropped. */
-.sr2-collections-index__chapter .sr2-chapter__scene--fashion { display: grid; place-items: center; aspect-ratio: auto; padding: clamp(1.5rem, 4vw, 4rem) var(--sr2-page-pad); background: var(--sr2-void); }
-.sr2-collections-index__chapter .sr2-chapter__scene--fashion img { display: block; width: min(100%, 560px); height: auto; object-fit: contain; }
+.sr2-collections-index__chapter .sr2-chapter__scene--fashion { display: grid; place-items: center; aspect-ratio: auto; padding: 0; background: var(--sr2-void); }
+.sr2-collections-index__chapter .sr2-chapter__scene--fashion img { display: block; width: min(100%, 840px); height: auto; object-fit: contain; }
+
+.sr2-collections-index__chapter .sr2-chapter__scene--cinema { aspect-ratio: 16 / 9; }
+.sr2-collections-index__chapter .sr2-chapter__scene--cinema img { object-fit: contain; }

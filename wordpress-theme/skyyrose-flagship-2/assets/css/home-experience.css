@@ -171,3 +171,8 @@
     transition: none;
   }
 }
+
+/* Full-frame product portraits are collection imagery, not narrow landscape inserts. */
+.sr2-editorial-home .sr2-chapter__scene--product { aspect-ratio: auto; }
+.sr2-editorial-home .sr2-chapter__scene--product picture { display: grid; place-items: center; height: auto; }
+.sr2-editorial-home .sr2-chapter__scene--product img { width: min(100%, 840px); height: auto; }

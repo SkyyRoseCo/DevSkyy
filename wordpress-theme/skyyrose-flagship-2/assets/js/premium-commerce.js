@@ -147,6 +147,7 @@
     const stage = document.createElement('figure');
     stage.id = 'sr2-nav-preview-stage';
     stage.className = 'sr2-house-nav__preview-stage';
+    stage.hidden = true;
     const image = document.createElement('img');
     image.width = 1024; image.height = 576; image.alt = ''; image.decoding = 'async'; image.hidden = true;
     const caption = document.createElement('figcaption');
@@ -157,13 +158,13 @@
     let active;
     let pendingImage;
     const preview = async (entry) => {
+      entries.forEach(item => item.querySelector('button').setAttribute('aria-pressed', String(!stage.hidden && item === entry)));
       if (active === entry) return;
       active = entry;
       const current = ++generation;
       const source = entry.querySelector('img');
       const link = entry.querySelector('a');
       const label = link.querySelector('span')?.textContent || '';
-      entries.forEach(item => item.querySelector('button').setAttribute('aria-pressed', String(item === entry)));
       const sourceUrl = source?.currentSrc || source?.getAttribute('src');
       if (!sourceUrl) {
         image.hidden = true;
@@ -198,12 +199,14 @@
     entries.forEach(entry => {
       const button = entry.querySelector('button');
       button.hidden = false;
-      button.addEventListener('click', () => preview(entry));
+      button.addEventListener('click', () => { stage.hidden = false; preview(entry); stage.scrollIntoView({ block: 'nearest', behavior: 'instant' }); });
       entry.querySelector('a').addEventListener('focus', () => preview(entry));
       entry.addEventListener('pointerenter', event => { if (event.pointerType !== 'touch') preview(entry); });
     });
     const menu = document.querySelector('[data-sr2-menu]');
     const cancel = () => {
+      stage.hidden = true;
+      entries.forEach(item => item.querySelector('button').setAttribute('aria-pressed', 'false'));
       generation += 1;
       if (pendingImage) pendingImage.src = '';
       pendingImage = null;

@@ -394,7 +394,7 @@ function skyyrose2_performance_route_preloads() {
 		$collections = skyyrose2_collections();
 		$collection  = $collections[ $slug ] ?? array();
 		if ( 'kids-capsule' === $slug ) {
-			$still = skyyrose2_performance_collection_preload( $slug, '(max-width: 47.99em) calc(100vw - 2rem), 40vw' );
+			$still = skyyrose2_performance_collection_preload( $slug, '(max-width: 47.99em) calc(100vw - 2rem), 60vw' );
 			return $still ? array( $still ) : array();
 		}
 		if ( ! empty( $collection['hero'] ) ) {
@@ -424,7 +424,12 @@ function skyyrose2_performance_route_preloads() {
 		$slug = sanitize_title( get_post_field( 'post_name', get_queried_object_id() ) );
 		if ( 'collections' === $slug && function_exists( 'skyyrose2_collections' ) ) {
 			// The collections index opens on the first world's collection_hero (template-parts/collections/index.php).
-			$resource = skyyrose2_performance_collection_preload( (string) array_key_first( skyyrose2_collections() ) );
+			$first = (string) array_key_first( skyyrose2_collections() );
+			$cinema = skyyrose2_collection_cinema( $first );
+			if ( ! empty( $cinema['poster'] ) ) {
+				return array( array( 'href' => $cinema['poster'], 'as' => 'image', 'fetchpriority' => 'high', 'type' => 'image/webp' ) );
+			}
+			$resource = skyyrose2_performance_collection_preload( $first, '(max-width: 52.5em) 100vw, 840px' );
 			return $resource ? array( $resource ) : array();
 		}
 		if ( in_array( $slug, array( 'pre-order', 'preorder' ), true ) ) {

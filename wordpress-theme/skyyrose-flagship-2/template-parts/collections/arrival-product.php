@@ -4,7 +4,7 @@ defined( 'ABSPATH' ) || exit;
 $collection = $args['collection'];
 $slug       = $args['slug'];
 $image      = skyyrose2_collection_media( $slug, 'collection_hero' );
-$markup     = skyyrose2_collection_media_markup( $image, 'eager', '(max-width: 47.99em) calc(100vw - 2rem), 40vw' );
+$markup     = skyyrose2_collection_media_markup( $image, 'eager', '(max-width: 47.99em) calc(100vw - 2rem), 60vw' );
 ?>
 <header class="sr2-product-arrival" data-product-arrival data-collection="<?php echo esc_attr( $slug ); ?>" data-media-state="<?php echo $markup ? 'admitted' : 'unavailable'; ?>" aria-labelledby="sr2-collection-title">
 	<div class="sr2-product-arrival__copy">

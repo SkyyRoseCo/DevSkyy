@@ -32,7 +32,7 @@ foreach ( $chapter_slugs as $slug ) :
 	}
 	$chapter_markup = ! empty( $chapter_cinema['poster'] )
 		? '<img src="' . esc_url( $chapter_cinema['poster'] ) . '" width="1440" height="810" alt="" loading="lazy" decoding="async">'
-		: skyyrose2_collection_media_markup( skyyrose2_collection_media( $slug, 'collection_hero' ) );
+		: skyyrose2_collection_media_markup( skyyrose2_collection_media( $slug, 'collection_hero' ), 'lazy', '(max-width: 47.99em) 100vw, 840px' );
 	if ( empty( $chapter_cinema['poster'] ) ) {
 		// Product stills keep their full composition inside the chapter scene.
 		$chapter_markup = str_replace( '<img ', '<img style="object-fit: contain" ', $chapter_markup );
@@ -43,7 +43,7 @@ foreach ( $chapter_slugs as $slug ) :
 	?>
 <section<?php echo 1 === $chapter ? ' id="sr2-archive-worlds" tabindex="-1"' : ''; ?> class="sr2-editorial-collection sr2-chapter<?php echo 0 === $chapter % 2 ? ' sr2-chapter--flip' : ''; ?>" data-collection="<?php echo esc_attr( $slug ); ?>" aria-labelledby="<?php echo esc_attr( $title_id ); ?>">
 	<?php if ( $chapter_markup ) : ?>
-	<figure class="sr2-editorial-collection__image sr2-chapter__scene<?php echo $chapter_motion ? ' sr2-home-motion' : ''; ?>"<?php echo $chapter_motion ? ' data-home-motion' : ''; ?>>
+	<figure class="sr2-editorial-collection__image sr2-chapter__scene<?php echo empty( $chapter_cinema['poster'] ) ? ' sr2-chapter__scene--product' : ''; ?><?php echo $chapter_motion ? ' sr2-home-motion' : ''; ?>"<?php echo $chapter_motion ? ' data-home-motion' : ''; ?>>
 		<picture>
 			<?php echo $chapter_markup; // Escaped cinema poster or governed collection-media helper output. ?>
 		</picture>

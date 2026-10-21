@@ -13,7 +13,7 @@
 .sr2-house-header .sr2-header__bag span::before { content: '('; }
 .sr2-house-header .sr2-header__bag span::after { content: ')'; }
 .sr2-house-header a:hover, .sr2-house-header button:hover { color: var(--sr2-rose); }
-.sr2-house-nav { display: none; grid-template-columns: minmax(0, 1.35fr) minmax(0, .65fr); gap: clamp(2rem, 8vw, 8rem); padding: calc(var(--sr2-header) + var(--sr2-space-8)) var(--sr2-page-pad) max(var(--sr2-space-8), env(safe-area-inset-bottom)); height: 100dvh; overflow-y: auto; overscroll-behavior: contain; border-top: 1px solid var(--sr2-rose); align-content: start; }
+.sr2-house-nav { display: none; grid-template-columns: minmax(0, 1.7fr) minmax(15rem, .7fr); grid-template-rows: auto; gap: clamp(2rem, 5vw, 5rem); padding: calc(var(--sr2-header) + var(--sr2-space-8)) var(--sr2-page-pad) calc(max(var(--sr2-space-8), env(safe-area-inset-bottom)) + var(--skyyrose-consent-clearance, 0px)); height: 100dvh; overflow-y: auto; overscroll-behavior: contain; border-top: 1px solid var(--sr2-rose); align-content: start; }
 .sr2-house-nav.is-open { display: grid; }
 .sr2-house-nav__directory, .sr2-house-nav__collections { min-width: 0; }
 .sr2-house-nav .sr2-index { margin: 0 0 var(--sr2-space-6); color: var(--sr2-muted); }
@@ -26,8 +26,8 @@
 .sr2-house-nav__utility { display: flex; flex-wrap: wrap; gap: var(--sr2-space-8); padding-top: var(--sr2-space-5); }
 .sr2-house-nav__utility a { display: flex; align-items: center; gap: var(--sr2-space-3); min-height: var(--sr2-target-size); text-decoration: none; }
 .sr2-house-nav__utility .sr2-index { margin: 0; }
-.sr2-house-nav__collections { border-inline-start: 1px solid var(--sr2-line); padding-inline-start: var(--sr2-space-8); }
-.sr2-house-nav__collections h2 { margin: var(--sr2-space-12) 0 var(--sr2-space-8); max-width: 10ch; font: 650 clamp(1.75rem, 2.8vw, 3rem)/1.08 var(--sr2-font-display); letter-spacing: -.03em; }
+.sr2-house-nav__collections { border-inline-start: 0; padding-inline-start: 0; border-inline-end: 1px solid var(--sr2-line); padding-inline-end: var(--sr2-space-8); }
+.sr2-house-nav__collections h2 { margin: 0 0 var(--sr2-space-6); max-width: 18ch; font: 650 clamp(1.75rem, 2.8vw, 3rem)/1.08 var(--sr2-font-display); letter-spacing: -.03em; }
 .sr2-house-nav__collections > a { display: flex; justify-content: space-between; align-items: center; gap: var(--sr2-space-4); padding: var(--sr2-space-4) 0; min-height: 52px; border-bottom: 1px solid var(--sr2-line); text-decoration: none; }
 .sr2-house-nav__collections > a::before { content: ''; width: var(--sr2-space-2); height: var(--sr2-space-2); background: var(--sr2-accent); }
 .sr2-house-nav__collections > a > span:first-child { margin-inline-end: auto; }
@@ -75,7 +75,7 @@ body.sr2-overlay-open .skyyrose-mascot, body.sr2-overlay-open .skyyrose-mascot__
 @media (max-width: 48rem) {
  .sr2-house-nav { grid-template-columns: 1fr; gap: var(--sr2-space-8); padding-top: calc(var(--sr2-header) + var(--sr2-space-6)); }
  .sr2-house-nav__links > li > a { padding-block: var(--sr2-space-3); font-size: clamp(1.6rem, 6vw, 2.25rem); }
- .sr2-house-nav__collections { border-inline-start: 0; border-block-start: 1px solid var(--sr2-line); padding-inline-start: 0; padding-top: var(--sr2-space-6); }
+ .sr2-house-nav__collections { border-inline-end: 0; border-block-end: 1px solid var(--sr2-line); padding-inline-end: 0; padding-bottom: var(--sr2-space-6); }
  .sr2-house-nav__collections h2 { margin: var(--sr2-space-6) 0; }
  .sr2-house-nav__origin { margin-top: var(--sr2-space-8); }
  .sr2-search-dialog { width: calc(100% - var(--sr2-space-4)); max-height: calc(100dvh - var(--sr2-space-4)); }
@@ -99,8 +99,9 @@ body.sr2-overlay-open .skyyrose-mascot, body.sr2-overlay-open .skyyrose-mascot__
 .sr2-dialog-head .sr2-icon-button { border-color: var(--sr2-border-subtle); font-size: 1.5rem; }
 /* Existing collection monuments supply recognition without an autoplay reel. */
 .sr2-house-nav__previews { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--sr2-space-6) var(--sr2-space-4); }
-.sr2-house-nav__previews a { display: grid; grid-template-columns: minmax(0, 1fr) auto; overflow-wrap: anywhere; align-items: center; gap: var(--sr2-space-3); min-width: 0; border-top: 1px solid var(--sr2-accent); padding-bottom: var(--sr2-space-2); text-decoration: none; font-size: var(--sr2-type-utility); }
-.sr2-house-nav__previews img { grid-column: 1 / -1; width: 100%; aspect-ratio: 16 / 9; height: auto; object-fit: contain; background: var(--sr2-surface-raised); }
+.sr2-house-nav__previews a { display: grid; grid-template-columns: minmax(0, 1fr) auto; overflow-wrap: anywhere; align-items: center; gap: var(--sr2-space-3); min-width: 0; border-top: 1px solid var(--sr2-accent); padding-bottom: var(--sr2-space-2); text-decoration: none; font-size: clamp(1rem, 1.5vw, 1.25rem); }
+.sr2-house-nav__previews img { grid-column: 1 / -1; width: 100%; aspect-ratio: 16 / 10; height: auto; object-fit: contain; background: var(--sr2-surface-raised); }
+.sr2-house-nav__preview-entry--portrait img { aspect-ratio: 4 / 5; }
 .sr2-house-nav__previews a:focus-visible { outline-offset: var(--sr2-space-1); }
 .sr2-bag-empty-link { display: none; }
 .sr2-bag-dialog:has(.woocommerce-mini-cart__empty-message) .sr2-bag-empty-link { display: inline-flex; margin-block-start: var(--sr2-space-6); }
@@ -147,9 +148,6 @@ body.sr2-overlay-open .skyyrose-mascot, body.sr2-overlay-open .skyyrose-mascot__
  .sr2-c-checkout .sr2-page-head h1 { font-size: clamp(1.75rem, 7vw, 2.35rem); }
 }
 
-.sr2-house-nav__experiences { margin-top: 1.5rem; padding-top: 1rem; border-top: 1px solid currentColor; }
-.sr2-house-nav__experience-links { display: flex; flex-wrap: wrap; gap: .5rem 1.25rem; }
-.sr2-house-nav__experience-links a { display: inline-flex; align-items: center; min-height: 44px; }
 
 @media (max-width: 47.99em) {
   body .sr2-c-editorial-card .sr2-c-editorial-card__body { min-width: 0; }
@@ -282,3 +280,7 @@ body .sr2-story .sr2-story__body :is(h2, h3) { line-height: 1.25; overflow-wrap:
 
 /* The shop-the-look details band is owned by hero-commerce-scenes.css (12-column story + product list). */
 body.woocommerce-cart #coupon_code { font-size: 1rem; }
+
+@media (max-width: 47.99em) {
+ .sr2-house-nav__previews { grid-template-columns: minmax(0, 1fr); }
+}

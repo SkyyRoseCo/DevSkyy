@@ -6,13 +6,13 @@
   },
   "source": {
     "file": "theme.css",
-    "sha256": "642788a3a72b6fc8e440d9e51acf03c681eab6d526959cd1e71016eb6e24e751",
-    "bytes": 67446
+    "sha256": "b4ca8d49cfa2214fd6b1fea005284bf46f210cf8bce8f58005366dfdf900a654",
+    "bytes": 67447
   },
   "originalMin": {
     "file": "theme.min.css",
-    "sha256": "cdadadb58aee9a9fa7bbbd38d36f0c38020f254c918c1975123e2f6b02192ab5",
-    "bytes": 57015
+    "sha256": "0a25f287e122b2de7e40491228c382a8764d2fb20e9867b32e6856b7a7e91057",
+    "bytes": 57016
   },
   "output": {
     "file": "archive-theme.min.css",
@@ -660,7 +660,7 @@
       "index": 63,
       "selector": ".sr2-product-arrival",
       "wrappers": [],
-      "ruleSha256": "b526f481d76be48ce10c00de07df1e12ac4d5e694a70419f3648ab8334c95bcd",
+      "ruleSha256": "fecf044399c02bee1f263db863d6a9141bd781577414a09c38eb57ac6d42e0fb",
       "disposition": "EXCLUDE_FROM_NATIVE_ARCHIVE",
       "owners": [
         "editorialWorlds"
@@ -690,7 +690,7 @@
       "index": 66,
       "selector": ".sr2-product-arrival__media",
       "wrappers": [],
-      "ruleSha256": "ae912e15347487a2ffa56222ba5e15ec9b7f48bd9b5406f81ac625c9c6cd7e3b",
+      "ruleSha256": "5ba43141d0e0d8772a9d36e18a1bb9aa144de9a140bb4b488c83d3873c279201",
       "disposition": "EXCLUDE_FROM_NATIVE_ARCHIVE",
       "owners": [
         "editorialWorlds"
@@ -744,7 +744,7 @@
       "wrappers": [
         "@media (max-width: 47.99em)"
       ],
-      "ruleSha256": "e94948a67d5aa57192109137b2b9819dec4658e048235552b6e22541d05ffa55",
+      "ruleSha256": "a05bef2123d3ced54a66cf8edf08755ca65db372b7cd47f771cf0b12d1d3497d",
       "disposition": "EXCLUDE_FROM_NATIVE_ARCHIVE",
       "owners": [
         "editorialWorlds"
