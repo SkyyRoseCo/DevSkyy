@@ -20,6 +20,21 @@ function ss_upgrade_lab() {
 			if ( $ok || null !== $read( $names[0] ) || null !== $read( $names[1] ) ) { throw new RuntimeException( 'Unsupported interpretation was admitted.' ); }
 			$checks[] = 'REFUSE_UNQUALIFIED_' . $hook;
 		}
+		$tax_callbacks = array(
+			array( array( 'Stripe\\StripeTaxForWooCommerce\\WordPress\\Hooks', 'filter_woocommerce_get_order_item_classname' ), 5, 2 ),
+			array( array( 'Stripe\\StripeTaxForWooCommerce\\WooCommerce\\Hook_Handlers\\Order_Tax_Calculation', 'get_order_item_classname' ), 100, 4 ),
+		);
+		foreach ( $tax_callbacks as $entry ) {
+			if ( ! class_exists( $entry[0][0] ) ) { throw new RuntimeException( 'Retained native tax callback unavailable.' ); }
+			add_filter( 'woocommerce_get_order_item_classname', $entry[0], $entry[1], $entry[2] );
+		}
+		try {
+			$clear();
+			if ( ! skyyrose2_simple_size_upgrade() || $read( $names[0] ) !== $before[0] ) { throw new RuntimeException( 'Source-qualified tax callbacks changed the product baseline.' ); }
+			$checks[] = 'EXACT_RETAINED_TAX_CALLBACK_CHAIN_PRESERVES_PRODUCT_BASELINE';
+		} finally {
+			foreach ( $tax_callbacks as $entry ) { remove_filter( 'woocommerce_get_order_item_classname', $entry[0], $entry[1] ); }
+		}
 		$clear();
 		$fail = static fn( $sql ) => str_starts_with( $sql, "INSERT INTO {$wpdb->options} (option_name,option_value,autoload) VALUES" ) ? 'SELECT 1' : $sql;
 		add_filter( 'query', $fail, 999 );

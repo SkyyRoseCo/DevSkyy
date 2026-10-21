@@ -71,14 +71,44 @@ final class SkyyRose2_Size_History_Order {
 	public function get_items( $type ) { return $this->lines; }
 }
 
+/** Source-qualified tax-only callbacks leave every product line class unchanged. */
+function skyyrose2_simple_size_line_class_profile() {
+	global $wp_filter;
+	$callbacks = $wp_filter['woocommerce_get_order_item_classname']->callbacks ?? array();
+	if ( ! $callbacks ) { return; }
+	$root = WP_PLUGIN_DIR . '/stripe-tax-for-woocommerce/';
+	$files = array(
+		'WordPress/class-hooks.php' => 'ddcfdfdc9f1fee293f61886c6180273b90274ec155ccb90fd7caa9e858377878',
+		'WooCommerce/Hook_Handlers/class-order-tax-calculation.php' => '029bc028ffc9acaf5b1f79fb510e4f833c00f4ceec4d1b5a1108677997c4815d',
+		'WordPress/class-hook-handlers.php' => '07b4469395d5250a1a35058a8fadfe448ccb14e293a4ed2f63306c4be0450a79',
+		'WordPress/class-options.php' => '5d634e5c91eb15b07cbc0751296b3f3bab0578e0ae8b78b4fa7042c9ffe12c83',
+	);
+	foreach ( $files as $relative => $digest ) {
+		if ( ! is_file( $root . $relative ) || hash_file( 'sha256', $root . $relative ) !== $digest ) { throw new RuntimeException( 'Unqualified tax callback source.' ); }
+	}
+	$allowed = array(
+		5 => array( 'Stripe\\StripeTaxForWooCommerce\\WordPress\\Hooks', 'filter_woocommerce_get_order_item_classname', 2, 'WordPress/class-hooks.php' ),
+		100 => array( 'Stripe\\StripeTaxForWooCommerce\\WooCommerce\\Hook_Handlers\\Order_Tax_Calculation', 'get_order_item_classname', 4, 'WooCommerce/Hook_Handlers/class-order-tax-calculation.php' ),
+	);
+	foreach ( $callbacks as $priority => $entries ) {
+		$expected = $allowed[ $priority ] ?? null;
+		if ( ! $expected || 1 !== count( $entries ) ) { throw new RuntimeException( 'Custom product line class requires review.' ); }
+		$entry = reset( $entries );
+		if ( ( $entry['function'] ?? null ) !== array( $expected[0], $expected[1] ) || ( $entry['accepted_args'] ?? null ) !== $expected[2] || ! class_exists( $expected[0], false ) ) { throw new RuntimeException( 'Custom product line class requires review.' ); }
+		$method = new ReflectionMethod( $expected[0], $expected[1] );
+		if ( ! $method->isStatic() || ! $method->isPublic() || $method->getDeclaringClass()->getName() !== $expected[0] || realpath( $method->getFileName() ) !== realpath( $root . $expected[3] ) ) { throw new RuntimeException( 'Custom product line class requires review.' ); }
+	}
+}
+
 /** Only the qualified native interpretation may create an automatic legacy baseline. */
 function skyyrose2_simple_size_history_profile( $hpos ) {
 	global $wp_filter;
 	$expected = $hpos ? 'Automattic\\WooCommerce\\Internal\\DataStores\\Orders\\OrdersTableDataStore' : 'WC_Order_Data_Store_CPT';
 	if ( WC_Data_Store::load( 'order' )->get_current_class_name() !== $expected || WC_Data_Store::load( 'order-item-product' )->get_current_class_name() !== 'WC_Order_Item_Product_Data_Store' || 'yes' === get_option( 'woocommerce_custom_orders_table_data_sync_enabled' ) ) { throw new RuntimeException( 'Custom order interpretation requires review.' ); }
-	foreach ( array( 'woocommerce_order_get_items', 'woocommerce_get_order_item_classname', 'get_order_item_metadata', 'get_post_metadata', 'woocommerce_order_loaded', 'woocommerce_order_object_read', 'woocommerce_order_item_read' ) as $hook ) {
+	foreach ( array( 'woocommerce_order_get_items', 'get_order_item_metadata', 'get_post_metadata', 'woocommerce_order_loaded', 'woocommerce_order_object_read', 'woocommerce_order_item_read' ) as $hook ) {
 		if ( has_filter( $hook ) ) { throw new RuntimeException( 'Custom order hydration requires review.' ); }
 	}
+	skyyrose2_simple_size_line_class_profile();
 	$callbacks = $wp_filter['woocommerce_stock_amount']->callbacks ?? array();
 	if ( array( 10 ) !== array_keys( $callbacks ) || array( 'intval' ) !== array_keys( $callbacks[10] ) || 'intval' !== ( $callbacks[10]['intval']['function'] ?? null ) || 1 !== ( $callbacks[10]['intval']['accepted_args'] ?? null ) ) { throw new RuntimeException( 'Custom quantity interpretation requires review.' ); }
 }
