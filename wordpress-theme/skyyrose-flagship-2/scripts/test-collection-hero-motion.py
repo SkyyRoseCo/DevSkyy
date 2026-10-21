@@ -47,7 +47,7 @@ class HomepageEmitterTests(unittest.TestCase):
     def test_collection_changed_resolver_source_fails(self):
         with self.assertRaisesRegex(ValueError, "destination hero"):
             validator.validate_home_collection(
-                self.collection.replace("$collection['hero'] );", "'other.webp' );", 1)
+                self.collection.replace("skyyrose2_collection_cinema( $slug )", "skyyrose2_collection_cinema( 'other' )", 1)
             )
 
     def test_collection_extra_unclosed_video_fails(self):

@@ -112,9 +112,9 @@ $home = imagery_roles( $pages['home'] );
 $home_pairs = array_map( static fn( $tag ) => imagery_attr( $tag, 'data-media-role' ) . ':' . imagery_attr( $tag, 'data-media-sku' ), $home );
 // Homepage chapters keep their destination-hero motion contract
 // (scripts/validate-collection-hero-motion.py); only the worlds rail takes registry imagery.
-check_imagery( array( 'collection_hero:sg-009', 'collection_hero:br-001', 'collection_story:lh-004' ) === $home_pairs, 'Homepage worlds rail renders Signature/Black Rose heroes and the Love Hurts story' );
+check_imagery( array( 'collection_hero:' . $expected['kids-capsule']['collection_hero'], 'collection_hero:sg-009', 'collection_hero:br-001', 'collection_story:lh-004' ) === $home_pairs, 'Homepage Kids fallback and worlds rail render their admitted collection bindings' );
 check_imagery( 3 === substr_count( $pages['home'], 'data-scene-state="approved-v2-still"' ), 'Worlds rail renders one approved still per world' );
-check_imagery( str_contains( file_get_contents( $theme . '/template-parts/home/editorial-collection.php' ), "skyyrose2_collection_hero_motion( \$slug, \$collection['hero'] )" ), 'Homepage chapters keep their destination-hero motion binding' );
+check_imagery( str_contains( file_get_contents( $theme . '/template-parts/home/editorial-collection.php' ), "skyyrose2_collection_cinema( \$slug )" ), 'Homepage chapters use the destination cinema resolver' );
 preg_match_all( '#<link rel="preload"[^>]*>#', $pages['home'], $home_preloads );
 preg_match( '#<img\b[^>]*fetchpriority="high"[^>]*>#', $pages['home'], $home_lcp );
 check_imagery( 1 === count( $home_preloads[0] ) && $home_lcp && imagery_attr( $home_preloads[0][0], 'href' ) === imagery_attr( $home_lcp[0], 'src' ), 'Homepage preload href equals the keyed house-art src' );

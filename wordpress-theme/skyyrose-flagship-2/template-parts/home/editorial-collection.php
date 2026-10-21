@@ -20,27 +20,39 @@ foreach ( $chapter_slugs as $slug ) :
 		continue;
 	}
 	$collection       = $collections[ $slug ];
-	$chapter_motion   = skyyrose2_collection_hero_motion( $slug, $collection['hero'] );
+	$chapter_cinema   = skyyrose2_collection_cinema( $slug );
+	$chapter_motion   = $chapter_cinema['motion'] ?? array();
+	// Manifest approval and runtime admission are separate gates. A withheld
+	// format must never leave an empty video or a play control behind.
+	foreach ( $chapter_motion as $format => $url ) {
+		$chapter_motion[ $format ] = skyyrose2_media_url( $url );
+	}
+	if ( empty( $chapter_motion['webm'] ) || empty( $chapter_motion['mp4'] ) ) {
+		$chapter_motion = array();
+	}
+	$chapter_markup = ! empty( $chapter_cinema['poster'] )
+		? '<img src="' . esc_url( $chapter_cinema['poster'] ) . '" width="1440" height="810" alt="" loading="lazy" decoding="async">'
+		: skyyrose2_collection_media_markup( skyyrose2_collection_media( $slug, 'collection_hero' ) );
+	if ( empty( $chapter_cinema['poster'] ) ) {
+		// Product stills keep their full composition inside the chapter scene.
+		$chapter_markup = str_replace( '<img ', '<img style="object-fit: contain" ', $chapter_markup );
+	}
 	$chapter_products = array_values( $products[ $slug ] ?? array() );
 	$title_id         = 'sr2-chapter-' . $slug . '-title';
 	$chapter++;
 	?>
 <section<?php echo 1 === $chapter ? ' id="sr2-archive-worlds" tabindex="-1"' : ''; ?> class="sr2-editorial-collection sr2-chapter<?php echo 0 === $chapter % 2 ? ' sr2-chapter--flip' : ''; ?>" data-collection="<?php echo esc_attr( $slug ); ?>" aria-labelledby="<?php echo esc_attr( $title_id ); ?>">
-	<figure class="sr2-editorial-collection__image sr2-chapter__scene sr2-home-motion" data-home-motion>
+	<?php if ( $chapter_markup ) : ?>
+	<figure class="sr2-editorial-collection__image sr2-chapter__scene<?php echo $chapter_motion ? ' sr2-home-motion' : ''; ?>"<?php echo $chapter_motion ? ' data-home-motion' : ''; ?>>
 		<picture>
-			<?php if ( ! empty( $collection['hero_mobile'] ) ) : ?>
-				<source media="(max-width: 47.99em)" srcset="<?php echo esc_url( skyyrose2_sot_asset_uri( $collection['hero_mobile'] ) ); ?>">
-			<?php endif; ?>
-			<?php if ( ! empty( $collection['hero_tablet'] ) ) : ?>
-				<source media="(max-width: 74.99em)" srcset="<?php echo esc_url( skyyrose2_sot_asset_uri( $collection['hero_tablet'] ) ); ?>">
-			<?php endif; ?>
-			<img src="<?php echo esc_url( skyyrose2_sot_asset_uri( $collection['hero'] ) ); ?>" width="1440" height="810" alt="" loading="lazy" decoding="async">
+			<?php echo $chapter_markup; // Escaped cinema poster or governed collection-media helper output. ?>
 		</picture>
 		<?php if ( $chapter_motion ) : ?>
 			<video id="<?php echo esc_attr( 'sr2-home-film-' . $slug ); ?>" muted loop playsinline preload="none" aria-hidden="true"><source data-src="<?php echo esc_url( $chapter_motion['webm'] ); ?>" type="video/webm"><source data-src="<?php echo esc_url( $chapter_motion['mp4'] ); ?>" type="video/mp4"></video>
 			<button class="sr2-home-motion__toggle" type="button" aria-controls="<?php echo esc_attr( 'sr2-home-film-' . $slug ); ?>" data-home-motion-toggle hidden><?php esc_html_e( 'Play motion', 'skyyrose-flagship-2' ); ?></button>
 		<?php endif; ?>
 	</figure>
+	<?php endif; ?>
 	<div class="sr2-editorial-collection__band sr2-chapter__band">
 		<div class="sr2-editorial-collection__copy sr2-chapter__copy">
 			<p class="sr2-chapter__index sr2-eyebrow sr2-eyebrow--engraved"><?php echo esc_html( sprintf( '%02d', $chapter ) ); ?> / <?php echo esc_html( $collection['name'] ); ?></p>

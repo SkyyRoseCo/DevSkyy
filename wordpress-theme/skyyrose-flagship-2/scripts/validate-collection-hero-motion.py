@@ -261,11 +261,15 @@ def validate_home_journal(source: str) -> None:
 def validate_home_collection(source: str) -> None:
     """The homepage must consume the same collection hero resolver as arrivals."""
     if not re.search(
-        r"\$chapter_motion\s*=\s*skyyrose2_collection_hero_motion\(\s*\$slug,\s*"
-        r"\$collection\['hero'\]\s*\)",
+        r"\$chapter_cinema\s*=\s*skyyrose2_collection_cinema\(\s*\$slug\s*\)",
         source,
     ):
         raise ValueError("homepage collection is not bound to its destination hero")
+    if not re.search(
+        r"\$chapter_motion\s*=\s*\$chapter_cinema\['motion'\]\s*\?\?\s*array\(\s*\)",
+        source,
+    ):
+        raise ValueError("homepage collection bypasses resolved motion")
     if len(re.findall(r"<\s*video\b", source, re.IGNORECASE)) != 1:
         raise ValueError("homepage collection must emit exactly one video opening tag")
     videos = re.findall(r"<video\b.*?</video\s*>", source, re.DOTALL | re.IGNORECASE)
