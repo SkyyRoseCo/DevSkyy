@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { motion } from 'framer-motion';
+import { motion } from 'motion/react';
 import Link from 'next/link';
 import { ArrowLeft, CreditCard, Lock, Trash2, Minus, Plus, ShoppingBag } from 'lucide-react';
 import { useCartStore } from '@/lib/stores/cart-store';

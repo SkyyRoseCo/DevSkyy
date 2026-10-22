@@ -15,7 +15,7 @@ import {
   Float,
 } from '@react-three/drei';
 import { EffectComposer, Bloom, ToneMapping } from '@react-three/postprocessing';
-import { motion } from 'framer-motion';
+import { motion } from 'motion/react';
 import { Suspense, useState } from 'react';
 import * as THREE from 'three';
 

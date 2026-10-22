@@ -4,7 +4,7 @@ import { Suspense, useRef, useState, useCallback } from 'react';
 import { Canvas, useFrame } from '@react-three/fiber';
 import { OrbitControls, Environment, ContactShadows, Html, useProgress } from '@react-three/drei';
 import * as THREE from 'three';
-import { motion } from 'framer-motion';
+import { motion } from 'motion/react';
 import type { CollectionConfig } from '@/lib/collections';
 
 const ENVIRONMENT_MAP: Record<string, string> = {

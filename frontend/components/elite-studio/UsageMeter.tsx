@@ -1,6 +1,6 @@
 'use client';
 
-import { motion } from 'framer-motion';
+import { motion } from 'motion/react';
 import { useQuery } from '@tanstack/react-query';
 import { eliteStudioClient } from '@/lib/elite-studio-client';
 import { Skeleton } from '@/components/ui/skeleton';

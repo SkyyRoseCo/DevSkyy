@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence } from 'motion/react';
 import Link from 'next/link';
 import { ArrowRight, Check, Shield, Truck, RotateCcw, Star, Package, Crown, Sparkles, ShoppingBag } from 'lucide-react';
 import type { CollectionConfig } from '@/lib/collections';

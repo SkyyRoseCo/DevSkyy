@@ -1,7 +1,7 @@
 'use client';
 
 import { lazy, Suspense, useState } from 'react';
-import { motion } from 'framer-motion';
+import { motion } from 'motion/react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { ArrowRight, Play, Sparkles } from 'lucide-react';

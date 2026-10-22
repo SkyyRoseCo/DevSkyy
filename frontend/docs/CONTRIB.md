@@ -50,23 +50,24 @@ The dashboard will be available at http://localhost:3000
 
 ## Available Scripts
 
-| Script | Command | Description |
-|--------|---------|-------------|
-| **Development** |
-| `dev` | `next dev` | Start Next.js development server with hot reload |
-| `build` | `next build` | Create optimized production build |
-| `start` | `next start` | Start production server (after build) |
-| `lint` | `next lint` | Run ESLint to check code quality |
-| **Testing** |
-| `test:e2e` | `playwright test` | Run end-to-end tests with Playwright |
-| `test:e2e:ui` | `playwright test --ui` | Run E2E tests with interactive UI |
-| **Deployment** |
-| `deploy` | `flyctl deploy --config fly.toml --ha=false` | Type-check, lint, test, build, then deploy to Fly (`devskyy-dashboard`) |
-| `deploy:prod` / `deploy:auto` / `deploy:auto:prod` | `npm run deploy` | Aliases of `deploy` (single Fly production app) |
+| Script                                             | Command                                      | Description                                                             |
+| -------------------------------------------------- | -------------------------------------------- | ----------------------------------------------------------------------- |
+| **Development**                                    |
+| `dev`                                              | `next dev`                                   | Start Next.js development server with hot reload                        |
+| `build`                                            | `next build`                                 | Create optimized production build                                       |
+| `start`                                            | `next start`                                 | Start production server (after build)                                   |
+| `lint`                                             | `next lint`                                  | Run ESLint to check code quality                                        |
+| **Testing**                                        |
+| `test:e2e`                                         | `playwright test`                            | Run end-to-end tests with Playwright                                    |
+| `test:e2e:ui`                                      | `playwright test --ui`                       | Run E2E tests with interactive UI                                       |
+| **Deployment**                                     |
+| `deploy`                                           | `flyctl deploy --config fly.toml --ha=false` | Type-check, lint, test, build, then deploy to Fly (`devskyy-dashboard`) |
+| `deploy:prod` / `deploy:auto` / `deploy:auto:prod` | `npm run deploy`                             | Aliases of `deploy` (single Fly production app)                         |
 
 ### Usage Examples
 
 **Development:**
+
 ```bash
 # Start dev server
 pnpm dev
@@ -76,6 +77,7 @@ pnpm test:e2e:ui
 ```
 
 **Building:**
+
 ```bash
 # Build and verify
 pnpm build
@@ -86,6 +88,7 @@ pnpm lint
 ```
 
 **Deployment:**
+
 ```bash
 # Quick deploy to preview
 pnpm deploy
@@ -95,6 +98,7 @@ pnpm deploy:auto:prod
 ```
 
 **Environment Management:**
+
 ```bash
 # Non-secret runtime config lives in fly.toml [env]; secrets are Fly secrets
 flyctl secrets list -a devskyy-dashboard
@@ -109,6 +113,7 @@ flyctl secrets list -a devskyy-dashboard
 Create `.env.local` with the following variables:
 
 #### Application Settings
+
 ```bash
 # Environment
 ENVIRONMENT=development
@@ -117,12 +122,14 @@ LOG_LEVEL=INFO
 ```
 
 #### API URLs
+
 ```bash
 FRONTEND_URL=http://localhost:3000
 API_URL=http://localhost:8000
 ```
 
 #### AI Provider API Keys
+
 ```bash
 # OpenAI
 OPENAI_API_KEY=sk-...
@@ -135,6 +142,7 @@ GOOGLE_AI_API_KEY=...
 ```
 
 #### 3D Asset Generation
+
 ```bash
 # HuggingFace (Primary)
 HF_TOKEN=hf_...
@@ -149,6 +157,7 @@ FASHN_API_KEY=your-fashn-api-key
 ```
 
 #### WordPress/WooCommerce
+
 ```bash
 WORDPRESS_URL=https://your-site.com
 WORDPRESS_USERNAME=admin
@@ -158,6 +167,7 @@ WOOCOMMERCE_SECRET=cs_...
 ```
 
 #### Security (Production)
+
 ```bash
 # Generate with: python -c "import secrets; print(secrets.token_urlsafe(64))"
 JWT_SECRET_KEY=your-jwt-secret-key-64-chars-minimum
@@ -167,6 +177,7 @@ ENCRYPTION_MASTER_KEY=your-base64-encoded-32-byte-key
 ```
 
 #### Database
+
 ```bash
 # Development (SQLite)
 DATABASE_URL=sqlite+aiosqlite:///./devskyy.db
@@ -181,6 +192,7 @@ DB_POOL_TIMEOUT=30
 ```
 
 #### Optional Services
+
 ```bash
 # Redis Cache
 REDIS_URL=redis://localhost:6379/0
@@ -207,6 +219,7 @@ PROMETHEUS_ENABLED=true
 ```
 
 #### Performance Tuning
+
 ```bash
 # Caching
 EMBEDDING_CACHE_SIZE=1024
@@ -224,12 +237,12 @@ MAX_PARALLEL_INGESTION=5
 
 ### Environment Files
 
-| File | Purpose | Tracked |
-|------|---------|---------|
-| `.env.example` | Template with all variables | ✅ Yes |
-| `.env.local` | Local development (from Vercel) | ❌ No |
-| `.env.production` | Production values (Vercel) | ❌ No |
-| `.env.staging` | Staging environment | ❌ No |
+| File              | Purpose                         | Tracked |
+| ----------------- | ------------------------------- | ------- |
+| `.env.example`    | Template with all variables     | ✅ Yes  |
+| `.env.local`      | Local development (from Vercel) | ❌ No   |
+| `.env.production` | Production values (Vercel)      | ❌ No   |
+| `.env.staging`    | Staging environment             | ❌ No   |
 
 ### Pulling Environment Variables
 
@@ -265,6 +278,7 @@ pnpm test:e2e --debug
 #### Writing Tests
 
 **Example Test:**
+
 ```typescript
 import { test, expect } from '@playwright/test';
 
@@ -284,11 +298,13 @@ test.describe('Feature Name', () => {
 #### Test Coverage
 
 Current test files:
+
 - `tests/e2e/settings-page.spec.ts` - Settings page (13 tests) ✅
 
 ### Manual Testing Checklist
 
 Before submitting PR:
+
 - [ ] All pages load without errors
 - [ ] Navigation between pages works
 - [ ] Forms validate correctly
@@ -332,6 +348,7 @@ pnpm lint --fix
 - **No hardcoded values:** Use environment variables
 
 **Good Example:**
+
 ```typescript
 // ✅ Immutable
 const updatedUser = { ...user, name: newName };
@@ -343,6 +360,7 @@ user.name = newName;
 ### Pre-commit Hooks
 
 Configured in `~/.claude/settings.json`:
+
 - Auto-format with Prettier
 - TypeScript type checking
 - Console.log detection
@@ -353,9 +371,8 @@ Configured in `~/.claude/settings.json`:
 
 ### Vercel Deployment
 
-**Project:** devskyy
-**Organization:** skkyroseco
-**Region:** iad1 (Washington, D.C.)
+**Project:** devskyy **Organization:** skkyroseco **Region:** iad1 (Washington,
+D.C.)
 
 #### Manual Deployment
 
@@ -380,6 +397,7 @@ pnpm deploy:auto:prod
 ```
 
 **Automated deployment includes:**
+
 1. ✅ Vercel CLI check
 2. ✅ Project link verification
 3. ✅ Environment file check
@@ -391,6 +409,7 @@ pnpm deploy:auto:prod
 #### Deployment Checklist
 
 Before deploying to production:
+
 - [ ] All tests passing
 - [ ] Build succeeds locally
 - [ ] No TypeScript errors
@@ -473,7 +492,7 @@ frontend/
 ### Key Dependencies
 
 - **3D Rendering:** @react-three/fiber, @react-three/drei, three.js
-- **Animations:** framer-motion
+- **Animations:** motion (`motion/react`)
 - **UI Components:** Radix UI primitives
 - **Forms:** Zod validation
 - **Charts:** Recharts
@@ -513,6 +532,5 @@ frontend/
 
 ---
 
-**Version:** 1.0.0
-**Platform:** DevSkyy Enterprise AI
-**Organization:** SkyyRose LLC
+**Version:** 1.0.0 **Platform:** DevSkyy Enterprise AI **Organization:**
+SkyyRose LLC
