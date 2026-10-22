@@ -6,9 +6,9 @@ import { proxyGodModeRuntime } from '@/lib/god-mode-runtime-proxy';
 export const maxDuration = 300;
 type RouteContext = { params: Promise<{ path?: string[] }> };
 
-const handler = withAuth<RouteContext>(async (request: NextRequest, context: RouteContext) => {
+async function proxy(request: NextRequest, context: RouteContext) {
   const { path = [] } = await context.params;
   return proxyGodModeRuntime(request, path);
-});
-export const GET = handler;
-export const POST = handler;
+}
+export const GET = withAuth(proxy);
+export const POST = withAuth(proxy);
