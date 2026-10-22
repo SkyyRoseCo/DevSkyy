@@ -1,0 +1,21 @@
+{
+  "utc": "2026-10-22T06:00:04.050900+00:00",
+  "user_instruction": "Use that original closet reveal brief. Show me the opening frame with Skyy still concealed, and keep the courtyard image as the closing shot. Don\u2019t animate until I review it.",
+  "action": "Generate one opening still for founder review",
+  "original_chat": "01a15d28-3d0b-71fb-a067-cb62a6705012",
+  "original_brief_path": "/Users/theceo/Documents/Codex/2026-10-20/task-6/KIDS-DUAL-REVEAL-BRIEF.md",
+  "original_brief_sha256": "10fd66da29fcad9dd0482ef342e90e3da0366398f8e97fe08104ac76d5b2385a",
+  "source_snapshot": "SOURCE-BRIEF.md",
+  "required_creative_reference": "/Users/theceo/.codex/creative-standards/imagery-prompting.md",
+  "shot_role": "Concealed opening; no real products or recognizable person/character represented",
+  "representation_mode": "BRAND_ABSTRACT",
+  "closing_path": "assets/generated-candidates/kids-capsule-20261021/first-frame-r1.png",
+  "closing_sha256": "c00e7fb3b3b320a20ce5ca264efbd11e39bc7389e77f65540245095a799191e0",
+  "supersedes": "Courtyard gateway as opening/reveal direction",
+  "preserves": "Accepted courtyard closing shot",
+  "animation": "HOLD_UNTIL_USER_REVIEWS_THIS_STILL",
+  "publication": "NO_LIVE_MUTATION_AUTHORIZED",
+  "built_in_image_generation": "Authorized by current request; no separate video-provider execution",
+  "parent_series_representation_mode": "EXACT_PRODUCT",
+  "latest_lighting_instruction": "use more darker reveal schemas and anticipation looks"
+}

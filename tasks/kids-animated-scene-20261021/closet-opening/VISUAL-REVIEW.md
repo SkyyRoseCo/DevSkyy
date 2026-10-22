@@ -1,0 +1,5 @@
+# Dark closet opening R2 — independent review
+
+Existing /root/cleanup_architect: PASS_FOR_FOUNDER_REVIEW. The darker treatment strengthens anticipation while keeping walnut grain, brass details and three distinct cabinet bays readable. The narrow warm seam and restrained floor reflection provide the focal point. Skyy's identity, face and clothes remain concealed; a faint suggestion behind the doors fits original Shot1. This reads as a luxury closet rather than courtyard gates. No material fix required before founder presentation. Review covers the still only; animation, reveal timing and continuity into the accepted closing remain unqualified. Corey has not yet accepted this opening.
+
+The earlier brighter closet R1 is retained as the observed input for the darker edit, not mislabeled rejected. No actual product is visible in Shot1; product-fidelity assessment is not applicable to these concealed environment pixels. Source authority for subsequent garment shots remains the root product registry, current get_product reads and founder flatlays.
