@@ -1,0 +1,53 @@
+{
+  "references": [
+    {
+      "path": "assets/generated-candidates/kids-capsule-20261021/first-frame-r1.png",
+      "sha256": "c00e7fb3b3b320a20ce5ca264efbd11e39bc7389e77f65540245095a799191e0",
+      "bytes": 2468695
+    },
+    {
+      "path": "tasks/kids-animated-scene-20261021/FIRST-FRAME-PROMPT.txt",
+      "sha256": "beba03ad7bbc7496fa530c288f07f4a730e8e437918e8f7482646a3d2a4bd4fe",
+      "bytes": 4849
+    },
+    {
+      "path": "tasks/kids-animated-scene-20261021/FIRST-FRAME-AUTHORIZATION.json",
+      "sha256": "81e37a8f9e0dad2a87a79e7f0a2e61869e70fbe60b5a565153c06cc39ccf9d87",
+      "bytes": 716
+    },
+    {
+      "path": "tasks/kids-animated-scene-20261021/first-frame-r1.json",
+      "sha256": "dd3ec62eb992689ccfd20ea3f24aa7a7a8ccd2863303c64560d9734cd25fed9d",
+      "bytes": 1642
+    },
+    {
+      "path": "tasks/kids-animated-scene-20261021/FIRST-FRAME-REVIEW.md",
+      "sha256": "a0871b67731cd34ba86f6f804ab1654469caee79da5426de6bc8a10a07369ce3",
+      "bytes": 2796
+    },
+    {
+      "path": "tasks/kids-animated-scene-20261021/FIRST-FRAME-STATUS.md",
+      "sha256": "d46d83aa2a0a1a323c56b16b7c25899738f817a73f44cb6c582cf4e8dde24649",
+      "bytes": 340
+    },
+    {
+      "path": "tasks/kids-animated-scene-20261021/README.md",
+      "sha256": "07776a710c030ec3d911f2a2bf248f0162f6ead498257dbd8aaab911844c2430",
+      "bytes": 972
+    }
+  ],
+  "source_references": [
+    {
+      "path": "assets/products/references/kids-001-real-photo.jpeg",
+      "sha256": "9f73606eff0438378f2f669c6fde2977720a3c18e9577f68b27aed32f2dd4e08"
+    },
+    {
+      "path": "assets/products/references/kids-002-real-photo.jpeg",
+      "sha256": "5aa52b25e375873d7bf8c073dec26ba1b901ac1f99e743dc549fbd4ec88c0a3d"
+    },
+    {
+      "path": "wordpress-theme/skyyrose-flagship-2/assets/sot/images/mascot/skyy-canonical-v2.png",
+      "sha256": "072418c98dc0ba06289547425b1c7b394fd8a6ec84a9d55211e884fc3e7eb5b8"
+    }
+  ]
+}

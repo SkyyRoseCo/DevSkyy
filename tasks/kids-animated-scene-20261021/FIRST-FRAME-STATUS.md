@@ -1,0 +1,1 @@
+First frame generated and independently checked for founder review. Asset: `assets/generated-candidates/kids-capsule-20261021/first-frame-r1.png`. SHA256 `c00e7fb3b3b320a20ce5ca264efbd11e39bc7389e77f65540245095a799191e0`. Dimensions 941×1672. Animation NOT_STARTED. First-frame founder acceptance PENDING. Live publication NOT_AUTHORIZED.

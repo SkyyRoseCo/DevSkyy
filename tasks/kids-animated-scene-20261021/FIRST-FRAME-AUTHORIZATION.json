@@ -1,0 +1,11 @@
+{
+  "user_instruction": "Yes, resume generation for the Kids scene. Show me the first frame with Skyy and both colorways before animating it.",
+  "utc_recorded": "2026-10-22T05:31:32.204072+00:00",
+  "authorized": "One reference-bound first-frame generation and bounded still correction if needed",
+  "animation": "HOLD_UNTIL_USER_REVIEWS_FIRST_FRAME",
+  "publication": "NOT_AUTHORIZED_FOR_NEW_SCENE",
+  "route": "Built-in image_gen; no API or CLI fallback",
+  "method": "Controlled reference-conditioned still pilot; generated garment fidelity must be visually checked, not presumed",
+  "earlier_job": "db4dfe46f44d0ff4ae52503b5761806b22607b295e60d3af449c1a76c5686405",
+  "earlier_blocked_contract_retained": true
+}
