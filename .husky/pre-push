@@ -1,6 +1,35 @@
+# Capture the ref list git hands pre-push on stdin ONCE, up front. git-lfs below
+# consumes stdin; the secrets gate after it needs the same refs, and a second
+# read would get EOF and scan nothing (fail-open). Both consumers get a copy.
+_push_refs="$(cat)"
+
 # git-lfs (managed by husky) — run if installed; don't short-circuit the rest.
 if command -v git-lfs > /dev/null 2>&1; then
-  git lfs pre-push "$@" || exit $?
+  printf '%s\n' "$_push_refs" | git lfs pre-push "$@" || exit $?
+fi
+
+# ── secrets gate (fail-closed, bug-230) ──
+# gitleaks scans exactly the commits being pushed, per ref line:
+#   new branch  → commits not on any remote (<local> --not --remotes)
+#   update      → <remote-sha>..<local-sha>      deletion → skipped
+# Blocks on a finding, on a missing/broken gitleaks (brew install gitleaks) and
+# on an unreadable .gitleaks.toml. Prefers the pushing worktree's
+# scripts/secret-scan.sh, else the hook owner's copy (the global core.hooksPath
+# runs the MAIN checkout's hooks in every worktree).
+# Bypass ONE push, loudly logged: SECRETS_SCAN_SKIP=1 git push …
+_ss_root="$(git rev-parse --show-toplevel 2> /dev/null || echo "$PWD")"
+_ss="$_ss_root/scripts/secret-scan.sh"
+[ -f "$_ss" ] || _ss="$(dirname "$0")/../scripts/secret-scan.sh"
+if [ ! -f "$_ss" ]; then
+  if [ "${SECRETS_SCAN_SKIP:-0}" = "1" ]; then
+    echo "⚠ secret-scan (pre-push): SECRETS_SCAN_SKIP=1 and scripts/secret-scan.sh is missing — gate BYPASSED for this push" >&2
+  else
+    echo "✗ secret-scan (pre-push): scripts/secret-scan.sh not found in $_ss_root or beside this hook — the secrets gate cannot run (fail-closed)." >&2
+    echo "  Restore it: git checkout origin/main -- scripts/secret-scan.sh   Bypass this ONE push: SECRETS_SCAN_SKIP=1" >&2
+    exit 1
+  fi
+elif ! printf '%s\n' "$_push_refs" | bash "$_ss" push --hook pre-push --repo "$_ss_root"; then
+  exit 1
 fi
 
 # ── ci-local stopgap: offline CI mirror while GitHub Actions is billing-blocked ──

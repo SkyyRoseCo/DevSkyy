@@ -9093,6 +9093,8 @@
   - fn `main` L240-269 (~207 tok)
 - `format_staged.sh` — scripts/format_staged.sh — Pre-format every git-staged file by type. (~2994 tok)
 - `freshness-guard.sh` — scripts/freshness-guard.sh — keep derived files in sync with their sources. (~3248 tok)
+- `secret-scan.sh` — gitleaks gate shared by .husky/pre-commit (staged) and .husky/pre-push (pushed ref ranges); fail-closed, --redact, single bypass SECRETS_SCAN_SKIP=1, GITLEAKS_VERSION pin mirrored in security-gate.yml. (~1900 tok)
+- `test-secret-hooks.sh` — installs the real hooks + secret-scan.sh + .gitleaks.toml into temp repos (core.hooksPath → .husky/_) and proves blocked/clean/bypass/missing-binary/deletion/owner-fallback with a runtime-assembled fake credential. (~2600 tok)
 - `gemini_lookbook.py` — load_image_bytes, generate_lookbook (~4552 tok)
   - fn `load_image_bytes` L189-210 (~209 tok)
   - fn `generate_lookbook` L211-335 (~1492 tok)
@@ -9264,6 +9266,7 @@
 
 - `test_api_usage_report.py` — httpx.MockTransport tests for scripts/api_usage_report.py: cost allocation, request encoding, key prefixes, fail-closed exits. (~3200 tok)
 - `test_asset_sot_census.py` — tmp_path repo tests for scripts/asset_sot_census.py: reference kinds, byte copies, scope reasons, fail-closed ledgers, exit codes. (~1500 tok)
+- `test_secret_hooks.py` — pytest wrapper for scripts/test-secret-hooks.sh (skips without gitleaks) + pins: secret-scan.sh GITLEAKS_VERSION == security-gate.yml, .gitleaks.toml has [extend] useDefault. (~600 tok)
 
 ## tests/mcp_servers/
 

@@ -183,6 +183,7 @@
     "clean": "rm -rf dist coverage",
     "prepare": "husky && npm run build",
     "precommit": "npm run lint && npm run type-check && npm run test:ci",
+    "test:secret-hooks": "bash scripts/test-secret-hooks.sh",
     "security:audit": "npm audit",
     "security:audit:production": "npm audit --omit=dev --audit-level=high",
     "security:fix": "npm audit fix",

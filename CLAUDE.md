@@ -56,6 +56,9 @@ how each one knows where the others left off.
   via the next prompt) until you log. `.husky/pre-push` refuses to push a branch
   with no `@ <branch>` row dated today/yesterday — the backstop for agents
   without hooks. Bypass a push once with `WOLF_HANDOFF_SKIP=1`.
+- **Secrets gate.** `.husky/pre-commit` / `.husky/pre-push` run gitleaks via
+  `scripts/secret-scan.sh` (fail-closed; `brew install gitleaks`). Bypass one
+  commit/push with `SECRETS_SCAN_SKIP=1`. Details: `docs/security/README.md`.
 - **Rotated.** Past 128KB the log keeps its newest ~64KB; older entries move
   byte-for-byte to `.wolf/memory-archive/` (`scripts/wolf_memory_rotate.py`, run
   at SessionStart). Search the archive for older history.

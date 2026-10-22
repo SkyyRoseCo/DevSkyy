@@ -46,13 +46,42 @@ jobs:
           fetch-depth: 0
 
       - name: Install Gitleaks
+        # Same version as the local hooks' pin (scripts/secret-scan.sh
+        # GITLEAKS_VERSION) so a commit that passes pre-commit passes here.
+        # Bump both together.
         run: |
-          wget -q https://github.com/gitleaks/gitleaks/releases/download/v8.18.4/gitleaks_8.18.4_linux_x64.tar.gz
-          tar -xzf gitleaks_8.18.4_linux_x64.tar.gz
+          wget -q https://github.com/gitleaks/gitleaks/releases/download/v8.30.1/gitleaks_8.30.1_linux_x64.tar.gz
+          tar -xzf gitleaks_8.30.1_linux_x64.tar.gz
           sudo mv gitleaks /usr/local/bin/
 
       - name: Run Gitleaks
-        run: gitleaks detect --source . --verbose --redact --config .gitleaks.toml
+        # Scans the commits that are NEW in this event — the same range the
+        # pre-push hook scans — so the gate catches a secret the moment it is
+        # introduced. Full history is reserved for the weekly schedule: with
+        # [extend] making the config real (it carried zero rules before
+        # 2026-10-22) history holds ~2.5k unadjudicated findings, so a
+        # full-history scan on every PR would block all of them.
+        # `git` is the v8.19+ spelling of the deprecated `detect`.
+        env:
+          BEFORE: ${{ github.event.before }}
+        run: |
+          case "$GITHUB_EVENT_NAME" in
+            pull_request) range="origin/${GITHUB_BASE_REF}..HEAD" ;;
+            push)
+              case "$BEFORE" in
+                '' | 0000000000000000000000000000000000000000) range="-1 HEAD" ;;
+                *) range="$BEFORE..$GITHUB_SHA" ;;
+              esac ;;
+            workflow_dispatch) range="origin/main..HEAD" ;;
+            *) range="" ;;  # schedule: full history
+          esac
+          if [ -n "$range" ]; then
+            echo "gitleaks: scanning commits in range: $range"
+            gitleaks git --verbose --redact --config .gitleaks.toml --log-opts="$range" .
+          else
+            echo "gitleaks: scanning full history"
+            gitleaks git --verbose --redact --config .gitleaks.toml .
+          fi
 
       - name: Install TruffleHog
         # Pinned: an unpinned "latest" install 404'd when v3.99.3 was tagged before
@@ -79,11 +108,11 @@ jobs:
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
 
       - name: Dependency Review
-        uses: actions/dependency-review-action@46a3c492319c890177366b6ef46d6b4f89743ed4  # v4
+        uses: actions/dependency-review-action@46a3c492319c890177366b6ef46d6b4f89743ed4 # v4
         with:
           fail-on-severity: high
           deny-licenses: GPL-3.0, AGPL-3.0
-          allow-dependencies-licenses: 'pkg:pypi/example@1.0.0'
+          allow-dependencies-licenses: "pkg:pypi/example@1.0.0"
 
   # ===========================================================================
   # License Compliance
@@ -103,7 +132,7 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
         with:
-          python-version: '3.12'
+          python-version: "3.12"
 
       - name: Install dependencies
         run: |
@@ -121,7 +150,7 @@ jobs:
           pip-licenses --fail-on="GPL-3.0-only;AGPL-3.0-only;GPL-3.0-or-later;AGPL-3.0-or-later"
 
       - name: Upload license report
-        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9  # v7.0.2
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
         with:
           name: license-report
           path: licenses.md
@@ -148,7 +177,7 @@ jobs:
         run: syft . -o spdx-json=sbom-python.spdx.json
 
       - name: Upload SBOM
-        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9  # v7.0.2
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
         with:
           name: sbom
           path: sbom-*.spdx.json

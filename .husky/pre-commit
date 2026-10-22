@@ -9,6 +9,27 @@ if [ -f "$REPO_ROOT/.venv/bin/activate" ]; then
   . "$REPO_ROOT/.venv/bin/activate"
 fi
 
+# ── secrets gate (fail-closed, bug-230) ──
+# gitleaks scans the STAGED content FIRST, before lint-staged, so a secret is
+# never reformatted into the commit. Blocks on a finding, on a missing/broken
+# gitleaks (brew install gitleaks) and on an unreadable .gitleaks.toml. Prefers
+# the committing worktree's scripts/secret-scan.sh, else the hook owner's copy
+# (the global core.hooksPath runs the MAIN checkout's hooks in every worktree).
+# Bypass ONE commit, loudly logged: SECRETS_SCAN_SKIP=1 git commit …
+_ss="$REPO_ROOT/scripts/secret-scan.sh"
+[ -f "$_ss" ] || _ss="$(dirname "$0")/../scripts/secret-scan.sh"
+if [ ! -f "$_ss" ]; then
+  if [ "${SECRETS_SCAN_SKIP:-0}" = "1" ]; then
+    echo "⚠ secret-scan (pre-commit): SECRETS_SCAN_SKIP=1 and scripts/secret-scan.sh is missing — gate BYPASSED for this commit" >&2
+  else
+    echo "✗ secret-scan (pre-commit): scripts/secret-scan.sh not found in $REPO_ROOT or beside this hook — the secrets gate cannot run (fail-closed)." >&2
+    echo "  Restore it: git checkout origin/main -- scripts/secret-scan.sh   Bypass this ONE commit: SECRETS_SCAN_SKIP=1" >&2
+    exit 1
+  fi
+elif ! bash "$_ss" staged --hook pre-commit --repo "$REPO_ROOT"; then
+  exit 1
+fi
+
 # File-level formatting and checks. Sequential glob execution prevents races
 # where Prettier and a language-specific formatter touch the same staged file.
 # Formatter ownership: prove that every file a program owns (serializers,

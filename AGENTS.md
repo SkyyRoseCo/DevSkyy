@@ -127,6 +127,9 @@ system and developer constraints; historical notes do not grant authorization.
     `.husky/pre-push` refuses to push a branch with no `@ <branch>` row dated
     today or yesterday — the backstop for agents without hooks. Bypass a push
     once with `WOLF_HANDOFF_SKIP=1`.
+  - Secrets gate: the same hooks run gitleaks via `scripts/secret-scan.sh`
+    (fail-closed; `brew install gitleaks`). Bypass one commit/push with
+    `SECRETS_SCAN_SKIP=1`. Details: `docs/security/README.md`.
   - Rotated: past 128KB the log keeps its newest ~64KB and moves older entries
     byte-for-byte to `.wolf/memory-archive/` (`scripts/wolf_memory_rotate.py`).
     Search the archive for older history.

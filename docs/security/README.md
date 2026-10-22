@@ -1,14 +1,17 @@
 # DevSkyy Security Documentation
 
-Security documentation and compliance information for the DevSkyy Enterprise Platform.
+Security documentation and compliance information for the DevSkyy Enterprise
+Platform.
 
 ## 📋 Available Documentation
 
-- **[CLEAN_CODING_AGENTS.md](./CLEAN_CODING_AGENTS.md)** - Comprehensive automated code quality enforcement system
+- **[CLEAN_CODING_AGENTS.md](./CLEAN_CODING_AGENTS.md)** - Comprehensive
+  automated code quality enforcement system
 
 ## 🔒 Security Overview
 
-The DevSkyy platform implements enterprise-grade security across multiple layers:
+The DevSkyy platform implements enterprise-grade security across multiple
+layers:
 
 ### 🛡️ Security Layers
 
@@ -82,9 +85,45 @@ user_data = verify_token(token)
 
 #### Pre-commit Security Hooks
 
+- **gitleaks** - Secret scanning, enforced by the Husky hooks (see below)
 - **Bandit** - Python security linting
-- **detect-secrets** - Credential scanning
 - **Safety** - Dependency vulnerability checking
+
+#### Secret Scanning (gitleaks)
+
+Husky owns the Git hooks (`.pre-commit-config.yaml` is for explicit
+`pre-commit run` only and is not installed as a hook, so its `detect-secrets`
+entry is not enforced). The enforced path is `scripts/secret-scan.sh`, called
+from `.husky/pre-commit` and `.husky/pre-push`:
+
+- **pre-commit** scans the _staged_ content (`gitleaks git --staged`) before
+  `lint-staged`, so a secret is never reformatted into a commit.
+- **pre-push** scans exactly the commits being pushed, per ref: a new branch
+  scans `<local> --not --remotes`, an update scans `<remote>..<local>`, a
+  deletion is skipped. If `<remote>` is not known locally (stale fetch) the
+  scanner errors and the push blocks: `git fetch` first.
+- **Fail-closed** (bug-230): a missing or broken `gitleaks`, an unreadable
+  `.gitleaks.toml`, or a scanner error blocks with an actionable message.
+  Findings are reported as rule id, file, commit short sha and line only;
+  gitleaks always runs with `--redact` and no matched text is ever printed.
+- **One bypass**, loudly logged, for a single commit or push:
+  `SECRETS_SCAN_SKIP=1 git commit …` / `SECRETS_SCAN_SKIP=1 git push …` (same
+  pattern as `WOLF_HANDOFF_SKIP`). Git's own `--no-verify` and Husky's `HUSKY=0`
+  predate this gate and are not touched by it.
+- **Version pin**: `GITLEAKS_VERSION` in `scripts/secret-scan.sh` and the
+  install step in `.github/workflows/security-gate.yml` are the same version
+  (8.30.1); bump both together. Install locally with `brew install gitleaks`.
+  Drift inside major 8 warns, another major blocks.
+- **Config**: `.gitleaks.toml` extends the built-in rule set
+  (`[extend] useDefault = true`) and adds path allowlists with a reason each.
+  Without `[extend]` a config file carries zero rules and every scan passes
+  vacuously — that was the state before 2026-10-22. Suppress a documented false
+  positive there, never by weakening the gate.
+- **Tests**: `npm run test:secret-hooks` (or
+  `pytest tests/scripts/test_secret_hooks.py`) runs
+  `scripts/test-secret-hooks.sh`, which installs the real hooks in a temp repo
+  and proves blocked/clean/bypass/missing-binary/deletion behaviour with a fake
+  credential assembled at runtime.
 
 #### CI/CD Security Pipeline
 
@@ -184,9 +223,10 @@ user_data = verify_token(token)
 
 ### Integrated Security Tools
 
+- **gitleaks** - Secret scanner (Husky pre-commit/pre-push + CI Secrets Scan)
 - **Bandit** - Python security linter
 - **Safety** - Python dependency checker
-- **detect-secrets** - Credential scanner
+- **detect-secrets** - Credential scanner (manual `pre-commit run` only)
 - **CodeQL** - Static analysis security testing
 
 ### External Security Services
@@ -214,4 +254,5 @@ user_data = verify_token(token)
 
 ---
 
-For detailed security implementation and procedures, see [CLEAN_CODING_AGENTS.md](./CLEAN_CODING_AGENTS.md).
+For detailed security implementation and procedures, see
+[CLEAN_CODING_AGENTS.md](./CLEAN_CODING_AGENTS.md).

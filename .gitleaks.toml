@@ -8,112 +8,119 @@
 
 title = "DevSkyy Gitleaks Config"
 
+# Inherit the full built-in rule set. Without this block a config file defines
+# ZERO rules (gitleaks does not fall back to its defaults when a config is given),
+# so every scan — CI's `gitleaks detect --config .gitleaks.toml` included — passed
+# vacuously. Verified 2026-10-22 on 8.18.4 and 8.30.1: a planted fake token was
+# invisible without [extend] and reported with it. The allowlist below still
+# applies on top of the inherited rules.
+[extend]
+useDefault = true
+
 [allowlist]
-  description = "Known false-positive paths — test fixtures, docs, build artifacts"
-  regexTarget = "match"  # apply allowlist to the matched secret value (not the line)
+description = "Known false-positive paths — test fixtures, docs, build artifacts"
+regexTarget = "match"                                                             # apply allowlist to the matched secret value (not the line)
 
-  paths = [
-    # Test fixture files — values are fake/example credentials used in unit tests
-    '''tests/mcp/test_wp_deploy\.py''',
-    '''tests/test_upload\.py''',
-    '''tests/test_environment_scripts\.py''',
-    '''tests/test_wordpress_integration\.py''',
-    '''tests/test_zero_trust\.py''',
-    '''tests/security/test_enhanced_security_comprehensive\.py''',
-    '''agents/elite_web_builder/tests/''',
+paths = [
+  # Test fixture files — values are fake/example credentials used in unit tests
+  '''tests/mcp/test_wp_deploy\.py''',
+  '''tests/test_upload\.py''',
+  '''tests/test_environment_scripts\.py''',
+  '''tests/test_wordpress_integration\.py''',
+  '''tests/test_zero_trust\.py''',
+  '''tests/security/test_enhanced_security_comprehensive\.py''',
+  '''agents/elite_web_builder/tests/''',
 
-    # Documentation and runbooks — example values, not real credentials
-    '''docs/runbooks/''',
-    '''docs/api/''',
-    '''docs/API_AUTHENTICATION_DOCUMENTATION\.md''',
-    '''docs/AUTH_QUICK_REFERENCE\.md''',
-    '''docs/WORDPRESS_CONFIGURATION_STATUS\.md''',
-    '''docs/CONSOLIDATED_VALIDATION_ISSUES\.md''',
-    '''docs/N8N_CREDENTIALS_TRANSFER_ANALYSIS\.md''',
+  # Documentation and runbooks — example values, not real credentials
+  '''docs/runbooks/''',
+  '''docs/api/''',
+  '''docs/API_AUTHENTICATION_DOCUMENTATION\.md''',
+  '''docs/AUTH_QUICK_REFERENCE\.md''',
+  '''docs/WORDPRESS_CONFIGURATION_STATUS\.md''',
+  '''docs/CONSOLIDATED_VALIDATION_ISSUES\.md''',
+  '''docs/N8N_CREDENTIALS_TRANSFER_ANALYSIS\.md''',
 
-    # Planning documents — example error strings, not credentials
-    '''\.planning/''',
+  # Planning documents — example error strings, not credentials
+  '''\.planning/''',
 
-    # Architecture/guide docs — example values for documentation purposes
-    '''OPENAI_SETUP_GUIDE\.md''',
-    '''STRIPE_SETUP_GUIDE\.md''',
-    '''AUTH0_FASTAPI_INTEGRATION_GUIDE\.md''',
-    '''AUTH0_PRODUCTION_READY_SUMMARY\.md''',
-    '''UNICORN_API_IMPLEMENTATION_GUIDE\.md''',
-    '''USER_CREATION_GUIDE\.md''',
-    '''YOUR_ACCOUNT_INFO\.md''',
-    '''MCP_CONFIGURATION\.md''',
-    '''MCP_ENTERPRISE_V2_INTEGRATION_GUIDE\.md''',
-    '''RENDER_DEPLOYMENT_CHECKLIST\.md''',
-    '''DEPLOYMENT_READY\.md''',
-    '''SETUP_ENV\.md''',
-    '''SECURITY_CONFIGURATION_GUIDE\.md''',
-    '''COMPLETE_INSTALLATION\.md''',
-    '''GEMINI_EXTENSIONS\.md''',
-    '''GEMINI\.md''',
-    '''POSTGRESQL_SETUP\.md''',
-    '''README_REPLIT\.md''',
-    '''code_repair\.md''',
-    '''code_review\.md''',
+  # Architecture/guide docs — example values for documentation purposes
+  '''OPENAI_SETUP_GUIDE\.md''',
+  '''STRIPE_SETUP_GUIDE\.md''',
+  '''AUTH0_FASTAPI_INTEGRATION_GUIDE\.md''',
+  '''AUTH0_PRODUCTION_READY_SUMMARY\.md''',
+  '''UNICORN_API_IMPLEMENTATION_GUIDE\.md''',
+  '''USER_CREATION_GUIDE\.md''',
+  '''YOUR_ACCOUNT_INFO\.md''',
+  '''MCP_CONFIGURATION\.md''',
+  '''MCP_ENTERPRISE_V2_INTEGRATION_GUIDE\.md''',
+  '''RENDER_DEPLOYMENT_CHECKLIST\.md''',
+  '''DEPLOYMENT_READY\.md''',
+  '''SETUP_ENV\.md''',
+  '''SECURITY_CONFIGURATION_GUIDE\.md''',
+  '''COMPLETE_INSTALLATION\.md''',
+  '''GEMINI_EXTENSIONS\.md''',
+  '''GEMINI\.md''',
+  '''POSTGRESQL_SETUP\.md''',
+  '''README_REPLIT\.md''',
+  '''code_repair\.md''',
+  '''code_review\.md''',
 
-    # Stale Next.js build artifact committed in error — internal Next.js preview keys,
-    # not application secrets. Directory was removed from HEAD in a subsequent commit.
-    '''frontend/\.next\.stale-20260609/''',
+  # Stale Next.js build artifact committed in error — internal Next.js preview keys,
+  # not application secrets. Directory was removed from HEAD in a subsequent commit.
+  '''frontend/\.next\.stale-20260609/''',
 
-    # Skills/agents documentation — API key placeholders in usage examples
-    '''skyyrose-suite/plugins/skyyrose-core/skills/''',
-    '''\.claude/skills/''',
-    '''\.claude/agents/''',
+  # Skills/agents documentation — API key placeholders in usage examples
+  '''skyyrose-suite/plugins/skyyrose-core/skills/''',
+  '''\.claude/skills/''',
+  '''\.claude/agents/''',
 
-    # WordPress documentation and config files — example credentials
-    '''wordpress/CLAUDE\.md''',
-    '''wordpress/WORDPRESS_ACCESS_METHODS\.md''',
-    '''wordpress-theme/skyyrose-flagship/deploy-to-wpcom\.py''',
-    '''wordpress/''',
+  # WordPress documentation and config files — example credentials
+  '''wordpress/CLAUDE\.md''',
+  '''wordpress/WORDPRESS_ACCESS_METHODS\.md''',
+  '''wordpress-theme/skyyrose-flagship/deploy-to-wpcom\.py''',
+  '''wordpress/''',
 
-    # Deployment manifests — environment variable placeholders, not real values
-    '''deployment/kubernetes/''',
-    '''render\.yaml''',
-    '''\.(replit)''',
+  # Deployment manifests — environment variable placeholders, not real values
+  '''deployment/kubernetes/''',
+  '''render\.yaml''',
+  '''\.(replit)''',
 
-    # Secrets baseline file — stores hashes of known findings (not actual secrets)
-    '''\.secrets\.baseline''',
+  # Secrets baseline file — stores hashes of known findings (not actual secrets)
+  '''\.secrets\.baseline''',
 
-    # Environment example files — documented placeholders
-    '''\.env\.example''',
-    '''\.env\.test''',
-    '''\.env\.production''',
+  # Environment example files — documented placeholders
+  '''\.env\.example''',
+  '''\.env\.test''',
+  '''\.env\.production''',
 
-    # Build scripts with placeholder values
-    '''skyyrose/build/''',
-    '''run_generation\.sh''',
-    '''scripts/meshy_3d_generator\.py''',
-    '''scripts/import_products_to_woocommerce\.py''',
-    '''scripts/wordpress/setup_credentials_guide\.sh''',
-    '''scripts/launch/sku_image_map\.json''',
-    '''agent/modules/''',
+  # Build scripts with placeholder values
+  '''skyyrose/build/''',
+  '''run_generation\.sh''',
+  '''scripts/meshy_3d_generator\.py''',
+  '''scripts/import_products_to_woocommerce\.py''',
+  '''scripts/wordpress/setup_credentials_guide\.sh''',
+  '''scripts/launch/sku_image_map\.json''',
+  '''agent/modules/''',
 
-    # Config files — example/placeholder values
-    '''config/logging_config\.py''',
-    '''context7\.json''',
-    '''\.mcp\.json''',
-    '''\.(replit)''',
+  # Config files — example/placeholder values
+  '''config/logging_config\.py''',
+  '''context7\.json''',
+  '''\.mcp\.json''',
+  '''\.(replit)''',
 
-    # gemini documentation
-    '''gemini/''',
+  # gemini documentation
+  '''gemini/''',
 
-    # backend test file with example values
-    '''backend_test\.py''',
+  # backend test file with example values
+  '''backend_test\.py''',
 
-    # GitHub Actions reusable workflow — example secret references (not real values)
-    '''\.github/workflows/reusable-test\.yml''',
+  # GitHub Actions reusable workflow — example secret references (not real values)
+  '''\.github/workflows/reusable-test\.yml''',
 
-    # MCP config — placeholder values in example config
-    '''\.(mcp|serena)/''',
-  ]
+  # MCP config — placeholder values in example config
+  '''\.(mcp|serena)/''',
+]
 
-  # Suppress uv.lock SHA-256 hashes that trip the square-access-token rule
-  # (SHA-256 hex strings match the pattern but are package integrity checksums)
-  stopwords = [
-    "sha256:",
-  ]
+# Suppress uv.lock SHA-256 hashes that trip the square-access-token rule
+# (SHA-256 hex strings match the pattern but are package integrity checksums)
+stopwords = ["sha256:"]
