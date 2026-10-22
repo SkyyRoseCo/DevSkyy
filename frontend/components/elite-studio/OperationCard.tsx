@@ -39,41 +39,39 @@ export function OperationCard({ operation, className = '' }: OperationCardProps)
       whileHover={{ y: -2, transition: { duration: 0.15 } }}
       className={className}
     >
-      <Card className="bg-gray-900 border-gray-800 hover:border-[#B76E79]/40 transition-colors">
-        <CardContent className="p-4">
-          <div className="flex items-start justify-between gap-3">
-            <div className="flex-1 min-w-0 space-y-2">
-              <div className="flex flex-wrap items-center gap-2">
+      <Card className='bg-gray-900 border-gray-800 hover:border-[#B76E79]/40 transition-colors'>
+        <CardContent className='p-4'>
+          <div className='flex items-start justify-between gap-3'>
+            <div className='flex-1 min-w-0 space-y-2'>
+              <div className='flex flex-wrap items-center gap-2'>
                 <IntentBadge intent={operation.intent} />
                 <OperationStatusBadge status={operation.status} />
               </div>
 
-              <div className="flex items-center gap-2">
-                <span className="text-sm font-mono text-gray-300 truncate">
-                  {operation.sku}
-                </span>
-                <span className="text-gray-600 text-xs">·</span>
-                <span className="text-xs text-gray-500 truncate" title={operation.operation_id}>
+              <div className='flex items-center gap-2'>
+                <span className='text-sm font-mono text-gray-300 truncate'>{operation.sku}</span>
+                <span className='text-gray-600 text-xs'>·</span>
+                <span className='text-xs text-gray-500 truncate' title={operation.operation_id}>
                   {operation.operation_id.slice(0, 8)}…
                 </span>
               </div>
 
               {operation.status === 'failed' && operation.error && (
-                <p className="text-xs text-red-400 line-clamp-2">{operation.error}</p>
+                <p className='text-xs text-red-400 line-clamp-2'>{operation.error}</p>
               )}
 
-              <div className="flex items-center gap-4 text-xs text-gray-500">
-                <span className="flex items-center gap-1">
-                  <Clock className="h-3 w-3" aria-hidden="true" />
+              <div className='flex items-center gap-4 text-xs text-gray-500'>
+                <span className='flex items-center gap-1'>
+                  <Clock className='h-3 w-3' aria-hidden='true' />
                   {createdAgo}
                 </span>
                 {durationLabel && (
-                  <span className="flex items-center gap-1">
+                  <span className='flex items-center gap-1'>
                     <span>Duration: {durationLabel}</span>
                   </span>
                 )}
-                <span className="flex items-center gap-1">
-                  <DollarSign className="h-3 w-3" aria-hidden="true" />
+                <span className='flex items-center gap-1'>
+                  <DollarSign className='h-3 w-3' aria-hidden='true' />
                   {operation.cost_usd.toFixed(4)}
                 </span>
               </div>
@@ -83,12 +81,8 @@ export function OperationCard({ operation, className = '' }: OperationCardProps)
               href={`/admin/elite-studio/operations/${operation.operation_id}`}
               aria-label={`View operation ${operation.operation_id}`}
             >
-              <Button
-                variant="ghost"
-                size="sm"
-                className="text-gray-400 hover:text-[#B76E79] shrink-0"
-              >
-                <ArrowRight className="h-4 w-4" aria-hidden="true" />
+              <Button variant='ghost' size='sm' className='text-gray-400 hover:text-[#B76E79] shrink-0'>
+                <ArrowRight className='h-4 w-4' aria-hidden='true' />
               </Button>
             </Link>
           </div>
