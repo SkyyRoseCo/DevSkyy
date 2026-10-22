@@ -1,0 +1,43 @@
+{
+  "utc": "2026-10-22T05:50:11.259038+00:00",
+  "tool": "Built-in image_gen.imagegen",
+  "original_path": "/Users/theceo/.codex/generated_images/01a0f768-2383-7262-b88c-7efe97126979/exec-7eb3d556-7311-470d-b22e-fb218653a7b3.png",
+  "candidate_path": "/Users/theceo/.codex/worktrees/storefront-successor-20261019/DevSkyy/assets/generated-candidates/kids-capsule-20261021/opening-reveal-r1.png",
+  "sha256": "47537eadac65064b723b4a615af5fdea6f0a389b658ddaabf97e15ed0e212640",
+  "dimensions": [
+    941,
+    1672
+  ],
+  "status": "GENERATED_OPENING_CANDIDATE_REVIEW_PENDING",
+  "source_references": [
+    {
+      "path": "assets/generated-candidates/kids-capsule-20261021/first-frame-r1.png",
+      "sha256": "c00e7fb3b3b320a20ce5ca264efbd11e39bc7389e77f65540245095a799191e0"
+    },
+    {
+      "path": "assets/products/references/kids-001-real-photo.jpeg",
+      "sha256": "9f73606eff0438378f2f669c6fde2977720a3c18e9577f68b27aed32f2dd4e08"
+    },
+    {
+      "path": "assets/products/references/kids-002-real-photo.jpeg",
+      "sha256": "5aa52b25e375873d7bf8c073dec26ba1b901ac1f99e743dc549fbd4ec88c0a3d"
+    },
+    {
+      "path": "wordpress-theme/skyyrose-flagship-2/assets/sot/images/mascot/skyy-canonical-v2.png",
+      "sha256": "072418c98dc0ba06289547425b1c7b394fd8a6ec84a9d55211e884fc3e7eb5b8"
+    }
+  ],
+  "model_and_seed": "NOT_EXPOSED_BY_TOOL",
+  "animation_started": false,
+  "publication": false,
+  "creative_role": "REVEAL_PAYOFF_STILL",
+  "review": "PASS_FOR_FOUNDER_REVIEW",
+  "founder_acceptance": "PENDING",
+  "animation": "NOT_STARTED_PENDING_REVEAL_STILL_REVIEW",
+  "limitations": [
+    "Not the concealed opening frame",
+    "Door movement and edit pacing not generated",
+    "Continuity into accepted closing embrace not verified in motion",
+    "Fine artwork fidelity not certified"
+  ]
+}

@@ -1,0 +1,57 @@
+{
+  "references": [
+    {
+      "path": "tasks/kids-animated-scene-20261021/CLOSING-FRAME-DECISION.json",
+      "sha256": "4d3aac38405e76ef7f1eb54b552d3a6f845d342ee966c20de641fcf1c8ef1f81",
+      "bytes": 596
+    },
+    {
+      "path": "tasks/kids-animated-scene-20261021/opening-reveal-r1.json",
+      "sha256": "e146f3c13f60b0cd393329463a5eca59a6e4f6ac76c18de35adeb6f17aec286d",
+      "bytes": 1810
+    },
+    {
+      "path": "tasks/kids-animated-scene-20261021/OPENING-REVEAL-PROMPT.txt",
+      "sha256": "dbd1f6da0ae22ebacc52877501a1c0a307eb6e6f23212eeffa03338d08bb4d0c",
+      "bytes": 5450
+    },
+    {
+      "path": "tasks/kids-animated-scene-20261021/REVEAL-REVISION-BRIEF.md",
+      "sha256": "95c752438e9f7e4cdee97092141bdb8db7f3ca720f543de6bd2c70bf372473e1",
+      "bytes": 1855
+    },
+    {
+      "path": "tasks/kids-animated-scene-20261021/CURRENT-EDIT.md",
+      "sha256": "3605198a203737bd46b585ad37d779b2c00eee53aa37560f043ec7b26e73a991",
+      "bytes": 2161
+    },
+    {
+      "path": "assets/generated-candidates/kids-capsule-20261021/opening-reveal-r1.png",
+      "sha256": "47537eadac65064b723b4a615af5fdea6f0a389b658ddaabf97e15ed0e212640",
+      "bytes": 2514791
+    },
+    {
+      "path": "assets/generated-candidates/kids-capsule-20261021/first-frame-r1.png",
+      "sha256": "c00e7fb3b3b320a20ce5ca264efbd11e39bc7389e77f65540245095a799191e0",
+      "bytes": 2468695
+    }
+  ],
+  "source_references": [
+    {
+      "path": "assets/generated-candidates/kids-capsule-20261021/first-frame-r1.png",
+      "sha256": "c00e7fb3b3b320a20ce5ca264efbd11e39bc7389e77f65540245095a799191e0"
+    },
+    {
+      "path": "assets/products/references/kids-001-real-photo.jpeg",
+      "sha256": "9f73606eff0438378f2f669c6fde2977720a3c18e9577f68b27aed32f2dd4e08"
+    },
+    {
+      "path": "assets/products/references/kids-002-real-photo.jpeg",
+      "sha256": "5aa52b25e375873d7bf8c073dec26ba1b901ac1f99e743dc549fbd4ec88c0a3d"
+    },
+    {
+      "path": "wordpress-theme/skyyrose-flagship-2/assets/sot/images/mascot/skyy-canonical-v2.png",
+      "sha256": "072418c98dc0ba06289547425b1c7b394fd8a6ec84a9d55211e884fc3e7eb5b8"
+    }
+  ]
+}
