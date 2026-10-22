@@ -9305,3 +9305,7 @@
 ## tests/ (lazy ML and agent imports)
 
 - `test_lazy_heavy_imports.py` — Fresh-interpreter cold imports with ML/network blocked; lazy export aliases, caching and optional failures; offline first-use embedding/CLIP initialization and availability probes. (~2500 tok)
+
+## frontend/tests/ (settings persistence contract)
+
+- `settings-storage.test.ts` — Authenticated settings save/reload and storage mode; route defaults and persisted settings validated through the client schema, plus unauthorized-write rejection. (~800 tok)

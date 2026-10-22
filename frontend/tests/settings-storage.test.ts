@@ -3,6 +3,7 @@ import { tmpdir } from 'node:os';
 import path from 'node:path';
 import { NextRequest } from 'next/server';
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
+import { SettingsSchema } from '../lib/api/schemas';
 
 const { session } = vi.hoisted(() => ({ session: vi.fn() }));
 vi.mock('next-auth', () => ({ getServerSession: session }));
@@ -25,6 +26,29 @@ afterEach(async () => {
 });
 
 describe('persistent dashboard settings', () => {
+  it('accepts route defaults and persisted typography through the client schema', async () => {
+    const { GET, POST } = await import('../app/api/settings/route');
+    const defaults = await GET(new NextRequest('http://localhost/api/settings'), undefined);
+    expect(defaults.status).toBe(200);
+    const settings = SettingsSchema.parse(await defaults.json());
+    expect(settings.ui.typography).toBe('playfair');
+
+    const saved = await POST(
+      new NextRequest('http://localhost/api/settings', {
+        method: 'POST',
+        body: JSON.stringify(settings),
+        headers: { 'Content-Type': 'application/json' },
+      }),
+      undefined
+    );
+    expect(saved.status).toBe(200);
+    vi.resetModules();
+    const reloaded = await import('../app/api/settings/route');
+    const response = await reloaded.GET(new NextRequest('http://localhost/api/settings'), undefined);
+    expect(response.status).toBe(200);
+    expect(SettingsSchema.parse(await response.json())).toEqual(settings);
+  });
+
   it('reads an authenticated save after the route module is reloaded', async () => {
     const settings = { ui: { theme: 'dark' } };
     const { POST } = await import('../app/api/settings/route');

@@ -82,33 +82,39 @@
 
   body {
     @apply bg-background text-foreground;
-    font-family: Inter, system-ui, sans-serif;
+    font-family: var(--font-cormorant), Georgia, serif;
   }
 
-  h1, h2, h3, h4, h5, h6 {
-    font-family: var(--font-cinzel), Georgia, serif;
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: var(--font-playfair), Georgia, serif;
     font-weight: 700;
     letter-spacing: -0.02em;
   }
 
-  code, pre {
-    font-family: ui-monospace, 'Courier New', monospace;
+  code,
+  pre {
+    font-family: var(--font-space-mono), "Courier New", monospace;
   }
 
   .font-display {
-    font-family: var(--font-cinzel), Georgia, serif;
+    font-family: var(--font-playfair), Georgia, serif;
   }
 
   .font-body {
-    font-family: Inter, system-ui, sans-serif;
+    font-family: var(--font-cormorant), Georgia, serif;
   }
 
   .font-mono {
-    font-family: ui-monospace, 'Courier New', monospace;
+    font-family: var(--font-space-mono), "Courier New", monospace;
   }
 
   .luxury-text-gradient {
-    background: linear-gradient(135deg, #D4A5B0 0%, #B76E79 50%, #8B5465 100%);
+    background: linear-gradient(135deg, #d4a5b0 0%, #b76e79 50%, #8b5465 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -117,7 +123,6 @@
 
 /* DevSkyy Design System */
 @layer utilities {
-
   /* Grid Pattern Background */
   .bg-grid-white\/\[0\.02\] {
     background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32' width='32' height='32' fill='none' stroke='rgb(255 255 255 / 0.02)'%3e%3cpath d='M0 .5H31.5V32'/%3e%3c/svg%3e");
@@ -154,27 +159,29 @@
 
   /* Glow Effects */
   .glow-rose {
-    box-shadow: 0 0 20px rgba(183, 110, 121, 0.3), 0 0 40px rgba(183, 110, 121, 0.1);
+    box-shadow:
+      0 0 20px rgba(183, 110, 121, 0.3),
+      0 0 40px rgba(183, 110, 121, 0.1);
   }
 
   .glow-blue {
-    box-shadow: 0 0 20px rgba(59, 130, 246, 0.3), 0 0 40px rgba(59, 130, 246, 0.1);
+    box-shadow:
+      0 0 20px rgba(59, 130, 246, 0.3),
+      0 0 40px rgba(59, 130, 246, 0.1);
   }
 
   /* Animated Gradient Border */
   .animated-border {
     position: relative;
-    background: linear-gradient(var(--background), var(--background)) padding-box,
-      linear-gradient(135deg, #B76E79, #1A1A1A, #B76E79) border-box;
+    background:
+      linear-gradient(var(--background), var(--background)) padding-box,
+      linear-gradient(135deg, #b76e79, #1a1a1a, #b76e79) border-box;
     border: 2px solid transparent;
   }
 
   /* Shimmer Animation */
   .shimmer {
-    background: linear-gradient(90deg,
-        transparent 0%,
-        rgba(255, 255, 255, 0.05) 50%,
-        transparent 100%);
+    background: linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.05) 50%, transparent 100%);
     background-size: 200% 100%;
     animation: shimmer 2s infinite;
   }
@@ -195,14 +202,15 @@
   }
 
   @keyframes pulse-glow {
-
     0%,
     100% {
       box-shadow: 0 0 5px rgba(183, 110, 121, 0.5);
     }
 
     50% {
-      box-shadow: 0 0 20px rgba(183, 110, 121, 0.8), 0 0 30px rgba(183, 110, 121, 0.4);
+      box-shadow:
+        0 0 20px rgba(183, 110, 121, 0.8),
+        0 0 30px rgba(183, 110, 121, 0.4);
     }
   }
 
@@ -212,7 +220,6 @@
   }
 
   @keyframes float {
-
     0%,
     100% {
       transform: translateY(0);
@@ -242,7 +249,9 @@
 
   /* Glow Gold */
   .glow-gold {
-    box-shadow: 0 0 20px rgba(212, 175, 55, 0.3), 0 0 40px rgba(212, 175, 55, 0.1);
+    box-shadow:
+      0 0 20px rgba(212, 175, 55, 0.3),
+      0 0 40px rgba(212, 175, 55, 0.1);
   }
 }
 

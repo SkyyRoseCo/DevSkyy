@@ -46,9 +46,7 @@ async function safeAdminProducts(): Promise<WcAdminProduct[]> {
 
 export default async function OverviewPage() {
   const session = await getAdminSession();
-  const [orders, adminProducts] = session
-    ? await Promise.all([safeOrders(), safeAdminProducts()])
-    : [[], []];
+  const [orders, adminProducts] = session ? await Promise.all([safeOrders(), safeAdminProducts()]) : [[], []];
   const catalog = getCatalog();
   const skuToCollection = buildSkuToCollectionMap(catalog);
   const referenceDate = latestOrderDate(orders);
@@ -59,12 +57,12 @@ export default async function OverviewPage() {
   const revTotal = currentWeekly.reduce((a, b) => a + b, 0);
 
   const collectionRevenue = revenueByCollection(orders, skuToCollection);
-  const catalogCollections = new Set(catalog.map((p) => p.collection));
+  const catalogCollections = new Set(catalog.map(p => p.collection));
 
   const inventory = adminProducts
-    .filter((p) => p.manage_stock)
-    .map((p) => {
-      const catalogEntry = catalog.find((c) => c.sku === p.sku);
+    .filter(p => p.manage_stock)
+    .map(p => {
+      const catalogEntry = catalog.find(c => c.sku === p.sku);
       const collectionLabel = catalogEntry?.collection ?? '—';
       if (p.stock_status === 'outofstock') return { name: p.name, collectionLabel, flag: 'Out of stock', ...danger() };
       if (typeof p.stock_quantity === 'number' && p.stock_quantity <= 5) {
@@ -72,45 +70,46 @@ export default async function OverviewPage() {
       }
       return { name: p.name, collectionLabel, flag: 'Healthy', ...idle() };
     })
-    .filter((i) => i.flag !== 'Healthy')
+    .filter(i => i.flag !== 'Healthy')
     .slice(0, 4);
 
   const recentOrders = [...orders]
-    .filter((o) => o.status !== 'trash')
+    .filter(o => o.status !== 'trash')
     .sort((a, b) => (b.date_created as string).localeCompare(a.date_created as string))
     .slice(0, 5);
 
   return (
     <>
-      <TopBar title="Overview" />
-      <div className="px-9 py-8 max-w-[1320px]">
+      <TopBar title='Overview' />
+      <div className='px-9 py-8 max-w-[1320px]'>
         {!wired && (
-          <ConsoleCard className="p-5 mb-6">
-            <span className="font-mono text-[11px] text-[#E5A85C]">
-              WooCommerce isn&apos;t returning data yet — wire credentials on the Settings screen. Figures below are empty until then.
+          <ConsoleCard className='p-5 mb-6'>
+            <span className='font-mono text-[11px] text-[#E5A85C]'>
+              WooCommerce isn&apos;t returning data yet — wire credentials on the Settings screen. Figures below are
+              empty until then.
             </span>
           </ConsoleCard>
         )}
 
         <OverviewKpis orders={orders} referenceDate={referenceDate.toISOString()} />
 
-        <div className="grid grid-cols-[1.55fr_1fr] gap-[18px] mb-[22px]">
-          <ConsoleCard className="p-6">
-            <div className="flex justify-between items-start mb-2">
+        <div className='grid grid-cols-[1.55fr_1fr] gap-[18px] mb-[22px]'>
+          <ConsoleCard className='p-6'>
+            <div className='flex justify-between items-start mb-2'>
               <div>
-                <span className="font-mono text-[10px] tracking-[0.18em] uppercase" style={{ color: 'var(--acc)' }}>
+                <span className='font-mono text-[10px] tracking-[0.18em] uppercase' style={{ color: 'var(--acc)' }}>
                   Revenue
                 </span>
-                <div className="text-[28px] font-semibold text-white mt-2" style={{ fontFamily: 'var(--font-cinzel)' }}>
+                <div className='text-[28px] font-semibold text-white mt-2' style={{ fontFamily: 'var(--font-barlow)' }}>
                   {formatCurrency(revTotal)}
                 </div>
               </div>
-              <div className="flex gap-[18px] font-mono text-[10px] tracking-[0.1em] text-[#A0A0A0] uppercase">
-                <span className="flex items-center gap-[7px]">
-                  <span className="w-[9px] h-[2px]" style={{ background: 'var(--acc)' }} /> This period
+              <div className='flex gap-[18px] font-mono text-[10px] tracking-[0.1em] text-[#A0A0A0] uppercase'>
+                <span className='flex items-center gap-[7px]'>
+                  <span className='w-[9px] h-[2px]' style={{ background: 'var(--acc)' }} /> This period
                 </span>
-                <span className="flex items-center gap-[7px]">
-                  <span className="w-[9px] h-[2px] bg-[#3A3A42]" /> Prior
+                <span className='flex items-center gap-[7px]'>
+                  <span className='w-[9px] h-[2px] bg-[#3A3A42]' /> Prior
                 </span>
               </div>
             </div>
@@ -118,40 +117,43 @@ export default async function OverviewPage() {
               current={currentWeekly}
               prior={priorWeekly}
               labels={['Wk 1', 'Wk 2', 'Wk 3', 'Wk 4', 'Now']}
-              gradientId="dshFillOverview"
+              gradientId='dshFillOverview'
             />
           </ConsoleCard>
 
           <AgentsListCard />
         </div>
 
-        <div className="grid grid-cols-[1.55fr_1fr] gap-[18px] mb-[22px]">
-          <ConsoleCard className="p-6">
-            <span className="font-mono text-[10px] tracking-[0.18em] uppercase" style={{ color: 'var(--acc)' }}>
+        <div className='grid grid-cols-[1.55fr_1fr] gap-[18px] mb-[22px]'>
+          <ConsoleCard className='p-6'>
+            <span className='font-mono text-[10px] tracking-[0.18em] uppercase' style={{ color: 'var(--acc)' }}>
               Collection Performance
             </span>
-            <div className="flex flex-col gap-5 mt-[22px]">
+            <div className='flex flex-col gap-5 mt-[22px]'>
               {collectionRevenue.length === 0 && (
-                <div className="font-mono text-[10px] text-[#7A7A82]">No attributed orders in the last 60 days.</div>
+                <div className='font-mono text-[10px] text-[#7A7A82]'>No attributed orders in the last 60 days.</div>
               )}
-              {collectionRevenue.map((c) => {
+              {collectionRevenue.map(c => {
                 const accent = COLLECTION_ACCENT[c.slug as CollectionSlug] ?? '#8A8A92';
                 const label = catalogCollections.has(c.slug) ? c.slug.replace('-', ' ') : c.slug;
                 return (
                   <div key={c.slug}>
-                    <div className="flex justify-between items-baseline mb-[9px]">
+                    <div className='flex justify-between items-baseline mb-[9px]'>
                       <span
-                        className="text-[13px] tracking-[0.12em] uppercase text-[#E0E0E0]"
+                        className='text-[13px] tracking-[0.12em] uppercase text-[#E0E0E0]'
                         style={{ fontFamily: 'var(--font-cinzel)' }}
                       >
                         {label}
                       </span>
-                      <span className="text-[13px] text-[#A0A0A0]" style={{ fontFamily: 'var(--font-cinzel)' }}>
+                      <span className='text-[13px] text-[#A0A0A0]' style={{ fontFamily: 'var(--font-barlow)' }}>
                         {formatCurrency(c.revenue)} · {formatPercent(c.share)}
                       </span>
                     </div>
-                    <div className="h-[7px] rounded-full overflow-hidden bg-[#1A1A20]">
-                      <div className="h-full rounded-full" style={{ width: formatPercent(c.share), background: accent }} />
+                    <div className='h-[7px] rounded-full overflow-hidden bg-[#1A1A20]'>
+                      <div
+                        className='h-full rounded-full'
+                        style={{ width: formatPercent(c.share), background: accent }}
+                      />
                     </div>
                   </div>
                 );
@@ -159,74 +161,80 @@ export default async function OverviewPage() {
             </div>
           </ConsoleCard>
 
-          <ConsoleCard className="p-6">
-            <span className="font-mono text-[10px] tracking-[0.18em] uppercase" style={{ color: 'var(--acc)' }}>
+          <ConsoleCard className='p-6'>
+            <span className='font-mono text-[10px] tracking-[0.18em] uppercase' style={{ color: 'var(--acc)' }}>
               Inventory Signals
             </span>
-            <div className="flex flex-col gap-0.5 mt-3.5">
+            <div className='flex flex-col gap-0.5 mt-3.5'>
               {inventory.length === 0 && (
-                <div className="font-mono text-[10px] text-[#7A7A82] py-2">No low-stock or out-of-stock signals.</div>
+                <div className='font-mono text-[10px] text-[#7A7A82] py-2'>No low-stock or out-of-stock signals.</div>
               )}
               {inventory.map((item, i) => (
-                <ConsoleRow key={`${item.name}-${i}`} className="flex items-center gap-3 px-1.5 py-[11px]">
-                  <div className="flex-1 min-w-0">
-                    <div className="text-[13px] text-[#E0E0E0] truncate">{item.name}</div>
-                    <div className="font-mono text-[9.5px] tracking-[0.12em] text-[#7A7A82] uppercase mt-0.5">
+                <ConsoleRow key={`${item.name}-${i}`} className='flex items-center gap-3 px-1.5 py-[11px]'>
+                  <div className='flex-1 min-w-0'>
+                    <div className='text-[13px] text-[#E0E0E0] truncate'>{item.name}</div>
+                    <div className='font-mono text-[9.5px] tracking-[0.12em] text-[#7A7A82] uppercase mt-0.5'>
                       {item.collectionLabel}
                     </div>
                   </div>
-                  <StatusPill label={item.flag} bg={item.bg} color={item.color} className="flex-none" />
+                  <StatusPill label={item.flag} bg={item.bg} color={item.color} className='flex-none' />
                 </ConsoleRow>
               ))}
             </div>
           </ConsoleCard>
         </div>
 
-        <ConsoleCard className="p-6">
-          <div className="flex justify-between items-center mb-1.5">
-            <span className="font-mono text-[10px] tracking-[0.18em] uppercase" style={{ color: 'var(--acc)' }}>
+        <ConsoleCard className='p-6'>
+          <div className='flex justify-between items-center mb-1.5'>
+            <span className='font-mono text-[10px] tracking-[0.18em] uppercase' style={{ color: 'var(--acc)' }}>
               Recent Orders
             </span>
-            <a href="/admin/orders" className="font-mono text-[10px] tracking-[0.14em] text-[#A0A0A0] uppercase cursor-pointer">
+            <a
+              href='/admin/orders'
+              className='font-mono text-[10px] tracking-[0.14em] text-[#A0A0A0] uppercase cursor-pointer'
+            >
               View all
             </a>
           </div>
           <div
-            className="grid gap-3 px-2 py-3.5 border-b border-white/[0.08] font-mono text-[9.5px] tracking-[0.14em] text-[#7A7A82] uppercase"
+            className='grid gap-3 px-2 py-3.5 border-b border-white/[0.08] font-mono text-[9.5px] tracking-[0.14em] text-[#7A7A82] uppercase'
             style={{ gridTemplateColumns: '120px 1.4fr 1.6fr 1fr 100px 120px' }}
           >
             <span>Order</span>
             <span>Customer</span>
             <span>Piece</span>
             <span>Collection</span>
-            <span className="text-right">Total</span>
-            <span className="text-right">Status</span>
+            <span className='text-right'>Total</span>
+            <span className='text-right'>Status</span>
           </div>
           {recentOrders.length === 0 && (
-            <div className="font-mono text-[10px] text-[#7A7A82] py-4">No orders in the last 60 days.</div>
+            <div className='font-mono text-[10px] text-[#7A7A82] py-4'>No orders in the last 60 days.</div>
           )}
-          {recentOrders.map((order) => {
+          {recentOrders.map(order => {
             const status = mapOrderStatus(order.status);
             return (
               <ConsoleRow
                 key={order.id}
-                className="grid gap-3 px-2 py-[15px] border-b border-white/[0.04] items-center"
+                className='grid gap-3 px-2 py-[15px] border-b border-white/[0.04] items-center'
                 style={{ gridTemplateColumns: '120px 1.4fr 1.6fr 1fr 100px 120px' }}
               >
-                <span className="font-mono text-[11.5px] tracking-[0.04em]" style={{ color: 'var(--acc)' }}>
+                <span className='font-mono text-[11.5px] tracking-[0.04em]' style={{ color: 'var(--acc)' }}>
                   #{(order.number as string) ?? order.id}
                 </span>
-                <span className="text-[13.5px] text-[#E0E0E0]">{orderCustomerName(order)}</span>
-                <span className="italic text-[14px] text-[#C8C8C8]" style={{ fontFamily: 'var(--font-cinzel)' }}>
+                <span className='text-[13.5px] text-[#E0E0E0]'>{orderCustomerName(order)}</span>
+                <span className='italic text-[14px] text-[#C8C8C8]' style={{ fontFamily: 'var(--font-playfair)' }}>
                   {orderPieceSummary(order)}
                 </span>
-                <span className="font-mono text-[10px] tracking-[0.1em] text-[#9A9AA2] uppercase">
+                <span className='font-mono text-[10px] tracking-[0.1em] text-[#9A9AA2] uppercase'>
                   {orderCollection(order, skuToCollection)}
                 </span>
-                <span className="text-[14px] text-white text-right font-medium" style={{ fontFamily: 'var(--font-cinzel)' }}>
+                <span
+                  className='text-[14px] text-white text-right font-medium'
+                  style={{ fontFamily: 'var(--font-barlow)' }}
+                >
                   {formatCurrency(orderTotal(order))}
                 </span>
-                <span className="text-right">
+                <span className='text-right'>
                   <StatusPill label={status.label} bg={status.bg} color={status.color} />
                 </span>
               </ConsoleRow>
