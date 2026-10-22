@@ -7340,5 +7340,22 @@
     "related_bugs": [],
     "occurrences": 1,
     "last_seen": "2026-10-20T00:00:00+00:00"
+  },
+  {
+    "id": "bug-412",
+    "timestamp": "2026-10-22T08:08:27+00:00",
+    "error_message": "npm run test:collections exits1: No test files found. The script filters to src/collections, but the existing suite is src/types/__tests__/collections.test.ts. Reproduced on current main c824485958 in an isolated worktree.",
+    "file": "package.json",
+    "root_cause": "The collection test entrypoint retained an obsolete directory filter; Vitest filters test file paths, so the existing collection types suite did not match.",
+    "fix": "Recover only the historical b6278616f script correction targeting src/types/__tests__/collections.test.ts. Public npm command now executes26tests; root suite690tests passed. Keep the current config, existing tests, collection data, dependencies and lockfiles unchanged. This qualifies the developer test command, not the current complete brand/catalog canon.",
+    "tags": [
+      "test-harness",
+      "npm",
+      "vitest",
+      "test-discovery"
+    ],
+    "related_bugs": [],
+    "occurrences": 1,
+    "last_seen": "2026-10-22T08:08:27+00:00"
   }
 ]
