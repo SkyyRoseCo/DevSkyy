@@ -1,0 +1,73 @@
+{
+  "job_id": "kids-capsule-shared-entrance-proof-20261021",
+  "brand": "skyyrose",
+  "objective": "Prepare one product-led Kids Capsule animated website scene with Skyy and both current Kids sets",
+  "collection_context": "kids-capsule",
+  "campaign_brief": {
+    "path": "tasks/kids-animated-scene-20261021/BRIEF.md",
+    "sha256": "291eeeaa2852c4ff3b97490558a4db0234677ba41703d47b321010cbc9a8ca49"
+  },
+  "lifecycle_stage": "M3",
+  "channel": "web",
+  "content_intent": {
+    "medium": "video",
+    "production_type": "collection_hero",
+    "content_role": "collection_hero",
+    "shot_role": "PRODUCT_HERO",
+    "distribution_channels": [
+      "web"
+    ],
+    "intended_use": "INTERNAL",
+    "audience": "Kids Capsule customers and purchasers",
+    "representation_mode": "EXACT_PRODUCT",
+    "lifecycle_stage": "M3",
+    "shots": [
+      {
+        "shot_id": "KIDS-ENTRANCE-1",
+        "shot_role": "PRODUCT_HERO",
+        "purpose": "Both current sets shown through one shared entrance with Skyy",
+        "exact_product": true,
+        "product_skus": [
+          "kids-001",
+          "kids-002"
+        ]
+      }
+    ],
+    "film_plan": null,
+    "interactive_plan": null
+  },
+  "production_method": "UNRESOLVED",
+  "campaign_authority_required": false,
+  "major_initiative": false,
+  "place_relevant": false,
+  "intended_use": "INTERNAL",
+  "audience": "Kids Capsule customers and purchasers",
+  "representation_mode": "EXACT_PRODUCT",
+  "products": [
+    {
+      "sku": "kids-001",
+      "required_views": [
+        "front",
+        "packshot"
+      ],
+      "required_details": []
+    },
+    {
+      "sku": "kids-002",
+      "required_views": [
+        "front",
+        "packshot"
+      ],
+      "required_details": []
+    }
+  ],
+  "decisions": [],
+  "constraints": [
+    "Founder flatlays and current get_product corrections govern garment truth",
+    "No new tagline or text in frame",
+    "Source preparation only; no paid generation, upload or publication",
+    "Current model identity references are not garment color authority"
+  ],
+  "palette_intents": [],
+  "absence_reasons": {}
+}
