@@ -1,0 +1,73 @@
+{
+  "job_id": "kids-closet-dual-reveal-motion-proof-r1-20261021",
+  "brand": "skyyrose",
+  "objective": "Approved closet reveals both complete Kids sets before Skyy, then original courtyard closing",
+  "collection_context": "kids-capsule",
+  "campaign_brief": {
+    "path": "tasks/kids-animated-scene-20261021/motion-r1/BRIEF.md",
+    "sha256": "6be4951e08d98e2251de3fe71693691aeb8502b70c2fd50222b088c3fefcfc7d"
+  },
+  "lifecycle_stage": "M3",
+  "channel": "web",
+  "content_intent": {
+    "medium": "video",
+    "production_type": "collection_hero",
+    "content_role": "collection_hero",
+    "shot_role": "PRODUCT_HERO",
+    "distribution_channels": [
+      "web"
+    ],
+    "intended_use": "INTERNAL",
+    "audience": "Kids Capsule customers and purchasers",
+    "representation_mode": "EXACT_PRODUCT",
+    "lifecycle_stage": "M3",
+    "shots": [
+      {
+        "shot_id": "KIDS-CLOSET-DUAL-REVEAL",
+        "shot_role": "PRODUCT_HERO",
+        "purpose": "Both complete sets precede character reveal",
+        "exact_product": true,
+        "product_skus": [
+          "kids-001",
+          "kids-002"
+        ]
+      }
+    ],
+    "film_plan": null,
+    "interactive_plan": null
+  },
+  "production_method": "CONTROLLED_RENDER",
+  "campaign_authority_required": false,
+  "major_initiative": false,
+  "place_relevant": false,
+  "intended_use": "INTERNAL",
+  "audience": "Kids Capsule customers and purchasers",
+  "representation_mode": "EXACT_PRODUCT",
+  "products": [
+    {
+      "sku": "kids-001",
+      "required_views": [
+        "front",
+        "packshot"
+      ],
+      "required_details": []
+    },
+    {
+      "sku": "kids-002",
+      "required_views": [
+        "front",
+        "packshot"
+      ],
+      "required_details": []
+    }
+  ],
+  "decisions": [],
+  "constraints": [
+    "Founder current flatlays/get_product govern product truth",
+    "Both complete sets before Skyy; approved dark opening; original courtyard closing",
+    "One motion proof; no live use/deployment",
+    "No bypass of missing Governor dispatch"
+  ],
+  "palette_intents": [],
+  "absence_reasons": {}
+}

@@ -1,0 +1,40 @@
+{
+  "recorded_utc": "2026-10-22T06:24:40.151115+00:00",
+  "provider": "Higgsfield",
+  "authentication": "Current get_profile matches Corey and expected SkyyRose account; sensitive identity omitted",
+  "account_id_sha256": "81cd6fb2cde740537e9d60789d19a22bbb34e783018fc98f170a4f0bb41c404a",
+  "plan": "plus",
+  "available_credits": 1222.75,
+  "auto_create_project": false,
+  "model": "seedance_2_5",
+  "parameters": {
+    "mode": "omni_reference",
+    "duration": 16,
+    "resolution": "1080p",
+    "aspect_ratio": "9:16",
+    "generate_audio": false,
+    "bitrate_mode": "high",
+    "count": 1
+  },
+  "supported_media_roles": [
+    "start_image",
+    "image"
+  ],
+  "quote": {
+    "credits": 256,
+    "credits_exact": 256,
+    "no_job_submitted": true
+  },
+  "superseded_quote": {
+    "credits": 288,
+    "duration": 18,
+    "reason": "Use16scloset plus2s unchanged courtyard source edit instead"
+  },
+  "uploads": 0,
+  "submissions": 0,
+  "charges": 0,
+  "provider_job_ids": [],
+  "governor": "No authenticated dispatch/job-specific grant found; ledger is a library and reporting app is read-only",
+  "seed": "NOT_EXPOSED",
+  "motion_fidelity": "UNQUALIFIED"
+}

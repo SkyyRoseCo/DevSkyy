@@ -1,0 +1,20 @@
+{
+  "recorded_utc": "2026-10-22T06:24:40.151115+00:00",
+  "instruction": "Yes this is the opening. Animate the closet reveal now, reveal both colorways before Skyy, and keep the courtyard as the closing shot.",
+  "opening_acceptance": "FOUNDER_CONFIRMED",
+  "opening": {
+    "path": "assets/generated-candidates/kids-capsule-20261021/closet-opening-dark-r2.png",
+    "sha256": "9dc6947f7d9a49aef53256cb825716a2d436a23e83f73218e47a350fae67e94d"
+  },
+  "animation_authorized": true,
+  "previous_motion_hold_superseded": true,
+  "sequence": [
+    "Complete kids-001 set",
+    "Complete kids-002 set",
+    "Skyy",
+    "Original courtyard closing"
+  ],
+  "numeric_spend_limit": "NOT_STATED",
+  "governor_route_exception": "NOT_GRANTED",
+  "new_scene_publication": "NOT_AUTHORIZED"
+}
