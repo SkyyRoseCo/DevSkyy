@@ -12,7 +12,7 @@ import math
 import os
 from datetime import UTC, datetime, timedelta
 from typing import Any
-from uuid import uuid4
+from uuid import UUID, uuid4
 
 logger = logging.getLogger(__name__)
 
@@ -27,7 +27,7 @@ PRICING_PER_1K: dict[str, float] = {
 _COST_KEY_PREFIX = "elite_studio:costs:"
 _TOTAL_COST_SORTED_SET = "elite_studio:costs:timeline"
 
-# TTL for individual job cost records: 7 days
+# Retention for job cost records and the rolling timeline: 7 days.
 _COST_TTL_SECONDS = 604_800
 
 # Hard cost ceiling — kill-switch for runaway retry loops. The previous
@@ -201,6 +201,8 @@ class CostTracker:
             timeline_entry = f"{job_id}:{provider}:{uuid4().hex}:{cost_usd:.6f}"
             score = datetime.now(UTC).timestamp()
             pipe.zadd(_TOTAL_COST_SORTED_SET, {timeline_entry: score})
+            pipe.zremrangebyscore(_TOTAL_COST_SORTED_SET, "-inf", f"({score - _COST_TTL_SECONDS}")
+            pipe.expire(_TOTAL_COST_SORTED_SET, _COST_TTL_SECONDS)
             pipe.execute()
 
             logger.debug(
@@ -238,6 +240,8 @@ class CostTracker:
         Degrades gracefully when Redis is unavailable: logs a warning and
         returns 0.0 rather than raising, consistent with the module-level
         contract and ``get_job_cost`` behaviour.
+        Recorded history is retained for seven days; longer requested windows
+        raise ValueError rather than returning an incomplete total.
 
         Args:
             since_hours: Look-back window in hours (default 24).
@@ -253,17 +257,31 @@ class CostTracker:
 
     def _read_total_cost(self, since_hours: int) -> float:
         """Read a complete valid total or fail; never turn a failed read into spend zero."""
+        if since_hours > _COST_TTL_SECONDS / 3600:
+            raise ValueError("Cost look-back window exceeds the seven-day retention period")
         try:
             r = self._get_redis()
             cutoff = (datetime.now(UTC) - timedelta(hours=since_hours)).timestamp()
             entries = r.zrangebyscore(_TOTAL_COST_SORTED_SET, cutoff, "+inf")
             total = 0.0
             for entry in entries:
-                # Both legacy job:provider:cost and unique-call members end in cost.
-                parts = entry.rsplit(":", 1)
-                if len(parts) != 2:
+                # Job IDs may contain colons, so recognize supported suffixes
+                # from the right. A provider-like job component remains valid
+                # in legacy records; that ambiguity cannot prove corruption.
+                parts = entry.rsplit(":", 2)
+                if len(parts) != 3:
                     raise ValueError("Invalid cost timeline entry")
-                amount = float(parts[1])
+                job_id, provider, raw_amount = parts
+                if provider not in PRICING_PER_1K:
+                    unique_parts = entry.rsplit(":", 3)
+                    if len(unique_parts) != 4:
+                        raise ValueError("Invalid cost timeline entry")
+                    job_id, provider, call_id, raw_amount = unique_parts
+                    if UUID(call_id).hex != call_id:
+                        raise ValueError("Invalid cost timeline call identifier")
+                if not job_id.strip() or provider not in PRICING_PER_1K:
+                    raise ValueError("Invalid cost timeline identity")
+                amount = float(raw_amount)
                 if not math.isfinite(amount) or amount < 0:
                     raise ValueError("Invalid cost timeline amount")
                 total += amount
