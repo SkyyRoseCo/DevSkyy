@@ -12,6 +12,7 @@ Version: 1.0.0
 
 from __future__ import annotations
 
+import importlib.util
 import logging
 from dataclasses import dataclass
 from enum import StrEnum
@@ -49,16 +50,27 @@ except ImportError:
     CV2_AVAILABLE = False
     logger.warning("OpenCV not available. Color histogram comparison disabled.")
 
-try:
-    import torch
-    from transformers import CLIPModel, CLIPProcessor
 
-    CLIP_AVAILABLE = True
-    _clip_model: CLIPModel | None = None
-    _clip_processor: CLIPProcessor | None = None
-except ImportError:
-    CLIP_AVAILABLE = False
+def _module_available(name: str) -> bool:
+    """True when ``name`` is importable, without importing it.
+
+    A meta-path finder may raise instead of returning None (the ML-optional test
+    blocks modules that way), and find_spec raises ValueError for a module whose
+    ``__spec__`` is unset — both mean "not available", never a crash at import.
+    """
+    try:
+        return importlib.util.find_spec(name) is not None
+    except (ImportError, ValueError):
+        return False
+
+
+# Probe CLIP dependencies without importing them; load the libraries only when
+# a CLIP comparison is requested.
+CLIP_AVAILABLE = _module_available("torch") and _module_available("transformers")
+if not CLIP_AVAILABLE:
     logger.warning("transformers/torch not available. CLIP semantic comparison disabled.")
+_clip_model: object | None = None
+_clip_processor: object | None = None
 
 
 class ComparisonConfidence(StrEnum):
@@ -314,6 +326,9 @@ class VisualComparisonEngine:
 
         global _clip_model, _clip_processor
         try:
+            import torch
+            from transformers import CLIPModel, CLIPProcessor
+
             if _clip_model is None or _clip_processor is None:
                 _clip_model = CLIPModel.from_pretrained(
                     "openai/clip-vit-base-patch32"

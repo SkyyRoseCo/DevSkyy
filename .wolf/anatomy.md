@@ -9301,3 +9301,7 @@
 ## tests/ (rate limiting)
 
 - `test_rate_limit_env.py` — env-configurable default rate limits in security/rate_limiting.py (RATE_LIMIT_{IP,USER,API_KEY}_*), incl. real-HTTP enforcement via TestClient. (~1300 tok)
+
+## tests/ (lazy ML and agent imports)
+
+- `test_lazy_heavy_imports.py` — Fresh-interpreter cold imports with ML/network blocked; lazy export aliases, caching and optional failures; offline first-use embedding/CLIP initialization and availability probes. (~2500 tok)
