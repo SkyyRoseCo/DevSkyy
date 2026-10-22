@@ -1,0 +1,35 @@
+{
+  "recorded_utc": "2026-10-22T06:41:41.361443+00:00",
+  "instruction": "Yes, use Higgsfield directly for this one 16-second proof, capped at 256 credits. Reveal both colorways before Skyy and keep the courtyard as the closing shot.",
+  "provider": "Higgsfield",
+  "model": "seedance_2_5",
+  "maximum_credits": 256,
+  "maximum_submissions": 1,
+  "duration_seconds": 16,
+  "route_exception": "FOUNDER_CONFIRMED:direct supported provider for this one proof; no Governor-controlled execution claimed",
+  "closing": "Append original accepted courtyard image unchanged as2second closing hold",
+  "automatic_retries": false,
+  "publication_deployment": "NOT_AUTHORIZED",
+  "references": [
+    {
+      "path": "assets/generated-candidates/kids-capsule-20261021/closet-opening-dark-r2.png",
+      "sha256": "9dc6947f7d9a49aef53256cb825716a2d436a23e83f73218e47a350fae67e94d"
+    },
+    {
+      "path": "assets/products/references/kids-001-real-photo.jpeg",
+      "sha256": "9f73606eff0438378f2f669c6fde2977720a3c18e9577f68b27aed32f2dd4e08"
+    },
+    {
+      "path": "assets/products/references/kids-002-real-photo.jpeg",
+      "sha256": "5aa52b25e375873d7bf8c073dec26ba1b901ac1f99e743dc549fbd4ec88c0a3d"
+    },
+    {
+      "path": "wordpress-theme/skyyrose-flagship-2/assets/sot/images/mascot/skyy-canonical-v2.png",
+      "sha256": "072418c98dc0ba06289547425b1c7b394fd8a6ec84a9d55211e884fc3e7eb5b8"
+    },
+    {
+      "path": "assets/generated-candidates/kids-capsule-20261021/first-frame-r1.png",
+      "sha256": "c00e7fb3b3b320a20ce5ca264efbd11e39bc7389e77f65540245095a799191e0"
+    }
+  ]
+}

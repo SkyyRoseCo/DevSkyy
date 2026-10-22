@@ -1,0 +1,87 @@
+{
+  "state": "SUBMISSION_STARTING_OUTCOME_UNKNOWN_UNTIL_RESPONSE",
+  "maximum_submissions": 1,
+  "authorized_maximum_credits": 256,
+  "quote": {
+    "cost": {
+      "credits": 256,
+      "credits_exact": 256
+    },
+    "adjustments": {
+      "medias[1].role": {
+        "requested": "image",
+        "used": "image_references",
+        "reason": "Seedance 2.5 backend expects schema-key media roles"
+      },
+      "medias[2].role": {
+        "requested": "image",
+        "used": "image_references",
+        "reason": "Seedance 2.5 backend expects schema-key media roles"
+      },
+      "medias[3].role": {
+        "requested": "image",
+        "used": "image_references",
+        "reason": "Seedance 2.5 backend expects schema-key media roles"
+      }
+    }
+  },
+  "uploads": [
+    {
+      "path": "assets/generated-candidates/kids-capsule-20261021/closet-opening-dark-r2.png",
+      "media_id": "503a71d1-f037-4e2d-9ef6-068d4dd0760c",
+      "status": "uploaded",
+      "size_bytes": 1649006
+    },
+    {
+      "path": "assets/products/references/kids-001-real-photo.jpeg",
+      "media_id": "a85c4eef-fc9b-4146-9968-1057c67ad50c",
+      "status": "uploaded",
+      "size_bytes": 158223
+    },
+    {
+      "path": "assets/products/references/kids-002-real-photo.jpeg",
+      "media_id": "52e85f79-1545-4deb-bcaa-327ae5f5fccb",
+      "status": "uploaded",
+      "size_bytes": 182875
+    },
+    {
+      "path": "wordpress-theme/skyyrose-flagship-2/assets/sot/images/mascot/skyy-canonical-v2.png",
+      "media_id": "df12082e-1a41-4228-bbf0-71a9b4a0c67a",
+      "status": "uploaded",
+      "size_bytes": 512385
+    }
+  ],
+  "params": {
+    "model": "seedance_2_5",
+    "mode": "omni_reference",
+    "duration": 16,
+    "resolution": "1080p",
+    "aspect_ratio": "9:16",
+    "generate_audio": false,
+    "bitrate_mode": "high",
+    "count": 1,
+    "prompt": "Animate the approved portrait dark walnut closet. Preserve arched central double doors, low side cabinets, brass pulls, stone floor, dim warm ambience and narrow amber seam. Start in exactly the approved composition; restrained slow push at child eye level, no orbit.\n\nReference roles: approved dark image is the start frame; first flatlay is kids-001; second flatlay is kids-002; canonical Skyy is character identity and her separate white/black Love Hurts wardrobe. Copy garment colors, panel boundaries, artwork, placements, drawstrings, pockets, construction and proportions directly from each flatlay. Never transfer Skyy wardrobe or lettering onto Kids products.\n\n16 seconds,9:16. 0\u20131.5s almost still, doors closed, only amber seam, Skyy completely concealed. 1.5\u20135s open left bay to first referenced complete hoodie-and-jogger set, front readable. 5\u20138.5s open right bay to second referenced complete hoodie-and-jogger set, front readable. Keep central doors closed and Skyy hidden. 8.5\u201310s hold BOTH complete sets together, all four garments clearly visible. Only then,10\u201313s open central doors and reveal canonical Skyy facing forward with a small warm smile.13\u201316s stable complete-line composition, Skyy centered, products unobstructed.\n\nUse neutral motivated light in product bays to preserve true colors while room stays dark and tactile. Anticipation and welcoming wonder, not horror. Credible gravity/scale for hanging garments. Fit complete sets without cropping trousers; a front product insert may resolve low side-bay framing. One principal action per beat. No rear/unseen details, extra SKUs, costume swaps, invented marks, recoloring, distorted graphics, duplicated garments/anatomy, premature Skyy glimpse, floating objects or rapid montage. No captions, narration, music or audio. End in the closet; the original accepted courtyard still is appended separately, never regenerated or morphed into this clip.\n",
+    "medias": [
+      {
+        "role": "start_image",
+        "value": "503a71d1-f037-4e2d-9ef6-068d4dd0760c"
+      },
+      {
+        "role": "image",
+        "value": "a85c4eef-fc9b-4146-9968-1057c67ad50c"
+      },
+      {
+        "role": "image",
+        "value": "52e85f79-1545-4deb-bcaa-327ae5f5fccb"
+      },
+      {
+        "role": "image",
+        "value": "df12082e-1a41-4228-bbf0-71a9b4a0c67a"
+      }
+    ]
+  },
+  "account_id_sha256": "81cd6fb2cde740537e9d60789d19a22bbb34e783018fc98f170a4f0bb41c404a",
+  "balance_before": 1222.75,
+  "governor_route": "EXPLICIT_OWNER_EXCEPTION_DIRECT_HIGGSFIELD",
+  "utc": "2026-10-22T06:42:26.094821+00:00"
+}

@@ -1,0 +1,56 @@
+{
+  "component_bindings": [
+    {
+      "component": "kids-private-source-tray-r2-kids-001",
+      "role": "source",
+      "sha256": "9f73606eff0438378f2f669c6fde2977720a3c18e9577f68b27aed32f2dd4e08",
+      "result": "PASS"
+    },
+    {
+      "component": "kids-private-source-tray-r2-kids-001",
+      "role": "mask",
+      "sha256": "12ebe499842639d04a30f416c3b1e942fe4399a2caba2493c34c386df8db034f",
+      "result": "PASS"
+    },
+    {
+      "component": "kids-private-source-tray-r2-kids-001",
+      "role": "background",
+      "sha256": "e77cc9a00385dccd4611beb2238647f9511b6e2da09b665478eb503ac5cc65d6",
+      "result": "PASS"
+    },
+    {
+      "component": "kids-private-source-tray-r2-kids-002",
+      "role": "source",
+      "sha256": "5aa52b25e375873d7bf8c073dec26ba1b901ac1f99e743dc549fbd4ec88c0a3d",
+      "result": "PASS"
+    },
+    {
+      "component": "kids-private-source-tray-r2-kids-002",
+      "role": "mask",
+      "sha256": "5278c3757568a8bbc8a6bd3b5c36fd4e6804afbaaf26e08e5acc791421759377",
+      "result": "PASS"
+    },
+    {
+      "component": "kids-private-source-tray-r2-kids-002",
+      "role": "background",
+      "sha256": "2fa90bef5ceafcd6539217eef99cb874e1f9bb2801ef07423998955b5bbe2f50",
+      "result": "PASS"
+    }
+  ],
+  "source_extract": "PASS_RED_R4_PURPLE_R3",
+  "tray_r1": "FAIL_INTEGRATION",
+  "tray_r2": "PASS_STANDALONE_DETAIL_STILL",
+  "courtyard": "FAIL_PROTECTED_ARTWORK",
+  "full_movie": "HOLD",
+  "paid_video_job_count": 1,
+  "paid_video_quoted_credits": 256,
+  "further_paid_video_authorized": false,
+  "preview_updated": false,
+  "live_actions": false,
+  "source_originals_modified": false,
+  "unrelated_seven_dirty_input_hashes": "UNCHANGED_VERIFIED",
+  "registry_projection_check": "PASS",
+  "filesystem_floor": "ABOVE_1GiB; NO_CLEANUP",
+  "presentation": "R2_STANDALONE_PRIVATE_REVIEW_ONLY",
+  "reviewer_runtime_note": "Full verifier passed in producer NumPy2.4.1; initial NumPy2.3.5 identity-only mismatch retained in review"
+}

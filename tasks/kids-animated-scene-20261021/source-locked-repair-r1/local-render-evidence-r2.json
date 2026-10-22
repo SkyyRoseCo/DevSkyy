@@ -1,0 +1,32 @@
+{
+  "scope": "Bounded private background scene render, no provider calls",
+  "recipe": {
+    "path": ".artifacts/kids-source-locked-repair-r1/render-clean-trays-r2.py",
+    "sha256": "02ed9551eca46ebfb3c3d256b0bc52a190ce9afacfc608c00da698e7d55852d2"
+  },
+  "scene": {
+    "path": ".artifacts/kids-source-locked-repair-r1/clean-tray-environment-r2.blend",
+    "sha256": "65982dd2e2b8321af030c605def7c1ad608278e455a2defe7c8af17cbe56c9a8"
+  },
+  "render": {
+    "path": ".artifacts/kids-source-locked-repair-r1/clean-tray-environment-r2.png",
+    "sha256": "e77cc9a00385dccd4611beb2238647f9511b6e2da09b665478eb503ac5cc65d6"
+  },
+  "log": {
+    "path": ".artifacts/kids-source-locked-repair-r1/render-clean-trays-r2.log",
+    "sha256": "adfbd65a75cf18c164126b0d946b590eff72553b592dc9e8495818f1b91b3c36"
+  },
+  "warnings": "Blender5.2 Material.use_nodes deprecation for6.0; no runtime failure",
+  "presentation": "HOLD",
+  "original_sources_changed": false,
+  "canon_artwork_inspection": [
+    {
+      "path": "wordpress-theme/skyyrose-flagship/assets/images/logos/black-roses-cloud-cluster.jpeg",
+      "sha256": "d00c318cf5dca1a3d063670df24f10bf4ace1d17f9c97b7da1730755a35196d5"
+    },
+    {
+      "path": "wordpress-theme/skyyrose-flagship/assets/images/logos/skyy-rose-collection-circular-patch.jpeg",
+      "sha256": "0dcc7b4589a77a07acc81548452e4d35bd28d395e4c2a7925e2c6ef8330301cd"
+    }
+  ]
+}

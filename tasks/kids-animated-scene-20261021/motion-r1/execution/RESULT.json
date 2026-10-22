@@ -1,0 +1,78 @@
+{
+  "utc": "2026-10-22T06:56:30.152004+00:00",
+  "job_id": "4bb8eb70-8f37-4a8b-a345-c16365f79fa1",
+  "provider_status": "completed",
+  "submission_count": 1,
+  "quote_credits": 256,
+  "observed_balance_decrease": 256,
+  "narrative_sequence": "PASS_ON_SAMPLED_EVIDENCE",
+  "creative_review": "CHANGES_REQUIRED",
+  "founder_acceptance": "NOT_REQUESTED_AS_PASSED_CANDIDATE",
+  "publication": false,
+  "files": [
+    {
+      "path": ".artifacts/kids-closet-motion-20261021/closet-provider-r1.mp4",
+      "bytes": 6877984,
+      "sha256": "2ac8351fd261508422c98a59532642b8edb674c2e8058acec1b1fa3c59d1dff4"
+    },
+    {
+      "path": ".artifacts/kids-closet-motion-20261021/closet-reveal-with-courtyard-r1.mp4",
+      "bytes": 9310818,
+      "sha256": "c9219655a7d93f3a5f44ae01626ce74591f89497f7aae6aaccaabe31f305833c"
+    },
+    {
+      "path": ".artifacts/kids-closet-motion-20261021/courtyard-closing-original-source.mp4",
+      "bytes": 643494,
+      "sha256": "96aa7b92c53741787a106d256c395505936d855cd48627544090879169fdb1d8"
+    },
+    {
+      "path": ".artifacts/kids-closet-motion-20261021/provider-probe.json",
+      "bytes": 2281,
+      "sha256": "774a459c5d9b33c74c5f11bf51f8df5ea4219da71a88666820ee3c4aa6ed45b1"
+    },
+    {
+      "path": ".artifacts/kids-closet-motion-20261021/assembly-probe.json",
+      "bytes": 2397,
+      "sha256": "965cd2e3aa4e2636074433faab027bdc79b196063ae8cc5d785e6650e3bb720d"
+    },
+    {
+      "path": ".artifacts/kids-closet-motion-20261021/closing-probe.json",
+      "bytes": 2300,
+      "sha256": "ee0fcf1bcc871978085446bae7faad424bf7726877df45aa8cce18c9d0b9f766"
+    },
+    {
+      "path": ".artifacts/kids-closet-motion-20261021/provider-sheet-01.jpg",
+      "bytes": 71607,
+      "sha256": "77627f145eeeaee768eea5edd2dc35a41f2c9f0930a424d988daff8526768f75"
+    },
+    {
+      "path": ".artifacts/kids-closet-motion-20261021/provider-sheet-02.jpg",
+      "bytes": 149039,
+      "sha256": "b13eb1b179e6006725379fa7439d34b215a3d9f9277ae3ef28dcf72665264d60"
+    },
+    {
+      "path": ".artifacts/kids-closet-motion-20261021/provider-sheet-03.jpg",
+      "bytes": 235832,
+      "sha256": "3b88b786a2c0e95eef141be8238268f6eb54134af794763c639a628c3f530066"
+    }
+  ],
+  "closing_source": {
+    "path": "assets/generated-candidates/kids-capsule-20261021/first-frame-r1.png",
+    "sha256": "c00e7fb3b3b320a20ce5ca264efbd11e39bc7389e77f65540245095a799191e0",
+    "unchanged": true
+  },
+  "review_limits": [
+    "3sheets at2fps and7nativeframes",
+    "No continuous-playback smoothness or exact-artwork certification"
+  ],
+  "local_native_decode": "PASS",
+  "subsequent_strict_review": {
+    "generated_product_correction": "FAIL_PROTECTED_ARTWORK",
+    "courtyard_closing": "FAIL_PROTECTED_ARTWORK",
+    "source_extraction": "RED_R4_PURPLE_R3_PASS",
+    "tray_scene_r1": "FAIL_INTEGRATION",
+    "tray_scene_r2": "PASS_STANDALONE_PRODUCT_DETAIL_STILL_ONLY",
+    "presentation": "R2_STANDALONE_ONLY; MOVIE_AND_COURTYARD_HOLD",
+    "further_paid_video_authorization": false
+  }
+}

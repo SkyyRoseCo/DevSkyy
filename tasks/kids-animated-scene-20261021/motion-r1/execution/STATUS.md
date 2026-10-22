@@ -1,0 +1,5 @@
+# One proof completed; film held for fidelity correction
+
+One authorized Higgsfield16-second generation completed at quoted256credits; observed balance decrease256, submissioncount1. Native decode PASS. An18-second review assembly appended the unchanged courtyard source. Sampled sequence PASS; original film creative review FAIL (clipped sleeves, floating garments). Strict later review also failed protected artwork in the generated correction still and courtyard closing. These failures are retained. No additional paid generation or live use authorized.
+
+Corey requires products fixed before presentation and chose source-preserved display trays. Red R4 / purple R3 actual-product extraction PASS. First tray integration FAIL; second clean local overhead-tray standalone still independently PASS for private founder review only. See ../../source-locked-repair-r1/REVIEW.md. Courtyard direction remains accepted, artwork execution needs separate source-bound repair. Preview unchanged; no film qualification claimed.

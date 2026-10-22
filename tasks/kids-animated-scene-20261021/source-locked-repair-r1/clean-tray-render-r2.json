@@ -1,0 +1,27 @@
+{
+  "method": "Bounded product-free horizontal drawer render, perpendicular orthographic camera; actual source alpha planes shadow-only",
+  "renderer": "5.2.0 LTS",
+  "resolution": [
+    1080,
+    1920
+  ],
+  "ortho_scale": 6.7,
+  "placements": [
+    {
+      "sku": "kids-001",
+      "x": 225,
+      "y": 70,
+      "scale": 0.875,
+      "mask_revision": "r4"
+    },
+    {
+      "sku": "kids-002",
+      "x": 225,
+      "y": 1010,
+      "scale": 0.875,
+      "mask_revision": "r3"
+    }
+  ],
+  "presentation": "HOLD",
+  "render_has_camera_visible_product_pixels": false
+}

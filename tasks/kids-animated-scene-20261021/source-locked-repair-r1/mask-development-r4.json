@@ -1,0 +1,17 @@
+{
+  "version": "red-r4",
+  "change": "Only residual photographed floor wedge between black cords;alpha only",
+  "source_roi": [
+    368,
+    218,
+    391,
+    241
+  ],
+  "floor_selector": "sourceRGBmean>95 withinROI",
+  "changed_alpha_pixels": 195,
+  "mask_sha256": "12ebe499842639d04a30f416c3b1e942fe4399a2caba2493c34c386df8db034f",
+  "cutout_sha256": "1fea78a3ad631ce618dc4546afac2926817eb3bd493b8563da60a40e9641c950",
+  "protected_rgb_max_error": 0,
+  "coverage": "UNREVIEWED",
+  "purple": "Retain independentlypassedR3mask5278c3757568a8bbc8a6bd3b5c36fd4e6804afbaaf26e08e5acc791421759377 unchanged"
+}

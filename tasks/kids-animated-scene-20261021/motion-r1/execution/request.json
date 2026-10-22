@@ -1,0 +1,73 @@
+{
+  "job_id": "kids-closet-dual-reveal-motion-proof-r1-authorized-20261021",
+  "brand": "skyyrose",
+  "objective": "Approved closet reveals both complete Kids sets before Skyy, then original courtyard closing",
+  "collection_context": "kids-capsule",
+  "campaign_brief": {
+    "path": "tasks/kids-animated-scene-20261021/motion-r1/execution/BRIEF.md",
+    "sha256": "ccdb7262a64098b54d8176a3b6dffe75461a67490a3a66e37bcb71f8ec5bb3fa"
+  },
+  "lifecycle_stage": "M3",
+  "channel": "web",
+  "content_intent": {
+    "medium": "video",
+    "production_type": "collection_hero",
+    "content_role": "collection_hero",
+    "shot_role": "PRODUCT_HERO",
+    "distribution_channels": [
+      "web"
+    ],
+    "intended_use": "INTERNAL",
+    "audience": "Kids Capsule customers and purchasers",
+    "representation_mode": "EXACT_PRODUCT",
+    "lifecycle_stage": "M3",
+    "shots": [
+      {
+        "shot_id": "KIDS-CLOSET-DUAL-REVEAL",
+        "shot_role": "PRODUCT_HERO",
+        "purpose": "Both complete sets precede character reveal",
+        "exact_product": true,
+        "product_skus": [
+          "kids-001",
+          "kids-002"
+        ]
+      }
+    ],
+    "film_plan": null,
+    "interactive_plan": null
+  },
+  "production_method": "CONTROLLED_RENDER",
+  "campaign_authority_required": false,
+  "major_initiative": false,
+  "place_relevant": false,
+  "intended_use": "INTERNAL",
+  "audience": "Kids Capsule customers and purchasers",
+  "representation_mode": "EXACT_PRODUCT",
+  "products": [
+    {
+      "sku": "kids-001",
+      "required_views": [
+        "front",
+        "packshot"
+      ],
+      "required_details": []
+    },
+    {
+      "sku": "kids-002",
+      "required_views": [
+        "front",
+        "packshot"
+      ],
+      "required_details": []
+    }
+  ],
+  "decisions": [],
+  "constraints": [
+    "Founder current flatlays/get_product govern product truth",
+    "Both complete sets before Skyy; approved dark opening; original courtyard closing",
+    "One motion proof; no live use/deployment",
+    "Corey explicitly authorizes direct Higgsfield exception for one16s proof capped256credits; no Governor execution claim"
+  ],
+  "palette_intents": [],
+  "absence_reasons": {}
+}

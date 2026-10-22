@@ -1,0 +1,70 @@
+{
+  "version": "r3-unreviewed",
+  "method": "Region-specific source-color seeded GrabCut; alpha-only; existing accurate boundaries protected",
+  "files": [
+    {
+      "sku": "kids-001",
+      "source_sha256": "9f73606eff0438378f2f669c6fde2977720a3c18e9577f68b27aed32f2dd4e08",
+      "mask_sha256": "f88aecfc65809ea4cd493700503ab83107b0175734cd8e7186ca8dc26ccf1e3a",
+      "cutout_sha256": "abf0c55adee85322de6f7c3e9dabc208b90538637f5807b3fb802c4b13671e5c",
+      "protected_rgb_max_error": 0,
+      "foreground_pixels": 253135,
+      "coverage": "UNREVIEWED",
+      "uncertain_regions": [
+        [
+          545,
+          135,
+          697,
+          355
+        ],
+        [
+          90,
+          415,
+          130,
+          490
+        ],
+        [
+          252,
+          396,
+          278,
+          409
+        ],
+        [
+          395,
+          119,
+          410,
+          145
+        ]
+      ]
+    },
+    {
+      "sku": "kids-002",
+      "source_sha256": "5aa52b25e375873d7bf8c073dec26ba1b901ac1f99e743dc549fbd4ec88c0a3d",
+      "mask_sha256": "5278c3757568a8bbc8a6bd3b5c36fd4e6804afbaaf26e08e5acc791421759377",
+      "cutout_sha256": "1e25a927fed94caf90bd01d393d7cb88fbf90fee416372a79516436a7885d224",
+      "protected_rgb_max_error": 0,
+      "foreground_pixels": 194099,
+      "coverage": "UNREVIEWED",
+      "uncertain_regions": [
+        [
+          585,
+          175,
+          660,
+          310
+        ],
+        [
+          520,
+          350,
+          555,
+          455
+        ],
+        [
+          268,
+          767,
+          318,
+          848
+        ]
+      ]
+    }
+  ]
+}

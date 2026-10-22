@@ -1,0 +1,350 @@
+{
+  "status": "PASS_STANDALONE_PRODUCT_DETAIL_STILL",
+  "final_image": ".artifacts/kids-source-locked-repair-r1/tray-composite-kids-002-r2.png",
+  "sha256": "82529fb916134498aee753c1fdad9fdf74b5b86059c489031e74c4d9f89fe6f5",
+  "dimensions": [
+    1080,
+    1920
+  ],
+  "source_preservation": [
+    {
+      "sku": "kids-001",
+      "uniform_scale": 0.875,
+      "source_opaque_pixels": 191118,
+      "max_transformed_source_rgb_error_after_both_layers": 0
+    },
+    {
+      "sku": "kids-002",
+      "uniform_scale": 0.875,
+      "source_opaque_pixels": 146587,
+      "max_transformed_source_rgb_error_after_both_layers": 0
+    }
+  ],
+  "receipts": [
+    {
+      "manifest": {
+        "version": "1.0",
+        "job_id": "kids-private-source-tray-r2-kids-001",
+        "request": {
+          "job_id": "kids-private-source-tray-r2-kids-001",
+          "source": {
+            "path": "assets/products/references/kids-001-real-photo.jpeg",
+            "sha256": "9f73606eff0438378f2f669c6fde2977720a3c18e9577f68b27aed32f2dd4e08"
+          },
+          "mask": {
+            "path": ".artifacts/kids-source-locked-repair-r1/kids-001-mask-r4.png",
+            "sha256": "12ebe499842639d04a30f416c3b1e942fe4399a2caba2493c34c386df8db034f"
+          },
+          "background": {
+            "path": ".artifacts/kids-source-locked-repair-r1/clean-tray-environment-r2.png",
+            "sha256": "e77cc9a00385dccd4611beb2238647f9511b6e2da09b665478eb503ac5cc65d6"
+          },
+          "placement": {
+            "x": 225,
+            "y": 70,
+            "scale": 0.875
+          },
+          "output_path": ".artifacts/kids-source-locked-repair-r1/tray-composite-kids-001-r2.png"
+        },
+        "request_identity": "77f6fe779610e07fe8e77c994a87e24ceb4a148a9be8e0cf0435cd772047e94f",
+        "inputs": {
+          "runtime": {
+            "pillow": "12.3.0",
+            "numpy": "2.4.1"
+          },
+          "source": {
+            "sha256": "9f73606eff0438378f2f669c6fde2977720a3c18e9577f68b27aed32f2dd4e08",
+            "path": "assets/products/references/kids-001-real-photo.jpeg",
+            "mode": "RGB",
+            "dimensions": [
+              720,
+              960
+            ],
+            "orientation": 1,
+            "icc_sha256": null,
+            "color_conversion": "none; untagged RGB interpreted as sRGB"
+          },
+          "mask": {
+            "sha256": "12ebe499842639d04a30f416c3b1e942fe4399a2caba2493c34c386df8db034f",
+            "path": ".artifacts/kids-source-locked-repair-r1/kids-001-mask-r4.png",
+            "mode": "L",
+            "dimensions": [
+              720,
+              960
+            ],
+            "orientation": 1,
+            "icc_sha256": null,
+            "color_conversion": "none; untagged RGB interpreted as sRGB"
+          },
+          "background": {
+            "sha256": "e77cc9a00385dccd4611beb2238647f9511b6e2da09b665478eb503ac5cc65d6",
+            "path": ".artifacts/kids-source-locked-repair-r1/clean-tray-environment-r2.png",
+            "mode": "RGBA",
+            "dimensions": [
+              1080,
+              1920
+            ],
+            "orientation": 1,
+            "icc_sha256": null,
+            "color_conversion": "none; untagged RGB interpreted as sRGB"
+          },
+          "transform": {
+            "matrix": [
+              [
+                0.875,
+                0,
+                225
+              ],
+              [
+                0,
+                0.875,
+                70
+              ],
+              [
+                0,
+                0,
+                1
+              ]
+            ],
+            "resized_dimensions": [
+              630,
+              840
+            ],
+            "resampling": "Pillow BICUBIC RGB and mask; integer dimensions round",
+            "allowed": [
+              "translation",
+              "uniform_scale"
+            ],
+            "edge_processing": "only declared uniform resize of source and alpha"
+          },
+          "protected_region": "all mask alpha > 0; opaque interior alpha=255; boundary 0<alpha<255",
+          "working_profile": "sRGB",
+          "export_profile": "sRGB PNG rendering intent perceptual",
+          "tolerances": {
+            "interior_max_channel_error": 0,
+            "boundary_max_channel_error": 0,
+            "background_max_channel_error": 0
+          },
+          "tolerance_rationale": "Lossless PNG and independently rounded integer alpha math permit exact equality"
+        },
+        "authority": {
+          "job_id": "kids-private-source-tray-r2-kids-001",
+          "source_sha256": "9f73606eff0438378f2f669c6fde2977720a3c18e9577f68b27aed32f2dd4e08",
+          "output_root": ".artifacts/kids-source-locked-repair-r1",
+          "approval_reference": "Corey explicit current fix-before-presentation instruction; explicit source-preserved display tray selection; tasks/kids-animated-scene-20261021/source-locked-repair-r1/AUTHORITY.json",
+          "action": "local_composite"
+        },
+        "output_path": ".artifacts/kids-source-locked-repair-r1/tray-composite-kids-001-r2.png",
+        "output_sha256": "2fa90bef5ceafcd6539217eef99cb874e1f9bb2801ef07423998955b5bbe2f50",
+        "output_dimensions": [
+          1080,
+          1920
+        ],
+        "output_format": "PNG",
+        "publication_authorized": false,
+        "provider_authorized": false
+      },
+      "verification": {
+        "producer_implementation_sha256": "b3a6b5769cfdc064b95608828c374546650665cc52e8d1d7c321487bbfce1202",
+        "verifier_implementation_sha256": "b3a6b5769cfdc064b95608828c374546650665cc52e8d1d7c321487bbfce1202",
+        "historical_producer_reference": null,
+        "verification_mode": "CURRENT_PRODUCER_AND_VERIFIER",
+        "color_profile": "PASS",
+        "status": "PASS",
+        "technical": "PASS",
+        "request_identity": "PASS",
+        "artifact_identity": "PASS",
+        "criteria": {
+          "opaque_interior": {
+            "applicable": true,
+            "reason": "Pixels in declared alpha region",
+            "pixel_count": 191118,
+            "max_channel_error": 0,
+            "result": "PASS"
+          },
+          "antialiased_boundary": {
+            "applicable": true,
+            "reason": "Pixels in declared alpha region",
+            "pixel_count": 5066,
+            "max_channel_error": 0,
+            "result": "PASS"
+          },
+          "unprotected_background": {
+            "applicable": true,
+            "reason": "Pixels in declared alpha region",
+            "pixel_count": 1877416,
+            "max_channel_error": 0,
+            "result": "PASS"
+          }
+        },
+        "output_sha256": "2fa90bef5ceafcd6539217eef99cb874e1f9bb2801ef07423998955b5bbe2f50",
+        "limitations": "Checks source-layer preservation only; source correctness and complete garment mask coverage require separate visual review."
+      }
+    },
+    {
+      "manifest": {
+        "version": "1.0",
+        "job_id": "kids-private-source-tray-r2-kids-002",
+        "request": {
+          "job_id": "kids-private-source-tray-r2-kids-002",
+          "source": {
+            "path": "assets/products/references/kids-002-real-photo.jpeg",
+            "sha256": "5aa52b25e375873d7bf8c073dec26ba1b901ac1f99e743dc549fbd4ec88c0a3d"
+          },
+          "mask": {
+            "path": ".artifacts/kids-source-locked-repair-r1/kids-002-mask-r3.png",
+            "sha256": "5278c3757568a8bbc8a6bd3b5c36fd4e6804afbaaf26e08e5acc791421759377"
+          },
+          "background": {
+            "path": ".artifacts/kids-source-locked-repair-r1/tray-composite-kids-001-r2.png",
+            "sha256": "2fa90bef5ceafcd6539217eef99cb874e1f9bb2801ef07423998955b5bbe2f50"
+          },
+          "placement": {
+            "x": 225,
+            "y": 1010,
+            "scale": 0.875
+          },
+          "output_path": ".artifacts/kids-source-locked-repair-r1/tray-composite-kids-002-r2.png"
+        },
+        "request_identity": "b584289ebf32b5c2adca8a1bf57485f37aa4697c885c74fc5b7a39e17490d6f9",
+        "inputs": {
+          "runtime": {
+            "pillow": "12.3.0",
+            "numpy": "2.4.1"
+          },
+          "source": {
+            "sha256": "5aa52b25e375873d7bf8c073dec26ba1b901ac1f99e743dc549fbd4ec88c0a3d",
+            "path": "assets/products/references/kids-002-real-photo.jpeg",
+            "mode": "RGB",
+            "dimensions": [
+              720,
+              960
+            ],
+            "orientation": 1,
+            "icc_sha256": null,
+            "color_conversion": "none; untagged RGB interpreted as sRGB"
+          },
+          "mask": {
+            "sha256": "5278c3757568a8bbc8a6bd3b5c36fd4e6804afbaaf26e08e5acc791421759377",
+            "path": ".artifacts/kids-source-locked-repair-r1/kids-002-mask-r3.png",
+            "mode": "L",
+            "dimensions": [
+              720,
+              960
+            ],
+            "orientation": 1,
+            "icc_sha256": null,
+            "color_conversion": "none; untagged RGB interpreted as sRGB"
+          },
+          "background": {
+            "sha256": "2fa90bef5ceafcd6539217eef99cb874e1f9bb2801ef07423998955b5bbe2f50",
+            "path": ".artifacts/kids-source-locked-repair-r1/tray-composite-kids-001-r2.png",
+            "mode": "RGB",
+            "dimensions": [
+              1080,
+              1920
+            ],
+            "orientation": 1,
+            "icc_sha256": null,
+            "color_conversion": "none; untagged RGB interpreted as sRGB"
+          },
+          "transform": {
+            "matrix": [
+              [
+                0.875,
+                0,
+                225
+              ],
+              [
+                0,
+                0.875,
+                1010
+              ],
+              [
+                0,
+                0,
+                1
+              ]
+            ],
+            "resized_dimensions": [
+              630,
+              840
+            ],
+            "resampling": "Pillow BICUBIC RGB and mask; integer dimensions round",
+            "allowed": [
+              "translation",
+              "uniform_scale"
+            ],
+            "edge_processing": "only declared uniform resize of source and alpha"
+          },
+          "protected_region": "all mask alpha > 0; opaque interior alpha=255; boundary 0<alpha<255",
+          "working_profile": "sRGB",
+          "export_profile": "sRGB PNG rendering intent perceptual",
+          "tolerances": {
+            "interior_max_channel_error": 0,
+            "boundary_max_channel_error": 0,
+            "background_max_channel_error": 0
+          },
+          "tolerance_rationale": "Lossless PNG and independently rounded integer alpha math permit exact equality"
+        },
+        "authority": {
+          "job_id": "kids-private-source-tray-r2-kids-002",
+          "source_sha256": "5aa52b25e375873d7bf8c073dec26ba1b901ac1f99e743dc549fbd4ec88c0a3d",
+          "output_root": ".artifacts/kids-source-locked-repair-r1",
+          "approval_reference": "Corey explicit current fix-before-presentation instruction; explicit source-preserved display tray selection; tasks/kids-animated-scene-20261021/source-locked-repair-r1/AUTHORITY.json",
+          "action": "local_composite"
+        },
+        "output_path": ".artifacts/kids-source-locked-repair-r1/tray-composite-kids-002-r2.png",
+        "output_sha256": "82529fb916134498aee753c1fdad9fdf74b5b86059c489031e74c4d9f89fe6f5",
+        "output_dimensions": [
+          1080,
+          1920
+        ],
+        "output_format": "PNG",
+        "publication_authorized": false,
+        "provider_authorized": false
+      },
+      "verification": {
+        "producer_implementation_sha256": "b3a6b5769cfdc064b95608828c374546650665cc52e8d1d7c321487bbfce1202",
+        "verifier_implementation_sha256": "b3a6b5769cfdc064b95608828c374546650665cc52e8d1d7c321487bbfce1202",
+        "historical_producer_reference": null,
+        "verification_mode": "CURRENT_PRODUCER_AND_VERIFIER",
+        "color_profile": "PASS",
+        "status": "PASS",
+        "technical": "PASS",
+        "request_identity": "PASS",
+        "artifact_identity": "PASS",
+        "criteria": {
+          "opaque_interior": {
+            "applicable": true,
+            "reason": "Pixels in declared alpha region",
+            "pixel_count": 146587,
+            "max_channel_error": 0,
+            "result": "PASS"
+          },
+          "antialiased_boundary": {
+            "applicable": true,
+            "reason": "Pixels in declared alpha region",
+            "pixel_count": 4086,
+            "max_channel_error": 0,
+            "result": "PASS"
+          },
+          "unprotected_background": {
+            "applicable": true,
+            "reason": "Pixels in declared alpha region",
+            "pixel_count": 1922927,
+            "max_channel_error": 0,
+            "result": "PASS"
+          }
+        },
+        "output_sha256": "82529fb916134498aee753c1fdad9fdf74b5b86059c489031e74c4d9f89fe6f5",
+        "limitations": "Checks source-layer preservation only; source correctness and complete garment mask coverage require separate visual review."
+      }
+    }
+  ],
+  "background_scope": "Entirely local bounded Blender horizontal tray render; actual-source alpha casts shadows only; no generated garments or unrelated failed scene used",
+  "presentation": "ALLOWED_PRIVATE_FOUNDER_REVIEW_R2_ONLY",
+  "paid_calls": 0,
+  "founder_acceptance": "PENDING",
+  "movie_and_transitions": "HOLD_UNQUALIFIED"
+}

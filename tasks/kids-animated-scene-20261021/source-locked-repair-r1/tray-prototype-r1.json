@@ -1,0 +1,288 @@
+{
+  "status": "TECHNICAL_PASS_SCENE_FAIL",
+  "dimensions": [
+    3764,
+    6688
+  ],
+  "final_master": ".artifacts/kids-source-locked-repair-r1/tray-composite-layer-2-r1.png",
+  "final_master_sha256": "181b83f62be797355d33ac58218302a917a230ea2277f25fe02319ee1e74c90f",
+  "intended_size": ".artifacts/kids-source-locked-repair-r1/tray-composite-intended-size-r1.png",
+  "intended_size_sha256": "fc227ea99061eb87177bfcba4b2d094b64da190cf8796a90021a3aed9767695d",
+  "source_pixel_checks": [
+    {
+      "sku": "kids-001",
+      "source_scale": 1.0,
+      "source_translation": [
+        70,
+        1680
+      ],
+      "mask_sha256": "12ebe499842639d04a30f416c3b1e942fe4399a2caba2493c34c386df8db034f",
+      "positive_alpha_pixel_max_rgb_error_in_final_combined_image": 0
+    },
+    {
+      "sku": "kids-002",
+      "source_scale": 1.0,
+      "source_translation": [
+        2952,
+        1680
+      ],
+      "mask_sha256": "5278c3757568a8bbc8a6bd3b5c36fd4e6804afbaaf26e08e5acc791421759377",
+      "positive_alpha_pixel_max_rgb_error_in_final_combined_image": 0
+    }
+  ],
+  "component_receipts": [
+    {
+      "version": "1.0",
+      "job_id": "kids-source-locked-tray-still-private-r1-kids-001",
+      "request": {
+        "job_id": "kids-source-locked-tray-still-private-r1-kids-001",
+        "source": {
+          "path": "assets/products/references/kids-001-real-photo.jpeg",
+          "sha256": "9f73606eff0438378f2f669c6fde2977720a3c18e9577f68b27aed32f2dd4e08"
+        },
+        "mask": {
+          "path": ".artifacts/kids-source-locked-repair-r1/kids-001-mask-r4.png",
+          "sha256": "12ebe499842639d04a30f416c3b1e942fe4399a2caba2493c34c386df8db034f"
+        },
+        "background": {
+          "path": ".artifacts/kids-source-locked-repair-r1/tray-environment-master-r1.png",
+          "sha256": "ec403921e5549929a7f8023990f18d3b71b3c155b333287b433959a18133837f"
+        },
+        "placement": {
+          "x": 70,
+          "y": 1680,
+          "scale": 1.0
+        },
+        "output_path": ".artifacts/kids-source-locked-repair-r1/tray-composite-layer-1-r1.png"
+      },
+      "request_identity": "ee42ecdd344f947c914f8898e50c1764d6c53250ff05fffa2a20044f61d3a7be",
+      "inputs": {
+        "runtime": {
+          "pillow": "12.3.0",
+          "numpy": "2.4.1"
+        },
+        "source": {
+          "sha256": "9f73606eff0438378f2f669c6fde2977720a3c18e9577f68b27aed32f2dd4e08",
+          "path": "assets/products/references/kids-001-real-photo.jpeg",
+          "mode": "RGB",
+          "dimensions": [
+            720,
+            960
+          ],
+          "orientation": 1,
+          "icc_sha256": null,
+          "color_conversion": "none; untagged RGB interpreted as sRGB"
+        },
+        "mask": {
+          "sha256": "12ebe499842639d04a30f416c3b1e942fe4399a2caba2493c34c386df8db034f",
+          "path": ".artifacts/kids-source-locked-repair-r1/kids-001-mask-r4.png",
+          "mode": "L",
+          "dimensions": [
+            720,
+            960
+          ],
+          "orientation": 1,
+          "icc_sha256": null,
+          "color_conversion": "none; untagged RGB interpreted as sRGB"
+        },
+        "background": {
+          "sha256": "ec403921e5549929a7f8023990f18d3b71b3c155b333287b433959a18133837f",
+          "path": ".artifacts/kids-source-locked-repair-r1/tray-environment-master-r1.png",
+          "mode": "RGB",
+          "dimensions": [
+            3764,
+            6688
+          ],
+          "orientation": 1,
+          "icc_sha256": null,
+          "color_conversion": "none; untagged RGB interpreted as sRGB"
+        },
+        "transform": {
+          "matrix": [
+            [
+              1.0,
+              0,
+              70
+            ],
+            [
+              0,
+              1.0,
+              1680
+            ],
+            [
+              0,
+              0,
+              1
+            ]
+          ],
+          "resized_dimensions": [
+            720,
+            960
+          ],
+          "resampling": "Pillow BICUBIC RGB and mask; integer dimensions round",
+          "allowed": [
+            "translation",
+            "uniform_scale"
+          ],
+          "edge_processing": "only declared uniform resize of source and alpha"
+        },
+        "protected_region": "all mask alpha > 0; opaque interior alpha=255; boundary 0<alpha<255",
+        "working_profile": "sRGB",
+        "export_profile": "sRGB PNG rendering intent perceptual",
+        "tolerances": {
+          "interior_max_channel_error": 0,
+          "boundary_max_channel_error": 0,
+          "background_max_channel_error": 0
+        },
+        "tolerance_rationale": "Lossless PNG and independently rounded integer alpha math permit exact equality"
+      },
+      "authority": {
+        "job_id": "kids-source-locked-tray-still-private-r1-kids-001",
+        "source_sha256": "9f73606eff0438378f2f669c6fde2977720a3c18e9577f68b27aed32f2dd4e08",
+        "output_root": ".artifacts/kids-source-locked-repair-r1",
+        "approval_reference": "Corey:products need to be spot on so it should be fixed before showing me anythign; adopted original closet brief115\u2013126; tasks/kids-animated-scene-20261021/source-locked-repair-r1/AUTHORITY.json",
+        "action": "local_composite"
+      },
+      "output_path": ".artifacts/kids-source-locked-repair-r1/tray-composite-layer-1-r1.png",
+      "output_sha256": "b815860707ac2b0db73e48416c4dc7c5aa4ec5a09411fcd1e2ca22ca5b971713",
+      "output_dimensions": [
+        3764,
+        6688
+      ],
+      "output_format": "PNG",
+      "publication_authorized": false,
+      "provider_authorized": false
+    },
+    {
+      "version": "1.0",
+      "job_id": "kids-source-locked-tray-still-private-r1-kids-002",
+      "request": {
+        "job_id": "kids-source-locked-tray-still-private-r1-kids-002",
+        "source": {
+          "path": "assets/products/references/kids-002-real-photo.jpeg",
+          "sha256": "5aa52b25e375873d7bf8c073dec26ba1b901ac1f99e743dc549fbd4ec88c0a3d"
+        },
+        "mask": {
+          "path": ".artifacts/kids-source-locked-repair-r1/kids-002-mask-r3.png",
+          "sha256": "5278c3757568a8bbc8a6bd3b5c36fd4e6804afbaaf26e08e5acc791421759377"
+        },
+        "background": {
+          "path": ".artifacts/kids-source-locked-repair-r1/tray-composite-layer-1-r1.png",
+          "sha256": "b815860707ac2b0db73e48416c4dc7c5aa4ec5a09411fcd1e2ca22ca5b971713"
+        },
+        "placement": {
+          "x": 2952,
+          "y": 1680,
+          "scale": 1.0
+        },
+        "output_path": ".artifacts/kids-source-locked-repair-r1/tray-composite-layer-2-r1.png"
+      },
+      "request_identity": "69bf7627525d7ed7a17f1375a9b9eaefa1ee79a8487674933923f21da739dd15",
+      "inputs": {
+        "runtime": {
+          "pillow": "12.3.0",
+          "numpy": "2.4.1"
+        },
+        "source": {
+          "sha256": "5aa52b25e375873d7bf8c073dec26ba1b901ac1f99e743dc549fbd4ec88c0a3d",
+          "path": "assets/products/references/kids-002-real-photo.jpeg",
+          "mode": "RGB",
+          "dimensions": [
+            720,
+            960
+          ],
+          "orientation": 1,
+          "icc_sha256": null,
+          "color_conversion": "none; untagged RGB interpreted as sRGB"
+        },
+        "mask": {
+          "sha256": "5278c3757568a8bbc8a6bd3b5c36fd4e6804afbaaf26e08e5acc791421759377",
+          "path": ".artifacts/kids-source-locked-repair-r1/kids-002-mask-r3.png",
+          "mode": "L",
+          "dimensions": [
+            720,
+            960
+          ],
+          "orientation": 1,
+          "icc_sha256": null,
+          "color_conversion": "none; untagged RGB interpreted as sRGB"
+        },
+        "background": {
+          "sha256": "b815860707ac2b0db73e48416c4dc7c5aa4ec5a09411fcd1e2ca22ca5b971713",
+          "path": ".artifacts/kids-source-locked-repair-r1/tray-composite-layer-1-r1.png",
+          "mode": "RGB",
+          "dimensions": [
+            3764,
+            6688
+          ],
+          "orientation": 1,
+          "icc_sha256": null,
+          "color_conversion": "none; untagged RGB interpreted as sRGB"
+        },
+        "transform": {
+          "matrix": [
+            [
+              1.0,
+              0,
+              2952
+            ],
+            [
+              0,
+              1.0,
+              1680
+            ],
+            [
+              0,
+              0,
+              1
+            ]
+          ],
+          "resized_dimensions": [
+            720,
+            960
+          ],
+          "resampling": "Pillow BICUBIC RGB and mask; integer dimensions round",
+          "allowed": [
+            "translation",
+            "uniform_scale"
+          ],
+          "edge_processing": "only declared uniform resize of source and alpha"
+        },
+        "protected_region": "all mask alpha > 0; opaque interior alpha=255; boundary 0<alpha<255",
+        "working_profile": "sRGB",
+        "export_profile": "sRGB PNG rendering intent perceptual",
+        "tolerances": {
+          "interior_max_channel_error": 0,
+          "boundary_max_channel_error": 0,
+          "background_max_channel_error": 0
+        },
+        "tolerance_rationale": "Lossless PNG and independently rounded integer alpha math permit exact equality"
+      },
+      "authority": {
+        "job_id": "kids-source-locked-tray-still-private-r1-kids-002",
+        "source_sha256": "5aa52b25e375873d7bf8c073dec26ba1b901ac1f99e743dc549fbd4ec88c0a3d",
+        "output_root": ".artifacts/kids-source-locked-repair-r1",
+        "approval_reference": "Corey:products need to be spot on so it should be fixed before showing me anythign; adopted original closet brief115\u2013126; tasks/kids-animated-scene-20261021/source-locked-repair-r1/AUTHORITY.json",
+        "action": "local_composite"
+      },
+      "output_path": ".artifacts/kids-source-locked-repair-r1/tray-composite-layer-2-r1.png",
+      "output_sha256": "181b83f62be797355d33ac58218302a917a230ea2277f25fe02319ee1e74c90f",
+      "output_dimensions": [
+        3764,
+        6688
+      ],
+      "output_format": "PNG",
+      "publication_authorized": false,
+      "provider_authorized": false
+    }
+  ],
+  "world_source": {
+    "path": "assets/generated-candidates/kids-capsule-20261021/product-correction-r1.png",
+    "sha256": "bc76bb7a1853da7a7a0760c5b85897f072038a2a60796fe319cc2f0b559947dd",
+    "use": "Environment-only; generatedproduct regions covered by new support backing before actual-source overlays"
+  },
+  "tray_method": "Shallow mounted flatlay/conservation displays, no hanging repose, no product warp or relighting",
+  "presentation": "HOLD",
+  "motion": "NOT_QUALIFIED",
+  "visual_review": "Generated garment remnants; framed-photo integration; products too small. Retained, never presented."
+}
