@@ -213,7 +213,7 @@ export const SettingsSchema = z.object({
     }),
     ui: z.object({
         theme: z.enum(['light', 'dark']),
-        typography: z.enum(['playfair', 'inter', 'system']),
+        typography: z.enum(['cinzel', 'inter', 'system']),
         accentColor: z.string(),
     }),
     system: z.object({

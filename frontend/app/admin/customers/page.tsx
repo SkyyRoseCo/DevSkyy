@@ -81,10 +81,10 @@ export default async function CustomersPage() {
                   {tier.label}
                 </span>
                 <span className="text-[12.5px] text-[#9A9AA2]">{location}</span>
-                <span className="text-[14px] text-[#E0E0E0] text-right" style={{ fontFamily: 'var(--font-barlow)' }}>
+                <span className="text-[14px] text-[#E0E0E0] text-right" style={{ fontFamily: 'var(--font-cinzel)' }}>
                   {formatCount(agg.orderCount)}
                 </span>
-                <span className="text-[14px] text-white text-right font-medium" style={{ fontFamily: 'var(--font-barlow)' }}>
+                <span className="text-[14px] text-white text-right font-medium" style={{ fontFamily: 'var(--font-cinzel)' }}>
                   {formatCurrency(agg.spend)}
                 </span>
               </ConsoleRow>

@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import { Suspense } from 'react';
 import { Inter } from 'next/font/google';
-import { playfair, cormorant, spaceMono, cinzel, barlow, bebasNeue } from '@/lib/fonts';
+import { cinzel } from '@/lib/fonts';
 import { SyncStatusToast } from '@/components/wordpress/sync-status-toast';
 import MascotBubble from '@/components/mascot/MascotBubble';
 import { QueryProvider } from '@/lib/providers/query-provider';
@@ -24,7 +24,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html
       lang='en'
-      className={`dark ${playfair.variable} ${cormorant.variable} ${spaceMono.variable} ${cinzel.variable} ${barlow.variable} ${bebasNeue.variable}`}
+      className={`dark ${cinzel.variable}`}
     >
       <body className={inter.className}>
         <QueryProvider>{children}</QueryProvider>

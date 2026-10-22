@@ -65,7 +65,7 @@ export default async function CollectionsPage() {
                   {brand.tagline ? (
                     <p
                       className="italic text-[20px] text-[#F0F0F0] leading-[1.35] mt-3.5 max-w-[32ch]"
-                      style={{ fontFamily: 'var(--font-playfair)' }}
+                      style={{ fontFamily: 'var(--font-cinzel)' }}
                     >
                       {brand.tagline}
                     </p>
@@ -89,7 +89,7 @@ export default async function CollectionsPage() {
 function Stat({ label, value }: { label: string; value: string }) {
   return (
     <div>
-      <div className="text-[22px] font-semibold text-white leading-none" style={{ fontFamily: 'var(--font-barlow)' }}>
+      <div className="text-[22px] font-semibold text-white leading-none" style={{ fontFamily: 'var(--font-cinzel)' }}>
         {value}
       </div>
       <div className="font-mono text-[9px] tracking-[0.14em] text-[#8A8A92] uppercase mt-1">{label}</div>

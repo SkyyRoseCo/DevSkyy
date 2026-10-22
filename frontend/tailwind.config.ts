@@ -10,9 +10,9 @@ const config: Config = {
   theme: {
   	extend: {
   		fontFamily: {
-  			display: ['var(--font-playfair)', 'Georgia', 'serif'],
-  			body: ['var(--font-cormorant)', 'Georgia', 'serif'],
-  			mono: ['var(--font-space-mono)', 'Courier New', 'monospace'],
+  			display: ['var(--font-cinzel)', 'Georgia', 'serif'],
+  			body: ['Inter', 'system-ui', 'sans-serif'],
+  			mono: ['ui-monospace', 'Courier New', 'monospace'],
   		},
   		colors: {
   			luxury: {

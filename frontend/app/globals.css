@@ -82,29 +82,29 @@
 
   body {
     @apply bg-background text-foreground;
-    font-family: var(--font-cormorant), Georgia, serif;
+    font-family: Inter, system-ui, sans-serif;
   }
 
   h1, h2, h3, h4, h5, h6 {
-    font-family: var(--font-playfair), Georgia, serif;
+    font-family: var(--font-cinzel), Georgia, serif;
     font-weight: 700;
     letter-spacing: -0.02em;
   }
 
   code, pre {
-    font-family: var(--font-space-mono), 'Courier New', monospace;
+    font-family: ui-monospace, 'Courier New', monospace;
   }
 
   .font-display {
-    font-family: var(--font-playfair), Georgia, serif;
+    font-family: var(--font-cinzel), Georgia, serif;
   }
 
   .font-body {
-    font-family: var(--font-cormorant), Georgia, serif;
+    font-family: Inter, system-ui, sans-serif;
   }
 
   .font-mono {
-    font-family: var(--font-space-mono), 'Courier New', monospace;
+    font-family: ui-monospace, 'Courier New', monospace;
   }
 
   .luxury-text-gradient {

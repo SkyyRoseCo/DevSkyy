@@ -84,7 +84,7 @@ export default function SettingsPage() {
           <span className="font-mono text-[10px] tracking-[0.22em] uppercase" style={{ color: 'var(--acc)' }}>
             Configure and Wire Up
           </span>
-          <p className="italic text-[15px] text-white/65 mt-2 max-w-[64ch]" style={{ fontFamily: 'var(--font-playfair)' }}>
+          <p className="italic text-[15px] text-white/65 mt-2 max-w-[64ch]" style={{ fontFamily: 'var(--font-cinzel)' }}>
             Connection status reads real environment variables server-side — nothing here is simulated. Set the
             missing ones in <code className="not-italic font-mono text-[13px]">.env.local</code> (see{' '}
             <code className="not-italic font-mono text-[13px]">.env.example</code>) and redeploy to flip a card to

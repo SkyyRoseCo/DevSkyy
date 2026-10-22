@@ -72,11 +72,11 @@ export default async function ProductsPage() {
                   )}
                 </div>
                 <div className="p-[18px]">
-                  <div className="italic text-[17px] text-white leading-tight" style={{ fontFamily: 'var(--font-playfair)' }}>
+                  <div className="italic text-[17px] text-white leading-tight" style={{ fontFamily: 'var(--font-cinzel)' }}>
                     {p.name}
                   </div>
                   <div className="flex justify-between items-center mt-3.5">
-                    <span className="text-[16px] text-white font-medium" style={{ fontFamily: 'var(--font-barlow)' }}>
+                    <span className="text-[16px] text-white font-medium" style={{ fontFamily: 'var(--font-cinzel)' }}>
                       {formatCurrency(Number(p.price) || 0)}
                     </span>
                     <span className="font-mono text-[9px] tracking-[0.1em] uppercase" style={{ color: stock.color }}>

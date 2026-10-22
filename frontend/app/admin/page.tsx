@@ -101,7 +101,7 @@ export default async function OverviewPage() {
                 <span className="font-mono text-[10px] tracking-[0.18em] uppercase" style={{ color: 'var(--acc)' }}>
                   Revenue
                 </span>
-                <div className="text-[28px] font-semibold text-white mt-2" style={{ fontFamily: 'var(--font-barlow)' }}>
+                <div className="text-[28px] font-semibold text-white mt-2" style={{ fontFamily: 'var(--font-cinzel)' }}>
                   {formatCurrency(revTotal)}
                 </div>
               </div>
@@ -146,7 +146,7 @@ export default async function OverviewPage() {
                       >
                         {label}
                       </span>
-                      <span className="text-[13px] text-[#A0A0A0]" style={{ fontFamily: 'var(--font-barlow)' }}>
+                      <span className="text-[13px] text-[#A0A0A0]" style={{ fontFamily: 'var(--font-cinzel)' }}>
                         {formatCurrency(c.revenue)} · {formatPercent(c.share)}
                       </span>
                     </div>
@@ -217,13 +217,13 @@ export default async function OverviewPage() {
                   #{(order.number as string) ?? order.id}
                 </span>
                 <span className="text-[13.5px] text-[#E0E0E0]">{orderCustomerName(order)}</span>
-                <span className="italic text-[14px] text-[#C8C8C8]" style={{ fontFamily: 'var(--font-playfair)' }}>
+                <span className="italic text-[14px] text-[#C8C8C8]" style={{ fontFamily: 'var(--font-cinzel)' }}>
                   {orderPieceSummary(order)}
                 </span>
                 <span className="font-mono text-[10px] tracking-[0.1em] text-[#9A9AA2] uppercase">
                   {orderCollection(order, skuToCollection)}
                 </span>
-                <span className="text-[14px] text-white text-right font-medium" style={{ fontFamily: 'var(--font-barlow)' }}>
+                <span className="text-[14px] text-white text-right font-medium" style={{ fontFamily: 'var(--font-cinzel)' }}>
                   {formatCurrency(orderTotal(order))}
                 </span>
                 <span className="text-right">

@@ -46,7 +46,7 @@ export function TopBar({ title }: TopBarProps) {
       <a
         href="/admin/collections"
         className="flex items-center gap-2.5 border border-white/10 rounded-md px-4 py-2 text-[#E0E0E0] text-[13px] tracking-[0.22em] hover:bg-white/5 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white"
-        style={{ fontFamily: 'var(--font-bebas-neue)' }}
+        style={{ fontFamily: 'var(--font-cinzel)' }}
       >
         New Drop
       </a>

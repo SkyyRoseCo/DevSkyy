@@ -97,7 +97,7 @@ export default function HubPage() {
               </h2>
               <p
                 className='italic text-[15px] text-white/65 mt-2.5 max-w-[52ch]'
-                style={{ fontFamily: 'var(--font-playfair)' }}
+                style={{ fontFamily: 'var(--font-cinzel)' }}
               >
                 Real agent roster from the DevSkyy platform, seated live. Each intelligence highlights as the diagram
                 cycles — this build has no &quot;currently working&quot; event stream yet, so the cycle is a timer, not
@@ -231,7 +231,7 @@ export default function HubPage() {
                   <div className='flex items-baseline gap-2 mt-3.5'>
                     <span
                       className='text-[26px] font-semibold text-white leading-none'
-                      style={{ fontFamily: 'var(--font-barlow)' }}
+                      style={{ fontFamily: 'var(--font-cinzel)' }}
                     >
                       {formatAnalyticsMetric(stats.posts)}
                     </span>
@@ -306,7 +306,7 @@ export default function HubPage() {
               </span>
               <p
                 className='italic text-[14px] text-white/60 mt-2 max-w-[56ch]'
-                style={{ fontFamily: 'var(--font-playfair)' }}
+                style={{ fontFamily: 'var(--font-cinzel)' }}
               >
                 Real agents registered on the DevSkyy platform — count and status only, no fabricated task copy.
               </p>
@@ -378,7 +378,7 @@ export default function HubPage() {
 function HeroStat({ value, label, color = '#fff' }: { value: string; label: string; color?: string }) {
   return (
     <div>
-      <div className='text-[24px] font-semibold leading-none' style={{ fontFamily: 'var(--font-barlow)', color }}>
+      <div className='text-[24px] font-semibold leading-none' style={{ fontFamily: 'var(--font-cinzel)', color }}>
         {value}
       </div>
       <div className='font-mono text-[9px] tracking-[0.16em] text-[#8A8A92] uppercase mt-1'>{label}</div>

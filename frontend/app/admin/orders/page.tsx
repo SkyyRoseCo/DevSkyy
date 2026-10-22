@@ -51,7 +51,7 @@ export default async function OrdersPage() {
               <div className="font-mono text-[10px] tracking-[0.18em] text-[#A0A0A0] uppercase">{label}</div>
               <div
                 className="text-[34px] font-semibold mt-3 leading-none"
-                style={{ fontFamily: 'var(--font-barlow)', color: label === 'Fulfilled' ? '#5FBF7F' : label === 'Processing' ? '#E5A85C' : 'var(--acc)' }}
+                style={{ fontFamily: 'var(--font-cinzel)', color: label === 'Fulfilled' ? '#5FBF7F' : label === 'Processing' ? '#E5A85C' : 'var(--acc)' }}
               >
                 {formatCount(value)}
               </div>
@@ -92,13 +92,13 @@ export default async function OrdersPage() {
                   #{(order.number as string) ?? order.id}
                 </span>
                 <span className="text-[13.5px] text-[#E0E0E0]">{orderCustomerName(order)}</span>
-                <span className="italic text-[14px] text-[#C8C8C8]" style={{ fontFamily: 'var(--font-playfair)' }}>
+                <span className="italic text-[14px] text-[#C8C8C8]" style={{ fontFamily: 'var(--font-cinzel)' }}>
                   {orderPieceSummary(order)}
                 </span>
                 <span className="font-mono text-[10px] tracking-[0.1em] text-[#9A9AA2] uppercase">
                   {orderCollection(order, skuToCollection)}
                 </span>
-                <span className="text-[14px] text-white text-right font-medium" style={{ fontFamily: 'var(--font-barlow)' }}>
+                <span className="text-[14px] text-white text-right font-medium" style={{ fontFamily: 'var(--font-cinzel)' }}>
                   {formatCurrency(orderTotal(order))}
                 </span>
                 <span className="text-right">
