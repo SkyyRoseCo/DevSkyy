@@ -92,47 +92,6 @@ jobs:
               - '.github/**'
 
   # ===========================================================================
-  # Stage 0b: CI images (Redis for the service containers)
-  # ===========================================================================
-  # Service containers pull Redis from this repo's own GHCR copy with the job
-  # token, so no test job depends on an anonymous public pull. Docker Hub's
-  # anonymous limit (#1018) and then ECR Public's data limit (bug-408) each
-  # failed Python Tests before any test ran. This job copies the image only
-  # when the copy is missing, and re-copies it on the weekly schedule to pick
-  # up patch releases.
-  ci-images:
-    name: 🪞 CI Images
-    runs-on: ubuntu-latest
-    timeout-minutes: 10
-    permissions:
-      contents: read
-      packages: write
-    steps:
-      - name: Ensure the Redis copy exists
-        env:
-          MIRROR: ghcr.io/skyyroseco/devskyy/redis:7-alpine
-          SOURCES: mirror.gcr.io/library/redis:7-alpine public.ecr.aws/docker/library/redis:7-alpine docker.io/library/redis:7-alpine
-          REFRESH: ${{ github.event_name == 'schedule' }}
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          echo "$GH_TOKEN" | docker login ghcr.io -u "$GITHUB_ACTOR" --password-stdin
-          if [ "$REFRESH" != "true" ] && docker manifest inspect "$MIRROR" > /dev/null 2>&1; then
-            echo "$MIRROR already exists; nothing to copy."
-            exit 0
-          fi
-          for src in $SOURCES; do
-            if docker pull "$src"; then
-              docker tag "$src" "$MIRROR"
-              docker push "$MIRROR"
-              echo "Copied $src to $MIRROR."
-              exit 0
-            fi
-            echo "::warning::Could not pull $src; trying the next source."
-          done
-          echo "::error::no Redis source could be pulled, so $MIRROR was not copied."
-          exit 1
-
-  # ===========================================================================
   # Stage 1: Lint & Static Analysis (Fast Feedback)
   # ===========================================================================
   lint:
@@ -187,21 +146,12 @@ jobs:
     # docker-arm64 runner. Preserve the complete suite and service container.
     runs-on: ubuntu-latest
     timeout-minutes: 20
-    needs: [ci-images]
-    # Runs even if the copy job failed: the Redis pull then fails this required
-    # check instead of skipping it into a pass.
-    if: ${{ !cancelled() }}
-    permissions:
-      contents: read
-      packages: read
 
     services:
       redis:
-        # This repo's GHCR copy of the official image (see ci-images).
-        image: ghcr.io/skyyroseco/devskyy/redis:7-alpine
-        credentials:
-          username: ${{ github.actor }}
-          password: ${{ secrets.GITHUB_TOKEN }}
+        # Google's Docker Hub mirror of the official image (same digest). Docker Hub hits anonymous
+        # pull limits on shared runners, and ECR Public returns `toomanyrequests: Data limit exceeded`.
+        image: mirror.gcr.io/library/redis:7-alpine
         ports:
           - 6379:6379
         options: >-
@@ -783,17 +733,11 @@ jobs:
     # Same services:/redis Linux-only constraint as python-tests above.
     runs-on: ubuntu-latest
     timeout-minutes: 15
-    needs: [ci-images, python-tests]
-    permissions:
-      contents: read
-      packages: read
+    needs: [python-tests]
 
     services:
       redis:
-        image: ghcr.io/skyyroseco/devskyy/redis:7-alpine
-        credentials:
-          username: ${{ github.actor }}
-          password: ${{ secrets.GITHUB_TOKEN }}
+        image: mirror.gcr.io/library/redis:7-alpine
         ports:
           - 6379:6379
         options: >-
@@ -1070,7 +1014,7 @@ jobs:
   summary:
     name: 📊 Pipeline Summary
     runs-on: ubuntu-latest
-    needs: [ci-images, lint, python-tests, security, frontend-tests, threejs-tests, wordpress-theme, e2e-tests, api-integration]
+    needs: [lint, python-tests, security, frontend-tests, threejs-tests, wordpress-theme, e2e-tests, api-integration]
     if: always()
 
     steps:

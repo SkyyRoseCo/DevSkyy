@@ -7329,15 +7329,13 @@
     "error_message": "CI 'Initialize containers' fails before any test runs: docker pull public.ecr.aws/docker/library/redis:7-alpine -> 'toomanyrequests: Data limit exceeded' (Python Tests and API Integration Tests, on PRs and on main push run 39348345502)",
     "file": ".github/workflows/ci.yml",
     "root_cause": "#1018 moved the redis service image from Docker Hub to the ECR Public mirror to dodge Docker Hub anonymous pull limits; ECR Public enforces its own anonymous data-transfer limit, which shared GitHub-hosted runners exhaust",
-    "fix": "Both redis services pull mirror.gcr.io/library/redis:7-alpine (Google's Docker Hub mirror). Verified the manifest digest sha256:858f009f9709ce576febc734aa78b8f6d624b82571f9ddb6bda4377c833b3499 is identical on Docker Hub, ECR Public and mirror.gcr.io | 2026-10-20 follow-up (claude-code sid:fdff956b): mirror.gcr.io is still an anonymous public pull, so a new ci-images job copies redis:7-alpine (mirror.gcr.io, then ECR Public, then Docker Hub) to ghcr.io/skyyroseco/devskyy/redis:7-alpine only when the copy is missing (weekly schedule re-copies); both Redis service containers pull that copy with the job GITHUB_TOKEN (packages: read), and python-tests runs on !cancelled() so a failed copy leaves the required check red. Pinned by tests/ci/test_ci_workflow_contract.py.",
+    "fix": "Both redis services pull mirror.gcr.io/library/redis:7-alpine (Google's Docker Hub mirror). Verified the manifest digest sha256:858f009f9709ce576febc734aa78b8f6d624b82571f9ddb6bda4377c833b3499 is identical on Docker Hub, ECR Public and mirror.gcr.io",
     "tags": [
       "ci",
       "docker",
       "rate-limit",
       "redis",
-      "infra",
-      "ghcr",
-      "github-actions"
+      "infra"
     ],
     "related_bugs": [],
     "occurrences": 1,
