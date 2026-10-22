@@ -1,22 +1,8 @@
 import { z } from 'zod';
 import { ApiError } from './api';
 
-// =============================================================================
-// ENVIRONMENT
-// =============================================================================
-
-const API_URL = (() => {
-  const url = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000';
-  try {
-    new URL(url);
-    return url;
-  } catch {
-    console.error('Invalid API_URL, falling back to localhost');
-    return 'http://localhost:8000';
-  }
-})();
-
-const REQUEST_TIMEOUT = 30000;
+import { API_URL } from './api/config';
+import { fetchWithTimeout, getAuthHeaders } from './api/client';
 
 // =============================================================================
 // ZOD SCHEMAS
@@ -89,38 +75,6 @@ export interface ListOperationsFilters {
 // REQUEST UTILITIES (mirrors api.ts patterns)
 // =============================================================================
 
-function getAuthToken(): string | null {
-  if (typeof window === 'undefined') return null;
-  return localStorage.getItem('access_token');
-}
-
-async function getAuthHeaders(): Promise<HeadersInit> {
-  const token = getAuthToken();
-  const headers: HeadersInit = {
-    'Content-Type': 'application/json',
-    'X-Request-ID': crypto.randomUUID(),
-  };
-  if (token) {
-    headers['Authorization'] = `Bearer ${token}`;
-  }
-  return headers;
-}
-
-async function fetchWithTimeout(
-  url: string,
-  options: RequestInit,
-  timeout = REQUEST_TIMEOUT
-): Promise<Response> {
-  const controller = new AbortController();
-  const timeoutId = setTimeout(() => controller.abort(), timeout);
-  try {
-    const response = await fetch(url, { ...options, signal: controller.signal });
-    return response;
-  } finally {
-    clearTimeout(timeoutId);
-  }
-}
-
 async function handleResponse<T>(response: Response, schema: z.ZodType<T>): Promise<T> {
   if (!response.ok) {
     const body = await response.json().catch(() => ({}));
@@ -174,27 +128,24 @@ export const eliteStudioClient = {
     return handleResponse(res, CreativeOperationSchema);
   },
 
-  listOperations: async (
-    filters: ListOperationsFilters = {}
-  ): Promise<OperationListResponse> => {
+  listOperations: async (filters: ListOperationsFilters = {}): Promise<OperationListResponse> => {
     const params = new URLSearchParams();
     if (filters.status) params.set('status', filters.status);
     if (filters.intent) params.set('intent', filters.intent);
     if (filters.page !== undefined) params.set('page', String(Math.max(1, filters.page)));
     if (filters.limit !== undefined) params.set('limit', String(Math.min(100, Math.max(1, filters.limit))));
 
-    const res = await fetchWithTimeout(
-      `${API_URL}/api/v1/elite-studio/operations?${params.toString()}`,
-      { headers: await getAuthHeaders() }
-    );
+    const res = await fetchWithTimeout(`${API_URL}/api/v1/elite-studio/operations?${params.toString()}`, {
+      headers: await getAuthHeaders(),
+    });
     return handleResponse(res, OperationListResponseSchema);
   },
 
   cancelOperation: async (id: string): Promise<void> => {
-    const res = await fetchWithTimeout(
-      `${API_URL}/api/v1/elite-studio/operations/${encodeURIComponent(id)}/cancel`,
-      { method: 'POST', headers: await getAuthHeaders() }
-    );
+    const res = await fetchWithTimeout(`${API_URL}/api/v1/elite-studio/operations/${encodeURIComponent(id)}/cancel`, {
+      method: 'POST',
+      headers: await getAuthHeaders(),
+    });
     return handleVoid(res);
   },
 
@@ -203,10 +154,9 @@ export const eliteStudioClient = {
   // ──────────────────────────────────────────────────────────────────────────
 
   getCharacter: async (id: string): Promise<Character> => {
-    const res = await fetchWithTimeout(
-      `${API_URL}/api/v1/elite-studio/characters/${encodeURIComponent(id)}`,
-      { headers: await getAuthHeaders() }
-    );
+    const res = await fetchWithTimeout(`${API_URL}/api/v1/elite-studio/characters/${encodeURIComponent(id)}`, {
+      headers: await getAuthHeaders(),
+    });
     return handleResponse(res, CharacterSchema);
   },
 
@@ -214,7 +164,11 @@ export const eliteStudioClient = {
     const res = await fetchWithTimeout(`${API_URL}/api/v1/elite-studio/characters`, {
       headers: await getAuthHeaders(),
     });
-    const data = await (res.ok ? res.json() : res.json().then((b: unknown) => { throw ApiError.fromResponse(res.status, b); }));
+    const data = await (res.ok
+      ? res.json()
+      : res.json().then((b: unknown) => {
+          throw ApiError.fromResponse(res.status, b);
+        }));
     const parsed = z.array(CharacterSchema).safeParse(data);
     if (!parsed.success) {
       console.error('Character list validation failed:', parsed.error.issues);

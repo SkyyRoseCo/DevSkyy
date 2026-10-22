@@ -8,17 +8,18 @@ import type { DefaultJWT } from 'next-auth/jwt';
 declare module 'next-auth' {
   interface User extends DefaultUser {
     accessToken?: string;
-    refreshToken?: string;
+    accessTokenExpiresAt?: number;
   }
 
   interface Session extends DefaultSession {
-    accessToken?: string;
+    authError?: 'BackendTokenExpired';
   }
 }
 
 declare module 'next-auth/jwt' {
   interface JWT extends DefaultJWT {
+    authError?: 'BackendTokenExpired';
     accessToken?: string;
-    refreshToken?: string;
+    accessTokenExpiresAt?: number;
   }
 }

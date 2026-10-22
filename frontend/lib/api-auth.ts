@@ -44,7 +44,7 @@ export function withAuth<C>(handler: RouteHandler<C>): RouteHandler<C> {
   return async (request: NextRequest, context: C) => {
     const session = await getServerSession(authOptions);
 
-    if (!session) {
+    if (!session || session.authError) {
       return NextResponse.json({ success: false, error: 'Unauthorized' }, { status: 401 });
     }
 

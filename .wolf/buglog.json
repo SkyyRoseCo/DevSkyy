@@ -7340,5 +7340,22 @@
     "related_bugs": [],
     "occurrences": 1,
     "last_seen": "2026-10-20T00:00:00+00:00"
+  },
+  {
+    "id": "bug-409",
+    "timestamp": "2026-10-22T05:44:57.423043+00:00",
+    "error_message": "Dashboard login and HTTP clients expose backend bearer credentials to browser storage and the public NextAuth session.",
+    "file": "frontend/lib/auth.ts",
+    "root_cause": "Legacy direct-backend login and clients bypass the encrypted NextAuth cookie boundary; server consumers depend on the public session credential.",
+    "fix": "Recover the credential boundary onto current main: NextAuth sign-in and sign-out, server-only encrypted-cookie bearer access, exact-method same-origin relay, HTTP client migration, public-session scrubbing and expired-session rejection in API/SSR/client gates. Preserve existing fifteen-minute session and require reauthentication.",
+    "tags": [
+      "security",
+      "dashboard",
+      "next-auth",
+      "credential-boundary"
+    ],
+    "related_bugs": [],
+    "occurrences": 1,
+    "last_seen": "2026-10-22T05:44:57.423043+00:00"
   }
 ]
