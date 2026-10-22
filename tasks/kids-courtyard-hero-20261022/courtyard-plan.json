@@ -1,0 +1,73 @@
+{
+  "deliverables": [
+    "Versioned native courtyard closing still"
+  ],
+  "experience_outcome": "Correct six courtyard artwork regions using actual sources",
+  "authored_meaning": "Heir and next generation through anticipation and discovery",
+  "production_method": {
+    "technique": "SOURCE_COMPOSITE",
+    "rationale": "Source-preserved graphics placed through separately tested local artwork contract; same-fabric cleanup; no generated garment replacement",
+    "inputs": [
+      {
+        "path": "assets/generated-candidates/kids-capsule-20261021/first-frame-r1.png",
+        "sha256": "c00e7fb3b3b320a20ce5ca264efbd11e39bc7389e77f65540245095a799191e0"
+      },
+      {
+        "path": "assets/products/references/kids-001-real-photo.jpeg",
+        "sha256": "9f73606eff0438378f2f669c6fde2977720a3c18e9577f68b27aed32f2dd4e08"
+      },
+      {
+        "path": "assets/products/references/kids-002-real-photo.jpeg",
+        "sha256": "5aa52b25e375873d7bf8c073dec26ba1b901ac1f99e743dc549fbd4ec88c0a3d"
+      },
+      {
+        "path": "wordpress-theme/skyyrose-flagship/assets/images/logos/skyy-rose-collection-circular-patch.jpeg",
+        "sha256": "0dcc7b4589a77a07acc81548452e4d35bd28d395e4c2a7925e2c6ef8330301cd"
+      },
+      {
+        "path": "wordpress-theme/skyyrose-flagship/assets/images/products/kids-001-onmodel-v2.webp",
+        "sha256": "57272be5f1bef854e8e20731b5301cf11e4f8d3543b0a50e82eec931114d07e3"
+      },
+      {
+        "path": "wordpress-theme/skyyrose-flagship/assets/images/products/kids-001-red-set.jpeg",
+        "sha256": "fb6ee3489c11a9223bc11598443be1b55f3c10f851cf063ff377a44670e92f9c"
+      },
+      {
+        "path": "wordpress-theme/skyyrose-flagship/assets/images/products/ghost/kids-002-ghost-front.webp",
+        "sha256": "8975c682531dc505276d62d73677a0bce33d3460ae59efa46011e2bfddb14126"
+      },
+      {
+        "path": "wordpress-theme/skyyrose-flagship/assets/images/products/kids-002-purple-set.jpeg",
+        "sha256": "e6ea845f1c877003b3489332feb7e872ccfb82fe3d0240921e7fc2f1f32728f4"
+      }
+    ],
+    "feasibility_evidence": [
+      {
+        "path": "tasks/kids-courtyard-hero-20261022/METHOD.md",
+        "sha256": "a24e033ae2492e72da4859e3378c33accfc33e77736536eab71952e1dc127498"
+      }
+    ]
+  },
+  "success_evidence": [
+    "Exact source/target/transform and outside-region verification plus independent native visual review",
+    "All six artwork regions and unchanged overall composition independently reviewed"
+  ],
+  "channel_requirements": [
+    "Web still derivatives with source dimension limits recorded",
+    "Review only; explicit no deployment"
+  ],
+  "approval_requirements": [
+    "Current local owner repair/hero authority",
+    "Independent applicable visual checks before presentation",
+    "Separate founder acceptance and live publication"
+  ],
+  "novelty_dimensions": [
+    "Progressive statue-led reveal"
+  ],
+  "major_initiative": false,
+  "accessibility_applicable": true,
+  "accessibility_reason": "Customer-facing motion needs pause and static preference fallback",
+  "commerce_applicable": true,
+  "commerce_reason": "The website scene connects directly to existing Kids collection shopping",
+  "open_issues": []
+}

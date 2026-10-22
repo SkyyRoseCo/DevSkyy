@@ -1,0 +1,17 @@
+{
+  "protected_inputs_unchanged": {
+    "assets/products/manifest.json": true,
+    "frontend/data/skyyrose-catalog.csv": true,
+    "wordpress-theme/skyyrose-flagship-2/data/simple-product-sizes.json": true,
+    "wordpress-theme/skyyrose-flagship/data/dossiers/kids-colorblock-hoodie-set-purple-black.md": true,
+    "wordpress-theme/skyyrose-flagship/data/dossiers/kids-colorblock-hoodie-set-red-black.md": true,
+    "wordpress-theme/skyyrose-flagship/data/logo-registry.json": true,
+    "wordpress-theme/skyyrose-flagship/data/skyyrose-catalog.csv": true
+  },
+  "available_bytes": 6799687680,
+  "native_execution_scope": "Offline still render, local preview only",
+  "additional_paid_calls": 0,
+  "live_mutations": 0,
+  "deployment": false,
+  "capacity_observation": "No cleanup in this task; external capacity changes unattributed. Local still/preview only."
+}

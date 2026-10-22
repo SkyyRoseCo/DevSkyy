@@ -1,0 +1,79 @@
+{
+  "job_id": "kids-courtyard-source-repair-20261022",
+  "brand": "skyyrose",
+  "objective": "Correct six courtyard artwork regions using actual sources",
+  "collection_context": "kids-capsule",
+  "campaign_brief": {
+    "path": "tasks/kids-courtyard-hero-20261022/BRIEF.md",
+    "sha256": "93fc314d42f92cf6240ad529591c55c98fe3d71b458c8f14027e5d3f056d9846"
+  },
+  "lifecycle_stage": "M3",
+  "channel": "web",
+  "content_intent": {
+    "medium": "image",
+    "production_type": "editorial_still",
+    "content_role": "collection_hero",
+    "shot_role": "ON_BODY",
+    "distribution_channels": [
+      "web"
+    ],
+    "intended_use": "INTERNAL",
+    "audience": "Kids Capsule customers and purchasers",
+    "representation_mode": "EXACT_PRODUCT",
+    "lifecycle_stage": "M3",
+    "shots": [
+      {
+        "shot_id": "KIDS-COURTYARD",
+        "shot_role": "ON_BODY",
+        "purpose": "Correct six courtyard artwork regions using actual sources",
+        "exact_product": true,
+        "product_skus": [
+          "kids-001",
+          "kids-002"
+        ]
+      }
+    ],
+    "film_plan": null,
+    "interactive_plan": null
+  },
+  "production_method": "SOURCE_COMPOSITE",
+  "campaign_authority_required": false,
+  "major_initiative": false,
+  "place_relevant": false,
+  "intended_use": "INTERNAL",
+  "audience": "Kids Capsule customers and purchasers",
+  "representation_mode": "EXACT_PRODUCT",
+  "products": [
+    {
+      "sku": "kids-001",
+      "required_views": [
+        "front",
+        "packshot"
+      ],
+      "required_details": [
+        "garment.features",
+        "color"
+      ]
+    },
+    {
+      "sku": "kids-002",
+      "required_views": [
+        "front",
+        "packshot"
+      ],
+      "required_details": [
+        "garment.features",
+        "color"
+      ]
+    }
+  ],
+  "decisions": [],
+  "constraints": [
+    "Current owner instructions in AUTHORITY.json",
+    "Local immutable candidates only; no paid providers or publication",
+    "Independent visual review before presentation",
+    "No source reposing, mirroring, invented product detail"
+  ],
+  "palette_intents": [],
+  "absence_reasons": {}
+}

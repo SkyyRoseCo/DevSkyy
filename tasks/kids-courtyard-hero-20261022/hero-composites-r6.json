@@ -1,0 +1,172 @@
+{
+  "source_crop": [
+    176,
+    36,
+    834,
+    1009
+  ],
+  "receipts": [
+    {
+      "device": "mobile",
+      "manifest": {
+        "version": "1.0",
+        "job_id": "kids-statue-hero-private-mobile-r6",
+        "request": {
+          "job_id": "kids-statue-hero-private-mobile-r6",
+          "source": {
+            "path": ".artifacts/kids-statue-hero-20261022/skyy-source-rgb-cropped-r4.png",
+            "sha256": "3bbc64d337b88e1b32153c574e2fc5a4d214227b7ab9138edfa60218158d5684"
+          },
+          "mask": {
+            "path": ".artifacts/kids-statue-hero-20261022/skyy-source-alpha-cropped-r4.png",
+            "sha256": "5f1657a1b83c39fd3f90955b56925b639417a1e34362fd1070c6eb0d7d9b5928"
+          },
+          "background": {
+            "path": ".artifacts/kids-statue-hero-20261022/hero-mobile-world-r6.png",
+            "sha256": "0fdfee9d11a5e72c2813626ed4767edd6526596200017a2e58950756faf8f149"
+          },
+          "placement": {
+            "x": 490,
+            "y": 323,
+            "scale": 0.49337701361771724
+          },
+          "output_path": ".artifacts/kids-statue-hero-20261022/hero-mobile-revealed-r6.png"
+        },
+        "request_identity": "85054a9f30026c1a74e337531abf16777633b0f7d7c9af793108b7148247136b",
+        "inputs": {
+          "runtime": {
+            "pillow": "12.3.0",
+            "numpy": "2.4.1"
+          },
+          "source": {
+            "sha256": "3bbc64d337b88e1b32153c574e2fc5a4d214227b7ab9138edfa60218158d5684",
+            "path": ".artifacts/kids-statue-hero-20261022/skyy-source-rgb-cropped-r4.png",
+            "mode": "RGB",
+            "dimensions": [
+              658,
+              973
+            ],
+            "orientation": 1,
+            "icc_sha256": null,
+            "color_conversion": "none; untagged RGB interpreted as sRGB"
+          },
+          "mask": {
+            "sha256": "5f1657a1b83c39fd3f90955b56925b639417a1e34362fd1070c6eb0d7d9b5928",
+            "path": ".artifacts/kids-statue-hero-20261022/skyy-source-alpha-cropped-r4.png",
+            "mode": "L",
+            "dimensions": [
+              658,
+              973
+            ],
+            "orientation": 1,
+            "icc_sha256": null,
+            "color_conversion": "none; untagged RGB interpreted as sRGB"
+          },
+          "background": {
+            "sha256": "0fdfee9d11a5e72c2813626ed4767edd6526596200017a2e58950756faf8f149",
+            "path": ".artifacts/kids-statue-hero-20261022/hero-mobile-world-r6.png",
+            "mode": "RGBA",
+            "dimensions": [
+              900,
+              1200
+            ],
+            "orientation": 1,
+            "icc_sha256": null,
+            "color_conversion": "none; untagged RGB interpreted as sRGB"
+          },
+          "transform": {
+            "matrix": [
+              [
+                0.49337701361771724,
+                0,
+                490
+              ],
+              [
+                0,
+                0.49337701361771724,
+                323
+              ],
+              [
+                0,
+                0,
+                1
+              ]
+            ],
+            "resized_dimensions": [
+              325,
+              480
+            ],
+            "resampling": "Pillow BICUBIC RGB and mask; integer dimensions round",
+            "allowed": [
+              "translation",
+              "uniform_scale"
+            ],
+            "edge_processing": "only declared uniform resize of source and alpha"
+          },
+          "protected_region": "all mask alpha > 0; opaque interior alpha=255; boundary 0<alpha<255",
+          "working_profile": "sRGB",
+          "export_profile": "sRGB PNG rendering intent perceptual",
+          "tolerances": {
+            "interior_max_channel_error": 0,
+            "boundary_max_channel_error": 0,
+            "background_max_channel_error": 0
+          },
+          "tolerance_rationale": "Lossless PNG and independently rounded integer alpha math permit exact equality"
+        },
+        "authority": {
+          "job_id": "kids-statue-hero-private-mobile-r6",
+          "source_sha256": "3bbc64d337b88e1b32153c574e2fc5a4d214227b7ab9138edfa60218158d5684",
+          "output_root": ".artifacts/kids-statue-hero-20261022",
+          "approval_reference": "Corey left-font/right-graphic hero; tasks/kids-courtyard-hero-20261022/AUTHORITY.json; local only",
+          "action": "local_composite"
+        },
+        "output_path": ".artifacts/kids-statue-hero-20261022/hero-mobile-revealed-r6.png",
+        "output_sha256": "cb353f04a1bed08cf75212abc8735ac516e71bc9a574a11a2f59e1b0ca137bb5",
+        "output_dimensions": [
+          900,
+          1200
+        ],
+        "output_format": "PNG",
+        "publication_authorized": false,
+        "provider_authorized": false
+      },
+      "verification": {
+        "producer_implementation_sha256": "b3a6b5769cfdc064b95608828c374546650665cc52e8d1d7c321487bbfce1202",
+        "verifier_implementation_sha256": "b3a6b5769cfdc064b95608828c374546650665cc52e8d1d7c321487bbfce1202",
+        "historical_producer_reference": null,
+        "verification_mode": "CURRENT_PRODUCER_AND_VERIFIER",
+        "color_profile": "PASS",
+        "status": "PASS",
+        "technical": "PASS",
+        "request_identity": "PASS",
+        "artifact_identity": "PASS",
+        "criteria": {
+          "opaque_interior": {
+            "applicable": true,
+            "reason": "Pixels in declared alpha region",
+            "pixel_count": 57759,
+            "max_channel_error": 0,
+            "result": "PASS"
+          },
+          "antialiased_boundary": {
+            "applicable": true,
+            "reason": "Pixels in declared alpha region",
+            "pixel_count": 3862,
+            "max_channel_error": 0,
+            "result": "PASS"
+          },
+          "unprotected_background": {
+            "applicable": true,
+            "reason": "Pixels in declared alpha region",
+            "pixel_count": 1018379,
+            "max_channel_error": 0,
+            "result": "PASS"
+          }
+        },
+        "output_sha256": "cb353f04a1bed08cf75212abc8735ac516e71bc9a574a11a2f59e1b0ca137bb5",
+        "limitations": "Checks source-layer preservation only; source correctness and complete garment mask coverage require separate visual review."
+      }
+    }
+  ],
+  "presentation": "HOLD_PRIVATE_VISUAL_REVIEW"
+}

@@ -1,0 +1,52 @@
+{
+  "status": "PASS",
+  "html_sha256": "43f6c266b169ecf64637ce7eb298f1d24e8027548c3bcec6583ddeb554dd73ff",
+  "browser": "Installed Google Chrome 155 via Playwright; offline file URL",
+  "authentication": "NOT_APPLICABLE",
+  "scenarios": [
+    {
+      "viewport": [
+        390,
+        844
+      ],
+      "initial_concealment": true,
+      "revealed_image_deferred": true,
+      "scroll_reveal": true,
+      "accessible_description": "Bronze Kids Capsule lettering on the left and Skyy revealed on the right pedestal.",
+      "both_actual_photos_loaded": true,
+      "corrected_closing_loaded": true,
+      "horizontal_overflow": false,
+      "page_errors": []
+    },
+    {
+      "viewport": [
+        768,
+        1024
+      ],
+      "initial_concealment": true,
+      "revealed_image_deferred": true,
+      "scroll_reveal": true,
+      "accessible_description": "Bronze Kids Capsule lettering on the left and Skyy revealed on the right pedestal.",
+      "both_actual_photos_loaded": true,
+      "corrected_closing_loaded": true,
+      "horizontal_overflow": false,
+      "page_errors": []
+    },
+    {
+      "viewport": [
+        1440,
+        900
+      ],
+      "initial_concealment": true,
+      "revealed_image_deferred": true,
+      "scroll_reveal": true,
+      "accessible_description": "Bronze Kids Capsule lettering on the left and Skyy revealed on the right pedestal.",
+      "both_actual_photos_loaded": true,
+      "corrected_closing_loaded": true,
+      "horizontal_overflow": false,
+      "page_errors": []
+    }
+  ],
+  "no_live_requests_or_mutations": true,
+  "retained_harness_failure": "First harness used string wait_for_function and was refused by CSP unsafe-eval. Corrected harness uses function predicates; CSP unchanged."
+}

@@ -1,0 +1,760 @@
+{
+  "request": {
+    "job_id": "kids-courtyard-complete-artwork-repair-r7",
+    "target": {
+      "path": "assets/generated-candidates/kids-capsule-20261021/first-frame-r1.png",
+      "sha256": "c00e7fb3b3b320a20ce5ca264efbd11e39bc7389e77f65540245095a799191e0"
+    },
+    "patches": [
+      {
+        "name": "red-chest",
+        "source": {
+          "path": "assets/products/references/kids-001-real-photo.jpeg",
+          "sha256": "9f73606eff0438378f2f669c6fde2977720a3c18e9577f68b27aed32f2dd4e08"
+        },
+        "crop": [
+          262,
+          531,
+          316,
+          605
+        ],
+        "source_mask": {
+          "path": ".artifacts/kids-courtyard-artwork-repair-20261022/rose-source-mask-r2.png",
+          "sha256": "517b01c22ee5613638aaab12a06d041235dfc7cc883f5cdc5c1843a89cbb9207"
+        },
+        "repair_mask": {
+          "path": ".artifacts/kids-courtyard-artwork-repair-20261022/red-chest-region.png",
+          "sha256": "cc35e74cec8812ca9f220bf60255ed62da4783e08368b558348793588a129fd2"
+        },
+        "cleanup_mask": {
+          "path": ".artifacts/kids-courtyard-artwork-repair-20261022/red-chest-cleanup-r5.png",
+          "sha256": "4ca5877f47a3d7aca86decd34a6848d64f62fcc277a328aecd9b5842f4a21ddb"
+        },
+        "donor_offset": [
+          -65,
+          0
+        ],
+        "quad": [
+          [
+            289,
+            567
+          ],
+          [
+            337,
+            574
+          ],
+          [
+            334,
+            641
+          ],
+          [
+            280,
+            635
+          ]
+        ],
+        "wrap_degrees": 0,
+        "cleanup_mode": "fabric_interpolation",
+        "light_gain": 1,
+        "light_contrast": 0,
+        "split_donor_mask": {
+          "path": ".artifacts/kids-courtyard-artwork-repair-20261022/red-chest-panels-r7.png",
+          "sha256": "4085ca1c93bc126e2300c2275e698488a81553787787febaf38033ec153d603d"
+        },
+        "split_donor_offset": [
+          12,
+          22
+        ],
+        "fabric_mask": {
+          "path": ".artifacts/kids-courtyard-artwork-repair-20261022/red-chest-fabric-r5.png",
+          "sha256": "2987a1f0deff11381f25cb6bfceecadd218d00c6bf77255c278cd93495fe2329"
+        }
+      },
+      {
+        "name": "red-thigh",
+        "source": {
+          "path": "assets/products/references/kids-001-real-photo.jpeg",
+          "sha256": "9f73606eff0438378f2f669c6fde2977720a3c18e9577f68b27aed32f2dd4e08"
+        },
+        "crop": [
+          262,
+          531,
+          316,
+          605
+        ],
+        "source_mask": {
+          "path": ".artifacts/kids-courtyard-artwork-repair-20261022/rose-source-mask-r2.png",
+          "sha256": "517b01c22ee5613638aaab12a06d041235dfc7cc883f5cdc5c1843a89cbb9207"
+        },
+        "repair_mask": {
+          "path": ".artifacts/kids-courtyard-artwork-repair-20261022/red-thigh-region.png",
+          "sha256": "e2fcd368cbd37a0f22f52bf4e3f7d71918082aba0559ba400436f19afe51b860"
+        },
+        "cleanup_mask": {
+          "path": ".artifacts/kids-courtyard-artwork-repair-20261022/red-thigh-cleanup-r4.png",
+          "sha256": "b0b706ad2a4c77b7dd6047681e992a2096a8422be4c5d5935ab54d1759bf9022"
+        },
+        "donor_offset": [
+          -60,
+          0
+        ],
+        "quad": [
+          [
+            287,
+            895
+          ],
+          [
+            331,
+            899
+          ],
+          [
+            327,
+            966
+          ],
+          [
+            278,
+            962
+          ]
+        ],
+        "wrap_degrees": 0,
+        "cleanup_mode": "fabric_interpolation",
+        "light_gain": 1,
+        "light_contrast": 0,
+        "split_donor_mask": null,
+        "split_donor_offset": [
+          0,
+          0
+        ],
+        "fabric_mask": {
+          "path": ".artifacts/kids-courtyard-artwork-repair-20261022/red-thigh-fabric-r4.png",
+          "sha256": "530d02990d57f3114e5ed10436771eba6efc3b79cfcbdd784caccbd0b3d7d8c8"
+        }
+      },
+      {
+        "name": "purple-chest",
+        "source": {
+          "path": "assets/products/references/kids-001-real-photo.jpeg",
+          "sha256": "9f73606eff0438378f2f669c6fde2977720a3c18e9577f68b27aed32f2dd4e08"
+        },
+        "crop": [
+          262,
+          531,
+          316,
+          605
+        ],
+        "source_mask": {
+          "path": ".artifacts/kids-courtyard-artwork-repair-20261022/rose-source-mask-r2.png",
+          "sha256": "517b01c22ee5613638aaab12a06d041235dfc7cc883f5cdc5c1843a89cbb9207"
+        },
+        "repair_mask": {
+          "path": ".artifacts/kids-courtyard-artwork-repair-20261022/purple-chest-region.png",
+          "sha256": "71cb93d4e1744bea54c462937ac4024f4aa4b4316665c6773c53e25a8d77f338"
+        },
+        "cleanup_mask": {
+          "path": ".artifacts/kids-courtyard-artwork-repair-20261022/purple-chest-cleanup.png",
+          "sha256": "26e32c529b5d8e94800639de16c3504031cf86007e459481e70b0589b747d23a"
+        },
+        "donor_offset": [
+          -62,
+          1
+        ],
+        "quad": [
+          [
+            748,
+            617
+          ],
+          [
+            786,
+            628
+          ],
+          [
+            776,
+            682
+          ],
+          [
+            737,
+            673
+          ]
+        ],
+        "wrap_degrees": 0,
+        "cleanup_mode": "local_interpolation",
+        "light_gain": 1,
+        "light_contrast": 0,
+        "split_donor_mask": null,
+        "split_donor_offset": [
+          0,
+          0
+        ],
+        "fabric_mask": null
+      },
+      {
+        "name": "purple-thigh",
+        "source": {
+          "path": "assets/products/references/kids-001-real-photo.jpeg",
+          "sha256": "9f73606eff0438378f2f669c6fde2977720a3c18e9577f68b27aed32f2dd4e08"
+        },
+        "crop": [
+          262,
+          531,
+          316,
+          605
+        ],
+        "source_mask": {
+          "path": ".artifacts/kids-courtyard-artwork-repair-20261022/rose-source-mask-r2.png",
+          "sha256": "517b01c22ee5613638aaab12a06d041235dfc7cc883f5cdc5c1843a89cbb9207"
+        },
+        "repair_mask": {
+          "path": ".artifacts/kids-courtyard-artwork-repair-20261022/purple-thigh-region.png",
+          "sha256": "9c2645ba0d79f28f8ad9217eb917020e011446c116d5d398cdbdc26b8d24a39d"
+        },
+        "cleanup_mask": {
+          "path": ".artifacts/kids-courtyard-artwork-repair-20261022/purple-thigh-cleanup-r7.png",
+          "sha256": "e0e7d4f4273142e74834142504504703738023f6b041382db6a18bc130e34f1d"
+        },
+        "donor_offset": [
+          -62,
+          -8
+        ],
+        "quad": [
+          [
+            825,
+            930
+          ],
+          [
+            854,
+            941
+          ],
+          [
+            832,
+            993
+          ],
+          [
+            799,
+            982
+          ]
+        ],
+        "wrap_degrees": 0,
+        "cleanup_mode": "fabric_interpolation",
+        "light_gain": 1,
+        "light_contrast": 0,
+        "split_donor_mask": null,
+        "split_donor_offset": [
+          0,
+          0
+        ],
+        "fabric_mask": {
+          "path": ".artifacts/kids-courtyard-artwork-repair-20261022/purple-thigh-fabric-r7.png",
+          "sha256": "c520a4028a86b0a3d92bba675eb37d837fb698caf657cc2c824332baea7f32e1"
+        }
+      },
+      {
+        "name": "red-sleeve",
+        "source": {
+          "path": "wordpress-theme/skyyrose-flagship/assets/images/logos/skyy-rose-collection-circular-patch.jpeg",
+          "sha256": "0dcc7b4589a77a07acc81548452e4d35bd28d395e4c2a7925e2c6ef8330301cd"
+        },
+        "crop": [
+          152,
+          249,
+          1528,
+          1627
+        ],
+        "source_mask": {
+          "path": ".artifacts/kids-courtyard-artwork-repair-20261022/patch-source-mask.png",
+          "sha256": "1c6864821a3b576db477ebc496e45cd766075615fe6cb312b445a51752ee43ae"
+        },
+        "repair_mask": {
+          "path": ".artifacts/kids-courtyard-artwork-repair-20261022/red-sleeve-region.png",
+          "sha256": "9a6edf52b2b5428c0fc64ee13c3871ea428e2db357f0370149c677f1cc0e0626"
+        },
+        "cleanup_mask": {
+          "path": ".artifacts/kids-courtyard-artwork-repair-20261022/red-sleeve-cleanup.png",
+          "sha256": "49d187db152ebeebd2f4418953cc85225670edd2ce6d383ee7da5508751e0510"
+        },
+        "donor_offset": [
+          50,
+          0
+        ],
+        "quad": [
+          [
+            82,
+            575
+          ],
+          [
+            112,
+            588
+          ],
+          [
+            84,
+            658
+          ],
+          [
+            47,
+            645
+          ]
+        ],
+        "wrap_degrees": 100,
+        "cleanup_mode": "clone",
+        "light_gain": 0.82,
+        "light_contrast": 0.4,
+        "split_donor_mask": null,
+        "split_donor_offset": [
+          0,
+          0
+        ],
+        "fabric_mask": null
+      },
+      {
+        "name": "purple-sleeve",
+        "source": {
+          "path": "wordpress-theme/skyyrose-flagship/assets/images/logos/skyy-rose-collection-circular-patch.jpeg",
+          "sha256": "0dcc7b4589a77a07acc81548452e4d35bd28d395e4c2a7925e2c6ef8330301cd"
+        },
+        "crop": [
+          152,
+          249,
+          1528,
+          1627
+        ],
+        "source_mask": {
+          "path": ".artifacts/kids-courtyard-artwork-repair-20261022/patch-source-mask.png",
+          "sha256": "1c6864821a3b576db477ebc496e45cd766075615fe6cb312b445a51752ee43ae"
+        },
+        "repair_mask": {
+          "path": ".artifacts/kids-courtyard-artwork-repair-20261022/purple-sleeve-region.png",
+          "sha256": "bc12cbaf34b67f10074de2fcfa2aee2e2b79a0e3729e01706d49ff68be7f95f4"
+        },
+        "cleanup_mask": {
+          "path": ".artifacts/kids-courtyard-artwork-repair-20261022/purple-sleeve-cleanup.png",
+          "sha256": "4e7a7914c1c470b1ea28572f64f21a6816c0b5b47ee1b02c14a65483ef688d54"
+        },
+        "donor_offset": [
+          70,
+          0
+        ],
+        "quad": [
+          [
+            555,
+            646
+          ],
+          [
+            590,
+            656
+          ],
+          [
+            591,
+            731
+          ],
+          [
+            550,
+            725
+          ]
+        ],
+        "wrap_degrees": 100,
+        "cleanup_mode": "local_interpolation",
+        "light_gain": 0.95,
+        "light_contrast": 0.2,
+        "split_donor_mask": null,
+        "split_donor_offset": [
+          0,
+          0
+        ],
+        "fabric_mask": null
+      }
+    ],
+    "output": ".artifacts/kids-courtyard-artwork-repair-20261022/closing-corrected-r7.png"
+  },
+  "grant": {
+    "request_sha256": "b9a7ddae97ba467d35fb8dfafb0362e9863702f46b5a2c0faed4f31fc01348a9",
+    "output_root": ".artifacts/kids-courtyard-artwork-repair-20261022",
+    "approval_reference": "Corey exact source artwork repair; tasks/kids-courtyard-hero-20261022/AUTHORITY.json; local only"
+  },
+  "receipt": {
+    "request": {
+      "job_id": "kids-courtyard-complete-artwork-repair-r7",
+      "target": {
+        "path": "assets/generated-candidates/kids-capsule-20261021/first-frame-r1.png",
+        "sha256": "c00e7fb3b3b320a20ce5ca264efbd11e39bc7389e77f65540245095a799191e0"
+      },
+      "patches": [
+        {
+          "name": "red-chest",
+          "source": {
+            "path": "assets/products/references/kids-001-real-photo.jpeg",
+            "sha256": "9f73606eff0438378f2f669c6fde2977720a3c18e9577f68b27aed32f2dd4e08"
+          },
+          "crop": [
+            262,
+            531,
+            316,
+            605
+          ],
+          "source_mask": {
+            "path": ".artifacts/kids-courtyard-artwork-repair-20261022/rose-source-mask-r2.png",
+            "sha256": "517b01c22ee5613638aaab12a06d041235dfc7cc883f5cdc5c1843a89cbb9207"
+          },
+          "repair_mask": {
+            "path": ".artifacts/kids-courtyard-artwork-repair-20261022/red-chest-region.png",
+            "sha256": "cc35e74cec8812ca9f220bf60255ed62da4783e08368b558348793588a129fd2"
+          },
+          "cleanup_mask": {
+            "path": ".artifacts/kids-courtyard-artwork-repair-20261022/red-chest-cleanup-r5.png",
+            "sha256": "4ca5877f47a3d7aca86decd34a6848d64f62fcc277a328aecd9b5842f4a21ddb"
+          },
+          "donor_offset": [
+            -65,
+            0
+          ],
+          "quad": [
+            [
+              289,
+              567
+            ],
+            [
+              337,
+              574
+            ],
+            [
+              334,
+              641
+            ],
+            [
+              280,
+              635
+            ]
+          ],
+          "wrap_degrees": 0,
+          "cleanup_mode": "fabric_interpolation",
+          "light_gain": 1,
+          "light_contrast": 0,
+          "split_donor_mask": {
+            "path": ".artifacts/kids-courtyard-artwork-repair-20261022/red-chest-panels-r7.png",
+            "sha256": "4085ca1c93bc126e2300c2275e698488a81553787787febaf38033ec153d603d"
+          },
+          "split_donor_offset": [
+            12,
+            22
+          ],
+          "fabric_mask": {
+            "path": ".artifacts/kids-courtyard-artwork-repair-20261022/red-chest-fabric-r5.png",
+            "sha256": "2987a1f0deff11381f25cb6bfceecadd218d00c6bf77255c278cd93495fe2329"
+          }
+        },
+        {
+          "name": "red-thigh",
+          "source": {
+            "path": "assets/products/references/kids-001-real-photo.jpeg",
+            "sha256": "9f73606eff0438378f2f669c6fde2977720a3c18e9577f68b27aed32f2dd4e08"
+          },
+          "crop": [
+            262,
+            531,
+            316,
+            605
+          ],
+          "source_mask": {
+            "path": ".artifacts/kids-courtyard-artwork-repair-20261022/rose-source-mask-r2.png",
+            "sha256": "517b01c22ee5613638aaab12a06d041235dfc7cc883f5cdc5c1843a89cbb9207"
+          },
+          "repair_mask": {
+            "path": ".artifacts/kids-courtyard-artwork-repair-20261022/red-thigh-region.png",
+            "sha256": "e2fcd368cbd37a0f22f52bf4e3f7d71918082aba0559ba400436f19afe51b860"
+          },
+          "cleanup_mask": {
+            "path": ".artifacts/kids-courtyard-artwork-repair-20261022/red-thigh-cleanup-r4.png",
+            "sha256": "b0b706ad2a4c77b7dd6047681e992a2096a8422be4c5d5935ab54d1759bf9022"
+          },
+          "donor_offset": [
+            -60,
+            0
+          ],
+          "quad": [
+            [
+              287,
+              895
+            ],
+            [
+              331,
+              899
+            ],
+            [
+              327,
+              966
+            ],
+            [
+              278,
+              962
+            ]
+          ],
+          "wrap_degrees": 0,
+          "cleanup_mode": "fabric_interpolation",
+          "light_gain": 1,
+          "light_contrast": 0,
+          "split_donor_mask": null,
+          "split_donor_offset": [
+            0,
+            0
+          ],
+          "fabric_mask": {
+            "path": ".artifacts/kids-courtyard-artwork-repair-20261022/red-thigh-fabric-r4.png",
+            "sha256": "530d02990d57f3114e5ed10436771eba6efc3b79cfcbdd784caccbd0b3d7d8c8"
+          }
+        },
+        {
+          "name": "purple-chest",
+          "source": {
+            "path": "assets/products/references/kids-001-real-photo.jpeg",
+            "sha256": "9f73606eff0438378f2f669c6fde2977720a3c18e9577f68b27aed32f2dd4e08"
+          },
+          "crop": [
+            262,
+            531,
+            316,
+            605
+          ],
+          "source_mask": {
+            "path": ".artifacts/kids-courtyard-artwork-repair-20261022/rose-source-mask-r2.png",
+            "sha256": "517b01c22ee5613638aaab12a06d041235dfc7cc883f5cdc5c1843a89cbb9207"
+          },
+          "repair_mask": {
+            "path": ".artifacts/kids-courtyard-artwork-repair-20261022/purple-chest-region.png",
+            "sha256": "71cb93d4e1744bea54c462937ac4024f4aa4b4316665c6773c53e25a8d77f338"
+          },
+          "cleanup_mask": {
+            "path": ".artifacts/kids-courtyard-artwork-repair-20261022/purple-chest-cleanup.png",
+            "sha256": "26e32c529b5d8e94800639de16c3504031cf86007e459481e70b0589b747d23a"
+          },
+          "donor_offset": [
+            -62,
+            1
+          ],
+          "quad": [
+            [
+              748,
+              617
+            ],
+            [
+              786,
+              628
+            ],
+            [
+              776,
+              682
+            ],
+            [
+              737,
+              673
+            ]
+          ],
+          "wrap_degrees": 0,
+          "cleanup_mode": "local_interpolation",
+          "light_gain": 1,
+          "light_contrast": 0,
+          "split_donor_mask": null,
+          "split_donor_offset": [
+            0,
+            0
+          ],
+          "fabric_mask": null
+        },
+        {
+          "name": "purple-thigh",
+          "source": {
+            "path": "assets/products/references/kids-001-real-photo.jpeg",
+            "sha256": "9f73606eff0438378f2f669c6fde2977720a3c18e9577f68b27aed32f2dd4e08"
+          },
+          "crop": [
+            262,
+            531,
+            316,
+            605
+          ],
+          "source_mask": {
+            "path": ".artifacts/kids-courtyard-artwork-repair-20261022/rose-source-mask-r2.png",
+            "sha256": "517b01c22ee5613638aaab12a06d041235dfc7cc883f5cdc5c1843a89cbb9207"
+          },
+          "repair_mask": {
+            "path": ".artifacts/kids-courtyard-artwork-repair-20261022/purple-thigh-region.png",
+            "sha256": "9c2645ba0d79f28f8ad9217eb917020e011446c116d5d398cdbdc26b8d24a39d"
+          },
+          "cleanup_mask": {
+            "path": ".artifacts/kids-courtyard-artwork-repair-20261022/purple-thigh-cleanup-r7.png",
+            "sha256": "e0e7d4f4273142e74834142504504703738023f6b041382db6a18bc130e34f1d"
+          },
+          "donor_offset": [
+            -62,
+            -8
+          ],
+          "quad": [
+            [
+              825,
+              930
+            ],
+            [
+              854,
+              941
+            ],
+            [
+              832,
+              993
+            ],
+            [
+              799,
+              982
+            ]
+          ],
+          "wrap_degrees": 0,
+          "cleanup_mode": "fabric_interpolation",
+          "light_gain": 1,
+          "light_contrast": 0,
+          "split_donor_mask": null,
+          "split_donor_offset": [
+            0,
+            0
+          ],
+          "fabric_mask": {
+            "path": ".artifacts/kids-courtyard-artwork-repair-20261022/purple-thigh-fabric-r7.png",
+            "sha256": "c520a4028a86b0a3d92bba675eb37d837fb698caf657cc2c824332baea7f32e1"
+          }
+        },
+        {
+          "name": "red-sleeve",
+          "source": {
+            "path": "wordpress-theme/skyyrose-flagship/assets/images/logos/skyy-rose-collection-circular-patch.jpeg",
+            "sha256": "0dcc7b4589a77a07acc81548452e4d35bd28d395e4c2a7925e2c6ef8330301cd"
+          },
+          "crop": [
+            152,
+            249,
+            1528,
+            1627
+          ],
+          "source_mask": {
+            "path": ".artifacts/kids-courtyard-artwork-repair-20261022/patch-source-mask.png",
+            "sha256": "1c6864821a3b576db477ebc496e45cd766075615fe6cb312b445a51752ee43ae"
+          },
+          "repair_mask": {
+            "path": ".artifacts/kids-courtyard-artwork-repair-20261022/red-sleeve-region.png",
+            "sha256": "9a6edf52b2b5428c0fc64ee13c3871ea428e2db357f0370149c677f1cc0e0626"
+          },
+          "cleanup_mask": {
+            "path": ".artifacts/kids-courtyard-artwork-repair-20261022/red-sleeve-cleanup.png",
+            "sha256": "49d187db152ebeebd2f4418953cc85225670edd2ce6d383ee7da5508751e0510"
+          },
+          "donor_offset": [
+            50,
+            0
+          ],
+          "quad": [
+            [
+              82,
+              575
+            ],
+            [
+              112,
+              588
+            ],
+            [
+              84,
+              658
+            ],
+            [
+              47,
+              645
+            ]
+          ],
+          "wrap_degrees": 100,
+          "cleanup_mode": "clone",
+          "light_gain": 0.82,
+          "light_contrast": 0.4,
+          "split_donor_mask": null,
+          "split_donor_offset": [
+            0,
+            0
+          ],
+          "fabric_mask": null
+        },
+        {
+          "name": "purple-sleeve",
+          "source": {
+            "path": "wordpress-theme/skyyrose-flagship/assets/images/logos/skyy-rose-collection-circular-patch.jpeg",
+            "sha256": "0dcc7b4589a77a07acc81548452e4d35bd28d395e4c2a7925e2c6ef8330301cd"
+          },
+          "crop": [
+            152,
+            249,
+            1528,
+            1627
+          ],
+          "source_mask": {
+            "path": ".artifacts/kids-courtyard-artwork-repair-20261022/patch-source-mask.png",
+            "sha256": "1c6864821a3b576db477ebc496e45cd766075615fe6cb312b445a51752ee43ae"
+          },
+          "repair_mask": {
+            "path": ".artifacts/kids-courtyard-artwork-repair-20261022/purple-sleeve-region.png",
+            "sha256": "bc12cbaf34b67f10074de2fcfa2aee2e2b79a0e3729e01706d49ff68be7f95f4"
+          },
+          "cleanup_mask": {
+            "path": ".artifacts/kids-courtyard-artwork-repair-20261022/purple-sleeve-cleanup.png",
+            "sha256": "4e7a7914c1c470b1ea28572f64f21a6816c0b5b47ee1b02c14a65483ef688d54"
+          },
+          "donor_offset": [
+            70,
+            0
+          ],
+          "quad": [
+            [
+              555,
+              646
+            ],
+            [
+              590,
+              656
+            ],
+            [
+              591,
+              731
+            ],
+            [
+              550,
+              725
+            ]
+          ],
+          "wrap_degrees": 100,
+          "cleanup_mode": "local_interpolation",
+          "light_gain": 0.95,
+          "light_contrast": 0.2,
+          "split_donor_mask": null,
+          "split_donor_offset": [
+            0,
+            0
+          ],
+          "fabric_mask": null
+        }
+      ],
+      "output": ".artifacts/kids-courtyard-artwork-repair-20261022/closing-corrected-r7.png"
+    },
+    "request_sha256": "b9a7ddae97ba467d35fb8dfafb0362e9863702f46b5a2c0faed4f31fc01348a9",
+    "sha256": "d8062f09e01b1c63fe736bc4b52dae65a79f5b600259857d4ecc80e54998cc79",
+    "producer_sha256": "0272f7d744886ae2d66ab0b58c0337b408e24596b6c30efa22e73ce4817e5b6c",
+    "authority": {
+      "request_sha256": "b9a7ddae97ba467d35fb8dfafb0362e9863702f46b5a2c0faed4f31fc01348a9",
+      "output_root": ".artifacts/kids-courtyard-artwork-repair-20261022",
+      "approval_reference": "Corey exact source artwork repair; tasks/kids-courtyard-hero-20261022/AUTHORITY.json; local only"
+    },
+    "cleaned_path": ".artifacts/kids-courtyard-artwork-repair-20261022/closing-corrected-r7.cleaned.png",
+    "cleaned_sha256": "fdad45f1ab9aefb4e1422331526e35bf6290bddcf59b11da92236b6135faf06f",
+    "publication_authorized": false,
+    "provider_authorized": false,
+    "visual_review": "REQUIRED"
+  },
+  "verification": {
+    "status": "PASS",
+    "technical": true,
+    "reproduced_pixels": true,
+    "outside_regions_unchanged": true,
+    "request_and_artifact_identity": true,
+    "cleaned_intermediate": true,
+    "limitation": "Input hashes and mask/transform preservation, not visual source-mask completeness or physical fabric conformity; independent review required."
+  },
+  "presentation": "HOLD_PRIVATE_VISUAL_REVIEW"
+}

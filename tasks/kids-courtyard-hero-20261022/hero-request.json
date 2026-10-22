@@ -1,0 +1,53 @@
+{
+  "job_id": "kids-hero-source-repair-20261022",
+  "brand": "skyyrose",
+  "objective": "Kids statue hero: Grand Hotel font left, canonical graphic right, scroll reveal; homepage and Kids page",
+  "collection_context": "kids-capsule",
+  "campaign_brief": {
+    "path": "tasks/kids-courtyard-hero-20261022/BRIEF.md",
+    "sha256": "93fc314d42f92cf6240ad529591c55c98fe3d71b458c8f14027e5d3f056d9846"
+  },
+  "lifecycle_stage": "M3",
+  "channel": "web",
+  "content_intent": {
+    "medium": "image",
+    "production_type": "collection_hero",
+    "content_role": "collection_hero",
+    "shot_role": "WORLD_ESTABLISHING",
+    "distribution_channels": [
+      "web"
+    ],
+    "intended_use": "INTERNAL",
+    "audience": "Kids Capsule customers and purchasers",
+    "representation_mode": "BRAND_ABSTRACT",
+    "lifecycle_stage": "M3",
+    "shots": [
+      {
+        "shot_id": "KIDS-HERO",
+        "shot_role": "WORLD_ESTABLISHING",
+        "purpose": "Kids statue hero: Grand Hotel font left, canonical graphic right, scroll reveal; homepage and Kids page",
+        "exact_product": false,
+        "product_skus": []
+      }
+    ],
+    "film_plan": null,
+    "interactive_plan": null
+  },
+  "production_method": "CONTROLLED_RENDER",
+  "campaign_authority_required": false,
+  "major_initiative": false,
+  "place_relevant": false,
+  "intended_use": "INTERNAL",
+  "audience": "Kids Capsule customers and purchasers",
+  "representation_mode": "BRAND_ABSTRACT",
+  "products": [],
+  "decisions": [],
+  "constraints": [
+    "Current owner instructions in AUTHORITY.json",
+    "Local immutable candidates only; no paid providers or publication",
+    "Independent visual review before presentation",
+    "No source reposing, mirroring, invented product detail"
+  ],
+  "palette_intents": [],
+  "absence_reasons": {}
+}

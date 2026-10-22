@@ -1,0 +1,54 @@
+{
+  "deliverables": [
+    "Desktop/mobile statue hero still states",
+    "Local scroll-reveal review for homepage and Kids placement"
+  ],
+  "experience_outcome": "Kids statue hero: Grand Hotel font left, canonical graphic right, scroll reveal; homepage and Kids page",
+  "authored_meaning": "Heir and next generation through anticipation and discovery",
+  "production_method": {
+    "technique": "CONTROLLED_RENDER",
+    "rationale": "Bounded local physical environment/font render and source-preserved canonical graphic, locked frontal camera; no provider",
+    "inputs": [
+      {
+        "path": "typography.json",
+        "sha256": "406ed2d20a1e1d182766e50ef2e31b3e194b110f65917498e7975f415996228e"
+      },
+      {
+        "path": "wordpress-theme/skyyrose-flagship-2/assets/sot/fonts/grand-hotel-latin.woff2",
+        "sha256": "784264f80a7071f0e42ae9710878e19684c90af54caca66ec165b29f88b4e915"
+      },
+      {
+        "path": "wordpress-theme/skyyrose-flagship-2/assets/sot/images/mascot/skyy-canonical-v2.png",
+        "sha256": "072418c98dc0ba06289547425b1c7b394fd8a6ec84a9d55211e884fc3e7eb5b8"
+      }
+    ],
+    "feasibility_evidence": [
+      {
+        "path": "tasks/kids-courtyard-hero-20261022/METHOD.md",
+        "sha256": "a24e033ae2492e72da4859e3378c33accfc33e77736536eab71952e1dc127498"
+      }
+    ]
+  },
+  "success_evidence": [
+    "Exact source/target/transform and outside-region verification plus independent native visual review",
+    "Responsive desktop/mobile hero quality and no premature character flash"
+  ],
+  "channel_requirements": [
+    "Web still derivatives with source dimension limits recorded",
+    "Review only; explicit no deployment"
+  ],
+  "approval_requirements": [
+    "Current local owner repair/hero authority",
+    "Independent applicable visual checks before presentation",
+    "Separate founder acceptance and live publication"
+  ],
+  "novelty_dimensions": [
+    "Progressive statue-led reveal"
+  ],
+  "major_initiative": false,
+  "accessibility_applicable": true,
+  "accessibility_reason": "Customer-facing motion needs pause and static preference fallback",
+  "commerce_applicable": true,
+  "commerce_reason": "The website scene connects directly to existing Kids collection shopping",
+  "open_issues": []
+}

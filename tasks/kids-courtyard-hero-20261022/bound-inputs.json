@@ -1,0 +1,111 @@
+{
+  "authentication": "NOT_APPLICABLE offline",
+  "purpose": "Exact local mask/font/character inputs for reconstruction only, no SOT adoption",
+  "inputs": [
+    {
+      "restore_to": ".artifacts/kids-courtyard-artwork-repair-20261022/rose-source-mask-r2.png",
+      "stored_as": "tasks/kids-courtyard-hero-20261022/bound-inputs/artwork/rose-source-mask-r2.png",
+      "sha256": "517b01c22ee5613638aaab12a06d041235dfc7cc883f5cdc5c1843a89cbb9207"
+    },
+    {
+      "restore_to": ".artifacts/kids-courtyard-artwork-repair-20261022/red-chest-region.png",
+      "stored_as": "tasks/kids-courtyard-hero-20261022/bound-inputs/artwork/red-chest-region.png",
+      "sha256": "cc35e74cec8812ca9f220bf60255ed62da4783e08368b558348793588a129fd2"
+    },
+    {
+      "restore_to": ".artifacts/kids-courtyard-artwork-repair-20261022/red-chest-cleanup-r5.png",
+      "stored_as": "tasks/kids-courtyard-hero-20261022/bound-inputs/artwork/red-chest-cleanup-r5.png",
+      "sha256": "4ca5877f47a3d7aca86decd34a6848d64f62fcc277a328aecd9b5842f4a21ddb"
+    },
+    {
+      "restore_to": ".artifacts/kids-courtyard-artwork-repair-20261022/red-chest-panels-r7.png",
+      "stored_as": "tasks/kids-courtyard-hero-20261022/bound-inputs/artwork/red-chest-panels-r7.png",
+      "sha256": "4085ca1c93bc126e2300c2275e698488a81553787787febaf38033ec153d603d"
+    },
+    {
+      "restore_to": ".artifacts/kids-courtyard-artwork-repair-20261022/red-chest-fabric-r5.png",
+      "stored_as": "tasks/kids-courtyard-hero-20261022/bound-inputs/artwork/red-chest-fabric-r5.png",
+      "sha256": "2987a1f0deff11381f25cb6bfceecadd218d00c6bf77255c278cd93495fe2329"
+    },
+    {
+      "restore_to": ".artifacts/kids-courtyard-artwork-repair-20261022/red-thigh-region.png",
+      "stored_as": "tasks/kids-courtyard-hero-20261022/bound-inputs/artwork/red-thigh-region.png",
+      "sha256": "e2fcd368cbd37a0f22f52bf4e3f7d71918082aba0559ba400436f19afe51b860"
+    },
+    {
+      "restore_to": ".artifacts/kids-courtyard-artwork-repair-20261022/red-thigh-cleanup-r4.png",
+      "stored_as": "tasks/kids-courtyard-hero-20261022/bound-inputs/artwork/red-thigh-cleanup-r4.png",
+      "sha256": "b0b706ad2a4c77b7dd6047681e992a2096a8422be4c5d5935ab54d1759bf9022"
+    },
+    {
+      "restore_to": ".artifacts/kids-courtyard-artwork-repair-20261022/red-thigh-fabric-r4.png",
+      "stored_as": "tasks/kids-courtyard-hero-20261022/bound-inputs/artwork/red-thigh-fabric-r4.png",
+      "sha256": "530d02990d57f3114e5ed10436771eba6efc3b79cfcbdd784caccbd0b3d7d8c8"
+    },
+    {
+      "restore_to": ".artifacts/kids-courtyard-artwork-repair-20261022/purple-chest-region.png",
+      "stored_as": "tasks/kids-courtyard-hero-20261022/bound-inputs/artwork/purple-chest-region.png",
+      "sha256": "71cb93d4e1744bea54c462937ac4024f4aa4b4316665c6773c53e25a8d77f338"
+    },
+    {
+      "restore_to": ".artifacts/kids-courtyard-artwork-repair-20261022/purple-chest-cleanup.png",
+      "stored_as": "tasks/kids-courtyard-hero-20261022/bound-inputs/artwork/purple-chest-cleanup.png",
+      "sha256": "26e32c529b5d8e94800639de16c3504031cf86007e459481e70b0589b747d23a"
+    },
+    {
+      "restore_to": ".artifacts/kids-courtyard-artwork-repair-20261022/purple-thigh-region.png",
+      "stored_as": "tasks/kids-courtyard-hero-20261022/bound-inputs/artwork/purple-thigh-region.png",
+      "sha256": "9c2645ba0d79f28f8ad9217eb917020e011446c116d5d398cdbdc26b8d24a39d"
+    },
+    {
+      "restore_to": ".artifacts/kids-courtyard-artwork-repair-20261022/purple-thigh-cleanup-r7.png",
+      "stored_as": "tasks/kids-courtyard-hero-20261022/bound-inputs/artwork/purple-thigh-cleanup-r7.png",
+      "sha256": "e0e7d4f4273142e74834142504504703738023f6b041382db6a18bc130e34f1d"
+    },
+    {
+      "restore_to": ".artifacts/kids-courtyard-artwork-repair-20261022/purple-thigh-fabric-r7.png",
+      "stored_as": "tasks/kids-courtyard-hero-20261022/bound-inputs/artwork/purple-thigh-fabric-r7.png",
+      "sha256": "c520a4028a86b0a3d92bba675eb37d837fb698caf657cc2c824332baea7f32e1"
+    },
+    {
+      "restore_to": ".artifacts/kids-courtyard-artwork-repair-20261022/patch-source-mask.png",
+      "stored_as": "tasks/kids-courtyard-hero-20261022/bound-inputs/artwork/patch-source-mask.png",
+      "sha256": "1c6864821a3b576db477ebc496e45cd766075615fe6cb312b445a51752ee43ae"
+    },
+    {
+      "restore_to": ".artifacts/kids-courtyard-artwork-repair-20261022/red-sleeve-region.png",
+      "stored_as": "tasks/kids-courtyard-hero-20261022/bound-inputs/artwork/red-sleeve-region.png",
+      "sha256": "9a6edf52b2b5428c0fc64ee13c3871ea428e2db357f0370149c677f1cc0e0626"
+    },
+    {
+      "restore_to": ".artifacts/kids-courtyard-artwork-repair-20261022/red-sleeve-cleanup.png",
+      "stored_as": "tasks/kids-courtyard-hero-20261022/bound-inputs/artwork/red-sleeve-cleanup.png",
+      "sha256": "49d187db152ebeebd2f4418953cc85225670edd2ce6d383ee7da5508751e0510"
+    },
+    {
+      "restore_to": ".artifacts/kids-courtyard-artwork-repair-20261022/purple-sleeve-region.png",
+      "stored_as": "tasks/kids-courtyard-hero-20261022/bound-inputs/artwork/purple-sleeve-region.png",
+      "sha256": "bc12cbaf34b67f10074de2fcfa2aee2e2b79a0e3729e01706d49ff68be7f95f4"
+    },
+    {
+      "restore_to": ".artifacts/kids-courtyard-artwork-repair-20261022/purple-sleeve-cleanup.png",
+      "stored_as": "tasks/kids-courtyard-hero-20261022/bound-inputs/artwork/purple-sleeve-cleanup.png",
+      "sha256": "4e7a7914c1c470b1ea28572f64f21a6816c0b5b47ee1b02c14a65483ef688d54"
+    },
+    {
+      "restore_to": ".artifacts/kids-statue-hero-20261022/skyy-source-rgb-cropped-r4.png",
+      "stored_as": "tasks/kids-courtyard-hero-20261022/bound-inputs/hero/skyy-source-rgb-cropped-r4.png",
+      "sha256": "3bbc64d337b88e1b32153c574e2fc5a4d214227b7ab9138edfa60218158d5684"
+    },
+    {
+      "restore_to": ".artifacts/kids-statue-hero-20261022/skyy-source-alpha-cropped-r4.png",
+      "stored_as": "tasks/kids-courtyard-hero-20261022/bound-inputs/hero/skyy-source-alpha-cropped-r4.png",
+      "sha256": "5f1657a1b83c39fd3f90955b56925b639417a1e34362fd1070c6eb0d7d9b5928"
+    },
+    {
+      "restore_to": ".artifacts/kids-statue-hero-20261022/grand-hotel-bound.ttf",
+      "stored_as": "tasks/kids-courtyard-hero-20261022/bound-inputs/hero/grand-hotel-bound.ttf",
+      "sha256": "1ab0dbb19f2cc8a5d3d42967b006b8959f7cf531669346c5a8e4d7e10e616687"
+    }
+  ]
+}

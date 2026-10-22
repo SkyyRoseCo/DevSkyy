@@ -1,0 +1,72 @@
+{
+  "status": "PRIVATE_REVIEW_CANDIDATE",
+  "publication_authorized": false,
+  "provider_authorized": false,
+  "additional_paid_calls": 0,
+  "artwork_producer_sha256": "0272f7d744886ae2d66ab0b58c0337b408e24596b6c30efa22e73ce4817e5b6c",
+  "inputs_retained_in_git": 21,
+  "outputs": [
+    {
+      "path": ".artifacts/kids-courtyard-artwork-repair-20261022/closing-corrected-r7.png",
+      "sha256": "d8062f09e01b1c63fe736bc4b52dae65a79f5b600259857d4ecc80e54998cc79",
+      "bytes": 2402917
+    },
+    {
+      "path": ".artifacts/kids-courtyard-artwork-repair-20261022/closing-corrected-r7.cleaned.png",
+      "sha256": "fdad45f1ab9aefb4e1422331526e35bf6290bddcf59b11da92236b6135faf06f",
+      "bytes": 2384141
+    },
+    {
+      "path": ".artifacts/kids-courtyard-artwork-repair-20261022/producer-0272f7d744886ae2d66ab0b58c0337b408e24596b6c30efa22e73ce4817e5b6c.py",
+      "sha256": "0272f7d744886ae2d66ab0b58c0337b408e24596b6c30efa22e73ce4817e5b6c",
+      "bytes": 18864
+    },
+    {
+      "path": ".artifacts/kids-statue-hero-20261022/hero-desktop-concealed-r5.png",
+      "sha256": "16ea1d9628493813fbfaaf0c08c3aa0d0d09000e6952f196e95e4f8068aaf7f7",
+      "bytes": 1611393
+    },
+    {
+      "path": ".artifacts/kids-statue-hero-20261022/hero-desktop-concealed-r5.webp",
+      "sha256": "168186d2d23b969af9927e8ba2c95f8d909a7a51a24861711fb068a414eecb1f",
+      "bytes": 58062
+    },
+    {
+      "path": ".artifacts/kids-statue-hero-20261022/hero-desktop-revealed-r5.png",
+      "sha256": "8ed62401652819c81dc9c9139d6229367d73e4d5ee3aac33720594cf0355fbec",
+      "bytes": 1194740
+    },
+    {
+      "path": ".artifacts/kids-statue-hero-20261022/hero-desktop-revealed-r5.webp",
+      "sha256": "a7e78294ef19b7385f0f844b74003ce4a74fb1b03554f49713054dad7e77070e",
+      "bytes": 78226
+    },
+    {
+      "path": ".artifacts/kids-statue-hero-20261022/hero-mobile-concealed-r6.png",
+      "sha256": "ac5ffd3d232a2e50504898cc03ad6b40f4af43b121f38ac8824f61b298aa043d",
+      "bytes": 1208397
+    },
+    {
+      "path": ".artifacts/kids-statue-hero-20261022/hero-mobile-concealed-r6.webp",
+      "sha256": "e3a23689cc2e484fe753811ae380ec4c554fdb7a385f3ab7db439417e073f5bc",
+      "bytes": 44504
+    },
+    {
+      "path": ".artifacts/kids-statue-hero-20261022/hero-mobile-revealed-r6.png",
+      "sha256": "cb353f04a1bed08cf75212abc8735ac516e71bc9a574a11a2f59e1b0ca137bb5",
+      "bytes": 913970
+    },
+    {
+      "path": ".artifacts/kids-statue-hero-20261022/hero-mobile-revealed-r6.webp",
+      "sha256": "8792e9006b6792930344b9599b19c0aaaf561a981cf7d732fddf9fdd03b75eb0",
+      "bytes": 64962
+    }
+  ],
+  "review_status": "PASS_PRESENTATION_ONLY",
+  "html_sha256": "43f6c266b169ecf64637ce7eb298f1d24e8027548c3bcec6583ddeb554dd73ff",
+  "reviews": {
+    "architect": "/root/closet_motion_review: native courtyardR7,desktopR5,mobileR6,nine responsive captures; PASS forlocalfounderreview",
+    "python": "/root/native_runner_python_review: approve currentartworkadapter andregressions",
+    "javascript": "/root/hero_preview_js_review: approve inlineJS/scopedESLint/nativeChrome reducedmotion,SaveData,noJS"
+  }
+}
