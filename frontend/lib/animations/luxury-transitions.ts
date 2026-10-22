@@ -1,4 +1,4 @@
-import { Variants, Transition } from 'framer-motion';
+import { Variants, Transition } from 'motion/react';
 
 /**
  * SkyyRose Luxury Animation Library
@@ -390,10 +390,7 @@ export const heroCTA: Variants = {
 };
 
 // Utility: Create custom spring transition
-export function createSpring(
-  stiffness: number = 300,
-  damping: number = 30
-): Transition {
+export function createSpring(stiffness: number = 300, damping: number = 30): Transition {
   return {
     type: 'spring',
     stiffness,
@@ -402,10 +399,7 @@ export function createSpring(
 }
 
 // Utility: Create custom ease transition
-export function createEase(
-  duration: number = 0.5,
-  ease: readonly number[] = luxuryEasing.smooth
-): Transition {
+export function createEase(duration: number = 0.5, ease: readonly number[] = luxuryEasing.smooth): Transition {
   return {
     duration,
     ease: ease as any,

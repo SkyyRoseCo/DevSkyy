@@ -1,6 +1,6 @@
 'use client';
 
-import { motion } from 'framer-motion';
+import { motion } from 'motion/react';
 
 interface RotatingLogoFallbackProps {
   text: string;
@@ -8,11 +8,7 @@ interface RotatingLogoFallbackProps {
   className?: string;
 }
 
-export default function RotatingLogoFallback({
-  text,
-  color,
-  className = '',
-}: RotatingLogoFallbackProps) {
+export default function RotatingLogoFallback({ text, color, className = '' }: RotatingLogoFallbackProps) {
   return (
     <div className={`w-full h-[200px] flex items-center justify-center ${className}`}>
       <motion.div
@@ -21,7 +17,7 @@ export default function RotatingLogoFallback({
         style={{ perspective: 800 }}
       >
         <h3
-          className="text-4xl md:text-5xl font-display tracking-[0.15em]"
+          className='text-4xl md:text-5xl font-display tracking-[0.15em]'
           style={{
             color,
             textShadow: `0 0 40px ${color}40, 0 0 80px ${color}20`,

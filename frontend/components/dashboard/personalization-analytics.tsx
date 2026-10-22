@@ -2,14 +2,8 @@
 
 import { useState, useEffect, useCallback, useMemo, useRef } from 'react';
 import { useQuery } from '@tanstack/react-query';
-import { motion } from 'framer-motion';
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from '@/components/ui/card';
+import { motion } from 'motion/react';
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import {
   Users,
@@ -133,7 +127,7 @@ function generateFunnel(): FunnelStage[] {
 const TRACKED_SKUS = ['br-006', 'lh-004', 'br-004', 'sg-001', 'br-001', 'sg-009'];
 
 function generateTopProducts(catalogLookup: Map<string, { name: string; collection: string }>): TopProduct[] {
-  return TRACKED_SKUS.map((sku) => {
+  return TRACKED_SKUS.map(sku => {
     const entry = catalogLookup.get(sku);
     return {
       sku,
@@ -191,93 +185,67 @@ export function PersonalizationAnalytics() {
   const maxFunnel = funnel[0]?.visitors ?? 1;
 
   return (
-    <Card className="bg-gray-900 border-gray-800 overflow-hidden">
-      <div className="h-1 bg-gradient-to-r from-[#B76E79] via-[#D4AF37] to-[#B76E79]" />
+    <Card className='bg-gray-900 border-gray-800 overflow-hidden'>
+      <div className='h-1 bg-gradient-to-r from-[#B76E79] via-[#D4AF37] to-[#B76E79]' />
       <CardHeader>
-        <div className="flex items-center justify-between">
+        <div className='flex items-center justify-between'>
           <div>
-            <CardTitle className="text-white font-display text-2xl flex items-center gap-3">
-              <div className="h-10 w-10 rounded-xl bg-gradient-to-br from-[#B76E79] to-[#D4AF37] flex items-center justify-center">
-                <Sparkles className="h-5 w-5 text-white" />
+            <CardTitle className='text-white font-display text-2xl flex items-center gap-3'>
+              <div className='h-10 w-10 rounded-xl bg-gradient-to-br from-[#B76E79] to-[#D4AF37] flex items-center justify-center'>
+                <Sparkles className='h-5 w-5 text-white' />
               </div>
               Adaptive Personalization Engine
             </CardTitle>
-            <CardDescription className="text-gray-400 mt-2">
+            <CardDescription className='text-gray-400 mt-2'>
               Behavioral scoring, recommendations, and mood-driven conversions
             </CardDescription>
           </div>
-          <Badge variant="outline" className="border-[#B76E79] text-[#B76E79]">
-            <div className="h-2 w-2 rounded-full bg-[#B76E79] animate-pulse mr-2" />
+          <Badge variant='outline' className='border-[#B76E79] text-[#B76E79]'>
+            <div className='h-2 w-2 rounded-full bg-[#B76E79] animate-pulse mr-2' />
             Live
           </Badge>
         </div>
       </CardHeader>
 
-      <CardContent className="space-y-8">
+      <CardContent className='space-y-8'>
         {/* Metrics Grid */}
-        <div className="grid gap-4 md:grid-cols-4">
+        <div className='grid gap-4 md:grid-cols-4'>
+          <MetricCard label='Drawer Opens' value={metrics.drawerOpens} icon={Layers} color={BRAND.roseGold} />
           <MetricCard
-            label="Drawer Opens"
-            value={metrics.drawerOpens}
-            icon={Layers}
-            color={BRAND.roseGold}
-          />
-          <MetricCard
-            label="Rec. CTR"
+            label='Rec. CTR'
             value={`${metrics.clickThroughRate}%`}
             icon={MousePointerClick}
             color={BRAND.gold}
           />
-          <MetricCard
-            label="Bundle Converts"
-            value={metrics.bundleConversions}
-            icon={ShoppingCart}
-            color="#10B981"
-          />
-          <MetricCard
-            label="Avg Heat Score"
-            value={metrics.avgHeatScore}
-            icon={Zap}
-            color="#F59E0B"
-          />
+          <MetricCard label='Bundle Converts' value={metrics.bundleConversions} icon={ShoppingCart} color='#10B981' />
+          <MetricCard label='Avg Heat Score' value={metrics.avgHeatScore} icon={Zap} color='#F59E0B' />
         </div>
 
         {/* Two-Column Layout */}
-        <div className="grid gap-8 lg:grid-cols-2">
+        <div className='grid gap-8 lg:grid-cols-2'>
           {/* Intent Segmentation */}
           <div>
-            <h3 className="text-sm font-semibold text-white mb-4 flex items-center gap-2">
-              <Target className="h-4 w-4 text-[#B76E79]" />
+            <h3 className='text-sm font-semibold text-white mb-4 flex items-center gap-2'>
+              <Target className='h-4 w-4 text-[#B76E79]' />
               Visitor Intent Segments
             </h3>
-            <div className="space-y-4">
-              {segments.map((seg) => (
+            <div className='space-y-4'>
+              {segments.map(seg => (
                 <div key={seg.label}>
-                  <div className="flex items-center justify-between mb-1.5">
-                    <div className="flex items-center gap-2">
-                      <div
-                        className="h-2.5 w-2.5 rounded-full"
-                        style={{ backgroundColor: seg.color }}
-                      />
-                      <span className="text-sm font-medium text-white">
-                        {seg.label}
-                      </span>
-                      <span className="text-xs text-gray-500">
-                        {seg.description}
-                      </span>
+                  <div className='flex items-center justify-between mb-1.5'>
+                    <div className='flex items-center gap-2'>
+                      <div className='h-2.5 w-2.5 rounded-full' style={{ backgroundColor: seg.color }} />
+                      <span className='text-sm font-medium text-white'>{seg.label}</span>
+                      <span className='text-xs text-gray-500'>{seg.description}</span>
                     </div>
-                    <div className="flex items-center gap-3">
-                      <span className="text-sm text-gray-400">
-                        {seg.count} visitors
-                      </span>
-                      <span className="text-sm font-medium text-white tabular-nums">
-                        {seg.percentage}%
-                      </span>
+                    <div className='flex items-center gap-3'>
+                      <span className='text-sm text-gray-400'>{seg.count} visitors</span>
+                      <span className='text-sm font-medium text-white tabular-nums'>{seg.percentage}%</span>
                     </div>
                   </div>
-                  <div className="h-2 rounded-full bg-gray-800 overflow-hidden">
+                  <div className='h-2 rounded-full bg-gray-800 overflow-hidden'>
                     <motion.div
-                      className="h-full rounded-full"
+                      className='h-full rounded-full'
                       style={{ backgroundColor: seg.color }}
                       initial={{ width: 0 }}
                       animate={{ width: `${seg.percentage}%` }}
@@ -291,42 +259,30 @@ export function PersonalizationAnalytics() {
 
           {/* Conversion Funnel */}
           <div>
-            <h3 className="text-sm font-semibold text-white mb-4 flex items-center gap-2">
-              <TrendingUp className="h-4 w-4 text-[#D4AF37]" />
+            <h3 className='text-sm font-semibold text-white mb-4 flex items-center gap-2'>
+              <TrendingUp className='h-4 w-4 text-[#D4AF37]' />
               Personalization Funnel
             </h3>
-            <div className="space-y-3">
+            <div className='space-y-3'>
               {funnel.map((stage, i) => {
                 const width = Math.max(8, (stage.visitors / maxFunnel) * 100);
                 const dropoff =
-                  i > 0
-                    ? Math.round(
-                        ((funnel[i - 1].visitors - stage.visitors) /
-                          funnel[i - 1].visitors) *
-                          100
-                      )
-                    : 0;
+                  i > 0 ? Math.round(((funnel[i - 1].visitors - stage.visitors) / funnel[i - 1].visitors) * 100) : 0;
 
                 return (
                   <div key={stage.label}>
-                    <div className="flex items-center justify-between mb-1">
-                      <span className="text-xs font-medium text-gray-400">
-                        {stage.label}
-                      </span>
-                      <div className="flex items-center gap-2">
-                        <span className="text-sm font-bold text-white tabular-nums">
+                    <div className='flex items-center justify-between mb-1'>
+                      <span className='text-xs font-medium text-gray-400'>{stage.label}</span>
+                      <div className='flex items-center gap-2'>
+                        <span className='text-sm font-bold text-white tabular-nums'>
                           {stage.visitors.toLocaleString()}
                         </span>
-                        {i > 0 && (
-                          <span className="text-xs text-red-400/70">
-                            -{dropoff}%
-                          </span>
-                        )}
+                        {i > 0 && <span className='text-xs text-red-400/70'>-{dropoff}%</span>}
                       </div>
                     </div>
-                    <div className="h-6 rounded bg-gray-800/50 overflow-hidden">
+                    <div className='h-6 rounded bg-gray-800/50 overflow-hidden'>
                       <motion.div
-                        className="h-full rounded flex items-center justify-end pr-2"
+                        className='h-full rounded flex items-center justify-end pr-2'
                         style={{ backgroundColor: `${stage.color}40` }}
                         initial={{ width: 0 }}
                         animate={{ width: `${width}%` }}
@@ -346,30 +302,26 @@ export function PersonalizationAnalytics() {
 
         {/* Top Products by Heat Score */}
         <div>
-          <h3 className="text-sm font-semibold text-white mb-4 flex items-center gap-2">
-            <Heart className="h-4 w-4 text-[#B76E79]" />
+          <h3 className='text-sm font-semibold text-white mb-4 flex items-center gap-2'>
+            <Heart className='h-4 w-4 text-[#B76E79]' />
             Top Products by Behavioral Heat Score
           </h3>
-          <div className="grid gap-3 md:grid-cols-2 lg:grid-cols-3">
+          <div className='grid gap-3 md:grid-cols-2 lg:grid-cols-3'>
             {topProducts.map((product, i) => (
               <div
                 key={product.sku}
-                className="flex items-center gap-3 rounded-lg bg-gray-800/50 p-3 border border-gray-700/50"
+                className='flex items-center gap-3 rounded-lg bg-gray-800/50 p-3 border border-gray-700/50'
               >
-                <div className="flex h-8 w-8 items-center justify-center rounded-full bg-gray-800 text-sm font-bold text-gray-400 flex-shrink-0">
+                <div className='flex h-8 w-8 items-center justify-center rounded-full bg-gray-800 text-sm font-bold text-gray-400 flex-shrink-0'>
                   {i + 1}
                 </div>
-                <div className="flex-1 min-w-0">
-                  <p className="text-sm font-medium text-white truncate">
-                    {product.name}
-                  </p>
-                  <p className="text-xs text-gray-500">{product.collection}</p>
+                <div className='flex-1 min-w-0'>
+                  <p className='text-sm font-medium text-white truncate'>{product.name}</p>
+                  <p className='text-xs text-gray-500'>{product.collection}</p>
                 </div>
-                <div className="flex items-center gap-1 flex-shrink-0">
-                  <Zap className="h-3 w-3 text-[#D4AF37]" />
-                  <span className="text-sm font-bold text-[#D4AF37] tabular-nums">
-                    {product.heatScore}
-                  </span>
+                <div className='flex items-center gap-1 flex-shrink-0'>
+                  <Zap className='h-3 w-3 text-[#D4AF37]' />
+                  <span className='text-sm font-bold text-[#D4AF37] tabular-nums'>{product.heatScore}</span>
                 </div>
               </div>
             ))}
@@ -377,20 +329,11 @@ export function PersonalizationAnalytics() {
         </div>
 
         {/* Bottom Stats Row */}
-        <div className="grid gap-3 md:grid-cols-4 pt-4 border-t border-gray-800">
-          <MiniStat label="Mood Transitions" value={metrics.moodTransitions} />
-          <MiniStat
-            label="Recently Viewed Clicks"
-            value={metrics.recentlyViewedClicks}
-          />
-          <MiniStat
-            label="Bundle Suggestions"
-            value={metrics.bundleSuggestions}
-          />
-          <MiniStat
-            label="Rec. Clicks"
-            value={metrics.recommendationClicks}
-          />
+        <div className='grid gap-3 md:grid-cols-4 pt-4 border-t border-gray-800'>
+          <MiniStat label='Mood Transitions' value={metrics.moodTransitions} />
+          <MiniStat label='Recently Viewed Clicks' value={metrics.recentlyViewedClicks} />
+          <MiniStat label='Bundle Suggestions' value={metrics.bundleSuggestions} />
+          <MiniStat label='Rec. Clicks' value={metrics.recommendationClicks} />
         </div>
       </CardContent>
     </Card>
@@ -411,28 +354,25 @@ function MetricCard({
   color: string;
 }) {
   return (
-    <div className="rounded-xl bg-gray-800/50 border border-gray-700/50 p-4">
-      <div className="flex items-center justify-between mb-2">
-        <span className="text-xs font-medium text-gray-400 uppercase tracking-wider">
-          {label}
-        </span>
-        <div
-          className="h-8 w-8 rounded-lg flex items-center justify-center"
-          style={{ backgroundColor: `${color}15` }}
-        >
-          <span style={{ color }}><Icon className="h-4 w-4" /></span>
+    <div className='rounded-xl bg-gray-800/50 border border-gray-700/50 p-4'>
+      <div className='flex items-center justify-between mb-2'>
+        <span className='text-xs font-medium text-gray-400 uppercase tracking-wider'>{label}</span>
+        <div className='h-8 w-8 rounded-lg flex items-center justify-center' style={{ backgroundColor: `${color}15` }}>
+          <span style={{ color }}>
+            <Icon className='h-4 w-4' />
+          </span>
         </div>
       </div>
-      <p className="text-2xl font-bold text-white tabular-nums">{value}</p>
+      <p className='text-2xl font-bold text-white tabular-nums'>{value}</p>
     </div>
   );
 }
 
 function MiniStat({ label, value }: { label: string; value: number }) {
   return (
-    <div className="text-center">
-      <p className="text-lg font-bold text-white tabular-nums">{value}</p>
-      <p className="text-xs text-gray-500">{label}</p>
+    <div className='text-center'>
+      <p className='text-lg font-bold text-white tabular-nums'>{value}</p>
+      <p className='text-xs text-gray-500'>{label}</p>
     </div>
   );
 }
