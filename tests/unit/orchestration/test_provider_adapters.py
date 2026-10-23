@@ -34,9 +34,7 @@ def test_router_uses_exact_adapter_and_bounded_output(provider):
                 "stop_reason": "end_turn",
             },
             "google": {
-                "candidates": [
-                    {"content": {"parts": [{"text": output}]}, "finishReason": "STOP"}
-                ],
+                "candidates": [{"content": {"parts": [{"text": output}]}, "finishReason": "STOP"}],
                 "usageMetadata": {"promptTokenCount": 3, "candidatesTokenCount": 4},
             },
             "cohere": {

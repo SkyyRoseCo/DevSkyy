@@ -10,6 +10,7 @@ Source baseline: DevSkyy `7a31ed0d0fa178df3c160bceae60fc16fbbab5f2`.
 | Frontend type check and changed-file lint | PASS | TypeScript and ESLint |
 | Frontend production build | PASS | 90 routes, including /admin/god-mode; existing tracing/chart warnings |
 | SOL independent review | PASS | No remaining P0/P1 in bounded execution/recovery review |
+| Repository-wide CI security audit | FAIL | Existing root lockfile reports 3 critical production dependency advisories; dependency files unchanged by this PR |
 | Real desktop/mobile browser interaction | BLOCKED | Chromium downloads failed with invalid archives in this environment |
 | Live provider credential validation and paid call receipts | NOT RUN | No live provider credential/budget grant used |
 | Backend production deployment and persistent-volume routing | NOT RUN | Requires deployment/configuration of designated instance |

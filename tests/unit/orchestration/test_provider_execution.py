@@ -65,9 +65,7 @@ class Adapter:
         result = next(self.outputs)
         if isinstance(result, Exception):
             raise result
-        return dict(
-            content=json.dumps(result), model=model, input_tokens=20, output_tokens=30
-        )
+        return dict(content=json.dumps(result), model=model, input_tokens=20, output_tokens=30)
 
     async def close(self):
         self.closed = True
@@ -87,9 +85,7 @@ class Tools:
 
 def run(store, req, adapter, tools=None):
     record, _ = store.reserve("owner", "unique-key", req)
-    asyncio.run(
-        m.execute_run(store, "owner", record["id"], req, adapter, tools or Tools())
-    )
+    asyncio.run(m.execute_run(store, "owner", record["id"], req, adapter, tools or Tools()))
     return store.get("owner", record["id"])
 
 
@@ -137,9 +133,7 @@ def test_call_budget(store):
 def test_atomic_duplicate_reservation(store):
     with ThreadPoolExecutor(max_workers=8) as pool:
         results = list(
-            pool.map(
-                lambda _: store.reserve("owner", "unique-key", request()), range(8)
-            )
+            pool.map(lambda _: store.reserve("owner", "unique-key", request()), range(8))
         )
     assert sum(created for _, created in results) == 1
     assert len({record["id"] for record, _ in results}) == 1
@@ -180,9 +174,7 @@ def test_cancel_wins_completion_race(store):
     record, _ = store.reserve("owner", "unique-key", request())
     store.update("owner", record["id"], state="running")
     store.update("owner", record["id"], state="cancel_requested")
-    result = store.update(
-        "owner", record["id"], state="completed", output="late result"
-    )
+    result = store.update("owner", record["id"], state="completed", output="late result")
     assert result["state"] == "cancelled" and result["output"] is None
 
 
@@ -221,9 +213,7 @@ def test_budget_refuses_before_paid_call(store):
 def test_claim_does_not_overwrite_cancellation(store):
     record, _ = store.reserve("owner", "unique-key", request())
     store.update("owner", record["id"], state="cancel_requested")
-    assert (
-        store.update("owner", record["id"], state="running", expected="queued") is None
-    )
+    assert store.update("owner", record["id"], state="running", expected="queued") is None
     assert store.get("owner", record["id"])["state"] == "cancel_requested"
 
 
@@ -233,10 +223,7 @@ def test_terminal_state_survives_late_updates(store):
     with store.db() as db:
         db.execute("UPDATE provider_runs SET deadline=?", (time.time() - 1,))
     assert store.get("owner", record["id"])["state"] == "completed"
-    assert (
-        store.update("owner", record["id"], state="cancel_requested")["state"]
-        == "completed"
-    )
+    assert store.update("owner", record["id"], state="cancel_requested")["state"] == "completed"
 
 
 def test_missing_pricing_refuses_call(store, monkeypatch):
@@ -275,9 +262,7 @@ def test_http_owner_gate_and_end_to_end(tmp_path, monkeypatch):
 
     class ReadyAdapter(Adapter):
         def __init__(self):
-            super().__init__(
-                [{"action": "final", "output": "Verified transport result"}]
-            )
+            super().__init__([{"action": "final", "output": "Verified transport result"}])
 
         def providers(self):
             return [
@@ -328,8 +313,10 @@ def test_http_owner_gate_and_end_to_end(tmp_path, monkeypatch):
         )
         # Recovery must survive disabled execution and removed provider/tool policy.
         monkeypatch.setenv("GODMODE_EXECUTION_ENABLED", "0")
+
         def forbidden_adapter():
             raise AssertionError("Replay must not construct a provider")
+
         monkeypatch.setattr(api, "RouterAdapter", forbidden_adapter)
         replay = client.post(
             base + "/runs", json=request(), headers={"Idempotency-Key": "http-key"}

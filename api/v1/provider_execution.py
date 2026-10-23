@@ -30,9 +30,7 @@ def execution_instance() -> None:
     designated = os.getenv("GODMODE_EXECUTION_INSTANCE")
     current = os.getenv("FLY_MACHINE_ID") or socket.gethostname()
     if not designated or designated != current:
-        raise HTTPException(
-            503, "Route execution requests to the designated persistent instance"
-        )
+        raise HTTPException(503, "Route execution requests to the designated persistent instance")
 
 
 def store() -> RunStore:
@@ -65,9 +63,7 @@ async def providers(user_id: str = Depends(owner)):
 
 
 @router.post("/runs", status_code=202)
-async def submit(
-    request: dict, idempotency_key: str = Header(...), user_id: str = Depends(owner)
-):
+async def submit(request: dict, idempotency_key: str = Header(...), user_id: str = Depends(owner)):
     execution_instance()
     adapter = None
     transferred = False
@@ -80,17 +76,13 @@ async def submit(
         if os.getenv("GODMODE_EXECUTION_ENABLED") != "1":
             raise HTTPException(503, "Provider execution is disabled on this server")
         adapter = RouterAdapter()
-        available = {
-            p["id"]: p for p in adapter.providers() if p["enabled"] and p["configured"]
-        }
+        available = {p["id"]: p for p in adapter.providers() if p["enabled"] and p["configured"]}
         selected = available.get(request["provider"])
         if not selected:
             raise RunError("Provider is not configured and enabled")
         models = set(selected["models"])
         if request["provider"] == "litellm":
-            models &= set(
-                filter(None, os.getenv("GODMODE_LITELLM_MODELS", "").split(","))
-            )
+            models &= set(filter(None, os.getenv("GODMODE_LITELLM_MODELS", "").split(",")))
         if request["model"] not in models:
             raise RunError("Model is not enabled in this provider configuration")
         toolset = RegistryTools(user_id)
