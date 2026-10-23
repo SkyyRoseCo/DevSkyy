@@ -163,7 +163,7 @@
     "vite": "8.2.4",
     "vue": "^3.5.25",
     "winston": "^3.19.0",
-    "zod": "^4.3.6"
+    "zod": "^4.6.6"
   },
   "scripts": {
     "build": "tsc --project config/typescript/tsconfig.json",
@@ -300,6 +300,32 @@
     },
     "fast-json-stringify": {
       "fast-uri": ">=4.2.1"
+    },
+    "katex": ">=0.18.2",
+    "uuid": ">=11.1.1",
+    "@copilotkit/react-core": {
+      "zod": ">=4.6.6"
+    },
+    "@copilotkit/react-ui": {
+      "zod": ">=4.6.6"
+    },
+    "@copilotkit/runtime": {
+      "zod": ">=4.6.6"
+    },
+    "@ag-ui/client": {
+      "zod": ">=4.6.6"
+    },
+    "@ag-ui/proto": {
+      "zod": ">=4.6.6"
+    },
+    "@vercel/cli-config": {
+      "zod": ">=4.6.6"
+    },
+    "@vercel/sandbox": {
+      "zod": ">=4.6.6"
+    },
+    "satori": {
+      "fflate": ">=0.7.5"
     }
   }
 }
