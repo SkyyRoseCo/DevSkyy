@@ -16,6 +16,7 @@ from uuid import uuid4
 from fastapi import APIRouter, Depends, HTTPException, status
 from pydantic import BaseModel, Field
 
+from api.v1.provider_execution import router as provider_execution_router
 from security.jwt_oauth2_auth import TokenPayload, get_current_user
 
 # Configure logging
@@ -23,6 +24,7 @@ logger = logging.getLogger(__name__)
 
 # Create router
 router = APIRouter(prefix="/orchestration", tags=["Orchestration"])
+router.include_router(provider_execution_router)
 
 
 # =============================================================================

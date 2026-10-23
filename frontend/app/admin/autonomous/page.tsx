@@ -1,5 +1,7 @@
 'use client'
 
+import Link from 'next/link'
+
 import { useState, useEffect, useCallback } from 'react'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
@@ -149,6 +151,8 @@ export default function AutonomousAgentsPage() {
                     {error}
                 </div>
             )}
+
+            <Link href="/admin/god-mode" className="inline-block rounded bg-rose-600 px-4 py-3 font-semibold">Run a God Mode mission</Link>
 
             {/* Summary */}
             <div className="grid grid-cols-3 gap-4">
