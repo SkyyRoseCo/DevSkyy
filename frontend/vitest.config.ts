@@ -17,7 +17,12 @@ import { defineConfig } from 'vitest/config';
 export default defineConfig({
   test: {
     environment: 'node',
-    include: ['lib/wp/**/*.test.ts', 'tests/**/*.test.ts'],
+    include: [
+      'lib/wp/**/*.test.ts', 'tests/**/*.test.ts',
+      // Bounded provider client and isolated React form with mocked API transport.
+      'lib/api/endpoints/god-mode.test.ts',
+      'app/admin/god-mode/page.test.tsx',
+    ],
     // tests/e2e is Playwright's (playwright.config.ts testDir) — running those
     // specs under vitest fails on missing Playwright globals, not on the code.
     exclude: ['**/node_modules/**', '**/.git/**', 'tests/e2e/**'],
