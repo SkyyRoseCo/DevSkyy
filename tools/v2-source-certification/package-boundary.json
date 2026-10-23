@@ -4545,6 +4545,51 @@
       "category": "RUNTIME SOURCE",
       "reason": "Phase3B reviewed page implementation",
       "release": true
+    },
+    "assets/video/collection-heroes/approved/kids-capsule/runway-r9/hero.mp4": {
+      "release": true,
+      "category": "RUNTIME MEDIA",
+      "reason": "Founder-directed Kids runway integration; source-bound native render"
+    },
+    "assets/video/collection-heroes/approved/kids-capsule/runway-r9/hero.webm": {
+      "release": true,
+      "category": "RUNTIME MEDIA",
+      "reason": "Founder-directed Kids runway integration; source-bound native render"
+    },
+    "assets/video/collection-heroes/approved/kids-capsule/runway-r9/poster.webp": {
+      "release": true,
+      "category": "RUNTIME MEDIA",
+      "reason": "Founder-directed Kids runway integration; source-bound native render"
+    },
+    "data/v2-media-reviews/kids-runway-r9-integration-20261023.json": {
+      "release": true,
+      "category": "RUNTIME SOURCE",
+      "reason": "Hash-bound Kids authorization required by main source media gate"
+    },
+    "assets/video/collection-heroes/approved/kids-capsule/runway-r10/hero.mp4": {
+      "release": true,
+      "category": "RUNTIME MEDIA",
+      "reason": "Founder-directed Kids runway integration; source-bound native render"
+    },
+    "assets/video/collection-heroes/approved/kids-capsule/runway-r10/hero.webm": {
+      "release": true,
+      "category": "RUNTIME MEDIA",
+      "reason": "Founder-directed Kids runway integration; source-bound native render"
+    },
+    "assets/video/collection-heroes/approved/kids-capsule/runway-r10/poster.webp": {
+      "release": true,
+      "category": "RUNTIME MEDIA",
+      "reason": "Founder-directed Kids runway integration; source-bound native render"
+    },
+    "data/v2-media-reviews/kids-runway-r10-integration-20261023.json": {
+      "release": true,
+      "category": "RUNTIME SOURCE",
+      "reason": "Hash-bound Kids authorization required by main source media gate"
+    },
+    "data/v2-media-reviews/kids-motion-retained-before-r10.json": {
+      "release": false,
+      "category": "AUTHORING ONLY",
+      "reason": "Historical ownership of superseded Kids movie binaries; not display authority"
     }
   },
   "schema": "skyyrose.v2.package-boundary.v1"

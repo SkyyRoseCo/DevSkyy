@@ -1004,7 +1004,7 @@ function skyyrose2_collections() {
 			'name'             => __( 'Kids Capsule', 'skyyrose-flagship-2' ),
 			'kicker'           => __( 'The Heir', 'skyyrose-flagship-2' ),
 			'headline'         => __( 'The throne is already hers.', 'skyyrose-flagship-2' ),
-			'line'             => __( 'The Skyy mascot sits front and center, not waiting to inherit the house—already imagining what she will build inside it.', 'skyyrose-flagship-2' ),
+			'line'             => __( 'The Skyy mascot stands front and center, not waiting to inherit the house—already imagining what she will build inside it.', 'skyyrose-flagship-2' ),
 			'manifesto'        => __( 'Kids Capsule is not a smaller version of the house. It is the first room built for the next generation: confidence, imagination, and enough space to picture themselves at the center of the story.', 'skyyrose-flagship-2' ),
 			'world_heading'    => __( 'Enter the heir’s room.', 'skyyrose-flagship-2' ),
 			'world_intro'      => __( 'The throne comes first. Then the playroom, the runway, and every big idea still waiting for its name.', 'skyyrose-flagship-2' ),
@@ -1079,8 +1079,14 @@ function skyyrose2_collection_hero_motion( $slug, $responsive_hero ) {
 	$source_hash        = isset( $source['sha256'] ) ? (string) $source['sha256'] : '';
 	$source_path        = $source_file ? SKYYROSE2_DIR . '/' . $source_file : '';
 	$actual_source_hash = $source_path && is_file( $source_path ) ? hash_file( 'sha256', $source_path ) : '';
+	// Wiring authority is distinct from final creative acceptance for native Kids films.
+	$native_authorized = false;
+	if ( 'kids-capsule' === $slug && 'founder_integration_authorized' === ( $ai_motion['status'] ?? '' ) && function_exists( 'skyyrose2_media_inventory' ) ) {
+		$native_record = skyyrose2_media_inventory()['assets'][ $source_file ] ?? array();
+		$native_authorized = 'FOUNDER_DIRECTED_NATIVE_FILM' === ( $native_record['status'] ?? '' ) && skyyrose2_media_record_allowed( $source_file, $native_record, 'collection_hero_poster' );
+	}
 	if (
-		'founder_approved' !== ( $ai_motion['status'] ?? '' ) ||
+		( 'founder_approved' !== ( $ai_motion['status'] ?? '' ) && ! $native_authorized ) ||
 		! $expected_source ||
 		! hash_equals( $expected_source, $source_file ) ||
 		! $source_path ||

@@ -1,0 +1,171 @@
+{
+  "scope": "LIVE_PUBLIC_GET_HEAD_ONLY_VIEWPORT_EMULATION_NO_ORDERS_PAYMENTS_CONSENT",
+  "cases": [
+    {
+      "mode": "home",
+      "width": 390,
+      "status": "PASS",
+      "checks": [
+        "actual R10 media",
+        "one shot hold",
+        "full frame",
+        "reentry hold",
+        "explicit replay",
+        "no overflow"
+      ]
+    },
+    {
+      "mode": "kids",
+      "width": 390,
+      "status": "PASS",
+      "checks": [
+        "actual R10 media",
+        "one shot hold",
+        "full frame",
+        "reentry hold",
+        "explicit replay",
+        "no overflow"
+      ]
+    },
+    {
+      "mode": "menu",
+      "width": 390,
+      "status": "PASS",
+      "checks": [
+        "R10 closing poster decoded",
+        "large preview",
+        "escape focus"
+      ]
+    },
+    {
+      "mode": "home",
+      "width": 768,
+      "status": "PASS",
+      "checks": [
+        "actual R10 media",
+        "one shot hold",
+        "full frame",
+        "reentry hold",
+        "explicit replay",
+        "no overflow"
+      ]
+    },
+    {
+      "mode": "kids",
+      "width": 768,
+      "status": "PASS",
+      "checks": [
+        "actual R10 media",
+        "one shot hold",
+        "full frame",
+        "reentry hold",
+        "explicit replay",
+        "no overflow"
+      ]
+    },
+    {
+      "mode": "menu",
+      "width": 768,
+      "status": "PASS",
+      "checks": [
+        "R10 closing poster decoded",
+        "large preview",
+        "escape focus"
+      ]
+    },
+    {
+      "mode": "home",
+      "width": 1440,
+      "status": "PASS",
+      "checks": [
+        "actual R10 media",
+        "one shot hold",
+        "full frame",
+        "reentry hold",
+        "explicit replay",
+        "no overflow"
+      ]
+    },
+    {
+      "mode": "kids",
+      "width": 1440,
+      "status": "PASS",
+      "checks": [
+        "actual R10 media",
+        "one shot hold",
+        "full frame",
+        "reentry hold",
+        "explicit replay",
+        "no overflow"
+      ]
+    },
+    {
+      "mode": "menu",
+      "width": 1440,
+      "status": "PASS",
+      "checks": [
+        "R10 closing poster decoded",
+        "large preview",
+        "escape focus"
+      ]
+    },
+    {
+      "mode": "home",
+      "variant": "reduced-motion",
+      "width": 390,
+      "status": "PASS"
+    },
+    {
+      "mode": "kids",
+      "variant": "reduced-motion",
+      "width": 390,
+      "status": "PASS"
+    }
+  ],
+  "blocked": [
+    {
+      "method": "POST",
+      "url": "https://skyyrose.co/",
+      "time": 1792765061129
+    },
+    {
+      "method": "POST",
+      "url": "https://skyyrose.co/",
+      "time": 1792765073803
+    },
+    {
+      "method": "POST",
+      "url": "https://skyyrose.co/",
+      "time": 1792765085495
+    },
+    {
+      "method": "POST",
+      "url": "https://skyyrose.co/",
+      "time": 1792765090377
+    },
+    {
+      "method": "POST",
+      "url": "https://skyyrose.co/",
+      "time": 1792765093779
+    },
+    {
+      "method": "POST",
+      "url": "https://skyyrose.co/",
+      "time": 1792765099552
+    },
+    {
+      "method": "POST",
+      "url": "https://skyyrose.co/",
+      "time": 1792765106586
+    },
+    {
+      "method": "POST",
+      "url": "https://skyyrose.co/",
+      "time": 1792765107473
+    }
+  ],
+  "pageErrors": [],
+  "errors": [],
+  "unattributedErrors": [],
+  "status": "PASS"
+}
