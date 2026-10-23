@@ -6,6 +6,7 @@ from __future__ import annotations
 import hashlib
 import json
 import re
+import subprocess
 from pathlib import Path
 
 THEME = Path(__file__).resolve().parents[1]
@@ -37,6 +38,9 @@ EXPECTED_SOURCES = {
         for slug in FILM_COLLECTIONS
     },
 }
+EXPECTED_SOURCES["kids-capsule"] = (
+    "assets/video/collection-heroes/approved/kids-capsule/runway-r10/poster.webp"
+)
 REQUIRED_SAFEGUARDS = {
     "load_only_in_view",
     "pause_offscreen",
@@ -192,6 +196,71 @@ def validate_founder_film(slug: str, ai_motion: dict, source_file: str, max_byte
             raise ValueError(f"{slug} receipt does not authorize {file}")
 
 
+def validate_native_kids(slug: str, motion: dict, source: str, max_bytes: int) -> None:
+    """Native integration is admitted by the same receipt gate as runtime, never AI approval."""
+    if slug != "kids-capsule" or source != EXPECTED_SOURCES["kids-capsule"]:
+        raise ValueError("Native film is outside Kids boundary")
+    if (
+        motion.get("status") != "founder_integration_authorized"
+        or motion.get("production_method") != "CONTROLLED_RENDER"
+    ):
+        raise ValueError("Native film integration status drift")
+    inventory = json.loads(ELIGIBILITY.read_text())["assets"]
+    binding = inventory[source].get("authorization", {})
+    receipt_path = validate_asset(
+        {"file": binding.get("path"), "sha256": binding.get("sha256")}, "native receipt"
+    )
+    receipt = json.loads(receipt_path.read_text())
+    if (
+        motion.get("master", {}).get("sha256") != receipt.get("native_master_sha256")
+        or motion.get("founder_approval_note") != receipt.get("decision_text")
+        or motion.get("provider_attempt") != {"status": "not_applicable", "submitted_count": 0}
+    ):
+        raise ValueError("Native film master or directive drift")
+    root = str(Path(source).parent) + "/"
+    web = motion.get("web")
+    if (
+        not isinstance(web, list)
+        or len(web) != 2
+        or not all(isinstance(item, dict) for item in web)
+        or sorted(item.get("file", "") for item in web) != [root + "hero.mp4", root + "hero.webm"]
+    ):
+        raise ValueError("Native film delivery boundary drift")
+    files = [source] + [item["file"] for item in web]
+    if set(receipt.get("assets", {})) != set(files):
+        raise ValueError("Native receipt asset coverage drift")
+    for item in web:
+        path = validate_asset(item, "native video")
+        if path.stat().st_size > max_bytes or item.get("bytes") != path.stat().st_size:
+            raise ValueError("Native video byte budget drift")
+    for file in files:
+        role = "collection_hero_poster" if file == source else "collection_hero_video"
+        delivered_hash = sha256(THEME / file)
+        if (
+            inventory.get(file, {}).get("authorization") != binding
+            or receipt["assets"][file].get("sha256") != delivered_hash
+            or receipt["assets"][file].get("role") != role
+        ):
+            raise ValueError("Native film assets do not share one coherent receipt")
+    # Reuse the authoritative PHP record/receipt gate rather than copy its permission rules.
+    probe = """define('ABSPATH', $argv[1] . '/'); define('SKYYROSE2_DIR', $argv[1]);
+    function add_action(...$a) {} function add_filter(...$a) {}
+    require SKYYROSE2_DIR . '/inc/v2-media-eligibility.php';
+    foreach (json_decode($argv[2], true) as $file) {
+        $record = skyyrose2_media_inventory()['assets'][$file] ?? array();
+        $role = str_ends_with($file, 'poster.webp') ? 'collection_hero_poster' : 'collection_hero_video';
+        if (($record['status'] ?? '') !== 'FOUNDER_DIRECTED_NATIVE_FILM' || !skyyrose2_media_record_allowed($file, $record, $role)) { exit(1); }
+    }"""
+    result = subprocess.run(
+        ["php", "-r", probe, str(THEME), json.dumps(files)],
+        capture_output=True,
+        text=True,
+        timeout=30,
+    )
+    if result.returncode:
+        raise ValueError("Native film runtime authorization gate refused assets")
+
+
 MEDIA_GATE = "inc/v2-media-eligibility.php"
 
 
@@ -261,11 +330,16 @@ def validate_home_journal(source: str) -> None:
 def validate_home_collection(source: str) -> None:
     """The homepage must consume the same collection hero resolver as arrivals."""
     if not re.search(
-        r"\$chapter_motion\s*=\s*skyyrose2_collection_hero_motion\(\s*\$slug,\s*"
+        r"\$chapter_motion\s*=\s*\$chapter_cinema\['motion'\]\s*\?\?\s*skyyrose2_collection_hero_motion\(\s*\$slug,\s*"
         r"\$collection\['hero'\]\s*\)",
         source,
     ):
         raise ValueError("homepage collection is not bound to its destination hero")
+    if not re.search(
+        r"\$chapter_cinema\s*=\s*'kids-capsule'\s*===\s*\$slug\s*\?\s*skyyrose2_collection_cinema\(\s*\$slug\s*\)\s*:\s*array\(\)",
+        source,
+    ):
+        raise ValueError("homepage Kids cinema is not bound to its destination hero")
     if len(re.findall(r"<\s*video\b", source, re.IGNORECASE)) != 1:
         raise ValueError("homepage collection must emit exactly one video opening tag")
     videos = re.findall(r"<video\b.*?</video\s*>", source, re.DOTALL | re.IGNORECASE)
@@ -333,9 +407,12 @@ def main() -> int:
             raise ValueError(f"{slug} has no exact-pixel motion treatment")
         ai_motion = collection.get("ai_motion", {})
         status = ai_motion.get("status") if isinstance(ai_motion, dict) else None
-        if status not in AI_STATUSES:
+        native = slug == "kids-capsule" and status == "founder_integration_authorized"
+        if status not in AI_STATUSES and not native:
             raise ValueError(f"{slug} has unsupported AI motion status: {status}")
-        if slug in FILM_COLLECTIONS:
+        if native:
+            validate_native_kids(slug, ai_motion, source_record["file"], max_bytes)
+        elif slug in FILM_COLLECTIONS:
             validate_founder_film(slug, ai_motion, source_record["file"], max_bytes)
         else:
             validate_ai_assets(slug, ai_motion, status, max_bytes)

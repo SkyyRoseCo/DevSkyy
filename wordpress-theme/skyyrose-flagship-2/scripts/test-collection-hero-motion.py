@@ -4,6 +4,7 @@
 import copy
 import importlib.util
 import json
+import tempfile
 import unittest
 from pathlib import Path
 from unittest.mock import patch
@@ -127,6 +128,76 @@ class FounderFilmTests(unittest.TestCase):
         with patch.object(validator.json, "loads", return_value={}):
             with self.assertRaisesRegex(ValueError, "no founder authorization"):
                 validator.film_receipt("signature", self.poster)
+
+
+class NativeKidsTests(unittest.TestCase):
+    def setUp(self):
+        manifest = json.loads(validator.MANIFEST.read_text())
+        self.motion = manifest["collections"]["kids-capsule"]["ai_motion"]
+        self.poster = manifest["collections"]["kids-capsule"]["source"]["file"]
+        self.budget = manifest["runtime"]["performance"]["max_web_asset_bytes"]
+
+    def check(self, slug="kids-capsule"):
+        validator.validate_native_kids(slug, self.motion, self.poster, self.budget)
+
+    def test_current_native_receipt_passes_real_php_gate(self):
+        self.check()
+
+    def test_native_cannot_authorize_another_collection(self):
+        with self.assertRaisesRegex(ValueError, "Kids boundary"):
+            self.check("signature")
+
+    def test_changed_native_master_refused(self):
+        self.motion["master"]["sha256"] = "0" * 64
+        with self.assertRaisesRegex(ValueError, "master or directive"):
+            self.check()
+
+    def test_native_does_not_claim_ai_approval(self):
+        self.motion["status"] = "founder_approved"
+        with self.assertRaisesRegex(ValueError, "status drift"):
+            self.check()
+
+    def test_changed_native_directive_refused(self):
+        self.motion["founder_approval_note"] = "unrelated authorization"
+        with self.assertRaisesRegex(ValueError, "master or directive"):
+            self.check()
+
+    def test_native_missing_codec_refused(self):
+        self.motion["web"].pop()
+        with self.assertRaisesRegex(ValueError, "delivery boundary"):
+            self.check()
+
+    def test_native_byte_budget_enforced(self):
+        self.budget = 1
+        with self.assertRaisesRegex(ValueError, "byte budget"):
+            self.check()
+
+    def test_video_cannot_use_a_different_receipt(self):
+        inventory = json.loads(validator.ELIGIBILITY.read_text())
+        video = self.motion["web"][0]["file"]
+        inventory["assets"][video]["authorization"] = inventory["assets"][video][
+            "authorization"
+        ] | {"path": "data/v2-media-reviews/other-valid-native-receipt.json"}
+        with tempfile.TemporaryDirectory() as directory:
+            path = Path(directory) / "inventory.json"
+            path.write_text(json.dumps(inventory))
+            with patch.object(validator, "ELIGIBILITY", path):
+                with self.assertRaisesRegex(ValueError, "coherent receipt"):
+                    self.check()
+
+    def test_native_runtime_gate_refusal_propagates(self):
+        with patch.object(
+            validator.subprocess, "run", return_value=validator.subprocess.CompletedProcess([], 1)
+        ):
+            with self.assertRaisesRegex(ValueError, "authorization gate refused"):
+                self.check()
+
+    def test_home_cannot_use_unscoped_cinema(self):
+        source = (validator.THEME / "template-parts/home/editorial-collection.php").read_text()
+        with self.assertRaisesRegex(ValueError, "Kids cinema"):
+            validator.validate_home_collection(
+                source.replace("'kids-capsule' === $slug ?", "true ?")
+            )
 
 
 class MediaGateExemptionTests(unittest.TestCase):

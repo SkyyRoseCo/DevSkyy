@@ -1,6 +1,6 @@
 # God Mode execution verification — 2026-10-23
 
-Source baseline: DevSkyy `7a31ed0d0fa178df3c160bceae60fc16fbbab5f2`.
+Source baseline: DevSkyy `9447d867e980a36720135993040edf72c492561e`; main dependency remediation and Kids release preserved during reconciliation.
 
 | Criterion | Result | Evidence |
 | --- | --- | --- |
@@ -10,7 +10,7 @@ Source baseline: DevSkyy `7a31ed0d0fa178df3c160bceae60fc16fbbab5f2`.
 | Frontend type check and changed-file lint | PASS | TypeScript and ESLint |
 | Frontend production build | PASS | 90 routes, including /admin/god-mode; existing tracing/chart warnings |
 | SOL independent review | PASS | No remaining P0/P1 in bounded execution/recovery and router-isolation review |
-| Production dependency audits | PASS at high/critical gate | Root: 0 high/critical (13 low/moderate remain); frontend: 0 production findings after compatible lockfile updates |
+| Production dependency audits | PASS at high/critical gate | Root and frontend: 0 high/critical; lower-severity findings remain in the reconciled main dependency graph |
 | Root TypeScript build and regression suite | PASS | 690 tests across 27 files |
 | Desktop/mobile browser interaction | PASS offline | Six Chromium tests against production Next.js build: mission submission, receipt, retry across reload, cancellation; intercepted provider/auth responses, no live paid calls |
 | Live provider credential validation and paid call receipts | NOT RUN | No live provider credential/budget grant used |
