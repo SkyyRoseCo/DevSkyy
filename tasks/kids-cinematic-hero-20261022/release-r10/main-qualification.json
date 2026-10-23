@@ -1,0 +1,29 @@
+{
+  "status": "PASS_LOCAL_MAIN_PORT",
+  "base": "7a31ed0d0fa178df3c160bceae60fc16fbbab5f2",
+  "source_release": "39be71dc9607642cc2191d4450e4ca5d7fb8238f",
+  "scope": "Main-compatible adaptation; not same738-file deployed tree; no live mutation",
+  "browser_cases": 12,
+  "browser_evidence": "main-browser-checks.json",
+  "source_gate_assertions": 21,
+  "tamper_missing_cases": 11,
+  "adult_collection_markup_parity": 3,
+  "asset_build_check": "PASS pinned25CSS17JS and criticalCSS",
+  "registry_projection_check": "PASS",
+  "preserved": [
+    "main media architecture",
+    "main non-Kids inventory records",
+    "product and commerce files",
+    "live rollback and existing orders"
+  ],
+  "limitations": [
+    "Synthetic WordPress adapters, not installed-stack proof",
+    "Historical deployment evidence is separately labeled",
+    "Main existing adult films unavailable in fixture; adult emittedmarkup compared unchanged"
+  ],
+  "utc": "2026-10-23T16:40:44.493513+00:00",
+  "existing_media_gate_regression": "PASS",
+  "menu_stage": "ExactR10poster currentSrc and successful decode asserted at390/768/1440; Escape restores opener focus",
+  "native_film_validator_tests": 30,
+  "fallback_scope": "Real templates for home, Kids arrival and Lookbook plus menu; missing/tampered MP4/WebM retains verified poster and no video controls"
+}

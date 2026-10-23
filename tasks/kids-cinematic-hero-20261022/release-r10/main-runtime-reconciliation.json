@@ -1,0 +1,35 @@
+{
+  "scope": "LOCAL_MAIN_PORT_SOURCE_IDENTITY_NOT_DEPLOYMENT",
+  "base_commit": "7a31ed0d0fa178df3c160bceae60fc16fbbab5f2",
+  "changes": {
+    "functions.php": {
+      "base_sha256": "4e3c336754fe3f07b03bfa45ce519c57fcdd972959308c2d59f6b89e06106415",
+      "kids_release_sha256": "6108ba652645efba68db98eb959093b8fa5f880819951fe766b9dfa02b00a584"
+    },
+    "inc/global-shell.php": {
+      "base_sha256": "719edd41f8100d5eb68449cabfddcd1eefbb9736831030015638479ae02d3a80",
+      "kids_release_sha256": "1cf3b29d63c8221b52283240c0024ea06ae80228b5a8395c490422c92585b415"
+    },
+    "inc/v2-media-eligibility.php": {
+      "base_sha256": "f82fb4f17ef77be47a484a8f01b12ebd085c1f0d6ece26655ea24827eb558a36",
+      "kids_release_sha256": "c010c0360852d88197bf513daaf2198497c96dd44bc5663a3c2f5a4fa3c1d3f5"
+    },
+    "page-lookbook.php": {
+      "base_sha256": "3e7834ec1568e2d4c3ef336ab7eed1124f91e74548651b59499e02e7897546e3",
+      "kids_release_sha256": "2ca7d6985f042aae0694753cf4ea27846b1e1c43f04f5abc93a4bbc533ab3e6d"
+    },
+    "template-parts/collections/arrival.php": {
+      "base_sha256": "f3cdbf10230590006d03910ea9b65d8f469625ca47d75dc0f00c8b09897d7cc2",
+      "kids_release_sha256": "b3b9ceca5421f1bfedd2ec2eabc86db618fe63fce5dc89e220887f2345fa4c8f"
+    },
+    "template-parts/home/editorial-collection.php": {
+      "base_sha256": "248f2a752611cf463b8a0e2cc52d23ce8cd587a9313904475dcd2e51fdee11c2",
+      "kids_release_sha256": "b1c0a19dea6d94bfcd2f6ab454b416b126b5f5a3e4f8ec14034380d77160e1de"
+    }
+  },
+  "evidence": [
+    "main-browser-checks.json",
+    "main-integrity-fixtures.json",
+    "main-adult-markup-parity.json"
+  ]
+}
