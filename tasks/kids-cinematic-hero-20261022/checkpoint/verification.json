@@ -1,0 +1,36 @@
+{
+  "checked_utc": "2026-10-23T01:13:58.265192+00:00",
+  "scope": "Static checkpoint and previously committed artwork adapter; not a revised film or live site",
+  "component_tests": {
+    "status": "PASS",
+    "tests": 61,
+    "targets": [
+      "skyyrose/elite_studio/tests/test_artwork_patch.py",
+      "tests/test_local_composite.py"
+    ]
+  },
+  "registry_projection_check": "PASS",
+  "protected_preexisting_inputs_unchanged": 7,
+  "portable_preview": {
+    "status": "PASS",
+    "viewports": [390, 768, 1440],
+    "javascript": "disabled",
+    "reduced_motion": "reduce",
+    "both_images_decoded": true,
+    "all_local_references_exist": true,
+    "horizontal_overflow": false,
+    "page_errors": 0
+  },
+  "exact_media_hashes": "PASS",
+  "secret_scan": {
+    "checkpoint": "PASS default built-in rules; no repository allowlist",
+    "prior_unpushed_commit_f0048f91": "PASS default built-in rules; no repository allowlist"
+  },
+  "retained_failures": [
+    "First component invocation named the wrong test path; no tests ran. Corrected explicit pair passed 61 tests.",
+    "Worktree-local Prettier invocation could not resolve installed plugins. Running the same config from installed main runtime succeeded; no dependency download."
+  ],
+  "deployment": false,
+  "new_provider_calls": 0,
+  "full_repository_ci": "NOT_RUN; unrelated to isolated static checkpoint"
+}

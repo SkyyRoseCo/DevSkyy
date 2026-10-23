@@ -1,0 +1,42 @@
+{
+  "version": 1,
+  "purpose": "Portable static review checkpoint; no production entrypoint",
+  "status": "STATIC_COMPONENTS_ONLY_ANIMATION_IN_REVISION",
+  "founder_acceptance": "Not asserted by technical review or Git publication",
+  "deployment": false,
+  "paid_calls": 0,
+  "assets": [
+    {
+      "path": "media/runway-r4.png",
+      "historical_source": ".artifacts/kids-cinematic-hero-20261022/aligned-whole-runway-r4.png",
+      "sha256": "286abaab35c48a80806f0430965cce3ec555d1d5fd0c8067312f0456cbe5b647",
+      "bytes": 2388860,
+      "dimensions": [1672, 941]
+    },
+    {
+      "path": "media/courtyard-r7.png",
+      "historical_source": ".artifacts/kids-courtyard-artwork-repair-20261022/closing-corrected-r7.png",
+      "sha256": "d8062f09e01b1c63fe736bc4b52dae65a79f5b600259857d4ecc80e54998cc79",
+      "bytes": 2402917,
+      "dimensions": [941, 1672]
+    }
+  ],
+  "excluded": [
+    "Seven pre-existing catalog/source changes",
+    "Unfinished R6 renderers and retarget development",
+    "Rejected R5 movie and player",
+    "Native frames and diagnostics"
+  ],
+  "historical_context": {
+    "previous_courtyard_hero_commit": "f0048f91bf9eb6c23839f039436070eb76dbb12a",
+    "previous_courtyard_hero": "SUPERSEDED: founder rejected generic hero direction; corrected R7 closing remains the requested closing source",
+    "r5_animation": "FOUNDER_CHANGES_REQUIRED: rejected pop-in and walk. Earlier decoding/player passes do not establish creative acceptance",
+    "r6": "IN_REVISION: physical lift, recovered original library walk, cinematic lights/glints and walking push-in; not qualified or included as a film"
+  },
+  "creative_job": {
+    "r4_job": "kids-aligned-whole-runway-r4-20261022",
+    "method": "Existing source-bound still; this checkpoint copies exact retained bytes, no generation",
+    "prompting_reference": "/Users/theceo/.codex/creative-standards/imagery-prompting.md"
+  },
+  "scope": "Offline review; authentication not applicable"
+}

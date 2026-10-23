@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Kids Capsule — retained artwork</title>
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'none'; img-src 'self'; style-src 'unsafe-inline'; base-uri 'none'; form-action 'none'"
+    />
+    <style>
+      :root {
+        color-scheme: dark;
+        font-family: system-ui, sans-serif;
+        background: #100c09;
+        color: #f7e9dc;
+      }
+      body {
+        margin: 0;
+      }
+      main {
+        width: min(1440px, 100%);
+        margin-inline: auto;
+      }
+      header,
+      figcaption,
+      footer {
+        padding: 1.5rem clamp(1rem, 4vw, 3rem);
+      }
+      h1 {
+        margin: 0 0 0.65rem;
+        font-size: clamp(1.7rem, 4vw, 2.6rem);
+      }
+      p {
+        max-width: 70ch;
+        line-height: 1.6;
+        margin-block: 0.5rem;
+      }
+      figure {
+        margin: 0 0 2rem;
+      }
+      img {
+        display: block;
+        width: 100%;
+        height: auto;
+      }
+      .closing {
+        max-height: 80vh;
+        object-fit: contain;
+        background: #080604;
+      }
+      figcaption {
+        color: #ddc3ac;
+        line-height: 1.5;
+      }
+      a {
+        color: #f3c99c;
+        text-underline-offset: 0.2em;
+      }
+      a:focus-visible {
+        outline: 2px solid #f3c99c;
+        outline-offset: 4px;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <header>
+        <h1>Kids Capsule</h1>
+        <p>
+          Retained runway artwork and corrected courtyard closing. Static review checkpoint; the revised animation is
+          still in progress.
+        </p>
+      </header>
+      <figure>
+        <a href="media/runway-r4.png">
+          <img
+            src="media/runway-r4.png"
+            width="1672"
+            height="941"
+            alt="Dark arched salon with large gold and rose-gold Kids Capsule lettering on the left; an angled illuminated runway leads to a centered rose statue at the far end."
+          />
+        </a>
+        <figcaption>Runway R4 — the existing source image, preserved at full size.</figcaption>
+      </figure>
+      <figure>
+        <a href="media/courtyard-r7.png">
+          <img
+            class="closing"
+            src="media/courtyard-r7.png"
+            width="941"
+            height="1672"
+            alt="Corrected courtyard closing shot with Skyy and both Kids colorways using the retained product-source artwork."
+          />
+        </a>
+        <figcaption>Courtyard R7 — the corrected closing source, contained without cropping.</figcaption>
+      </figure>
+      <footer>
+        <p>
+          The earlier hero and R5 animation are superseded creative candidates. The next film needs the physical lift
+          and revised walk before review.
+        </p>
+        <p>
+          <a href="README.md">Checkpoint notes</a>
+          ·
+          <a href="manifest.json">Source record</a>
+          ·
+          <a href="camera-direction.json">Walk camera direction</a>
+        </p>
+        <p>No live changes or deployment.</p>
+      </footer>
+    </main>
+  </body>
+</html>

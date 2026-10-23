@@ -1,0 +1,17 @@
+{
+  "status": "CONFIGURED_NOT_ANIMATED_OR_QUALIFIED",
+  "method": "baked_whole_composite_push",
+  "wide_hold_until_seconds": 6,
+  "push_start_seconds": 6,
+  "push_end_seconds": 13.75,
+  "scale_from": 1,
+  "scale_to": 1.075,
+  "anchor": [0.61, 0.53],
+  "easing": "smoothstep",
+  "courtyard_cut_seconds": 14,
+  "duration_seconds": 16,
+  "preserve_full_lettering_and_rose": true,
+  "mobile": "contained media; no separate runtime crop",
+  "reduced_motion": "static poster, explicit play only",
+  "adult_hero_comparison": "Adult film zoom is encoded in media; exact source authoring timing unavailable. These numbers are the new Kids direction."
+}
