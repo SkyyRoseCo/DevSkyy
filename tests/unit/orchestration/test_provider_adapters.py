@@ -181,3 +181,25 @@ def test_litellm_gateway_preserves_model_and_disables_retry():
             await adapter.close()
 
     asyncio.run(scenario())
+
+
+def test_provider_enablement_is_isolated_between_missions():
+    from llm.router import PROVIDER_CONFIGS, LLMRouter
+
+    first = LLMRouter()
+    second = LLMRouter()
+    first.disable_provider(ModelProvider.OPENAI)
+    assert ModelProvider.OPENAI not in first.get_available_providers()
+    assert ModelProvider.OPENAI in second.get_available_providers()
+    assert ModelProvider.OPENAI in LLMRouter().get_available_providers()
+    assert PROVIDER_CONFIGS[ModelProvider.OPENAI].enabled
+
+
+def test_explicit_provider_config_is_not_mutated():
+    from llm.router import PROVIDER_CONFIGS, LLMRouter
+
+    supplied = {ModelProvider.OPENAI: PROVIDER_CONFIGS[ModelProvider.OPENAI]}
+    router = LLMRouter(configs=supplied)
+    router.disable_provider(ModelProvider.OPENAI)
+    assert supplied[ModelProvider.OPENAI].enabled
+    assert LLMRouter(configs={}).get_available_providers() == []

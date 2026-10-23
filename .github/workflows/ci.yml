@@ -455,6 +455,20 @@ jobs:
         env:
           NEXT_TELEMETRY_DISABLED: 1
 
+      - name: Install Chromium for God Mode qualification
+        run: npx playwright install --with-deps chromium
+
+      - name: Verify God Mode desktop and mobile flows
+        run: npm run test:e2e:god-mode
+
+      - name: Upload God Mode browser evidence
+        if: always()
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: god-mode-browser-evidence
+          path: frontend/test-results/
+          retention-days: 7
+
       - name: Upload build artifacts
         uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
         with:

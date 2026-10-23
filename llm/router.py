@@ -16,7 +16,7 @@ from __future__ import annotations
 import asyncio
 import logging
 import time
-from dataclasses import dataclass, field
+from dataclasses import dataclass, field, replace
 from enum import StrEnum
 from typing import Any
 
@@ -305,7 +305,9 @@ class LLMRouter:
         strategy: RoutingStrategy = RoutingStrategy.PRIORITY,
         circuit_breaker: CircuitBreaker | None = None,
     ) -> None:
-        self.configs = configs or PROVIDER_CONFIGS.copy()
+        # Provider enablement belongs to this router, not every future request.
+        source = PROVIDER_CONFIGS if configs is None else configs
+        self.configs = {provider: replace(config) for provider, config in source.items()}
         self.strategy = strategy
         self._clients: dict[ModelProvider, BaseLLMClient] = {}
         self._round_robin_index = 0
