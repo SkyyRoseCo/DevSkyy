@@ -4,8 +4,8 @@
 import copy
 import importlib.util
 import json
-import unittest
 import tempfile
+import unittest
 from pathlib import Path
 from unittest.mock import patch
 
@@ -175,7 +175,9 @@ class NativeKidsTests(unittest.TestCase):
     def test_video_cannot_use_a_different_receipt(self):
         inventory = json.loads(validator.ELIGIBILITY.read_text())
         video = self.motion["web"][0]["file"]
-        inventory["assets"][video]["authorization"] = inventory["assets"][video]["authorization"] | {"path": "data/v2-media-reviews/other-valid-native-receipt.json"}
+        inventory["assets"][video]["authorization"] = inventory["assets"][video][
+            "authorization"
+        ] | {"path": "data/v2-media-reviews/other-valid-native-receipt.json"}
         with tempfile.TemporaryDirectory() as directory:
             path = Path(directory) / "inventory.json"
             path.write_text(json.dumps(inventory))
@@ -184,14 +186,18 @@ class NativeKidsTests(unittest.TestCase):
                     self.check()
 
     def test_native_runtime_gate_refusal_propagates(self):
-        with patch.object(validator.subprocess, "run", return_value=validator.subprocess.CompletedProcess([], 1)):
+        with patch.object(
+            validator.subprocess, "run", return_value=validator.subprocess.CompletedProcess([], 1)
+        ):
             with self.assertRaisesRegex(ValueError, "authorization gate refused"):
                 self.check()
 
     def test_home_cannot_use_unscoped_cinema(self):
         source = (validator.THEME / "template-parts/home/editorial-collection.php").read_text()
         with self.assertRaisesRegex(ValueError, "Kids cinema"):
-            validator.validate_home_collection(source.replace("'kids-capsule' === $slug ?", "true ?"))
+            validator.validate_home_collection(
+                source.replace("'kids-capsule' === $slug ?", "true ?")
+            )
 
 
 class MediaGateExemptionTests(unittest.TestCase):
