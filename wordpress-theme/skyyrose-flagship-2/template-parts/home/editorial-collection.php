@@ -20,7 +20,8 @@ foreach ( $chapter_slugs as $slug ) :
 		continue;
 	}
 	$collection       = $collections[ $slug ];
-	$chapter_motion   = skyyrose2_collection_hero_motion( $slug, $collection['hero'] );
+	$chapter_cinema = 'kids-capsule' === $slug ? skyyrose2_collection_cinema( $slug ) : array();
+	$chapter_motion = $chapter_cinema['motion'] ?? skyyrose2_collection_hero_motion( $slug, $collection['hero'] );
 	$chapter_products = array_values( $products[ $slug ] ?? array() );
 	$title_id         = 'sr2-chapter-' . $slug . '-title';
 	$chapter++;
@@ -28,6 +29,9 @@ foreach ( $chapter_slugs as $slug ) :
 <section<?php echo 1 === $chapter ? ' id="sr2-archive-worlds" tabindex="-1"' : ''; ?> class="sr2-editorial-collection sr2-chapter<?php echo 0 === $chapter % 2 ? ' sr2-chapter--flip' : ''; ?>" data-collection="<?php echo esc_attr( $slug ); ?>" aria-labelledby="<?php echo esc_attr( $title_id ); ?>">
 	<figure class="sr2-editorial-collection__image sr2-chapter__scene sr2-home-motion" data-home-motion>
 		<picture>
+			<?php if ( ! empty( $chapter_cinema['poster'] ) ) : ?>
+				<img src="<?php echo esc_url( $chapter_cinema['poster'] ); ?>" width="1440" height="810" alt="" loading="lazy" decoding="async">
+			<?php else : ?>
 			<?php if ( ! empty( $collection['hero_mobile'] ) ) : ?>
 				<source media="(max-width: 47.99em)" srcset="<?php echo esc_url( skyyrose2_sot_asset_uri( $collection['hero_mobile'] ) ); ?>">
 			<?php endif; ?>
@@ -35,9 +39,10 @@ foreach ( $chapter_slugs as $slug ) :
 				<source media="(max-width: 74.99em)" srcset="<?php echo esc_url( skyyrose2_sot_asset_uri( $collection['hero_tablet'] ) ); ?>">
 			<?php endif; ?>
 			<img src="<?php echo esc_url( skyyrose2_sot_asset_uri( $collection['hero'] ) ); ?>" width="1440" height="810" alt="" loading="lazy" decoding="async">
+			<?php endif; ?>
 		</picture>
 		<?php if ( $chapter_motion ) : ?>
-			<video id="<?php echo esc_attr( 'sr2-home-film-' . $slug ); ?>" muted loop playsinline preload="none" aria-hidden="true"><source data-src="<?php echo esc_url( $chapter_motion['webm'] ); ?>" type="video/webm"><source data-src="<?php echo esc_url( $chapter_motion['mp4'] ); ?>" type="video/mp4"></video>
+			<video id="<?php echo esc_attr( 'sr2-home-film-' . $slug ); ?>" muted <?php echo 'kids-capsule' === $slug ? 'data-reveal-once' : 'loop'; ?> playsinline preload="none" aria-hidden="true"><source data-src="<?php echo esc_url( $chapter_motion['webm'] ); ?>" type="video/webm"><source data-src="<?php echo esc_url( $chapter_motion['mp4'] ); ?>" type="video/mp4"></video>
 			<button class="sr2-home-motion__toggle" type="button" aria-controls="<?php echo esc_attr( 'sr2-home-film-' . $slug ); ?>" data-home-motion-toggle hidden><?php esc_html_e( 'Play motion', 'skyyrose-flagship-2' ); ?></button>
 		<?php endif; ?>
 	</figure>
@@ -67,3 +72,9 @@ foreach ( $chapter_slugs as $slug ) :
 	</div>
 </section>
 <?php endforeach; ?>
+
+<style>
+/* Keep the complete Kids reveal and its close ending visible at every viewport. */
+.sr2-editorial-home [data-collection="kids-capsule"] .sr2-home-motion{aspect-ratio:16 / 9}
+.sr2-editorial-home [data-collection="kids-capsule"] .sr2-home-motion :is(img,video){object-fit:contain;object-position:50% 50%}
+</style>

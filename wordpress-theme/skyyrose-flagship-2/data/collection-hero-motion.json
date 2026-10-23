@@ -115,44 +115,35 @@
     },
     "kids-capsule": {
       "source": {
-        "file": "assets/sot/images/hero/kids-capsule-heir-throne-v3.webp",
-        "sha256": "fda7df7f2f0391e10c8e93121b0757242010d4c49e69d79beb8827a32d0b7936"
+        "file": "assets/video/collection-heroes/approved/kids-capsule/runway-r10/poster.webp",
+        "sha256": "891fe87135b03349be4aa22b6c81263943620288162298aa18e6f2db5dd61ad4"
       },
-      "exact_pixel_treatment": "locked throne room with the canonical mascot walking from the foreground aisle to the throne",
+      "exact_pixel_treatment": "Source-bound native slow lift and close camera; hold on Skyy and rose",
       "ai_motion": {
-        "status": "founder_approved",
-        "founder_approved_at": "2026-08-22T09:58:01-07:00",
-        "founder_approval_evidence": "Founder directive: get those wired into v2",
-        "job_id": "0e72251e-d1f6-46ee-8c80-7d479ac4c0bf",
-        "generator": "higgsfield_seedance_2_5_omni_reference",
+        "status": "founder_integration_authorized",
+        "founder_approval_note": "as you implement those fixes start getting this added to production wire it into the homepage and the kids page and the menu section",
+        "approval_scope": "Production integration requested; final corrected preview review remains separate",
+        "production_method": "CONTROLLED_RENDER",
         "provider_attempt": {
-          "provider": "higgsfield",
-          "status": "completed",
-          "submitted_count": 1
+          "status": "not_applicable",
+          "submitted_count": 0
         },
         "master": {
-          "file": "assets/video/collection-heroes/approved/kids-capsule/kids-capsule-heir-throne-motion-v2.mp4",
-          "sha256": "6fffdc77c3579f8caab3bf799a544eb0970fb81929006e7f1792ffc835f0c57e"
+          "file": ".artifacts/kids-cinematic-hero-20261022/configured-reveal-r10.mp4",
+          "sha256": "f4e2bed905fe1b4c2291b10224c24822e68c2cad0d902ce2d43645418d76b7bc"
         },
         "web": [
           {
-            "file": "assets/video/collection-heroes/approved/kids-capsule/web/kids-capsule-heir-throne-motion-v2.mp4",
-            "sha256": "14db6dd210493a2cbac0f9f6da88f69212bae52a87c08604adb779b8dda308cc"
+            "file": "assets/video/collection-heroes/approved/kids-capsule/runway-r10/hero.mp4",
+            "sha256": "bf6720e94ee461d524bb9b9c55ddb671d00c6c600ff675b639fb56b1cc5f1229",
+            "bytes": 1265597
           },
           {
-            "file": "assets/video/collection-heroes/approved/kids-capsule/web/kids-capsule-heir-throne-motion-v2.webm",
-            "sha256": "876105aaa2447d1f09cf2150b08013b15d92b340bc9ad97b05d9a0f5abd49d60"
+            "file": "assets/video/collection-heroes/approved/kids-capsule/runway-r10/hero.webm",
+            "sha256": "bdf27b230fb23128bc49092753ef990b3adcaca2332d131932df7ab2f75e60bc",
+            "bytes": 1430631
           }
-        ],
-        "internal_visual_qa": "pass_pending_founder_review",
-        "qa": {
-          "duration_seconds": 6,
-          "resolution": "1920x1080",
-          "contact_sheet": "assets/video/collection-heroes/approved/kids-capsule/qa/contact-sheet-v2.jpg",
-          "motion_brief": "canonical mascot walk from foreground aisle to throne",
-          "text_and_geometry": "visually stable; founder review required"
-        },
-        "virality_predictor": "pending_founder_review"
+        ]
       }
     }
   }
