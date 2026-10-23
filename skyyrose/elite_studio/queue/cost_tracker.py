@@ -8,9 +8,11 @@ Degrades gracefully when Redis is unavailable (logs warning, no exception).
 from __future__ import annotations
 
 import logging
+import math
 import os
 from datetime import UTC, datetime, timedelta
 from typing import Any
+from uuid import UUID, uuid4
 
 logger = logging.getLogger(__name__)
 
@@ -25,7 +27,7 @@ PRICING_PER_1K: dict[str, float] = {
 _COST_KEY_PREFIX = "elite_studio:costs:"
 _TOTAL_COST_SORTED_SET = "elite_studio:costs:timeline"
 
-# TTL for individual job cost records: 7 days
+# Retention for job cost records and the rolling timeline: 7 days.
 _COST_TTL_SECONDS = 604_800
 
 # Hard cost ceiling — kill-switch for runaway retry loops. The previous
@@ -53,7 +55,7 @@ class CostTracker:
               total_usd        <float>
 
     Timeline (for get_total_cost):
-        ZADD  elite_studio:costs:timeline  <unix_ts> <json_cost_entry>
+        ZADD  elite_studio:costs:timeline  <unix_ts> <job:provider:call_id:cost>
     """
 
     def __init__(self, redis_url: str | None = None) -> None:
@@ -127,8 +129,9 @@ class CostTracker:
         Call before kicking off any paid API request. Set ELITE_STUDIO_COST_CAP_USD=0
         in the environment to disable the cap entirely (not recommended for prod).
 
-        Fails closed (raises CostBudgetExceeded) when Redis is unavailable unless
-        ELITE_STUDIO_COST_CAP_ALLOW_DEGRADED=1 is set.
+        Fails closed (raises CostBudgetExceeded) when the total is unverifiable,
+        including Redis failure or invalid data. The existing explicit
+        ELITE_STUDIO_COST_CAP_ALLOW_DEGRADED=1 setting skips that verification.
 
         Args:
             projected_cost_usd: Expected cost of the upcoming call. Must be >= 0.
@@ -143,25 +146,24 @@ class CostTracker:
         if cap <= 0.0:
             return  # Cap explicitly disabled
 
-        # Check Redis availability directly — get_total_cost degrades gracefully to 0.0
-        # but the budget gate must fail closed on Redis loss to prevent runaway spend.
+        # Reporting may degrade to zero; authorization requires a verified read,
+        # including when a previously cached Redis connection fails during a query.
         try:
-            self._get_redis()
+            current = self._read_total_cost(since_hours=24)
         except RuntimeError as exc:
             if os.getenv("ELITE_STUDIO_COST_CAP_ALLOW_DEGRADED") == "1":
                 logger.warning(
-                    "CostTracker: Redis unavailable but degraded mode allowed — skipping budget check"
+                    "CostTracker: total unverifiable but degraded mode allowed — skipping budget check"
                 )
                 return
             logger.critical(
-                "CostTracker: Redis unavailable and no degraded mode flag — failing closed to prevent runaway spend"
+                "CostTracker: total unverifiable and no degraded mode flag — failing closed to prevent runaway spend"
             )
             raise CostBudgetExceeded(
-                "Budget check failed: Redis unavailable. "
+                "Budget check failed: cost total could not be verified. "
                 "Set ELITE_STUDIO_COST_CAP_ALLOW_DEGRADED=1 to allow degraded operation (NOT recommended)."
             ) from exc
 
-        current = self.get_total_cost(since_hours=24)
         if current + projected_cost_usd > cap:
             raise CostBudgetExceeded(
                 f"Cost cap exceeded: ${current:.2f} spent in last 24h "
@@ -194,9 +196,13 @@ class CostTracker:
             pipe.expire(key, _COST_TTL_SECONDS)
 
             # Record in timeline for aggregation
-            timeline_entry = f"{job_id}:{provider}:{cost_usd:.6f}"
+            # Each invocation represents a distinct call, even for equal costs.
+            # Keep cost last so existing legacy members remain readable.
+            timeline_entry = f"{job_id}:{provider}:{uuid4().hex}:{cost_usd:.6f}"
             score = datetime.now(UTC).timestamp()
             pipe.zadd(_TOTAL_COST_SORTED_SET, {timeline_entry: score})
+            pipe.zremrangebyscore(_TOTAL_COST_SORTED_SET, "-inf", f"({score - _COST_TTL_SECONDS}")
+            pipe.expire(_TOTAL_COST_SORTED_SET, _COST_TTL_SECONDS)
             pipe.execute()
 
             logger.debug(
@@ -234,6 +240,8 @@ class CostTracker:
         Degrades gracefully when Redis is unavailable: logs a warning and
         returns 0.0 rather than raising, consistent with the module-level
         contract and ``get_job_cost`` behaviour.
+        Recorded history is retained for seven days; longer requested windows
+        raise ValueError rather than returning an incomplete total.
 
         Args:
             since_hours: Look-back window in hours (default 24).
@@ -242,27 +250,46 @@ class CostTracker:
             Summed cost in USD, or 0.0 when Redis is unavailable.
         """
         try:
-            r = self._get_redis()
+            return self._read_total_cost(since_hours)
         except RuntimeError:
-            logger.warning("CostTracker.get_total_cost: Redis unavailable — returning 0.0")
+            logger.error("CostTracker.get_total_cost: unverifiable total — returning 0.0")
             return 0.0
 
+    def _read_total_cost(self, since_hours: int) -> float:
+        """Read a complete valid total or fail; never turn a failed read into spend zero."""
+        if since_hours > _COST_TTL_SECONDS / 3600:
+            raise ValueError("Cost look-back window exceeds the seven-day retention period")
         try:
+            r = self._get_redis()
             cutoff = (datetime.now(UTC) - timedelta(hours=since_hours)).timestamp()
             entries = r.zrangebyscore(_TOTAL_COST_SORTED_SET, cutoff, "+inf")
             total = 0.0
             for entry in entries:
-                # Format: "job_id:provider:cost_usd"
-                parts = entry.rsplit(":", 1)
-                if len(parts) == 2:
-                    try:
-                        total += float(parts[1])
-                    except ValueError:
-                        pass
+                # Job IDs may contain colons, so recognize supported suffixes
+                # from the right. A provider-like job component remains valid
+                # in legacy records; that ambiguity cannot prove corruption.
+                parts = entry.rsplit(":", 2)
+                if len(parts) != 3:
+                    raise ValueError("Invalid cost timeline entry")
+                job_id, provider, raw_amount = parts
+                if provider not in PRICING_PER_1K:
+                    unique_parts = entry.rsplit(":", 3)
+                    if len(unique_parts) != 4:
+                        raise ValueError("Invalid cost timeline entry")
+                    job_id, provider, call_id, raw_amount = unique_parts
+                    if UUID(call_id).hex != call_id:
+                        raise ValueError("Invalid cost timeline call identifier")
+                if not job_id.strip() or provider not in PRICING_PER_1K:
+                    raise ValueError("Invalid cost timeline identity")
+                amount = float(raw_amount)
+                if not math.isfinite(amount) or amount < 0:
+                    raise ValueError("Invalid cost timeline amount")
+                total += amount
+            if not math.isfinite(total):
+                raise ValueError("Invalid cost timeline total")
             return round(total, 6)
         except Exception as exc:
-            logger.error("CostTracker.get_total_cost: Redis query failed: %s", exc)
-            return 0.0
+            raise RuntimeError("Cost total could not be verified") from exc
 
     @staticmethod
     def estimate_cost(provider: str, tokens: int) -> float:

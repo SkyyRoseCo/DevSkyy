@@ -3,7 +3,8 @@ import { NextRequest } from 'next/server';
 import { createElement } from 'react';
 import { renderToStaticMarkup } from 'react-dom/server';
 
-const { sessionMock } = vi.hoisted(() => ({ sessionMock: vi.fn() }));
+const { sessionMock, backendTokenMock } = vi.hoisted(() => ({ sessionMock: vi.fn(), backendTokenMock: vi.fn() }));
+vi.mock('@/lib/backend-session', () => ({ getBackendAccessToken: backendTokenMock }));
 vi.mock('next-auth', () => ({ getServerSession: sessionMock }));
 vi.mock('@/lib/auth', () => ({ authOptions: {} }));
 vi.mock('@/lib/api/config', () => ({ API_URL: 'https://backend.example.test' }));
@@ -67,7 +68,8 @@ beforeEach(() => {
   vi.stubEnv('SKYYROSE_ANALYTICS_ENVIRONMENT', 'test');
   vi.stubGlobal('fetch', fetchMock);
   fetchMock.mockReset();
-  sessionMock.mockReset().mockResolvedValue({ user: { email: 'operator@example.test' }, accessToken: 'fixture-jwt' });
+  sessionMock.mockReset().mockResolvedValue({ user: { email: 'operator@example.test' } });
+  backendTokenMock.mockReset().mockResolvedValue('fixture-jwt');
 });
 
 const request = (query = '') => new NextRequest(`http://localhost/api/conversion${query}`);
@@ -80,7 +82,7 @@ describe('conversion summary authentication and scope', () => {
     expect(fetchMock).not.toHaveBeenCalled();
   });
   it('requires a backend token even if a session exists', async () => {
-    sessionMock.mockResolvedValue({ user: { email: 'operator@example.test' } });
+    backendTokenMock.mockResolvedValue(null);
     expect((await GET(request(), undefined)).status).toBe(401);
     expect(fetchMock).not.toHaveBeenCalled();
   });

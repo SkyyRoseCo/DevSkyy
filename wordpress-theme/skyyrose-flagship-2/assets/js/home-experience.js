@@ -11,14 +11,16 @@
     var choice = null;
     var failed = false;
     var pending = false;
+    var completed = false;
+    var once = video.hasAttribute('data-reveal-once');
     var allowed = function () {
       return !reduced.matches && !(connection && connection.saveData);
     };
     var wanted = function () {
-      return visible && !document.hidden && !failed && (choice === true || (choice === null && allowed()));
+      return visible && !document.hidden && !failed && !completed && (choice === true || (choice === null && allowed()));
     };
     var update = function () {
-      button.textContent = video.paused ? 'Play motion' : 'Pause motion';
+      button.textContent = completed ? 'Replay reveal' : video.paused ? 'Play motion' : 'Pause motion';
       button.setAttribute('aria-label', button.textContent);
     };
     var sync = function () {
@@ -51,6 +53,7 @@
     };
     button.hidden = false;
     button.addEventListener('click', function () {
+      if (completed) { completed = false; video.currentTime = 0; }
       choice = video.paused;
       visible = true;
       sync();
@@ -64,7 +67,13 @@
       update();
     });
     video.addEventListener('pause', function () {
-      root.classList.remove('is-playing');
+      if (!(once && (completed || video.ended))) root.classList.remove('is-playing');
+      update();
+    });
+    video.addEventListener('ended', function () {
+      if (!once) return;
+      completed = true;
+      root.classList.add('is-playing');
       update();
     });
     video.addEventListener('error', function () {

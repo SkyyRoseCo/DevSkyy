@@ -110,4 +110,28 @@ describe('ConsoleShell identity hydration', () => {
     expect(container.querySelector('aside')?.textContent).toContain('Operator');
     expect(replace).toHaveBeenCalledWith('/login');
   });
+
+  it('redirects an authenticated session when its backend token has expired', async () => {
+    const server = renderToString(shell({ data: null, status: 'loading', update: async () => null }));
+    const container = createContainer(server);
+    const recoverableErrors = vi.fn();
+    await act(async () => {
+      root = hydrateRoot(
+        container,
+        shell({
+          data: {
+            user: { email: 'fixture@example.test' },
+            expires: '2099-01-01T00:00:00Z',
+            authError: 'BackendTokenExpired',
+          },
+          status: 'authenticated',
+          update: async () => null,
+        }),
+        { onRecoverableError: recoverableErrors }
+      );
+    });
+    expect(recoverableErrors).not.toHaveBeenCalled();
+    expect(replace).toHaveBeenCalledWith('/login');
+    expect(listAgents).not.toHaveBeenCalled();
+  });
 });

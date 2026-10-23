@@ -29,5 +29,6 @@ import type { Session } from 'next-auth';
 import { authOptions } from '@/lib/auth';
 
 export async function getAdminSession(): Promise<Session | null> {
-  return getServerSession(authOptions);
+  const session = await getServerSession(authOptions);
+  return session?.authError ? null : session;
 }

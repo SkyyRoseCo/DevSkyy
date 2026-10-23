@@ -1,0 +1,70 @@
+{
+  "status": "DEPLOYED_AND_LIVE_VERIFIED",
+  "captured_at": "2026-10-23T14:23:09.395268+00:00",
+  "site_id": 238510894,
+  "home": "https://skyyrose.co/",
+  "kids": "https://skyyrose.co/collections/kids-capsule/",
+  "placements": [
+    "homepage Kids section",
+    "Kids collection arrival",
+    "navigation Kids card and larger preview"
+  ],
+  "authorization": "publication-authorization.json",
+  "package": {
+    "path": ".artifacts/kids-cinematic-hero-20261022/skyyrose-flagship-2-kids-runway-r10-production-v2.zip",
+    "sha256": "5144b215a02574e6c76babdba29efa347b757147acf78009bad9c3b480037c26",
+    "members": 738,
+    "only_changed_member": "template-parts/collections/arrival.php",
+    "before": "191c348e9df912fa82b7ad9d17f4bb441ecc4edef36faedcc4b98d400e341943",
+    "after": "b02c3d3b50e04fc70f70bf71c14bdac44daf69c2fefcded0bd3184946e571d93",
+    "unchanged_members": 737,
+    "media_unchanged": true
+  },
+  "method": "Authenticated supported SSH route: full staged R10 tree switch, then one atomic template correction. Current live tree matches the v2 package manifest; v2 ZIP retained locally.",
+  "live_browser": {
+    "artifact": "live-r4/results.json",
+    "status": "PASS",
+    "cases": 11,
+    "widths": [
+      390,
+      768,
+      1440
+    ],
+    "physical_device_test": false,
+    "page_errors": 0
+  },
+  "rollback": {
+    "artifact": "census-final-v2.json",
+    "immediate_files": 732,
+    "older_files": 810,
+    "http_probes": "rollback-http-after.json",
+    "control_template_backup_verified": true
+  },
+  "orders": {
+    "before": "orders-before.json",
+    "after": "orders-final.json",
+    "native_readback": "installed-order-readback.json",
+    "history_unchanged": true,
+    "count_before": 1,
+    "count_after": 1,
+    "live_orders_or_payments_placed": false
+  },
+  "media": "public-media-hashes.json",
+  "retained_failures": [
+    "orders-after.json",
+    "live/results.json",
+    "live-r2/results.json",
+    "live-r3/results.json"
+  ],
+  "qualification_limits": [
+    "Browser viewport emulation, not physical devices",
+    "Visual/media deployment and existing-order readback; no new checkout/payment/privacy qualification",
+    "No additional paid generation"
+  ],
+  "independent_review": {
+    "status": "PASS",
+    "reviewer": "r9_production_review (architect)",
+    "artifact": "independent-review.md"
+  },
+  "local_evidence_root": ".artifacts/kids-cinematic-hero-20261022/deploy-r10"
+}

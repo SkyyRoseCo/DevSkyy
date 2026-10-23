@@ -1,0 +1,133 @@
+{
+  "scope": "SYNTHETIC_WORDPRESS_ADAPTER_REAL_PHP_TEMPLATES_MEDIA_GATES_PRODUCTION_CONTROLLERS_AND_CODECS; no installed-stack or live claim",
+  "cases": [
+    {
+      "width": 390,
+      "mode": "home",
+      "status": "PASS",
+      "checks": [
+        "real web codec playback",
+        "one-shot ending hold",
+        "scroll reentry does not restart",
+        "explicit replay",
+        "full-frame contain video and poster",
+        "no overflow",
+        "no JS errors",
+        "Kids poster in menu; adult loop attributes retained"
+      ]
+    },
+    {
+      "width": 390,
+      "mode": "kids",
+      "status": "PASS",
+      "checks": [
+        "real web codec playback",
+        "one-shot ending hold",
+        "scroll reentry does not restart",
+        "explicit replay",
+        "full-frame contain video and poster",
+        "no overflow",
+        "no JS errors",
+        "Kids poster in menu; adult loop attributes retained"
+      ]
+    },
+    {
+      "width": 768,
+      "mode": "home",
+      "status": "PASS",
+      "checks": [
+        "real web codec playback",
+        "one-shot ending hold",
+        "scroll reentry does not restart",
+        "explicit replay",
+        "full-frame contain video and poster",
+        "no overflow",
+        "no JS errors",
+        "Kids poster in menu; adult loop attributes retained"
+      ]
+    },
+    {
+      "width": 768,
+      "mode": "kids",
+      "status": "PASS",
+      "checks": [
+        "real web codec playback",
+        "one-shot ending hold",
+        "scroll reentry does not restart",
+        "explicit replay",
+        "full-frame contain video and poster",
+        "no overflow",
+        "no JS errors",
+        "Kids poster in menu; adult loop attributes retained"
+      ]
+    },
+    {
+      "width": 1440,
+      "mode": "home",
+      "status": "PASS",
+      "checks": [
+        "real web codec playback",
+        "one-shot ending hold",
+        "scroll reentry does not restart",
+        "explicit replay",
+        "full-frame contain video and poster",
+        "no overflow",
+        "no JS errors",
+        "Kids poster in menu; adult loop attributes retained"
+      ]
+    },
+    {
+      "width": 1440,
+      "mode": "kids",
+      "status": "PASS",
+      "checks": [
+        "real web codec playback",
+        "one-shot ending hold",
+        "scroll reentry does not restart",
+        "explicit replay",
+        "full-frame contain video and poster",
+        "no overflow",
+        "no JS errors",
+        "Kids poster in menu; adult loop attributes retained"
+      ]
+    },
+    {
+      "mode": "home",
+      "variant": "reduced",
+      "status": "PASS",
+      "posterDecoded": true
+    },
+    {
+      "mode": "home",
+      "variant": "nojs",
+      "status": "PASS",
+      "posterDecoded": true
+    },
+    {
+      "mode": "home",
+      "variant": "failed-media",
+      "status": "PASS",
+      "posterDecoded": true
+    },
+    {
+      "mode": "kids",
+      "variant": "reduced",
+      "status": "PASS",
+      "posterDecoded": true
+    },
+    {
+      "mode": "kids",
+      "variant": "nojs",
+      "status": "PASS",
+      "posterDecoded": true
+    },
+    {
+      "mode": "kids",
+      "variant": "failed-media",
+      "status": "PASS",
+      "posterDecoded": true
+    }
+  ],
+  "errors": [],
+  "status": "PASS"
+}

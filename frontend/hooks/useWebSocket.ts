@@ -41,10 +41,12 @@ const RoundTableEventSchema = z.object({
   event: z.enum(['competition_started', 'provider_responded', 'competition_completed', 'error']),
   competition_id: z.string().optional(),
   provider_id: z.string().optional(),
-  result: z.object({
-    score: z.number(),
-    latency_ms: z.number(),
-  }).optional(),
+  result: z
+    .object({
+      score: z.number(),
+      latency_ms: z.number(),
+    })
+    .optional(),
   winner: z.string().optional(),
   error: z.string().optional(),
 });
@@ -88,17 +90,7 @@ function validateChannel(channel: string): boolean {
   return /^[a-zA-Z0-9_-]+$/.test(channel);
 }
 
-function sanitizeToken(token: string | null): string | null {
-  if (!token) return null;
-  // Basic JWT format validation (three base64url segments)
-  const jwtPattern = /^[A-Za-z0-9_-]+\.[A-Za-z0-9_-]+\.[A-Za-z0-9_-]+$/;
-  return jwtPattern.test(token) ? token : null;
-}
-
-function parseMessage<T>(
-  data: string,
-  schema?: z.ZodType<T>
-): WebSocketMessage<T> | null {
+function parseMessage<T>(data: string, schema?: z.ZodType<T>): WebSocketMessage<T> | null {
   try {
     const parsed = JSON.parse(data);
 
@@ -169,11 +161,9 @@ export function useWebSocket<T = unknown>(
 
     if (wsRef.current?.readyState === WebSocket.OPEN) return;
 
-    const token = typeof window !== 'undefined'
-      ? sanitizeToken(localStorage.getItem('access_token'))
-      : null;
-
-    const wsUrl = `${WS_URL}/api/ws/${encodeURIComponent(channel)}${token ? `?token=${encodeURIComponent(token)}` : ''}`;
+    // This backend handshake does not consume a bearer credential. Never put
+    // credentials in URLs, where browser history and proxy logs can retain them.
+    const wsUrl = `${WS_URL}/api/ws/${encodeURIComponent(channel)}`;
 
     setStatus('connecting');
     setError(null);
@@ -187,11 +177,11 @@ export function useWebSocket<T = unknown>(
         setError(null);
       };
 
-      ws.onmessage = (event) => {
+      ws.onmessage = event => {
         const message = parseMessage<T>(event.data, schema);
         if (message) {
           setLastMessage(message);
-          setMessages((prev) => {
+          setMessages(prev => {
             const next = [...prev, message];
             // Keep only the last N messages to prevent memory issues
             return next.slice(-MAX_MESSAGE_HISTORY);
@@ -199,7 +189,7 @@ export function useWebSocket<T = unknown>(
         }
       };
 
-      ws.onerror = (event) => {
+      ws.onerror = event => {
         setStatus('error');
         setError({
           code: 'CONNECTION_ERROR',
@@ -209,7 +199,7 @@ export function useWebSocket<T = unknown>(
         console.error('WebSocket error:', event);
       };
 
-      ws.onclose = (event) => {
+      ws.onclose = event => {
         setStatus('disconnected');
         wsRef.current = null;
 

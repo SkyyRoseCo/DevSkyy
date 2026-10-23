@@ -5543,7 +5543,7 @@
   - fn `withAuth` L43-54 (~100 tok)
 - `api-public-routes.ts` — Dashboard API routes deliberately reachable without a session. (~510 tok)
 - `api.ts` — TypeScript resolves `@/lib/api` to this file before the `api/` directory. (~62 tok)
-- `auth.d.ts` — NextAuth.js type augmentations for custom JWT fields (~146 tok)
+- `next-auth.d.ts` — NextAuth JWT credential/expiry and public-session error types; distinct basename avoids auth.ts shadowing.
 - `auth.ts` — NextAuth.js v4 Configuration (~798 tok)
 - `catalog-csv.ts` — Pure READ-side CSV helpers for the registry's catalog projection: EDITABLE_COLUMNS, CatalogPatch, splitCsvRow, collapseNewlines. No row serialization/splicing (writes go through the registry). (~600 tok)
   - fn `splitCsvRow` L38-62 (~163 tok)
@@ -9301,6 +9301,19 @@
 ## tests/ (rate limiting)
 
 - `test_rate_limit_env.py` — env-configurable default rate limits in security/rate_limiting.py (RATE_LIMIT_{IP,USER,API_KEY}_*), incl. real-HTTP enforcement via TestClient. (~1300 tok)
+
+## Dashboard credential-boundary recovery — 2026-10-21
+
+- `frontend/lib/backend-session.ts` — Server-only cookie credential reader; validates backend expiry and ignores caller Authorization. (~231 tok)
+- `frontend/lib/backend-proxy.ts` — Exact dashboard HTTP path/method policy and validated upstream origin. (~1105 tok)
+- `frontend/app/api/platform/[...path]/route.ts` — Same-origin authenticated relay; streams bodies, refuses redirects, filters headers and disables caching. (~726 tok)
+- `frontend/tests/admin-session.test.ts` — SSR credential-error gating regressions. (~296 tok)
+- `frontend/tests/api-client.test.ts` — Browser relay mapping, multipart, methods and cancellation regressions. (~1000 tok)
+- `frontend/tests/backend-proxy.test.ts` — Backend path, method and origin denial cases. (~693 tok)
+- `frontend/tests/dashboard-auth.test.ts` — Public credential exclusion, expiry and real encrypted-cookie decoding tests. (~1347 tok)
+- `frontend/tests/dashboard-login.test.ts` — Rendered NextAuth credentials sign-in and legacy cleanup regressions. (~914 tok)
+- `frontend/tests/dashboard-websocket.test.ts` — Existing channel handshake without bearer credentials in URLs. (~417 tok)
+- `frontend/tests/platform-relay.test.ts` — Authenticated relay, same-origin mutations, safe headers, streams and timeout compatibility. (~1639 tok)
 
 ## tests/ (lazy ML and agent imports)
 

@@ -40,12 +40,12 @@ export function ConsoleShell({ children }: ConsoleShellProps) {
   // WooCommerce data) when unauthenticated, but don't redirect themselves —
   // redirect() thrown from a Server Component under this app's Cache
   // Components config is silently swallowed (see lib/require-admin-session.ts).
-  // This is the actual navigation to /login for an unauthenticated visitor.
+  // Navigate to /login when authentication or the backend token is invalid.
   useEffect(() => {
-    if (status === 'unauthenticated') {
+    if (status === 'unauthenticated' || session?.authError) {
       router.replace('/login');
     }
-  }, [status, router]);
+  }, [status, session?.authError, router]);
 
   const { data: agentsData } = useQuery({
     queryKey: ['console-agents-count'],

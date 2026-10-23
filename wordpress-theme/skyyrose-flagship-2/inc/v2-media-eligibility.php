@@ -23,6 +23,7 @@ function skyyrose2_media_record_allowed( $relative, $record, $role = '', $sku = 
 	if ( ! is_array( $record['roles'] ?? null ) || empty( $record['roles'] ) || ( isset( $record['skus'] ) && ! is_array( $record['skus'] ) ) ) { return false; }
 	$inventory = skyyrose2_media_inventory();
 	if ( in_array( $hash, $inventory['disallowed_legacy_sha256'] ?? array(), true ) ) { return false; }
+	if ( 'FOUNDER_DIRECTED_NATIVE_FILM' === ( $record['status'] ?? '' ) ) { return skyyrose2_native_kids_film_allowed( $relative, $record, $role, $sku ); }
 	if ( 'FOUNDER_AUTHORIZED_COLLECTION_FILM' === ( $record['status'] ?? '' ) ) { return skyyrose2_founder_film_allowed( $relative, $record, $role, $sku ); }
 	if ( 'DELIVERY_DERIVATIVE' === ( $record['status'] ?? '' ) ) { return skyyrose2_media_delivery_derivative_allowed( $relative, $record, $role, $sku ); }
 	// A new use never rewrites the original card/scene decision. Validate that
@@ -356,6 +357,21 @@ add_filter( 'woocommerce_available_variation', 'skyyrose2_media_variation', PHP_
 add_filter( 'woocommerce_cart_item_thumbnail', 'skyyrose2_media_filter_html', PHP_INT_MAX );
 add_filter( 'post_thumbnail_html', 'skyyrose2_media_filter_html', PHP_INT_MAX );
 
+/** Local native animation provenance; limited to the founder-directed Kids placements. */
+function skyyrose2_native_kids_film_allowed( $relative, $record, $role = '', $sku = '' ) {
+	$prefix = 'assets/video/collection-heroes/approved/kids-capsule/';
+	if ( ! preg_match( '#^' . preg_quote( $prefix, '#' ) . '(runway-r9|runway-r10)/(hero\.(?:mp4|webm)|poster\.webp)$#D', $relative, $match ) ) { return false; }
+	$prefix .= $match[1] . '/';
+	if ( $sku || array() !== ( $record['skus'] ?? null ) || array( 'kids-capsule' ) !== ( $record['collections'] ?? null ) || ! in_array( $relative, array( $prefix . 'hero.mp4', $prefix . 'hero.webm', $prefix . 'poster.webp' ), true ) ) { return false; }
+	$is_poster = $relative === $prefix . 'poster.webp';
+	$expected_role = $is_poster ? 'collection_hero_poster' : 'collection_hero_video';
+	if ( ( $is_poster ? 'house_art' : 'video' ) !== ( $record['kind'] ?? '' ) || array( $expected_role ) !== ( $record['roles'] ?? null ) || ( $role && $role !== $expected_role ) ) { return false; }
+	$receipt = skyyrose2_media_usage_document( $record['authorization'] ?? null );
+	if ( ! $receipt || 'skyyrose.native-collection-film-integration.v1' !== ( $receipt['schema'] ?? '' ) || 'FOUNDER_CONFIRMED' !== ( $receipt['authority'] ?? '' ) || 'https://skyyrose.co' !== ( $receipt['target'] ?? '' ) || 'CONTROLLED_RENDER' !== ( $receipt['production_method'] ?? '' ) || array( 'homepage', 'kids-collection', 'navigation' ) !== ( $receipt['placements'] ?? null ) || 'as you implement those fixes start getting this added to production wire it into the homepage and the kids page and the menu section' !== ( $receipt['decision_text'] ?? '' ) || 0 !== ( $receipt['paid_provider_calls'] ?? null ) ) { return false; }
+	$asset = $receipt['assets'][ $relative ] ?? null;
+	return is_array( $asset ) && ( $asset['sha256'] ?? '' ) === ( $record['sha256'] ?? null ) && ( $asset['role'] ?? '' ) === $expected_role && preg_match( '/^[a-f0-9]{64}$/D', $receipt['native_master_sha256'] ?? '' );
+}
+
 /** Current founder film authorization, exact delivery bytes, no product-role reuse. */
 function skyyrose2_founder_film_allowed( $relative, $record, $role = '', $sku = '' ) {
  $collections = $record['collections'] ?? array();
@@ -372,12 +388,14 @@ function skyyrose2_founder_film_allowed( $relative, $record, $role = '', $sku = 
 }
 
 /** Resolve the same approved film and poster through both delivery gates. */
-function skyyrose2_collection_cinema( $slug ) {
+function skyyrose2_collection_cinema( $slug, $poster_only = false ) {
  $path = SKYYROSE2_DIR . '/data/collection-hero-motion.json';
  $manifest = is_file( $path ) ? json_decode( file_get_contents( $path ), true ) : array();
  $source = $manifest['collections'][ $slug ]['source']['file'] ?? '';
  $poster = skyyrose2_media_uri( $source, 'collection_hero_poster' );
  if ( ! $poster ) { return array(); }
+ if ( $poster_only ) { return array( 'poster' => $poster, 'motion' => array() ); }
  $motion = skyyrose2_collection_hero_motion( $slug, $source );
- return $motion ? array( 'poster' => $poster, 'motion' => $motion ) : array();
+ // A verified Kids poster remains usable even when a video fails its independent gate.
+ return $motion || 'kids-capsule' === $slug ? array( 'poster' => $poster, 'motion' => $motion ) : array();
 }
