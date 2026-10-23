@@ -570,6 +570,7 @@ markers = [
   "unit: marks tests as unit tests",
   "security: marks tests as security tests (XSS, CSRF, SQL injection, etc.)",
   "smoke: critical path tests for CI (run with '-m smoke')",
+  "timeout: per-test timeout in seconds (requires pytest-timeout)",
 ]
 
 # =============================================================================

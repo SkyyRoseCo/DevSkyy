@@ -3,9 +3,10 @@
 # scripts/secret-scan.sh — the gitleaks gate shared by .husky/pre-commit and
 # .husky/pre-push.
 #
-#   secret-scan.sh staged  [--hook NAME] [--repo DIR]   scan the index (pre-commit)
-#   secret-scan.sh push    [--hook NAME] [--repo DIR]   scan the commits being pushed;
+#   secret-scan.sh staged  [--hook NAME] [--repo DIR]              scan the index (pre-commit)
+#   secret-scan.sh push    [--hook NAME] [--repo DIR] [--remote N]  scan the commits being pushed;
 #                                                       pre-push ref lines on stdin
+#                           --remote limits new-branch exclusions to that remote only
 #   secret-scan.sh version                              pinned vs installed version
 #
 # Fails CLOSED (bug-230): a missing or broken gitleaks, an unreadable config or a
@@ -36,6 +37,7 @@ MODE="${1:-}"
 [ $# -gt 0 ] && shift
 HOOK="secret-scan"
 REPO=""
+REMOTE=""
 while [ $# -gt 0 ]; do
   case "$1" in
     --hook)
@@ -44,6 +46,10 @@ while [ $# -gt 0 ]; do
       ;;
     --repo)
       REPO="$2"
+      shift 2
+      ;;
+    --remote)
+      REMOTE="$2"
       shift 2
       ;;
     *)
@@ -61,7 +67,7 @@ die() {
 
 case "$MODE" in
   staged | push | version) ;;
-  *) die "usage: secret-scan.sh staged|push|version [--hook NAME] [--repo DIR]" ;;
+  *) die "usage: secret-scan.sh staged|push|version [--hook NAME] [--repo DIR] [--remote NAME]" ;;
 esac
 
 # ── the single bypass ──────────────────────────────────────────────────────────
@@ -183,8 +189,16 @@ case "$MODE" in
           what="$remote_ref ${remote_sha:0:7}..${local_sha:0:7}"
           ;;
         *)
-          range="$local_sha --not --remotes"
-          what="$remote_ref (new branch: commits not on any remote)"
+          # Limit exclusion to the destination remote so commits that happen to
+          # exist on an unrelated fork/remote cannot silently skip the scan
+          # (Codex P1: bare --remotes includes ALL configured remotes).
+          if [ -n "$REMOTE" ]; then
+            range="$local_sha --not --remotes=$REMOTE"
+            what="$remote_ref (new branch: commits not on $REMOTE)"
+          else
+            range="$local_sha --not --remotes"
+            what="$remote_ref (new branch: commits not on any remote)"
+          fi
           ;;
       esac
       run_scan "$what" --log-opts="$range" || exit 1

@@ -72,7 +72,15 @@ jobs:
                 '' | 0000000000000000000000000000000000000000) range="-1 HEAD" ;;
                 *) range="$BEFORE..$GITHUB_SHA" ;;
               esac ;;
-            workflow_dispatch) range="origin/main..HEAD" ;;
+            # When dispatching on main itself, HEAD == origin/main so the range
+            # is empty and gitleaks passes vacuously. Scan the single dispatched
+            # commit in that case (Codex P2a).
+            workflow_dispatch)
+              if [ "$GITHUB_REF_NAME" = "main" ]; then
+                range="-1 HEAD"
+              else
+                range="origin/main..HEAD"
+              fi ;;
             *) range="" ;;  # schedule: full history
           esac
           if [ -n "$range" ]; then
@@ -86,12 +94,16 @@ jobs:
       - name: Install TruffleHog
         # Pinned: an unpinned "latest" install 404'd when v3.99.3 was tagged before
         # its release assets were uploaded. Bump TRUFFLEHOG_VERSION deliberately.
+        # if: always() so TruffleHog runs even when Gitleaks finds scheduled
+        # backlog secrets — the two scanners are independent (Codex P2b).
+        if: always()
         env:
           TRUFFLEHOG_VERSION: v3.99.2
         run: |
           curl -sSfL "https://raw.githubusercontent.com/trufflesecurity/trufflehog/${TRUFFLEHOG_VERSION}/scripts/install.sh" | sudo sh -s -- -b /usr/local/bin "${TRUFFLEHOG_VERSION}"
 
       - name: Run TruffleHog
+        if: always()
         run: trufflehog git file://. --only-verified --no-update
 
   # ===========================================================================

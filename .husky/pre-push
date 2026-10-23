@@ -28,7 +28,7 @@ if [ ! -f "$_ss" ]; then
     echo "  Restore it: git checkout origin/main -- scripts/secret-scan.sh   Bypass this ONE push: SECRETS_SCAN_SKIP=1" >&2
     exit 1
   fi
-elif ! printf '%s\n' "$_push_refs" | bash "$_ss" push --hook pre-push --repo "$_ss_root"; then
+elif ! printf '%s\n' "$_push_refs" | bash "$_ss" push --hook pre-push --repo "$_ss_root" --remote "$1"; then
   exit 1
 fi
 
