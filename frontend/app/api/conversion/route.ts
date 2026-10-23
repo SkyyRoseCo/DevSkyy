@@ -1,9 +1,8 @@
 /** Authenticated read proxy. Event writes belong to the signed WordPress bridge. */
-import { getServerSession } from 'next-auth';
 import { NextRequest, NextResponse } from 'next/server';
 
 import { withAuth } from '@/lib/api-auth';
-import { authOptions } from '@/lib/auth';
+import { getBackendAccessToken } from '@/lib/backend-session';
 import { analyticsSummarySchema, getAnalyticsProxyConfig, parseAnalyticsDays } from '@/lib/analytics-client';
 
 async function getHandler(request: NextRequest) {
@@ -24,8 +23,7 @@ async function getHandler(request: NextRequest) {
 
   if (days === null) return unavailable('days must be an integer from 1 to 90.', 400);
   if (!config) return unavailable('Analytics site and environment are not configured.', 503);
-  const session = await getServerSession(authOptions);
-  const accessToken = (session as { accessToken?: unknown } | null)?.accessToken;
+  const accessToken = await getBackendAccessToken(request);
   if (typeof accessToken !== 'string' || !accessToken)
     return unavailable('Backend access token is unavailable. Sign in again.', 401);
 

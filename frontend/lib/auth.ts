@@ -10,8 +10,7 @@
 
 import type { NextAuthOptions } from 'next-auth';
 import CredentialsProvider from 'next-auth/providers/credentials';
-
-const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000';
+import { getBackendOrigin } from './backend-proxy';
 
 export const authOptions: NextAuthOptions = {
   providers: [
@@ -32,12 +31,17 @@ export const authOptions: NextAuthOptions = {
           body.append('password', credentials.password);
           body.append('grant_type', 'password');
 
-          const response = await fetch(`${API_URL}/api/v1/auth/token`, {
+          const origin = getBackendOrigin();
+          if (!origin) return null;
+          const response = await fetch(`${origin}/api/v1/auth/token`, {
             method: 'POST',
             headers: {
               'Content-Type': 'application/x-www-form-urlencoded',
             },
             body: body.toString(),
+            redirect: 'error',
+            cache: 'no-store',
+            signal: AbortSignal.timeout(10000),
           });
 
           if (!response.ok) {
@@ -46,7 +50,14 @@ export const authOptions: NextAuthOptions = {
 
           const data = await response.json();
 
-          if (!data.access_token) {
+          if (
+            typeof data.access_token !== 'string' ||
+            !data.access_token.trim() ||
+            typeof data.expires_in !== 'number' ||
+            !Number.isFinite(data.expires_in) ||
+            data.expires_in <= 0 ||
+            !Number.isFinite(Date.now() + data.expires_in * 1000)
+          ) {
             return null;
           }
 
@@ -55,7 +66,7 @@ export const authOptions: NextAuthOptions = {
             id: credentials.email,
             email: credentials.email,
             accessToken: data.access_token,
-            refreshToken: data.refresh_token,
+            accessTokenExpiresAt: Date.now() + data.expires_in * 1000,
           };
         } catch {
           return null;
@@ -71,18 +82,33 @@ export const authOptions: NextAuthOptions = {
 
   callbacks: {
     async jwt({ token, user }) {
-      // On initial sign-in, persist backend tokens into the JWT
       if (user) {
-        token.accessToken = (user as { accessToken?: string }).accessToken;
-        token.refreshToken = (user as { refreshToken?: string }).refreshToken;
+        token.accessToken = user.accessToken;
+        token.accessTokenExpiresAt = user.accessTokenExpiresAt;
         token.email = user.email;
+        delete token.authError;
+      }
+      // Never refresh automatically or retain a credential beyond its backend lifetime.
+      delete token.refreshToken;
+      if (
+        typeof token.accessToken !== 'string' ||
+        !token.accessToken.trim() ||
+        typeof token.accessTokenExpiresAt !== 'number' ||
+        !Number.isFinite(token.accessTokenExpiresAt) ||
+        token.accessTokenExpiresAt <= Date.now()
+      ) {
+        delete token.accessToken;
+        token.authError = 'BackendTokenExpired';
       }
       return token;
     },
 
     async session({ session, token }) {
-      // Expose the backend access token to the client session
-      (session as { accessToken?: string }).accessToken = token.accessToken as string;
+      // Explicitly scrub credentials from legacy sessions as well as new ones.
+      const publicSession = session as typeof session & { accessToken?: string; refreshToken?: string };
+      delete publicSession.accessToken;
+      delete publicSession.refreshToken;
+      if (token.authError) session.authError = 'BackendTokenExpired';
       if (session.user) {
         session.user.email = token.email as string;
       }
