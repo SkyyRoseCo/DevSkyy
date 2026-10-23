@@ -41,7 +41,7 @@ $arrival_title_in_scene = ! empty( $arrival_presentation['title_in_scene'] ) && 
 			<video data-recovery-hero-video muted <?php echo 'kids-capsule' === $arrival_slug ? 'data-reveal-once' : 'loop'; ?> playsinline preload="none" aria-hidden="true"><source data-src="<?php echo esc_url( $arrival_motion['webm'] ); ?>" type="video/webm"><source data-src="<?php echo esc_url( $arrival_motion['mp4'] ); ?>" type="video/mp4"></video>
 		<?php endif; ?>
 	</div>
-<?php if ( $arrival_cinema && 'kids-capsule' === $arrival_slug ) : ?>
+<?php if ( $arrival_cinema && $arrival_motion && 'kids-capsule' === $arrival_slug ) : ?>
 	<div class="sr2-arrival__utility"><button class="sr2-recovery-motion-toggle" type="button" data-recovery-motion-toggle hidden><?php esc_html_e( 'Pause motion', 'skyyrose-flagship-2' ); ?></button></div>
 <?php endif; ?>
 	<div class="sr2-arrival__veil" aria-hidden="true"></div>

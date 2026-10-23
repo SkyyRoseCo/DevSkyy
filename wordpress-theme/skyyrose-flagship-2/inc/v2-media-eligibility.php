@@ -388,12 +388,14 @@ function skyyrose2_founder_film_allowed( $relative, $record, $role = '', $sku = 
 }
 
 /** Resolve the same approved film and poster through both delivery gates. */
-function skyyrose2_collection_cinema( $slug ) {
+function skyyrose2_collection_cinema( $slug, $poster_only = false ) {
  $path = SKYYROSE2_DIR . '/data/collection-hero-motion.json';
  $manifest = is_file( $path ) ? json_decode( file_get_contents( $path ), true ) : array();
  $source = $manifest['collections'][ $slug ]['source']['file'] ?? '';
  $poster = skyyrose2_media_uri( $source, 'collection_hero_poster' );
  if ( ! $poster ) { return array(); }
+ if ( $poster_only ) { return array( 'poster' => $poster, 'motion' => array() ); }
  $motion = skyyrose2_collection_hero_motion( $slug, $source );
- return $motion ? array( 'poster' => $poster, 'motion' => $motion ) : array();
+ // A verified Kids poster remains usable even when a video fails its independent gate.
+ return $motion || 'kids-capsule' === $slug ? array( 'poster' => $poster, 'motion' => $motion ) : array();
 }

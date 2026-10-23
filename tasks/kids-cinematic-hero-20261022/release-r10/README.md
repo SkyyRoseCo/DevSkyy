@@ -60,3 +60,9 @@ The historical frozen deployment snapshot used a command-scoped read-only precom
 ## Main-port commit validation
 
 The main-port commit also uses a command-scoped read-only hook to avoid rewriting hash-bound media receipts. Prettier/PHPCBF mutation is omitted, not claimed passed. Main qualification checks replace the historical738-file parity check: unchanged existing inventory records, six unchanged media hashes, source-gate and isolated integrity tests, PHP/JavaScript/JSON syntax, pinned asset build, registry/freshness and default secret scanning. No full production-tree parity is claimed for this adaptation.
+
+## PR review repairs
+
+The valid Kids poster survives missing or tampered video files on the homepage, collection arrival, navigation and existing Lookbook. Poster-only arrivals emit no motion control. Navigation resolves only the poster, avoiding video hashing on every route. The Lookbook retains its Kids film through the new resolver and uses the same one-shot ending. Adult branches remain unchanged.
+
+The validator now recognizes controlled native Kids rendering through the runtime receipt gate, requires one coherent receipt for all three assets, and keeps integration authority separate from AI creative approval. Thirty validator tests and eleven isolated integrity cases pass. `main-runtime-reconciliation.json` records only the six affected PHP baseline hashes and their main lineage. These are local source checks, not new deployment evidence.

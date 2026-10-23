@@ -124,7 +124,7 @@ function skyyrose2_header() {
 				<h2 data-sr2-type-motion="mask"><?php esc_html_e( 'Choose your chapter.', 'skyyrose-flagship-2' ); ?></h2>
 				<div class="sr2-house-nav__previews">
 				<?php foreach ( skyyrose2_collections() as $slug => $collection ) : ?>
-				<?php $kids_cinema = 'kids-capsule' === $slug ? skyyrose2_collection_cinema( $slug ) : array(); ?>
+				<?php $kids_cinema = 'kids-capsule' === $slug ? skyyrose2_collection_cinema( $slug, true ) : array(); ?>
 					<div class="sr2-house-nav__preview-entry">
 						<a data-collection="<?php echo esc_attr( $slug ); ?>" href="<?php echo esc_url( skyyrose2_collection_url( $slug ) ); ?>"><img src="<?php echo esc_url( $kids_cinema['poster'] ?? skyyrose2_sot_asset_uri( $collection['hero_tablet'] ?? $collection['hero'] ) ); ?>" width="1024" height="576" loading="lazy" decoding="async" fetchpriority="low" alt=""><span><?php echo esc_html( $collection['name'] ); ?></span><span aria-hidden="true">↗</span></a>
 						<button type="button" data-nav-preview-toggle aria-controls="sr2-nav-preview-stage" aria-pressed="false" aria-label="<?php echo esc_attr( sprintf( __( 'Preview %s', 'skyyrose-flagship-2' ), $collection['name'] ) ); ?>" hidden><?php esc_html_e( 'Preview', 'skyyrose-flagship-2' ); ?></button>

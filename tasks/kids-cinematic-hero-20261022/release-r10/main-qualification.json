@@ -6,7 +6,7 @@
   "browser_cases": 12,
   "browser_evidence": "main-browser-checks.json",
   "source_gate_assertions": 21,
-  "tamper_missing_cases": 5,
+  "tamper_missing_cases": 11,
   "adult_collection_markup_parity": 3,
   "asset_build_check": "PASS pinned25CSS17JS and criticalCSS",
   "registry_projection_check": "PASS",
@@ -21,7 +21,9 @@
     "Historical deployment evidence is separately labeled",
     "Main existing adult films unavailable in fixture; adult emittedmarkup compared unchanged"
   ],
-  "utc": "2026-10-23T16:15:52.005485+00:00",
+  "utc": "2026-10-23T16:40:44.493513+00:00",
   "existing_media_gate_regression": "PASS",
-  "menu_stage": "ExactR10poster currentSrc and successful decode asserted at390/768/1440; Escape restores opener focus"
+  "menu_stage": "ExactR10poster currentSrc and successful decode asserted at390/768/1440; Escape restores opener focus",
+  "native_film_validator_tests": 30,
+  "fallback_scope": "Real templates for home, Kids arrival and Lookbook plus menu; missing/tampered MP4/WebM retains verified poster and no video controls"
 }
