@@ -4585,6 +4585,11 @@
       "release": true,
       "category": "RUNTIME SOURCE",
       "reason": "Hash-bound Kids authorization required by main source media gate"
+    },
+    "data/v2-media-reviews/kids-motion-retained-before-r10.json": {
+      "release": false,
+      "category": "AUTHORING ONLY",
+      "reason": "Historical ownership of superseded Kids movie binaries; not display authority"
     }
   },
   "schema": "skyyrose.v2.package-boundary.v1"

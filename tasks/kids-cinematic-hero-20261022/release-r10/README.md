@@ -47,9 +47,9 @@ The protected immediate732-file prior theme and older810-file rollback remain on
 
 ## Mobile captures
 
-![Kids page](kids-viewport-390.png)
-![Homepage ending](home-ending-390.png)
-![Menu card](menu-390.png)
+![Kids page](evidence/kids-viewport-390.png)
+![Homepage ending](evidence/home-ending-390.png)
+![Menu card](evidence/menu-390.png)
 
 The local package, native master, full render history, failed experiments and operational deployment scripts remain retained outside this bounded source commit. The seven pre-existing product/catalog edits are excluded and unchanged.
 
