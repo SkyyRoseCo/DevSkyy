@@ -1,9 +1,8 @@
 'use client';
 
 import { useEffect, useRef, useState } from 'react';
-import { getAuthToken } from '@/lib/api/client';
 import { ApiError } from '@/lib/api/errors';
-import { godMode } from '@/lib/api/endpoints/god-mode';
+import { godMode, getGodModeRecoveryKey } from '@/lib/api/endpoints/god-mode';
 
 const fields = ['mission_id', 'objective', 'role', 'context', 'scope', 'deliverables',
     'acceptance', 'authority', 'verification', 'recovery', 'return_contract'] as const;
@@ -12,17 +11,6 @@ type Discovery = Awaited<ReturnType<typeof godMode.providers>>;
 type Run = Awaited<ReturnType<typeof godMode.status>>;
 type Request = Parameters<typeof godMode.start>[0];
 const active = new Set(['queued', 'running', 'cancel_requested']);
-function recoveryKey(): string {
-    const token = getAuthToken();
-    if (!token) throw new Error('Sign in before running a mission.');
-    const segment = token.split('.')[1];
-    const payload: unknown = JSON.parse(atob(segment.replace(/-/g, '+').replace(/_/g, '/')));
-    if (!payload || typeof payload !== 'object' || !('sub' in payload) || typeof payload.sub !== 'string') {
-        throw new Error('A dashboard user session is required.');
-    }
-    // Identity only namespaces local recovery; the backend verifies the actual JWT.
-    return 'godmode-run-v1:' + payload.sub;
-}
 const inputClass = 'w-full rounded border border-gray-700 bg-gray-900 p-3 text-white';
 
 export default function GodModePage() {
@@ -50,8 +38,11 @@ export default function GodModePage() {
 
     useEffect(() => {
         let disposed = false;
-        try {
-            recovery.current = recoveryKey();
+        async function restore() {
+          try {
+            const key = await getGodModeRecoveryKey();
+            if (disposed) return;
+            recovery.current = key;
             const saved = sessionStorage.getItem(recovery.current);
             if (saved) {
                 const value: {pending?: {body: Request; key: string}; runId?: string} = JSON.parse(saved);
@@ -64,9 +55,11 @@ export default function GodModePage() {
                         .catch(() => { if (!disposed) setError('Previous run status unavailable. Do not repeat the mission until reconciled.'); });
                 } else { setRecovering(false); }
             } else { setRecovering(false); }
-        } catch {
-            setError('Sign in and allow session storage so mission recovery can be preserved.');
+          } catch {
+            if (!disposed) setError('Sign in and allow session storage so mission recovery can be preserved.');
+          }
         }
+        void restore();
         godMode.providers().then(result => { if (!disposed) setDiscovery(result); })
             .catch(() => { if (!disposed) setError('Provider discovery failed. Check your administrator session and backend connection.'); });
         return () => { disposed = true; };
@@ -93,7 +86,7 @@ export default function GodModePage() {
         if (busy) return;
         setBusy(true); setError('');
         try {
-            if (!recovery.current || recoveryKey() !== recovery.current) throw new Error();
+            if (!recovery.current || await getGodModeRecoveryKey() !== recovery.current) throw new Error();
         } catch { setError('Session changed. Reload before submitting.'); setBusy(false); return; }
         if (!pending.current) {
             pending.current = { key: crypto.randomUUID(), body: {

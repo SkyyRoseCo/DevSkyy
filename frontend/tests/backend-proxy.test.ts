@@ -75,3 +75,13 @@ it('does not authorize incorrect brand asset mutation methods', () => {
     expect(buildBackendUrl(`/api/v1/brand-assets/assets/id/${action}`, '', 'POST')).toBeNull();
   }
 });
+
+it('allows only exact God Mode operation methods', () => {
+  const base = '/api/v1/orchestration/god-mode';
+  const id = '12345678-1234-1234-1234-123456789abc';
+  for (const [path, method] of [[`${base}/providers`, 'GET'], [`${base}/runs`, 'POST'], [`${base}/runs/${id}`, 'GET'], [`${base}/runs/${id}/cancel`, 'POST']]) {
+    expect(buildBackendUrl(path, '', method)).not.toBeNull();
+    expect(buildBackendUrl(path, '', method === 'GET' ? 'POST' : 'GET')).toBeNull();
+  }
+  for (const path of [`${base}/runs/not-a-run`, `${base}/runs/${id}/delete`, `${base}/providers/extra`]) expect(buildBackendUrl(path, '', 'GET')).toBeNull();
+});

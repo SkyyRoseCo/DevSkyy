@@ -1,11 +1,9 @@
 import { afterEach, describe, expect, it, vi } from 'vitest';
-import { godMode, type GodModeStartRequest } from './god-mode';
+import { getSession } from 'next-auth/react';
+import { getGodModeRecoveryKey, godMode, type GodModeStartRequest } from './god-mode';
 
-vi.mock('../client', async (importOriginal) => {
-    const original = await importOriginal<typeof import('../client')>();
-    return { ...original, getAuthHeaders: async () => ({ Authorization: 'Bearer fixture', 'Content-Type': 'application/json' }) };
-});
-vi.mock('../config', () => ({ API_URL: 'https://api.example.test' }));
+vi.mock('next-auth/react', () => ({ getSession: vi.fn() }));
+vi.mock('../config', () => ({ API_URL: '/api/platform' }));
 
 const mission = {
     mission_id: 'fixture', objective: 'test', role: 'test', context: 'test',
@@ -34,7 +32,7 @@ describe('God Mode API transport', () => {
         const fetch = vi.fn().mockResolvedValue(response({ providers: [{ id: 'fixture', default_model: 'model', models: ['model'], enabled: true, configured: true, authenticated: false, execution_protocol: 'json-actions-v1' }], tools: [], paid_execution_enabled: true }));
         vi.stubGlobal('fetch', fetch);
         expect((await godMode.providers()).providers[0].authenticated).toBe(false);
-        expect(fetch.mock.calls[0][0]).toBe('https://api.example.test/api/v1/orchestration/god-mode/providers');
+        expect(fetch.mock.calls[0][0]).toBe('/api/platform/api/v1/orchestration/god-mode/providers');
         expect(fetch.mock.calls[0][1].cache).toBe('no-store');
     });
 
@@ -45,7 +43,8 @@ describe('God Mode API transport', () => {
         const options = fetch.mock.calls[0][1] as RequestInit;
         expect(options.method).toBe('POST');
         expect(new Headers(options.headers).get('Idempotency-Key')).toBe('mission-unique-key');
-        expect(new Headers(options.headers).get('Authorization')).toBe('Bearer fixture');
+        expect(new Headers(options.headers).has('Authorization')).toBe(false);
+        expect(options.credentials).toBe('same-origin');
         expect(JSON.parse(options.body as string)).toEqual(input);
         expect(fetch).toHaveBeenCalledTimes(1);
     });
@@ -83,3 +82,12 @@ describe('God Mode API transport', () => {
         await expect(godMode.status('run-one')).rejects.toThrow('Invalid API response format');
     });
 });
+
+ it('uses only authenticated backend subject for the legacy recovery namespace', async () => {
+    vi.mocked(getSession).mockResolvedValue({ user: { backendSubject: 'backend-owner' }, expires: '' });
+    await expect(getGodModeRecoveryKey()).resolves.toBe('godmode-run-v1:backend-owner');
+    for (const session of [null, { user: { email: 'owner@test' }, expires: '' }, { user: { backendSubject: 'owner' }, authError: 'BackendTokenExpired' as const, expires: '' }]) {
+        vi.mocked(getSession).mockResolvedValue(session);
+        await expect(getGodModeRecoveryKey()).rejects.toThrow();
+    }
+ });

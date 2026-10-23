@@ -15,15 +15,12 @@ const discovery = {
 };
 
 async function prepare(page: Page) {
-  await page.addInitScript(() => {
-    localStorage.setItem('access_token', 'fixture.' + btoa(JSON.stringify({sub: 'browser-owner'})) + '.fixture');
-  });
   await page.route('**/api/auth/session', route => route.fulfill({json: {
-    user: {name: 'Test operator', email: 'test@example.invalid'}, expires: '2099-01-01T00:00:00Z',
+    user: {name: 'Test operator', email: 'test@example.invalid', backendSubject: 'browser-owner'}, expires: '2099-01-01T00:00:00Z',
   }}));
   await page.route('**/api/console/orders-count', route => route.fulfill({json: {count: 0}}));
-  await page.route('**/api/v1/agents**', route => route.fulfill({json: {agents: []}}));
-  await page.route('**/api/v1/orchestration/god-mode/providers', route => route.fulfill({json: discovery}));
+  await page.route('**/api/platform/api/v1/agents**', route => route.fulfill({json: {agents: []}}));
+  await page.route('**/api/platform/api/v1/orchestration/god-mode/providers', route => route.fulfill({json: discovery}));
 }
 
 async function fillMission(page: Page) {
@@ -44,10 +41,11 @@ test.beforeEach(async ({page}) => prepare(page));
 
 test('executes the chosen mission once and renders a receipt at both viewport sizes', async ({page}, info) => {
   let submissions = 0;
-  await page.route('**/api/v1/orchestration/god-mode/runs', async route => {
+  await page.route('**/api/platform/api/v1/orchestration/god-mode/runs', async route => {
     submissions++;
     const request = route.request();
-    expect(request.headers()['authorization']).toContain('Bearer fixture.');
+    expect(request.headers()['authorization']).toBeUndefined();
+    expect(new URL(request.url()).pathname).toContain('/api/platform/api/v1/');
     expect(request.headers()['idempotency-key']).toBeTruthy();
     expect(request.postDataJSON()).toMatchObject({
       provider: 'fixture', model: 'fixture-model', tools: ['fixture_read'], authorize_paid: true,
@@ -56,7 +54,7 @@ test('executes the chosen mission once and renders a receipt at both viewport si
     expect(Object.keys(request.postDataJSON().mission)).toEqual(fields);
     await route.fulfill({status: 202, json: run});
   });
-  await page.route('**/api/v1/orchestration/god-mode/runs/*', route => route.fulfill({
+  await page.route('**/api/platform/api/v1/orchestration/god-mode/runs/*', route => route.fulfill({
     json: {...run, state: 'completed', output: '<script>unsafe()</script> Verified fixture deliverable'},
   }));
   await fillMission(page);
@@ -71,7 +69,7 @@ test('executes the chosen mission once and renders a receipt at both viewport si
 
 test('reload and retry preserve the original request after an ambiguous failure', async ({page}) => {
   const sent: {key: string; body: string | null}[] = [];
-  await page.route('**/api/v1/orchestration/god-mode/runs', async route => {
+  await page.route('**/api/platform/api/v1/orchestration/god-mode/runs', async route => {
     sent.push({key: route.request().headers()['idempotency-key'], body: route.request().postData()});
     await route.fulfill(sent.length === 1 ? {status: 503, json: {detail: 'Receipt lost'}} :
       {status: 202, json: {...run, state: 'completed', output: 'Recovered original run'}});
@@ -89,12 +87,12 @@ test('reload and retry preserve the original request after an ambiguous failure'
 test('requests cancellation without dispatching another mission', async ({page}) => {
   let submissions = 0;
   let cancellations = 0;
-  await page.route('**/api/v1/orchestration/god-mode/runs', async route => {
+  await page.route('**/api/platform/api/v1/orchestration/god-mode/runs', async route => {
     submissions++;
     await route.fulfill({status: 202, json: run});
   });
-  await page.route('**/api/v1/orchestration/god-mode/runs/*', route => route.fulfill({json: run}));
-  await page.route('**/api/v1/orchestration/god-mode/runs/*/cancel', async route => {
+  await page.route('**/api/platform/api/v1/orchestration/god-mode/runs/*', route => route.fulfill({json: run}));
+  await page.route('**/api/platform/api/v1/orchestration/god-mode/runs/*/cancel', async route => {
     cancellations++;
     await route.fulfill({json: {...run, state: 'cancel_requested'}});
   });
