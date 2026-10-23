@@ -7374,5 +7374,43 @@
     "related_bugs": [],
     "occurrences": 1,
     "last_seen": "2026-10-22T05:44:57.423043+00:00"
+  },
+  {
+    "id": "bug-410",
+    "timestamp": "2026-10-22T07:10:22+00:00",
+    "error_message": "Cold-import regression tests fail before ML is requested: importing llm.model_ids, imagery.headless_renderer or agents.analytics_agent attempts torch/transformers/sentence_transformers; importing agents eagerly loads the agent tree. Baseline: 13 failed, 1 passed in tests/test_lazy_heavy_imports.py.",
+    "file": "agents/__init__.py",
+    "root_cause": "The agents package eagerly imported its exported implementations, evaluation_metrics imported SentenceTransformer at module scope, and the visual comparison CLIP availability check imported the heavy libraries instead of inspecting their specs.",
+    "fix": "Recovered e0ee3b5b61 onto current main: lazy agents export resolution with aliases and optional-import compatibility, local SentenceTransformer resolution retaining the injectable module attribute, and spec-based CLIP availability plus first-use imports. Fresh-interpreter and offline first-use regression tests cover exports, failures and caching. No timing claim or model-download qualification.",
+    "tags": [
+      "lazy-import",
+      "optional-dependency",
+      "ml",
+      "agents",
+      "regression"
+    ],
+    "related_bugs": [
+      "bug-404"
+    ],
+    "occurrences": 1,
+    "last_seen": "2026-10-22T07:10:22+00:00"
+  },
+  {
+    "id": "bug-411",
+    "timestamp": "2026-10-22T07:37:14+00:00",
+    "error_message": "PR1126 bot commit7207084 changes SettingsSchema.ui.typography to cinzel/inter/system, but GET /api/settings still defaults to playfair. Reproduced authenticated GET/default validation fails with ZodError invalid_value at ui.typography (1 failed,2 passed).",
+    "file": "frontend/lib/api/schemas.ts",
+    "root_cause": "A speculative response to the Turbopack generated Google font import-map error changed persisted settings wire values and unrelated console typography without updating the settings producer or migrating saved values.",
+    "fix": "Restore the pre-bot frontend baseline with an ordinary follow-up commit, retaining bot history and original Python import-recovery scope. Add regression that validates real route defaults and persisted/reloaded settings through the client schema. Diagnose and verify original font build separately; do not infer typography authorization from a build failure.",
+    "tags": [
+      "settings",
+      "schema",
+      "regression",
+      "ci",
+      "scope"
+    ],
+    "related_bugs": [],
+    "occurrences": 1,
+    "last_seen": "2026-10-22T07:37:14+00:00"
   }
 ]

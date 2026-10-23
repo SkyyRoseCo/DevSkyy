@@ -9314,3 +9314,11 @@
 - `frontend/tests/dashboard-login.test.ts` — Rendered NextAuth credentials sign-in and legacy cleanup regressions. (~914 tok)
 - `frontend/tests/dashboard-websocket.test.ts` — Existing channel handshake without bearer credentials in URLs. (~417 tok)
 - `frontend/tests/platform-relay.test.ts` — Authenticated relay, same-origin mutations, safe headers, streams and timeout compatibility. (~1639 tok)
+
+## tests/ (lazy ML and agent imports)
+
+- `test_lazy_heavy_imports.py` — Fresh-interpreter cold imports with ML/network blocked; lazy export aliases, caching and optional failures; offline first-use embedding/CLIP initialization and availability probes. (~2500 tok)
+
+## frontend/tests/ (settings persistence contract)
+
+- `settings-storage.test.ts` — Authenticated settings save/reload and storage mode; route defaults and persisted settings validated through the client schema, plus unauthorized-write rejection. (~800 tok)

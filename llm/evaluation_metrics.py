@@ -17,10 +17,11 @@ from typing import Any
 import numpy as np
 from numpy.typing import NDArray
 
-try:
-    from sentence_transformers import SentenceTransformer
-except ImportError:
-    SentenceTransformer = None  # type: ignore
+# Resolved lazily in ``AdvancedMetrics.initialize``: importing sentence_transformers
+# also loads torch + transformers, and this module sits on the import path of
+# ``llm`` / ``llm.model_ids``. The module attribute stays as the
+# injection point tests patch with an offline factory.
+SentenceTransformer: Any = None
 
 
 class AdvancedMetrics:
@@ -64,13 +65,18 @@ class AdvancedMetrics:
         if self.initialized:
             return
 
-        if SentenceTransformer is None:
-            raise RuntimeError(
-                "sentence-transformers not installed. Install with: pip install sentence-transformers"
-            )
+        factory = SentenceTransformer
+        if factory is None:
+            try:
+                from sentence_transformers import SentenceTransformer as factory
+            except ImportError as e:
+                raise RuntimeError(
+                    "sentence-transformers not installed. "
+                    "Install with: pip install sentence-transformers"
+                ) from e
 
         try:
-            self.model = SentenceTransformer(self.model_name)
+            self.model = factory(self.model_name)
             self.initialized = True
         except Exception as e:
             raise RuntimeError(f"Failed to load sentence transformer model: {e}") from e
