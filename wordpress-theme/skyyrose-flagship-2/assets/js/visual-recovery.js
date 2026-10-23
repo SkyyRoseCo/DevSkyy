@@ -26,11 +26,12 @@
   let suspended = false;
   const allowed = () => !reduced.matches && !connection?.saveData;
   const sync = state => {
-    const active = allowed() && state.visible && !state.paused && !document.hidden && !suspended;
+    const active = allowed() && state.visible && !state.paused && !state.completed && !document.hidden && !suspended;
     state.el.dataset.recoveryMotion = active ? 'running' : 'paused';
     state.button.hidden = !allowed();
-    state.button.textContent = state.paused ? 'Play motion' : 'Pause motion';
-    state.button.setAttribute('aria-pressed', String(state.paused));
+    state.button.textContent = state.completed ? 'Replay reveal' : state.paused ? 'Play motion' : 'Pause motion';
+    if (state.completed) state.button.removeAttribute('aria-pressed');
+    else state.button.setAttribute('aria-pressed', String(state.paused));
     if (!state.video || state.failed || !state.posterReady) return;
     if (!active) {
       state.video.pause();
@@ -91,6 +92,7 @@
       button,
       video,
       paused: false,
+      completed: false,
       visible: !observer,
       loaded: false,
       pending: false,
@@ -100,7 +102,8 @@
     };
     heroes.push(state);
     button.addEventListener('click', () => {
-      state.paused = !state.paused;
+      if (state.completed) { state.completed = false; state.video.currentTime = 0; state.paused = false; }
+      else state.paused = !state.paused;
       sync(state);
     });
     if (video) {
@@ -166,6 +169,11 @@
         else reveal();
       });
       video.addEventListener('error', failVideo);
+      video.addEventListener('ended', () => {
+        if (!video.hasAttribute('data-reveal-once')) return;
+        state.completed = true;
+        sync(state);
+      });
     }
     observer?.observe(el);
     sync(state);

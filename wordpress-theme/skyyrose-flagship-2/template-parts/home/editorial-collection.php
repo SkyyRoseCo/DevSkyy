@@ -48,7 +48,7 @@ foreach ( $chapter_slugs as $slug ) :
 			<?php echo $chapter_markup; // Escaped cinema poster or governed collection-media helper output. ?>
 		</picture>
 		<?php if ( $chapter_motion ) : ?>
-			<video id="<?php echo esc_attr( 'sr2-home-film-' . $slug ); ?>" muted loop playsinline preload="none" aria-hidden="true"><source data-src="<?php echo esc_url( $chapter_motion['webm'] ); ?>" type="video/webm"><source data-src="<?php echo esc_url( $chapter_motion['mp4'] ); ?>" type="video/mp4"></video>
+			<video id="<?php echo esc_attr( 'sr2-home-film-' . $slug ); ?>" muted <?php echo 'kids-capsule' === $slug ? 'data-reveal-once' : 'loop'; ?> playsinline preload="none" aria-hidden="true"><source data-src="<?php echo esc_url( $chapter_motion['webm'] ); ?>" type="video/webm"><source data-src="<?php echo esc_url( $chapter_motion['mp4'] ); ?>" type="video/mp4"></video>
 			<button class="sr2-home-motion__toggle" type="button" aria-controls="<?php echo esc_attr( 'sr2-home-film-' . $slug ); ?>" data-home-motion-toggle hidden><?php esc_html_e( 'Play motion', 'skyyrose-flagship-2' ); ?></button>
 		<?php endif; ?>
 	</figure>
@@ -79,3 +79,9 @@ foreach ( $chapter_slugs as $slug ) :
 	</div>
 </section>
 <?php endforeach; ?>
+
+<style>
+/* Keep the complete Kids reveal and its close ending visible at every viewport. */
+.sr2-editorial-home [data-collection="kids-capsule"] .sr2-home-motion{aspect-ratio:16 / 9}
+.sr2-editorial-home [data-collection="kids-capsule"] .sr2-home-motion :is(img,video){object-fit:contain;object-position:50% 50%}
+</style>
