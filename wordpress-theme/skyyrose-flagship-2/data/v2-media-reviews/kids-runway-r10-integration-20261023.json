@@ -1,0 +1,38 @@
+{
+  "schema": "skyyrose.native-collection-film-integration.v1",
+  "authority": "FOUNDER_CONFIRMED",
+  "target": "https://skyyrose.co",
+  "placements": [
+    "homepage",
+    "kids-collection",
+    "navigation"
+  ],
+  "decision_text": "as you implement those fixes start getting this added to production wire it into the homepage and the kids page and the menu section",
+  "production_method": "CONTROLLED_RENDER",
+  "native_master_sha256": "f4e2bed905fe1b4c2291b10224c24822e68c2cad0d902ce2d43645418d76b7bc",
+  "recipe_sha256": "e70a5fe0456bf5139e801832ca2faf22d667aa10c413e74bb74da65aae8c5a66",
+  "paid_provider_calls": 0,
+  "source_plate_sha256": "286abaab35c48a80806f0430965cce3ec555d1d5fd0c8067312f0456cbe5b647",
+  "poster_source_sha256": "480affbd3c26cd96f4c6cd8c356c815cd70fff412f060799b81fcfc7be751a6e",
+  "canonical_mascot_sha256": "9b40546847d2b2776334a71edcd8f4836b3eeab904f74f6fc568d5a3d3040a00",
+  "assets": {
+    "assets/video/collection-heroes/approved/kids-capsule/runway-r10/hero.mp4": {
+      "sha256": "bf6720e94ee461d524bb9b9c55ddb671d00c6c600ff675b639fb56b1cc5f1229",
+      "role": "collection_hero_video",
+      "bytes": 1265597
+    },
+    "assets/video/collection-heroes/approved/kids-capsule/runway-r10/hero.webm": {
+      "sha256": "bdf27b230fb23128bc49092753ef990b3adcaca2332d131932df7ab2f75e60bc",
+      "role": "collection_hero_video",
+      "bytes": 1430631
+    },
+    "assets/video/collection-heroes/approved/kids-capsule/runway-r10/poster.webp": {
+      "sha256": "891fe87135b03349be4aa22b6c81263943620288162298aa18e6f2db5dd61ad4",
+      "role": "collection_hero_poster",
+      "bytes": 82732
+    }
+  },
+  "creative_review": "Corrected final preview pending founder review; this directive authorizes wiring",
+  "live_publication": false,
+  "authentication": "Not applicable: offline controlled rendering and integration"
+}

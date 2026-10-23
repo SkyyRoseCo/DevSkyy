@@ -1,0 +1,11 @@
+{
+    "scope": "ISOLATED_LOCAL_FIXTURE_NO_AUTHENTICATION",
+    "status": "PASS",
+    "cases": {
+        "valid_fixture": "PASS",
+        "receipt_missing": "PASS",
+        "receipt_tampered": "PASS",
+        "media_missing": "PASS",
+        "media_tampered": "PASS"
+    }
+}

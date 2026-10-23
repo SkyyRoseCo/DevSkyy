@@ -38,9 +38,12 @@ $arrival_title_in_scene = ! empty( $arrival_presentation['title_in_scene'] ) && 
 		</picture>
         <?php endif; ?>
 		<?php if ( $arrival_motion ) : ?>
-			<video data-recovery-hero-video muted loop playsinline preload="none" aria-hidden="true"><source data-src="<?php echo esc_url( $arrival_motion['webm'] ); ?>" type="video/webm"><source data-src="<?php echo esc_url( $arrival_motion['mp4'] ); ?>" type="video/mp4"></video>
+			<video data-recovery-hero-video muted <?php echo 'kids-capsule' === $arrival_slug ? 'data-reveal-once' : 'loop'; ?> playsinline preload="none" aria-hidden="true"><source data-src="<?php echo esc_url( $arrival_motion['webm'] ); ?>" type="video/webm"><source data-src="<?php echo esc_url( $arrival_motion['mp4'] ); ?>" type="video/mp4"></video>
 		<?php endif; ?>
 	</div>
+<?php if ( $arrival_cinema && 'kids-capsule' === $arrival_slug ) : ?>
+	<div class="sr2-arrival__utility"><button class="sr2-recovery-motion-toggle" type="button" data-recovery-motion-toggle hidden><?php esc_html_e( 'Pause motion', 'skyyrose-flagship-2' ); ?></button></div>
+<?php endif; ?>
 	<div class="sr2-arrival__veil" aria-hidden="true"></div>
 	<div class="sr2-arrival__copy">
 		<p class="sr2-eyebrow"><span aria-hidden="true"><?php echo esc_html( $arrival_presentation['ordinal'] ); ?> / </span><?php echo esc_html( $arrival['kicker'] ); ?></p>
@@ -51,11 +54,20 @@ $arrival_title_in_scene = ! empty( $arrival_presentation['title_in_scene'] ) && 
 			<a class="sr2-editorial-link" href="<?php echo esc_url( $args['pieces_anchor'] ?? '#shop' ); ?>"><?php esc_html_e( 'Explore the pieces', 'skyyrose-flagship-2' ); ?><span aria-hidden="true">↓</span></a>
 		</div>
 	</div>
+<?php if ( ! ( $arrival_cinema && 'kids-capsule' === $arrival_slug ) ) : ?>
 	<div class="sr2-arrival__utility"><button class="sr2-recovery-motion-toggle" type="button" data-recovery-motion-toggle hidden><?php esc_html_e( 'Pause motion', 'skyyrose-flagship-2' ); ?></button></div>
+<?php endif; ?>
 </header>
 
 <?php if ( $arrival_cinema ) : ?>
 <style>
+/* The centered Kids ending needs its full frame, including at tablet/desktop widths. */
+.sr2-cinema-arrival[data-collection="kids-capsule"]{margin-top:var(--sr2-header);scroll-margin-top:var(--sr2-header);display:flex;flex-direction:column;min-height:0;height:auto;padding:0;gap:0;background:#0a0a0a}
+.sr2-cinema-arrival[data-collection="kids-capsule"] .sr2-arrival__media{position:relative;inset:auto;width:100%;height:auto;aspect-ratio:16/9;flex:none}
+.sr2-cinema-arrival[data-collection="kids-capsule"] .sr2-arrival__media :is(img,video){object-fit:contain;object-position:50% 50%;transform:none;animation:none}
+.sr2-cinema-arrival[data-collection="kids-capsule"] .sr2-arrival__veil{display:none}
+.sr2-cinema-arrival[data-collection="kids-capsule"] .sr2-arrival__copy{position:relative;inset:auto;width:100%;max-width:none;padding:1.5rem 1.25rem 2rem;box-sizing:border-box}
+.sr2-cinema-arrival[data-collection="kids-capsule"] .sr2-arrival__utility{position:static;align-self:flex-end;padding:0.5rem;top:auto;right:auto;bottom:auto}
 @media(max-width:47.99em){
 .sr2-cinema-arrival.sr2-world-arrival{display:flex;flex-direction:column;min-height:0;height:auto;padding:0;gap:0;background:#0a0a0a}
 .sr2-cinema-arrival .sr2-arrival__media{position:relative;inset:auto;width:100%;height:auto;aspect-ratio:16/9;flex:none}
