@@ -12,6 +12,19 @@ import type { NextAuthOptions } from 'next-auth';
 import CredentialsProvider from 'next-auth/providers/credentials';
 import { getBackendOrigin } from './backend-proxy';
 
+/** Identity from the server-held credential only; backend still verifies authorization. */
+function backendSubject(accessToken: unknown): string | undefined {
+  if (typeof accessToken !== 'string') return undefined;
+  try {
+    const parts = accessToken.split('.');
+    if (parts.length !== 3) return undefined;
+    const payload: unknown = JSON.parse(Buffer.from(parts[1], 'base64url').toString('utf8'));
+    if (payload && typeof payload === 'object' && 'sub' in payload &&
+        typeof payload.sub === 'string' && payload.sub.trim()) return payload.sub;
+  } catch { /* Opaque credentials remain valid for ordinary sign-in. */ }
+  return undefined;
+}
+
 export const authOptions: NextAuthOptions = {
   providers: [
     CredentialsProvider({
@@ -100,6 +113,8 @@ export const authOptions: NextAuthOptions = {
         delete token.accessToken;
         token.authError = 'BackendTokenExpired';
       }
+      // Recompute for legacy encrypted sessions; never trust an incoming identity field.
+      token.backendSubject = backendSubject(token.accessToken);
       return token;
     },
 
@@ -111,6 +126,9 @@ export const authOptions: NextAuthOptions = {
       if (token.authError) session.authError = 'BackendTokenExpired';
       if (session.user) {
         session.user.email = token.email as string;
+        delete session.user.backendSubject;
+        const subject = !token.authError ? backendSubject(token.accessToken) : undefined;
+        if (subject) session.user.backendSubject = subject;
       }
       return session;
     },

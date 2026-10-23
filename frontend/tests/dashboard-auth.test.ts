@@ -130,3 +130,22 @@ describe('dashboard credential boundary', () => {
     ).toBeNull();
   });
 });
+
+describe('backend recovery identity', () => {
+  const credential = (sub: unknown) => `header.${Buffer.from(JSON.stringify({sub})).toString('base64url')}.signature`;
+  it('derives exact backend subject from legacy server-held credentials', async () => {
+    const accessToken = credential('backend-owner:exact');
+    const token = await jwt({ token: { accessToken, accessTokenExpiresAt: Date.now() + 60000, backendSubject: 'forged' } } as unknown as Parameters<typeof jwt>[0]);
+    expect(token.backendSubject).toBe('backend-owner:exact');
+    const result = await session({ session: { user: { email: 'email@test', backendSubject: 'forged' }, expires: '' }, token } as unknown as Parameters<typeof session>[0]);
+    expect(result.user).toHaveProperty('backendSubject', 'backend-owner:exact');
+    expect(JSON.stringify(result)).not.toContain(accessToken);
+  });
+  it.each(['opaque-fixture', credential(''), credential(42), credential(null)])('scrubs invented identity without breaking ordinary opaque sign-in', async accessToken => {
+    const token = await jwt({ token: { accessToken, accessTokenExpiresAt: Date.now() + 60000, backendSubject: 'forged' } } as unknown as Parameters<typeof jwt>[0]);
+    expect(token.accessToken).toBe(accessToken);
+    expect(token.backendSubject).toBeUndefined();
+    const result = await session({ session: { user: { email: 'email@test', backendSubject: 'forged' }, expires: '' }, token } as unknown as Parameters<typeof session>[0]);
+    expect(result.user).not.toHaveProperty('backendSubject');
+  });
+});

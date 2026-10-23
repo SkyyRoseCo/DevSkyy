@@ -5,8 +5,8 @@ import { createRoot, type Root } from 'react-dom/client';
 import { ApiError } from '@/lib/api/errors';
 import GodModePage from './page';
 
-const api = vi.hoisted(() => ({providers:vi.fn(), start:vi.fn(), status:vi.fn(), cancel:vi.fn()}));
-vi.mock('@/lib/api/endpoints/god-mode', () => ({godMode:api}));
+const api = vi.hoisted(() => ({providers:vi.fn(), start:vi.fn(), status:vi.fn(), cancel:vi.fn(), recoveryKey:vi.fn()}));
+vi.mock('@/lib/api/endpoints/god-mode', () => ({godMode:api, getGodModeRecoveryKey:api.recoveryKey}));
 let root: Root;
 let host: HTMLDivElement;
 const pending = {key:'stable-request-key',body:{mission:{objective:'Concrete mission'},authorize_paid:true}};
@@ -14,7 +14,7 @@ const pending = {key:'stable-request-key',body:{mission:{objective:'Concrete mis
 beforeEach(() => {
     Object.assign(globalThis, {IS_REACT_ACT_ENVIRONMENT:true});
     vi.clearAllMocks(); localStorage.clear(); sessionStorage.clear();
-    localStorage.setItem('access_token', 'fixture.' + btoa(JSON.stringify({sub:'test-owner'})) + '.fixture');
+    api.recoveryKey.mockResolvedValue('godmode-run-v1:test-owner');
     api.providers.mockResolvedValue({providers:[], tools:[], paid_execution_enabled:true});
     host = document.createElement('div'); document.body.append(host); root = createRoot(host);
 });
@@ -58,4 +58,31 @@ describe('God Mode paid submission recovery', () => {
         expect(host.textContent).toContain('Verification: NOT_RUN');
         expect(api.start).not.toHaveBeenCalled();
     });
+    it('waits for authenticated identity before restoring persisted work', async () => {
+        let resolve!: (key: string) => void;
+        api.recoveryKey.mockReturnValue(new Promise<string>(r => { resolve = r; }));
+        sessionStorage.setItem('godmode-run-v1:test-owner',JSON.stringify({pending}));
+        await mount();
+        expect(host.querySelector('fieldset')?.disabled).toBe(true);
+        expect(retry()).toBeUndefined();
+        await act(async () => resolve('godmode-run-v1:test-owner'));
+        expect(retry()).toBeDefined();
+        expect(api.start).not.toHaveBeenCalled();
+    });
+    it('blocks a retry when the authenticated account changes', async () => {
+        sessionStorage.setItem('godmode-run-v1:test-owner',JSON.stringify({pending}));
+        await mount();
+        api.recoveryKey.mockResolvedValue('godmode-run-v1:other-owner');
+        await act(async () => retry()?.click());
+        expect(api.start).not.toHaveBeenCalled();
+        expect(host.textContent).toContain('Session changed');
+        expect(sessionStorage.getItem('godmode-run-v1:test-owner')).toContain(pending.key);
+    });
+    it('keeps execution locked when identity is unavailable', async () => {
+        api.recoveryKey.mockRejectedValue(new Error('expired session'));
+        await mount();
+        expect(host.querySelector('fieldset')?.disabled).toBe(true);
+        expect(api.start).not.toHaveBeenCalled();
+    });
+
 });

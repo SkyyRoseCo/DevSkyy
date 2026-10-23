@@ -172,4 +172,35 @@ describe('authenticated platform relay', () => {
     expect(response.headers.get('cache-control')).toBe('no-store');
     expect(await response.text()).not.toContain('synthetic-server-bearer');
   });
+  it.each([
+    ['providers', 'GET'],
+    ['runs/550e8400-e29b-41d4-a716-446655440000', 'GET'],
+    ['runs/550e8400-e29b-41d4-a716-446655440000/cancel', 'POST'],
+  ])('relays God Mode %s using only the server credential', async (suffix, method) => {
+    const path = `api/v1/orchestration/god-mode/${suffix}`;
+    const handler = method === 'GET' ? GET : POST;
+    const response = await handler(request(path, {method, headers: {Origin: origin}}), context(path));
+    expect(response.status).toBe(200);
+    expect(String(mocks.fetch.mock.calls[0][0])).toBe(`https://backend.example.test/${path}`);
+    expect(mocks.fetch.mock.calls[0][1].headers.get('authorization')).toBe('Bearer synthetic-server-bearer');
+    expect(await response.text()).not.toContain('synthetic-server-bearer');
+  });
+
+  it('retains God Mode request bytes and idempotency across upstream uncertainty and replay', async () => {
+    const path = 'api/v1/orchestration/god-mode/runs';
+    const body = JSON.stringify({mission: {objective: 'A concrete fixture mission'}, authorize_paid: true});
+    for (const status of [503, 202]) {
+      mocks.fetch.mockResolvedValue(Response.json({id: 'run-one'}, {status}));
+      const response = await POST(request(path, {
+        method: 'POST', body,
+        headers: {Origin: origin, 'Content-Type': 'application/json', 'Idempotency-Key': 'same-mission-key'},
+      }), context(path));
+      expect(response.status).toBe(status);
+      const options = mocks.fetch.mock.calls.at(-1)![1];
+      expect(options.headers.get('idempotency-key')).toBe('same-mission-key');
+      expect(await new Response(options.body).text()).toBe(body);
+    }
+    expect(mocks.fetch).toHaveBeenCalledTimes(2);
+  });
+
 });

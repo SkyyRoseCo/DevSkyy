@@ -17,6 +17,12 @@ LLM provider key. Keep it in the host environment/secret manager. Never put it
 in briefs, command arguments, committed files, or chat. Refresh expired access
 through the dashboard's existing authentication flow.
 
+The dashboard browser uses its encrypted HttpOnly NextAuth session through the
+same-origin platform relay; it never receives the backend bearer. MCP clients
+require their separately authorized backend access token in the host secret store.
+The public session exposes only the backend subject for owner-scoped recovery,
+preserving existing mission keys across the credential-boundary migration.
+
 Provider credentials remain on the server. Discovery reports configured
 adapters, priced model IDs, enabled state, and authorized tools; configuration
 does not prove live provider authentication. Select returned model IDs exactly.

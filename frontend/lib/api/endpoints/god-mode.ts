@@ -1,6 +1,17 @@
+import { getSession } from 'next-auth/react';
 import { z } from 'zod';
 import { fetchWithTimeout, getAuthHeaders, handleResponse } from '../client';
 import { API_URL } from '../config';
+
+/** Preserve pre-relay recovery namespaces without exposing a backend credential. */
+export async function getGodModeRecoveryKey(): Promise<string> {
+    const session = await getSession();
+    const subject = session?.user?.backendSubject;
+    if (session?.authError || typeof subject !== 'string' || !subject.trim()) {
+        throw new Error('An authenticated backend identity is required for mission recovery.');
+    }
+    return 'godmode-run-v1:' + subject;
+}
 
 const BASE = '/api/v1/orchestration/god-mode';
 const requiredText = z.string().trim().min(1);
@@ -80,6 +91,7 @@ async function request<T>(path: string, schema: z.ZodType<T>, options: RequestIn
         ...options,
         headers,
         cache: 'no-store',
+        credentials: 'same-origin',
     });
     return handleResponse(response, schema);
 }
