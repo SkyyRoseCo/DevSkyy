@@ -22,5 +22,6 @@
     "Main existing adult films unavailable in fixture; adult emittedmarkup compared unchanged"
   ],
   "utc": "2026-10-23T16:15:52.005485+00:00",
-  "existing_media_gate_regression": "PASS"
+  "existing_media_gate_regression": "PASS",
+  "menu_stage": "ExactR10poster currentSrc and successful decode asserted at390/768/1440; Escape restores opener focus"
 }
