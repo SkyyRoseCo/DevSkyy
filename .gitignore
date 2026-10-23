@@ -515,6 +515,10 @@ feeds/
 # --- Design-session working binaries (finals tracked in theme assets) ---
 tasks/assets/
 
+# --- Lossless film masters in task folders (multi-GB; Codex turn-diff
+# checkpoints copied untracked ones into .git, ~17 GB on 2026-10-23) ---
+tasks/**/*.mkv
+
 # --- Frontend skill screenshots (regenerated every run) ---
 frontend/.claude/skills/*/screenshots/
 
