@@ -27,6 +27,8 @@ describe('God Mode paid submission recovery', () => {
         sessionStorage.setItem('godmode-run-v1:test-owner',JSON.stringify({pending}));
         api.start.mockRejectedValue(new ApiError('gateway unavailable',503));
         await mount();
+        // Pending recovery loads uncertain state and shows retry button immediately
+        expect(retry()).toBeDefined();
         expect(api.start).not.toHaveBeenCalled();
         await act(async () => retry()?.click());
         expect(api.start).toHaveBeenCalledWith(pending.body,pending.key);
@@ -36,10 +38,14 @@ describe('God Mode paid submission recovery', () => {
         expect(api.start).toHaveBeenCalledTimes(2);
         expect(api.start.mock.calls[1]).toEqual(api.start.mock.calls[0]);
     });
-    it.each([401, 403, 409, 422])('preserves recovered submissions after HTTP %s', async status => {
+    it.each([401, 403, 409, 422])('preserves recovered submissions after HTTP %s (uncertain protects idempotency)', async status => {
         sessionStorage.setItem('godmode-run-v1:test-owner',JSON.stringify({pending}));
         api.start.mockRejectedValue(new ApiError('policy or session changed',status));
-        await mount(); await act(async () => retry()?.click());
+        await mount();
+        // Initial recovery loads uncertain state and shows retry
+        expect(retry()).toBeDefined();
+        await act(async () => retry()?.click());
+        // Recovered pending with definitive errors still preserves recovery (uncertain=true blocks the clear path)
         expect(sessionStorage.getItem('godmode-run-v1:test-owner')).toContain(pending.key);
         expect(retry()).toBeDefined();
         await act(async () => retry()?.click());
@@ -54,7 +60,8 @@ describe('God Mode paid submission recovery', () => {
         sessionStorage.setItem('godmode-run-v1:test-owner',JSON.stringify({runId:'existing-run'}));
         api.status.mockResolvedValue({id:'existing-run',state:'unknown',verification:'NOT_RUN',release:'NOT_DEPLOYED',output:null});
         await mount();
-        expect(host.textContent).toContain('Mission: unknown');
+        // Wait for async status call to complete
+        await vi.waitFor(() => expect(host.textContent).toContain('Mission: unknown'));
         expect(host.textContent).toContain('Verification: NOT_RUN');
         expect(api.start).not.toHaveBeenCalled();
     });
