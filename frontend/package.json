@@ -19,7 +19,8 @@
     "deploy:auto:prod": "npm run deploy",
     "sync:scene-authority": "node scripts/sync-scene-authority.mjs",
     "check:scene-authority": "node scripts/sync-scene-authority.mjs --check",
-    "build:standalone": "NEXT_OUTPUT_STANDALONE=1 npm run build"
+    "build:standalone": "NEXT_OUTPUT_STANDALONE=1 npm run build",
+    "test:e2e:god-mode": "playwright test --config playwright.god-mode.config.ts"
   },
   "dependencies": {
     "@ai-sdk/anthropic": "^3.0.46",
@@ -89,7 +90,7 @@
     "tailwindcss-animate": "^1.0.7",
     "three": "^0.172.0",
     "vaul": "^1.1.2",
-    "zod": "^4.3.6",
+    "zod": "^4.6.7",
     "zustand": "^5.0.11"
   },
   "overrides": {

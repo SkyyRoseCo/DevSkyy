@@ -29,9 +29,6 @@
     "@anthropic-ai/sdk": "^0.106.0",
     "@apollo/server": "^5.4.0",
     "@auth/core": "^0.41.3",
-    "@copilotkit/react-core": "^1.51.2",
-    "@copilotkit/react-ui": "^1.51.2",
-    "@copilotkit/runtime": "^1.51.2",
     "@fastify/cors": "^11.2.0",
     "@fastify/helmet": "^13.0.2",
     "@fastify/rate-limit": "^10.3.0",
@@ -78,7 +75,6 @@
     "@vercel/kv": "^3.0.0",
     "@vercel/og": "^1.0.1",
     "@vercel/postgres": "^0.10.0",
-    "@vercel/sandbox": "^1.7.1",
     "@vercel/sdk": "^1.19.6",
     "@vercel/speed-insights": "^2.0.0",
     "@vitejs/plugin-react": "^6.0.3",
@@ -163,7 +159,7 @@
     "vite": "8.2.4",
     "vue": "^3.5.25",
     "winston": "^3.19.0",
-    "zod": "^4.3.6"
+    "zod": "^4.6.7"
   },
   "scripts": {
     "build": "tsc --project config/typescript/tsconfig.json",
@@ -188,7 +184,7 @@
     "security:fix": "npm audit fix",
     "deps:update": "npm update",
     "deps:check": "npm outdated",
-    "demo:collections": "echo '🌹 SkyyRose Collection 3D Experiences Demo' && echo 'Available collections: black_rose, signature, love_hurts, showroom, runway' && echo 'Run: npm run demo:black-rose | demo:signature | demo:love-hurts | demo:showroom | demo:runway'",
+    "demo:collections": "echo '\ud83c\udf39 SkyyRose Collection 3D Experiences Demo' && echo 'Available collections: black_rose, signature, love_hurts, showroom, runway' && echo 'Run: npm run demo:black-rose | demo:signature | demo:love-hurts | demo:showroom | demo:runway'",
     "demo:black-rose": "npx vite serve --open --config config/vite/demo.config.ts -- --collection=black_rose",
     "demo:signature": "npx vite serve --open --config config/vite/demo.config.ts -- --collection=signature",
     "demo:love-hurts": "npx vite serve --open --config config/vite/demo.config.ts -- --collection=love_hurts",
@@ -300,6 +296,12 @@
     },
     "fast-json-stringify": {
       "fast-uri": ">=4.2.1"
+    },
+    "@vercel/cli-config": {
+      "zod": "^4.6.7"
+    },
+    "satori": {
+      "fflate": "^0.7.5"
     }
   }
 }

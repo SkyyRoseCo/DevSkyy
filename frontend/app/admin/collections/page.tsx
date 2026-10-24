@@ -34,9 +34,9 @@ export default async function CollectionsPage() {
     Promise.resolve(getCatalog()),
   ]);
   const skuToCollection = buildSkuToCollectionMap(catalog);
-  const revenue = new Map(revenueByCollection(orders, skuToCollection).map((c) => [c.slug, c]));
+  const revenue = new Map(revenueByCollection(orders, skuToCollection).map(c => [c.slug, c]));
   const pieceCounts = new Map<string, number>();
-  catalog.forEach((p) => {
+  catalog.forEach(p => {
     if (p.published) pieceCounts.set(p.collection, (pieceCounts.get(p.collection) ?? 0) + 1);
   });
 
@@ -44,39 +44,39 @@ export default async function CollectionsPage() {
 
   return (
     <>
-      <TopBar title="Collections" />
-      <div className="px-9 py-8 max-w-[1320px]">
-        <div className="grid grid-cols-2 gap-[18px]">
-          {slugs.map((slug) => {
+      <TopBar title='Collections' />
+      <div className='px-9 py-8 max-w-[1320px]'>
+        <div className='grid grid-cols-2 gap-[18px]'>
+          {slugs.map(slug => {
             const brand = getCollection(slug);
             if (!brand) return null;
             const accent = COLLECTION_ACCENT[slug as CollectionSlug] ?? brand.accentColor;
             const rev = revenue.get(slug);
             return (
-              <ConsoleCard key={slug} className="relative overflow-hidden">
+              <ConsoleCard key={slug} className='relative overflow-hidden'>
                 <div
-                  className="absolute inset-0 pointer-events-none"
+                  className='absolute inset-0 pointer-events-none'
                   style={{ background: `radial-gradient(80% 120% at 85% 0%, ${haloFor(accent)}, transparent 60%)` }}
                 />
-                <div className="relative p-[28px_26px_26px]">
-                  <span className="font-mono text-[10px] tracking-[0.22em] uppercase" style={{ color: accent }}>
+                <div className='relative p-[28px_26px_26px]'>
+                  <span className='font-mono text-[10px] tracking-[0.22em] uppercase' style={{ color: accent }}>
                     {brand.name}
                   </span>
                   {brand.tagline ? (
                     <p
-                      className="italic text-[20px] text-[#F0F0F0] leading-[1.35] mt-3.5 max-w-[32ch]"
+                      className='italic text-[20px] text-[#F0F0F0] leading-[1.35] mt-3.5 max-w-[32ch]'
                       style={{ fontFamily: 'var(--font-playfair)' }}
                     >
                       {brand.tagline}
                     </p>
                   ) : null}
-                  <div className="flex gap-[30px] mt-6">
-                    <Stat label="Revenue" value={rev ? formatCurrency(rev.revenue) : '—'} />
-                    <Stat label="Share" value={rev ? formatPercent(rev.share) : '—'} />
-                    <Stat label="Pieces" value={String(pieceCounts.get(slug) ?? 0)} />
+                  <div className='flex gap-[30px] mt-6'>
+                    <Stat label='Revenue' value={rev ? formatCurrency(rev.revenue) : '—'} />
+                    <Stat label='Share' value={rev ? formatPercent(rev.share) : '—'} />
+                    <Stat label='Pieces' value={String(pieceCounts.get(slug) ?? 0)} />
                   </div>
                 </div>
-                <div className="relative h-1" style={{ background: accent }} />
+                <div className='relative h-1' style={{ background: accent }} />
               </ConsoleCard>
             );
           })}
@@ -89,10 +89,10 @@ export default async function CollectionsPage() {
 function Stat({ label, value }: { label: string; value: string }) {
   return (
     <div>
-      <div className="text-[22px] font-semibold text-white leading-none" style={{ fontFamily: 'var(--font-barlow)' }}>
+      <div className='text-[22px] font-semibold text-white leading-none' style={{ fontFamily: 'var(--font-barlow)' }}>
         {value}
       </div>
-      <div className="font-mono text-[9px] tracking-[0.14em] text-[#8A8A92] uppercase mt-1">{label}</div>
+      <div className='font-mono text-[9px] tracking-[0.14em] text-[#8A8A92] uppercase mt-1'>{label}</div>
     </div>
   );
 }

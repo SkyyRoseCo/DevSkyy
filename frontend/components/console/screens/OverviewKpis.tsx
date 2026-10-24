@@ -45,12 +45,12 @@ export function OverviewKpis({ orders, referenceDate }: OverviewKpisProps) {
 
   return (
     <div>
-      <div className="flex items-center gap-2 mb-4">
-        {TIMEFRAMES.map((tf) => (
+      <div className='flex items-center gap-2 mb-4'>
+        {TIMEFRAMES.map(tf => (
           <button
             key={tf}
             onClick={() => setTimeframe(tf)}
-            className="font-mono text-[9px] uppercase tracking-[0.12em] px-2.5 py-1 rounded"
+            className='font-mono text-[9px] uppercase tracking-[0.12em] px-2.5 py-1 rounded'
             style={
               tf === timeframe
                 ? { background: 'var(--acc)', color: '#0A0A0A' }
@@ -61,34 +61,46 @@ export function OverviewKpis({ orders, referenceDate }: OverviewKpisProps) {
           </button>
         ))}
       </div>
-      <div className="grid grid-cols-4 gap-[18px] mb-[22px]">
-        <ConsoleCard className="p-5" style={{ boxShadow: '0 0 24px rgba(183,110,121,.10)' }}>
-          <KpiHead label="Revenue" delta={revenueDelta} />
-          <div className="font-sans text-[34px] font-semibold text-white leading-none mt-4" style={{ fontFamily: 'var(--font-barlow)' }}>
+      <div className='grid grid-cols-4 gap-[18px] mb-[22px]'>
+        <ConsoleCard className='p-5' style={{ boxShadow: '0 0 24px rgba(183,110,121,.10)' }}>
+          <KpiHead label='Revenue' delta={revenueDelta} />
+          <div
+            className='font-sans text-[34px] font-semibold text-white leading-none mt-4'
+            style={{ fontFamily: 'var(--font-barlow)' }}
+          >
             {formatCurrency(kpis.revenue)}
           </div>
           <Sparkline values={revenueSpark} />
         </ConsoleCard>
-        <ConsoleCard className="p-5">
-          <KpiHead label="Orders" delta={ordersDelta} />
-          <div className="font-sans text-[34px] font-semibold text-white leading-none mt-4" style={{ fontFamily: 'var(--font-barlow)' }}>
+        <ConsoleCard className='p-5'>
+          <KpiHead label='Orders' delta={ordersDelta} />
+          <div
+            className='font-sans text-[34px] font-semibold text-white leading-none mt-4'
+            style={{ fontFamily: 'var(--font-barlow)' }}
+          >
             {formatCount(kpis.orderCount)}
           </div>
           <Sparkline values={orderSpark} />
         </ConsoleCard>
-        <ConsoleCard className="p-5">
-          <KpiHead label="Avg Order" delta={avgOrderDelta} />
-          <div className="font-sans text-[34px] font-semibold text-white leading-none mt-4" style={{ fontFamily: 'var(--font-barlow)' }}>
+        <ConsoleCard className='p-5'>
+          <KpiHead label='Avg Order' delta={avgOrderDelta} />
+          <div
+            className='font-sans text-[34px] font-semibold text-white leading-none mt-4'
+            style={{ fontFamily: 'var(--font-barlow)' }}
+          >
             {formatCurrency(kpis.avgOrder)}
           </div>
           <Sparkline values={revenueSpark.map((v, i) => (orderSpark[i] > 0 ? v / orderSpark[i] : 0))} />
         </ConsoleCard>
-        <ConsoleCard className="p-5">
-          <KpiHead label="Conversion" delta={null} />
-          <div className="font-sans text-[20px] font-semibold text-[#5A5A62] leading-none mt-4" style={{ fontFamily: 'var(--font-barlow)' }}>
+        <ConsoleCard className='p-5'>
+          <KpiHead label='Conversion' delta={null} />
+          <div
+            className='font-sans text-[20px] font-semibold text-[#5A5A62] leading-none mt-4'
+            style={{ fontFamily: 'var(--font-barlow)' }}
+          >
             Not wired
           </div>
-          <div className="font-mono text-[9px] text-[#5A5A62] mt-3.5">needs site-traffic analytics</div>
+          <div className='font-mono text-[9px] text-[#5A5A62] mt-3.5'>needs site-traffic analytics</div>
         </ConsoleCard>
       </div>
     </div>
@@ -98,9 +110,13 @@ export function OverviewKpis({ orders, referenceDate }: OverviewKpisProps) {
 function KpiHead({ label, delta }: { label: string; delta: string | null }) {
   const color = delta?.startsWith('-') ? '#E5A85C' : '#5FBF7F';
   return (
-    <div className="flex justify-between items-start">
-      <span className="font-mono text-[10px] tracking-[0.18em] text-[#A0A0A0] uppercase">{label}</span>
-      {delta && <span className="font-mono text-[10.5px] tracking-[0.02em]" style={{ color }}>{delta}</span>}
+    <div className='flex justify-between items-start'>
+      <span className='font-mono text-[10px] tracking-[0.18em] text-[#A0A0A0] uppercase'>{label}</span>
+      {delta && (
+        <span className='font-mono text-[10.5px] tracking-[0.02em]' style={{ color }}>
+          {delta}
+        </span>
+      )}
     </div>
   );
 }
