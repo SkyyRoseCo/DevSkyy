@@ -261,6 +261,7 @@
     "@modelcontextprotocol/sdk": "$@modelcontextprotocol/sdk",
     "@apollo/server": "$@apollo/server",
     "@isaacs/brace-expansion": ">=5.0.1",
+    "zod": "$zod",
     "fastify": "$fastify",
     "fast-xml-parser": ">=5.3.8",
     "minimatch": ">=10.2.3",
