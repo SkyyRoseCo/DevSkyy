@@ -93,7 +93,7 @@ dependencies = [
   # llm/providers/litellm_provider.py universal fallback. >=1.84.0 clears the 7
   # litellm.proxy GHSA advisories carried by 1.80.x (bug-254). litellm >=1.93
   # requires openai>=2.20,<3, which sets the openai floor and cap above.
-  "litellm>=1.84,<1.94",
+  "litellm>=1.84,<1.107",
 
   # Monitoring
   "prometheus-client>=0.19",
