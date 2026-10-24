@@ -5,7 +5,7 @@
 # __init__ (it imports the TRELLIS pipeline eagerly). The Dockerfile import-checks the
 # worker at build time, so a missing entry fails the build rather than the first job.
 pydantic>=2.11,<3
-Pillow>=11,<13
+Pillow>=11,<14
 boto3>=1.35,<2
 redis>=5,<7
 numpy>=1.26,<3
