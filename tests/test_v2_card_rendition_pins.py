@@ -25,7 +25,9 @@ def _sha256(path: Path) -> str:
 
 
 def _gate_builder_sha() -> str:
-    found = re.findall(r"'builder_sha256' => '([a-f0-9]{64})'", GATE.read_text(encoding="utf-8"))
+    found = re.findall(
+        r"'builder_sha256'\s*=>\s*'([a-f0-9]{64})'", GATE.read_text(encoding="utf-8")
+    )
     assert len(found) == 1, found
     return found[0]
 
