@@ -85,11 +85,11 @@ dependencies = [
 
   # LLM Provider SDKs
   "anthropic>=0.75.0",
-  "google-genai>=2.29,<3",  # 2.x breaks only the Interactions API (unused); vendor advises <3
+  "google-genai>=2.29,<3", # 2.x breaks only the Interactions API (unused); vendor advises <3
   "cohere>=5.20.0",
-  "mistralai>=1.10.1",    # Updated for security and compatibility
+  "mistralai>=1.10.1",     # Updated for security and compatibility
   "groq>=0.37.0",
-  "voyageai>=0.2.4",      # Asymmetric document/query embeddings (RAG-optimized)
+  "voyageai>=0.2.4",       # Asymmetric document/query embeddings (RAG-optimized)
   # llm/providers/litellm_provider.py universal fallback. >=1.84.0 clears the 7
   # litellm.proxy GHSA advisories carried by 1.80.x (bug-254). litellm >=1.93
   # requires openai>=2.20,<3, which sets the openai floor and cap above.
@@ -167,6 +167,8 @@ dev = [
   "black>=24.1",
   "isort>=5.13",
   "pre-commit>=3.6",
+  # Patched lock handling for the virtualenv/pre-commit toolchain (CVE-2026-112940/112913/112907).
+  "filelock>=4.2.1,<5",
   "selenium>=4.15",
   "playwright>=1.40",
   # Additional dev tools from requirements-dev.txt
@@ -255,7 +257,7 @@ ml = [
   "sentence-transformers>=5.6.0",
   "chromadb>=0.6.0",
   "diffusers>=0.38.0",
-  "huggingface-hub>=0.27.0,<2",  # 2.x needs httpx2; sentence-transformers/diffusers cap <2
+  "huggingface-hub>=0.27.0,<2",   # 2.x needs httpx2; sentence-transformers/diffusers cap <2
   "numpy>=2.1.3",
   "pandas>=2.2.3",
   "scipy>=1.14.1",
