@@ -71,12 +71,22 @@ class TestTripoAgent:
         assert agent.name == "tripo_asset"
         assert AgentCapability.THREE_D_GENERATION in agent.get_capabilities()
 
-    def test_config_from_env(self):
-        """Should create config from environment."""
+    def test_config_from_env(self, monkeypatch):
+        """Should use the default API URL when no override is configured."""
+        monkeypatch.delenv("TRIPO_API_BASE_URL", raising=False)
         config = TripoConfig.from_env()
 
         assert config.base_url == "https://api.tripo3d.ai/v2"
         assert config.timeout == 300.0
+
+    def test_config_from_env_preserves_base_url_override(self, monkeypatch):
+        """Should retain a caller's explicitly configured API URL."""
+        override = "https://override.example.test/v2"
+        monkeypatch.setenv("TRIPO_API_BASE_URL", override)
+
+        config = TripoConfig.from_env()
+
+        assert config.base_url == override
 
     def test_model_formats(self):
         """Should have model formats."""
