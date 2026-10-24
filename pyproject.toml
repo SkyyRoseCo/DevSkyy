@@ -181,7 +181,7 @@ api = ["fastapi>=0.104", "mangum>=0.18.0", "pydantic>=2.5", "PyJWT>=2.13.0"]
 
 mcp = [
   "mcp>=1.28.1,<2",
-  "fastmcp==3.4.4",           # standalone FastMCP 3.0 (pinned; SDK-bundled mcp.server.fastmcp still used by devskyy_mcp)
+  "fastmcp==3.4.10",           # standalone FastMCP 3.0 (pinned; SDK-bundled mcp.server.fastmcp still used by devskyy_mcp)
   "openai>=2.20,<3",          # keep in lockstep with the base openai cap (bug-254)
   "anthropic>=0.75.0",
   "google-genai>=2.29,<3",
