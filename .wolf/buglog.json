@@ -7412,5 +7412,22 @@
     "related_bugs": [],
     "occurrences": 1,
     "last_seen": "2026-10-22T07:37:14+00:00"
+  },
+  {
+    "id": "bug-413",
+    "timestamp": "2026-10-23T20:40:13.656027+00:00",
+    "error_message": "The Tripo default-configuration test fails when a caller has configured TRIPO_API_BASE_URL, despite the configuration correctly honoring that override. Reproduced as one failing pytest case with a synthetic override.",
+    "file": "tests/test_agents.py",
+    "root_cause": "The test asserts the built-in default while inheriting the invoking environment instead of explicitly removing the optional override.",
+    "fix": "Recover the environment-isolation fragment from b6278616: remove TRIPO_API_BASE_URL with pytest monkeypatch only in the default test, and separately verify explicit override preservation. Retain the current production /v2 default and all runtime code.",
+    "tags": [
+      "test-isolation",
+      "environment",
+      "tripo",
+      "regression"
+    ],
+    "related_bugs": [],
+    "occurrences": 1,
+    "last_seen": "2026-10-23T20:40:13.656027+00:00"
   }
 ]
