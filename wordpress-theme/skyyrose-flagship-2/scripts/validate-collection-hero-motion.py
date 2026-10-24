@@ -39,7 +39,7 @@ EXPECTED_SOURCES = {
     },
 }
 EXPECTED_SOURCES["kids-capsule"] = (
-    "assets/video/collection-heroes/approved/kids-capsule/runway-r10/poster.webp"
+    "assets/video/collection-heroes/approved/kids-capsule/runway-r12-v8/poster.webp"
 )
 REQUIRED_SAFEGUARDS = {
     "load_only_in_view",

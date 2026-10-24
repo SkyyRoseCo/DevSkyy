@@ -4590,6 +4590,46 @@
       "release": false,
       "category": "AUTHORING ONLY",
       "reason": "Historical ownership of superseded Kids movie binaries; not display authority"
+    },
+    "assets/video/collection-heroes/approved/kids-capsule/runway-r11-8k/hero.mp4": {
+      "category": "RUNTIME MEDIA",
+      "reason": "Superseded native render retained for historical release provenance; active Kids binding selects R12",
+      "release": true
+    },
+    "assets/video/collection-heroes/approved/kids-capsule/runway-r11-8k/hero.webm": {
+      "category": "RUNTIME MEDIA",
+      "reason": "Superseded native render retained for historical release provenance; active Kids binding selects R12",
+      "release": true
+    },
+    "assets/video/collection-heroes/approved/kids-capsule/runway-r11-8k/poster.webp": {
+      "category": "RUNTIME MEDIA",
+      "reason": "Superseded native render retained for historical release provenance; active Kids binding selects R12",
+      "release": true
+    },
+    "assets/video/collection-heroes/approved/kids-capsule/runway-r12-v8/hero.mp4": {
+      "category": "RUNTIME MEDIA",
+      "reason": "Founder-approved V8 Kids reveal; exact source-bound native render",
+      "release": true
+    },
+    "assets/video/collection-heroes/approved/kids-capsule/runway-r12-v8/hero.webm": {
+      "category": "RUNTIME MEDIA",
+      "reason": "Founder-approved V8 Kids reveal; exact source-bound native render",
+      "release": true
+    },
+    "assets/video/collection-heroes/approved/kids-capsule/runway-r12-v8/poster.webp": {
+      "category": "RUNTIME MEDIA",
+      "reason": "Founder-approved V8 Kids reveal; exact source-bound native render",
+      "release": true
+    },
+    "data/v2-media-reviews/kids-runway-8k-20261023.json": {
+      "category": "RUNTIME SOURCE",
+      "reason": "Hash-bound native Kids receipt required by source media gate; retention does not renew superseded creative approval",
+      "release": true
+    },
+    "data/v2-media-reviews/kids-runway-v8-r12-20261023.json": {
+      "category": "RUNTIME SOURCE",
+      "reason": "Hash-bound native Kids receipt required by source media gate; retention does not renew superseded creative approval",
+      "release": true
     }
   },
   "schema": "skyyrose.v2.package-boundary.v1"

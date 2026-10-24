@@ -115,33 +115,33 @@
     },
     "kids-capsule": {
       "source": {
-        "file": "assets/video/collection-heroes/approved/kids-capsule/runway-r10/poster.webp",
-        "sha256": "891fe87135b03349be4aa22b6c81263943620288162298aa18e6f2db5dd61ad4"
+        "file": "assets/video/collection-heroes/approved/kids-capsule/runway-r12-v8/poster.webp",
+        "sha256": "ff54a7f330953719da2018716aa67b0035fe3a0236e14fc4ba40315f193deb94"
       },
-      "exact_pixel_treatment": "Source-bound native slow lift and close camera; hold on Skyy and rose",
+      "exact_pixel_treatment": "Exact approved comparison V8 Skyy; original appearance; retained slow lift and close zoom; hold on Skyy and rose",
       "ai_motion": {
         "status": "founder_integration_authorized",
-        "founder_approval_note": "as you implement those fixes start getting this added to production wire it into the homepage and the kids page and the menu section",
-        "approval_scope": "Production integration requested; final corrected preview review remains separate",
+        "founder_approval_note": "yes thats her. use this exact model for the animation and replace it on the homepage kids page and menu. keep the rise and zoom and preserve the rollback",
+        "approval_scope": "Replace current Kids reveal character and deploy homepage, Kids page and navigation; preserve rollback and orders",
         "production_method": "CONTROLLED_RENDER",
         "provider_attempt": {
           "status": "not_applicable",
           "submitted_count": 0
         },
         "master": {
-          "file": ".artifacts/kids-cinematic-hero-20261022/configured-reveal-r10.mp4",
-          "sha256": "f4e2bed905fe1b4c2291b10224c24822e68c2cad0d902ce2d43645418d76b7bc"
+          "file": "kids-v8-r12-native-master.mp4",
+          "sha256": "8f876826e14437d4b6234fa83ec8482f1b59e859e30dd0aca7df2f19169d1797"
         },
         "web": [
           {
-            "file": "assets/video/collection-heroes/approved/kids-capsule/runway-r10/hero.mp4",
-            "sha256": "bf6720e94ee461d524bb9b9c55ddb671d00c6c600ff675b639fb56b1cc5f1229",
-            "bytes": 1265597
+            "file": "assets/video/collection-heroes/approved/kids-capsule/runway-r12-v8/hero.webm",
+            "sha256": "34f9c51c75be615503ed9fd646669ac1fd4c6b5f72e9f90997ba5f938c58ece2",
+            "bytes": 1477113
           },
           {
-            "file": "assets/video/collection-heroes/approved/kids-capsule/runway-r10/hero.webm",
-            "sha256": "bdf27b230fb23128bc49092753ef990b3adcaca2332d131932df7ab2f75e60bc",
-            "bytes": 1430631
+            "file": "assets/video/collection-heroes/approved/kids-capsule/runway-r12-v8/hero.mp4",
+            "sha256": "c25444bfcceb98d0c96dbb41b62e047c0f3ac9086a850e373f2ccaf0e63c4d50",
+            "bytes": 1412993
           }
         ]
       }

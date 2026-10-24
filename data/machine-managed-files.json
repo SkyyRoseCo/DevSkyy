@@ -5,7 +5,7 @@
     "",
     "Each of these files has a program that owns its bytes: a serializer, a",
     "generator, a minifier, or a byte-comparing gate. When a formatter also",
-    "rewrites them, the two writers undo each other forever — every commit",
+    "rewrites them, the two writers undo each other forever \u2014 every commit",
     "carries thousands of lines of churn, and byte-comparing checks",
     "(sync_product_registry.py --check, check:assets, freshness-guard) fail",
     "for reasons unrelated to the change under review.",
@@ -46,7 +46,7 @@
       "pattern": "wordpress-theme/skyyrose-flagship/data/logo-registry.json",
       "samples": ["wordpress-theme/skyyrose-flagship/data/logo-registry.json"],
       "owner": "skyyrose/core/product_registry.py (registry update API)",
-      "why": "The real file behind the root symlink — the one editable product SOT."
+      "why": "The real file behind the root symlink \u2014 the one editable product SOT."
     },
     {
       "pattern": "wordpress-theme/skyyrose-flagship/data/dossiers/*.md",
@@ -283,6 +283,22 @@
       ],
       "owner": "tools/v2-runtime/render-collection-imagery.php (before/after evidence)",
       "why": "Byte-exact output of the offline V2 renderer, committed as before/after evidence for the 2.5.3 collection-imagery change; reformatting would change the evidence."
+    },
+    {
+      "pattern": "wordpress-theme/skyyrose-flagship-2/data/v2-media-reviews/kids-runway-8k-20261023.json",
+      "samples": [
+        "wordpress-theme/skyyrose-flagship-2/data/v2-media-reviews/kids-runway-8k-20261023.json"
+      ],
+      "owner": "wordpress-theme/skyyrose-flagship-2/inc/v2-media-eligibility.php (authorization.sha256 receipt binding)",
+      "why": "Exact native-film provenance bytes are SHA-256 pinned in v2-media-eligibility.json. Reformatting the receipt invalidates the approved media authorization; retain its verified serialized bytes."
+    },
+    {
+      "pattern": "wordpress-theme/skyyrose-flagship-2/data/v2-media-reviews/kids-runway-v8-r12-20261023.json",
+      "samples": [
+        "wordpress-theme/skyyrose-flagship-2/data/v2-media-reviews/kids-runway-v8-r12-20261023.json"
+      ],
+      "owner": "wordpress-theme/skyyrose-flagship-2/inc/v2-media-eligibility.php (authorization.sha256 receipt binding)",
+      "why": "Exact native-film provenance bytes are SHA-256 pinned in v2-media-eligibility.json. Reformatting the receipt invalidates the approved media authorization; retain its verified serialized bytes."
     }
   ]
 }

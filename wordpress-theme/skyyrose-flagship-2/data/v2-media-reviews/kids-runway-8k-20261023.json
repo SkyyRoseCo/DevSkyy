@@ -1,0 +1,39 @@
+{
+  "schema": "skyyrose.native-collection-film-integration.v1",
+  "authority": "FOUNDER_CONFIRMED",
+  "target": "https://skyyrose.co",
+  "placements": [
+    "homepage",
+    "kids-collection",
+    "navigation"
+  ],
+  "decision_text": "i dont need comparisons. upload and configure the better model\\",
+  "production_method": "CONTROLLED_RENDER",
+  "native_master_sha256": "f241ec69c6414e76051c5be943fdbf7047eb0354c8e360fcd6f2f9c203085c9c",
+  "recipe_sha256": "0940f206055f19d5770dc047175b00d44210c461395d0e8bd925e06adb29e05e",
+  "paid_provider_calls": 0,
+  "source_plate_sha256": "286abaab35c48a80806f0430965cce3ec555d1d5fd0c8067312f0456cbe5b647",
+  "poster_source_sha256": "77fe48376c60d8d0efb20cb857a4daaeb405b532df3af694cd0211e2343204a7",
+  "canonical_mascot_sha256": "51ecea9238a5cc1f2443c28e52048028c9386c46b6755c491496bb05e462c9c6",
+  "assets": {
+    "assets/video/collection-heroes/approved/kids-capsule/runway-r11-8k/hero.webm": {
+      "sha256": "166dd89a6e77dde6e59b5b0bd2c06289649bf4fce771f9aa505e96d26d60b6a0",
+      "role": "collection_hero_video",
+      "bytes": 1538740
+    },
+    "assets/video/collection-heroes/approved/kids-capsule/runway-r11-8k/poster.webp": {
+      "sha256": "dd78f0d49649d91a5cc07cc98c2223452b0cbf372df19ef246ba836dd83dabcc",
+      "role": "collection_hero_poster",
+      "bytes": 95278
+    },
+    "assets/video/collection-heroes/approved/kids-capsule/runway-r11-8k/hero.mp4": {
+      "sha256": "8632aa84342cf1fc20e194fba630a4c02ac715fda58d3e6a4b41a09a903a39a3",
+      "role": "collection_hero_video",
+      "bytes": 1438461
+    }
+  },
+  "creative_review": "Initial, middle and final native frames independently reviewed PASS; full encoded playback qualification retained separately before publication.",
+  "live_publication_authorized": true,
+  "authentication": "Native rendering: not applicable. Deployment identity must be freshly verified.",
+  "source_preservation": "Original file immutable; topology, UVs, materials retained in derived posed mesh; neutral pose frozen; vertical lift only."
+}
