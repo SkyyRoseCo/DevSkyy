@@ -19,15 +19,19 @@ function fixture(t) {
   fs.mkdirSync(path.join(directory, 'scripts'));
   fs.mkdirSync(path.join(directory, 'assets', 'css'), { recursive: true });
   fs.mkdirSync(path.join(directory, 'assets', 'js'), { recursive: true });
-  fs.copyFileSync(path.join(themeDir, 'scripts', 'build-assets.mjs'), path.join(directory, 'scripts', 'build-assets.mjs'));
+  fs.copyFileSync(
+    path.join(themeDir, 'scripts', 'build-assets.mjs'),
+    path.join(directory, 'scripts', 'build-assets.mjs')
+  );
   fs.symlinkSync(path.join(themeDir, 'node_modules'), path.join(directory, 'node_modules'), 'dir');
   const css = name => path.join(directory, 'assets', 'css', name);
   const js = name => path.join(directory, 'assets', 'js', name);
-  const run = (...args) => spawnSync(process.execPath, [path.join(directory, 'scripts', 'build-assets.mjs'), ...args], {
-    cwd: directory,
-    encoding: 'utf8',
-    timeout: 15_000,
-  });
+  const run = (...args) =>
+    spawnSync(process.execPath, [path.join(directory, 'scripts', 'build-assets.mjs'), ...args], {
+      cwd: directory,
+      encoding: 'utf8',
+      timeout: 15_000,
+    });
   return { css, js, run };
 }
 
@@ -52,7 +56,10 @@ for (const mode of [[], ['--check']]) {
 
 test('actual CSS builder preserves separate valid neighboring rules and verifies deterministic output', t => {
   const f = fixture(t);
-  fs.writeFileSync(f.css('valid.css'), '.a { padding: 0; border: 1px solid #fff; }\n.b { display: flex; }\n@media (max-width: 48em) { .b { display: grid; } }\n');
+  fs.writeFileSync(
+    f.css('valid.css'),
+    '.a { padding: 0; border: 1px solid #fff; }\n.b { display: flex; }\n@media (max-width: 48em) { .b { display: grid; } }\n'
+  );
   fs.writeFileSync(f.js('valid.js'), 'window.fixture = 1 + 2;');
   const built = f.run();
   assert.equal(built.error, undefined);
@@ -60,7 +67,10 @@ test('actual CSS builder preserves separate valid neighboring rules and verifies
   assert.match(built.stdout, /Built 1 CSS and 1 JS assets/);
   const output = fs.readFileSync(f.css('valid.min.css'), 'utf8');
   const rules = postcss.parse(output).nodes;
-  assert.deepEqual(rules.filter(node => node.type === 'rule').map(node => node.selector), ['.a', '.b']);
+  assert.deepEqual(
+    rules.filter(node => node.type === 'rule').map(node => node.selector),
+    ['.a', '.b']
+  );
   assert(rules[0].nodes.some(node => node.prop === 'border' && node.value === '1px solid #fff'));
   assert(rules[1].nodes.some(node => node.prop === 'display' && node.value === 'flex'));
   assert(rules.some(node => node.type === 'atrule' && node.nodes[0].selector === '.b'));
@@ -83,4 +93,45 @@ test('actual CSS builder rejects an unclosed rule with source location', t => {
   assert.match(result.stderr, /unclosed\.css:1:1/);
   assert.match(result.stderr, /Unclosed block/);
   assert.equal(fs.existsSync(f.css('unclosed.min.css')), false);
+});
+
+test('quick-view build preserves starting-style and following responsive/accessibility blocks without compiler warnings', t => {
+  const f = fixture(t);
+  const source = fs.readFileSync(path.join(themeDir, 'assets/css/quick-view-commerce.css'), 'utf8');
+  const CleanCSS = themeRequire('clean-css');
+  const compile = css => new CleanCSS({ level: { 1: { specialComments: 0 } } }).minify(css);
+  const old = compile(source.replace(/\/\* clean-css ignore:(?:start|end) \*\//g, ''));
+  assert(old.warnings.length > 0, 'unprotected nested starting-style reproduces the compiler defect');
+  const fixed = compile(source);
+  assert.deepEqual(fixed.errors, []);
+  assert.deepEqual(fixed.warnings, []);
+  fs.writeFileSync(f.css('quick-view-commerce.css'), source);
+  const result = f.run();
+  assert.equal(result.status, 0, result.stderr);
+  const css = fs.readFileSync(f.css('quick-view-commerce.min.css'), 'utf8');
+  const tree = postcss.parse(css);
+  const media = condition =>
+    tree.nodes.find(
+      n => n.type === 'atrule' && n.name === 'media' && n.params.replace(/\s/g, '') === condition.replace(/\s/g, '')
+    );
+  const noPreference = media('(prefers-reduced-motion:no-preference)');
+  assert(
+    noPreference.nodes.some(
+      n => n.type === 'atrule' && n.name === 'starting-style' && n.nodes[0].selector === '.sr2-quick-view[open]'
+    )
+  );
+  const reduced = media('(prefers-reduced-motion:reduce)');
+  assert(reduced.nodes[0].nodes.some(n => n.prop === 'transition' && n.value === 'none'));
+  assert(reduced.nodes[0].nodes.some(n => n.prop === 'animation' && n.value === 'none'));
+  const mobile = media('(max-width:47.99em)');
+  assert(
+    mobile.nodes.some(
+      n =>
+        n.selector === '.sr2-quick-view .sr2-quick-view__panel' &&
+        n.nodes.some(d => d.prop === 'grid-template-columns' && d.value === 'minmax(0,1fr)')
+    )
+  );
+  const forced = media('(forced-colors:active)');
+  assert(forced.nodes[0].nodes.some(n => n.prop === 'border-color' && n.value.toLowerCase() === 'canvastext'));
+  assert.equal(f.run('--check').status, 0, 'rebuilt output must be deterministic');
 });

@@ -374,6 +374,13 @@ configuration as the authority; do not assume a root command checks all apps.
 - Edit theme source, then rebuild affected committed `.min.css` and `.min.js`
   outputs using the correct theme package. Review generated diffs. Keep other
   generated files out of source unless the build intentionally tracks them.
+- For every production deployment, rebuild and optimize CSS from the exact
+  deployed candidate with its matching pinned toolchain. Check source/minified,
+  critical and route-specific CSS parity; remove only proven unused rules/assets
+  while preserving dynamic, commerce, responsive and reduced-motion states.
+  Refresh supported live caches after switching, then verify served asset
+  hashes, cache versions and the affected mobile/menu states. Record this in the
+  receipt.
 - For UI changes, exercise affected flows on desktop and mobile and capture
   visual evidence. A fixture preview or HTTP 200 alone does not verify live
   commerce, accessibility, performance, or deployment.

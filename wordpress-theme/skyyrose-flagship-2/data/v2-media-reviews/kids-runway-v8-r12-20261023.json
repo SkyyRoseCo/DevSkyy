@@ -1,0 +1,39 @@
+{
+  "schema": "skyyrose.native-collection-film-integration.v1",
+  "authority": "FOUNDER_CONFIRMED",
+  "target": "https://skyyrose.co",
+  "placements": [
+    "homepage",
+    "kids-collection",
+    "navigation"
+  ],
+  "decision_text": "yes thats her. use this exact model for the animation and replace it on the homepage kids page and menu. keep the rise and zoom and preserve the rollback",
+  "production_method": "CONTROLLED_RENDER",
+  "native_master_sha256": "8f876826e14437d4b6234fa83ec8482f1b59e859e30dd0aca7df2f19169d1797",
+  "recipe_sha256": "951e3882e251c2f2cd69421f2c9bfbb0ecb5db22c6b81b9498e0f618a857adcf",
+  "paid_provider_calls": 0,
+  "source_plate_sha256": "286abaab35c48a80806f0430965cce3ec555d1d5fd0c8067312f0456cbe5b647",
+  "poster_source_sha256": "43511de27bd88e23ad48ce71a8f60d6ab4eb9a4d4e7808f0a4409544b2273778",
+  "canonical_mascot_sha256": "71f44f993f8eac6920111631479416ae9991c1c7195650b6e7b7c44170bb52ab",
+  "assets": {
+    "assets/video/collection-heroes/approved/kids-capsule/runway-r12-v8/hero.webm": {
+      "sha256": "34f9c51c75be615503ed9fd646669ac1fd4c6b5f72e9f90997ba5f938c58ece2",
+      "role": "collection_hero_video",
+      "bytes": 1477113
+    },
+    "assets/video/collection-heroes/approved/kids-capsule/runway-r12-v8/poster.webp": {
+      "sha256": "ff54a7f330953719da2018716aa67b0035fe3a0236e14fc4ba40315f193deb94",
+      "role": "collection_hero_poster",
+      "bytes": 91470
+    },
+    "assets/video/collection-heroes/approved/kids-capsule/runway-r12-v8/hero.mp4": {
+      "sha256": "c25444bfcceb98d0c96dbb41b62e047c0f3ac9086a850e373f2ccaf0e63c4d50",
+      "role": "collection_hero_video",
+      "bytes": 1412993
+    }
+  },
+  "creative_review": "Founder approved exact V8 character and corrected final still. Full animation qualification required before deployment.",
+  "live_publication_authorized": true,
+  "authentication": "Native rendering: not applicable. Deployment identity must be freshly verified.",
+  "source_preservation": "Exact comparison V8 original REST pose; immutable source geometry, texture and materials; uniform scale and vertical lift only; AgX foreground with unchanged runway plate."
+}
