@@ -149,8 +149,8 @@ jobs:
 
     services:
       redis:
-        # ECR Public mirror of the official image (same digest) — avoids Docker Hub anonymous pull limits on shared runners.
-        image: public.ecr.aws/docker/library/redis:7-alpine
+        # Google mirror of the official image avoids ECR Public data-limit failures.
+        image: mirror.gcr.io/library/redis:7-alpine
         ports:
           - 6379:6379
         options: >-
@@ -736,7 +736,7 @@ jobs:
 
     services:
       redis:
-        image: public.ecr.aws/docker/library/redis:7-alpine
+        image: mirror.gcr.io/library/redis:7-alpine
         ports:
           - 6379:6379
         options: >-
